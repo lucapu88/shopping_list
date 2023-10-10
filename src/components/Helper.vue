@@ -1,4 +1,6 @@
 <script setup>
+import HelperDescriptionIta from './Helper-description-ita.vue';
+import HelperDescriptionEng from './Helper-description-eng.vue';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
@@ -440,7 +442,8 @@ export default {
           </small>
         </div>
         <div id="helper-istructions">
-          <!-- QUI C'È TUTTA LA DESCRIZIONE IN BASE ALLA LINGUA. È NEL FILE "helper-istructions.js" -->
+          <HelperDescriptionIta v-if="languages.langIta" />
+          <HelperDescriptionEng v-if="!languages.langIta" />
         </div>
         <br />
         <p id="helper-important-alert" class="update-alert">
@@ -522,14 +525,6 @@ export default {
   width: 33px;
 }
 
-.helper-list {
-  padding-inline-start: 25px;
-}
-.helper-list > li {
-  display: list-item;
-  animation: fadeIn 0.6s;
-}
-
 .helper-description {
   position: absolute;
   left: 0;
@@ -540,61 +535,6 @@ export default {
   background-size: contain;
   z-index: 150;
   background-color: #ffffff;
-}
-
-.arrow {
-  width: 1.5625rem;
-  height: 1.5625rem;
-}
-.arrow-selected {
-  -webkit-animation: spin 0.5s linear;
-  -moz-animation: spin 0.5s linear;
-  animation: spin 0.5s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-}
-
-.arrow-deselected {
-  -webkit-animation: reverseSpin 0.5s linear;
-  -moz-animation: reverseSpin 0.5s linear;
-  animation: reverseSpin 0.5s linear;
-}
-@keyframes reverseSpin {
-  from {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-  to {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-}
-
-.list-title {
-  padding: 5px;
-  border: 1px solid;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  margin-left: -15px;
-  display: flex;
-  justify-content: space-between;
-}
-.list-title-color {
-  background-color: #ededed;
-  color: #000000;
-}
-.list-title-summer {
-  background-color: #efcb8f;
-}
-.list-title-retro {
-  border-radius: 0 !important;
-  border: 2px outset;
 }
 
 #loading-themes-container,
@@ -714,12 +654,6 @@ export default {
   margin-bottom: 15px;
   text-align: center;
 }
-.helper-title {
-  margin-bottom: 0;
-  text-align: center;
-  margin-top: 20px;
-  border-top: 1px solid;
-}
 
 .add-list-copied {
   display: grid;
@@ -727,10 +661,19 @@ export default {
   gap: 10px;
   margin-top: 5px;
 }
-
+.info-icon {
+  font-family: Times New Roman;
+  font-weight: bold;
+  font-size: large;
+  border: 2px solid;
+  padding: 0 7px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
 .add-list-textarea {
   border-radius: 5px;
 }
+
 textarea {
   resize: vertical;
   min-height: 55px;
@@ -790,14 +733,6 @@ textarea {
 }
 .close-helper:hover {
   cursor: pointer;
-}
-.helper-icon {
-  max-width: 30px;
-  max-height: 30px;
-  padding: 5px;
-  text-align: center;
-  display: inline;
-  margin-left: 0;
 }
 
 .show-video {
@@ -880,14 +815,8 @@ textarea {
 .winter {
   background-color: #1a3159 !important;
 }
-
-.helper-btn-dark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  padding: 0 5px;
-  z-index: 5;
-  margin-right: calc(2% + 10px);
+.tutorial-highlights {
+  background-color: orangered;
+  color: white;
 }
 </style>

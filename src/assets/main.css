@@ -11,6 +11,38 @@ body {
     background-size: cover;
   }
 }
+/* ----------------------------------------NATALEEEEEE------------------------------------ */
+.christmas-theme {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -3;
+}
+.christmas-footer {
+  width: 300px;
+  display: table;
+  margin: 0 auto;
+}
+.christmas {
+  margin-top: 30px;
+}
+.christmas-red {
+  color: #ff0000;
+}
+.left-christmas-info {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 50px;
+}
+.right-christmas-info {
+  position: absolute;
+  top: 5px;
+  right: 10%;
+  width: 50px;
+}
+
 /* ----------------------------------------TEMI------------------------------------ */
 /* DARK */
 .dark-theme-title {
