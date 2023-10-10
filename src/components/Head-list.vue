@@ -15,7 +15,6 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       addTodo: useAddModifyDeleteTodosStore(),
-      helper: false,
       placeholder: 'Write here what to buy',
       defaultPlaceholderText: 'Write here what to buy',
     };
@@ -25,11 +24,10 @@ export default {
   },
   methods: {
     showHelper() {
-      this.helper = !this.helper;
-      if (this.helper) {
+      this.settings.openHelper();
+      if (this.settings.helper) {
         window.scrollTo(0, 0);
         document.documentElement.style.overflow = 'hidden';
-        this.$emit('open-helper', this.helper);
       } else {
         document.documentElement.style.overflow = 'auto';
       }
@@ -113,8 +111,8 @@ export default {
     <span
       class="helper"
       :class="{
-        'helper-selected': this.helper,
-        'helper-deselected': !this.helper,
+        'helper-selected': settings.helper,
+        'helper-deselected': !settings.helper,
         'helper-btn-dark': theme.darkTheme,
       }"
       @click="showHelper()"
@@ -242,35 +240,48 @@ export default {
   -webkit-text-fill-color: transparent;
 }
 
-/* MINIMAL */
-.minimal-theme-title {
-  background: -webkit-radial-gradient(circle, #243a73 0%, #243a73 95%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Helvetica, sans-serif';
-  font-weight: bold;
+.helper-selected {
+  -webkit-animation: spin 2s linear;
+  -moz-animation: spin 2s linear;
+  animation: spin 2s linear;
 }
-.minimal-theme-title2 {
-  background: -webkit-radial-gradient(circle, #6493ae 0%, #7892a2 95%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Helvetica, sans-serif';
-  font-weight: bold;
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
-/* RETRO */
-.retro-theme-title {
-  background: -webkit-radial-gradient(circle, #35c50d 0%, #35c50d 95%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'DotGothic16', sans-serif;
-  font-weight: bold;
+.helper-deselected {
+  -webkit-animation: reverseSpin 1.5s linear;
+  -moz-animation: reverseSpin 1.5s linear;
+  animation: reverseSpin 1.5s linear;
 }
-.retro-theme-title2 {
-  display: none;
+@-moz-keyframes reverseSpin {
+  100% {
+    -moz-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes reverseSpin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@keyframes reverseSpin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
 }
 
 .input-btns-container {

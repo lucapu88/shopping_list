@@ -15,7 +15,6 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
-      helper: false,
     };
   },
   created() {
@@ -26,14 +25,6 @@ export default {
     this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
     this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
   },
-  methods: {
-    openHelper(data) {
-      this.helper = data;
-    },
-    closeHelper(data) {
-      this.helper = data;
-    },
-  },
 };
 </script>
 
@@ -43,12 +34,8 @@ export default {
       <div id="app">
         <div id="container-list" class="row">
           <div class="mt-3 mx-auto padding-bottom-custom">
-            <HeadList @open-helper="openHelper" />
-            <Helper
-              v-if="helper"
-              :helperIsOpen="helper"
-              @close-helper="closeHelper"
-            />
+            <HeadList />
+            <Helper v-if="settings.helper" />
           </div>
         </div>
       </div>

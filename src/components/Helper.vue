@@ -8,7 +8,6 @@ import { useSettingsStore } from '@/store/SettingsStore';
 
 <script>
 export default {
-  props: ['helperIsOpen'],
   data() {
     return {
       theme: useThemeStore(),
@@ -16,7 +15,6 @@ export default {
       languages: useLanguageStore(),
       addNewTodo: useAddModifyDeleteTodosStore(),
       settings: useSettingsStore(),
-      helper: false,
       highlits: null,
       textAreaHeight: 55,
       autoDeleteEmptyCategoriesInfo: false,
@@ -28,7 +26,6 @@ export default {
     };
   },
   created() {
-    this.helper = this.helperIsOpen;
     this.safeModeInfo = false;
     this.autoDeleteEmptyCategoriesInfo = false;
     this.pasteListInfo = false;
@@ -48,6 +45,8 @@ export default {
         'drop-shadow(2px 4px 6px black)';
     }
     if (this.theme.winterTheme) {
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundSize = 'cover';
       document.getElementById(
         'helper-description-container'
       ).style.backgroundImage = "url('src/img/inverno.webp')";
@@ -72,8 +71,7 @@ export default {
       ).style.height = `${this.textAreaHeight}px`;
     },
     closeHelper() {
-      this.helper = false;
-      this.$emit('close-helper', this.helper);
+      this.settings.closeHelper();
     },
     highlightsForTutorial(num) {
       console.log(num);
@@ -117,7 +115,7 @@ export default {
           break;
       }
       setTimeout(() => {
-        // location.reload();
+        location.reload();
       }, 700);
     },
     startIncreasing() {
@@ -202,12 +200,12 @@ export default {
     </div>
     <!-- CONTAINER DI TUTTO L'HELPER -->
     <div
-      v-if="!themeLoading || !updating"
+      v-if="!themeLoading && !updating"
       id="helper-description-container"
       class="helper-description"
       :class="{
-        slideUp: helper === true,
-        slideDown: helper === false,
+        slideUp: settings.helper,
+        slideDown: !settings.helper,
         'dark-theme-helper': theme.darkTheme === true,
         'minimal-theme-helper': theme.minimalTheme === true,
         'retro-theme-helper': theme.retroTheme === true,
@@ -262,7 +260,7 @@ export default {
           <div class="toggle-delete-confirm">&#x1F449;</div>
           <span class="text-primary">{{ settings.canDeleteText }}</span>
         </li>
-        <br /><br />
+        <br />
 
         <span @click="highlightsForTutorial(2)">&#x2699;</span>
         <span :class="{ 'tutorial-highlights': highlits === 2 }"
@@ -320,7 +318,7 @@ export default {
             Winter
           </button>
         </div>
-        <br /><br />
+        <br />
 
         <span @click="highlightsForTutorial(3)">&#x2699;</span>
         <span :class="{ 'tutorial-highlights': highlits === 3 }"
@@ -346,7 +344,7 @@ export default {
             settings.canDeleteEmptyCategoriesText
           }}</span>
         </li>
-        <br /><br />
+        <br />
 
         <div class="add-list-copied-container">
           <span @click="highlightsForTutorial(4)">&#x2699;</span>
@@ -532,53 +530,8 @@ export default {
   animation: fadeIn 0.6s;
 }
 
-.helper-selected {
-  -webkit-animation: spin 2s linear;
-  -moz-animation: spin 2s linear;
-  animation: spin 2s linear;
-}
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-.helper-deselected {
-  -webkit-animation: reverseSpin 1.5s linear;
-  -moz-animation: reverseSpin 1.5s linear;
-  animation: reverseSpin 1.5s linear;
-}
-@-moz-keyframes reverseSpin {
-  100% {
-    -moz-transform: rotate(-360deg);
-  }
-}
-@-webkit-keyframes reverseSpin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-  }
-}
-@keyframes reverseSpin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-    transform: rotate(-360deg);
-  }
-}
-
 .helper-description {
   position: absolute;
-  display: none;
   left: 0;
   top: -100%;
   width: 100%;
@@ -647,7 +600,6 @@ export default {
 #loading-themes-container,
 #updating-container {
   position: absolute;
-  display: none;
   left: 0;
   top: 0;
   width: 100%;
@@ -668,6 +620,17 @@ export default {
 }
 #loading-themes-container > img:last-child {
   width: 100%;
+}
+@keyframes zoominoutsinglefeatured {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.3, 1.3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 #updating-container > img {
@@ -723,7 +686,7 @@ export default {
 .helper-description.slideDown {
   display: block;
   animation-name: slideDown;
-  animation-duration: 0.8s;
+  animation-duration: 1s;
   animation-fill-mode: none;
 }
 @keyframes slideDown {
@@ -899,23 +862,23 @@ textarea {
 }
 
 .light {
-  background-color: white;
+  background-color: white !important;
 }
 .dark {
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 .minimal {
-  background-color: #a5becc;
+  background-color: #a5becc !important;
 }
 .retro {
-  background-color: black;
+  background-color: black !important;
 }
 
 .summer {
-  background-color: #12a1df;
+  background-color: #12a1df !important;
 }
 .winter {
-  background-color: #1a3159;
+  background-color: #1a3159 !important;
 }
 
 .helper-btn-dark {

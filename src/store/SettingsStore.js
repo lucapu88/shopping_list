@@ -9,6 +9,7 @@ export const useSettingsStore = defineStore('settings', {
         languages: useLanguageStore(),
         canDeleteEmptyCategories: false,
         canDeleteEmptyCategoriesText: 'OFF',
+        helper: false,
     }),
     getters: {},
     actions: {
@@ -57,5 +58,11 @@ export const useSettingsStore = defineStore('settings', {
                 window.localStorage.setItem('canDeleteEmptyCategories', false);
             }
         },
+        openHelper() {
+            this.helper = true;
+        },
+        closeHelper() {
+            this.helper = false;
+        }
     },
 });

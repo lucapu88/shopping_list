@@ -11,29 +11,276 @@ body {
     background-size: cover;
   }
 }
-
-/* a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+/* ----------------------------------------TEMI------------------------------------ */
+/* DARK */
+.dark-theme-title {
+  background: -webkit-radial-gradient(circle, #ffffff 0%, #ffffff 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark-theme-helper {
+  background-image: none;
+  background-color: #385336 !important;
+  border: 10px solid #d17e47;
+  /* width: calc(100% - 10px); */
+}
+.helper-btn-dark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 0 5px;
+  z-index: 5;
+  margin-right: calc(2% + 10px);
+}
+.dark-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid;
+  border-radius: 10px;
+}
+.dark-theme-confirm {
+  background-color: #333333;
+  background-image: none;
+  border: 10px solid #d17e47;
+}
+.dark-theme-back-top {
+  background-color: #ffffff;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+/* MINIMAL */
+.minimal-theme-title {
+  background: -webkit-radial-gradient(circle, #243a73 0%, #243a73 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Helvetica, sans-serif';
+  font-weight: bold;
+}
+.minimal-theme-title2 {
+  background: -webkit-radial-gradient(circle, #6493ae 0%, #7892a2 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Helvetica, sans-serif';
+  font-weight: bold;
+}
+.minimal-theme {
+  background-image: none;
+  background-color: #a5becc;
+  color: #7c3e66;
+}
+.minimal-theme-helper {
+  background-image: none;
+  background-color: #d3ebcd !important;
+  color: #645767;
+}
+.minimal-theme-confirm {
+  background-color: #243a73;
+  background-image: none;
+  color: #f2ebe9;
+}
+.pushbutton-container > .minimal-selected-btn {
+  background-color: #645767 !important;
+}
+.minimal-btn {
+  background-color: transparent !important;
+  border-color: #7c3e66;
+  color: #7c3e66;
+  border-radius: 5px;
+}
+.minimal-btn > button {
+  background-color: #8aa5b4 !important;
+  border-color: #7c3e66;
+  color: #7c3e66;
+}
+.minimal-helper-btn {
+  background-color: #8aa5b4 !important;
+  border-color: #7c3e66;
+  color: #7c3e66;
+}
+.hide-minimal-icon {
+  display: none;
+}
+.category-minimal {
+  font-weight: bold;
+  border: 1px solid #7c3e66;
+  background-color: #8aa5b4 !important;
+  border-radius: 7px;
+}
+.category-emoji-minimal {
+  font-size: 30px;
+  margin: 0 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+.minimal-theme-back-top {
+  color: #7c3e66;
+  border-color: #7c3e66;
+  background-color: #8aa5b4;
+  padding: 5px 10px !important;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+/* DOS */
+.retro-theme-title {
+  background: -webkit-radial-gradient(circle, #35c50d 0%, #35c50d 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'DotGothic16', sans-serif;
+  font-weight: bold;
+}
+.retro-theme-title2 {
+  display: none;
+}
+.retro-theme {
+  background-image: none;
+  background-color: #000000;
+  color: #35c50d;
+  border: 1px solid #35c50d;
+  min-width: 45px;
+}
+.retro-teme-btns {
+  background-color: #35c50d;
+  color: #000000;
+  font-weight: bold;
+  border: 1px solid #35c50d;
+  border-radius: 0;
+}
+.retro-theme-helper {
+  background-image: none;
+  background-color: #c0c0c0;
+  background-image: none;
+  color: #000000;
+  border: 3px #ffffff outset;
+  border-radius: 0 !important;
+}
+.retro-helper-settings-title {
+  color: #ffffff;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 2, 129, 1) 0%,
+    rgba(15, 129, 206, 1) 90%
+  );
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.retro-theme-confirm {
+  background-color: #c0c0c0;
+  background-image: none;
+  color: #000000;
+  border: 3px #ffffff outset;
+  border-radius: 0 !important;
+}
+.close-retro-theme-helper {
+  background-color: #c0c0c0;
+  background-image: none;
+  color: #000000;
+  border: 3px #ffffff outset;
+  border-radius: 0 !important;
+  margin: 5px 5px;
+}
+.retro-category-list {
+  border-radius: 0px;
+  border: 2px outset;
+  background-color: #efefef;
+}
+.retro-multiple-delete {
+  color: #d70a0a;
+}
+.retro-theme-confirm-delete {
+  border: 1px dashed #ffffff;
+  background-color: #042457;
+  color: #ffffff;
+  background-image: none;
+  border-radius: 0 !important;
+}
+.retro-theme-confirm-delete > button {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background-color: #042457;
+  border-radius: 0 !important;
+}
+.retro-theme-back-top {
+  background-color: #35c50d;
+  border-radius: 0;
+  color: black;
+}
+.retro-category {
+  color: #ffffff;
+}
+.retro-btn {
+  background-color: transparent !important;
+  border-color: #35c50d;
+  color: #35c50d;
+}
+.retro-btn > button {
+  background-color: #000000 !important;
+  border-color: #35c50d;
+  border-radius: 0 !important;
+  color: #35c50d;
+}
+.retro-btn-border {
+  border: 3px #fff outset !important;
+  border-radius: 0px !important;
+  color: #000000;
+}
+.category-retro {
+  background-color: #000000 !important;
+  border: 1px solid #35c50d;
+  border-radius: 0;
+  color: #35c50d;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-} */
+/* SUMMER */
+.summer-theme {
+  background-color: #12a1df !important;
+  color: #efcb8f;
+}
+.summer-btn {
+  background-color: #007bff;
+  color: #ffff;
+  border: 2px solid #ffff;
+  border-radius: 10px;
+}
+.summer-confirm {
+  background-image: url('img/onda.webp') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.summer-confirm > p {
+  color: aquamarine;
+  filter: drop-shadow(#000000 6px 6px 3px);
+}
+.summer-theme-back-top {
+  background-color: #efcb8f;
+}
+
+/* WINTER */
+.winter-theme {
+  background-color: #d5effa !important;
+  color: #6d3001;
+}
+.winter-btn {
+  background-color: rgba(192, 224, 133, 0.883);
+  border: 2px solid #b4e659;
+  border-radius: 10px;
+}
+.winter-theme-back-top {
+  background-color: #ffffff;
+}
+.winter-category-list {
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.55);
+}
+.winter-shadow {
+  filter: drop-shadow(#000000 2px 4px 6px);
+}
+.winter-confirm {
+  background-image: url('img/cincia.webp') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #000000;
+}
