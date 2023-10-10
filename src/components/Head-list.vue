@@ -31,7 +31,6 @@ export default {
         document.documentElement.style.overflow = 'hidden';
         this.$emit('open-helper', this.helper);
       } else {
-        document.getElementById('helper-description').scrollTo(0, 0);
         document.documentElement.style.overflow = 'auto';
       }
       this.settings.checkingUpdates();

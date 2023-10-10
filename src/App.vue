@@ -30,6 +30,9 @@ export default {
     openHelper(data) {
       this.helper = data;
     },
+    closeHelper(data) {
+      this.helper = data;
+    },
   },
 };
 </script>
@@ -41,7 +44,11 @@ export default {
         <div id="container-list" class="row">
           <div class="mt-3 mx-auto padding-bottom-custom">
             <HeadList @open-helper="openHelper" />
-            <Helper v-if="helper" />
+            <Helper
+              v-if="helper"
+              :helperIsOpen="helper"
+              @close-helper="closeHelper"
+            />
           </div>
         </div>
       </div>

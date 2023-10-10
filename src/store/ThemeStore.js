@@ -14,7 +14,7 @@ export const useThemeStore = defineStore('theme', {
         setThemeOnLoad() {
             const lightThemeSelected = window.localStorage.getItem('lightTheme');
             this.lightTheme = lightThemeSelected === 'true';
-            if (this.lightTheme) { this.changeThemeStyle('Light', "url('@/img/foglio_righe.webp')"); }
+            if (this.lightTheme) { this.changeThemeStyle('Light', "url('src/img/foglio_righe.webp')"); }
 
             const darkThemeSelected = window.localStorage.getItem('darkTheme');
             this.darkTheme = darkThemeSelected === 'true';
@@ -39,13 +39,9 @@ export const useThemeStore = defineStore('theme', {
             const summerThemeSelected = window.localStorage.getItem('summerTheme');
             this.summerTheme = summerThemeSelected === 'true';
             if (this.summerTheme) {
-                this.changeThemeStyle('Summer', "url('@/img/mare.webp')", '#EFCB8F');
+                this.changeThemeStyle('Summer', "url('src/img/mare.webp')", '#EFCB8F');
                 document.body.style.backgroundRepeat = 'no-repeat';
-                document.getElementById('helper-description').style.backgroundImage = 'none';
-                document.getElementById('helper-description-container').style.background = 'rgb(188,242,221)';
-                document.getElementById('helper-description-container').style.background = 'linear-gradient(168deg, rgba(188,242,221,1) 0%, rgba(129,215,235,1) 47%, rgba(46,152,242,1) 100%)';
-                document.getElementById('helper-description').style.filter = 'drop-shadow(2px 4px 6px black)';
-                document.querySelector('.confirm').style.backgroundImage = 'none';
+                // document.querySelector('.confirm').style.backgroundImage = 'none';
             }
 
             const winterThemeSelected = window.localStorage.getItem('winterTheme');
@@ -53,12 +49,8 @@ export const useThemeStore = defineStore('theme', {
             if (this.winterTheme) {
                 document.body.style.backgroundRepeat = 'no-repeat';
                 document.body.style.backgroundSize = 'cover';
-                this.changeThemeStyle('Winter', "url('@/img/montagne.webp')", '#232F34', '#FFFFFF');
-
-                document.getElementById('helper-description-container').style.backgroundImage = "url('@/img/inverno.webp')";
-                document.getElementById('helper-description-container').style.backgroundSize = 'cover';
+                this.changeThemeStyle('Winter', "url('src/img/montagne.webp')", '#232F34', '#FFFFFF');
                 document.getElementById('todo').style.filter = 'drop-shadow(2px 4px 6px black)';
-                document.getElementById('helper-description').style.filter = 'drop-shadow(2px 4px 6px black)';
                 document.querySelector('.confirm').style.backgroundImage = 'none';
                 document.querySelector('.confirm').style.filter = 'drop-shadow(2px 4px 6px black)';
             }
@@ -69,6 +61,20 @@ export const useThemeStore = defineStore('theme', {
             document.body.style.backgroundColor = backgroundColor;
             if (color) { document.body.style.color = color; }
             if (fontFamily) { document.body.style.fontFamily = fontFamily; }
+        },
+        resetAllThemes() {
+            this.lightTheme = false;
+            window.localStorage.setItem('lightTheme', false);
+            this.darkTheme = false;
+            window.localStorage.setItem('darkTheme', false);
+            this.minimalTheme = false;
+            window.localStorage.setItem('minimalTheme', false);
+            this.retroTheme = false;
+            window.localStorage.setItem('retroTheme', false);
+            this.summerTheme = false;
+            window.localStorage.setItem('summerTheme', false);
+            this.winterTheme = false;
+            window.localStorage.setItem('winterTheme', false);
         },
     },
 });
