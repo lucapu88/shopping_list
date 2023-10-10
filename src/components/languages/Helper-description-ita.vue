@@ -420,7 +420,11 @@ export default {
           href="https://www.facebook.com/profile.php?id=100080626866860"
           target="_blank"
         >
-          <img src="img/facebook.webp" alt="social_facebook" class="social" />
+          <img
+            src="src/img/facebook.webp"
+            alt="social_facebook"
+            class="social"
+          />
         </a>
       </li>
     </ul>
