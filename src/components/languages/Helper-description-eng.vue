@@ -103,10 +103,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.addEditDelete,
-            'arrow-deselected': !this.addEditDelete,
+            'arrow-selected': addEditDelete,
+            'arrow-deselected': !addEditDelete,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -123,13 +123,14 @@ export default {
             'retro-btn-button': theme.retroTheme,
           }"
         ></i> -->
+        <!--TOFIX -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="src/img/pencil.webp"
+          src="@/img/pencil.webp"
           alt="pencil"
         />. you can change a name and save the changes by clicking
         <i
@@ -145,9 +146,10 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="src/img/floppy.webp"
+          src="@/img/floppy.webp"
           alt="floppy"
         />. -->
+        <!--TOFIX -->
       </li>
       <li v-if="addEditDelete">
         With
@@ -159,13 +161,14 @@ export default {
           }"
         >
         </i> -->
+        <!--TOFIX -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="src/img/trash.webp"
+          src="@/img/trash.webp"
           alt="trash"
         />
         you will remove stuff from the list.
@@ -200,10 +203,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.categoriesInfo,
-            'arrow-deselected': !this.categoriesInfo,
+            'arrow-selected': categoriesInfo,
+            'arrow-deselected': !categoriesInfo,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -278,10 +281,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.dragNdrop,
-            'arrow-deselected': !this.dragNdrop,
+            'arrow-selected': dragNdrop,
+            'arrow-deselected': !dragNdrop,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -294,7 +297,7 @@ export default {
             'retro-teme-btns': theme.retroTheme,
           }"
         >
-          <img src="src/img/drag-and-drop.webp" alt="move" />
+          <img src="@/img/drag-and-drop.webp" alt="move" />
         </button>
         you can drag the elements and move them wherever you want.
       </li>
@@ -311,10 +314,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.selectAndDelete,
-            'arrow-deselected': !this.selectAndDelete,
+            'arrow-selected': selectAndDelete,
+            'arrow-deselected': !selectAndDelete,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -340,10 +343,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.copyHighlights,
-            'arrow-deselected': !this.copyHighlights,
+            'arrow-selected': copyHighlights,
+            'arrow-deselected': !copyHighlights,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -369,10 +372,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.deleteAllInfo,
-            'arrow-deselected': !this.deleteAllInfo,
+            'arrow-selected': deleteAllInfo,
+            'arrow-deselected': !deleteAllInfo,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -397,22 +400,22 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.tutorial,
-            'arrow-deselected': !this.tutorial,
+            'arrow-selected': tutorial,
+            'arrow-deselected': !tutorial,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <video
         v-if="tutorial"
         :class="{ video: !theme.retroTheme }"
-        width="98%"
+        width="325"
         height="500"
-        poster="src/img/favicon.png"
+        poster="@/img/favicon.png"
         controls
       >
-        <source src="src/video/ENG.mp4" type="video/mp4" />
+        <source src="@/video/ENG.mp4" type="video/mp4" />
         Your device does not support the video tag. Watch on youtube
         <a href="https://www.youtube.com/watch?v=H1E9ynY9f9w" target="_blank"
           >by clicking here</a
@@ -431,10 +434,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.support,
-            'arrow-deselected': !this.support,
+            'arrow-selected': support,
+            'arrow-deselected': !support,
           }"
-          src="src/img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -448,11 +451,7 @@ export default {
           href="https://www.facebook.com/profile.php?id=100080626866860"
           target="_blank"
         >
-          <img
-            src="src/img/facebook.webp"
-            alt="social_facebook"
-            class="social"
-          />
+          <img src="@/img/facebook.webp" alt="social_facebook" class="social" />
         </a>
       </li>
     </ul>

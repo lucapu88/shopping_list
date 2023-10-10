@@ -198,7 +198,7 @@ export default {
     </div>
     <!-- CONTAINER LOADING UPDATE APP -->
     <div v-if="updating" id="updating-container">
-      <img src="./img/update-img.webp" alt="loading" />
+      <img src="@/img/update-img.webp" alt="loading" />
       <h2 class="category-emoji-selected updating-text">..DOWNLOAD..</h2>
     </div>
     <!-- CONTAINER DI TUTTO L'HELPER -->

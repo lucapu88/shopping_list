@@ -103,10 +103,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.addEditDelete,
-            'arrow-deselected': !this.addEditDelete,
+            'arrow-selected': addEditDelete,
+            'arrow-deselected': !addEditDelete,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -116,13 +116,22 @@ export default {
       </li>
       <li v-if="addEditDelete">
         Con
-        <i
+        <!-- <i
           class="fas fa-pencil-alt btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        ></i>
+        ></i> -->
+        <img
+          class="btn-primary rounded-circle btn-sm helper-icon"
+          :class="{
+            'minimal-helper-btn': theme.minimalTheme,
+            'retro-btn-button': theme.retroTheme,
+          }"
+          src="@/img/pencil.webp"
+          alt="pencil"
+        />
         potrai modificare un nome e salvare le modifiche cliccando
         <i
           class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
@@ -132,16 +141,37 @@ export default {
           }"
         ></i
         >.
+        <!-- <img
+          class="btn-primary rounded-circle btn-sm helper-icon"
+          :class="{
+            'minimal-helper-btn': theme.minimalTheme,
+            'retro-btn-button': theme.retroTheme,
+          }"
+          src="@/img/floppy.webp"
+          alt="floppy"
+        />. -->
+        <!--TOFIX -->
       </li>
       <li v-if="addEditDelete">
         Con
-        <i
+        <!-- <i
           class="fas fa-trash-alt btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        ></i>
+        >
+        </i> -->
+        <!--TOFIX -->
+        <img
+          class="btn-primary rounded-circle btn-sm helper-icon"
+          :class="{
+            'minimal-helper-btn': theme.minimalTheme,
+            'retro-btn-button': theme.retroTheme,
+          }"
+          src="@/img/trash.webp"
+          alt="trash"
+        />
         eliminerai roba dalla lista.
       </li>
       <li v-if="addEditDelete">
@@ -174,10 +204,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.categoriesInfo,
-            'arrow-deselected': !this.categoriesInfo,
+            'arrow-selected': categoriesInfo,
+            'arrow-deselected': !categoriesInfo,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -250,10 +280,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.dragNdrop,
-            'arrow-deselected': !this.dragNdrop,
+            'arrow-selected': dragNdrop,
+            'arrow-deselected': !dragNdrop,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -266,7 +296,7 @@ export default {
             'retro-teme-btns': theme.retroTheme,
           }"
         >
-          <img src="./img/drag-and-drop.webp" alt="move" />
+          <img src="@/img/drag-and-drop.webp" alt="move" />
         </button>
         potrai trascinare gli elementi e spostarli dove vuoi.
       </li>
@@ -283,10 +313,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.selectAndDelete,
-            'arrow-deselected': !this.selectAndDelete,
+            'arrow-selected': selectAndDelete,
+            'arrow-deselected': !selectAndDelete,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -312,10 +342,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.copyHighlights,
-            'arrow-deselected': !this.copyHighlights,
+            'arrow-selected': copyHighlights,
+            'arrow-deselected': !copyHighlights,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -341,10 +371,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.deleteAllInfo,
-            'arrow-deselected': !this.deleteAllInfo,
+            'arrow-selected': deleteAllInfo,
+            'arrow-deselected': !deleteAllInfo,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -369,22 +399,22 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.tutorial,
-            'arrow-deselected': !this.tutorial,
+            'arrow-selected': tutorial,
+            'arrow-deselected': !tutorial,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <video
         v-if="tutorial"
         :class="{ video: !theme.retroTheme }"
-        width="98%"
+        width="325"
         height="500"
-        poster="./img/favicon.png"
+        poster="@/img/favicon.png"
         controls
       >
-        <source src="./video/ITA.mp4" type="video/mp4" />
+        <source src="@/video/ITA.mp4" type="video/mp4" />
         Il tuo device non supporta i video tag. Guardalo su youtube
         <a href="https://www.youtube.com/watch?v=VSO1k1CUrBY" target="_blank"
           >cliccando qui</a
@@ -403,10 +433,10 @@ export default {
         <img
           class="arrow"
           :class="{
-            'arrow-selected': this.support,
-            'arrow-deselected': !this.support,
+            'arrow-selected': support,
+            'arrow-deselected': !support,
           }"
-          src="./img/arrow-down.webp"
+          src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -420,11 +450,7 @@ export default {
           href="https://www.facebook.com/profile.php?id=100080626866860"
           target="_blank"
         >
-          <img
-            src="src/img/facebook.webp"
-            alt="social_facebook"
-            class="social"
-          />
+          <img src="@/img/facebook.webp" alt="social_facebook" class="social" />
         </a>
       </li>
     </ul>

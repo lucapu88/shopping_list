@@ -123,12 +123,12 @@ export default {
       <input
         class="inputText mb-2 border border-primary rounded"
         :class="{
-          'placeholder-selected': this.placeholder != defaultPlaceholderText,
+          'placeholder-selected': placeholder != defaultPlaceholderText,
         }"
         ref="myInput"
         v-model="addTodo.newTodo"
         @keypress.enter="addNewTodo()"
-        :placeholder="this.placeholder"
+        :placeholder="placeholder"
       />
       <button class="btn btn-info" @click="addNewTodo()">
         <i class="far fa-paper-plane"></i>
