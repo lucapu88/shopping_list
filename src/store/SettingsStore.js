@@ -5,11 +5,12 @@ export const useSettingsStore = defineStore('settings', {
     state: () => ({
         canDelete: false,
         canDeleteText: 'OFF',
-        dateLastUpdate: "10/07/2023",
+        dateLastUpdate: "--/--/----",
         languages: useLanguageStore(),
         canDeleteEmptyCategories: false,
         canDeleteEmptyCategoriesText: 'OFF',
         helper: false,
+        privacyPolicy: false,
     }),
     getters: {},
     actions: {
@@ -63,6 +64,12 @@ export const useSettingsStore = defineStore('settings', {
         },
         closeHelper() {
             this.helper = false;
-        }
+        },
+        showPrivacyPolicy() {
+            this.privacyPolicy = true;
+        },
+        closePrivacyPolicy() {
+            this.privacyPolicy = false;
+        },
     },
 });

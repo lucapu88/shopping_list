@@ -1,6 +1,7 @@
 <script setup>
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
+import { useSettingsStore } from '@/store/SettingsStore';
 </script>
 
 <script>
@@ -9,6 +10,7 @@ export default {
     return {
       theme: useThemeStore(),
       isChristmas: useChristmasStore(),
+      settings: useSettingsStore(),
       addEditDelete: false,
       categoriesInfo: false,
       dragNdrop: false,
@@ -74,18 +76,18 @@ export default {
 <template>
   <div>
     <p class="helper-title" @click="highlightsForTutorial(6)">
-      Troubleshooting:
+      Risoluzione Problemi:
     </p>
     <small :class="{ 'tutorial-highlights': highlits === 6 }">
-      If you experience slowness or blocks in loading images, check your
-      connection, if it's ok try restarting the app. If the problem persists,
-      report it to the e-mail in the support section.
+      Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini,
+      controlla la tua connessione, se è ok prova a riavviare l'app. Se il
+      problema persiste segnalalo all'email nella sezione contatti.
     </small>
     <p
       class="helper-title"
       :class="isChristmas.christmasTheme ? 'christmas-red' : ''"
     >
-      Instructions:
+      Istruzioni:
     </p>
     <ul class="helper-list">
       <div
@@ -97,79 +99,53 @@ export default {
         }"
         @click="showListIstructions('addEditDelete')"
       >
-        Add, Edit, Delete.
+        Aggiungere, Modificare, Eliminare.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.addEditDelete,
             'arrow-deselected': !this.addEditDelete,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="addEditDelete">
-        <i class="far fa-paper-plane btn btn-info helper-icon"> </i> is used to
-        add stuff to buy list.
+        <i class="far fa-paper-plane btn btn-info helper-icon"></i>
+        serve per aggiungere alla lista roba da comprare.
       </li>
       <li v-if="addEditDelete">
-        With
-        <!-- <i
+        Con
+        <i
           class="fas fa-pencil-alt btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        ></i> -->
-        <img
-          class="btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-          src="src/img/pencil.webp"
-          alt="pencil"
-        />. you can change a name and save the changes by clicking
+        ></i>
+        potrai modificare un nome e salvare le modifiche cliccando
         <i
           class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        ></i>
-        <!-- <img
-          class="btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-          src="src/img/floppy.webp"
-          alt="floppy"
-        />. -->
+        ></i
+        >.
       </li>
       <li v-if="addEditDelete">
-        With
-        <!-- <i
+        Con
+        <i
           class="fas fa-trash-alt btn-primary rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        >
-        </i> -->
-        <img
-          class="btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-          src="src/img/trash.webp"
-          alt="trash"
-        />
-        you will remove stuff from the list.
+        ></i>
+        eliminerai roba dalla lista.
       </li>
       <li v-if="addEditDelete">
-        With
+        Con
         <button
           class="btn btn-outline-info p-0"
           style="rotate: 270deg"
@@ -183,7 +159,7 @@ export default {
         >
           <span> >> </span>
         </button>
-        you returns at the top of the list. It works when it is very long.
+        torni in cima alla lista. Funziona quando è molto lunga.
       </li>
       <div
         class="list-title"
@@ -194,21 +170,21 @@ export default {
         }"
         @click="showListIstructions('categoriesInfo')"
       >
-        Categories.
+        Categorie.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.categoriesInfo,
             'arrow-deselected': !this.categoriesInfo,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="categoriesInfo">
-        To add a category just type it in and click
-        <i class="far fa-paper-plane btn btn-info helper-icon"> </i> or choose
-        it in the box by clicking
+        Per aggiungere una categoria basta scriverla e cliccare su
+        <i class="far fa-paper-plane btn btn-info helper-icon"></i> oppure
+        sceglierla nel riquadro cliccando
         <span
           style="border: none"
           class="custom-show-listbtn helper-icon pl-2 pr-2"
@@ -216,9 +192,8 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-teme-btns': theme.retroTheme,
           }"
-        >
-          + </span
-        >. It will appear
+          >+</span
+        >. Ti apparirà
         <span
           class="category p-1"
           :class="{
@@ -226,12 +201,11 @@ export default {
             'category-minimal': theme.minimalTheme,
           }"
         >
-          to you like
+          Così
         </span>
-        and clicking on the name will
-        <span class="selected">highlight it</span>. So you can add stuff into
-        it. When you are done just click back on the name or any other category
-        names.
+        e cliccando sul nome si <span class="selected">evidenzierà</span>, così
+        potrai aggiungerci roba al suo interno. Una volta finito basta
+        ricliccare sul nome o su qualsiasi altro nome di altre categorie.
       </li>
       <li v-if="categoriesInfo">
         You can add all the categories by clicking on
@@ -245,7 +219,7 @@ export default {
             'winter-btn': theme.winterTheme,
           }"
         >
-          <span>Insert all</span></button
+          <span>Inserisci tutte</span></button
         >.
       </li>
       <li v-if="categoriesInfo">
@@ -260,7 +234,7 @@ export default {
             'winter-btn': theme.winterTheme,
           }"
         >
-          <span>Remove only empty</span></button
+          <span>Rimuovi Vuote</span></button
         >.
       </li>
       <div
@@ -272,19 +246,19 @@ export default {
         }"
         @click="showListIstructions('dragNdrop')"
       >
-        Drag and Drop.
+        Trascina e sposta elementi.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.dragNdrop,
             'arrow-deselected': !this.dragNdrop,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="dragNdrop">
-        By clicking on
+        Cliccando su
         <button
           class="btn custom-show-listbtn"
           :class="{
@@ -292,9 +266,9 @@ export default {
             'retro-teme-btns': theme.retroTheme,
           }"
         >
-          <img src="src/img/drag-and-drop.webp" alt="move" />
+          <img src="./img/drag-and-drop.webp" alt="move" />
         </button>
-        you can drag the elements and move them wherever you want.
+        potrai trascinare gli elementi e spostarli dove vuoi.
       </li>
       <div
         class="list-title"
@@ -305,25 +279,25 @@ export default {
         }"
         @click="showListIstructions('selectAndDelete')"
       >
-        Select and delete multiple items.
+        Seleziona ed elimina più elementi.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.selectAndDelete,
             'arrow-deselected': !this.selectAndDelete,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="selectAndDelete">
-        You can delete multiple products together by clicking on
-        <i class="fas fa-cart-arrow-down"></i>. So you mark them and then at the
-        end of shopping by clicking on
+        Puoi eliminare più prodotti insieme cliccando su
+        <i class="fas fa-cart-arrow-down"></i>. Così li smarchi e poi a fine
+        spesa cliccado sul
         <button class="text-danger border-danger rounded">
           <i class="fas fa-trash-alt"></i>
         </button>
-        at the bottom only the ones you marked will be deleted.
+        in basso verranno eliminati solo quelli che hai smarcato.
       </li>
       <div
         class="list-title"
@@ -334,25 +308,25 @@ export default {
         }"
         @click="showListIstructions('copyHighlights')"
       >
-        Copy list, Highlight items.
+        Copia lista, Evidenzia elementi.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.copyHighlights,
             'arrow-deselected': !this.copyHighlights,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="copyHighlights">
-        <i class="far fa-copy btn btn-outline-success helper-icon"> </i>
-        is used to copy the list and paste it wherever you want.
+        <i class="far fa-copy btn btn-outline-success helper-icon"></i> serve
+        per copiare la lista e incollarla dove vuoi.
       </li>
       <li v-if="copyHighlights">
-        You can make a product "important" by clicking on the name and it will
-        be <span class="active">highlighted</span>, so it cannot be deleted or
-        edited.
+        Puoi rendere "importante" un prodotto cliccando sul nome e verrà
+        <span class="active">evidenziato</span>, così non potrà essere eliminato
+        o modificato.
       </li>
       <div
         class="list-title"
@@ -363,24 +337,24 @@ export default {
         }"
         @click="showListIstructions('deleteAllInfo')"
       >
-        Delete all.
+        Elimina tutto.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.deleteAllInfo,
             'arrow-deselected': !this.deleteAllInfo,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="deleteAllInfo">
-        If you click on
+        Se clicchi su
         <span class="delete-all-description">
-          delete all <i class="fas fa-skull-crossbones"> </i>
-        </span>
-        you will see a confirmation box for the 'delete
-        <u> ALL </u> the list.
+          cancella tutto <i class="fas fa-skull-crossbones"></i
+        ></span>
+        ti apparirà un riquadro di conferma per l'eliminazione di
+        <u>TUTTA</u> la lista.
       </li>
       <div
         class="list-title"
@@ -398,7 +372,7 @@ export default {
             'arrow-selected': this.tutorial,
             'arrow-deselected': !this.tutorial,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -407,13 +381,13 @@ export default {
         :class="{ video: !theme.retroTheme }"
         width="98%"
         height="500"
-        poster="src/img/favicon.png"
+        poster="./img/favicon.png"
         controls
       >
-        <source src="src/video/ENG.mp4" type="video/mp4" />
-        Your device does not support the video tag. Watch on youtube
-        <a href="https://www.youtube.com/watch?v=H1E9ynY9f9w" target="_blank"
-          >by clicking here</a
+        <source src="./video/ITA.mp4" type="video/mp4" />
+        Il tuo device non supporta i video tag. Guardalo su youtube
+        <a href="https://www.youtube.com/watch?v=VSO1k1CUrBY" target="_blank"
+          >cliccando qui</a
         >
       </video>
       <div
@@ -425,36 +399,45 @@ export default {
         }"
         @click="showListIstructions('support')"
       >
-        Support.
+        Contatti.
         <img
           class="arrow"
           :class="{
             'arrow-selected': this.support,
             'arrow-deselected': !this.support,
           }"
-          src="src/img/arrow-down.webp"
+          src="./img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <li v-if="support">
-        For any report you can contact me:
+        Per qualsiasi segnalazione puoi contattarmi:
         <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
       </li>
       <li v-if="support">
-        Follow us on social media:
+        Seguici sui social:
         <a
           href="https://www.facebook.com/profile.php?id=100080626866860"
           target="_blank"
         >
-          <img
-            src="src/img/facebook.webp"
-            alt="social_facebook"
-            class="social"
-          />
+          <img src="img/facebook.webp" alt="social_facebook" class="social" />
         </a>
       </li>
     </ul>
   </div>
+  <br />
+  <p id="helper-important-alert" class="update-alert">
+    <span style="color: red" @click="highlightsForTutorial(7)">
+      IMPORTANTE:
+    </span>
+    <span :class="{ 'tutorial-highlights': highlits === 7 }">
+      Questa è una web app convertita in app per smartphone, ed è sempre
+      manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che
+      appare nello store. Quello è solo il giorno in cui l'ho pubblicata. La
+      data reale dell'ultimo aggiornamento è:
+      <span style="color: green">{{ settings.dateLastUpdate }}</span>
+    </span>
+  </p>
 </template>
 
 <style scoped>
@@ -572,5 +555,23 @@ export default {
 .social {
   width: 40px;
   height: 30px;
+}
+
+.show-video {
+  font-weight: bold;
+  color: #0169d9;
+}
+.hide-video {
+  font-weight: bold;
+  color: #d70a0a;
+  margin-left: 30%;
+}
+.video {
+  z-index: 100;
+  border-radius: 15px;
+}
+
+.update-alert {
+  border-top: 1px solid;
 }
 </style>

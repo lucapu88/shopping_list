@@ -1,6 +1,7 @@
 <script setup>
-import HelperDescriptionIta from './Helper-description-ita.vue';
-import HelperDescriptionEng from './Helper-description-eng.vue';
+import HelperDescriptionIta from './languages/Helper-description-ita.vue';
+import HelperDescriptionEng from './languages/Helper-description-eng.vue';
+import PrivacyPolicyModal from './privacy-policy/Privacy-policy-modal.vue';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
@@ -442,67 +443,21 @@ export default {
           </small>
         </div>
         <div id="helper-istructions">
+          <!-- ----------------------------------DESCRIZIONE IN BASE ALLA LINGUA SCELTA----------------------------- -->
           <HelperDescriptionIta v-if="languages.langIta" />
           <HelperDescriptionEng v-if="!languages.langIta" />
         </div>
-        <br />
-        <p id="helper-important-alert" class="update-alert">
-          <!-- AVVISO DELLA DATA DI AGGIORNAMENTO IN BASE ALLA LINGUA. È NEL FILE "helper-istructions.js-->
-        </p>
+
         <button
           id="privacy-policy-btn"
           class="privacy-policy-btn"
-          @click="togglePrivacyPolicy()"
+          @click="settings.showPrivacyPolicy()"
         >
           <small>Privacy policy</small>
         </button>
       </div>
-      <!-- ------------------------------------------PRIVACY POLICY MODAL------------------------------------ -->
-      <!-- <div v-if="privacyPolicy" id="privacy-policy-modal" class="modal">
-              <div class="privacy-modal-content" id="privacy-modal-content">
-                <span class="close" @click="togglePrivacyPolicy()">&times;</span>
-                <div id="pp" style="color: black;"></div>
-                <div class="privacy-modal-header" v-if="pp">
-                  <h2 class="text-center">Privacy Policy of Shopping List</h2>
-                  <small>Application collects some Personal Data from its
-                    Users.</small>
-                </div>
-                <div class="privacy-modal-main" v-if="pp">
-                  <strong>
-                    Personal Data processed for the following purposes and using
-                    the following services:
-                  </strong>
-                  <hr>
-                  <p class="text-center">
-                    <strong>Displaying content from external platforms</strong>
-                  </p>
-                  <strong>Font Awesome and Google Fonts</strong>
-                  <p>Personal Data: Trackers; Usage Data</p>
-                  <hr>
-                  <p class="text-center">
-                    <strong>Hosting and backend infrastructure</strong>
-                  </p>
-                  <strong>GitHub Pages</strong>
-                  <p>
-                    Personal Data: various types of Data as specified in the privacy policy of the
-                    service
-                  </p>
-                  <hr>
-                  <p class="text-center">
-                    <strong>Contact information</strong>
-                  </p>
-                  <p>Owner: Luca Caputo</p>
-                  <p>Contact email: lucarhcp88@hotmail.it</p>
-                </div>
-                <div class="privacy-modal-footer" v-if="pp">
-                  <p>Latest update: 23 January 2023</p>
-                  <p style="color: #12a1df;  text-decoration-line: underline; cursor: pointer;"
-                    @click="showCompletePrivacyPolicy()">
-                    Show the complete Privacy Policy
-                  </p>
-                </div>
-              </div>
-            </div> -->
+      <!-- ------------------------------------------MODALE PRIVACY POLICY ------------------------------------------- -->
+      <PrivacyPolicyModal v-if="settings.privacyPolicy" />
     </div>
   </div>
 </template>
@@ -730,27 +685,6 @@ textarea {
   float: right;
   width: 25px;
   padding-left: 5px;
-}
-.close-helper:hover {
-  cursor: pointer;
-}
-
-.show-video {
-  font-weight: bold;
-  color: #0169d9;
-}
-.hide-video {
-  font-weight: bold;
-  color: #d70a0a;
-  margin-left: 30%;
-}
-.video {
-  z-index: 100;
-  border-radius: 15px;
-}
-
-.update-alert {
-  border-top: 1px solid;
 }
 
 .helper-footer {
