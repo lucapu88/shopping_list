@@ -30,45 +30,6 @@ export default {
       // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
       // this.highlits = num;
     },
-    showListIstructions(section) {
-      this.highlits = null;
-      switch (section) {
-        case 'addEditDelete':
-          this.addEditDelete = !this.addEditDelete;
-          break;
-        case 'categoriesInfo':
-          this.categoriesInfo = !this.categoriesInfo;
-          break;
-        case 'dragNdrop':
-          this.dragNdrop = !this.dragNdrop;
-          break;
-        case 'selectAndDelete':
-          this.selectAndDelete = !this.selectAndDelete;
-          break;
-        case 'copyHighlights':
-          this.copyHighlights = !this.copyHighlights;
-          break;
-        case 'deleteAllInfo':
-          this.deleteAllInfo = !this.deleteAllInfo;
-          break;
-        case 'tutorial':
-          this.tutorial = !this.tutorial;
-          break;
-        case 'support':
-          this.support = !this.support;
-          break;
-      }
-    },
-    resetListIstructions() {
-      this.addEditDelete = false;
-      this.categoriesInfo = false;
-      this.dragNdrop = false;
-      this.selectAndDelete = false;
-      this.copyHighlights = false;
-      this.deleteAllInfo = false;
-      this.tutorial = false;
-      this.support = false;
-    },
   },
 };
 </script>
@@ -97,24 +58,24 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('addEditDelete')"
+        @click="settings.showListIstructions('addEditDelete')"
       >
         Aggiungere, Modificare, Eliminare.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': addEditDelete,
-            'arrow-deselected': !addEditDelete,
+            'arrow-selected': settings.addEditDelete,
+            'arrow-deselected': !settings.addEditDelete,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="addEditDelete">
+      <li v-if="settings.addEditDelete">
         <i class="far fa-paper-plane btn btn-info helper-icon"></i>
         serve per aggiungere alla lista roba da comprare.
       </li>
-      <li v-if="addEditDelete">
+      <li v-if="settings.addEditDelete">
         Con
         <!-- <i
           class="fas fa-pencil-alt btn-primary rounded-circle btn-sm helper-icon"
@@ -152,7 +113,7 @@ export default {
           alt="floppy"
         />.
       </li>
-      <li v-if="addEditDelete">
+      <li v-if="settings.addEditDelete">
         Con
         <!-- <i
           class="fas fa-trash-alt btn-primary rounded-circle btn-sm helper-icon"
@@ -174,7 +135,7 @@ export default {
         />
         eliminerai roba dalla lista.
       </li>
-      <li v-if="addEditDelete">
+      <li v-if="settings.addEditDelete">
         Con
         <button
           class="btn btn-outline-info p-0"
@@ -198,20 +159,20 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('categoriesInfo')"
+        @click="settings.showListIstructions('categoriesInfo')"
       >
         Categorie.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': categoriesInfo,
-            'arrow-deselected': !categoriesInfo,
+            'arrow-selected': settings.categoriesInfo,
+            'arrow-deselected': !settings.categoriesInfo,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="categoriesInfo">
+      <li v-if="settings.categoriesInfo">
         Per aggiungere una categoria basta scriverla e cliccare su
         <i class="far fa-paper-plane btn btn-info helper-icon"></i> oppure
         sceglierla nel riquadro cliccando
@@ -237,7 +198,7 @@ export default {
         potrai aggiungerci roba al suo interno. Una volta finito basta
         ricliccare sul nome o su qualsiasi altro nome di altre categorie.
       </li>
-      <li v-if="categoriesInfo">
+      <li v-if="settings.categoriesInfo">
         You can add all the categories by clicking on
         <button
           :class="{
@@ -252,7 +213,7 @@ export default {
           <span>Inserisci tutte</span></button
         >.
       </li>
-      <li v-if="categoriesInfo">
+      <li v-if="settings.categoriesInfo">
         You can delete only the categories left empty by clicking on
         <button
           :class="{
@@ -274,20 +235,20 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('dragNdrop')"
+        @click="settings.showListIstructions('dragNdrop')"
       >
         Trascina e sposta elementi.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': dragNdrop,
-            'arrow-deselected': !dragNdrop,
+            'arrow-selected': settings.dragNdrop,
+            'arrow-deselected': !settings.dragNdrop,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="dragNdrop">
+      <li v-if="settings.dragNdrop">
         Cliccando su
         <button
           class="btn custom-show-listbtn"
@@ -307,20 +268,20 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('selectAndDelete')"
+        @click="settings.showListIstructions('selectAndDelete')"
       >
         Seleziona ed elimina più elementi.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': selectAndDelete,
-            'arrow-deselected': !selectAndDelete,
+            'arrow-selected': settings.selectAndDelete,
+            'arrow-deselected': !settings.selectAndDelete,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="selectAndDelete">
+      <li v-if="settings.selectAndDelete">
         Puoi eliminare più prodotti insieme cliccando su
         <i class="fas fa-cart-arrow-down"></i>. Così li smarchi e poi a fine
         spesa cliccado sul
@@ -336,24 +297,24 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('copyHighlights')"
+        @click="settings.showListIstructions('copyHighlights')"
       >
         Copia lista, Evidenzia elementi.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': copyHighlights,
-            'arrow-deselected': !copyHighlights,
+            'arrow-selected': settings.copyHighlights,
+            'arrow-deselected': !settings.copyHighlights,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="copyHighlights">
+      <li v-if="settings.copyHighlights">
         <i class="far fa-copy btn btn-outline-success helper-icon"></i> serve
         per copiare la lista e incollarla dove vuoi.
       </li>
-      <li v-if="copyHighlights">
+      <li v-if="settings.copyHighlights">
         Puoi rendere "importante" un prodotto cliccando sul nome e verrà
         <span class="active">evidenziato</span>, così non potrà essere eliminato
         o modificato.
@@ -365,20 +326,20 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('deleteAllInfo')"
+        @click="settings.showListIstructions('deleteAllInfo')"
       >
         Elimina tutto.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': deleteAllInfo,
-            'arrow-deselected': !deleteAllInfo,
+            'arrow-selected': settings.deleteAllInfo,
+            'arrow-deselected': !settings.deleteAllInfo,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="deleteAllInfo">
+      <li v-if="settings.deleteAllInfo">
         Se clicchi su
         <span class="delete-all-description">
           cancella tutto <i class="fas fa-skull-crossbones"></i
@@ -393,21 +354,21 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('tutorial')"
+        @click="settings.showListIstructions('tutorial')"
       >
         Video tutorial.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': tutorial,
-            'arrow-deselected': !tutorial,
+            'arrow-selected': settings.tutorial,
+            'arrow-deselected': !settings.tutorial,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
       <video
-        v-if="tutorial"
+        v-if="settings.tutorial"
         :class="{ video: !theme.retroTheme }"
         width="325"
         height="500"
@@ -427,24 +388,24 @@ export default {
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
-        @click="showListIstructions('support')"
+        @click="settings.showListIstructions('support')"
       >
         Contatti.
         <img
           class="arrow"
           :class="{
-            'arrow-selected': support,
-            'arrow-deselected': !support,
+            'arrow-selected': settings.support,
+            'arrow-deselected': !settings.support,
           }"
           src="@/img/arrow-down.webp"
           alt="arrow"
         />
       </div>
-      <li v-if="support">
+      <li v-if="settings.support">
         Per qualsiasi segnalazione puoi contattarmi:
         <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
       </li>
-      <li v-if="support">
+      <li v-if="settings.support">
         Seguici sui social:
         <a
           href="https://www.facebook.com/profile.php?id=100080626866860"
