@@ -4,6 +4,7 @@ import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore'
 
 export const useLanguageStore = defineStore('Language', {
     state: () => ({
+        todosStore: useAddModifyDeleteTodosStore(),
         categories: [],
         engCategories: [
             { name: 'vegetables', emojy: String.fromCodePoint(0x1f966) },
@@ -73,7 +74,6 @@ export const useLanguageStore = defineStore('Language', {
             unavailable: 'There are no updates',
             readyForUpdate: false,
         },
-        todosStore: useAddModifyDeleteTodosStore(),
     }),
     getters: {},
     actions: {

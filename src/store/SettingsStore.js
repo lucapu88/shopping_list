@@ -3,10 +3,10 @@ import { useLanguageStore } from '@/store/LanguageStore';
 
 export const useSettingsStore = defineStore('settings', {
     state: () => ({
+        languages: useLanguageStore(),
         canDelete: false,
         canDeleteText: 'OFF',
         dateLastUpdate: "--/--/----",
-        languages: useLanguageStore(),
         canDeleteEmptyCategories: false,
         canDeleteEmptyCategoriesText: 'OFF',
         helper: false,

@@ -4,6 +4,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     state: () => ({
+        languages: useLanguageStore(),
         todos: [], //conterrà gli elementi che noi digitiamo
         newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
         copiedTodo: null,
@@ -17,7 +18,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         categoryEmoji: '',
         addTodoInCategory: { condition: false, id: null },
         isDraggable: false,
-        languages: useLanguageStore(),
+        confirmDeleteModal: false,
+        index: null,
+        deleteSelected: false,
     }),
     getters: {
     },
@@ -116,6 +119,20 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
             this.todos = this.todos.filter((todo) => !todo.classToBedeleted);
             this.saveTodos();
             this.categoryList = false;
+        },
+        confirmedRemoveTodo(x) {
+            this.todos.splice(x, 1);
+            this.saveTodos();
+            this.confirmDeleteModal = false;
+            // se ho impostato l'eliminazione automatica categorie vuote
+            if (this.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
+            navigator.vibrate(220);
+        },
+        deleteSelectedTodos() {
+            this.todos = this.todos.filter((todo) => !todo.multipleDelete);
+            this.isDraggable = false;
+            this.saveTodos();
+            this.confirmDeleteModal = false;
         },
     },
 });

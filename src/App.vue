@@ -1,6 +1,8 @@
 <script setup>
 import HeadList from './components/Head-list.vue';
+import ConfirmModal from './components/panels-and-modals/Confirm-modal.vue';
 import Helper from './components/Helper.vue';
+import MainList from './components/Main-list.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
@@ -29,20 +31,23 @@ export default {
 </script>
 
 <template>
-  <header>
-    <div class="container">
-      <div id="app">
-        <div id="container-list" class="row">
-          <div class="mt-3 mx-auto padding-bottom-custom">
+  <div class="container">
+    <div id="app">
+      <div id="container-list" class="row">
+        <div class="mt-3 mx-auto padding-bottom-custom">
+          <header>
             <HeadList />
+            <ConfirmModal />
+          </header>
+
+          <main>
+            <MainList />
             <Helper v-if="settings.helper" />
-          </div>
+          </main>
         </div>
       </div>
     </div>
-  </header>
-
-  <main></main>
+  </div>
 </template>
 
 <style scoped>
