@@ -43,6 +43,93 @@ body {
   width: 50px;
 }
 
+/* ----------------------------------------VARIE------------------------------------ */
+
+li {
+  display: inline-block;
+}
+
+.info-icon {
+  font-family: Times New Roman;
+  font-weight: bold;
+  font-size: large;
+  border: 2px solid;
+  padding: 0 7px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.tutorial-highlights {
+  background-color: orangered;
+  color: white;
+}
+
+.btn-selected {
+  background-color: rgba(109, 165, 5, 0.883);
+}
+
+.drag-n-drop-text {
+  text-align: center;
+}
+.draggable-children {
+  border: 2px solid rgb(106, 161, 3) !important;
+  background-color: rgba(162, 162, 162, 0.36) !important;
+  border-radius: 10px !important;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+.draggable-children-category {
+  background-color: rgba(109, 168, 0, 0.36) !important;
+}
+
+.fa-save,
+.fa-shopping-cart,
+.fa-cart-arrow-down {
+  font-size: 20px;
+}
+
+.blue-text {
+  color: #007bff;
+}
+.green-text {
+  color: #35c50d;
+}
+
+.active {
+  background: linear-gradient(
+    90deg,
+    rgba(91, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 1) 50%,
+    rgba(91, 0, 0, 1) 100%
+  );
+  color: #ffffff;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.created-by-luca-caputo {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 7px;
+}
+
+.overflow-hide {
+  overflow-y: hidden;
+}
+
+.social {
+  width: 40px;
+  height: 30px;
+}
+
+.privacy-policy > a.iubenda-embed {
+  font-family: 'Permanent Marker', cursive !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+}
+
 /* ----------------------------------------TEMI------------------------------------ */
 /* DARK */
 .dark-theme-title {

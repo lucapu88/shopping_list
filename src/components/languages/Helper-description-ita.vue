@@ -133,24 +133,24 @@ export default {
           alt="pencil"
         />
         potrai modificare un nome e salvare le modifiche cliccando
-        <i
+        <!-- <i
           class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
         ></i
-        >.
-        <!-- <img
-          class="btn-primary rounded-circle btn-sm helper-icon"
+        >. -->
+        <!--TOFIX -->
+        <img
+          class="btn-success rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
           src="@/img/floppy.webp"
           alt="floppy"
-        />. -->
-        <!--TOFIX -->
+        />.
       </li>
       <li v-if="addEditDelete">
         Con

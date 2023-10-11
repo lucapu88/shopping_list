@@ -1,4 +1,5 @@
 <script setup>
+import PushButtonPanel from './Push-button-panel.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
@@ -134,40 +135,8 @@ export default {
         <i class="far fa-paper-plane"></i>
       </button>
     </div>
-    <!-- !-- -----------------------------------PULSANTIERA------------------------------------ --
-            <div class="pushbutton-container">
-              !-- DRAG N DROP --
-              <button class="btn custom-show-listbtn" :class="{
-                'btn-selected': isDraggable, 
-                'minimal-btn': minimalTheme, 
-                'minimal-selected-btn': minimalTheme && isDraggable,
-                'retro-teme-btns': retroTheme,
-              }" @click="toggleDragDrop()">
-                <img src="./img/drag-and-drop.webp" alt="move" />
-              </button>
-              !--PULSANTE COPIA LISTA--
-              <button class="btn btn-outline-success"
-                :class="{'minimal-btn': minimalTheme, 'retro-teme-btns': retroTheme,}" @click="copy()"><i
-                  class="far fa-copy"></i><br /></button>
-              !--PULSANTE MOSTRA CATEGORIE --
-              <button class="btn custom-show-listbtn" :class="{
-                'btn-selected': categoryList, 
-                'minimal-btn': minimalTheme, 
-                'minimal-selected-btn': minimalTheme && categoryList,
-                'retro-teme-btns': retroTheme,
-              }" @click="showCategoryList()">
-                <span v-if="!categoryList">+</span>
-                <span v-else>-</span>
-              </button>
-            </div>
-            <div class="drag-n-drop-text">
-              <small v-if="langIta && isDraggable">
-                Trascina gli elementi della lista dove vuoi
-              </small>
-              <small v-if="!langIta && isDraggable">
-                Drag the elements of the list where you want
-              </small>
-            </div> -->
+    <!-- PULSANTIERA -->
+    <PushButtonPanel />
   </div>
 </template>
 

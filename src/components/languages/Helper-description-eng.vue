@@ -133,23 +133,23 @@ export default {
           src="@/img/pencil.webp"
           alt="pencil"
         />. you can change a name and save the changes by clicking
-        <i
+        <!-- <i
           class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-        ></i>
-        <!-- <img
-          class="btn-primary rounded-circle btn-sm helper-icon"
+        ></i> -->
+        <!--TOFIX -->
+        <img
+          class="btn-success rounded-circle btn-sm helper-icon"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
           src="@/img/floppy.webp"
           alt="floppy"
-        />. -->
-        <!--TOFIX -->
+        />.
       </li>
       <li v-if="addEditDelete">
         With

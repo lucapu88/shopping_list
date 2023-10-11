@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import { useLanguageStore } from '@/store/LanguageStore';
+
 
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     state: () => ({
@@ -59,12 +61,33 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
             // this.resetListIstructions();
             // this.saveTodos();
             // this.toggleButtonDeleteSelectedTodo();
-            // this.resetModify();
+            this.resetModify();
             console.log(this.todos);
         },
         changeTodoAdded(array) {
             //mi serve solo per "evidenziare" il bordo con il boxshadow (per n secondi) quando si aggiunge un nuovo todo
             array.forEach(item => item.todoAdded = false);
+        },
+        toggleDragDrop() {
+            this.isDraggable = !this.isDraggable;
+            this.categoryList = false;
+            this.resetModify();
+            this.removeSelectedCategoryToAddItem();
+        },
+        removeSelectedCategoryToAddItem() {
+            //serve per togliere la selezione di una categoria aggiunta (quando clicchi su un nome evidenziato verde e diventa blu)
+            this.todos.map((t) => (t.isSelected = false));
+            useLanguageStore.placeholder = useLanguageStore.defaultPlaceholderText;
+            this.addTodoInCategory.condition = false;
+        },
+        resetModify(copiedTodo) {
+            const todoEmpty = this.todos.find((todo) => todo.modify);
+            if (copiedTodo && todoEmpty) {
+                /*se ho ricevuto una copia di un todo vuol dire che sto abbandonando il vecchio todo senza salvare, 
+                quindi il vecchio todo riprende il nome che aveva, ovvero quello della copia e poi dopo setto tutti i todo in modifica a false*/
+                todoEmpty.name = copiedTodo.name;
+            }
+            this.todos.forEach((todo) => (todo.modify = false));
         },
     },
 });
