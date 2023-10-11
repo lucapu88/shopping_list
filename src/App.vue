@@ -7,6 +7,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
+import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 </script>
 
 <script>
@@ -17,6 +18,7 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
+      todosStore: useAddModifyDeleteTodosStore(),
     };
   },
   created() {
@@ -26,6 +28,8 @@ export default {
     this.languages.setCategories(); //setto le categorie di default
     this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
     this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
+    this.todosStore.createTodosList();
+    this.todosStore.changeTodoAdded(this.todosStore.todos);
   },
 };
 </script>

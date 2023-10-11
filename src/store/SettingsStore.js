@@ -11,6 +11,15 @@ export const useSettingsStore = defineStore('settings', {
         canDeleteEmptyCategoriesText: 'OFF',
         helper: false,
         privacyPolicy: false,
+        addEditDelete: false,
+        categoriesInfo: false,
+        dragNdrop: false,
+        selectAndDelete: false,
+        copyHighlights: false,
+        deleteAllInfo: false,
+        tutorial: false,
+        support: false,
+        highlits: null,
     }),
     getters: {},
     actions: {
@@ -70,6 +79,45 @@ export const useSettingsStore = defineStore('settings', {
         },
         closePrivacyPolicy() {
             this.privacyPolicy = false;
+        },
+        resetListIstructions() {
+            this.addEditDelete = false;
+            this.categoriesInfo = false;
+            this.dragNdrop = false;
+            this.selectAndDelete = false;
+            this.copyHighlights = false;
+            this.deleteAllInfo = false;
+            this.tutorial = false;
+            this.support = false;
+        },
+        showListIstructions(section) {
+            this.highlits = null;
+            switch (section) {
+                case 'addEditDelete':
+                    this.addEditDelete = !this.addEditDelete;
+                    break;
+                case 'categoriesInfo':
+                    this.categoriesInfo = !this.categoriesInfo;
+                    break;
+                case 'dragNdrop':
+                    this.dragNdrop = !this.dragNdrop;
+                    break;
+                case 'selectAndDelete':
+                    this.selectAndDelete = !this.selectAndDelete;
+                    break;
+                case 'copyHighlights':
+                    this.copyHighlights = !this.copyHighlights;
+                    break;
+                case 'deleteAllInfo':
+                    this.deleteAllInfo = !this.deleteAllInfo;
+                    break;
+                case 'tutorial':
+                    this.tutorial = !this.tutorial;
+                    break;
+                case 'support':
+                    this.support = !this.support;
+                    break;
+            }
         },
     },
 });
