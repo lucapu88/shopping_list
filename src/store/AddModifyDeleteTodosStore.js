@@ -15,9 +15,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         highlits: null,
         categoryClass: false,
         categoryEmoji: '',
-        categories: [],
         addTodoInCategory: { condition: false, id: null },
         isDraggable: false,
+        languages: useLanguageStore(),
     }),
     getters: {
     },
@@ -25,7 +25,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         addTodo() {
             if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
-            this.categories.forEach((category) => {
+            this.languages.categories.forEach((category) => {
                 //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
                 if (this.newTodo.toLowerCase().trim() === category.name) {
                     this.categoryClass = true;
@@ -59,10 +59,14 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
             this.categoryList = false;
             this.isDraggable = false;
             // this.resetListIstructions();
-            // this.saveTodos();
+            this.saveTodos();
             // this.toggleButtonDeleteSelectedTodo();
             this.resetModify();
             console.log(this.todos);
+        },
+        saveTodos() {
+            const parsedTodos = JSON.stringify(this.todos);
+            window.localStorage.setItem('todos', parsedTodos);
         },
         changeTodoAdded(array) {
             //mi serve solo per "evidenziare" il bordo con il boxshadow (per n secondi) quando si aggiunge un nuovo todo
@@ -77,7 +81,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         removeSelectedCategoryToAddItem() {
             //serve per togliere la selezione di una categoria aggiunta (quando clicchi su un nome evidenziato verde e diventa blu)
             this.todos.map((t) => (t.isSelected = false));
-            useLanguageStore.placeholder = useLanguageStore.defaultPlaceholderText;
+            this.languages.placeholder = this.languages.defaultPlaceholderText;
             this.addTodoInCategory.condition = false;
         },
         resetModify(copiedTodo) {
@@ -88,6 +92,30 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
                 todoEmpty.name = copiedTodo.name;
             }
             this.todos.forEach((todo) => (todo.modify = false));
+        },
+        showCategoryList() {
+            this.removeSelectedCategoryToAddItem();
+            this.categoryList = !this.categoryList;
+            this.isDraggable = false;
+            this.categoryList ? setTimeout(() => { this.categoryListChildren = true; }, 400) : this.categoryListChildren = false;
+        },
+        selectCategoryName(categoryName) {
+            this.newTodo = categoryName;
+            this.addTodo();
+        },
+        removeOnlyEmpty() {
+            const last = this.todos[this.todos.length - 1];
+            //se l'ultimo della lista è una classe (allora al suo interno sarà vuoto) aggiungo una proprietà per rimuoverlo
+            if (last?.class) { last.classToBedeleted = true; }
+
+            this.todos.forEach((todo, index) => {
+                const next = this.todos[index + 1];
+                //se l'elemento è una categoria ed il suo successivo/precedente pure, vuol dire che sono categorie vuote
+                if (todo?.class && next?.class) { todo.classToBedeleted = true; }
+            });
+            this.todos = this.todos.filter((todo) => !todo.classToBedeleted);
+            this.saveTodos();
+            this.categoryList = false;
         },
     },
 });

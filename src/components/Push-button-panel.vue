@@ -1,4 +1,5 @@
 <script setup>
+import CategoriesPanel from './panels-and-modals/Categories-panel.vue';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
@@ -72,7 +73,7 @@ export default {
         'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
         'retro-teme-btns': theme.retroTheme,
       }"
-      @click="showCategoryList()"
+      @click="todosStore.showCategoryList()"
     >
       <span v-if="!todosStore.categoryList">+</span>
       <span v-else>-</span>
@@ -89,6 +90,8 @@ export default {
   <p class="list-copied" v-if="languages.copyList.visible">
     {{ languages.copyList.text }}
   </p>
+
+  <CategoriesPanel />
 </template>
 
 <style scoped>

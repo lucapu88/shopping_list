@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+
 
 export const useLanguageStore = defineStore('Language', {
     state: () => ({
@@ -71,6 +73,7 @@ export const useLanguageStore = defineStore('Language', {
             unavailable: 'There are no updates',
             readyForUpdate: false,
         },
+        todosStore: useAddModifyDeleteTodosStore(),
     }),
     getters: {},
     actions: {
@@ -128,6 +131,19 @@ export const useLanguageStore = defineStore('Language', {
             this.share.text = 'Link copiato negli appunti, incollalo con chi vuoi.';
             window.localStorage.setItem('langIta', true);
             location.reload(); //lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy e mi buggano il codice.
+        },
+        insertAllCategories() {
+            if (this.langIta) {
+                this.itaCategories.forEach((category) => {
+                    this.todosStore.newTodo = category.name;
+                    this.todosStore.addTodo();
+                });
+            } else {
+                this.engCategories.forEach((category) => {
+                    this.todosStore.newTodo = category.name;
+                    this.todosStore.addTodo();
+                });
+            }
         },
     },
 });
