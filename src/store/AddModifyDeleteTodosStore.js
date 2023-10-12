@@ -188,11 +188,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
 
             if (this.addTodoInCategory.condition) {
               //se clicco su una categoria ed è evidenziata il focus va sull'input
-              // this.$nextTick(function () {
-              //   this.$refs.myInput.focus();
-              // });
               this.focusIn = true;
-              //do indicazioni nel placeholder
               this.languages.placeholder = (this.languages.langIta ? 'Aggiungi in ' : 'Add in ') + todo.emojy + todo.name.toUpperCase();
             } else {
               this.focusIn = false;

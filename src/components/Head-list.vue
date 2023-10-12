@@ -51,11 +51,18 @@ export default {
           .scrollTo(0, document.body.scrollHeight);
       }
     },
+    focusOnInput() {
+      this.$nextTick(function () {
+        this.$refs.myInput.focus();
+      });
+    },
   },
 };
 </script>
 
 <template>
+  <!-- non so se è una cosa brutta da fare ma per il momento è l'unica soluzione trovata. Avendo il componente Todo-list che al click su una categoria aziona un metodo nello store, questo metodo dovrebbe scatenare il focus in in questo componente nell'input. -->
+  {{ addTodo.focusIn ? focusOnInput() : null }}
   <img
     v-if="isChristmas.christmasTheme"
     class="christmas-theme"
@@ -124,12 +131,13 @@ export default {
       <input
         class="inputText mb-2 border border-primary rounded"
         :class="{
-          'placeholder-selected': placeholder != defaultPlaceholderText,
+          'placeholder-selected':
+            languages.placeholder != languages.defaultPlaceholderText,
         }"
         ref="myInput"
         v-model="addTodo.newTodo"
         @keypress.enter="addNewTodo()"
-        :placeholder="placeholder"
+        :placeholder="languages.placeholder"
       />
       <button class="btn btn-info" @click="addNewTodo()">
         <i class="far fa-paper-plane"></i>
@@ -199,6 +207,9 @@ export default {
   }
 }
 
+.placeholder-selected {
+  background-color: #a6cef8;
+}
 .btn-info {
   padding: 10px;
 }
