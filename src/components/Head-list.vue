@@ -118,7 +118,7 @@ export default {
       }"
       @click="showHelper()"
     >
-      <img class="settings" src="@/img/settings.webp" alt="settings" />
+      <img class="settings" src="@/img/icons/settings.webp" alt="settings" />
     </span>
     <div class="input-btns-container">
       <input

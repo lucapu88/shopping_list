@@ -67,7 +67,7 @@ export default {
             'arrow-selected': settings.addEditDelete,
             'arrow-deselected': !settings.addEditDelete,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -91,7 +91,7 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="@/img/pencil.webp"
+          src="@/img/icons/pencil.webp"
           alt="pencil"
         />. you can change a name and save the changes by clicking
         <!-- <i
@@ -108,7 +108,7 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="@/img/floppy.webp"
+          src="@/img/icons/floppy.webp"
           alt="floppy"
         />.
       </li>
@@ -129,7 +129,7 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-btn-button': theme.retroTheme,
           }"
-          src="@/img/trash.webp"
+          src="@/img/icons/trash.webp"
           alt="trash"
         />
         you will remove stuff from the list.
@@ -167,7 +167,7 @@ export default {
             'arrow-selected': settings.categoriesInfo,
             'arrow-deselected': !settings.categoriesInfo,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -245,7 +245,7 @@ export default {
             'arrow-selected': settings.dragNdrop,
             'arrow-deselected': !settings.dragNdrop,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -258,7 +258,7 @@ export default {
             'retro-teme-btns': theme.retroTheme,
           }"
         >
-          <img src="@/img/drag-and-drop.webp" alt="move" />
+          <img src="@/img/icons/drag-and-drop.webp" alt="move" />
         </button>
         you can drag the elements and move them wherever you want.
       </li>
@@ -278,7 +278,7 @@ export default {
             'arrow-selected': settings.selectAndDelete,
             'arrow-deselected': !settings.selectAndDelete,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -307,7 +307,7 @@ export default {
             'arrow-selected': settings.copyHighlights,
             'arrow-deselected': !settings.copyHighlights,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -336,7 +336,7 @@ export default {
             'arrow-selected': settings.deleteAllInfo,
             'arrow-deselected': !settings.deleteAllInfo,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -364,7 +364,7 @@ export default {
             'arrow-selected': settings.tutorial,
             'arrow-deselected': !settings.tutorial,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>
@@ -398,7 +398,7 @@ export default {
             'arrow-selected': settings.support,
             'arrow-deselected': !settings.support,
           }"
-          src="@/img/arrow-down.webp"
+          src="@/img/icons/arrow-down.webp"
           alt="arrow"
         />
       </div>

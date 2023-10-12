@@ -51,7 +51,7 @@ export default {
       }"
       @click="todosStore.toggleDragDrop()"
     >
-      <img src="@/img/drag-and-drop.webp" alt="move" />
+      <img src="@/img/icons/drag-and-drop.webp" alt="move" />
     </button>
     <!--PULSANTE COPIA LISTA-->
     <button

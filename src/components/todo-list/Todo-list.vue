@@ -99,7 +99,7 @@ export default {
         :disabled="!!todo.isDisabled || todo.multipleDelete"
       >
         <!-- <i class="fas fa-pencil-alt"></i> -->
-        <img class="pencil" src="@/img/pencil.webp" alt="pencil" />
+        <img class="pencil" src="@/img/icons/pencil.webp" alt="pencil" />
       </button>
       <!--PULSANTE ELIMINA -->
       <button
@@ -132,7 +132,7 @@ export default {
         v-if="todo.modify"
         @click="todosStore.undoChanges(n)"
       >
-        <img class="undo" src="@/img/close.webp" alt="close" />
+        <img class="undo" src="@/img/icons/close.webp" alt="close" />
       </button>
     </li>
   </div>

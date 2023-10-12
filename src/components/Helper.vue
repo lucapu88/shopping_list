@@ -369,7 +369,7 @@ export default {
               >
                 <img
                   class="increase-decrease"
-                  src="@/img/decrease.webp"
+                  src="@/img/icons/decrease.webp"
                   alt="decrease"
                 />
               </button>
@@ -380,7 +380,7 @@ export default {
               >
                 <img
                   class="increase-decrease"
-                  src="@/img/increase.webp"
+                  src="@/img/icons/increase.webp"
                   alt="increase"
                 />
               </button>
@@ -414,7 +414,7 @@ export default {
             class="btn btn-light border-dark share-update-btn"
             @click="shareLink()"
           >
-            <img src="@/img/share.webp" alt="share" />
+            <img src="@/img/icons/share.webp" alt="share" />
           </button>
           <p class="link-copied" v-if="languages.share.visible">
             {{ languages.share.text }}
@@ -433,7 +433,7 @@ export default {
             class="btn btn-light border-dark ml-1 share-update-btn"
             @click="updateApp()"
           >
-            <img src="@/img/update.webp" alt="update" />
+            <img src="@/img/icons/update.webp" alt="update" />
           </button>
           <small v-if="!languages.updateText.readyForUpdate">
             {{ languages.updateText.available }}
