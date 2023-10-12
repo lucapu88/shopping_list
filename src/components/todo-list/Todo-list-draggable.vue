@@ -2,11 +2,13 @@
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import draggable from 'vuedraggable';
+import { Container, Draggable } from '../../../node_modules/vue3-smooth-dnd'; //DOCUMENTAZIONE: https://github.com/gilnd/vue3-smooth-dnd
+// import draggable from 'vuedraggable';
 </script>
 
 <script>
 export default {
+  components: { Container, Draggable },
   data() {
     return {
       isChristmas: useChristmasStore(),
@@ -14,11 +16,40 @@ export default {
       todosStore: useAddModifyDeleteTodosStore(),
     };
   },
+  methods: {
+    onDrop(dropResult) {
+      this.todosStore.todos = this.applyDrag(this.todosStore.todos, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let itemToAdd = payload;
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      this.todosStore.removeSelectedCategoryToAddItem();
+      this.todosStore.saveTodos(result);
+      return result;
+    },
+  },
 };
 </script>
 
 <template>
-  <template v-for="(todo, n) in todosStore.todos" :key="n">
+  <!-- <Container @drop="onDrop">
+    <Draggable v-for="item in items" :key="item.id">
+      <div class="draggable-item">
+        {{ item.data }}
+      </div>
+    </Draggable>
+  </Container> -->
+  <!-- <template v-for="(todo, n) in todosStore.todos" :key="n">
     <draggable
       class="drag-n-drop"
       id="draggable"
@@ -32,131 +63,141 @@ export default {
         todosStore.saveTodos();
       "
     >
-      <template #item="{ todo }">
+      <template #item="{ todo }"> -->
+  <Container orientation="vertical" @drop="onDrop">
+    <Draggable
+      v-for="(todo, n) in todosStore.todos"
+      :key="n"
+      :index="n"
+      class="drag-n-drop"
+      id="draggable"
+    >
+      <div
+        id="draggable-children"
+        class="todo-n draggable-item"
+        :class="{
+          category: todo.class,
+          'category-retro': todo.class && theme.retroTheme,
+          'category-minimal': todo.class && theme.minimalTheme,
+          'draggable-children': todosStore.isDraggable,
+          'draggable-children-category': todosStore.isDraggable && todo.class,
+          'todo-added': todo.todoAdded,
+        }"
+      >
         <div
-          id="draggable-children"
-          class="todo-n"
+          v-if="todo.class && theme.minimalTheme"
+          class="category-emoji-minimal"
+        >
+          &#x2022;
+        </div>
+        <div
+          v-if="todo.class && !theme.minimalTheme"
+          class="category-emoji"
+          :class="{ 'category-emoji-selected': todo.isSelected }"
+          @click="todosStore.selectCategoryToAddItem(n, todo)"
+        >
+          {{ todo.emojy }}
+        </div>
+        <i
+          v-if="!todo.class && !theme.minimalTheme && !todo.modify"
+          class="fas fa-cart-arrow-down mr-3 ml-1"
           :class="{
-            category: todo.class,
-            'category-retro': todo.class && theme.retroTheme,
-            'category-minimal': todo.class && theme.minimalTheme,
-            'draggable-children': todosStore.isDraggable,
-            'draggable-children-category': todosStore.isDraggable && todo.class,
-            'todo-added': todo.todoAdded,
+            'hide-minimal-icon': theme.minimalTheme,
+            'selected-for-delete': todo.multipleDelete,
+          }"
+          @click="todosStore.selectTodoForDelete(n)"
+        ></i>
+        <span
+          v-if="theme.minimalTheme && !todo.class && !todo.modify"
+          class="mr-4 ml-1"
+          @click="todosStore.selectTodoForDelete(n)"
+        >
+          -
+        </span>
+        <li
+          v-if="!todo.modify"
+          class="todo"
+          id="todo"
+          @click="
+            todosStore.myFilter(n);
+            todosStore.selectCategoryToAddItem(n, todo);
+          "
+          :class="{
+            active: todo.isActive,
+            selected: todo.isSelected,
+            'line-through':
+              todo.multipleDelete && !theme.retroTheme && !theme.lightTheme,
+            'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
           }"
         >
-          <div
-            v-if="todo.class && theme.minimalTheme"
-            class="category-emoji-minimal"
+          {{ todo.name }}
+          <img
+            v-if="todo.multipleDelete && theme.lightTheme"
+            class="scrawl"
+            src="@/img/cancella.webp"
+            alt="line-through"
+          />
+        </li>
+        <!--CONTENITORE PULSANTI (edit, delete, modify)-->
+        <li
+          class="button-container bg-light"
+          :class="{
+            'minimal-btn': theme.minimalTheme,
+            'retro-btn': theme.retroTheme,
+            categoryActive: todo.class,
+            modify: todo.modify,
+          }"
+        >
+          <!-- PULSANTE MODIFICA-->
+          <button
+            class="btn btn-primary rounded-circle btn-sm"
+            @click="todosStore.modifyTodo(n)"
+            v-if="!todo.modify && !todo.class"
+            :class="todo.isDisabled ? 'disabled' : ''"
+            :disabled="!!todo.isDisabled || todo.multipleDelete"
           >
-            &#x2022;
-          </div>
-          <div
-            v-if="todo.class && !theme.minimalTheme"
-            class="category-emoji"
-            :class="{ 'category-emoji-selected': todo.isSelected }"
-            @click="todosStore.selectCategoryToAddItem(n, todo)"
-          >
-            {{ todo.emojy }}
-          </div>
-          <i
-            v-if="!todo.class && !theme.minimalTheme && !todo.modify"
-            class="fas fa-cart-arrow-down mr-3 ml-1"
-            :class="{
-              'hide-minimal-icon': theme.minimalTheme,
-              'selected-for-delete': todo.multipleDelete,
-            }"
-            @click="todosStore.selectTodoForDelete(n)"
-          ></i>
-          <span
-            v-if="theme.minimalTheme && !todo.class && !todo.modify"
-            class="mr-4 ml-1"
-            @click="todosStore.selectTodoForDelete(n)"
-          >
-            -
-          </span>
-          <li
+            <img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
+          </button>
+          <!--PULSANTE ELIMINA -->
+          <button
+            class="btn btn-primary rounded-circle btn-sm"
             v-if="!todo.modify"
-            class="todo"
-            id="todo"
-            @click="
-              todosStore.myFilter(n);
-              todosStore.selectCategoryToAddItem(n, todo);
-            "
-            :class="{
-              active: todo.isActive,
-              selected: todo.isSelected,
-              'line-through':
-                todo.multipleDelete && !theme.retroTheme && !theme.lightTheme,
-              'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
-            }"
+            @click="todosStore.removeTodo(n, todo)"
+            :class="todo.isDisabled ? 'disabled' : ''"
+            :disabled="!!todo.isDisabled"
           >
-            {{ todo.name }}
-            <img
-              v-if="todo.multipleDelete && theme.lightTheme"
-              class="scrawl"
-              src="@/img/cancella.webp"
-              alt="line-through"
-            />
-          </li>
-          <!--CONTENITORE PULSANTI (edit, delete, modify)-->
-          <li
-            class="button-container bg-light"
-            :class="{
-              'minimal-btn': theme.minimalTheme,
-              'retro-btn': theme.retroTheme,
-              categoryActive: todo.class,
-              modify: todo.modify,
-            }"
+            <img class="trash" src="@/img/icons/trash.webp" alt="delete" />
+          </button>
+          <!-- INPUT MODIFICA -->
+          <input
+            class="modify-input border border-primary rounded"
+            v-if="todo.modify"
+            v-model.trim="todo.name"
+          />
+          <!--PULSANTE SALVA MODIFICHE -->
+          <button
+            class="btn btn-success rounded-circle btn-sm"
+            v-if="todo.modify"
+            :disabled="todo.name.length === 0"
+            @click="todosStore.saveModifiedTodo(n, todo)"
           >
-            <!-- PULSANTE MODIFICA-->
-            <button
-              class="btn btn-primary rounded-circle btn-sm"
-              @click="todosStore.modifyTodo(n)"
-              v-if="!todo.modify && !todo.class"
-              :class="todo.isDisabled ? 'disabled' : ''"
-              :disabled="!!todo.isDisabled || todo.multipleDelete"
-            >
-              <i class="fas fa-pencil-alt"></i>
-            </button>
-            <!--PULSANTE ELIMINA -->
-            <button
-              class="btn btn-primary rounded-circle btn-sm"
-              v-if="!todo.modify"
-              @click="todosStore.removeTodo(n, todo)"
-              :class="todo.isDisabled ? 'disabled' : ''"
-              :disabled="!!todo.isDisabled"
-            >
-              <i class="fas fa-trash-alt"></i>
-            </button>
-            <!-- INPUT MODIFICA -->
-            <input
-              class="modify-input border border-primary rounded"
-              v-if="todo.modify"
-              v-model.trim="todo.name"
-            />
-            <!--PULSANTE SALVA MODIFICHE -->
-            <button
-              class="btn btn-success rounded-circle btn-sm"
-              v-if="todo.modify"
-              :disabled="todo.name.length === 0"
-              @click="todosStore.saveModifiedTodo(n, todo)"
-            >
-              <i class="far fa-save"></i>
-            </button>
-            <!--PULSANTE ANNULLA MODIFICHE -->
-            <button
-              class="btn btn-danger rounded-circle btn-sm"
-              v-if="todo.modify"
-              @click="todosStore.undoChanges(n)"
-            >
-              X
-            </button>
-          </li>
-        </div>
-      </template>
+            <img class="floppy" src="@/img/icons/floppy.webp" alt="save" />
+          </button>
+          <!--PULSANTE ANNULLA MODIFICHE -->
+          <button
+            class="btn btn-danger rounded-circle btn-sm"
+            v-if="todo.modify"
+            @click="todosStore.undoChanges(n)"
+          >
+            X
+          </button>
+        </li>
+      </div>
+    </Draggable>
+  </Container>
+  <!-- </template>
     </draggable>
-  </template>
+  </template> -->
 </template>
 
 <style scoped>
@@ -227,8 +268,81 @@ export default {
   }
 }
 
+.pencil,
+.trash,
+.floppy {
+  height: 20px;
+  width: 20px;
+}
+
 .selected-for-delete {
   color: #d70a0a;
+}
+.modify {
+  width: 20.938rem;
+  animation: enlarge 0.8s ease-out;
+}
+@-moz-keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+@-webkit-keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+@keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+.modify-input {
+  width: 85%;
+  margin-left: 5px;
+  animation: enlargeInput 0.8s ease-out;
+}
+@keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+@-moz-keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+@-webkit-keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+.undo {
+  width: 15px;
 }
 .line-through {
   text-decoration: line-through 4px;

@@ -98,8 +98,7 @@ export default {
         :class="todo.isDisabled ? 'disabled' : ''"
         :disabled="!!todo.isDisabled || todo.multipleDelete"
       >
-        <!-- <i class="fas fa-pencil-alt"></i> -->
-        <img class="pencil" src="@/img/icons/pencil.webp" alt="pencil" />
+        <img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
       </button>
       <!--PULSANTE ELIMINA -->
       <button
@@ -109,7 +108,7 @@ export default {
         :class="todo.isDisabled ? 'disabled' : ''"
         :disabled="!!todo.isDisabled"
       >
-        <i class="fas fa-trash-alt"></i>
+        <img class="trash" src="@/img/icons/trash.webp" alt="delete" />
       </button>
       <!-- INPUT MODIFICA -->
       <input
@@ -124,7 +123,7 @@ export default {
         :disabled="todo.name.length === 0"
         @click="todosStore.saveModifiedTodo(n, todo, todo.name)"
       >
-        <i class="far fa-save"></i>
+        <img class="floppy" src="@/img/icons/floppy.webp" alt="save" />
       </button>
       <!--PULSANTE ANNULLA MODIFICHE -->
       <button
@@ -189,12 +188,81 @@ export default {
     opacity: 1;
   }
 }
-.pencil {
+.pencil,
+.trash,
+.floppy {
   height: 20px;
   width: 20px;
 }
 .selected-for-delete {
   color: #d70a0a;
+}
+
+.modify {
+  width: 20.938rem;
+  animation: enlarge 0.8s ease-out;
+}
+@-moz-keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+@-webkit-keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+@keyframes enlarge {
+  0% {
+    width: 85px;
+    margin-left: auto;
+  }
+  100% {
+    width: 300px;
+    margin-left: auto;
+  }
+}
+.modify-input {
+  width: 85%;
+  margin-left: 5px;
+  animation: enlargeInput 0.8s ease-out;
+}
+@keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+@-moz-keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+@-webkit-keyframes enlargeInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+.undo {
+  width: 15px;
 }
 .line-through {
   text-decoration: line-through 4px;

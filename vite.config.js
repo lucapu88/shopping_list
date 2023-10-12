@@ -1,7 +1,7 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,5 +12,13 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
-})
+  },
+  build: {
+    rollupOptions: {
+      external: ['vue3-smooth-dnd']
+    }
+  },
+  optimizeDeps: {
+    include: ["vue3-smooth-dnd"]
+  },
+});
