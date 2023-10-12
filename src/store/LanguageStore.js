@@ -77,9 +77,6 @@ export const useLanguageStore = defineStore('Language', {
     }),
     getters: {},
     actions: {
-        setCategories() {
-            this.categories = this.engCategories;
-        },
         checkAndSetLanguage() {
             const langIta = window.localStorage.getItem('langIta');
             this.langIta = langIta === 'true';

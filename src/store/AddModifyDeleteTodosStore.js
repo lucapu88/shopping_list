@@ -233,5 +233,31 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     toggleButtonDeleteSelectedTodo() {
       this.canDeleteMultipleTodo = this.todos.some((el) => el.multipleDelete);
     },
+    openModalFordeleteSelectedTodos() {
+      this.confirmDeleteModal = true;
+      this.confirmRemove = false;
+      this.deleteSelected = true;
+      this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
+    },
+    openDeleteAllModal() {
+      this.visible = !this.visible;
+      setTimeout(() => {
+        /*Aggiunto il set timeout poichè senza non avviene nulla, 
+        mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
+        Non funziona con un if(this.visible). DA APPROFONDIRE */
+
+        // const containerList = document.getElementById('container-list');
+        // containerList.scrollTo({ top: containerList.scrollHeight, behavior: 'smooth' }); //TOFIX
+      }, 200);
+    },
+    removeAllTodo(x) {
+      this.todos.splice(x);
+      this.categoryList = false;
+      this.isDraggable = false;
+      this.saveTodos();
+      this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
+      navigator.vibrate(1000);
+      location.reload();
+    },
   },
 });
