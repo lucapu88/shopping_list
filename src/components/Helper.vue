@@ -38,6 +38,7 @@ export default {
   mounted() {
     document.getElementById('helper-description').scrollTo(0, 0);
     if (this.theme.summerTheme) {
+      //TOFIX
       document.getElementById('helper-description').style.backgroundImage =
         'none';
       document.getElementById('helper-description-container').style.background =
@@ -48,6 +49,7 @@ export default {
         'drop-shadow(2px 4px 6px black)';
     }
     if (this.theme.winterTheme) {
+      //TOFIX
       document.body.style.backgroundRepeat = 'no-repeat';
       document.body.style.backgroundSize = 'cover';
       document.getElementById(

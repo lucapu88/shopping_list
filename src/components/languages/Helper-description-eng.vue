@@ -77,14 +77,6 @@ export default {
       </li>
       <li v-if="settings.addEditDelete">
         With
-        <!-- <i
-          class="fas fa-pencil-alt btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        ></i> -->
-        <!--TOFIX -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
@@ -94,14 +86,6 @@ export default {
           src="@/img/icons/pencil.webp"
           alt="pencil"
         />. you can change a name and save the changes by clicking
-        <!-- <i
-          class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        ></i> -->
-        <!--TOFIX -->
         <img
           class="btn-success rounded-circle btn-sm helper-icon"
           :class="{
@@ -114,15 +98,6 @@ export default {
       </li>
       <li v-if="settings.addEditDelete">
         With
-        <!-- <i
-          class="fas fa-trash-alt btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        >
-        </i> -->
-        <!--TOFIX -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{

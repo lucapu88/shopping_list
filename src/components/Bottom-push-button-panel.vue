@@ -19,7 +19,11 @@ export default {
   },
   methods: {
     emitScrollTop() {
-      this.$emit('scrollTo', true);
+      this.$emit('scrollToTop', true);
+    },
+    openDeleteAllModal() {
+      this.todosStore.openDeleteAllModal();
+      this.$emit('scrollToBottom', true);
     },
   },
 };
@@ -40,7 +44,7 @@ export default {
     <button
       class="delete-all btn btn-dark"
       :class="{ christmas: isChristmas.christmasTheme }"
-      @click="todosStore.openDeleteAllModal()"
+      @click="openDeleteAllModal()"
     >
       <span v-if="languages.langIta">Cancella tutto </span>
       <span v-else>Delete ALL </span>
@@ -86,6 +90,14 @@ export default {
         Ita
       </button>
     </div>
+  </div>
+  <div v-if="isChristmas.christmasTheme">
+    <img
+      class="christmas-footer"
+      src="@/img/christmas.webp"
+      alt=" Merry Christmas"
+    />
+    <small class="created-by-luca-caputo">By Luca Caputo</small>
   </div>
 </template>
 

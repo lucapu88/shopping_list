@@ -25,6 +25,7 @@ export default {
     class="confirm col-10 mx-auto rounded text-center mb-3"
     :class="{
       christmas: isChristmas.christmasTheme,
+      'confirm-light': theme.lightTheme,
       'dark-theme-confirm': theme.darkTheme,
       'minimal-theme-confirm': theme.minimalTheme,
       'retro-theme-confirm-delete': theme.retroTheme,
@@ -67,9 +68,6 @@ export default {
 <style scoped>
 .confirm {
   padding: 10px 5px;
-  background-image: url('img/carta-stropicciata.webp') !important;
-  background-size: contain;
-  border: 2px solid rgb(0, 172, 252);
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
@@ -92,5 +90,11 @@ export default {
 }
 .confirm > button {
   margin-right: 15px;
+}
+
+.confirm-light {
+  background-image: url('@/img/carta-stropicciata.webp') !important;
+  background-size: contain;
+  border: 2px solid rgb(0, 172, 252);
 }
 </style>

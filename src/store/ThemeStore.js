@@ -41,16 +41,12 @@ export const useThemeStore = defineStore('theme', {
             if (this.summerTheme) {
                 this.changeThemeStyle('Summer', "url('src/img/mare.webp')", '#EFCB8F');
                 document.body.style.backgroundRepeat = 'no-repeat';
-                // document.querySelector('.confirm').style.backgroundImage = 'none';  //TOFIX
             }
 
             const winterThemeSelected = window.localStorage.getItem('winterTheme');
             this.winterTheme = winterThemeSelected === 'true';
             if (this.winterTheme) {
                 this.changeThemeStyle('Winter', "url('src/img/montagne.webp')", '#232F34', '#FFFFFF');
-                // document.getElementById('todo').style.filter = 'drop-shadow(2px 4px 6px black)';  //TOFIX
-                // document.querySelector('.confirm').style.backgroundImage = 'none';  //TOFIX
-                // document.querySelector('.confirm').style.filter = 'drop-shadow(2px 4px 6px black)';  //TOFIX
             }
         },
         changeThemeStyle(themeName, backgroundImage, backgroundColor, color, fontFamily) {

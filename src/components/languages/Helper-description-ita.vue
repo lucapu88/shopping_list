@@ -94,15 +94,6 @@ export default {
           alt="pencil"
         />
         potrai modificare un nome e salvare le modifiche cliccando
-        <!-- <i
-          class="far fa-save btn btn-success rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        ></i
-        >. -->
-        <!--TOFIX -->
         <img
           class="btn-success rounded-circle btn-sm helper-icon"
           :class="{
@@ -115,15 +106,6 @@ export default {
       </li>
       <li v-if="settings.addEditDelete">
         Con
-        <!-- <i
-          class="fas fa-trash-alt btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        >
-        </i> -->
-        <!--TOFIX -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{

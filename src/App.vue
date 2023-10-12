@@ -32,11 +32,27 @@ export default {
     this.todosStore.createTodosList();
     this.todosStore.changeTodoAdded(this.todosStore.todos);
   },
+  mounted() {
+    this.todosStore.toggleButtonDeleteSelectedTodo();
+  },
   methods: {
     scrollTop() {
       document
         .getElementById('container-list')
         .scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    },
+    scrollBottom() {
+      setTimeout(() => {
+        /*Aggiunto il set timeout poichè senza non avviene nulla, 
+        mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
+        Non funziona con un if(this.visible). DA APPROFONDIRE */
+
+        const containerList = document.getElementById('container-list');
+        containerList.scrollTo({
+          top: containerList.scrollHeight,
+          behavior: 'smooth',
+        });
+      }, 200);
     },
   },
 };
@@ -60,7 +76,10 @@ export default {
 
           <footer>
             <DeleteAllPanel />
-            <BottomPushButtonPanel @scrollTo="scrollTop" />
+            <BottomPushButtonPanel
+              @scrollToTop="scrollTop"
+              @scrollToBottom="scrollBottom"
+            />
           </footer>
         </div>
         <!--  ------------------------------------------------------  -->
