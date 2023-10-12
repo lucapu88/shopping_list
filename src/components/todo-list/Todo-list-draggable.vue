@@ -98,15 +98,30 @@ export default {
         >
           {{ todo.emojy }}
         </div>
-        <i
+        <span
+          alt="cart"
           v-if="!todo.class && !theme.minimalTheme && !todo.modify"
-          class="fas fa-cart-arrow-down mr-3 ml-1"
+          class="cart"
           :class="{
             'hide-minimal-icon': theme.minimalTheme,
-            'selected-for-delete': todo.multipleDelete,
           }"
           @click="todosStore.selectTodoForDelete(n)"
-        ></i>
+        >
+          <img v-if="todo.multipleDelete" src="@/img/icons/cart-red.webp" />
+          <img
+            v-if="
+              !todo.multipleDelete &&
+              (theme.darkTheme || theme.retroTheme || theme.winterTheme)
+            "
+            src="@/img/icons/cart-white.webp"
+          />
+          <img
+            v-if="
+              !todo.multipleDelete && (theme.lightTheme || theme.summerTheme)
+            "
+            src="@/img/icons/cart-black.webp"
+          />
+        </span>
         <span
           v-if="theme.minimalTheme && !todo.class && !todo.modify"
           class="mr-4 ml-1"
@@ -128,6 +143,7 @@ export default {
             'line-through':
               todo.multipleDelete && !theme.retroTheme && !theme.lightTheme,
             'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
+            'winter-todo': theme.winterTheme,
           }"
         >
           {{ todo.name }}
@@ -268,16 +284,6 @@ export default {
   }
 }
 
-.pencil,
-.trash,
-.floppy {
-  height: 20px;
-  width: 20px;
-}
-
-.selected-for-delete {
-  color: #d70a0a;
-}
 .modify {
   width: 20.938rem;
   animation: enlarge 0.8s ease-out;
@@ -431,6 +437,11 @@ export default {
   border: none !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.cart > img {
+  width: 37px;
+  height: 33px;
 }
 
 .custom-show-listbtn {
