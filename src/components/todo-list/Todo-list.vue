@@ -98,8 +98,8 @@ export default {
         :class="todo.isDisabled ? 'disabled' : ''"
         :disabled="!!todo.isDisabled || todo.multipleDelete"
       >
-        <i class="fas fa-pencil-alt"></i>
-        <!-- <img src="@/img/pencil.webp" alt="pencil" /> -->
+        <!-- <i class="fas fa-pencil-alt"></i> -->
+        <img class="pencil" src="@/img/pencil.webp" alt="pencil" />
       </button>
       <!--PULSANTE ELIMINA -->
       <button
@@ -179,6 +179,7 @@ export default {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
   z-index: 100;
+  padding: 5px;
 }
 @keyframes fadeInOpacity {
   0% {
@@ -188,7 +189,10 @@ export default {
     opacity: 1;
   }
 }
-
+.pencil {
+  height: 20px;
+  width: 20px;
+}
 .selected-for-delete {
   color: #d70a0a;
 }
@@ -257,7 +261,7 @@ export default {
 }
 .selected {
   text-align: center;
-  background-color: #0169d9;
+  background-color: #0169d9 !important;
   color: #ffffff;
   border-radius: 5px;
   padding-left: 3px;

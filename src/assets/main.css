@@ -241,26 +241,26 @@ li {
 }
 .minimal-btn {
   background-color: transparent !important;
-  border-color: #7c3e66;
-  color: #7c3e66;
-  border-radius: 5px;
+  border-color: #7c3e66 !important;
+  color: #7c3e66 !important;
+  border-radius: 5px !important;
 }
 .minimal-btn > button {
   background-color: #8aa5b4 !important;
-  border-color: #7c3e66;
-  color: #7c3e66;
+  border-color: #7c3e66 !important;
+  color: #7c3e66 !important;
 }
 .minimal-helper-btn {
   background-color: #8aa5b4 !important;
-  border-color: #7c3e66;
-  color: #7c3e66;
+  border-color: #7c3e66 !important;
+  color: #7c3e66 !important;
 }
 .hide-minimal-icon {
   display: none;
 }
 .category-minimal {
   font-weight: bold;
-  border: 1px solid #7c3e66;
+  border: 1px solid #7c3e66 !important;
   background-color: #8aa5b4 !important;
   border-radius: 7px;
 }
@@ -271,122 +271,126 @@ li {
   font-weight: bold;
 }
 .minimal-theme-back-top {
-  color: #7c3e66;
-  border-color: #7c3e66;
-  background-color: #8aa5b4;
+  color: #7c3e66 !important;
+  border-color: #7c3e66 !important;
+  background-color: #8aa5b4 !important;
   padding: 5px 10px !important;
 }
 
 /* DOS */
 .retro-theme-title {
-  background: -webkit-radial-gradient(circle, #35c50d 0%, #35c50d 95%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: -webkit-radial-gradient(
+    circle,
+    #35c50d 0%,
+    #35c50d 95%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   font-family: 'DotGothic16', sans-serif;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 .retro-theme-title2 {
   display: none;
 }
 .retro-theme {
   background-image: none;
-  background-color: #000000;
-  color: #35c50d;
-  border: 1px solid #35c50d;
-  min-width: 45px;
+  background-color: #000000 !important;
+  color: #35c50d !important;
+  border: 1px solid #35c50d !important;
+  min-width: 45px !important;
 }
 .retro-teme-btns {
-  background-color: #35c50d;
-  color: #000000;
-  font-weight: bold;
-  border: 1px solid #35c50d;
-  border-radius: 0;
+  background-color: #35c50d !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border: 1px solid #35c50d !important;
+  border-radius: 0 !important;
 }
 .retro-theme-helper {
   background-image: none;
-  background-color: #c0c0c0;
+  background-color: #c0c0c0 !important;
   background-image: none;
-  color: #000000;
-  border: 3px #ffffff outset;
+  color: #000000 !important;
+  border: 3px #ffffff outset !important;
   border-radius: 0 !important;
 }
 .retro-helper-settings-title {
-  color: #ffffff;
+  color: #ffffff !important;
   background: linear-gradient(
     90deg,
     rgba(0, 2, 129, 1) 0%,
     rgba(15, 129, 206, 1) 90%
   );
-  padding: 10px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  padding: 10px !important;
+  font-weight: bold !important;
+  margin-bottom: 5px !important;
 }
 .retro-theme-confirm {
-  background-color: #c0c0c0;
-  background-image: none;
-  color: #000000;
-  border: 3px #ffffff outset;
+  background-color: #c0c0c0 !important;
+  background-image: none !important;
+  color: #000000 !important;
+  border: 3px #ffffff outset !important;
   border-radius: 0 !important;
 }
 .close-retro-theme-helper {
-  background-color: #c0c0c0;
+  background-color: #c0c0c0 !important;
   background-image: none;
-  color: #000000;
-  border: 3px #ffffff outset;
+  color: #000000 !important;
+  border: 3px #ffffff outset !important;
   border-radius: 0 !important;
   margin: 5px 5px;
 }
 .retro-category-list {
-  border-radius: 0px;
-  border: 2px outset;
-  background-color: #efefef;
+  border-radius: 0px !important;
+  border: 2px outset !important;
+  background-color: #efefef !important;
 }
 .retro-multiple-delete {
   color: #d70a0a;
 }
 .retro-theme-confirm-delete {
-  border: 1px dashed #ffffff;
-  background-color: #042457;
-  color: #ffffff;
-  background-image: none;
+  border: 1px dashed #ffffff !important;
+  background-color: #042457 !important;
+  color: #ffffff !important;
+  background-image: none !important;
   border-radius: 0 !important;
 }
 .retro-theme-confirm-delete > button {
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  background-color: #042457;
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
+  background-color: #042457 !important;
   border-radius: 0 !important;
 }
 .retro-theme-back-top {
-  background-color: #35c50d;
-  border-radius: 0;
-  color: black;
+  background-color: #35c50d !important;
+  border-radius: 0 !important;
+  color: black !important;
 }
 .retro-category {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .retro-btn {
   background-color: transparent !important;
-  border-color: #35c50d;
-  color: #35c50d;
+  border-color: #35c50d !important;
+  color: #35c50d !important;
 }
 .retro-btn > button {
   background-color: #000000 !important;
-  border-color: #35c50d;
+  border-color: #35c50d !important;
   border-radius: 0 !important;
-  color: #35c50d;
+  color: #35c50d !important;
 }
 .retro-btn-border {
   border: 3px #fff outset !important;
   border-radius: 0px !important;
-  color: #000000;
+  color: #000000 !important;
 }
 .category-retro {
   background-color: #000000 !important;
-  border: 1px solid #35c50d;
-  border-radius: 0;
-  color: #35c50d;
+  border: 1px solid #35c50d !important;
+  border-radius: 0 !important;
+  color: #35c50d !important;
 }
 
 /* SUMMER */

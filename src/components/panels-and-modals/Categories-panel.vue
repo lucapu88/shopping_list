@@ -151,7 +151,7 @@ export default {
 .category-list-container.waterfall-ascent {
   display: block;
   height: 0;
-  border: none;
+  border: none !important;
   animation-name: waterfallAscent;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;

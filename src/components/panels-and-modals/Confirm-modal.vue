@@ -34,13 +34,16 @@ export default {
       <!--{{ todo }} TOFIX era nel vecchio codice dentro lo span qui sotto. C'è da capire se serve e a cosa serve.-->
       <span style="display: none">{{ todosStore.index }} </span>
       <button
-        v-if="confirmRemove"
+        v-if="todosStore.confirmRemove"
         @click="todosStore.confirmedRemoveTodo(index, '')"
       >
         <span v-if="languages.langIta">SI</span>
         <span v-else>YES</span>
       </button>
-      <button v-if="deleteSelected" @click="todosStore.deleteSelectedTodos()">
+      <button
+        v-if="todosStore.deleteSelected"
+        @click="todosStore.deleteSelectedTodos()"
+      >
         <span v-if="languages.langIta">SI</span>
         <span v-else>YES</span>
       </button>
@@ -122,5 +125,9 @@ export default {
 .confirm-winter > p {
   background-color: #b7c3c390;
   border-radius: 5px;
+}
+
+button {
+  margin-right: 15px;
 }
 </style>

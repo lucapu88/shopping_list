@@ -216,6 +216,7 @@ export default {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
   z-index: 100;
+  padding: 5px;
 }
 @keyframes fadeInOpacity {
   0% {
@@ -294,7 +295,7 @@ export default {
 }
 .selected {
   text-align: center;
-  background-color: #0169d9;
+  background-color: #0169d9 !important;
   color: #ffffff;
   border-radius: 5px;
   padding-left: 3px;
