@@ -20,6 +20,7 @@ export default {
   <div
     v-for="(todo, n) in todosStore.todos"
     :key="n"
+    :index="n"
     id="draggable-children"
     class="todo-n"
     :class="{

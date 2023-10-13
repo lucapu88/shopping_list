@@ -90,7 +90,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         // se ho impostato l'eliminazione automatica categorie vuote
         if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
       } else {
-        this.confirmedRemoveTodo(x, todo);
+        this.confirmedRemoveTodo(x);
       }
       this.settings.resetListIstructions();
       this.toggleButtonDeleteSelectedTodo();

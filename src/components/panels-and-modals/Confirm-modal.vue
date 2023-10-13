@@ -35,7 +35,7 @@ export default {
       <span style="display: none">{{ todosStore.index }} </span>
       <button
         v-if="todosStore.confirmRemove"
-        @click="todosStore.confirmedRemoveTodo(index, '')"
+        @click="todosStore.confirmedRemoveTodo(todosStore.index)"
       >
         <span v-if="languages.langIta">SI</span>
         <span v-else>YES</span>
