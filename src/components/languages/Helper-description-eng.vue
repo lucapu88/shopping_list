@@ -72,8 +72,12 @@ export default {
         />
       </div>
       <li v-if="settings.addEditDelete">
-        <i class="far fa-paper-plane btn btn-info helper-icon"> </i> is used to
-        add stuff to buy list.
+        <img
+          class="btn btn-info helper-icon"
+          src="@/img/icons/paper-plane.webp"
+          alt="paper-plane"
+        />
+        is used to add stuff to buy list.
       </li>
       <li v-if="settings.addEditDelete">
         With
@@ -148,8 +152,12 @@ export default {
       </div>
       <li v-if="settings.categoriesInfo">
         To add a category just type it in and click
-        <i class="far fa-paper-plane btn btn-info helper-icon"> </i> or choose
-        it in the box by clicking
+        <img
+          class="btn btn-info helper-icon"
+          src="@/img/icons/paper-plane.webp"
+          alt="paper-plane"
+        />
+        or choose it in the box by clicking
         <span
           style="border: none"
           class="custom-show-listbtn helper-icon pl-2 pr-2"
@@ -259,10 +267,10 @@ export default {
       </div>
       <li v-if="settings.selectAndDelete">
         You can delete multiple products together by clicking on
-        <i class="fas fa-cart-arrow-down"></i>. So you mark them and then at the
-        end of shopping by clicking on
+        <img class="cart" src="@/img/icons/cart-red.webp" />. So you mark them
+        and then at the end of shopping by clicking on
         <button class="text-danger border-danger rounded">
-          <i class="fas fa-trash-alt"></i>
+          <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
         </button>
         at the bottom only the ones you marked will be deleted.
       </li>
@@ -318,7 +326,8 @@ export default {
       <li v-if="settings.deleteAllInfo">
         If you click on
         <span class="delete-all-description">
-          delete all <i class="fas fa-skull-crossbones"> </i>
+          delete all
+          <img class="skull" src="@/img/icons/skull.webp" alt="skull" />
         </span>
         you will see a confirmation box for the 'delete
         <u> ALL </u> the list.
@@ -423,6 +432,10 @@ export default {
   animation: fadeIn 0.6s;
 }
 
+.cart {
+  width: 28px;
+  height: 24px;
+}
 .list-title {
   padding: 5px;
   border: 1px solid;
@@ -514,6 +527,7 @@ export default {
 .delete-all-description {
   background-color: #000000;
   color: #ffffff;
+  padding: 5px;
 }
 
 .social {

@@ -1,7 +1,11 @@
 @import './base.css';
 
-body {
+/* body {
   background-image: url('@/img/foglio_righe.webp');
+  font-family: 'Permanent Marker', cursive;
+} */
+body {
+  background-image: var(--background-image);
   font-family: 'Permanent Marker', cursive;
 }
 @media screen and (min-width: 500px) {
@@ -55,9 +59,15 @@ li {
   height: 20px;
   width: 20px;
 }
+
 .plane {
   height: 22px;
   width: 22px;
+}
+
+.skull {
+  width: 30px;
+  height: 30px;
 }
 
 .info-icon {
@@ -621,6 +631,10 @@ li {
   border: 1px solid #35c50d !important;
   border-radius: 0 !important;
   color: #35c50d !important;
+}
+.delete-all-retro {
+  border-radius: 0 !important;
+  border: 1px solid #35c50d !important;
 }
 
 /* SUMMER */

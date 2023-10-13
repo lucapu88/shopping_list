@@ -38,17 +38,20 @@ export default {
       :class="{ christmas: isChristmas.christmasTheme }"
       @click="todosStore.openModalFordeleteSelectedTodos()"
     >
-      <i class="fas fa-trash-alt"> </i>
+      <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
     </button>
     <!-- PULSANTE ELIMINA TUTTO-->
     <button
-      class="delete-all btn btn-dark"
-      :class="{ christmas: isChristmas.christmasTheme }"
+      class="delete-all btn dark"
+      :class="{
+        christmas: isChristmas.christmasTheme,
+        'delete-all-retro': theme.retroTheme,
+      }"
       @click="openDeleteAllModal()"
     >
       <span v-if="languages.langIta">Cancella tutto </span>
       <span v-else>Delete ALL </span>
-      <i class="fas fa-skull-crossbones"></i>
+      <img class="skull" src="@/img/icons/skull.webp" alt="" />
     </button>
     <!-- PULSANTE TORNA IN CIMA -->
     <button
@@ -109,7 +112,10 @@ export default {
   display: flex;
   justify-content: space-around;
 }
-
+.dark {
+  background-color: #000000;
+  color: #ffff;
+}
 .btn-back-to-top {
   /* rotate: 270deg; */
   transform: rotate(270deg);

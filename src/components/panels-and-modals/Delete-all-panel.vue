@@ -35,19 +35,13 @@ export default {
     v-if="!todosStore.visible"
   >
     <p v-if="languages.langIta">
-      <i
-        class="fas fa-trash-alt"
-        :class="{
-          'text-danger': !theme.retroTheme,
-          'text-warning': theme.retroTheme,
-        }"
-      ></i>
+      <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
       Sei sicuro di voler eliminare <br />
       tutta la lista?
     </p>
     <p v-else>
       <!--TOFIX-->
-      <i class="fas fa-trash-alt text-danger"></i>
+      <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
       Are you sure you want <br />
       delete the whole list?
     </p>

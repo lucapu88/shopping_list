@@ -73,6 +73,7 @@ export const useSettingsStore = defineStore('settings', {
         },
         closeHelper() {
             this.helper = false;
+            this.resetListIstructions();
         },
         showPrivacyPolicy() {
             this.privacyPolicy = true;

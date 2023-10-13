@@ -72,18 +72,15 @@ export default {
         />
       </div>
       <li v-if="settings.addEditDelete">
-        <i class="far fa-paper-plane btn btn-info helper-icon"></i>
+        <img
+          class="btn btn-info helper-icon"
+          src="@/img/icons/paper-plane.webp"
+          alt="paper-plane"
+        />
         serve per aggiungere alla lista roba da comprare.
       </li>
       <li v-if="settings.addEditDelete">
         Con
-        <!-- <i
-          class="fas fa-pencil-alt btn-primary rounded-circle btn-sm helper-icon"
-          :class="{
-            'minimal-helper-btn': theme.minimalTheme,
-            'retro-btn-button': theme.retroTheme,
-          }"
-        ></i> -->
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
@@ -156,8 +153,12 @@ export default {
       </div>
       <li v-if="settings.categoriesInfo">
         Per aggiungere una categoria basta scriverla e cliccare su
-        <i class="far fa-paper-plane btn btn-info helper-icon"></i> oppure
-        sceglierla nel riquadro cliccando
+        <img
+          class="btn btn-info helper-icon"
+          src="@/img/icons/paper-plane.webp"
+          alt="paper-plane"
+        />
+        oppure sceglierla nel riquadro cliccando
         <span
           style="border: none"
           class="custom-show-listbtn helper-icon pl-2 pr-2"
@@ -265,10 +266,10 @@ export default {
       </div>
       <li v-if="settings.selectAndDelete">
         Puoi eliminare più prodotti insieme cliccando su
-        <i class="fas fa-cart-arrow-down"></i>. Così li smarchi e poi a fine
-        spesa cliccado sul
+        <img class="cart" src="@/img/icons/cart-red.webp" />. Così li smarchi e
+        poi a fine spesa cliccado sul
         <button class="text-danger border-danger rounded">
-          <i class="fas fa-trash-alt"></i>
+          <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
         </button>
         in basso verranno eliminati solo quelli che hai smarcato.
       </li>
@@ -324,8 +325,9 @@ export default {
       <li v-if="settings.deleteAllInfo">
         Se clicchi su
         <span class="delete-all-description">
-          cancella tutto <i class="fas fa-skull-crossbones"></i
-        ></span>
+          cancella tutto
+          <img class="skull" src="@/img/icons/skull.webp" alt="skull" />
+        </span>
         ti apparirà un riquadro di conferma per l'eliminazione di
         <u>TUTTA</u> la lista.
       </li>
@@ -432,6 +434,10 @@ export default {
   animation: fadeIn 0.6s;
 }
 
+.cart {
+  width: 28px;
+  height: 24px;
+}
 .list-title {
   padding: 5px;
   border: 1px solid;
@@ -523,6 +529,7 @@ export default {
 .delete-all-description {
   background-color: #000000;
   color: #ffffff;
+  padding: 5px;
 }
 
 .social {

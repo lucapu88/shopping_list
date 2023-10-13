@@ -46,12 +46,15 @@ export const useThemeStore = defineStore('theme', {
             const winterThemeSelected = window.localStorage.getItem('winterTheme');
             this.winterTheme = winterThemeSelected === 'true';
             if (this.winterTheme) {
-                this.changeThemeStyle('Winter', "url('src/img/montagne.webp')", '#232F34', '#FFFFFF');
+                this.changeThemeStyle('Winter', "url('../img/montagne.webp')", '#232F34', '#FFFFFF');
             }
         },
         changeThemeStyle(themeName, backgroundImage, backgroundColor, color, fontFamily) {
+            const background = backgroundImage;
+
+            document.documentElement.style.setProperty('--background-image', background);
             this.themeName = themeName;
-            document.body.style.backgroundImage = backgroundImage;
+            // document.body.style.background = backgroundImage;
             document.body.style.backgroundColor = backgroundColor;
             if (color) { document.body.style.color = color; }
             if (fontFamily) { document.body.style.fontFamily = fontFamily; }
