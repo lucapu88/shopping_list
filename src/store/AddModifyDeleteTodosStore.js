@@ -70,7 +70,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
-      console.log(this.todos);
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);
@@ -247,6 +246,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
+      this.canDeleteMultipleTodo = false;
       this.saveTodos();
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       navigator.vibrate(1000);

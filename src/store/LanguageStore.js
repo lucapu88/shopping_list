@@ -18,6 +18,9 @@ export const useLanguageStore = defineStore('Language', {
             { name: 'hygiene', emojy: String.fromCodePoint(0x1f9fb) },
             { name: 'medications', emojy: String.fromCodePoint(0x1f48a) },
             { name: 'stationery', emojy: String.fromCodePoint(0x1f4da) },
+            { name: 'babies', emojy: String.fromCodePoint(0x1f476) },
+            { name: 'electronics', emojy: String.fromCodePoint(0x1f4a1) },
+            { name: 'pets', emojy: String.fromCodePoint(0x1f439) },
             { name: 'other', emojy: String.fromCodePoint(0x1f4b8) },
         ],
         itaCategories: [
@@ -32,6 +35,9 @@ export const useLanguageStore = defineStore('Language', {
             { name: 'igiene', emojy: String.fromCodePoint(0x1f9fb) },
             { name: 'farmaci', emojy: String.fromCodePoint(0x1f48a) },
             { name: 'cancelleria', emojy: String.fromCodePoint(0x1f4da) },
+            { name: 'bimbi', emojy: String.fromCodePoint(0x1f476) },
+            { name: 'elettronica', emojy: String.fromCodePoint(0x1f4a1) },
+            { name: 'animali', emojy: String.fromCodePoint(0x1f439) },
             { name: 'altro', emojy: String.fromCodePoint(0x1f4b8) },
         ],
         langIta: false,
@@ -117,7 +123,7 @@ export const useLanguageStore = defineStore('Language', {
             this.copyList.text = 'List copied to clipboard';
             this.share.text = 'Link copied to clipboard, paste it with whoever you want.';
             window.localStorage.setItem('langIta', false);
-            location.reload(); //lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy che mi buggano il codice.
+            location.reload(); // TOFIX lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy che mi buggano il codice.
         },
         setItalianoLanguage() {
             this.langIta = true;
@@ -127,7 +133,7 @@ export const useLanguageStore = defineStore('Language', {
             this.copyList.text = 'Lista copiata negli appunti';
             this.share.text = 'Link copiato negli appunti, incollalo con chi vuoi.';
             window.localStorage.setItem('langIta', true);
-            location.reload(); //lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy e mi buggano il codice.
+            location.reload(); // TOFIX lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy e mi buggano il codice.
         },
         insertAllCategories() {
             if (this.langIta) {
