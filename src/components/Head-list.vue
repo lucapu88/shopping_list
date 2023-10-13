@@ -1,5 +1,5 @@
 <script setup>
-import PushButtonPanel from './Push-button-panel.vue';
+import HeaderButtonsContainer from './Header-buttons-container.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
@@ -140,11 +140,15 @@ export default {
         :placeholder="languages.placeholder"
       />
       <button class="btn btn-info" @click="addNewTodo()">
-        <i class="far fa-paper-plane"></i>
+        <img
+          class="plane"
+          src="@/img/icons/paper-plane.webp"
+          alt="paper-plane"
+        />
       </button>
     </div>
     <!-- PULSANTIERA -->
-    <PushButtonPanel />
+    <HeaderButtonsContainer />
   </div>
 </template>
 

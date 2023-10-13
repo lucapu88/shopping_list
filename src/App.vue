@@ -4,7 +4,7 @@ import ConfirmModal from './components/panels-and-modals/Confirm-modal.vue';
 import Helper from './components/Helper.vue';
 import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
-import BottomPushButtonPanel from './components/Bottom-push-button-panel.vue';
+import FooterButtonsContainer from './components/Footer-buttons-container.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
@@ -76,7 +76,7 @@ export default {
 
           <footer>
             <DeleteAllPanel />
-            <BottomPushButtonPanel
+            <FooterButtonsContainer
               @scrollToTop="scrollTop"
               @scrollToBottom="scrollBottom"
             />
