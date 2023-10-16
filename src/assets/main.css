@@ -680,7 +680,7 @@ button {
   filter: drop-shadow(#000000 6px 6px 3px);
 }
 .summer-theme-back-top {
-  background-color: #efcb8f;
+  background-color: #efcb8f !important;
 }
 
 /* WINTER */

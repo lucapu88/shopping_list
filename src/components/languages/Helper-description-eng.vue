@@ -54,7 +54,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -133,7 +134,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -215,7 +217,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -248,7 +251,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -277,7 +281,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -314,7 +319,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -343,7 +349,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
@@ -377,7 +384,8 @@ export default {
       <div
         class="list-title"
         :class="{
-          'list-title-color': theme.lightTheme || theme.winterTheme,
+          'list-title-color':
+            theme.lightTheme || theme.winterTheme || theme.darkTheme,
           'list-title-summer': theme.summerTheme,
           'list-title-retro': theme.retroTheme,
         }"
