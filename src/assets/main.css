@@ -51,6 +51,10 @@ li {
   display: inline-block;
 }
 
+button {
+  border-radius: 5px;
+}
+
 .pencil,
 .trash,
 .floppy {

@@ -78,7 +78,7 @@ export default {
 
 .confirm-light {
   background-color: #ffffff;
-  background-image: url('src/img/postit.webp');
+  background-image: url('@/img/postit.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -110,7 +110,7 @@ export default {
 .confirm-summer {
   background-color: #12a1df;
   border: 2px solid #12a1df;
-  background-image: url('src/img/maldive.webp');
+  background-image: url('@/img/maldive.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -118,7 +118,7 @@ export default {
 .confirm-winter {
   background-color: #ffff;
   border: 2px solid #ffff;
-  background-image: url('src/img/winter-forest.webp');
+  background-image: url('@/img/winter-forest.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
