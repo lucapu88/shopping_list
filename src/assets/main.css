@@ -87,14 +87,6 @@ button {
   margin-left: 15px;
 }
 
-.btn-outline-success {
-  padding: 5px;
-  background-color: #ffffff;
-  color: #28a745;
-  border: 2px solid;
-  width: 60px;
-}
-
 .tutorial-highlights {
   background-color: orangered;
   color: #ffffff;
@@ -663,6 +655,16 @@ button {
   background-color: #12a1df !important;
   color: #efcb8f;
 }
+.summer-theme-helper {
+  background-image: none;
+  background-color: rgb(188, 242, 221);
+  background: linear-gradient(
+    168deg,
+    rgba(188, 242, 221, 1) 0%,
+    rgba(129, 215, 235, 1) 47%,
+    rgba(46, 152, 242, 1) 100%
+  );
+}
 .summer-btn {
   background-color: #007bff;
   color: #ffff;
@@ -695,6 +697,11 @@ button {
   background-color: rgba(192, 224, 133, 0.883);
   border: 2px solid #b4e659;
   border-radius: 10px;
+}
+.winter-theme-helper {
+  background-image: url('@/img/inverno.webp') !important;
+  background-size: cover;
+  background-repeat: repeat-x;
 }
 .winter-theme-back-top {
   background-color: #ffffff;

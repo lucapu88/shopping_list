@@ -55,7 +55,7 @@ export default {
     </button>
     <!--PULSANTE COPIA LISTA-->
     <button
-      class="btn btn-outline-success"
+      class="btn custom-show-listbtn"
       :class="{
         'minimal-btn': theme.minimalTheme,
         'retro-teme-btns': theme.retroTheme,

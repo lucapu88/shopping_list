@@ -40,7 +40,6 @@ export default {
       tutta la lista?
     </p>
     <p v-else>
-      <!--TOFIX-->
       <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
       Are you sure you want <br />
       delete the whole list?

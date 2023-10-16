@@ -301,7 +301,7 @@ export default {
       </div>
       <li v-if="settings.copyHighlights">
         <span
-          class="btn btn-outline-success"
+          class="btn custom-show-listbtn"
           :class="{
             'minimal-helper-btn': theme.minimalTheme,
             'retro-teme-btns': theme.retroTheme,

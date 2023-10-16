@@ -37,30 +37,6 @@ export default {
   },
   mounted() {
     document.getElementById('helper-description').scrollTo(0, 0);
-    if (this.theme.summerTheme) {
-      //TOFIX
-      document.getElementById('helper-description').style.backgroundImage =
-        'none';
-      document.getElementById('helper-description-container').style.background =
-        'rgb(188,242,221)';
-      document.getElementById('helper-description-container').style.background =
-        'linear-gradient(168deg, rgba(188,242,221,1) 0%, rgba(129,215,235,1) 47%, rgba(46,152,242,1) 100%)';
-      document.getElementById('helper-description').style.filter =
-        'drop-shadow(2px 4px 6px black)';
-    }
-    if (this.theme.winterTheme) {
-      //TOFIX
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundSize = 'cover';
-      document.getElementById(
-        'helper-description-container'
-      ).style.backgroundImage = "url('src/img/inverno.webp')";
-      document.getElementById(
-        'helper-description-container'
-      ).style.backgroundSize = 'cover';
-      document.getElementById('helper-description').style.filter =
-        'drop-shadow(2px 4px 6px black)';
-    }
     this.resetTextarea();
   },
   methods: {
@@ -211,10 +187,12 @@ export default {
       :class="{
         slideUp: settings.helper,
         slideDown: !settings.helper,
-        'dark-theme-helper': theme.darkTheme === true,
-        'minimal-theme-helper': theme.minimalTheme === true,
-        'retro-theme-helper': theme.retroTheme === true,
-        'helper-light': theme.lightTheme === true,
+        'dark-theme-helper': theme.darkTheme,
+        'minimal-theme-helper': theme.minimalTheme,
+        'retro-theme-helper': theme.retroTheme,
+        'winter-theme-helper': theme.winterTheme,
+        'summer-theme-helper': theme.summerTheme,
+        'helper-light': theme.lightTheme,
       }"
     >
       <div class="close-helper-container" @click="closeHelper()">
