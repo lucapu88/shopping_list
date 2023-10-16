@@ -22,7 +22,7 @@ export default {
       this.$emit('scrollToTop', true);
     },
     openDeleteAllModal() {
-      this.todosStore.openDeleteAllModal();
+      this.todosStore.openDeleteAllModal;
       this.$emit('scrollToBottom', true);
     },
   },

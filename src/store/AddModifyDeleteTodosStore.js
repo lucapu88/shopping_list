@@ -28,6 +28,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     focusIn: false,
   }),
   getters: {
+    openDeleteAllModal: (state) => state.visible = !state.visible,
+
   },
   actions: {
     addTodo() {
@@ -238,9 +240,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.confirmRemove = false;
       this.deleteSelected = true;
       this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
-    },
-    openDeleteAllModal() {
-      this.visible = !this.visible;
     },
     removeAllTodo(x) {
       this.todos.splice(x);

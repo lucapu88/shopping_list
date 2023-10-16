@@ -700,8 +700,8 @@ button {
 }
 .winter-theme-helper {
   background-image: url('@/img/inverno.webp') !important;
-  background-size: cover;
-  background-repeat: repeat-x;
+  background-size: cover !important;
+  background-repeat: repeat-x !important;
 }
 .winter-theme-back-top {
   background-color: #ffffff;

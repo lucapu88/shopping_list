@@ -2,9 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useChristmasStore = defineStore('christmas', {
     state: () => ({ christmasTheme: false }),
-    getters: {
-        // doubleCount: (state) => state.count * 2,
-    },
+    getters: {},
     actions: {
         merryChristmasTheme() {
             //solo per tutto il mese di natale ci saranno immagini natalizie
