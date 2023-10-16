@@ -294,8 +294,16 @@ export default {
         />
       </div>
       <li v-if="settings.copyHighlights">
-        <i class="far fa-copy btn btn-outline-success helper-icon"></i> serve
-        per copiare la lista e incollarla dove vuoi.
+        <span
+          class="btn btn-outline-success"
+          :class="{
+            'minimal-helper-btn': theme.minimalTheme,
+            'retro-teme-btns': theme.retroTheme,
+          }"
+        >
+          <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
+        </span>
+        serve per copiare la lista e incollarla dove vuoi.
       </li>
       <li v-if="settings.copyHighlights">
         Puoi rendere "importante" un prodotto cliccando sul nome e verrà

@@ -67,6 +67,11 @@ button {
   width: 22px;
 }
 
+.copy {
+  width: 23px;
+  height: 22px;
+}
+
 .skull {
   width: 30px;
   height: 30px;
@@ -80,6 +85,14 @@ button {
   padding: 0 7px;
   border-radius: 50%;
   margin-left: 15px;
+}
+
+.btn-outline-success {
+  padding: 5px;
+  background-color: #ffffff;
+  color: #28a745;
+  border: 2px solid;
+  width: 60px;
 }
 
 .tutorial-highlights {
@@ -637,6 +650,12 @@ button {
 .delete-all-retro {
   border-radius: 0 !important;
   border: 1px solid #35c50d !important;
+}
+.retro-btn-button {
+  background-color: #000000 !important;
+  border: 2px solid #35c50d !important;
+  border-radius: 0 !important;
+  color: #35c50d !important;
 }
 
 /* SUMMER */

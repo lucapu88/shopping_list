@@ -62,7 +62,7 @@ export default {
       }"
       @click="copy()"
     >
-      <i class="far fa-copy"></i><br />
+      <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
     </button>
     <!--PULSANTE MOSTRA CATEGORIE -->
     <button
@@ -114,14 +114,6 @@ export default {
 }
 .custom-show-listbtn > img {
   width: 20px;
-}
-
-.btn-outline-success {
-  padding: 5px;
-  background-color: #ffffff;
-  color: #28a745;
-  border: 2px solid;
-  width: 60px;
 }
 
 .list-copied {

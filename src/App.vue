@@ -113,11 +113,11 @@ export default {
 }
 .summer {
   background-image: url('@/img/mare.webp');
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
 }
 .winter {
   background-image: url('@/img/montagne.webp');
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
 }
 .row {
   height: 97vh;

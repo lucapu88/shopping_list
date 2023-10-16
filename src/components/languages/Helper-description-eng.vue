@@ -295,7 +295,15 @@ export default {
         />
       </div>
       <li v-if="settings.copyHighlights">
-        <i class="far fa-copy btn btn-outline-success helper-icon"> </i>
+        <span
+          class="btn btn-outline-success"
+          :class="{
+            'minimal-helper-btn': theme.minimalTheme,
+            'retro-teme-btns': theme.retroTheme,
+          }"
+        >
+          <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
+        </span>
         is used to copy the list and paste it wherever you want.
       </li>
       <li v-if="settings.copyHighlights">
