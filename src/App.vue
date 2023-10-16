@@ -59,7 +59,17 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div
+    class="container"
+    :class="{
+      light: theme.lightTheme,
+      dark: theme.darkTheme,
+      minimal: theme.minimalTheme,
+      retro: theme.retroTheme,
+      summer: theme.summerTheme,
+      winter: theme.winterTheme,
+    }"
+  >
     <div id="app">
       <div id="container-list" class="row">
         <!--  ------------------------------------------------------  -->
@@ -89,6 +99,26 @@ export default {
 </template>
 
 <style scoped>
+.container {
+  height: 100vh;
+}
+.light {
+  background-image: url('@/img/foglio_righe.webp');
+}
+
+.dark,
+.minimal,
+.retro {
+  background-image: none;
+}
+.summer {
+  background-image: url('@/img/mare.webp');
+  background-repeat: no-repeat;
+}
+.winter {
+  background-image: url('@/img/montagne.webp');
+  background-repeat: no-repeat;
+}
 .row {
   height: 97vh;
   overflow: auto;

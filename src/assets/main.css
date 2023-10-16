@@ -3,18 +3,16 @@
 /* body {
   background-image: url('@/img/foglio_righe.webp');
   font-family: 'Permanent Marker', cursive;
-} */
-body {
-  background-image: var(--background-image);
-  font-family: 'Permanent Marker', cursive;
 }
+
 @media screen and (min-width: 500px) {
   body {
     background-image: url('@/img/foglio.webp');
     background-repeat: no-repeat;
     background-size: cover;
   }
-}
+} */
+
 /* ----------------------------------------NATALEEEEEE------------------------------------ */
 .christmas-theme {
   width: 100%;
@@ -82,7 +80,7 @@ li {
 
 .tutorial-highlights {
   background-color: orangered;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-selected {

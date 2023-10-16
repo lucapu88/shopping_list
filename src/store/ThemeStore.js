@@ -8,18 +8,19 @@ export const useThemeStore = defineStore('theme', {
         retroTheme: false,
         summerTheme: false,
         winterTheme: false,
+        themeName: 'Light',
     }),
     getters: {},
     actions: {
         setThemeOnLoad() {
             const lightThemeSelected = window.localStorage.getItem('lightTheme');
             this.lightTheme = lightThemeSelected === 'true';
-            if (this.lightTheme) { this.changeThemeStyle('Light', "url('src/img/foglio_righe.webp')"); }
+            if (this.lightTheme) { this.changeThemeStyle('Light', '#ffffff', '#000000', "'Permanent Marker', cursive"); }
 
             const darkThemeSelected = window.localStorage.getItem('darkTheme');
             this.darkTheme = darkThemeSelected === 'true';
             if (this.darkTheme) {
-                this.changeThemeStyle('Dark', 'none', '#333333', '#FFFFFF');
+                this.changeThemeStyle('Dark', '#333333', '#FFFFFF', "'Permanent Marker', cursive");
                 document.body.style.height = '100vh';
                 document.body.style.border = '10px solid #d17e47';
             }
@@ -27,34 +28,30 @@ export const useThemeStore = defineStore('theme', {
             const minimalThemeSelected = window.localStorage.getItem('minimalTheme');
             this.minimalTheme = minimalThemeSelected === 'true';
             if (this.minimalTheme) {
-                this.changeThemeStyle('Minimal', 'none', '#A5BECC', '#7C3E66', '"Cabin", sans-serif');
+                this.changeThemeStyle('Minimal', '#A5BECC', '#7C3E66', '"Cabin", sans-serif');
             }
 
             const retroThemeSelected = window.localStorage.getItem('retroTheme');
             this.retroTheme = retroThemeSelected === 'true';
             if (this.retroTheme) {
-                this.changeThemeStyle('Dos', 'none', '#090A0C', '#FFFFFF', '"DotGothic16", sans-serif');
+                this.changeThemeStyle('Dos', '#090A0C', '#FFFFFF', '"DotGothic16", sans-serif');
             }
 
             const summerThemeSelected = window.localStorage.getItem('summerTheme');
             this.summerTheme = summerThemeSelected === 'true';
             if (this.summerTheme) {
-                this.changeThemeStyle('Summer', "url('src/img/mare.webp')", '#EFCB8F');
-                document.body.style.backgroundRepeat = 'no-repeat';
+                this.changeThemeStyle('Summer', '#EFCB8F', '#000000', "'Permanent Marker', cursive");
             }
 
             const winterThemeSelected = window.localStorage.getItem('winterTheme');
             this.winterTheme = winterThemeSelected === 'true';
             if (this.winterTheme) {
-                this.changeThemeStyle('Winter', "url('../img/montagne.webp')", '#232F34', '#FFFFFF');
+                this.changeThemeStyle('Winter', '#232F34', '#FFFFFF', "'Permanent Marker', cursive");
             }
         },
-        changeThemeStyle(themeName, backgroundImage, backgroundColor, color, fontFamily) {
-            const background = backgroundImage;
+        changeThemeStyle(themeName, backgroundColor, color, fontFamily) {
 
-            document.documentElement.style.setProperty('--background-image', background);
             this.themeName = themeName;
-            // document.body.style.background = backgroundImage;
             document.body.style.backgroundColor = backgroundColor;
             if (color) { document.body.style.color = color; }
             if (fontFamily) { document.body.style.fontFamily = fontFamily; }
