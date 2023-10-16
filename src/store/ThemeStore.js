@@ -48,6 +48,16 @@ export const useThemeStore = defineStore('theme', {
             if (this.winterTheme) {
                 this.changeThemeStyle('Winter', '#232F34', '#FFFFFF', "'Permanent Marker', cursive");
             }
+
+            if (!lightThemeSelected
+                && !darkThemeSelected
+                && !minimalThemeSelected
+                && !retroThemeSelected
+                && !summerThemeSelected
+                && !winterThemeSelected) {
+                //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
+                window.localStorage.setItem('lightTheme', true);
+            }
         },
         changeThemeStyle(themeName, backgroundColor, color, fontFamily) {
 
