@@ -10,6 +10,7 @@ export const useSettingsStore = defineStore('settings', {
     canDeleteEmptyCategories: false,
     canDeleteEmptyCategoriesText: 'OFF',
     helper: false,
+    helperInClosing: false,
     privacyPolicy: false,
     addEditDelete: false,
     categoriesInfo: false,
@@ -72,7 +73,12 @@ export const useSettingsStore = defineStore('settings', {
       this.helper = true;
     },
     closeHelper() {
-      this.helper = false;
+      this.helperInClosing = true;
+      //faccio questo per far funzionare l'animazione dello slide down
+      setTimeout(() => {
+        this.helper = false;
+        this.helperInClosing = false;
+      }, 1500);
       this.resetListIstructions();
     },
     showPrivacyPolicy() {

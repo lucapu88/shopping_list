@@ -120,7 +120,7 @@ export default {
       class="helper"
       :class="{
         'helper-selected': settings.helper,
-        'helper-deselected': !settings.helper,
+        'helper-deselected': settings.helperInClosing,
         'helper-btn-dark': theme.darkTheme,
       }"
       @click="showHelper()"

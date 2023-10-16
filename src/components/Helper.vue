@@ -186,7 +186,7 @@ export default {
       class="helper-description"
       :class="{
         slideUp: settings.helper,
-        slideDown: !settings.helper,
+        slideDown: settings.helperInClosing,
         'dark-theme-helper': theme.darkTheme,
         'minimal-theme-helper': theme.minimalTheme,
         'retro-theme-helper': theme.retroTheme,
