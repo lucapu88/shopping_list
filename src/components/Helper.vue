@@ -1,7 +1,7 @@
 <script setup>
 import HelperDescriptionIta from './languages/Helper-description-ita.vue';
 import HelperDescriptionEng from './languages/Helper-description-eng.vue';
-import PrivacyPolicyModal from './privacy-policy/Privacy-policy-modal.vue';
+import PrivacyPolicyModal from './panels-and-modals/privacy-policy/Privacy-policy-modal.vue';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
@@ -198,7 +198,7 @@ export default {
       <div class="close-helper-container" @click="closeHelper()">
         <p
           class="close-helper"
-          :class="{ 'close-retro-theme-helper': theme.retroTheme === true }"
+          :class="{ 'close-retro-theme-helper': theme.retroTheme }"
         >
           X
         </p>
@@ -213,7 +213,7 @@ export default {
         class="helper-settings-title"
         :class="{
           'christmas-red': isChristmas.christmasTheme,
-          'retro-helper-settings-title': theme.retroTheme === true,
+          'retro-helper-settings-title': theme.retroTheme,
         }"
       >
         {{ languages.settingsTextTitle }}:
@@ -226,111 +226,122 @@ export default {
       />
 
       <div id="helper-description">
-        <span @click="highlightsForTutorial(1)">&#x2699;</span>
-        <span :class="{ 'tutorial-highlights': highlits === 1 }">{{
-          languages.safeModeText.title
-        }}</span>
-        <span class="info-icon" @click="safeModeInfo = !safeModeInfo">i</span
-        ><br />
-        <li class="ml-4" v-if="safeModeInfo">
-          ({{ languages.safeModeText.description }})
-        </li>
-        <li
-          class="toggle-delete-confirm-container"
-          @click="settings.toggleDeleteConfirm()"
-        >
-          <u>{{ languages.safeModeText.function }}</u>
-          <div class="toggle-delete-confirm">&#x1F449;</div>
-          <span class="text-primary">{{ settings.canDeleteText }}</span>
-        </li>
-        <br />
-
-        <span @click="highlightsForTutorial(2)">&#x2699;</span>
-        <span :class="{ 'tutorial-highlights': highlits === 2 }"
-          >{{ languages.chosenThemeText }}:
-        </span>
-        <span class="text-primary">{{ theme.themeName }}</span
-        ><br />
-        <li class="ml-4">{{ languages.changeThemeText }}</li>
-        <br />
-        <div
-          class="btn-group"
-          role="group"
-          aria-label="Basic mixed styles example"
-        >
-          <button
-            type="button"
-            class="btn btn-light p-1 border border-dark"
-            @click="changeTheme('light')"
+        <div class="helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(1)"
+            >&#x2699;</span
           >
-            Light
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark p-1"
-            @click="changeTheme('dark')"
+          <span :class="{ 'tutorial-highlights': highlits === 1 }">
+            {{ languages.safeModeText.title }}
+          </span>
+          <span class="info-icon" @click="safeModeInfo = !safeModeInfo">i</span
+          ><br />
+          <li class="ml-4" v-if="safeModeInfo">
+            ({{ languages.safeModeText.description }})
+          </li>
+          <div
+            class="toggle-delete-confirm-container"
+            @click="settings.toggleDeleteConfirm()"
           >
-            Dark
-          </button>
-          <button
-            type="button"
-            class="btn minimal-theme p-0"
-            @click="changeTheme('minimal')"
-          >
-            Minimal
-          </button>
-          <button
-            type="button"
-            class="btn retro-theme p-1"
-            @click="changeTheme('retro')"
-          >
-            Dos
-          </button>
-          <button
-            type="button"
-            class="btn summer-theme p-1"
-            @click="changeTheme('summer')"
-          >
-            Summer
-          </button>
-          <button
-            type="button"
-            class="btn winter-theme p-0"
-            @click="changeTheme('winter')"
-          >
-            Winter
-          </button>
+            <span>{{ languages.safeModeText.function }}</span>
+            <span class="toggle-delete-confirm">&#x1F449;</span>
+            <span class="text-primary">{{ settings.canDeleteText }}</span>
+          </div>
         </div>
-        <br />
 
-        <span @click="highlightsForTutorial(3)">&#x2699;</span>
-        <span :class="{ 'tutorial-highlights': highlits === 3 }"
-          >{{ languages.autoDeleteEmptyCategoriesText.title }}:
-        </span>
-        <span
-          class="info-icon"
-          @click="
-            autoDeleteEmptyCategoriesInfo = !autoDeleteEmptyCategoriesInfo
-          "
-          >i</span
-        ><br />
-        <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
-          ({{ languages.autoDeleteEmptyCategoriesText.description }})
-        </li>
-        <li
-          class="toggle-delete-confirm-container"
-          @click="settings.toggleAutomaticDeleteEmptyCategories()"
-        >
-          <u>{{ languages.autoDeleteEmptyCategoriesText.function }}</u>
-          <div class="toggle-delete-confirm">&#x1F449;</div>
-          <span class="text-primary">{{
-            settings.canDeleteEmptyCategoriesText
-          }}</span>
-        </li>
-        <br />
+        <div class="helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(2)"
+            >&#x2699;</span
+          >
+          <span :class="{ 'tutorial-highlights': highlits === 2 }"
+            >{{ languages.chosenThemeText }}:
+          </span>
+          <span class="text-primary">{{ theme.themeName }}</span
+          ><br />
+          <li class="ml-4">{{ languages.changeThemeText }}</li>
+          <br />
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic mixed styles example"
+          >
+            <button
+              type="button"
+              class="btn btn-light p-1 border border-dark"
+              @click="changeTheme('light')"
+            >
+              Light
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark p-1"
+              @click="changeTheme('dark')"
+            >
+              Dark
+            </button>
+            <button
+              type="button"
+              class="btn minimal-theme p-0"
+              @click="changeTheme('minimal')"
+            >
+              Minimal
+            </button>
+            <button
+              type="button"
+              class="btn retro-theme p-1"
+              @click="changeTheme('retro')"
+            >
+              Dos
+            </button>
+            <button
+              type="button"
+              class="btn summer-theme p-1"
+              @click="changeTheme('summer')"
+            >
+              Summer
+            </button>
+            <button
+              type="button"
+              class="btn winter-theme p-0"
+              @click="changeTheme('winter')"
+            >
+              Winter
+            </button>
+          </div>
+        </div>
 
-        <div class="add-list-copied-container">
-          <span @click="highlightsForTutorial(4)">&#x2699;</span>
+        <div class="helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(3)"
+            >&#x2699;</span
+          >
+          <span :class="{ 'tutorial-highlights': highlits === 3 }"
+            >{{ languages.autoDeleteEmptyCategoriesText.title }}:
+          </span>
+          <span
+            class="info-icon"
+            @click="
+              autoDeleteEmptyCategoriesInfo = !autoDeleteEmptyCategoriesInfo
+            "
+            >i</span
+          ><br />
+          <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
+            ({{ languages.autoDeleteEmptyCategoriesText.description }})
+          </li>
+          <li
+            class="toggle-delete-confirm-container"
+            @click="settings.toggleAutomaticDeleteEmptyCategories()"
+          >
+            <u>{{ languages.autoDeleteEmptyCategoriesText.function }}</u>
+            <div class="toggle-delete-confirm">&#x1F449;</div>
+            <span class="text-primary">{{
+              settings.canDeleteEmptyCategoriesText
+            }}</span>
+          </li>
+        </div>
+
+        <div class="add-list-copied-container helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(4)"
+            >&#x2699;</span
+          >
           <span :class="{ 'tutorial-highlights': highlits === 4 }">
             {{ languages.pasteListText.title }}
           </span>
@@ -385,8 +396,11 @@ export default {
             </button>
           </div>
         </div>
-        <div class="share-update">
-          <span @click="highlightsForTutorial(5)">&#x2699;</span>
+
+        <div class="share-update helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(5)"
+            >&#x2699;</span
+          >
           <span :class="{ 'tutorial-highlights': highlits === 5 }"
             >{{ languages.shareText }}:
           </span>
@@ -400,28 +414,34 @@ export default {
             {{ languages.share.text }}
           </p>
         </div>
-        <div class="share-update">
-          <span @click="highlightsForTutorial(6)">&#x2699;</span>
+
+        <div class="share-update helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(6)"
+            >&#x2699;</span
+          >
           <span :class="{ 'tutorial-highlights': highlits === 6 }"
             >{{ languages.updateText.description }}:</span
           >
-          <button
-            :disabled="languages.updateText.readyForUpdate"
-            :class="{
-              'ready-for-update': !languages.updateText.readyForUpdate,
-            }"
-            class="btn btn-light border-dark ml-1 share-update-btn"
-            @click="updateApp()"
-          >
-            <img src="@/img/icons/update.webp" alt="update" />
-          </button>
-          <small v-if="!languages.updateText.readyForUpdate">
-            {{ languages.updateText.available }}
-          </small>
-          <small v-if="languages.updateText.readyForUpdate">
-            {{ languages.updateText.unavailable }}
-          </small>
+          <div class="update-container">
+            <button
+              :disabled="languages.updateText.readyForUpdate"
+              :class="{
+                'ready-for-update': !languages.updateText.readyForUpdate,
+              }"
+              class="btn btn-light border-dark mr-3 share-update-btn"
+              @click="updateApp()"
+            >
+              <img src="@/img/icons/update.webp" alt="update" />
+            </button>
+            <small v-if="!languages.updateText.readyForUpdate">
+              {{ languages.updateText.available }}
+            </small>
+            <small v-if="languages.updateText.readyForUpdate">
+              {{ languages.updateText.unavailable }}
+            </small>
+          </div>
         </div>
+
         <div id="helper-istructions">
           <!-- ----------------------------------DESCRIZIONE IN BASE ALLA LINGUA SCELTA----------------------------- -->
           <HelperDescriptionIta v-if="languages.langIta" />
@@ -458,6 +478,10 @@ export default {
 }
 .settings {
   width: 33px;
+}
+
+.helper-settings {
+  margin-bottom: 10px;
 }
 
 .helper-description {
@@ -643,6 +667,10 @@ textarea {
 .share-update-btn > img {
   width: 20px;
 }
+
+.update-container {
+  text-align: center;
+}
 .link-copied {
   font-size: 13px;
   margin-left: 5px;
@@ -706,6 +734,9 @@ textarea {
   }
 }
 
+.toggle-delete-confirm-container {
+  margin-left: 20px;
+}
 .toggle-delete-confirm-container:hover {
   cursor: pointer;
 }
