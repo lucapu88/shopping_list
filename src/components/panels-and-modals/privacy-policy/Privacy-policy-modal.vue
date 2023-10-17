@@ -1,5 +1,5 @@
 <script setup>
-import PrivacyPolicyComplete from '../privacy-policy/Pricacy-policy-complete.vue';
+import PrivacyPolicyComplete from './Pricacy-policy-complete.vue';
 import { useSettingsStore } from '@/store/SettingsStore';
 </script>
 
