@@ -179,7 +179,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     selectCategoryToAddItem(index, todo) {
       //solo se è nella lista categorie faccio tutto
       if (todo.class) {
-        const allCategories = [...this.languages.engCategories, ...this.languages.itaCategories];
+        const allCategories = [...this.languages.engCategories, ...this.languages.itaCategories, ...this.languages.spanCategories];
 
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
         allCategories.forEach((category) => {
@@ -191,7 +191,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
             if (this.addTodoInCategory.condition) {
               //se clicco su una categoria ed è evidenziata il focus va sull'input
               this.focusIn = true;
-              this.languages.placeholder = (this.languages.langIta ? 'Aggiungi in ' : 'Add in ') + todo.emojy + todo.name.toUpperCase();
+              this.languages.placeholder = (this.languages.langIta ? 'Aggiungi in '
+                : this.languages.langSpanish ? 'Añadir en '
+                  : 'Add in ') + todo.emojy + todo.name.toUpperCase();
             } else {
               this.focusIn = false;
               this.languages.placeholder = this.languages.defaultPlaceholderText;

@@ -37,15 +37,15 @@ export default {
         v-if="todosStore.confirmRemove"
         @click="todosStore.confirmedRemoveTodo(todosStore.index)"
       >
-        <span v-if="languages.langIta">SI</span>
-        <span v-else>YES</span>
+        <span v-if="languages.langIta || languages.langSpanish">SI</span>
+        <span v-if="languages.langEnglish">YES</span>
       </button>
       <button
         v-if="todosStore.deleteSelected"
         @click="todosStore.deleteSelectedTodos()"
       >
-        <span v-if="languages.langIta">SI</span>
-        <span v-else>YES</span>
+        <span v-if="languages.langIta || languages.langSpanish">SI</span>
+        <span v-if="languages.langEnglish">YES</span>
       </button>
       <button @click="todosStore.confirmDeleteModal = false">NO</button>
     </div>

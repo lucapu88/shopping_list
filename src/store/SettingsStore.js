@@ -42,7 +42,9 @@ export const useSettingsStore = defineStore('settings', {
       const lastYear = window.localStorage.getItem('lastYear');
       const month = this.languages.langIta
         ? ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"]
-        : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        : this.languages.langSpanish
+          ? ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+          : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       if ((lastMonth !== null && lastYear !== null) && monthNow == lastMonth && yearNow == lastYear) {
         this.languages.updateText.readyForUpdate = true;

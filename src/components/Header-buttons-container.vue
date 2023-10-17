@@ -17,7 +17,7 @@ export default {
   methods: {
     copy() {
       const myList = this.todosStore.todos.map((todo) =>
-        todo.class ? `${todo.name.toUpperCase()}:\n` : `-${todo.name}\n`
+        todo.class ? `${todo.name.toUpperCase()}\n` : ` ${todo.name}\n`
       );
       const arrayNoCommas = myList.join(' ');
 
@@ -80,11 +80,8 @@ export default {
     </button>
   </div>
   <div class="drag-n-drop-text">
-    <small v-if="languages.langIta && todosStore.isDraggable">
-      Trascina gli elementi della lista dove vuoi
-    </small>
-    <small v-if="!languages.langIta && todosStore.isDraggable">
-      Drag the elements of the list where you want
+    <small v-if="todosStore.isDraggable">
+      {{ languages.helperDescription.dragNdropText.dragginText }}
     </small>
   </div>
   <p class="list-copied" v-if="languages.copyList.visible">
@@ -118,7 +115,7 @@ export default {
 
 .list-copied {
   font-size: 13px;
-  margin: 0 25%;
+  margin: 0 20%;
   color: #28a745;
 }
 </style>

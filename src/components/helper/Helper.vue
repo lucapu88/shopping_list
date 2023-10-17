@@ -117,7 +117,8 @@ export default {
       const listPastedToArray = this.listPasted
         .split('\n')
         .filter((el) => el !== '')
-        .map((todo) => todo.replace(/[^a-zA-Z0-9\s]/g, '').trim());
+        .map((todo) => todo.replace(/\b-\b/g, '').trim());
+      // .map((todo) => todo.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '').trim());
       listPastedToArray.forEach((td) => {
         this.addNewTodo.newTodo = td;
         this.addNewTodo.addTodo();
@@ -240,29 +241,47 @@ export default {
               :class="{
                 christmas: theme.christmasTheme,
                 'minimal-btn': theme.minimalTheme,
-                'retro-btn': theme.retroTheme,
               }"
             >
               <button
                 class="btn-lang-left"
-                :class="{ 'language-selected': !languages.langIta }"
+                :class="{
+                  'language-selected':
+                    languages.langEnglish && !theme.retroTheme,
+                  'retro-helper-btn-selected':
+                    languages.langEnglish && theme.retroTheme,
+                  'retro-helper-btn': theme.retroTheme,
+                }"
                 @click="languages.setEnglishLanguage()"
               >
-                English
+                {{ languages.languagesBtns.english }}
               </button>
               <button
                 class="btn-lang-center"
-                :class="{ 'language-selected': !languages.langIta }"
-                @click="languages.setEnglishLanguage()"
+                :class="{
+                  'language-selected':
+                    languages.langSpanish && !theme.retroTheme,
+                  'retro-helper-btn-selected':
+                    languages.langSpanish && theme.retroTheme,
+
+                  'retro-helper-btn': theme.retroTheme,
+                }"
+                @click="languages.setSpanishLanguage()"
               >
-                Spanish
+                {{ languages.languagesBtns.spanish }}
               </button>
               <button
                 class="btn-lang-right"
-                :class="{ 'language-selected': languages.langIta }"
+                :class="{
+                  'language-selected': languages.langIta && !theme.retroTheme,
+                  'retro-helper-btn-selected':
+                    languages.langIta && theme.retroTheme,
+
+                  'retro-helper-btn': theme.retroTheme,
+                }"
                 @click="languages.setItalianoLanguage()"
               >
-                Italian
+                {{ languages.languagesBtns.italian }}
               </button>
             </div>
           </div>
@@ -355,7 +374,11 @@ export default {
           <span class="settings-icon mr-1" @click="highlightsForTutorial(3)"
             >&#x2699;</span
           >
-          <span :class="{ 'tutorial-highlights': highlits === 3 }"
+          <span
+            :class="{
+              'tutorial-highlights': highlits === 3,
+              'spanish-size': languages.langSpanish,
+            }"
             >{{ languages.autoDeleteEmptyCategoriesText.title }}:
           </span>
           <span
@@ -384,12 +407,18 @@ export default {
           <span class="settings-icon mr-1" @click="highlightsForTutorial(4)"
             >&#x2699;</span
           >
-          <span :class="{ 'tutorial-highlights': highlits === 4 }">
+          <span
+            :class="{
+              'tutorial-highlights': highlits === 4,
+              'spanish-size': languages.langSpanish,
+            }"
+          >
             {{ languages.pasteListText.title }}
           </span>
-          <span class="info-icon" @click="pasteListInfo = !pasteListInfo"
-            >i</span
-          ><br />
+          <span class="info-icon" @click="pasteListInfo = !pasteListInfo">
+            i
+          </span>
+          <br />
           <li class="ml-4" v-if="pasteListInfo">
             ({{ languages.pasteListText.subtitle }})
           </li>
@@ -433,8 +462,7 @@ export default {
               }"
               @click="addListCopied()"
             >
-              <small v-if="!languages.langIta">Import</small>
-              <small v-else>Importa</small>
+              <small>{{ languages.importText }}</small>
             </button>
           </div>
         </div>
@@ -443,8 +471,8 @@ export default {
           <span class="settings-icon mr-1" @click="highlightsForTutorial(5)"
             >&#x2699;</span
           >
-          <span :class="{ 'tutorial-highlights': highlits === 5 }"
-            >{{ languages.shareText }}:
+          <span :class="{ 'tutorial-highlights': highlits === 5 }">
+            {{ languages.shareText }}:
           </span>
           <button
             class="btn btn-light border-dark share-update-btn"
@@ -699,7 +727,7 @@ export default {
   border: 2px solid;
   padding: 0 7px;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 .add-list-textarea {
   border-radius: 5px;

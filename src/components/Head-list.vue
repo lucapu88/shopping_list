@@ -74,46 +74,25 @@ export default {
     :class="{ christmas: isChristmas.christmasTheme }"
   >
     <h2
-      v-if="languages.langIta"
       class="title text-center"
       :class="{
         'dark-theme-title': theme.darkTheme,
         'minimal-theme-title': theme.minimalTheme,
         'retro-theme-title': theme.retroTheme,
+        'title-spanish': languages.langSpanish,
       }"
     >
-      Lista Spesa
+      {{ languages.shoppingListTitle }}
     </h2>
     <h2
-      v-else
-      class="title text-center"
-      :class="{
-        'dark-theme-title': theme.darkTheme,
-        'minimal-theme-title': theme.minimalTheme,
-        'retro-theme-title': theme.retroTheme,
-      }"
-    >
-      Shopping List
-    </h2>
-    <h2
-      v-if="languages.langIta"
       class="title2 text-center"
       :class="{
         'minimal-theme-title2': theme.minimalTheme,
         'retro-theme-title2': theme.retroTheme,
+        'title-spanish': languages.langSpanish,
       }"
     >
-      Lista Spesa
-    </h2>
-    <h2
-      v-else
-      class="title2 title2-eng text-center"
-      :class="{
-        'minimal-theme-title2': theme.minimalTheme,
-        'retro-theme-title2': theme.retroTheme,
-      }"
-    >
-      Shopping List
+      {{ languages.shoppingListTitle }}
     </h2>
 
     <span
@@ -211,6 +190,9 @@ export default {
   }
 }
 
+.title-spanish {
+  font-size: 27px;
+}
 .placeholder-selected {
   background-color: #a6cef8;
 }

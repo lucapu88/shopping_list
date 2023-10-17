@@ -35,8 +35,9 @@ export default {
           'retro-helper-settings-title': theme.retroTheme,
         }"
       >
-        <span v-if="languages.langIta">Scegli una categoria tra queste:</span>
-        <span v-else>Choose a category among these:</span>
+        <span>
+          {{ languages.choseCategoryText }}
+        </span>
       </p>
       <p
         class="category-list"
@@ -59,10 +60,11 @@ export default {
         </span>
       </p>
     </div>
-    <div v-if="todosStore.categoryListChildren">
+    <div v-if="todosStore.categoryListChildren" class="add-remove-empty">
       <button
         class="insert-all-btn"
         :class="{
+          'spanish-size': languages.langSpanish,
           'light-btn': theme.lightTheme,
           'dark-btn': theme.darkTheme,
           'minimal-btn': theme.minimalTheme,
@@ -77,6 +79,7 @@ export default {
       <button
         class="insert-all-btn"
         :class="{
+          'spanish-size': languages.langSpanish,
           'light-btn': theme.lightTheme,
           'dark-btn': theme.darkTheme,
           'minimal-btn': theme.minimalTheme,
@@ -278,5 +281,10 @@ export default {
   background-color: #ffffff;
   border: 2px solid #007bff;
   border-radius: 10px;
+}
+
+.add-remove-empty {
+  display: flex;
+  justify-content: center;
 }
 </style>

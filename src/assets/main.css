@@ -87,6 +87,10 @@ button {
   margin-left: 15px;
 }
 
+.spanish-size {
+  font-size: 13px;
+}
+
 .tutorial-highlights {
   background-color: orangered;
   color: #ffffff;
@@ -627,6 +631,17 @@ button {
   border-color: #35c50d !important;
   border-radius: 0 !important;
   color: #35c50d !important;
+}
+.retro-helper-btn {
+  border: 3px #fff outset !important;
+  border-radius: 0px !important;
+  background-color: #efefef !important;
+  color: #000000 !important;
+}
+.retro-helper-btn-selected {
+  border: 3px #fff inset !important;
+  background-color: #c0c0c0 !important;
+  color: #000000 !important;
 }
 .retro-btn-border {
   border: 3px #fff outset !important;

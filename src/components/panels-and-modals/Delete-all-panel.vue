@@ -34,23 +34,17 @@ export default {
     }"
     v-if="!todosStore.visible"
   >
-    <p v-if="languages.langIta">
+    <p>
       <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
-      Sei sicuro di voler eliminare <br />
-      tutta la lista?
-    </p>
-    <p v-else>
-      <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
-      Are you sure you want <br />
-      delete the whole list?
+      {{ languages.deleteAllConfirmText }}
     </p>
     <button
       class="btn btn-primary"
       v-on:click="todosStore.visible = true"
       @click="todosStore.removeAllTodo()"
     >
-      <span v-if="languages.langIta">SI</span>
-      <span v-else>YES</span>
+      <span v-if="languages.langIta || languages.langSpanish">SI</span>
+      <span v-if="languages.langEnglish">YES</span>
     </button>
     <button class="btn btn-secondary" v-on:click="todosStore.visible = true">
       NO

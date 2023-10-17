@@ -88,6 +88,9 @@ export default {
 </template>
 
 <style scoped>
+.close {
+  background-color: #ffffffad;
+}
 .privacy-policy-btn {
   border: 1px solid grey;
   font-size: x-small;
