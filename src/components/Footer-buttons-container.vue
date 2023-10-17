@@ -49,8 +49,7 @@ export default {
       }"
       @click="openDeleteAllModal()"
     >
-      <span v-if="languages.langIta">Cancella tutto </span>
-      <span v-else>Delete ALL </span>
+      <span>{{ languages.deleteAll }}</span>
       <img class="skull" src="@/img/icons/skull.webp" alt="" />
     </button>
     <!-- PULSANTE TORNA IN CIMA -->
@@ -68,31 +67,6 @@ export default {
     >
       <span> >> </span>
     </button>
-
-    <!-- CAMBIO LINGUA -->
-    <div
-      class="btns-language-container"
-      :class="{
-        christmas: theme.christmasTheme,
-        'minimal-btn': theme.minimalTheme,
-        'retro-btn': theme.retroTheme,
-      }"
-    >
-      <button
-        class="btn-lang-left"
-        :class="{ 'language-selected': !languages.langIta }"
-        @click="languages.setEnglishLanguage()"
-      >
-        Eng
-      </button>
-      <button
-        class="btn-lang-right"
-        :class="{ 'language-selected': languages.langIta }"
-        @click="languages.setItalianoLanguage()"
-      >
-        Ita
-      </button>
-    </div>
   </div>
   <div v-if="isChristmas.christmasTheme">
     <img
@@ -105,9 +79,6 @@ export default {
 </template>
 
 <style scoped>
-.btns-language-container {
-  display: flex;
-}
 .footer-btns-container {
   display: flex;
   justify-content: space-around;
@@ -115,13 +86,13 @@ export default {
 .dark {
   background-color: #000000;
   color: #ffff;
+  min-width: 180px;
 }
 .btn-back-to-top {
   /* rotate: 270deg; */
   transform: rotate(270deg);
   -moz-transform: rotate(270deg);
   -webkit-transform: rotate(270deg);
-  padding: 0 5px 5px;
   font-weight: bold;
   background-color: #efefef;
 }
@@ -133,22 +104,5 @@ export default {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
-}
-
-.language-selected {
-  background-color: rgb(0, 172, 252);
-  color: rgb(255, 255, 255) !important;
-}
-.btn-lang-left {
-  padding: 0px 5px;
-  border-radius: 10px 0 0 10px;
-  color: rgb(0, 172, 252);
-  border-color: rgb(0, 172, 252);
-}
-.btn-lang-right {
-  padding: 0px 5px;
-  border-radius: 0 10px 10px 0;
-  color: rgb(0, 172, 252);
-  border-color: rgb(0, 172, 252);
 }
 </style>

@@ -1,7 +1,6 @@
 <script setup>
-import HelperDescriptionIta from './languages/Helper-description-ita.vue';
-import HelperDescriptionEng from './languages/Helper-description-eng.vue';
-import PrivacyPolicyModal from './panels-and-modals/privacy-policy/Privacy-policy-modal.vue';
+import HelperDescription from './Helper-description.vue';
+import PrivacyPolicyModal from '../panels-and-modals/privacy-policy/Privacy-policy-modal.vue';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
@@ -179,6 +178,7 @@ export default {
       <img src="@/img/update-img.webp" alt="loading" />
       <h2 class="category-emoji-selected updating-text">..DOWNLOAD..</h2>
     </div>
+
     <!-- CONTAINER DI TUTTO L'HELPER -->
     <div
       v-if="!themeLoading && !updating"
@@ -225,13 +225,55 @@ export default {
         alt="E felice anno nuovo!"
       />
 
+      <!-- --------------------------INIZIO HELPER-------------------------------- -->
       <div id="helper-description">
+        <div class="helper-settings">
+          <span class="settings-icon mr-1" @click="highlightsForTutorial(0)"
+            >&#x2699;</span
+          >
+          <span :class="{ 'tutorial-highlights': highlits === 0 }">
+            {{ languages.changeLanguage }}:
+          </span>
+          <div class="languages-btns-container">
+            <div
+              class="btns-language-container"
+              :class="{
+                christmas: theme.christmasTheme,
+                'minimal-btn': theme.minimalTheme,
+                'retro-btn': theme.retroTheme,
+              }"
+            >
+              <button
+                class="btn-lang-left"
+                :class="{ 'language-selected': !languages.langIta }"
+                @click="languages.setEnglishLanguage()"
+              >
+                English
+              </button>
+              <button
+                class="btn-lang-center"
+                :class="{ 'language-selected': !languages.langIta }"
+                @click="languages.setEnglishLanguage()"
+              >
+                Spanish
+              </button>
+              <button
+                class="btn-lang-right"
+                :class="{ 'language-selected': languages.langIta }"
+                @click="languages.setItalianoLanguage()"
+              >
+                Italian
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="helper-settings">
           <span class="settings-icon mr-1" @click="highlightsForTutorial(1)"
             >&#x2699;</span
           >
           <span :class="{ 'tutorial-highlights': highlits === 1 }">
-            {{ languages.safeModeText.title }}
+            {{ languages.safeModeText.title }}:
           </span>
           <span class="info-icon" @click="safeModeInfo = !safeModeInfo">i</span
           ><br />
@@ -444,8 +486,7 @@ export default {
 
         <div id="helper-istructions">
           <!-- ----------------------------------DESCRIZIONE IN BASE ALLA LINGUA SCELTA----------------------------- -->
-          <HelperDescriptionIta v-if="languages.langIta" />
-          <HelperDescriptionEng v-if="!languages.langIta" />
+          <HelperDescription />
         </div>
 
         <button
@@ -494,6 +535,37 @@ export default {
   background-size: contain;
   z-index: 150;
   background-color: #ffffff;
+}
+
+.languages-btns-container {
+  display: flex;
+  justify-content: center;
+}
+.btns-language-container {
+  display: flex;
+}
+.language-selected {
+  background-color: rgb(0, 172, 252);
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-lang-left {
+  padding: 0px 5px;
+  border-radius: 10px 0 0 10px;
+  color: rgb(0, 172, 252);
+  border-color: rgb(0, 172, 252);
+}
+.btn-lang-center {
+  padding: 0px 5px;
+  border-radius: 0;
+  color: rgb(0, 172, 252);
+  border-color: rgb(0, 172, 252);
+}
+.btn-lang-right {
+  padding: 0px 5px;
+  border-radius: 0 10px 10px 0;
+  color: rgb(0, 172, 252);
+  border-color: rgb(0, 172, 252);
 }
 
 #loading-themes-container,

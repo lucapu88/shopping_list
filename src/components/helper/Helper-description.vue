@@ -2,6 +2,7 @@
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import { useLanguageStore } from '@/store/LanguageStore';
 </script>
 
 <script>
@@ -11,6 +12,7 @@ export default {
       theme: useThemeStore(),
       isChristmas: useChristmasStore(),
       settings: useSettingsStore(),
+      languages: useLanguageStore(),
       addEditDelete: false,
       categoriesInfo: false,
       dragNdrop: false,
@@ -37,18 +39,16 @@ export default {
 <template>
   <div>
     <p class="helper-title" @click="highlightsForTutorial(6)">
-      Risoluzione Problemi:
+      {{ languages.helperDescription.troubleshooting }}
     </p>
     <small :class="{ 'tutorial-highlights': highlits === 6 }">
-      Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini,
-      controlla la tua connessione, se è ok prova a riavviare l'app. Se il
-      problema persiste segnalalo all'email nella sezione contatti.
+      {{ languages.helperDescription.troubleshootingText }}
     </small>
     <p
       class="helper-title"
       :class="isChristmas.christmasTheme ? 'christmas-red' : ''"
     >
-      Istruzioni:
+      {{ languages.helperDescription.instructionsTitle }}
     </p>
     <ul class="helper-list">
       <div
@@ -61,7 +61,7 @@ export default {
         }"
         @click="settings.showListIstructions('addEditDelete')"
       >
-        Aggiungere, Modificare, Eliminare.
+        {{ languages.helperDescription.addEditDelete }}
         <img
           class="arrow"
           :class="{
@@ -78,10 +78,9 @@ export default {
           src="@/img/icons/paper-plane.webp"
           alt="paper-plane"
         />
-        serve per aggiungere alla lista roba da comprare.
+        {{ languages.helperDescription.add }}
       </li>
       <li v-if="settings.addEditDelete">
-        Con
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
@@ -91,7 +90,7 @@ export default {
           src="@/img/icons/pencil.webp"
           alt="pencil"
         />
-        potrai modificare un nome e salvare le modifiche cliccando
+        {{ languages.helperDescription.edit }}
         <img
           class="btn-success rounded-circle btn-sm helper-icon"
           :class="{
@@ -103,7 +102,6 @@ export default {
         />.
       </li>
       <li v-if="settings.addEditDelete">
-        Con
         <img
           class="btn-primary rounded-circle btn-sm helper-icon"
           :class="{
@@ -113,10 +111,9 @@ export default {
           src="@/img/icons/trash.webp"
           alt="trash"
         />
-        eliminerai roba dalla lista.
+        {{ languages.helperDescription.delete }}
       </li>
       <li v-if="settings.addEditDelete">
-        Con
         <button
           class="btn btn-outline-info p-0"
           style="rotate: 270deg"
@@ -130,7 +127,7 @@ export default {
         >
           <span> >> </span>
         </button>
-        torni in cima alla lista. Funziona quando è molto lunga.
+        {{ languages.helperDescription.backToTop }}
       </li>
       <div
         class="list-title"
@@ -142,7 +139,7 @@ export default {
         }"
         @click="settings.showListIstructions('categoriesInfo')"
       >
-        Categorie.
+        {{ languages.helperDescription.categories }}
         <img
           class="arrow"
           :class="{
@@ -154,13 +151,13 @@ export default {
         />
       </div>
       <li v-if="settings.categoriesInfo">
-        Per aggiungere una categoria basta scriverla e cliccare su
+        {{ languages.helperDescription.addCategory.part1 }}
         <img
           class="btn btn-info helper-icon"
           src="@/img/icons/paper-plane.webp"
           alt="paper-plane"
         />
-        oppure sceglierla nel riquadro cliccando
+        {{ languages.helperDescription.addCategory.part2 }}
         <span
           style="border: none"
           class="custom-show-listbtn helper-icon pl-2 pr-2"
@@ -168,8 +165,10 @@ export default {
             'minimal-helper-btn': theme.minimalTheme,
             'retro-teme-btns': theme.retroTheme,
           }"
-          >+</span
-        >. Ti apparirà
+        >
+          +
+        </span>
+        . {{ languages.helperDescription.addCategory.part3 }}
         <span
           class="category p-1"
           :class="{
@@ -177,14 +176,16 @@ export default {
             'category-minimal': theme.minimalTheme,
           }"
         >
-          Così
+          {{ languages.helperDescription.addCategory.part4 }}
         </span>
-        e cliccando sul nome si <span class="selected">evidenzierà</span>, così
-        potrai aggiungerci roba al suo interno. Una volta finito basta
-        ricliccare sul nome o su qualsiasi altro nome di altre categorie.
+        {{ languages.helperDescription.addCategory.part5 }}
+        <span class="selected">
+          {{ languages.helperDescription.addCategory.part6 }}.
+        </span>
+        {{ languages.helperDescription.addCategory.part7 }}
       </li>
       <li v-if="settings.categoriesInfo">
-        You can add all the categories by clicking on
+        {{ languages.helperDescription.addAllCat }}
         <button
           :class="{
             'light-btn': theme.lightTheme,
@@ -195,11 +196,11 @@ export default {
             'winter-btn': theme.winterTheme,
           }"
         >
-          <span>Inserisci tutte</span></button
+          <span>{{ languages.insertAll }}</span></button
         >.
       </li>
       <li v-if="settings.categoriesInfo">
-        You can delete only the categories left empty by clicking on
+        {{ languages.helperDescription.removeEmptyCat }}
         <button
           :class="{
             'light-btn': theme.lightTheme,
@@ -210,7 +211,7 @@ export default {
             'winter-btn': theme.winterTheme,
           }"
         >
-          <span>Rimuovi Vuote</span></button
+          <span>{{ languages.removeEmpty }}</span></button
         >.
       </li>
       <div
@@ -223,7 +224,7 @@ export default {
         }"
         @click="settings.showListIstructions('dragNdrop')"
       >
-        Trascina e sposta elementi.
+        {{ languages.helperDescription.dragNdropTitle }}
         <img
           class="arrow"
           :class="{
@@ -235,7 +236,7 @@ export default {
         />
       </div>
       <li v-if="settings.dragNdrop">
-        Cliccando su
+        {{ languages.helperDescription.dragNdropText.part1 }}
         <button
           class="btn custom-show-listbtn"
           :class="{
@@ -245,7 +246,7 @@ export default {
         >
           <img src="@/img/icons/drag-and-drop.webp" alt="move" />
         </button>
-        potrai trascinare gli elementi e spostarli dove vuoi.
+        {{ languages.helperDescription.dragNdropText.part2 }}
       </li>
       <div
         class="list-title"
@@ -257,7 +258,7 @@ export default {
         }"
         @click="settings.showListIstructions('selectAndDelete')"
       >
-        Seleziona ed elimina più elementi.
+        {{ languages.helperDescription.multipleDeleteTitle }}
         <img
           class="arrow"
           :class="{
@@ -269,13 +270,23 @@ export default {
         />
       </div>
       <li v-if="settings.selectAndDelete">
-        Puoi eliminare più prodotti insieme cliccando su
-        <img class="cart" src="@/img/icons/cart-red.webp" />. Così li smarchi e
-        poi a fine spesa cliccado sul
+        {{ languages.helperDescription.multipleDeleteText.part1 }}
+        <span class="cart">
+          <img
+            v-if="theme.darkTheme || theme.retroTheme || theme.winterTheme"
+            src="@/img/icons/cart-white.webp"
+          />
+          <img
+            v-if="theme.lightTheme || theme.summerTheme"
+            src="@/img/icons/cart-black.webp"
+          />
+          <strong v-if="theme.minimalTheme"> - </strong>
+        </span>
+        {{ languages.helperDescription.multipleDeleteText.part2 }}
         <button class="text-danger border-danger rounded">
           <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
         </button>
-        in basso verranno eliminati solo quelli che hai smarcato.
+        {{ languages.helperDescription.multipleDeleteText.part3 }}
       </li>
       <div
         class="list-title"
@@ -287,7 +298,7 @@ export default {
         }"
         @click="settings.showListIstructions('copyHighlights')"
       >
-        Copia lista, Evidenzia elementi.
+        {{ languages.helperDescription.copyListTitle }}
         <img
           class="arrow"
           :class="{
@@ -308,12 +319,14 @@ export default {
         >
           <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
         </span>
-        serve per copiare la lista e incollarla dove vuoi.
+        {{ languages.helperDescription.copyListText }}
       </li>
       <li v-if="settings.copyHighlights">
-        Puoi rendere "importante" un prodotto cliccando sul nome e verrà
-        <span class="active">evidenziato</span>, così non potrà essere eliminato
-        o modificato.
+        {{ languages.helperDescription.highlightImportant.part1 }}
+        <span class="active">
+          {{ languages.helperDescription.highlightImportant.part2 }},
+        </span>
+        {{ languages.helperDescription.highlightImportant.part3 }}
       </li>
       <div
         class="list-title"
@@ -325,7 +338,7 @@ export default {
         }"
         @click="settings.showListIstructions('deleteAllInfo')"
       >
-        Elimina tutto.
+        {{ languages.helperDescription.deleteAllTitle }}
         <img
           class="arrow"
           :class="{
@@ -337,13 +350,12 @@ export default {
         />
       </div>
       <li v-if="settings.deleteAllInfo">
-        Se clicchi su
+        {{ languages.helperDescription.deleteAllText.part1 }}
         <span class="delete-all-description">
-          cancella tutto
+          {{ languages.deleteAll }}
           <img class="skull" src="@/img/icons/skull.webp" alt="skull" />
         </span>
-        ti apparirà un riquadro di conferma per l'eliminazione di
-        <u>TUTTA</u> la lista.
+        {{ languages.helperDescription.deleteAllText.part2 }}
       </li>
       <div
         class="list-title"
@@ -374,11 +386,11 @@ export default {
         poster="@/img/favicon.png"
         controls
       >
-        <source src="@/video/ITA.mp4" type="video/mp4" />
-        Il tuo device non supporta i video tag. Guardalo su youtube
-        <a href="https://www.youtube.com/watch?v=VSO1k1CUrBY" target="_blank"
-          >cliccando qui</a
-        >
+        <source src="@/video/ENG.mp4" type="video/mp4" />
+        {{ languages.helperDescription.videoAlert }}
+        <!-- <a href="https://www.youtube.com/watch?v=H1E9ynY9f9w" target="_blank"
+          >by clicking here</a
+        > -->
       </video>
       <div
         class="list-title"
@@ -390,7 +402,7 @@ export default {
         }"
         @click="settings.showListIstructions('support')"
       >
-        Contatti.
+        {{ languages.helperDescription.support }}
         <img
           class="arrow"
           :class="{
@@ -402,11 +414,11 @@ export default {
         />
       </div>
       <li v-if="settings.support">
-        Per qualsiasi segnalazione puoi contattarmi:
+        {{ languages.helperDescription.supportText }}
         <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
       </li>
       <li v-if="settings.support">
-        Seguici sui social:
+        {{ languages.helperDescription.socialText }}
         <a
           href="https://www.facebook.com/profile.php?id=100080626866860"
           target="_blank"
@@ -418,14 +430,11 @@ export default {
   </div>
   <br />
   <p id="helper-important-alert" class="update-alert">
-    <span style="color: red" @click="highlightsForTutorial(7)">
-      IMPORTANTE:
-    </span>
+    <span style="color: red" @click="highlightsForTutorial(7)">{{
+      languages.helperDescription.adviceTitle
+    }}</span>
     <span :class="{ 'tutorial-highlights': highlits === 7 }">
-      Questa è una web app convertita in app per smartphone, ed è sempre
-      manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che
-      appare nello store. Quello è solo il giorno in cui l'ho pubblicata. La
-      data reale dell'ultimo aggiornamento è:
+      {{ languages.helperDescription.adviceText }}
       <span style="color: green">{{ settings.dateLastUpdate }}</span>
     </span>
   </p>

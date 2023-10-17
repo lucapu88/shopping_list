@@ -1,7 +1,7 @@
 <script setup>
 import HeadList from './components/Head-list.vue';
 import ConfirmModal from './components/panels-and-modals/Confirm-modal.vue';
-import Helper from './components/Helper.vue';
+import Helper from './components/helper/Helper.vue';
 import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';

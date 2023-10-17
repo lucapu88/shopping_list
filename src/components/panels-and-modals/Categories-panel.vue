@@ -72,8 +72,7 @@ export default {
         }"
         @click="languages.insertAllCategories()"
       >
-        <span v-if="languages.langIta">Inserisci tutte</span>
-        <span v-else>Insert all</span>
+        <span>{{ languages.insertAll }}</span>
       </button>
       <button
         class="insert-all-btn"
@@ -87,8 +86,7 @@ export default {
         }"
         @click="todosStore.removeOnlyEmpty()"
       >
-        <span v-if="languages.langIta">Rimuovi vuote</span>
-        <span v-else>Remove only empty</span>
+        <span>{{ languages.removeEmpty }}</span>
       </button>
     </div>
   </div>
