@@ -386,7 +386,21 @@ export default {
         poster="@/img/favicon.png"
         controls
       >
-        <source src="@/video/ENG.mp4" type="video/mp4" />
+        <source
+          v-if="languages.langEnglish"
+          src="@/video/ENG.mp4"
+          type="video/mp4"
+        />
+        <source
+          v-if="languages.langIta"
+          src="@/video/ITA.mp4"
+          type="video/mp4"
+        />
+        <source
+          v-if="languages.langSpanish"
+          src="@/video/SPA.mp4"
+          type="video/mp4"
+        />
         {{ languages.helperDescription.videoAlert }}
         <!-- <a href="https://www.youtube.com/watch?v=H1E9ynY9f9w" target="_blank"
           >by clicking here</a
