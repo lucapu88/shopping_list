@@ -25,6 +25,7 @@ export default {
       themeLoading: false,
       listPasted: null,
       updating: false,
+      copyrightText: '',
     };
   },
   created() {
@@ -33,6 +34,7 @@ export default {
     this.pasteListInfo = false;
     this.settings.checkingUpdates();
     this.isChristmas.merryChristmasTheme();
+    this.copyright();
   },
   mounted() {
     document.getElementById('helper-description').scrollTo(0, 0);
@@ -152,6 +154,11 @@ export default {
         location.reload();
       }, 3700);
     },
+    copyright() {
+      let copyright = new Date();
+      const update = copyright.getFullYear();
+      this.copyrightText = `Copyright© 2022 - ${update} Caputo Luca - All right reserved.`;
+    },
   },
 };
 </script>
@@ -226,7 +233,7 @@ export default {
         alt="E felice anno nuovo!"
       />
 
-      <!-- --------------------------INIZIO HELPER-------------------------------- -->
+      <!-- ------------------------------------------------INIZIO HELPER--------------------------------------------------- -->
       <div id="helper-description">
         <div class="helper-settings">
           <span class="settings-icon mr-1" @click="highlightsForTutorial(0)"
@@ -299,12 +306,16 @@ export default {
           <li class="ml-4" v-if="safeModeInfo">
             ({{ languages.safeModeText.description }})
           </li>
-          <div
-            class="toggle-delete-confirm-container"
-            @click="settings.toggleDeleteConfirm()"
-          >
-            <span>{{ languages.safeModeText.function }}</span>
-            <span class="toggle-delete-confirm">&#x1F449;</span>
+          <div class="toggle-delete-confirm-container">
+            <span
+              class="toggle-delete-confirm"
+              @click="settings.toggleDeleteConfirm()"
+            >
+              &#x1F449;
+            </span>
+            <u class="mr-2" @click="settings.toggleDeleteConfirm()">
+              {{ languages.safeModeText.function }}
+            </u>
             <span class="text-primary">{{ settings.canDeleteText }}</span>
           </div>
         </div>
@@ -387,19 +398,27 @@ export default {
               autoDeleteEmptyCategoriesInfo = !autoDeleteEmptyCategoriesInfo
             "
             >i</span
-          ><br />
+          >
+          <br />
           <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
             ({{ languages.autoDeleteEmptyCategoriesText.description }})
           </li>
-          <li
-            class="toggle-delete-confirm-container"
-            @click="settings.toggleAutomaticDeleteEmptyCategories()"
-          >
-            <u>{{ languages.autoDeleteEmptyCategoriesText.function }}</u>
-            <div class="toggle-delete-confirm">&#x1F449;</div>
-            <span class="text-primary">{{
-              settings.canDeleteEmptyCategoriesText
-            }}</span>
+          <li class="toggle-delete-confirm-container">
+            <div
+              class="toggle-delete-confirm"
+              @click="settings.toggleAutomaticDeleteEmptyCategories()"
+            >
+              &#x1F449;
+            </div>
+            <u
+              class="mr-2"
+              @click="settings.toggleAutomaticDeleteEmptyCategories()"
+            >
+              {{ languages.autoDeleteEmptyCategoriesText.function }}
+            </u>
+            <span class="text-primary">
+              {{ settings.canDeleteEmptyCategoriesText }}
+            </span>
           </li>
         </div>
 
@@ -415,9 +434,9 @@ export default {
           >
             {{ languages.pasteListText.title }}
           </span>
-          <span class="info-icon" @click="pasteListInfo = !pasteListInfo">
-            i
-          </span>
+          <span class="info-icon" @click="pasteListInfo = !pasteListInfo"
+            >i</span
+          >
           <br />
           <li class="ml-4" v-if="pasteListInfo">
             ({{ languages.pasteListText.subtitle }})
@@ -524,8 +543,11 @@ export default {
         >
           <small>Privacy policy</small>
         </button>
+        <div class="copyright">
+          <small>{{ copyrightText }}</small>
+        </div>
       </div>
-      <!-- ------------------------------------------MODALE PRIVACY POLICY ------------------------------------------- -->
+      <!-- ------------------------------------------ MODALE PRIVACY POLICY ------------------------------------------- -->
       <PrivacyPolicyModal v-if="settings.privacyPolicy" />
     </div>
   </div>
@@ -727,8 +749,9 @@ export default {
   border: 2px solid;
   padding: 0 7px;
   border-radius: 50%;
-  margin-left: 5px;
+  margin-left: 15px;
 }
+
 .add-list-textarea {
   border-radius: 5px;
 }
@@ -863,5 +886,11 @@ textarea {
 .tutorial-highlights {
   background-color: orangered;
   color: white;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 40px;
 }
 </style>

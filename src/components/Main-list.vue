@@ -28,7 +28,6 @@ export default {
     class="col-12"
     :class="{
       christmas: isChristmas.christmasTheme,
-      'winter-shadow': theme.winterTheme,
     }"
   >
     <TodoListDraggable v-if="todos.isDraggable" />
