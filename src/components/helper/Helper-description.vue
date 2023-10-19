@@ -3,6 +3,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useLanguageStore } from '@/store/LanguageStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -43,27 +44,11 @@ export default {
       {{ languages.helperDescription.instructionsTitle }}
     </p>
     <ul class="helper-list">
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('addEditDelete')"
-      >
-        {{ languages.helperDescription.addEditDelete }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.addEditDelete,
-            'arrow-deselected': !settings.addEditDelete,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="addEditDelete"
+        :istructions-text="languages.helperDescription.addEditDelete"
+        :select-deselect-arrow="settings.addEditDelete"
+      />
       <li v-if="settings.addEditDelete">
         <img
           class="btn btn-info helper-icon"
@@ -121,27 +106,11 @@ export default {
         </button>
         {{ languages.helperDescription.backToTop }}
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('categoriesInfo')"
-      >
-        {{ languages.helperDescription.categories }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.categoriesInfo,
-            'arrow-deselected': !settings.categoriesInfo,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="categoriesInfo"
+        :istructions-text="languages.helperDescription.categories"
+        :select-deselect-arrow="settings.categoriesInfo"
+      />
       <li v-if="settings.categoriesInfo">
         {{ languages.helperDescription.addCategory.part1 }}
         <img
@@ -206,27 +175,11 @@ export default {
           <span>{{ languages.removeEmpty }}</span></button
         >.
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('dragNdrop')"
-      >
-        {{ languages.helperDescription.dragNdropTitle }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.dragNdrop,
-            'arrow-deselected': !settings.dragNdrop,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="dragNdrop"
+        :istructions-text="languages.helperDescription.dragNdropTitle"
+        :select-deselect-arrow="settings.dragNdrop"
+      />
       <li v-if="settings.dragNdrop">
         {{ languages.helperDescription.dragNdropText.part1 }}
         <button
@@ -240,27 +193,11 @@ export default {
         </button>
         {{ languages.helperDescription.dragNdropText.part2 }}
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('selectAndDelete')"
-      >
-        {{ languages.helperDescription.multipleDeleteTitle }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.selectAndDelete,
-            'arrow-deselected': !settings.selectAndDelete,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="selectAndDelete"
+        :istructions-text="languages.helperDescription.multipleDeleteTitle"
+        :select-deselect-arrow="settings.selectAndDelete"
+      />
       <li v-if="settings.selectAndDelete">
         {{ languages.helperDescription.multipleDeleteText.part1 }}
         <span class="cart">
@@ -280,27 +217,11 @@ export default {
         </button>
         {{ languages.helperDescription.multipleDeleteText.part3 }}
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('copyHighlights')"
-      >
-        {{ languages.helperDescription.copyListTitle }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.copyHighlights,
-            'arrow-deselected': !settings.copyHighlights,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="copyHighlights"
+        :istructions-text="languages.helperDescription.copyListTitle"
+        :select-deselect-arrow="settings.copyHighlights"
+      />
       <li v-if="settings.copyHighlights">
         <span
           class="btn custom-show-listbtn"
@@ -320,27 +241,11 @@ export default {
         </span>
         {{ languages.helperDescription.highlightImportant.part3 }}
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('deleteAllInfo')"
-      >
-        {{ languages.helperDescription.deleteAllTitle }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.deleteAllInfo,
-            'arrow-deselected': !settings.deleteAllInfo,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="deleteAllInfo"
+        :istructions-text="languages.helperDescription.deleteAllTitle"
+        :select-deselect-arrow="settings.deleteAllInfo"
+      />
       <li v-if="settings.deleteAllInfo">
         {{ languages.helperDescription.deleteAllText.part1 }}
         <span class="delete-all-description">
@@ -349,27 +254,11 @@ export default {
         </span>
         {{ languages.helperDescription.deleteAllText.part2 }}
       </li>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('tutorial')"
-      >
-        Video tutorial.
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.tutorial,
-            'arrow-deselected': !settings.tutorial,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="tutorial"
+        :istructions-text="'Video tutorial.'"
+        :select-deselect-arrow="settings.tutorial"
+      />
       <video
         v-if="settings.tutorial"
         :class="{ video: !theme.retroTheme }"
@@ -398,27 +287,11 @@ export default {
           >by clicking here</a
         > -->
       </video>
-      <div
-        class="list-title"
-        :class="{
-          'list-title-color':
-            theme.lightTheme || theme.winterTheme || theme.darkTheme,
-          'list-title-summer': theme.summerTheme,
-          'list-title-retro': theme.retroTheme,
-        }"
-        @click="settings.showListIstructions('support')"
-      >
-        {{ languages.helperDescription.support }}
-        <img
-          class="arrow"
-          :class="{
-            'arrow-selected': settings.support,
-            'arrow-deselected': !settings.support,
-          }"
-          src="@/img/icons/arrow-down.webp"
-          alt="arrow"
-        />
-      </div>
+      <ListIstructionAccordion
+        show-list-istructions-input="support"
+        :istructions-text="languages.helperDescription.support"
+        :select-deselect-arrow="settings.support"
+      />
       <li v-if="settings.support">
         {{ languages.helperDescription.supportText }}
         <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
@@ -436,9 +309,9 @@ export default {
   </div>
   <br />
   <p id="helper-important-alert" class="update-alert">
-    <span style="color: red" @click="highlightsForTutorial(7)">{{
-      languages.helperDescription.adviceTitle
-    }}</span>
+    <span style="color: red" @click="highlightsForTutorial(7)">
+      {{ languages.helperDescription.adviceTitle }}
+    </span>
     <span :class="{ 'tutorial-highlights': highlits === 7 }">
       {{ languages.helperDescription.adviceText }}
       <span style="color: green">{{ settings.dateLastUpdate }}</span>
@@ -468,59 +341,6 @@ export default {
 .cart {
   width: 28px;
   height: 24px;
-}
-.list-title {
-  padding: 5px;
-  border: 1px solid;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  margin-left: -15px;
-  display: flex;
-  justify-content: space-between;
-}
-.list-title-color {
-  background-color: #ededed;
-  color: #000000;
-}
-.list-title-summer {
-  background-color: #efcb8f;
-}
-.list-title-retro {
-  border-radius: 0 !important;
-  border: 2px outset;
-}
-.arrow {
-  width: 1.5625rem;
-  height: 1.5625rem;
-}
-.arrow-selected {
-  -webkit-animation: spin 0.5s linear;
-  -moz-animation: spin 0.5s linear;
-  animation: spin 0.5s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-}
-
-.arrow-deselected {
-  -webkit-animation: reverseSpin 0.5s linear;
-  -moz-animation: reverseSpin 0.5s linear;
-  animation: reverseSpin 0.5s linear;
-}
-@keyframes reverseSpin {
-  from {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-  to {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
 }
 
 .helper-icon {
