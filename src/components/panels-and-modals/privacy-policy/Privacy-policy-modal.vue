@@ -49,13 +49,23 @@ export default {
             <p class="text-center">
               <strong>Displaying content from external platforms</strong>
             </p>
-            <strong>Font Awesome and Google Fonts</strong>
+            <strong>Google Fonts</strong>
             <p>Personal Data: Trackers; Usage Data</p>
             <hr />
             <p class="text-center">
               <strong>Hosting and backend infrastructure</strong>
             </p>
             <strong>GitHub Pages</strong>
+            <p>
+              Personal Data: various types of Data as specified in the privacy
+              policy of the service
+            </p>
+            <strong>Netlify</strong>
+            <p>
+              Personal Data: various types of Data as specified in the privacy
+              policy of the service
+            </p>
+            <strong>Kodular</strong>
             <p>
               Personal Data: various types of Data as specified in the privacy
               policy of the service
@@ -68,7 +78,7 @@ export default {
             <p>Contact email: lucarhcp88@hotmail.it</p>
           </div>
           <div class="privacy-modal-footer">
-            <p>Latest update: 23 January 2023</p>
+            <p>Latest update: 19 October 2023</p>
             <p
               style="
                 color: #12a1df;

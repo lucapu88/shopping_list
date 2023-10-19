@@ -94,7 +94,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.confirmedRemoveTodo(x);
       }
       this.settings.resetListIstructions();
-      this.toggleButtonDeleteSelectedTodo();
+      // this.toggleButtonDeleteSelectedTodo();
     },
     confirmedRemoveTodo(x) {
       this.todos.splice(x, 1);
@@ -103,6 +103,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       // se ho impostato l'eliminazione automatica categorie vuote
       if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
       navigator.vibrate(220);
+      this.toggleButtonDeleteSelectedTodo();
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement ? draggedElement : this.todos);
