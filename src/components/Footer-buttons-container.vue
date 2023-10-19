@@ -62,6 +62,7 @@ export default {
         'retro-theme-back-top': theme.retroTheme,
         'summer-theme-back-top': theme.summerTheme,
         'winter-theme-back-top': theme.winterTheme,
+        'is-dragginn': todosStore.isDraggable,
       }"
       @click="emitScrollTop()"
     >
@@ -95,6 +96,13 @@ export default {
   -webkit-transform: rotate(270deg);
   font-weight: bold;
   background-color: #efefef;
+}
+
+.is-dragginn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 200;
 }
 
 .multiple-delete {
