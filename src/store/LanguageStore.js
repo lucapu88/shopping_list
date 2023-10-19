@@ -174,6 +174,11 @@ export const useLanguageStore = defineStore('Language', {
       this.langSpanish = langSpanish === 'true';
       const langEnglish = window.localStorage.getItem('langEnglish');
       this.langEnglish = langEnglish === 'true';
+
+      if (!this.langIta && !this.langEnglish && !this.langSpanish) {
+        //se non c'è nessuna lingua impostata, imposto di default quella in inglese
+        window.localStorage.setItem('langEnglish', true);
+      }
       if (this.langIta) {
         this.placeholder = 'Scrivi qui cosa comprare';
         this.defaultPlaceholderText = 'Scrivi qui cosa comprare';
