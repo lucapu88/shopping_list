@@ -263,7 +263,7 @@ button {
   }
 }
 .undo {
-  width: 15px;
+  width: 15px; /*+ 18 quanto fa?! COGLIONEEEEE!!!*/
 }
 .line-through {
   text-decoration: line-through 4px;

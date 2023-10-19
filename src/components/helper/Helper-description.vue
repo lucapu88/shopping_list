@@ -388,15 +388,6 @@ export default {
   height: 30px;
 }
 
-.show-video {
-  font-weight: bold;
-  color: #0169d9;
-}
-.hide-video {
-  font-weight: bold;
-  color: #d70a0a;
-  margin-left: 30%;
-}
 .video {
   z-index: 100;
   border-radius: 15px;

@@ -8,6 +8,7 @@ import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore'
 
 <script>
 export default {
+  emits: ['scrollToTop', 'scrollToBottom'],
   data() {
     return {
       theme: useThemeStore(),
