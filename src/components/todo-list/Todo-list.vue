@@ -52,14 +52,14 @@ export default {
     >
       <img v-if="todo.multipleDelete" src="@/img/icons/cart-red.webp" />
       <img
-        v-if="
-          !todo.multipleDelete &&
-          (theme.darkTheme || theme.retroTheme || theme.winterTheme)
-        "
+        v-if="!todo.multipleDelete && (theme.darkTheme || theme.retroTheme)"
         src="@/img/icons/cart-white.webp"
       />
       <img
-        v-if="!todo.multipleDelete && (theme.lightTheme || theme.summerTheme)"
+        v-if="
+          !todo.multipleDelete &&
+          (theme.lightTheme || theme.summerTheme || theme.winterTheme)
+        "
         src="@/img/icons/cart-black.webp"
       />
     </span>

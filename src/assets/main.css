@@ -695,6 +695,9 @@ button {
   background-color: #d5effa !important;
   color: #6d3001;
 }
+.winter-todo {
+  color: #000000;
+}
 .winter-btn {
   background-color: rgba(192, 224, 133, 0.883);
   border: 2px solid #b4e659;
