@@ -62,7 +62,7 @@ export default {
         'retro-theme-back-top': theme.retroTheme,
         'summer-theme-back-top': theme.summerTheme,
         'winter-theme-back-top': theme.winterTheme,
-        'is-dragginn': todosStore.isDraggable,
+        'is-dragginn': todosStore.isDraggable && todosStore.todos.length > 8,
       }"
       @click="emitScrollTop()"
     >
