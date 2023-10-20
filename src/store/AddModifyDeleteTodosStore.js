@@ -88,22 +88,20 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.confirmRemove = true;
         this.deleteSelected = false;
         this.index = x;
-        // se ho impostato l'eliminazione automatica categorie vuote
-        if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
       } else {
         this.confirmedRemoveTodo(x);
       }
       this.settings.resetListIstructions();
-      // this.toggleButtonDeleteSelectedTodo();
+      this.toggleButtonDeleteSelectedTodo();
     },
     confirmedRemoveTodo(x) {
       this.todos.splice(x, 1);
       this.saveTodos();
+      this.toggleButtonDeleteSelectedTodo();
       this.confirmDeleteModal = false;
       // se ho impostato l'eliminazione automatica categorie vuote
       if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
       navigator.vibrate(220);
-      this.toggleButtonDeleteSelectedTodo();
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement ? draggedElement : this.todos);

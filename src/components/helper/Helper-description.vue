@@ -256,7 +256,7 @@ export default {
       </li>
       <ListIstructionAccordion
         show-list-istructions-input="tutorial"
-        :istructions-text="'Video tutorial.'"
+        :istructions-text="'Video tutorial'"
         :select-deselect-arrow="settings.tutorial"
       />
       <video

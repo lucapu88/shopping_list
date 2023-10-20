@@ -116,12 +116,12 @@ export const useLanguageStore = defineStore('Language', {
       troubleshooting: 'Troubleshooting:',
       troubleshootingText: "If you experience slowness or blocks in loading images, check your connection, if it's ok try restarting the app. If the problem persists, report it to the e-mail in the support section.",
       instructionsTitle: 'Instructions:',
-      addEditDelete: 'Add, Edit, Delete.',
+      addEditDelete: 'Add, Edit, Delete',
       add: 'is used to add stuff to buy list.',
       edit: 'is used to change a name and save the changes by clicking',
       delete: 'is used to remove stuff from the list.',
       backToTop: 'is used to returns at the top of the list. It works when the list it is very long.',
-      categories: 'Categories.',
+      categories: 'Categories',
       addCategory: {
         part1: 'To add a category just type it in and click',
         part2: 'or choose it in the box by clicking',
@@ -133,32 +133,32 @@ export const useLanguageStore = defineStore('Language', {
       },
       addAllCat: 'You can add all the categories by clicking on',
       removeEmptyCat: 'You can delete only the categories left empty by clicking on',
-      dragNdropTitle: 'Drag and Drop.',
+      dragNdropTitle: 'Drag and Drop',
       dragNdropText: {
         part1: 'By clicking on',
         part2: 'you can drag elements and, by holding them down, move them wherever you want.',
         dragginText: 'Drag the elements of the list where you want'
       },
-      multipleDeleteTitle: 'Select and delete multiple items.',
+      multipleDeleteTitle: 'Select and delete multiple items',
       multipleDeleteText: {
         part1: 'You can delete multiple products together by clicking on',
         part2: 'So you mark them and then at the end of shopping by clicking on',
         part3: 'at the bottom only the ones you marked will be deleted.',
       },
-      copyListTitle: 'Copy list, Highlight items.',
+      copyListTitle: 'Copy list, Highlight items',
       copyListText: 'is used to copy the list and paste it wherever you want.',
       highlightImportant: {
         part1: 'You can make a product "important" by clicking on the name and it will be ',
         part2: 'highlighted',
         part3: 'so it cannot be deleted or edited.'
       },
-      deleteAllTitle: 'Delete all.',
+      deleteAllTitle: 'Delete all',
       deleteAllText: {
         part1: 'If you click on',
         part2: 'you will see a confirmation box for delete ALL the list.',
       },
       videoAlert: 'Your device does not support video tags. Please contact support.',
-      support: 'Support.',
+      support: 'Support',
       supportText: 'For any report you can contact me:',
       socialText: 'Follow us on social media:',
       adviceTitle: 'IMPORTANT:',
@@ -218,12 +218,12 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.troubleshooting = 'Risoluzione Problemi:';
         this.helperDescription.troubleshootingText = " Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini, controlla la tua connessione, se è ok prova a riavviare l'app. Se il problema persiste segnalalo all'email nella sezione contatti.";
         this.helperDescription.instructionsTitle = 'Istruzioni';
-        this.helperDescription.addEditDelete = 'Aggiungere, Modificare, Eliminare.';
+        this.helperDescription.addEditDelete = 'Aggiungere, Modificare, Eliminare';
         this.helperDescription.add = 'serve per aggiungere alla lista roba da comprare.';
         this.helperDescription.edit = 'serve per modificare un nome e salvare le modifiche cliccando';
         this.helperDescription.delete = 'serve per modificare eliminare roba dalla lista.';
         this.helperDescription.backToTop = 'serve per tornare in cima alla lista. Funziona quando la lista è molto lunga.';
-        this.helperDescription.categories = 'Categorie.';
+        this.helperDescription.categories = 'Categorie';
         this.helperDescription.addCategory.part1 = 'Per aggiungere una categoria basta scriverla e cliccare su';
         this.helperDescription.addCategory.part2 = 'oppure sceglierla nel riquadro cliccando';
         this.helperDescription.addCategory.part3 = 'Ti apparirà';
@@ -233,24 +233,24 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.addCategory.part7 = ' così potrai aggiungerci roba al suo interno.Una volta finito basta ricliccare sul nome o su qualsiasi altro nome di altre categorie.';
         this.helperDescription.addAllCat = 'È possibile aggiungere tutte le categorie cliccando su';
         this.helperDescription.removeEmptyCat = 'È possibile eliminare solo le categorie lasciate vuote cliccando su';
-        this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi.';
+        this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi';
         this.helperDescription.dragNdropText.part1 = 'Cliccando su';
         this.helperDescription.dragNdropText.part2 = 'potrai trascinare gli elementi e, tenendo premuto, spostarli dove vuoi.';
         this.helperDescription.dragNdropText.dragginText = 'Trascina gli elementi della lista dove vuoi';
-        this.helperDescription.multipleDeleteTitle = 'Seleziona ed elimina più elementi.';
+        this.helperDescription.multipleDeleteTitle = 'Seleziona ed elimina più elementi';
         this.helperDescription.multipleDeleteText.part1 = 'Puoi eliminare più prodotti insieme cliccando su';
         this.helperDescription.multipleDeleteText.part2 = 'Così li smarchi e poi a fine spesa cliccado sul';
         this.helperDescription.multipleDeleteText.part3 = 'in basso verranno eliminati solo quelli che hai smarcato.';
-        this.helperDescription.copyListTitle = 'Copia lista, Evidenzia elementi.';
+        this.helperDescription.copyListTitle = 'Copia lista, Evidenzia elementi';
         this.helperDescription.copyListText = 'serve per copiare la lista e incollarla dove vuoi.';
         this.helperDescription.highlightImportant.part1 = 'Puoi rendere "importante" un prodotto cliccando sul nome e verrà';
         this.helperDescription.highlightImportant.part2 = 'evidenziato';
         this.helperDescription.highlightImportant.part3 = 'così non potrà essere eliminato o modificato.';
-        this.helperDescription.deleteAllTitle = 'Elimina tutto.';
+        this.helperDescription.deleteAllTitle = 'Elimina tutto';
         this.helperDescription.deleteAllText.part1 = 'Se clicchi su';
         this.helperDescription.deleteAllText.part2 = "ti apparirà un riquadro di conferma per l'eliminazione di TUTTA la lista.";
         this.helperDescription.videoAlert = 'Il tuo device non supporta i video tag. Contatta il supporto.';
-        this.helperDescription.support = 'Contatti.';
+        this.helperDescription.support = 'Contatti';
         this.helperDescription.supportText = 'Per qualsiasi segnalazione puoi contattarmi:';
         this.helperDescription.socialText = 'Seguici sui social:';
         this.helperDescription.adviceTitle = 'IMPORTANTE:';
@@ -294,12 +294,12 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.troubleshooting = 'Solución de problemas:';
         this.helperDescription.troubleshootingText = "En caso de que experimentes lentitud o congelación al cargar las imágenes, comprueba tu conexión, si está bien prueba a reiniciar la aplicación. Si el problema persiste repórtalo al correo electrónico en la sección de contacto.";
         this.helperDescription.instructionsTitle = 'Instrucciones';
-        this.helperDescription.addEditDelete = 'Añadir, Editar, Borrar.';
+        this.helperDescription.addEditDelete = 'Añadir, Editar, Borrar';
         this.helperDescription.add = 'sirve para añadir a la lista de cosas que comprar.';
         this.helperDescription.edit = 'se utiliza para editar un nombre y guardar los cambios pulsando';
         this.helperDescription.delete = 'se utiliza para editar borrar cosas de la lista.';
         this.helperDescription.backToTop = 'se utiliza para volver al principio de la lista. Funciona cuando la lista es muy larga.';
-        this.helperDescription.categories = 'Categorías.';
+        this.helperDescription.categories = 'Categorías';
         this.helperDescription.addCategory.part1 = 'Para añadir una categoría, basta con escribirla y hacer clic en';
         this.helperDescription.addCategory.part2 = 'o elíjalo en el recuadro haciendo clic en';
         this.helperDescription.addCategory.part3 = 'Te parecerá';
@@ -309,24 +309,24 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.addCategory.part7 = ' Una vez que hayas terminado, haz clic en el nombre de la categoría o en cualquier otro nombre.';
         this.helperDescription.addAllCat = 'Puede añadir todas las categorías haciendo clic en';
         this.helperDescription.removeEmptyCat = 'Sólo puede eliminar las categorías que quedan vacías pulsando en';
-        this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos.';
+        this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos';
         this.helperDescription.dragNdropText.part1 = 'Haciendo clic en';
         this.helperDescription.dragNdropText.part2 = 'puedes arrastrar elementos y, manteniéndolos pulsados, moverlos donde quieras.';
         this.helperDescription.dragNdropText.dragginText = 'Arrastre los elementos de la lista hasta donde desee';
-        this.helperDescription.multipleDeleteTitle = 'Seleccionar y eliminar varios elementos.';
+        this.helperDescription.multipleDeleteTitle = 'Seleccionar y eliminar varios elementos';
         this.helperDescription.multipleDeleteText.part1 = 'Puede eliminar varios productos a la vez pulsando en';
         this.helperDescription.multipleDeleteText.part2 = 'Así que las desmarcas y al final de la compra haces clic en el botón';
         this.helperDescription.multipleDeleteText.part3 = 'en la parte inferior, sólo se borrarán los que hayas desmarcado.';
-        this.helperDescription.copyListTitle = 'Copiar lista, Resaltar elementos.';
+        this.helperDescription.copyListTitle = 'Copiar lista, Resaltar elementos';
         this.helperDescription.copyListText = 'sirve para copiar la lista y pegarla donde quieras.';
         this.helperDescription.highlightImportant.part1 = 'Puede hacer que un producto sea "importante" haciendo clic en el nombre y será';
         this.helperDescription.highlightImportant.part2 = 'destacado';
         this.helperDescription.highlightImportant.part3 = 'para que no pueda borrarse ni modificarse.';
-        this.helperDescription.deleteAllTitle = 'Borra todo.';
+        this.helperDescription.deleteAllTitle = 'Borra todo';
         this.helperDescription.deleteAllText.part1 = 'Si pulsa en';
         this.helperDescription.deleteAllText.part2 = "verá un cuadro de confirmación para borrar TODA la lista.";
         this.helperDescription.videoAlert = 'Tu dispositivo no admite etiquetas de vídeo. Póngase en contacto con el servicio de asistencia.';
-        this.helperDescription.support = 'Contactos.';
+        this.helperDescription.support = 'Contactos';
         this.helperDescription.supportText = 'Para cualquier informe puede ponerse en contacto conmigo:';
         this.helperDescription.socialText = 'Síganos en las redes sociales:';
         this.helperDescription.adviceTitle = 'IMPORTANTE:';
