@@ -169,9 +169,11 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.categoryList = false;
     },
     deleteSelectedTodos() {
+      //Elimina solo i to do che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
       this.saveTodos();
+      if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
       this.confirmDeleteModal = false;
       this.toggleButtonDeleteSelectedTodo();
     },
