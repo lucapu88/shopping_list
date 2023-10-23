@@ -90,14 +90,6 @@ export default {
   color: #ffff;
   min-width: 180px;
 }
-.btn-back-to-top {
-  /* rotate: 270deg; */
-  transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -webkit-transform: rotate(270deg);
-  font-weight: bold;
-  background-color: #efefef;
-}
 
 .is-dragginn {
   position: fixed;

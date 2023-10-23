@@ -92,8 +92,7 @@ export default {
       </li>
       <li v-if="settings.addEditDelete">
         <button
-          class="btn btn-outline-info p-0"
-          style="rotate: 270deg"
+          class="btn btn-outline-info btn-back-to-top p-0"
           :class="{
             'minimal-theme-back-top': theme.minimalTheme,
             'dark-theme-back-top': theme.darkTheme,
