@@ -32,12 +32,12 @@ export default {
   },
   created() {
     this.settings.checkingUpdates(); //controllo "aggiornamenti"
-    this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
     this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
     this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
-    this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
     this.todosStore.createTodosList();
     this.todosStore.changeTodoAdded(this.todosStore.todos);
+    this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
+    this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
   },
   mounted() {
     this.todosStore.toggleButtonDeleteSelectedTodo();

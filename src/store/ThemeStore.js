@@ -56,8 +56,12 @@ export const useThemeStore = defineStore('theme', {
                 && !summerThemeSelected
                 && !winterThemeSelected) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
-                window.localStorage.setItem('lightTheme', true);
+                this.lightThemeDefaultSetting();
             }
+        },
+        async lightThemeDefaultSetting() {
+            window.localStorage.setItem('lightTheme', true);
+            this.lightTheme = await window.localStorage.getItem('lightTheme');
         },
         changeThemeStyle(themeName, backgroundColor, color, fontFamily) {
 

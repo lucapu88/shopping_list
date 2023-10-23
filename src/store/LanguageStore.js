@@ -177,7 +177,7 @@ export const useLanguageStore = defineStore('Language', {
 
       if (!this.langIta && !this.langEnglish && !this.langSpanish) {
         //se non c'è nessuna lingua impostata, imposto di default quella in inglese
-        window.localStorage.setItem('langEnglish', true);
+        this.englishDefaultSetting();
       }
       if (this.langIta) {
         this.placeholder = 'Scrivi qui cosa comprare';
@@ -334,6 +334,10 @@ export const useLanguageStore = defineStore('Language', {
       } else {
         this.categories = this.engCategories;
       }
+    },
+    async englishDefaultSetting() {
+      window.localStorage.setItem('langEnglish', true);
+      this.langEnglish = await window.localStorage.getItem('langEnglish');
     },
     setEnglishLanguage() {
       this.langIta = false;
