@@ -57,18 +57,18 @@ export default {
             </p>
             <strong>GitHub Pages</strong>
             <p>
-              Personal Data: various types of Data as specified in the privacy
-              policy of the service
+              Various types of Data as specified in the privacy policy of the
+              service
             </p>
             <strong>Netlify</strong>
             <p>
-              Personal Data: various types of Data as specified in the privacy
-              policy of the service
+              Various types of Data as specified in the privacy policy of the
+              service
             </p>
             <strong>Kodular</strong>
             <p>
-              Personal Data: various types of Data as specified in the privacy
-              policy of the service
+              Various types of Data as specified in the privacy policy of the
+              service
             </p>
             <hr />
             <p class="text-center">
@@ -78,7 +78,7 @@ export default {
             <p>Contact email: lucarhcp88@hotmail.it</p>
           </div>
           <div class="privacy-modal-footer">
-            <p>Latest update: 19 October 2023</p>
+            <p>Latest update: 22 October 2023</p>
             <p
               style="
                 color: #12a1df;
