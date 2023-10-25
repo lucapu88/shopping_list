@@ -76,6 +76,7 @@ export default {
     <h2
       class="title text-center"
       :class="{
+        'christmas-title': isChristmas.christmasTheme,
         'dark-theme-title': theme.darkTheme,
         'minimal-theme-title': theme.minimalTheme,
         'retro-theme-title': theme.retroTheme,
@@ -87,6 +88,7 @@ export default {
     <h2
       class="title2 text-center"
       :class="{
+        'christmas-title': isChristmas.christmasTheme,
         'minimal-theme-title2': theme.minimalTheme,
         'retro-theme-title2': theme.retroTheme,
         'title-spanish': languages.langSpanish,
@@ -190,6 +192,9 @@ export default {
   }
 }
 
+.christmas-title {
+  z-index: 20;
+}
 .title-spanish {
   font-size: 27px;
 }
@@ -267,7 +272,7 @@ export default {
   right: 0;
   border-radius: 50%;
   /* padding: 0 5px; */
-  z-index: 5;
+  z-index: 20;
   margin-right: 2%;
 }
 
@@ -276,5 +281,6 @@ export default {
 }
 .settings {
   width: 33px;
+  z-index: 20;
 }
 </style>
