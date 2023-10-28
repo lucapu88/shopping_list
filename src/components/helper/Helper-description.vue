@@ -311,15 +311,8 @@ export default {
         </li>
         <li>
           {{ languages.helperDescription.socialText }}
-          <a
-            href="https://www.facebook.com/profile.php?id=100080626866860"
-            target="_blank"
-          >
-            <img
-              src="@/img/facebook.webp"
-              alt="social_facebook"
-              class="social"
-            />
+          <a href="https://twitter.com/shoppList231023" target="_blank">
+            <img src="@/img/x.webp" alt="social_twitter" class="social" />
           </a>
         </li>
       </template>
@@ -402,7 +395,7 @@ export default {
 }
 
 .social {
-  width: 40px;
+  width: 35px;
   height: 30px;
 }
 
