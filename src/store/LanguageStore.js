@@ -351,7 +351,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langSpanish', false);
       window.localStorage.setItem('langEnglish', true);
-      location.reload(); // TOFIX lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy che mi buggano il codice.
+      location.reload();
     },
     setItalianoLanguage() {
       this.langSpanish = false;
@@ -365,7 +365,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langSpanish', false);
       window.localStorage.setItem('langEnglish', false);
       window.localStorage.setItem('langIta', true);
-      location.reload(); // TOFIX lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy e mi buggano il codice.
+      location.reload();
     },
     setSpanishLanguage() {
       this.langEnglish = false;
@@ -379,7 +379,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langEnglish', false);
       window.localStorage.setItem('langSpanish', true);
-      location.reload(); // TOFIX lo faccio solo perchè mi obbligano ad inserire librerie del c---- per la privacy policy e mi buggano il codice.
+      location.reload();
     },
     insertAllCategories() {
       if (this.langIta) {

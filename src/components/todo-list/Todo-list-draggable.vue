@@ -42,6 +42,10 @@ export default {
 </script>
 
 <template>
+  <!-- TOFIX questa parte è commentata poichè la libreria in questione è buggata,
+     ma siccome mi piace più di quella che uso, vorrei utilizzarla nel caso risolvono il problema che ho segnalato: 
+    https://github.com/SortableJS/Vue.Draggable/issues/1227-->
+
   <!-- <Container @drop="onDrop">
     <Draggable v-for="item in items" :key="item.id">
       <div class="draggable-item">

@@ -17,6 +17,7 @@ export default {
 </script>
 
 <template>
+  <!-- TOFIX: Devo ancora trovare una soluzione per eliminare 2 componenti quasi uguali come questo e Todo-list-draggable. Il problema di inserire questo componente all'interno del container Draggable è che il ciclo for qui lo faccio sul div, e nell'altro componente lo faccio sul Draggable... -->
   <div
     v-for="(todo, n) in todosStore.todos"
     :key="n"
