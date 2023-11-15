@@ -12,7 +12,7 @@ export default {
       safeModeInfo: false,
     };
   },
-  //    created() {
+  //    created() { //TOFIX era nel vecchio componente, verificare se serve, secondo me non serve
   //     this.safeModeInfo = false;
   //   },
 };

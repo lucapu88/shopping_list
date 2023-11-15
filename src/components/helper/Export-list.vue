@@ -18,7 +18,7 @@ export default {
       listPasted: null,
     };
   },
-  //   created() {
+  //   created() { //TOFIX era nel vecchio componente, verificare se serve, secondo me non serve
   //     this.pasteListInfo = false;
   //   },
   mounted() {
