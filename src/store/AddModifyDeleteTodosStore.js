@@ -29,7 +29,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
-
   },
   actions: {
     addTodo() {

@@ -61,7 +61,7 @@ export default {
 </script>
 
 <template>
-  <!-- non so se è una cosa brutta da fare ma per il momento è l'unica soluzione trovata. Avendo il componente Todo-list che al click su una categoria aziona un metodo nello store, questo metodo dovrebbe scatenare il focus in in questo componente nell'input. -->
+  <!-- TOFIX non so se è una cosa brutta da fare ma per il momento è l'unica soluzione trovata. Avendo il componente Todo-list che al click su una categoria aziona un metodo nello store, questo metodo dovrebbe scatenare il focus in in questo componente nell'input. -->
   {{ addTodo.focusIn ? focusOnInput() : null }}
   <img
     v-if="isChristmas.christmasTheme"

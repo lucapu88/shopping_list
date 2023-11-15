@@ -58,7 +58,6 @@ export default {
 <template>
   <div>
     <LoadinfOrUpdating :themeLoading="themeLoading" :updating="updating" />
-    <!-- CONTAINER DI TUTTO L'HELPER -->
     <div
       v-if="!themeLoading && !updating"
       id="helper-description-container"
@@ -103,7 +102,7 @@ export default {
         src="@/img/Decorations-icon.webp"
         alt="E felice anno nuovo!"
       />
-      <!-- -------------------------------------------------- INIZIO HELPER --------------------------------------------------- -->
+
       <div id="helper-description">
         <ChangeLanguages />
 
@@ -120,7 +119,6 @@ export default {
         <UpdateApp @updatingAppEmit="updatingAppEmited" />
 
         <div id="helper-istructions">
-          <!-- DESCRIZIONE IN BASE ALLA LINGUA SCELTA -->
           <HelperDescription />
         </div>
 
@@ -135,7 +133,7 @@ export default {
           <small>{{ copyrightText }}</small>
         </div>
       </div>
-      <!-- ------------------------------------------ MODALE PRIVACY POLICY ------------------------------------------- -->
+
       <PrivacyPolicyModal v-if="settings.privacyPolicy" />
     </div>
   </div>

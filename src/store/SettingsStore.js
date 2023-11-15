@@ -131,9 +131,11 @@ export const useSettingsStore = defineStore('settings', {
     highlightsForTutorial(num) {
       console.log(num);
       /*Mi serve solo quando creo i video tutorial. In pratica evidenzia il testo per il quale sto mostrando la funzionalità.
-        RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI COPIA E INCOLLA QUESTO CODICE NEL CREATE/MOUNTED:*/
+        RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI DECOMMENTA LA RIGA SUCCESSIVA! */
       // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
       // this.highlits = num;
+      /*  --------------------------------------IMPORTANTISSIMO------------------------------------------------
+                  RICORDATI DI RICOMMENTARE TUTTO QUESTO CODICE DOPO CHE HAI REGISTRATO IL TUTORIAL!            */
     },
   },
 });

@@ -117,7 +117,7 @@ export default {
     <!-- INPUT MODIFICA -->
     <!--Qui mi sengala un errore del compilatore perchè non posso modificare proprietà che mi arrivano in input. 
         Ma in questo caso io la modifica vera e propria la faccio nello store quindi non penso debba necessariamente fare un emit,
-        perchè la proprietà modificata non viene passata da figlio al padre ma va nello store e dallo store passa al padre. -->
+        perchè la proprietà modificata non viene passata da figlio al padre ma viene modificata nello store e dallo store passa al padre. -->
     <input
       class="modify-input border border-primary rounded"
       v-if="todo.modify"

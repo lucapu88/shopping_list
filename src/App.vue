@@ -52,8 +52,7 @@ export default {
       setTimeout(() => {
         /*Aggiunto il set timeout poichè senza non avviene nulla, 
         mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
-        Non funziona con un if(this.visible). DA APPROFONDIRE */
-
+        Non funziona con un if(this.visible). */
         const containerList = document.getElementById('container-list');
         containerList.scrollTo({
           top: containerList.scrollHeight,
