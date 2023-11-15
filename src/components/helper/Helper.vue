@@ -4,8 +4,15 @@ import PrivacyPolicyModal from '../panels-and-modals/privacy-policy/Privacy-poli
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useLanguageStore } from '@/store/LanguageStore';
-import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import LoadinfOrUpdating from '../Loading-or-updating.vue';
+import ChangeLanguages from './Change-languages.vue';
+import SafeDeleteMode from './Safe-delete-mode.vue';
+import ChangeThemes from './Change-themes.vue';
+import AutoDeleteEmptyCategories from './Auto-delete-empty-categories.vue';
+import ExportList from './Export-list.vue';
+import Share from './Share.vue';
+import UpdateApp from './Update-app.vue';
 </script>
 
 <script>
@@ -15,144 +22,29 @@ export default {
       theme: useThemeStore(),
       isChristmas: useChristmasStore(),
       languages: useLanguageStore(),
-      addNewTodo: useAddModifyDeleteTodosStore(),
       settings: useSettingsStore(),
-      highlits: null,
-      textAreaHeight: 55,
-      autoDeleteEmptyCategoriesInfo: false,
-      safeModeInfo: false,
-      pasteListInfo: false,
       themeLoading: false,
-      listPasted: null,
       updating: false,
       copyrightText: '',
     };
   },
   created() {
-    this.safeModeInfo = false;
-    this.autoDeleteEmptyCategoriesInfo = false;
-    this.pasteListInfo = false;
     this.settings.checkingUpdates();
     this.isChristmas.merryChristmasTheme();
     this.copyright();
   },
   mounted() {
     document.getElementById('helper-description').scrollTo(0, 0);
-    this.resetTextarea();
   },
   methods: {
-    resetTextarea() {
-      if (!document.getElementById('text-area').value) {
-        this.textAreaHeight = 55;
-        this.adjustTextareaHeight();
-      }
+    themeLoadingEmitted(value) {
+      this.themeLoading = value;
     },
-    adjustTextareaHeight() {
-      document.getElementById(
-        'text-area'
-      ).style.height = `${this.textAreaHeight}px`;
+    updatingAppEmited(value) {
+      this.updating = value;
     },
     closeHelper() {
       this.settings.closeHelper();
-    },
-    highlightsForTutorial(num) {
-      console.log(num);
-      /*Mi serve solo quando creo i video tutorial. In pratica evidenzia il testo per il quale sto mostrando la funzionalità.
-        RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI COPIA E INCOLLA QUESTO CODICE NEL CREATE/MOUNTED:*/
-      // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
-      // this.highlits = num;
-    },
-    changeTheme(theme) {
-      this.theme.resetAllThemes();
-      this.themeLoading = true;
-      switch (theme) {
-        case 'light':
-          this.theme.lightTheme = true;
-          window.localStorage.setItem('lightTheme', true);
-          break;
-        case 'dark':
-          this.theme.darkTheme = true;
-          window.localStorage.setItem('darkTheme', true);
-          break;
-        case 'minimal':
-          this.theme.minimalTheme = true;
-          window.localStorage.setItem('minimalTheme', true);
-          break;
-        case 'retro':
-          this.theme.retroTheme = true;
-          window.localStorage.setItem('retroTheme', true);
-          break;
-        case 'summer':
-          this.theme.summerTheme = true;
-          window.localStorage.setItem('summerTheme', true);
-          break;
-        case 'winter':
-          this.theme.winterTheme = true;
-          window.localStorage.setItem('winterTheme', true);
-          break;
-
-        default:
-          this.theme.lightTheme = true;
-          window.localStorage.setItem('lightTheme', true);
-          break;
-      }
-      setTimeout(() => {
-        location.reload();
-      }, 700);
-    },
-    startIncreasing() {
-      if (this.textAreaHeight <= 405) {
-        this.textAreaHeight += 50;
-        this.adjustTextareaHeight();
-      }
-    },
-    startDecreasing() {
-      if (this.textAreaHeight >= 56) {
-        this.textAreaHeight -= 50;
-        this.adjustTextareaHeight();
-      }
-    },
-    addListCopied() {
-      if (!this.listPasted) {
-        return;
-      }
-      const listPastedToArray = this.listPasted
-        .split('\n')
-        .filter((el) => el !== '')
-        .map((todo) => todo.replace(/\b-\b/g, '').trim());
-      // .map((todo) => todo.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '').trim());
-      listPastedToArray.forEach((td) => {
-        this.addNewTodo.newTodo = td;
-        this.addNewTodo.addTodo();
-      });
-      location.reload();
-    },
-    shareLink() {
-      const playStoreUrl =
-        'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List';
-      navigator.clipboard.writeText(playStoreUrl);
-      document.addEventListener('copy', function (e) {
-        //copio negli appunti anche qui per sistemare su android (quello di sopra non funziona)
-        e.clipboardData.setData('text/plain', playStoreUrl);
-        e.preventDefault();
-      });
-      document.execCommand('copy');
-      this.languages.share.visible = true;
-      setTimeout(() => (this.languages.share.visible = false), 5000);
-    },
-    updateApp() {
-      //dato che per aggiornare l'app basta riavviare la pagina, essendo un app la rendo più carina,
-      //e faccio si che ogni mese l'utente può farlo, in modo da avere sempre l'app aggiornata.
-      const d = new Date();
-      const month = d.getMonth();
-      const year = d.getFullYear();
-      window.localStorage.setItem('lastMonth', month);
-      window.localStorage.setItem('lastYear', year);
-      this.updating = true;
-      // const range = Math.random() * (1500 - 3500) + 1500;
-      setTimeout(() => {
-        location.reload();
-      }, 3700);
     },
     copyright() {
       let copyright = new Date();
@@ -165,28 +57,7 @@ export default {
 
 <template>
   <div>
-    <!-- CONTAINER LOADING DEI TEMI -->
-    <div
-      v-if="themeLoading"
-      id="loading-themes-container"
-      :class="{
-        light: theme.lightTheme,
-        dark: theme.darkTheme,
-        minimal: theme.minimalTheme,
-        retro: theme.retroTheme,
-        summer: theme.summerTheme,
-        winter: theme.winterTheme,
-      }"
-    >
-      <img src="@/img/Loading.webp" alt="loading" />
-      <img src="@/img/favicon.png" alt="loading" />
-    </div>
-    <!-- CONTAINER LOADING UPDATE APP -->
-    <div v-if="updating" id="updating-container">
-      <img src="@/img/update-img.webp" alt="loading" />
-      <h2 class="category-emoji-selected updating-text">..DOWNLOAD..</h2>
-    </div>
-
+    <LoadinfOrUpdating :themeLoading="themeLoading" :updating="updating" />
     <!-- CONTAINER DI TUTTO L'HELPER -->
     <div
       v-if="!themeLoading && !updating"
@@ -232,307 +103,24 @@ export default {
         src="@/img/Decorations-icon.webp"
         alt="E felice anno nuovo!"
       />
-
-      <!-- ------------------------------------------------INIZIO HELPER--------------------------------------------------- -->
+      <!-- -------------------------------------------------- INIZIO HELPER --------------------------------------------------- -->
       <div id="helper-description">
-        <div class="helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(0)"
-            >&#x2699;</span
-          >
-          <span :class="{ 'tutorial-highlights': highlits === 0 }">
-            {{ languages.changeLanguage }}:
-          </span>
-          <div class="languages-btns-container">
-            <div
-              class="btns-language-container"
-              :class="{
-                christmas: theme.christmasTheme,
-                'minimal-btn': theme.minimalTheme,
-              }"
-            >
-              <button
-                class="btn-lang-left"
-                :class="{
-                  'language-selected':
-                    languages.langEnglish && !theme.retroTheme,
-                  'retro-helper-btn-selected':
-                    languages.langEnglish && theme.retroTheme,
-                  'retro-helper-btn': theme.retroTheme,
-                }"
-                @click="languages.setEnglishLanguage()"
-              >
-                {{ languages.languagesBtns.english }}
-              </button>
-              <button
-                class="btn-lang-center"
-                :class="{
-                  'language-selected':
-                    languages.langSpanish && !theme.retroTheme,
-                  'retro-helper-btn-selected':
-                    languages.langSpanish && theme.retroTheme,
+        <ChangeLanguages />
 
-                  'retro-helper-btn': theme.retroTheme,
-                }"
-                @click="languages.setSpanishLanguage()"
-              >
-                {{ languages.languagesBtns.spanish }}
-              </button>
-              <button
-                class="btn-lang-right"
-                :class="{
-                  'language-selected': languages.langIta && !theme.retroTheme,
-                  'retro-helper-btn-selected':
-                    languages.langIta && theme.retroTheme,
+        <SafeDeleteMode />
 
-                  'retro-helper-btn': theme.retroTheme,
-                }"
-                @click="languages.setItalianoLanguage()"
-              >
-                {{ languages.languagesBtns.italian }}
-              </button>
-            </div>
-          </div>
-        </div>
+        <ChangeThemes @themeLoadingEmit="themeLoadingEmitted" />
 
-        <div class="helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(1)"
-            >&#x2699;</span
-          >
-          <span :class="{ 'tutorial-highlights': highlits === 1 }">
-            {{ languages.safeModeText.title }}:
-          </span>
-          <span class="info-icon" @click="safeModeInfo = !safeModeInfo">i</span
-          ><br />
-          <li class="ml-4" v-if="safeModeInfo">
-            ({{ languages.safeModeText.description }})
-          </li>
-          <div class="toggle-delete-confirm-container">
-            <span
-              class="toggle-delete-confirm"
-              @click="settings.toggleDeleteConfirm()"
-            >
-              &#x1F449;
-            </span>
-            <u class="mr-2" @click="settings.toggleDeleteConfirm()">
-              {{ languages.safeModeText.function }}
-            </u>
-            <span class="text-primary">{{ settings.canDeleteText }}</span>
-          </div>
-        </div>
+        <AutoDeleteEmptyCategories />
 
-        <div class="helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(2)"
-            >&#x2699;</span
-          >
-          <span :class="{ 'tutorial-highlights': highlits === 2 }"
-            >{{ languages.chosenThemeText }}:
-          </span>
-          <span class="text-primary">{{ theme.themeName }}</span
-          ><br />
-          <li class="ml-4">{{ languages.changeThemeText }}</li>
-          <br />
-          <div
-            class="btn-group"
-            role="group"
-            aria-label="Basic mixed styles example"
-          >
-            <button
-              type="button"
-              class="btn btn-light p-1 border border-dark"
-              @click="changeTheme('light')"
-            >
-              Light
-            </button>
-            <button
-              type="button"
-              class="btn btn-dark p-1"
-              @click="changeTheme('dark')"
-            >
-              Dark
-            </button>
-            <button
-              type="button"
-              class="btn minimal-theme p-0"
-              @click="changeTheme('minimal')"
-            >
-              Minimal
-            </button>
-            <button
-              type="button"
-              class="btn retro-theme p-1"
-              @click="changeTheme('retro')"
-            >
-              Dos
-            </button>
-            <button
-              type="button"
-              class="btn summer-theme p-1"
-              @click="changeTheme('summer')"
-            >
-              Summer
-            </button>
-            <button
-              type="button"
-              class="btn winter-theme p-0"
-              @click="changeTheme('winter')"
-            >
-              Winter
-            </button>
-          </div>
-        </div>
+        <ExportList />
 
-        <div class="helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(3)"
-            >&#x2699;</span
-          >
-          <span
-            :class="{
-              'tutorial-highlights': highlits === 3,
-              'spanish-size': languages.langSpanish,
-            }"
-            >{{ languages.autoDeleteEmptyCategoriesText.title }}:
-          </span>
-          <span
-            class="info-icon"
-            @click="
-              autoDeleteEmptyCategoriesInfo = !autoDeleteEmptyCategoriesInfo
-            "
-            >i</span
-          >
-          <br />
-          <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
-            ({{ languages.autoDeleteEmptyCategoriesText.description }})
-          </li>
-          <li class="toggle-delete-confirm-container">
-            <div
-              class="toggle-delete-confirm"
-              @click="settings.toggleAutomaticDeleteEmptyCategories()"
-            >
-              &#x1F449;
-            </div>
-            <u
-              class="mr-2"
-              @click="settings.toggleAutomaticDeleteEmptyCategories()"
-            >
-              {{ languages.autoDeleteEmptyCategoriesText.function }}
-            </u>
-            <span class="text-primary">
-              {{ settings.canDeleteEmptyCategoriesText }}
-            </span>
-          </li>
-        </div>
+        <Share />
 
-        <div class="add-list-copied-container helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(4)"
-            >&#x2699;</span
-          >
-          <span
-            :class="{
-              'tutorial-highlights': highlits === 4,
-              'spanish-size': languages.langSpanish,
-            }"
-          >
-            {{ languages.pasteListText.title }}
-          </span>
-          <span class="info-icon" @click="pasteListInfo = !pasteListInfo"
-            >i</span
-          >
-          <br />
-          <li class="ml-4" v-if="pasteListInfo">
-            ({{ languages.pasteListText.subtitle }})
-          </li>
-          <div class="add-list-copied">
-            <div class="increase-decrease-container">
-              <button
-                :class="{ 'retro-btn-border': theme.retroTheme }"
-                @click="startDecreasing()"
-                touch-action="none"
-              >
-                <img
-                  class="increase-decrease"
-                  src="@/img/icons/decrease.webp"
-                  alt="decrease"
-                />
-              </button>
-              <button
-                :class="{ 'retro-btn-border': theme.retroTheme }"
-                @click="startIncreasing()"
-                touch-action="none"
-              >
-                <img
-                  class="increase-decrease"
-                  src="@/img/icons/increase.webp"
-                  alt="increase"
-                />
-              </button>
-            </div>
-            <textarea
-              id="text-area"
-              :class="{ 'add-list-textarea': !theme.retroTheme }"
-              rows="2"
-              v-model="listPasted"
-            >
-            </textarea>
-            <button
-              class="btn btn-light share-update-btn add-list-copied-btn"
-              :class="{
-                'retro-btn-border': theme.retroTheme,
-                'border-dark': !theme.retroTheme,
-              }"
-              @click="addListCopied()"
-            >
-              <small>{{ languages.importText }}</small>
-            </button>
-          </div>
-        </div>
-
-        <div class="share-update helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(5)"
-            >&#x2699;</span
-          >
-          <span :class="{ 'tutorial-highlights': highlits === 5 }">
-            {{ languages.shareText }}:
-          </span>
-          <button
-            class="btn btn-light border-dark share-update-btn"
-            @click="shareLink()"
-          >
-            <img src="@/img/icons/share.webp" alt="share" />
-          </button>
-          <p class="link-copied" v-if="languages.share.visible">
-            {{ languages.share.text }}
-          </p>
-        </div>
-
-        <div class="share-update helper-settings">
-          <span class="settings-icon mr-1" @click="highlightsForTutorial(6)"
-            >&#x2699;</span
-          >
-          <span :class="{ 'tutorial-highlights': highlits === 6 }"
-            >{{ languages.updateText.description }}:</span
-          >
-          <div class="update-container">
-            <button
-              :disabled="languages.updateText.readyForUpdate"
-              :class="{
-                'ready-for-update': !languages.updateText.readyForUpdate,
-              }"
-              class="btn btn-light border-dark mr-3 share-update-btn"
-              @click="updateApp()"
-            >
-              <img src="@/img/icons/update.webp" alt="update" />
-            </button>
-            <small v-if="!languages.updateText.readyForUpdate">
-              {{ languages.updateText.available }}
-            </small>
-            <small v-if="languages.updateText.readyForUpdate">
-              {{ languages.updateText.unavailable }}
-            </small>
-          </div>
-        </div>
+        <UpdateApp @updatingAppEmit="updatingAppEmited" />
 
         <div id="helper-istructions">
-          <!-- ----------------------------------DESCRIZIONE IN BASE ALLA LINGUA SCELTA----------------------------- -->
+          <!-- DESCRIZIONE IN BASE ALLA LINGUA SCELTA -->
           <HelperDescription />
         </div>
 
@@ -571,10 +159,6 @@ export default {
   width: 33px;
 }
 
-.helper-settings {
-  margin-bottom: 10px;
-}
-
 .helper-description {
   position: absolute;
   left: 0;
@@ -585,103 +169,6 @@ export default {
   background-size: contain;
   z-index: 150;
   background-color: #ffffff;
-}
-
-.languages-btns-container {
-  display: flex;
-  justify-content: center;
-}
-.btns-language-container {
-  display: flex;
-}
-.language-selected {
-  background-color: rgb(0, 172, 252);
-  color: rgb(255, 255, 255) !important;
-}
-
-.btn-lang-left {
-  padding: 0px 5px;
-  border-radius: 10px 0 0 10px;
-  color: rgb(0, 172, 252);
-  border-color: rgb(0, 172, 252);
-}
-.btn-lang-center {
-  padding: 0px 5px;
-  border-radius: 0;
-  color: rgb(0, 172, 252);
-  border-color: rgb(0, 172, 252);
-}
-.btn-lang-right {
-  padding: 0px 5px;
-  border-radius: 0 10px 10px 0;
-  color: rgb(0, 172, 252);
-  border-color: rgb(0, 172, 252);
-}
-
-#loading-themes-container,
-#updating-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  background-size: contain;
-  z-index: 150;
-  background-color: #ffffff;
-  color: #d0e8a4;
-  text-align: center;
-  font-family: Verdana, sans-serif;
-}
-
-#loading-themes-container > img:first-child {
-  margin-top: 30%;
-  width: 75%;
-  animation: zoominoutsinglefeatured 1s infinite;
-}
-#loading-themes-container > img:last-child {
-  width: 100%;
-}
-@keyframes zoominoutsinglefeatured {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.3, 1.3);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-#updating-container > img {
-  margin-top: 35%;
-  width: 100%;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  left: -300px;
-  -webkit-animation: slideDino 3.5s forwards;
-  animation: slideDino 3.5s forwards;
-  z-index: 1;
-}
-@-webkit-keyframes slideDino {
-  50% {
-    left: 0;
-  }
-  100% {
-    left: 500px;
-  }
-}
-@keyframes slideDino {
-  50% {
-    left: 0;
-  }
-  100% {
-    left: 500px;
-  }
-}
-.updating-text {
-  font-weight: bold;
 }
 
 .helper-light {
@@ -736,74 +223,6 @@ export default {
   text-align: center;
 }
 
-.add-list-copied {
-  display: grid;
-  grid-template-columns: 9% 65% 20%;
-  gap: 10px;
-  margin-top: 5px;
-}
-.info-icon {
-  font-family: Times New Roman;
-  font-weight: bold;
-  font-size: large;
-  border: 2px solid;
-  padding: 0 7px;
-  border-radius: 50%;
-  margin-left: 15px;
-}
-
-.add-list-textarea {
-  border-radius: 5px;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 55px;
-  max-height: 405px;
-}
-
-.increase-decrease-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.increase-decrease-container > button {
-  margin: 0;
-  padding: 0;
-  border: 1px solid rgb(41, 41, 41);
-  border-radius: 5px;
-}
-.increase-decrease {
-  width: 15px;
-  height: 10px;
-}
-.add-list-copied-btn {
-  max-height: 55px;
-}
-
-.share-update {
-  margin-top: 15px;
-}
-.share-update-btn {
-  padding: 0 10px 3px;
-}
-.share-update-btn > img {
-  width: 20px;
-}
-
-.update-container {
-  text-align: center;
-}
-.link-copied {
-  font-size: 13px;
-  margin-left: 5px;
-  color: rgb(197, 0, 0);
-}
-
-.ready-for-update {
-  background-color: #28a745 !important;
-}
-
 .close-helper-container {
   width: 65px;
   height: 60px;
@@ -839,53 +258,6 @@ textarea {
   top: 5px;
   right: 10%;
   width: 50px;
-}
-
-.toggle-delete-confirm {
-  display: inline-block;
-  animation: zoominout 1.5s infinite;
-}
-@keyframes zoominout {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.3, 1.3);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-.toggle-delete-confirm-container {
-  margin-left: 20px;
-}
-.toggle-delete-confirm-container:hover {
-  cursor: pointer;
-}
-
-.light {
-  background-color: white !important;
-}
-.dark {
-  background-color: #333333 !important;
-}
-.minimal {
-  background-color: #a5becc !important;
-}
-.retro {
-  background-color: black !important;
-}
-
-.summer {
-  background-color: #12a1df !important;
-}
-.winter {
-  background-color: #1a3159 !important;
-}
-.tutorial-highlights {
-  background-color: orangered;
-  color: white;
 }
 
 .copyright {

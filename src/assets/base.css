@@ -61,6 +61,58 @@ button {
   border-radius: 5px;
 }
 
+.helper-settings {
+  margin-bottom: 10px;
+}
+
+.tutorial-highlights {
+  background-color: orangered;
+  color: white;
+}
+
+.info-icon {
+  font-family: Times New Roman;
+  font-weight: bold;
+  font-size: large;
+  border: 2px solid;
+  padding: 0 7px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.toggle-delete-confirm-container {
+  margin-left: 20px;
+}
+.toggle-delete-confirm-container:hover {
+  cursor: pointer;
+}
+
+.toggle-delete-confirm {
+  display: inline-block;
+  animation: zoominout 1.5s infinite;
+}
+@keyframes zoominout {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.3, 1.3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.share-update {
+  margin-top: 15px;
+}
+.share-update-btn {
+  padding: 0 10px 3px;
+}
+.share-update-btn > img {
+  width: 20px;
+}
+
 .pencil,
 .trash,
 .floppy {

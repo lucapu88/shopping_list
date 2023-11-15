@@ -14,27 +14,17 @@ export default {
       isChristmas: useChristmasStore(),
       settings: useSettingsStore(),
       languages: useLanguageStore(),
-      highlits: null,
     };
-  },
-  methods: {
-    highlightsForTutorial(num) {
-      console.log(num);
-      /*Mi serve solo quando creo i video tutorial. In pratica evidenzia il testo per il quale sto mostrando la funzionalità.
-        RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI COPIA E INCOLLA QUESTO CODICE NEL CREATE/MOUNTED:*/
-      // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
-      // this.highlits = num;
-    },
   },
 };
 </script>
 
 <template>
   <div>
-    <p class="helper-title" @click="highlightsForTutorial(6)">
+    <p class="helper-title" @click="settings.highlightsForTutorial(7)">
       {{ languages.helperDescription.troubleshooting }}
     </p>
-    <small :class="{ 'tutorial-highlights': highlits === 6 }">
+    <small :class="{ 'tutorial-highlights': settings.highlits === 7 }">
       {{ languages.helperDescription.troubleshootingText }}
     </small>
     <p
@@ -320,10 +310,10 @@ export default {
   </div>
   <br />
   <p id="helper-important-alert" class="update-alert">
-    <span style="color: red" @click="highlightsForTutorial(7)">
+    <span style="color: red" @click="settings.highlightsForTutorial(8)">
       {{ languages.helperDescription.adviceTitle }}
     </span>
-    <span :class="{ 'tutorial-highlights': highlits === 7 }">
+    <span :class="{ 'tutorial-highlights': settings.highlits === 8 }">
       {{ languages.helperDescription.adviceText }}
       <span style="color: green">{{ settings.dateLastUpdate }}</span>
     </span>
