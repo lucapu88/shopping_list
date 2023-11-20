@@ -229,6 +229,7 @@ export default {
   border: 1px solid;
   border-radius: 5px;
   padding: 0 3px;
+  margin: 5px;
 }
 .category-list:hover {
   cursor: pointer;

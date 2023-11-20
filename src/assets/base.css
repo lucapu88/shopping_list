@@ -342,15 +342,6 @@ button {
   height: 100%;
 }
 
-.category-list-container {
-  width: 365px;
-  display: none;
-  text-align: center;
-  border: 1px solid;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
 .category {
   background: rgba(192, 224, 133, 0.75);
   border-radius: 15px;
@@ -372,18 +363,6 @@ button {
   100% {
     transform: scale(1, 1);
   }
-}
-.category-list {
-  display: inline-block;
-  margin: 2px;
-  font-weight: bold;
-  text-transform: capitalize;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 0 3px;
-}
-.category-list:hover {
-  cursor: pointer;
 }
 .category-list-description {
   font-size: small;

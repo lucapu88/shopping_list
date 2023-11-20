@@ -26,6 +26,8 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'babies', emojy: String.fromCodePoint(0x1f476) },
       { name: 'electronics', emojy: String.fromCodePoint(0x1f4a1) },
       { name: 'pets', emojy: String.fromCodePoint(0x1f439) },
+      { name: 'work tools', emojy: String.fromCodePoint(0x1f6E0) },
+      { name: 'clothes', emojy: String.fromCodePoint(0x1f457) },
       { name: 'other', emojy: String.fromCodePoint(0x1f4b8) },
     ],
     itaCategories: [
@@ -43,6 +45,8 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'bimbi', emojy: String.fromCodePoint(0x1f476) },
       { name: 'elettronica', emojy: String.fromCodePoint(0x1f4a1) },
       { name: 'animali', emojy: String.fromCodePoint(0x1f439) },
+      { name: 'attrezzi', emojy: String.fromCodePoint(0x1f6E0) },
+      { name: 'vestiti', emojy: String.fromCodePoint(0x1f457) },
       { name: 'altro', emojy: String.fromCodePoint(0x1f4b8) },
     ],
     spanCategories: [
@@ -60,6 +64,8 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'niños', emojy: String.fromCodePoint(0x1f476) },
       { name: 'electrónica', emojy: String.fromCodePoint(0x1f4a1) },
       { name: 'animales', emojy: String.fromCodePoint(0x1f439) },
+      { name: 'herramientas', emojy: String.fromCodePoint(0x1f6E0) },
+      { name: 'ropa', emojy: String.fromCodePoint(0x1f457) },
       { name: 'otros', emojy: String.fromCodePoint(0x1f4b8) },
     ],
     langIta: false,
