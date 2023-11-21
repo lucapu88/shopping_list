@@ -51,7 +51,7 @@ export default {
   height: 100%;
   padding: 10px;
   background-size: contain;
-  z-index: 150;
+  z-index: 450;
   background-color: #ffffff;
   color: #d0e8a4;
   text-align: center;

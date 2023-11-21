@@ -1,6 +1,7 @@
 <script setup>
 import HeaderButtonsContainer from './Header-buttons-container.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
+import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useSettingsStore } from '@/store/SettingsStore';
@@ -13,6 +14,7 @@ export default {
     return {
       theme: useThemeStore(),
       isChristmas: useChristmasStore(),
+      festivities: useOthersFestivitiesStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       addTodo: useAddModifyDeleteTodosStore(),
@@ -66,13 +68,19 @@ export default {
   <img
     v-if="isChristmas.christmasTheme"
     class="christmas-theme"
-    src="@/img/ghirlanda.webp"
+    src="@/img/festivities/ghirlanda.webp"
     alt="merry-christmas"
   />
   <div
     class="header-container"
     :class="{ christmas: isChristmas.christmasTheme }"
   >
+    <img
+      v-if="festivities.halloweenTheme"
+      class="halloween-witch-hat"
+      src="@/img/festivities/cappello-strega.webp"
+      alt="halloween"
+    />
     <h2
       class="title text-center"
       :class="{
@@ -142,6 +150,12 @@ export default {
   margin-top: 30px;
 }
 
+.halloween-witch-hat {
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .title {
   background: -webkit-radial-gradient(circle, #ff0000 0%, #3d0000 80%);
   -webkit-background-clip: text;
@@ -272,7 +286,7 @@ export default {
   right: 0;
   border-radius: 50%;
   /* padding: 0 5px; */
-  z-index: 20;
+  z-index: 300;
   margin-right: 2%;
 }
 
@@ -281,6 +295,6 @@ export default {
 }
 .settings {
   width: 33px;
-  z-index: 20;
+  z-index: 300;
 }
 </style>

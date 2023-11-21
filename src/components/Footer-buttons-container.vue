@@ -73,7 +73,7 @@ export default {
   <div v-if="isChristmas.christmasTheme">
     <img
       class="christmas-footer"
-      src="@/img/christmas.webp"
+      src="@/img/festivities/christmas.webp"
       alt=" Merry Christmas"
     />
     <small class="created-by-luca-caputo">By Luca Caputo</small>

@@ -3,6 +3,7 @@ import HelperDescription from './Helper-description.vue';
 import PrivacyPolicyModal from '../panels-and-modals/privacy-policy/Privacy-policy-modal.vue';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
+import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import LoadinfOrUpdating from '../Loading-or-updating.vue';
@@ -21,6 +22,7 @@ export default {
     return {
       theme: useThemeStore(),
       isChristmas: useChristmasStore(),
+      festivities: useOthersFestivitiesStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       themeLoading: false,
@@ -31,6 +33,7 @@ export default {
   created() {
     this.settings.checkingUpdates();
     this.isChristmas.merryChristmasTheme();
+    this.festivities.checkFestivities();
     this.copyright();
   },
   mounted() {
@@ -82,9 +85,15 @@ export default {
         </p>
       </div>
       <img
+        v-if="festivities.halloweenTheme"
+        class="halloween-pumpkin"
+        src="@/img/festivities/zucca.webp"
+        alt="halloween"
+      />
+      <img
         v-if="isChristmas.christmasTheme"
         class="left-christmas-info"
-        src="@/img/Gingerman-icon.webp"
+        src="@/img/festivities/Gingerman-icon.webp"
         alt="Buon Natale!"
       />
       <p
@@ -99,8 +108,14 @@ export default {
       <img
         v-if="isChristmas.christmasTheme"
         class="right-christmas-info"
-        src="@/img/Decorations-icon.webp"
+        src="@/img/festivities/Decorations-icon.webp"
         alt="E felice anno nuovo!"
+      />
+      <img
+        v-if="festivities.halloweenTheme"
+        class="halloween-cobweb"
+        src="@/img/festivities/ragnatele.webp"
+        alt="halloween"
       />
 
       <div id="helper-description">
@@ -153,6 +168,20 @@ export default {
 .helper:hover {
   cursor: pointer;
 }
+
+.halloween-pumpkin {
+  width: 75px;
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  height: 50px;
+}
+.halloween-cobweb {
+  width: 60px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+}
 .settings {
   width: 33px;
 }
@@ -165,7 +194,7 @@ export default {
   height: 100%;
   padding: 10px;
   background-size: contain;
-  z-index: 150;
+  z-index: 300;
   background-color: #ffffff;
 }
 

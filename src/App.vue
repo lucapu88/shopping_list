@@ -1,4 +1,5 @@
 <script setup>
+import FestivitiesAndOccurrences from './components/FestivitiesAndOccurrences.vue';
 import HeadList from './components/Head-list.vue';
 import ConfirmModal from './components/panels-and-modals/Confirm-modal.vue';
 import Helper from './components/helper/Helper.vue';
@@ -6,6 +7,7 @@ import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
+import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
@@ -24,6 +26,7 @@ export default {
   data() {
     return {
       checkChristmas: useChristmasStore(),
+      checkFestivities: useOthersFestivitiesStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
@@ -34,6 +37,7 @@ export default {
     this.settings.checkingUpdates(); //controllo "aggiornamenti"
     this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
     this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
+    this.checkFestivities.checkFestivities();
     this.todosStore.createTodosList();
     this.todosStore.changeTodoAdded(this.todosStore.todos);
     this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
@@ -120,7 +124,8 @@ export default {
   >
     <div id="app">
       <div id="container-list" class="row">
-        <!--  ------------------------------------------------------  -->
+        <FestivitiesAndOccurrences />
+
         <div class="mt-3 mx-auto padding-bottom-custom">
           <header>
             <HeadList />
@@ -140,7 +145,6 @@ export default {
             />
           </footer>
         </div>
-        <!--  ------------------------------------------------------  -->
       </div>
     </div>
   </div>

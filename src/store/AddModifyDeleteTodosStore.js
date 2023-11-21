@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-
+import { useChristmasStore } from '@/store/ChristmasStore';
+import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   state: () => ({
     languages: useLanguageStore(),
     settings: useSettingsStore(),
+    christmas: useChristmasStore(),
+    festivities: useOthersFestivitiesStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -252,6 +255,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       navigator.vibrate(1000);
       location.reload();
+      this.isChristmas.merryChristmasTheme();
+      this.festivities.checkFestivities();
     },
   },
 });
