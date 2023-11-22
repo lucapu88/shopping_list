@@ -300,9 +300,15 @@ export default {
           <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
         </li>
         <li>
-          {{ languages.helperDescription.socialText }}
+          {{ languages.helperDescription.twitterText }}
           <a href="https://twitter.com/shoppList231023" target="_blank">
-            <img src="@/img/x.webp" alt="social_twitter" class="social" />
+            <img src="@/img/icons/x.webp" alt="social_twitter" class="social" />
+          </a>
+        </li>
+        <li>
+          {{ languages.helperDescription.githubText }}
+          <a href="https://github.com/lucapu88/shopping_list" target="_blank">
+            <img src="@/img/icons/github.webp" alt="github" class="social" />
           </a>
         </li>
       </template>

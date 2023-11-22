@@ -166,7 +166,8 @@ export const useLanguageStore = defineStore('Language', {
       videoAlert: 'Your device does not support video tags. Please contact support.',
       support: 'Support',
       supportText: 'For any report you can contact me:',
-      socialText: 'You can also find us on twitter:',
+      twitterText: 'You can also find us on twitter:',
+      githubText: 'If you are a developer maybe you can give me some advice on how to improve in the code:',
       adviceTitle: 'IMPORTANT:',
       adviceText: "This is a web app converted to a smartphone app, and is always maintained, so don't pay attention to the date of the last update that appears in the store. The actual date of the last update is: ",
     },
@@ -266,7 +267,8 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.videoAlert = 'Il tuo device non supporta i video tag. Contatta il supporto.';
         this.helperDescription.support = 'Contatti';
         this.helperDescription.supportText = 'Per qualsiasi segnalazione puoi contattarmi:';
-        this.helperDescription.socialText = 'Ci trovi anche su twitter:';
+        this.helperDescription.twitterText = 'Ci trovi anche su twitter:';
+        this.helperDescription.githubText = 'Se sei uno sviluppatore magari puoi darmi qualche consiglio su come migliorare nel codice:';
         this.helperDescription.adviceTitle = 'IMPORTANTE:';
         this.helperDescription.adviceText = "Questa è una web app convertita in app per smartphone, ed è sempre manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che appare nello store. La data reale dell'ultimo aggiornamento è:";
         this.cancerDayText = '4 Febbraio: Giornata mondiale contro il cancro';
@@ -351,7 +353,8 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.videoAlert = 'Tu dispositivo no admite etiquetas de vídeo. Póngase en contacto con el servicio de asistencia.';
         this.helperDescription.support = 'Contactos';
         this.helperDescription.supportText = 'Para cualquier informe puede ponerse en contacto conmigo:';
-        this.helperDescription.socialText = 'También puede encontrarnos en twitter:';
+        this.helperDescription.twitterText = 'También puede encontrarnos en twitter:';
+        this.helperDescription.githubText = 'Si usted es un desarrollador tal vez usted me puede dar algunos consejos sobre cómo mejorar en el código:';
         this.helperDescription.adviceTitle = 'IMPORTANTE:';
         this.helperDescription.adviceText = "Esta es una aplicación web convertida en aplicación para smartphone, y se mantiene siempre, así que no prestes atención a la fecha de la última actualización que aparece en la tienda. La fecha real de la última actualización es:";
         this.cancerDayText = '4 de febrero: Día Mundial contra el Cáncer';

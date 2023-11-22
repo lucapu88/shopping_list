@@ -18,7 +18,10 @@ export default {
       setTimeout(() => {
         this.description = false;
       }, 3000);
-      if (this.festivitiesOrOccurrences.toiletDay) {
+      if (
+        this.festivitiesOrOccurrences.toiletDay ||
+        this.festivitiesOrOccurrences.beerDay
+      ) {
         const audioPlayer = this.$refs.audioPlayer;
         audioPlayer.volume = 0.4;
         audioPlayer.paused || audioPlayer.ended
@@ -110,6 +113,11 @@ export default {
     >
       {{ languages.beerDayText }}
     </p>
+    <audio
+      v-if="festivitiesOrOccurrences.beerDay"
+      ref="audioPlayer"
+      src="src/sounds/beerpour.mp3"
+    ></audio>
     <!-- ---------------------------------------------------------------------FESTA DEI GENITORI -->
     <img
       v-if="festivitiesOrOccurrences.parentsDay && !description"
@@ -139,7 +147,7 @@ export default {
     <audio
       v-if="festivitiesOrOccurrences.toiletDay"
       ref="audioPlayer"
-      src="src/video/toilet.mp3"
+      src="src/sounds/toilet.mp3"
     ></audio>
   </div>
 </template>
