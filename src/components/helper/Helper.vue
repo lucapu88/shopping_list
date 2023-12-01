@@ -74,6 +74,7 @@ export default {
         'winter-theme-helper': theme.winterTheme,
         'summer-theme-helper': theme.summerTheme,
         'helper-light': theme.lightTheme,
+        'elegant-theme-helper': theme.elegantTheme,
       }"
     >
       <div class="close-helper-container" @click="closeHelper()">

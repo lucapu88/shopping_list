@@ -31,6 +31,7 @@ export default {
       'retro-theme-confirm-delete': theme.retroTheme,
       'summer-confirm': theme.summerTheme,
       'winter-confirm': theme.winterTheme,
+      'elegant-theme-confirm': theme.elegantTheme,
     }"
     v-if="!todosStore.visible"
   >

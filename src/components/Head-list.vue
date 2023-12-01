@@ -31,6 +31,7 @@ export default {
       if (this.settings.helper) {
         window.scrollTo(0, 0);
         document.documentElement.style.overflow = 'hidden';
+        this.addTodo.focusIn = false;
       } else {
         document.documentElement.style.overflow = 'auto';
       }
@@ -67,7 +68,7 @@ export default {
   {{ addTodo.focusIn ? focusOnInput() : null }}
   <img
     v-if="isChristmas.christmasTheme"
-    class="christmas-theme"
+    class="christmas-garland"
     src="@/img/festivities/ghirlanda.webp"
     alt="merry-christmas"
   />
@@ -88,15 +89,18 @@ export default {
         'dark-theme-title': theme.darkTheme,
         'minimal-theme-title': theme.minimalTheme,
         'retro-theme-title': theme.retroTheme,
+        'elegant-theme-title': theme.elegantTheme,
         'title-spanish': languages.langSpanish,
+        'title1-spanish': languages.langSpanish,
       }"
     >
       {{ languages.shoppingListTitle }}
     </h2>
     <h2
+      v-if="!theme.elegantTheme"
       class="title2 text-center"
       :class="{
-        'christmas-title': isChristmas.christmasTheme,
+        'christmas-title2': isChristmas.christmasTheme,
         'minimal-theme-title2': theme.minimalTheme,
         'retro-theme-title2': theme.retroTheme,
         'title-spanish': languages.langSpanish,
@@ -121,14 +125,20 @@ export default {
         class="inputText mb-2 border border-primary rounded"
         :class="{
           'placeholder-selected':
-            languages.placeholder != languages.defaultPlaceholderText,
+            languages.placeholder != languages.defaultPlaceholderText &&
+            !theme.elegantTheme,
+          'elegant-placeholder': theme.elegantTheme,
         }"
         ref="myInput"
         v-model="addTodo.newTodo"
         @keypress.enter="addNewTodo()"
         :placeholder="languages.placeholder"
       />
-      <button class="btn btn-info" @click="addNewTodo()">
+      <button
+        class="btn btn-info"
+        :class="{ 'elegant-btn': theme.elegantTheme }"
+        @click="addNewTodo()"
+      >
         <img
           class="plane"
           src="@/img/icons/paper-plane.webp"
@@ -147,7 +157,7 @@ export default {
   position: relative;
 }
 .christmas {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .halloween-witch-hat {
@@ -177,8 +187,7 @@ export default {
     left: 0;
   }
 }
-.title2,
-.title2-eng {
+.title2 {
   background: -webkit-radial-gradient(circle, #333232 0%, #909090 95%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -190,12 +199,8 @@ export default {
   animation-iteration-count: 1;
   animation-delay: 2.5s;
   animation-timing-function: ease-out;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
-}
-
-.title2-eng {
-  right: 23%;
 }
 @keyframes fadeOutOpacity {
   0% {
@@ -209,8 +214,14 @@ export default {
 .christmas-title {
   z-index: 20;
 }
+.christmas-title2 {
+  z-index: 19;
+}
 .title-spanish {
-  font-size: 27px;
+  font-size: 25px;
+}
+.title1-spanish {
+  margin-left: -17px;
 }
 .placeholder-selected {
   background-color: #a6cef8;

@@ -29,7 +29,7 @@ export default {
     </small>
     <p
       class="helper-title"
-      :class="isChristmas.christmasTheme ? 'christmas-red' : ''"
+      :class="{ 'christmas-red': isChristmas.christmasTheme }"
     >
       {{ languages.helperDescription.instructionsTitle }}
     </p>
@@ -43,6 +43,7 @@ export default {
         <li>
           <img
             class="btn btn-info helper-icon"
+            :class="{ 'elegant-btn elegant-border': theme.elegantTheme }"
             src="@/img/icons/paper-plane.webp"
             alt="paper-plane"
           />
@@ -54,6 +55,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-btn-button': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
             src="@/img/icons/pencil.webp"
             alt="pencil"
@@ -64,6 +66,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-btn-button': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
             src="@/img/icons/floppy.webp"
             alt="floppy"
@@ -75,6 +78,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-btn-button': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
             src="@/img/icons/trash.webp"
             alt="trash"
@@ -90,6 +94,7 @@ export default {
               'retro-theme-back-top': theme.retroTheme,
               'summer-theme-back-top': theme.summerTheme,
               'winter-theme-back-top': theme.winterTheme,
+              'elegant-theme-back-top': theme.elegantTheme,
             }"
           >
             <span> >> </span>
@@ -107,6 +112,7 @@ export default {
           {{ languages.helperDescription.addCategory.part1 }}
           <img
             class="btn btn-info helper-icon"
+            :class="{ 'elegant-btn elegant-border': theme.elegantTheme }"
             src="@/img/icons/paper-plane.webp"
             alt="paper-plane"
           />
@@ -117,6 +123,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
           >
             +
@@ -127,6 +134,7 @@ export default {
             :class="{
               'category-retro': theme.retroTheme,
               'category-minimal': theme.minimalTheme,
+              'category-elegant': theme.elegantTheme,
             }"
           >
             {{ languages.helperDescription.addCategory.part4 }}
@@ -147,6 +155,7 @@ export default {
               'retro-insert-all-btn': theme.retroTheme,
               'summer-btn': theme.summerTheme,
               'winter-btn': theme.winterTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
           >
             <span>{{ languages.insertAll }}</span></button
@@ -162,6 +171,7 @@ export default {
               'retro-insert-all-btn': theme.retroTheme,
               'summer-btn': theme.summerTheme,
               'winter-btn': theme.winterTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
           >
             <span>{{ languages.removeEmpty }}</span></button
@@ -181,6 +191,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
           >
             <img src="@/img/icons/drag-and-drop.webp" alt="move" />
@@ -205,10 +216,14 @@ export default {
               v-if="theme.lightTheme || theme.summerTheme"
               src="@/img/icons/cart-black.webp"
             />
-            <strong v-if="theme.minimalTheme"> - </strong>
+            <strong class="large" v-if="theme.minimalTheme"> - </strong>
+            <strong class="large" v-if="theme.elegantTheme"> > </strong>
           </span>
           {{ languages.helperDescription.multipleDeleteText.part2 }}
-          <button class="text-danger border-danger rounded">
+          <button
+            class="text-danger border-danger rounded"
+            :class="{ 'elegant-btn': theme.elegantTheme }"
+          >
             <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
           </button>
           {{ languages.helperDescription.multipleDeleteText.part3 }}
@@ -226,6 +241,7 @@ export default {
             :class="{
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
             }"
           >
             <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
@@ -248,7 +264,12 @@ export default {
       <template v-if="settings.deleteAllInfo">
         <li>
           {{ languages.helperDescription.deleteAllText.part1 }}
-          <span class="delete-all-description">
+          <span
+            class="delete-all-description p-2"
+            :class="{
+              'elegant-delete-all-btn elegant-border': theme.elegantTheme,
+            }"
+          >
             {{ languages.deleteAll }}
             <img class="skull" src="@/img/icons/skull.webp" alt="skull" />
           </span>

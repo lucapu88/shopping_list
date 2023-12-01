@@ -30,6 +30,7 @@ export default {
         :class="{
           christmas: theme.christmasTheme,
           'minimal-btn': theme.minimalTheme,
+          'elegant-btn': theme.elegantTheme,
         }"
       >
         <button

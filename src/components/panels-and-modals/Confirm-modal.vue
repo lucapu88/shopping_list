@@ -2,6 +2,7 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import { useChristmasStore } from '@/store/ChristmasStore';
 </script>
 
 <script>
@@ -11,6 +12,7 @@ export default {
       theme: useThemeStore(),
       languages: useLanguageStore(),
       todosStore: useAddModifyDeleteTodosStore(),
+      isChristmas: useChristmasStore(),
     };
   },
 };
@@ -28,8 +30,15 @@ export default {
         'confirm-retro': theme.retroTheme,
         'confirm-summer': theme.summerTheme,
         'confirm-winter': theme.winterTheme,
+        'confirm-elegant': theme.elegantTheme,
       }"
     >
+      <img
+        v-if="isChristmas.christmasTheme"
+        class="christmas-bells"
+        src="@/img/festivities/christmas-bells.webp"
+        alt="christmas_bells"
+      />
       <p class="mt-5">{{ languages.completeConfirmText }}</p>
       <!--{{ todo }} TOFIX era nel vecchio codice dentro lo span qui sotto. C'è da capire se serve e a cosa serve.-->
       <span style="display: none">{{ todosStore.index }} </span>
@@ -54,6 +63,7 @@ export default {
 
 <style scoped>
 .confirm-delete-modal-content {
+  position: relative;
   margin: auto;
   padding: 25px;
   border-radius: 10px;
@@ -70,6 +80,25 @@ export default {
   border-radius: 5px;
   width: 40px;
   padding: 5px;
+}
+
+.christmas-bells {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  width: 70px;
+  height: 70px;
+  animation: ringingBells 3s infinite;
+}
+
+@keyframes ringingBells {
+  0%,
+  100% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
 }
 .delete-selected {
   color: rgb(215, 0, 0) !important;
@@ -125,6 +154,20 @@ export default {
 .confirm-winter > p {
   background-color: #b7c3c390;
   border-radius: 5px;
+}
+
+.confirm-elegant {
+  background-color: #1d2731;
+  border: 1px solid #d98410;
+  color: #d98410;
+}
+.confirm-elegant > p {
+  font-weight: bold;
+}
+.confirm-elegant > button {
+  background-color: #045687;
+  border-color: #d98410;
+  color: #d98410;
 }
 
 button {

@@ -44,6 +44,11 @@ export default {
           window.localStorage.setItem('winterTheme', true);
           break;
 
+        case 'elegant':
+          this.theme.elegantTheme = true;
+          window.localStorage.setItem('elegantTheme', true);
+          break;
+
         default:
           this.theme.lightTheme = true;
           window.localStorage.setItem('lightTheme', true);
@@ -69,49 +74,80 @@ export default {
     ><br />
     <li class="ml-4">{{ languages.changeThemeText }}</li>
     <br />
-    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <button
-        type="button"
-        class="btn btn-light p-1 border border-dark"
-        @click="changeTheme('light')"
-      >
-        Light
-      </button>
-      <button
-        type="button"
-        class="btn btn-dark p-1"
-        @click="changeTheme('dark')"
-      >
-        Dark
-      </button>
-      <button
-        type="button"
-        class="btn minimal-theme p-0"
-        @click="changeTheme('minimal')"
-      >
-        Minimal
-      </button>
-      <button
-        type="button"
-        class="btn retro-theme p-1"
-        @click="changeTheme('retro')"
-      >
-        Dos
-      </button>
-      <button
-        type="button"
-        class="btn summer-theme p-1"
-        @click="changeTheme('summer')"
-      >
-        Summer
-      </button>
-      <button
-        type="button"
-        class="btn winter-theme p-0"
-        @click="changeTheme('winter')"
-      >
-        Winter
-      </button>
+    <div class="btns-container">
+      <div class="top">
+        <button
+          type="button"
+          class="btn btn-light p-1 border border-dark"
+          @click="changeTheme('light')"
+        >
+          Light
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark p-1"
+          @click="changeTheme('dark')"
+        >
+          Dark
+        </button>
+        <button
+          type="button"
+          class="btn minimal-theme p-1"
+          @click="changeTheme('minimal')"
+        >
+          Minimal
+        </button>
+        <button
+          type="button"
+          class="btn retro-theme p-1"
+          @click="changeTheme('retro')"
+        >
+          Dos
+        </button>
+      </div>
+
+      <div class="bottom">
+        <button
+          type="button"
+          class="btn summer-theme p-1"
+          @click="changeTheme('summer')"
+        >
+          Summer
+        </button>
+        <button
+          type="button"
+          class="btn winter-theme p-1"
+          @click="changeTheme('winter')"
+        >
+          Winter
+        </button>
+        <button
+          type="button"
+          class="btn elegant-theme elegant-border p-1"
+          @click="changeTheme('elegant')"
+        >
+          Elegant
+        </button>
+        <small class="new">NEW</small>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  margin: 4px 8px;
+  width: 75px;
+}
+
+.top,
+.bottom {
+  display: flex;
+  align-items: center;
+}
+</style>

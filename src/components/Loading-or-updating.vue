@@ -28,6 +28,7 @@ export default {
       retro: theme.retroTheme,
       summer: theme.summerTheme,
       winter: theme.winterTheme,
+      elegant: theme.elegantTheme,
     }"
   >
     <img src="@/img/Loading.webp" alt="loading" />
@@ -126,5 +127,9 @@ export default {
 }
 .winter {
   background-color: #1a3159 !important;
+}
+
+.elegant {
+  background-color: #045687 !important;
 }
 </style>

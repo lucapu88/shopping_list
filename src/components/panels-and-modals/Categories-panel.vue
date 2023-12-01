@@ -71,6 +71,7 @@ export default {
           'retro-btn-border': theme.retroTheme,
           'summer-btn': theme.summerTheme,
           'winter-btn': theme.winterTheme,
+          'elegant-btn': theme.elegantTheme,
         }"
         @click="languages.insertAllCategories()"
       >
@@ -86,6 +87,7 @@ export default {
           'retro-btn-border': theme.retroTheme,
           'summer-btn': theme.summerTheme,
           'winter-btn': theme.winterTheme,
+          'elegant-btn': theme.elegantTheme,
         }"
         @click="todosStore.removeOnlyEmpty()"
       >
@@ -193,12 +195,6 @@ export default {
   }
 }
 
-.light-theme-confirm {
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-  -moz-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-  box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-}
 .category {
   background: rgba(192, 224, 133, 0.75);
   border-radius: 15px;
@@ -278,12 +274,6 @@ export default {
 .insert-all-btn {
   margin: 15px 5px 10px;
 }
-.light-btn {
-  background-color: #ffffff;
-  border: 2px solid #007bff;
-  border-radius: 10px;
-}
-
 .add-remove-empty {
   display: flex;
   justify-content: center;

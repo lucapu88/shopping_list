@@ -74,6 +74,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
+      this.christmas.merryChristmasTheme();
+      this.festivities.checkFestivities();
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);
@@ -255,8 +257,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       navigator.vibrate(1000);
       location.reload();
-      this.isChristmas.merryChristmasTheme();
-      this.festivities.checkFestivities();
     },
   },
 });

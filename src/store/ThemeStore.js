@@ -8,6 +8,7 @@ export const useThemeStore = defineStore('theme', {
         retroTheme: false,
         summerTheme: false,
         winterTheme: false,
+        elegantTheme: false,
         themeName: 'Light',
     }),
     getters: {},
@@ -49,12 +50,19 @@ export const useThemeStore = defineStore('theme', {
                 this.changeThemeStyle('Winter', '#232F34', '#FFFFFF', "'Permanent Marker', cursive");
             }
 
+            const elegantThemeSelected = window.localStorage.getItem('elegantTheme');
+            this.elegantTheme = elegantThemeSelected === 'true';
+            if (this.elegantTheme) {
+                this.changeThemeStyle('Elegant', 'rgb(7,60,92)', '#D98410', "Courier New");
+            }
+
             if (!lightThemeSelected
                 && !darkThemeSelected
                 && !minimalThemeSelected
                 && !retroThemeSelected
                 && !summerThemeSelected
-                && !winterThemeSelected) {
+                && !winterThemeSelected
+                && !elegantThemeSelected) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
                 this.lightThemeDefaultSetting();
             }
@@ -69,6 +77,10 @@ export const useThemeStore = defineStore('theme', {
             document.body.style.backgroundColor = backgroundColor;
             if (color) { document.body.style.color = color; }
             if (fontFamily) { document.body.style.fontFamily = fontFamily; }
+            if (themeName === 'Elegant') {
+                document.body.style.background = "linear-gradient(90deg,rgba(7, 60, 92, 1) 30%, rgba(29, 39, 49, 1) 55%)";
+                document.body.style.fontWeight = 'bold';
+            }
         },
         resetAllThemes() {
             this.lightTheme = false;
@@ -83,6 +95,8 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('summerTheme', false);
             this.winterTheme = false;
             window.localStorage.setItem('winterTheme', false);
+            this.elegantTheme = false;
+            window.localStorage.setItem('elegantTheme', false);
         },
     },
 });

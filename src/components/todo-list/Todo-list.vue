@@ -28,6 +28,7 @@ export default {
       category: todo.class,
       'category-retro': todo.class && theme.retroTheme,
       'category-minimal': todo.class && theme.minimalTheme,
+      'category-elegant': todo.class && theme.elegantTheme,
       'todo-added': todo.todoAdded,
     }"
   >

@@ -12,9 +12,6 @@ export default {
       autoDeleteEmptyCategoriesInfo: false,
     };
   },
-  //   created() { //TOFIX era nel vecchio componente, verificare se serve, secondo me non serve
-  //     this.autoDeleteEmptyCategoriesInfo = false;
-  //   },
 };
 </script>
 

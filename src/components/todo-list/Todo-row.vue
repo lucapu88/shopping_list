@@ -30,12 +30,13 @@ export default {
   >
     {{ todo.emojy }}
   </div>
+  <!-- CARRELLO -->
   <span
     alt="cart"
     v-if="!todo.class && !theme.minimalTheme && !todo.modify"
     class="cart"
     :class="{
-      'hide-minimal-icon': theme.minimalTheme,
+      'hide-minimal-icon': theme.minimalTheme || theme.elegantTheme,
     }"
     @click="todosStore.selectTodoForDelete(index)"
   >
@@ -52,12 +53,22 @@ export default {
       src="@/img/icons/cart-black.webp"
     />
   </span>
+  <!-- NO CARRELLO PER MINIMAL -->
   <span
     v-if="theme.minimalTheme && !todo.class && !todo.modify"
     class="mr-4 ml-1"
     @click="todosStore.selectTodoForDelete(index)"
   >
     -
+  </span>
+  <!-- NO CARRELLO PER ELEGANT -->
+  <span
+    v-if="theme.elegantTheme && !todo.class && !todo.modify"
+    class="mr-4 ml-1 boldi-cipollino"
+    @click="todosStore.selectTodoForDelete(index)"
+  >
+    <template v-if="todo.multipleDelete"> / </template>
+    <template v-else> > </template>
   </span>
   <li
     v-if="!todo.modify"
@@ -69,10 +80,15 @@ export default {
     "
     :class="{
       active: todo.isActive,
-      selected: todo.isSelected,
+      selected: todo.isSelected && !theme.elegantTheme,
+      'elegant-selected': todo.isSelected && theme.elegantTheme,
       'line-through':
-        todo.multipleDelete && !theme.retroTheme && !theme.lightTheme,
+        todo.multipleDelete &&
+        !theme.retroTheme &&
+        !theme.lightTheme &&
+        !theme.elegantTheme,
       'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
+      'elegant-line-through': todo.multipleDelete && theme.elegantTheme,
       'winter-todo': theme.winterTheme,
     }"
   >
@@ -90,6 +106,8 @@ export default {
     :class="{
       'minimal-btn': theme.minimalTheme,
       'retro-btn': theme.retroTheme,
+      'elegant-btn': theme.elegantTheme,
+      transparent: theme.elegantTheme && todo.class,
       categoryActive: todo.class,
       modify: todo.modify,
     }"
@@ -143,4 +161,8 @@ export default {
   </li>
 </template>
 
-<style scoped></style>
+<style scoped>
+.transparent {
+  background-color: transparent !important;
+}
+</style>

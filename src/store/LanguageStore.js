@@ -96,7 +96,6 @@ export const useLanguageStore = defineStore('Language', {
     },
     chosenThemeText: 'Chosen theme',
     changeThemeText: 'Change theme',
-    autoDeleteEmptyCategoriesInfo: false,
     autoDeleteEmptyCategoriesText: {
       title: 'Auto delete of empty categories',
       description: 'Choose whether to delete the categories left empty manually, or have them deleted automatically.',

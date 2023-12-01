@@ -36,7 +36,10 @@ export default {
     <button
       v-if="todosStore.canDeleteMultipleTodo"
       class="text-danger border-danger rounded multiple-delete p-2"
-      :class="{ christmas: isChristmas.christmasTheme }"
+      :class="{
+        christmas: isChristmas.christmasTheme,
+        'elegant-btn': theme.elegantTheme,
+      }"
       @click="todosStore.openModalFordeleteSelectedTodos()"
     >
       <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
@@ -47,11 +50,23 @@ export default {
       :class="{
         christmas: isChristmas.christmasTheme,
         'delete-all-retro': theme.retroTheme,
+        'elegant-delete-all-btn': theme.elegantTheme,
       }"
       @click="openDeleteAllModal()"
     >
       <span>{{ languages.deleteAll }}</span>
-      <img class="skull" src="@/img/icons/skull.webp" alt="" />
+      <img
+        v-if="!isChristmas.christmasTheme"
+        class="skull"
+        src="@/img/icons/skull.webp"
+        alt="delete_all"
+      />
+      <img
+        v-if="isChristmas.christmasTheme"
+        class="christmas-skull"
+        src="@/img/icons/christmas-skull.webp"
+        alt="delete_all_and_merry_christmas"
+      />
     </button>
     <!-- PULSANTE TORNA IN CIMA -->
     <button
@@ -63,6 +78,7 @@ export default {
         'retro-theme-back-top': theme.retroTheme,
         'summer-theme-back-top': theme.summerTheme,
         'winter-theme-back-top': theme.winterTheme,
+        'elegant-theme-back-top': theme.elegantTheme,
         'is-dragginn': todosStore.isDraggable && todosStore.todos.length > 8,
       }"
       @click="emitScrollTop()"
@@ -91,6 +107,12 @@ export default {
   min-width: 180px;
 }
 
+.christmas-skull {
+  width: 38px;
+  height: 38px;
+  margin-left: 7px;
+}
+
 .is-dragginn {
   position: fixed;
   bottom: 30px;
@@ -105,5 +127,9 @@ export default {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+}
+.multiple-delete > img {
+  width: 25px;
+  height: 25px;
 }
 </style>

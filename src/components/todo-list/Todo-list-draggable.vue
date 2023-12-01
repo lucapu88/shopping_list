@@ -84,8 +84,13 @@ export default {
           category: todo.class,
           'category-retro': todo.class && theme.retroTheme,
           'category-minimal': todo.class && theme.minimalTheme,
-          'draggable-children': todosStore.isDraggable,
-          'draggable-children-category': todosStore.isDraggable && todo.class,
+          'category-elegant':
+            todo.class && theme.elegantTheme && !todosStore.isDraggable,
+          'draggable-children': todosStore.isDraggable && !theme.elegantTheme,
+          'draggable-children-category':
+            todosStore.isDraggable && todo.class && !theme.elegantTheme,
+          'elegant-todo-draggable':
+            todosStore.isDraggable && theme.elegantTheme,
           'todo-added': todo.todoAdded,
         }"
       >

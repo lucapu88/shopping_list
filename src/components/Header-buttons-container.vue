@@ -47,11 +47,22 @@ export default {
         'btn-selected': todosStore.isDraggable,
         'minimal-btn': theme.minimalTheme,
         'minimal-selected-btn': theme.minimalTheme && todosStore.isDraggable,
+        'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
         'retro-teme-btns': theme.retroTheme,
+        'elegant-btn': theme.elegantTheme,
       }"
       @click="todosStore.toggleDragDrop()"
     >
-      <img src="@/img/icons/drag-and-drop.webp" alt="move" />
+      <img
+        v-if="!theme.elegantTheme"
+        src="@/img/icons/drag-and-drop.webp"
+        alt="move"
+      />
+      <img
+        v-if="theme.elegantTheme"
+        src="@/img/icons/drag-and-drop-elegant.webp"
+        alt="move"
+      />
     </button>
     <!--PULSANTE COPIA LISTA-->
     <button
@@ -59,10 +70,22 @@ export default {
       :class="{
         'minimal-btn': theme.minimalTheme,
         'retro-teme-btns': theme.retroTheme,
+        'elegant-btn': theme.elegantTheme,
       }"
       @click="copy()"
     >
-      <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
+      <img
+        v-if="!theme.elegantTheme"
+        class="copy"
+        src="@/img/icons/copy.webp"
+        alt="copy"
+      />
+      <img
+        v-if="theme.elegantTheme"
+        class="copy"
+        src="@/img/icons/copy-elegant.webp"
+        alt="copy"
+      />
     </button>
     <!--PULSANTE MOSTRA CATEGORIE -->
     <button
@@ -71,12 +94,14 @@ export default {
         'btn-selected': todosStore.categoryList,
         'minimal-btn': theme.minimalTheme,
         'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
+        'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
         'retro-teme-btns': theme.retroTheme,
+        'elegant-btn': theme.elegantTheme,
       }"
       @click="todosStore.showCategoryList()"
     >
-      <span v-if="!todosStore.categoryList">+</span>
-      <span v-else>-</span>
+      <strong v-if="!todosStore.categoryList">+</strong>
+      <strong v-else>-</strong>
     </button>
   </div>
   <div class="drag-n-drop-text">
