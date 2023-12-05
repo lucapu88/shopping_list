@@ -138,6 +138,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.todos.map((t) => (t.isSelected = false));
       this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.addTodoInCategory.condition = false;
+      this.focusIn = false;
     },
     resetModify(copiedTodo) {
       const todoEmpty = this.todos.find((todo) => todo.modify);

@@ -6,19 +6,13 @@ import Helper from './components/helper/Helper.vue';
 import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';
+import PreloadImages from './components/PreloadImages.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import foglioRighePreload from '@/img/foglio_righe.webp';
-import cancellaPreload from '@/img/cancella.webp';
-import marePreload from '@/img/mare.webp';
-import montagnePreload from '@/img/montagne.webp';
-import cartBlackPreload from '@/img/icons/cart-black.webp';
-import cartWhitePreload from '@/img/icons/cart-white.webp';
-import cartRedPreload from '@/img/icons/cart-red.webp';
 </script>
 
 <script>
@@ -69,47 +63,8 @@ export default {
 </script>
 
 <template>
-  <!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
-  <link
-    v-if="theme.lightTheme"
-    rel="preload"
-    as="image"
-    :href="foglioRighePreload"
-  />
-  <link
-    v-if="theme.lightTheme && todosStore.multipleDelete"
-    rel="preload"
-    as="image"
-    :href="cancellaPreload"
-  />
-  <link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />
-  <link
-    v-if="theme.summerTheme"
-    rel="preload"
-    as="image"
-    :href="montagnePreload"
-  />
-  <!-- --------------------------------preload delle icone dei carrelli in base ai temi------------------------- -->
-  <template v-if="!theme.minimalTheme">
-    <link
-      v-if="theme.lightTheme || theme.summerTheme"
-      rel="preload"
-      as="image"
-      :href="cartBlackPreload"
-    />
-    <link
-      v-if="theme.darkTheme || theme.retroTheme || theme.winterTheme"
-      rel="preload"
-      as="image"
-      :href="cartWhitePreload"
-    />
-    <link
-      v-if="todosStore.multipleDelete"
-      rel="preload"
-      as="image"
-      :href="cartRedPreload"
-    />
-  </template>
+  <!-- -------------------------------------------------------Preload delle immagini  -->
+  <PreloadImages />
 
   <div
     class="container"
