@@ -149,6 +149,19 @@ export default {
       ref="audioPlayer"
       src="src/sounds/toilet.mp3"
     ></audio>
+    <!-- ---------------------------------------------------------- NASCITA DI INTERNET-->
+    <img
+      v-if="festivitiesOrOccurrences.internetDay && !description"
+      class="internet-day"
+      src="@/img/festivities/computer.webp"
+      alt="internet_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.internetDay && description"
+    >
+      {{ languages.worldWideWebText }}
+    </p>
   </div>
 </template>
 
@@ -210,6 +223,10 @@ export default {
 
 .toilet-day {
   width: 55px;
+}
+
+.internet-day {
+  width: 60px;
 }
 .description {
   font-family: sans-serif;

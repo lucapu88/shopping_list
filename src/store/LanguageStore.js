@@ -178,6 +178,7 @@ export const useLanguageStore = defineStore('Language', {
     beerDayText: 'Happy Beer Day',
     parentsDayText: '1 June: Best wishes to all parents',
     toiletDayText: '19 November: World Toilet Day 🤣',
+    worldWideWebText: 'On 6 August 1991, the World Wide Web was born',
   }),
   getters: {},
   actions: {
@@ -278,6 +279,7 @@ export const useLanguageStore = defineStore('Language', {
         this.beerDayText = 'Buona giornata della birra';
         this.parentsDayText = '1 Giugno: Auguri a tutti i genitori';
         this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
+        this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
 
       } else if (this.langSpanish) {
         this.placeholder = 'Escriba aquí qué comprar';
@@ -364,6 +366,7 @@ export const useLanguageStore = defineStore('Language', {
         this.beerDayText = 'Feliz Día de la Cerveza';
         this.parentsDayText = '1 de junio: saludos a todos los padres';
         this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
+        this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
 
       } else {
         this.categories = this.engCategories;
