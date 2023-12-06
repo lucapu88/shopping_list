@@ -43,6 +43,7 @@ export default {
       <!--{{ todo }} TOFIX era nel vecchio codice dentro lo span qui sotto. C'è da capire se serve e a cosa serve.-->
       <span style="display: none">{{ todosStore.index }} </span>
       <button
+        id="yes-delete"
         v-if="todosStore.confirmRemove"
         @click="todosStore.confirmedRemoveTodo(todosStore.index)"
       >
@@ -50,13 +51,16 @@ export default {
         <span v-if="languages.langEnglish">YES</span>
       </button>
       <button
+        id="yes-delete-selected"
         v-if="todosStore.deleteSelected"
         @click="todosStore.deleteSelectedTodos()"
       >
         <span v-if="languages.langIta || languages.langSpanish">SI</span>
         <span v-if="languages.langEnglish">YES</span>
       </button>
-      <button @click="todosStore.confirmDeleteModal = false">NO</button>
+      <button id="no-delete" @click="todosStore.confirmDeleteModal = false">
+        NO
+      </button>
     </div>
   </div>
 </template>
