@@ -120,6 +120,8 @@ export default {
       />
 
       <div id="helper-description">
+        <UpdateApp @updatingAppEmit="updatingAppEmited" />
+
         <ChangeLanguages />
 
         <SafeDeleteMode />
@@ -131,8 +133,6 @@ export default {
         <ExportList />
 
         <Share />
-
-        <UpdateApp @updatingAppEmit="updatingAppEmited" />
 
         <div id="helper-istructions">
           <HelperDescription />

@@ -352,7 +352,6 @@ export default {
   margin-bottom: 0;
   text-align: center;
   margin-top: 20px;
-  border-top: 1px solid;
 }
 .tutorial-highlights {
   background-color: orangered;

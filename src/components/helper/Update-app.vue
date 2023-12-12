@@ -36,7 +36,11 @@ export default {
     <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(6)">
       &#x2699;
     </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 6 }"
+    <span
+      :class="{
+        'tutorial-highlights': settings.highlits === 6,
+        'english-size': languages.langEnglish,
+      }"
       >{{ languages.updateText.description }}:</span
     >
     <div class="update-container">

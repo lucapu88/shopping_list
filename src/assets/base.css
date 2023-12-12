@@ -90,7 +90,9 @@ button {
 }
 
 .helper-settings {
-  margin-bottom: 10px;
+  margin-bottom: 13px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
 }
 
 .tutorial-highlights {
@@ -163,8 +165,9 @@ button {
   height: 30px;
 }
 
-.spanish-size {
-  font-size: 13px;
+.spanish-size,
+.english-size {
+  font-size: 0.8125rem;
 }
 
 .tutorial-highlights {
@@ -223,7 +226,7 @@ button {
 .created-by-luca-caputo {
   display: flex;
   flex-direction: row-reverse;
-  font-size: 7px;
+  font-size: 0.4375rem;
 }
 
 .overflow-hide {

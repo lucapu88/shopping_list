@@ -226,6 +226,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.todos[n].isActive = !this.todos[n].isActive;
         this.todos[n].isDisabled = !this.todos[n].isDisabled; //disabilito i pulsanti
 
+        this.toggleButtonDeleteSelectedTodo();
         this.removeSelectedCategoryToAddItem();
         this.saveTodos();
       }
