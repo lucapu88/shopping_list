@@ -1,16 +1,14 @@
 /* eslint-disable no-undef */
+import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 // Chiedo scusa se scrivo in italiano ma faccio prima a capire. L'inglese lo mastico ma non velocissimo.
 
 // eslint-disable-next-line no-undef
-describe('test del componente HeadList', () => {
+describe("test dell'input di inserimento todo, della modifica di un todo e dell'eliminazione", () => {
   const parola = 'vedo la gente scema!';
   const altraParola = 'tu sei il sesto!';
 
   beforeEach(() => {
-    //GLOBALE
-    //cy.visit('https://shopping-list-lc.netlify.app/'); 
-    //LOCALE
-    cy.visit('http://localhost:5173/');
+    cy.visit(shoppingListLocalOrGlobal);
   });
 
   it('inserisco qualcosa nella lista, poi la modifico e la elimino.', () => {
@@ -47,26 +45,7 @@ describe('test del componente HeadList', () => {
   });
 
   it("verifico l'eliminazione di alcuni e di tutti gli elementi", () => {
-    const frase1 = 'dottore chiami un dottore';
-    const frase2 = 'ho i pugni nelle mani';
-    const frase3 = 'marooooon';
-    const frase4 = 'shamalayaaa';
-    const frase5 = 'è stato li zingheri sono stati!';
-    const frase6 = 'come una catapulta!';
-
-    cy.get('.inputText').click().type(frase1);
-    cy.get('.input-btns-container > .btn-info').click();
-    cy.get('.inputText').click().type(frase2);
-    cy.get('.input-btns-container > .btn-info').click();
-    cy.get('.inputText').click({ force: true }).type(frase3);
-    cy.get('.input-btns-container > .btn-info').click({ force: true });
-    cy.get('.inputText').click({ force: true }).type(frase4);
-    cy.get('.input-btns-container > .btn-info').click({ force: true });
-    cy.get('.inputText').click({ force: true }).type(frase5);
-    cy.get('.input-btns-container > .btn-info').click({ force: true });
-    cy.get('.inputText').click({ force: true }).type(frase6);
-    cy.get('.input-btns-container > .btn-info').click({ force: true });
-    cy.get('.btn-outline-info').click();
+    cy.addSomeItemsToList(phrases);
 
     // eliminazione solo selezionati
     cy.get('[index="0"] > .cart > img').click({ force: true });
@@ -76,12 +55,12 @@ describe('test del componente HeadList', () => {
 
     cy.get('.text-danger').click();
     cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
-    cy.get(`#todo:contains(${frase1})`).should('not.exist');
-    cy.get(`#todo:contains(${frase2})`).should('not.exist');
-    cy.get(`#todo:contains(${frase5})`).should('not.exist');
-    cy.get(`#todo:contains(${frase6})`).should('not.exist');
-    cy.get('[index="0"] > #todo').should('include.text', frase3);
-    cy.get('[index="1"] > #todo').should('include.text', frase4);
+    cy.get(`#todo:contains(${phrases.frase1})`).should('not.exist');
+    cy.get(`#todo:contains(${phrases.frase2})`).should('not.exist');
+    cy.get(`#todo:contains(${phrases.frase5})`).should('not.exist');
+    cy.get(`#todo:contains(${phrases.frase6})`).should('not.exist');
+    cy.get('[index="0"] > #todo').should('include.text', phrases.frase3);
+    cy.get('[index="1"] > #todo').should('include.text', phrases.frase4);
 
     //eliminazione tutti
     cy.get('.delete-all').click();
