@@ -32,9 +32,9 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
 
     cy.get('.settings').click();
     cy.wait(1500);
-    cy.get('.toggle-delete-confirm-container > .text-primary').should('include.text', 'OFF');
-    cy.get('.toggle-delete-confirm-container > .toggle-delete-confirm').click({ multiple: true });
-    cy.get('.toggle-delete-confirm-container > .text-primary').should('include.text', 'ON');
+    cy.get('#safe-delete > .text-primary').should('include.text', 'OFF');
+    cy.get('#safe-delete > .toggle-delete-confirm').click({ multiple: true });
+    cy.get('#safe-delete > .text-primary').should('include.text', 'ON');
     cy.get('.close-helper-container > .close-helper').click();
 
     cy.get('.trash').click();

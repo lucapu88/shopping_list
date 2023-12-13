@@ -27,7 +27,7 @@ export default {
     <li class="ml-4" v-if="safeModeInfo">
       ({{ languages.safeModeText.description }})
     </li>
-    <div class="toggle-delete-confirm-container">
+    <div class="toggle-delete-confirm-container" id="safe-delete">
       <span
         class="toggle-delete-confirm"
         @click="settings.toggleDeleteConfirm()"

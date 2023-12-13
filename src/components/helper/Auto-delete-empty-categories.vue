@@ -36,7 +36,7 @@ export default {
     <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
       ({{ languages.autoDeleteEmptyCategoriesText.description }})
     </li>
-    <li class="toggle-delete-confirm-container">
+    <li class="toggle-delete-confirm-container" id="auto-delete">
       <div
         class="toggle-delete-confirm"
         @click="settings.toggleAutomaticDeleteEmptyCategories()"

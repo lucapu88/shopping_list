@@ -38,6 +38,7 @@ export default {
       {{ languages.shareText }}:
     </span>
     <button
+      id="share"
       class="btn btn-light border-dark share-update-btn"
       @click="shareLink()"
     >

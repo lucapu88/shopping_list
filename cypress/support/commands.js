@@ -36,9 +36,9 @@ export const phrases = {
 
 //AGGIUNGE ELEMENTI IN LISTA https://stackoverflow.com/questions/55361499/how-to-implement-drag-and-drop-in-cypress-test
 Cypress.Commands.add('addSomeItemsToList', (phrases) => {
-  cy.get('.inputText').click().type(phrases.frase1);
+  cy.get('.inputText').click({ force: true }).type(phrases.frase1);
   cy.get('.input-btns-container > .btn-info').click();
-  cy.get('.inputText').click().type(phrases.frase2);
+  cy.get('.inputText').click({ force: true }).type(phrases.frase2);
   cy.get('.input-btns-container > .btn-info').click();
   cy.get('.inputText').click({ force: true }).type(phrases.frase3);
   cy.get('.input-btns-container > .btn-info').click({ force: true });
@@ -49,6 +49,14 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
   cy.get('.inputText').click({ force: true }).type(phrases.frase6);
   cy.get('.input-btns-container > .btn-info').click({ force: true });
   cy.get('.btn-outline-info').click();
+});
+
+Cypress.Commands.add('addCategoryAndTodo', () => {
+  cy.get('.pushbutton-container > :nth-child(3)').click();
+  cy.get('.categories > :nth-child(18) > span').click();
+  cy.get('.inputText').click().type('zucchine da mangiare');
+  cy.get('.input-btns-container > .btn-info').click();
+  cy.get('.button-container > :nth-child(2)').click();
 });
 
 const getCoords = ($el) => {

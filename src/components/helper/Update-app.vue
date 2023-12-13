@@ -46,6 +46,7 @@ export default {
     <div class="update-container">
       <button
         :disabled="languages.updateText.readyForUpdate"
+        id="update"
         :class="{
           'ready-for-update': !languages.updateText.readyForUpdate,
         }"

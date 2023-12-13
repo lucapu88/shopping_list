@@ -7,7 +7,6 @@ import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e drag n drop', () => {
     beforeEach(() => {
         cy.visit(shoppingListLocalOrGlobal);
-        cy.wait(1000);
     });
 
     it("verifico il drag n drop", () => {
