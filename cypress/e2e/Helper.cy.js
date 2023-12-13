@@ -44,6 +44,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.top > .btn-light').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
             cy.get('.container').should('have.css', 'background-image').and('include', '/src/img/foglio_righe.webp');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
         cy.get('.helper-light').should('have.css', 'background-image').and('include', 'repeating-linear-gradient(rgb(204, 204, 204) 0px, rgb(204, 204, 204) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 100%), repeating-linear-gradient(90deg, rgb(204, 204, 204) 0px, rgb(204, 204, 204) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 100%)');
@@ -77,6 +78,36 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.retro-theme-helper').should('have.css', 'border').and('include', '3px outset rgb(255, 255, 255)');
         cy.get('.retro-theme-helper').should('have.css', 'border-radius').and('include', '0');
         cy.get('.retro-theme-helper').should('have.css', 'background-color').and('include', 'rgb(192, 192, 192)');
+
+        //summer
+        cy.get('.bottom > .summer-theme').click().then(() => {
+            //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
+            cy.get('.summer').should('have.css', 'background-image').and('include', '/src/img/mare.webp');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
+        });
+        cy.get('.settings').click();
+        //TOFIX: cypress di merda non ho idea del perchè cambia le proprietà in visualizzazione e sinceramente mi son rotto!
+        // cy.get('.summer-theme-helper').should('have.css', 'background').and('include', 'linear-gradient( 168deg, rgb(187, 242, 221) 0%, rgb(129, 215, 235) 47%, rgb(46, 152, 242) 100% )');
+
+        //winter
+        cy.get('.bottom > .winter-theme').click().then(() => {
+            //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
+            cy.get('.winter').should('have.css', 'background-image').and('include', '/src/img/montagne.webp');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
+        });
+        cy.get('.settings').click();
+        cy.get('.winter-theme-helper').should('have.css', 'background-image').and('include', '/src/img/inverno.webp');
+
+        // elegant
+        cy.get('.bottom > .elegant-theme').click().then(() => {
+            cy.get('body').should('have.css', 'background').and('include', 'linear-gradient(90deg, rgb(7, 60, 92) 30%, rgb(29, 39, 49) 55%)');
+            cy.get('body').should('have.css', 'color').and('include', 'rgb(217, 132, 16)');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Courier New');
+        });
+        cy.get('.settings').click();
+        //TOFIX: cypress di merda non ho idea del perchè cambia le proprietà in visualizzazione e sinceramente mi son rotto!
+        // cy.get('.elegant-theme-helper').should('have.css', 'background').and('include', 'linear-gradient(0deg,rgb(4, 41, 27) 0%,rgb(10, 34, 86) 100%');
+
     });
 
     it('autoeliminazione categorie vuote', () => {
