@@ -34,7 +34,7 @@ export const phrases = {
   frase6: 'come una catapulta!',
 };
 
-//AGGIUNGE ELEMENTI IN LISTA https://stackoverflow.com/questions/55361499/how-to-implement-drag-and-drop-in-cypress-test
+//AGGIUNGE ELEMENTI IN LISTA 
 Cypress.Commands.add('addSomeItemsToList', (phrases) => {
   cy.get('.inputText').click({ force: true }).type(phrases.frase1);
   cy.get('.input-btns-container > .btn-info').click();
@@ -64,7 +64,7 @@ const getCoords = ($el) => {
   const coords = { x: domRect.left + (domRect.width / 2 || 0), y: domRect.top + (domRect.height / 2 || 0) };
   return coords;
 };
-// TRIGGERA IL DRAG N DROP
+// TRIGGERA IL DRAG N DROP https://stackoverflow.com/questions/55361499/how-to-implement-drag-and-drop-in-cypress-test
 const dragTo = (subject, to) => {
   const win = subject[0].ownerDocument.defaultView;
   const elFromCoords = (coords) => win.document.elementFromPoint(coords.x, coords.y);

@@ -7,8 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "pre-push": "npx cypress run && git push",
-    "pre-push-amend": "npx cypress run && git push --force"
+    "push": "npx cypress run && git push",
+    "push-amend": "npx cypress run && git push --force"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
