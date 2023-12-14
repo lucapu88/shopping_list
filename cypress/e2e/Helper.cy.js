@@ -86,8 +86,6 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
-        //TOFIX: cypress di merda non ho idea del perchè cambia le proprietà in visualizzazione e sinceramente mi son rotto!
-        // cy.get('.summer-theme-helper').should('have.css', 'background').and('include', 'linear-gradient( 168deg, rgb(187, 242, 221) 0%, rgb(129, 215, 235) 47%, rgb(46, 152, 242) 100% )');
 
         //winter
         cy.get('.bottom > .winter-theme').click().then(() => {
@@ -105,8 +103,6 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Courier New');
         });
         cy.get('.settings').click();
-        //TOFIX: cypress di merda non ho idea del perchè cambia le proprietà in visualizzazione e sinceramente mi son rotto!
-        // cy.get('.elegant-theme-helper').should('have.css', 'background').and('include', 'linear-gradient(0deg,rgb(4, 41, 27) 0%,rgb(10, 34, 86) 100%');
 
     });
 
