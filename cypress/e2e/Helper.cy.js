@@ -34,7 +34,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.wait(1500);
         cy.get('.title').should('include.text', 'Shopping List');
 
-        /*Per il momento verifico solo il titolo, il cazzo con le patate che mi metto a vedere se TUTTE le traduzioni sono corrette!!!
+        /*Per il momento verifico solo il titolo...Il cazzo con le patate che mi metto a vedere se TUTTE le traduzioni sono corrette!!!
           Scherzo! lo devo fare ma piano piano con calma perchè è tanta roba.*/
     });
 
@@ -141,8 +141,6 @@ describe("test dell'helper e delle impostazioni", () => {
 
         cy.get('.settings').click();
         cy.get('#share').click();
-
-
         cy.window().then((win) => {
             win.navigator.clipboard.readText().then((text) => {
                 expect(text.trim()).to.eq(storeAppLink);
