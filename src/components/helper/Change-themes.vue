@@ -56,7 +56,7 @@ export default {
       }
       setTimeout(() => {
         location.reload();
-      }, 700);
+      }, 1150);
     },
   },
 };
