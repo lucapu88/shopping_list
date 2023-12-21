@@ -53,14 +53,22 @@ export default {
         class="btn btn-light border-dark mr-3 share-update-btn"
         @click="updateApp()"
       >
-        <img src="@/img/icons/update.webp" alt="update" />
+        <!--L'img impiega tempo a caricarsi, per il momento la tolgo, poi si vede ma sono ancora indeciso su cosa utilizzare-->
+
+        <!-- <img src="@/img/icons/update.webp" alt="update" /> -->
+        <!-- <span>{{ String.fromCodePoint(0x1f503) }}</span> -->
+        <span>{{
+          !languages.updateText.readyForUpdate
+            ? languages.updateText.available
+            : languages.updateText.unavailable
+        }}</span>
       </button>
-      <small v-if="!languages.updateText.readyForUpdate">
+      <!-- <small v-if="!languages.updateText.readyForUpdate">
         {{ languages.updateText.available }}
       </small>
       <small v-if="languages.updateText.readyForUpdate">
         {{ languages.updateText.unavailable }}
-      </small>
+      </small> -->
     </div>
   </div>
 </template>

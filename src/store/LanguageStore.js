@@ -109,8 +109,8 @@ export const useLanguageStore = defineStore('Language', {
     shareText: 'Share',
     updateText: {
       description: 'If the button is green, click to update the app',
-      available: 'Updates available',
-      unavailable: 'There are no updates',
+      available: 'Update',
+      unavailable: 'No Updates',
       readyForUpdate: false,
     },
     insertAll: 'Insert all',
@@ -224,8 +224,8 @@ export const useLanguageStore = defineStore('Language', {
         this.shareText = 'Condividi';
         this.importText = 'Importa';
         this.updateText.description = "Se il pulsante è verde, clicca per aggiornare";
-        this.updateText.available = 'Aggiornamento disponibile';
-        this.updateText.unavailable = 'Non ci sono aggiornamenti';
+        this.updateText.available = 'Aggiorna';
+        this.updateText.unavailable = 'Nessun Aggiornamento';
         this.insertAll = 'Inserisci tutte';
         this.removeEmpty = 'Rimuovi vuote';
         this.deleteAll = 'Cancella tutto';
@@ -311,8 +311,8 @@ export const useLanguageStore = defineStore('Language', {
         this.shareText = 'Compartir';
         this.importText = 'Importar';
         this.updateText.description = "Si el botón está verde, pulse para actualizar";
-        this.updateText.available = 'Actualización disponible';
-        this.updateText.unavailable = 'No hay actualizaciones';
+        this.updateText.available = 'Actualización';
+        this.updateText.unavailable = 'Ninguna Actualización';
         this.insertAll = 'Introduzca todos';
         this.removeEmpty = 'Eliminar categorías vacías';
         this.deleteAll = 'Borrar todo';
