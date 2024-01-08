@@ -140,7 +140,7 @@ export default {
             {{ languages.helperDescription.addCategory.part4 }}
           </span>
           {{ languages.helperDescription.addCategory.part5 }}
-          <span class="selected">
+          <span :class="theme.elegantTheme ? 'elegant-selected' : 'selected'">
             {{ languages.helperDescription.addCategory.part6 }}.
           </span>
           {{ languages.helperDescription.addCategory.part7 }}
@@ -196,7 +196,22 @@ export default {
           >
             <img src="@/img/icons/drag-and-drop.webp" alt="move" />
           </button>
-          {{ languages.helperDescription.dragNdropText.part2 }}
+          {{ languages.helperDescription.dragNdropText.part2 }} <br />
+          {{ languages.helperDescription.dragNdropText.part3 }}
+          <button
+            class="btn btn-outline-info btn-back-to-top"
+            :class="{
+              christmas: isChristmas.christmasTheme,
+              'minimal-theme-back-top': theme.minimalTheme,
+              'dark-theme-back-top': theme.darkTheme,
+              'retro-theme-back-top': theme.retroTheme,
+              'summer-theme-back-top': theme.summerTheme,
+              'winter-theme-back-top': theme.winterTheme,
+              'elegant-theme-back-top': theme.elegantTheme,
+            }"
+          >
+            <span> >> </span>
+          </button>
         </li>
       </template>
       <ListIstructionAccordion

@@ -18,8 +18,6 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       addTodo: useAddModifyDeleteTodosStore(),
-      placeholder: 'Write here what to buy',
-      defaultPlaceholderText: 'Write here what to buy',
     };
   },
   created() {
@@ -121,6 +119,12 @@ export default {
       <img class="settings" src="@/img/icons/settings.webp" alt="settings" />
     </span>
     <div class="input-btns-container">
+      <span
+        style="color: red"
+        v-if="addTodo.focusIn"
+        @click="addTodo.removeSelectedCategoryToAddItem()"
+        >X</span
+      >
       <input
         class="inputText mb-2 border border-primary rounded"
         :class="{
@@ -153,7 +157,9 @@ export default {
 
 <style scoped>
 .header-container {
-  width: 365px;
+  width: 95vw;
+  min-width: 345px;
+  max-width: 600px;
   position: relative;
 }
 .christmas {
