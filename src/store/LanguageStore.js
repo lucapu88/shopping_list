@@ -29,6 +29,7 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'work tools', emojy: String.fromCodePoint(0x1f6E0) },
       { name: 'clothes', emojy: String.fromCodePoint(0x1f457) },
       { name: 'other', emojy: String.fromCodePoint(0x1f4b8) },
+      { name: 'furniture/decor', emojy: String.fromCodePoint(0x1fA91) },
     ],
     itaCategories: [
       { name: 'verdura', emojy: String.fromCodePoint(0x1f966) },
@@ -48,6 +49,7 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'attrezzi', emojy: String.fromCodePoint(0x1f6E0) },
       { name: 'vestiti', emojy: String.fromCodePoint(0x1f457) },
       { name: 'altro', emojy: String.fromCodePoint(0x1f4b8) },
+      { name: 'arredamento', emojy: String.fromCodePoint(0x1fA91) },
     ],
     spanCategories: [
       { name: 'verduras', emojy: String.fromCodePoint(0x1f966) },
@@ -67,6 +69,7 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'herramientas', emojy: String.fromCodePoint(0x1f6E0) },
       { name: 'ropa', emojy: String.fromCodePoint(0x1f457) },
       { name: 'otros', emojy: String.fromCodePoint(0x1f4b8) },
+      { name: 'mobiliario', emojy: String.fromCodePoint(0x1fA91) },
     ],
     langIta: false,
     langSpanish: false,
@@ -142,6 +145,7 @@ export const useLanguageStore = defineStore('Language', {
       dragNdropText: {
         part1: 'By clicking on',
         part2: 'you can drag elements and, by holding them down, move them wherever you want.',
+        part3: 'If the page scroll does not work, you can help yourself with the button: ',
         dragginText: 'Drag the elements of the list where you want'
       },
       multipleDeleteTitle: 'Select and delete multiple items',
@@ -251,6 +255,7 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi';
         this.helperDescription.dragNdropText.part1 = 'Cliccando su';
         this.helperDescription.dragNdropText.part2 = 'potrai trascinare gli elementi e, tenendo premuto, spostarli dove vuoi.';
+        this.helperDescription.dragNdropText.part3 = 'Se non funziona lo scroll della pagina, puoi aiutarti con il pulsante: ';
         this.helperDescription.dragNdropText.dragginText = 'Trascina gli elementi della lista dove vuoi';
         this.helperDescription.multipleDeleteTitle = 'Seleziona ed elimina più elementi';
         this.helperDescription.multipleDeleteText.part1 = 'Puoi eliminare più prodotti insieme cliccando su';
@@ -338,6 +343,7 @@ export const useLanguageStore = defineStore('Language', {
         this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos';
         this.helperDescription.dragNdropText.part1 = 'Haciendo clic en';
         this.helperDescription.dragNdropText.part2 = 'puedes arrastrar elementos y, manteniéndolos pulsados, moverlos donde quieras.';
+        this.helperDescription.dragNdropText.part3 = 'Si el desplazamiento de página no funciona, puedes ayudarte con el botón: ';
         this.helperDescription.dragNdropText.dragginText = 'Arrastre los elementos de la lista hasta donde desee';
         this.helperDescription.multipleDeleteTitle = 'Seleccionar y eliminar varios elementos';
         this.helperDescription.multipleDeleteText.part1 = 'Puede eliminar varios productos a la vez pulsando en';
