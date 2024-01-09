@@ -62,7 +62,7 @@ export default {
       <small>{{ languages.infoCategoriesAlert }}</small>
     </li>
     <div v-if="!showConfirmBackup" class="backup-btn-container">
-      <button @click="showConfirmBackup = true">
+      <button id="backup-button" @click="showConfirmBackup = true">
         <img class="cloud" src="@/img/icons/cloud.webp" alt="backup" />
       </button>
       <small class="new">NEW</small>
@@ -71,7 +71,11 @@ export default {
     <div class="confirm-backup-container">
       <template v-if="showConfirmBackup && !noBackup">
         <span>{{ languages.backupListText.confirm }}</span>
-        <button style="background-color: lightgreen" @click="importBackup()">
+        <button
+          id="confirm-backup"
+          style="background-color: lightgreen"
+          @click="importBackup()"
+        >
           {{ languages.langEnglish ? 'YES' : 'SI' }}
         </button>
         <button

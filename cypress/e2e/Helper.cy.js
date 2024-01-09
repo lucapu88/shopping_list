@@ -122,6 +122,34 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category').should('not.exist');
     });
 
+    it('importa ultimo backup lista', () => {
+        cy.addSomeItemsToList(phrases);
+        cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
+        cy.get('.delete-all').click();
+        cy.get('.confirm > .btn-primary').click();
+        checkBackupSuccessful();
+
+        cy.get('[index="0"] > .button-container > :nth-child(2)').click({ force: true });
+        checkBackupSuccessful();
+
+        cy.get('[index="4"] > .cart > img').click({ force: true });
+        cy.get('.text-danger').click();
+        cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
+        checkBackupSuccessful();
+
+        function checkBackupSuccessful() {
+            cy.get('.settings').click();
+            cy.get('#backup-button').click();
+            cy.get('#confirm-backup').click();
+            cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
+            cy.get('[index="1"] > #todo').should('have.text', `${phrases.frase2} `);
+            cy.get('[index="2"] > #todo').should('have.text', `${phrases.frase3} `);
+            cy.get('[index="3"] > #todo').should('have.text', `${phrases.frase4} `);
+            cy.get('[index="4"] > #todo').should('have.text', `${phrases.frase5} `);
+            cy.get('[index="5"] > #todo').should('have.text', `${phrases.frase6} `);
+        }
+    });
+
     it('importa lista', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
@@ -139,8 +167,9 @@ describe("test dell'helper e delle impostazioni", () => {
     it('condividi link app', () => {
         const storeAppLink = 'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List';
 
-        cy.get('.settings').click();
-        cy.get('#share').click();
+        cy.get('.settings').click().then(() => {
+            cy.get('#share').click();
+        });
         cy.window().then((win) => {
             win.navigator.clipboard.readText().then((text) => {
                 expect(text.trim()).to.eq(storeAppLink);
