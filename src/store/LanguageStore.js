@@ -105,7 +105,7 @@ export const useLanguageStore = defineStore('Language', {
       function: 'Click to activate/deactivate',
     },
     pasteListText: {
-      title: 'Export a list from other apps',
+      title: 'Export a list from other apps:',
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
     },
     importText: 'Import',
@@ -183,6 +183,13 @@ export const useLanguageStore = defineStore('Language', {
     parentsDayText: '1 June: Best wishes to all parents',
     toiletDayText: '19 November: World Toilet Day 🤣',
     worldWideWebText: 'On 6 August 1991, the World Wide Web was born',
+    backupListText: {
+      title: 'Import Last Backup:',
+      description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion. \n WARNING: backups are temporary so they do not remain in memory forever!",
+      confirm: 'Are you sure?',
+      noBackupText: 'There are no backups saved'
+    },
+    infoCategoriesAlert: 'If you cannot find the categories, make sure the language is correct. Categories are imported correctly if they are written in the selected language.'
   }),
   getters: {},
   actions: {
@@ -223,7 +230,7 @@ export const useLanguageStore = defineStore('Language', {
         this.autoDeleteEmptyCategoriesText.title = 'Auto eliminazione categorie vuote';
         this.autoDeleteEmptyCategoriesText.description = 'Scegli se eliminare manualmente le categorie rimaste vuote, oppure che vengano eliminate automaticamente.';
         this.autoDeleteEmptyCategoriesText.function = 'Clicca per attivare/disattivare';
-        this.pasteListText.title = "Esporta una lista da altre app";
+        this.pasteListText.title = "Esporta una lista da altre app:";
         this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
         this.shareText = 'Condividi';
         this.importText = 'Importa';
@@ -285,6 +292,11 @@ export const useLanguageStore = defineStore('Language', {
         this.parentsDayText = '1 Giugno: Auguri a tutti i genitori';
         this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
         this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
+        this.backupListText.title = 'Importa ultimo backup:';
+        this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione. \n ATTENZIONE: i backup sono temporanei quindi non restano in memoria per sempre!";
+        this.backupListText.confirm = "Sei sicuro?";
+        this.backupListText.noBackupText = 'Non ci sono backup salvati';
+        this.infoCategoriesAlert = 'Se non ritrovi le categorie assicurati che la lingua sia quella esatta. Le categorie vengono importate correttamente se sono scritte nella lingua selezionata.';
 
       } else if (this.langSpanish) {
         this.placeholder = 'Escriba aquí qué comprar';
@@ -311,7 +323,7 @@ export const useLanguageStore = defineStore('Language', {
         this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
         this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
         this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
-        this.pasteListText.title = "Exportar una lista desde otras aplicaciones";
+        this.pasteListText.title = "Exportar una lista desde otras aplicaciones:";
         this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
         this.shareText = 'Compartir';
         this.importText = 'Importar';
@@ -373,6 +385,11 @@ export const useLanguageStore = defineStore('Language', {
         this.parentsDayText = '1 de junio: saludos a todos los padres';
         this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
         this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
+        this.backupListText.title = 'Importar la última copia de seguridad:';
+        this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado. \n ATENCIÓN: ¡las copias de seguridad son temporales, por lo que no permanecen en la memoria para siempre!";
+        this.backupListText.confirm = '¿Seguro?';
+        this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
+        this.infoCategoriesAlert = 'Si no encuentra las categorías, asegúrese de que el idioma es correcto. Las categorías se importan correctamente si están escritas en el idioma seleccionado.';
 
       } else {
         this.categories = this.engCategories;

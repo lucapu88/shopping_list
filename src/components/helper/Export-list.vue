@@ -80,7 +80,8 @@ export default {
     <span class="info-icon" @click="pasteListInfo = !pasteListInfo">i</span>
     <br />
     <li class="ml-4" v-if="pasteListInfo">
-      ({{ languages.pasteListText.subtitle }})
+      ({{ languages.pasteListText.subtitle }}). <br />
+      <small>{{ languages.infoCategoriesAlert }}</small>
     </li>
     <div class="add-list-copied">
       <div class="increase-decrease-container">

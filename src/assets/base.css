@@ -73,6 +73,7 @@ button {
 /*Per quando si aggiungono nuove funzionalità*/
 .new {
   color: red;
+  margin-left: 10px;
   text-shadow: 2px 2px 3px black;
   display: inline-block;
   animation: zoominoutnew 1.5s infinite;

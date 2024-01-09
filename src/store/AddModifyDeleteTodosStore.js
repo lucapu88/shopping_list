@@ -99,6 +99,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.toggleButtonDeleteSelectedTodo();
     },
     confirmedRemoveTodo(x) {
+      this.backupList();
       this.todos.splice(x, 1);
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
@@ -174,6 +175,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.categoryList = false;
     },
     deleteSelectedTodos() {
+      this.backupList();
       //Elimina solo i to do che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
@@ -251,6 +253,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
     },
     removeAllTodo(x) {
+      this.backupList();
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
@@ -259,6 +262,31 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       navigator.vibrate(1000);
       location.reload();
+    },
+    backupList() {
+      const copied = {
+        name: "ListCopied",
+        class: false,
+        emojy: "",
+        isActive: false,
+        isSelected: false,
+        modify: false,
+        multipleDelete: false,
+        todoAdded: false
+      };
+      const newTodoList = [...this.todos, copied]; //aggiungo un elemento che identifica che questa lista è stata copiata
+      const copiedList = newTodoList.map((todo) =>
+        todo.class ? `${todo.name.toUpperCase()}\n` : ` ${todo.name}\n`
+      );
+      const arrayNoCommas = copiedList.join(' ');
+
+      navigator.clipboard.writeText(arrayNoCommas); //copio negli appunti una lista della spesa per poterla condividere
+      document.addEventListener('copy', function (e) {
+        //copio negli appunti anche qui per sistemare su android (quello di sopra non funziona)
+        e.clipboardData.setData('text/plain', arrayNoCommas);
+        e.preventDefault();
+      });
+      document.execCommand('copy'); //riprovo/ricopio negli appunti anche qui per sistemare su android (per essere sicuri)
     },
   },
 });

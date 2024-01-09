@@ -128,7 +128,6 @@ export default {
         >
           Elegant
         </button>
-        <small class="new">NEW</small>
       </div>
     </div>
   </div>

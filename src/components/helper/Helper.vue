@@ -11,6 +11,7 @@ import ChangeLanguages from './Change-languages.vue';
 import SafeDeleteMode from './Safe-delete-mode.vue';
 import ChangeThemes from './Change-themes.vue';
 import AutoDeleteEmptyCategories from './Auto-delete-empty-categories.vue';
+import BackupList from './Backup-list.vue';
 import ExportList from './Export-list.vue';
 import Share from './Share.vue';
 import UpdateApp from './Update-app.vue';
@@ -129,6 +130,8 @@ export default {
         <ChangeThemes @themeLoadingEmit="themeLoadingEmitted" />
 
         <AutoDeleteEmptyCategories />
+
+        <BackupList />
 
         <ExportList />
 
