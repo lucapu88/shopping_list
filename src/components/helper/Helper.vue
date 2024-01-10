@@ -11,7 +11,7 @@ import ChangeLanguages from './Change-languages.vue';
 import SafeDeleteMode from './Safe-delete-mode.vue';
 import ChangeThemes from './Change-themes.vue';
 import AutoDeleteEmptyCategories from './Auto-delete-empty-categories.vue';
-import BackupList from './Backup-list.vue';
+// import BackupList from './Backup-list.vue';
 import ExportList from './Export-list.vue';
 import Share from './Share.vue';
 import UpdateApp from './Update-app.vue';
@@ -131,7 +131,8 @@ export default {
 
         <AutoDeleteEmptyCategories />
 
-        <BackupList />
+        <!-- TOFIX momentaneamente disabilitato perchè non funziona su android -->
+        <!-- <BackupList /> -->
 
         <ExportList />
 

@@ -274,8 +274,11 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         multipleDelete: false,
         todoAdded: false
       };
+      // eslint-disable-next-line no-unused-vars
       const newTodoList = [...this.todos, copied]; //aggiungo un elemento che identifica che questa lista è stata copiata
-      const copiedList = newTodoList.map((todo) =>
+
+      //TOFIX per il momento ho sostituito newTodoList con i todo dato che la funzione di backup è disabilitata (non funziona su android)
+      const copiedList = this.todos.map((todo) =>
         todo.class ? `${todo.name.toUpperCase()}\n` : ` ${todo.name}\n`
       );
       const arrayNoCommas = copiedList.join(' ');
