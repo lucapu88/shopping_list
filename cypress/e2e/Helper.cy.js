@@ -122,7 +122,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category').should('not.exist');
     });
 
-    xit('importa ultimo backup lista', () => { //TOFIX disabilitato perchè il componente non è attivo
+    it('importa ultimo backup lista', () => { //TOFIX disabilitato perchè il componente non è attivo
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
         cy.get('.delete-all').click();
