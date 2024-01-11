@@ -1,12 +1,12 @@
 <script setup>
-import FestivitiesAndOccurrences from './components/FestivitiesAndOccurrences.vue';
+import FestivitiesAndOccurrences from './components/Festivities-and-occurrences.vue';
 import HeadList from './components/Head-list.vue';
 import ConfirmModal from './components/panels-and-modals/Confirm-modal.vue';
 import Helper from './components/helper/Helper.vue';
 import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';
-import PreloadImages from './components/PreloadImages.vue';
+import PreloadImages from './components/Preload-images.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';

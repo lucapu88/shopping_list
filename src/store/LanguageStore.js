@@ -411,7 +411,6 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langSpanish', false);
       window.localStorage.setItem('langEnglish', true);
-      location.reload();
     },
     setItalianoLanguage() {
       this.langSpanish = false;
@@ -425,7 +424,6 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langSpanish', false);
       window.localStorage.setItem('langEnglish', false);
       window.localStorage.setItem('langIta', true);
-      location.reload();
     },
     setSpanishLanguage() {
       this.langEnglish = false;
@@ -439,7 +437,6 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langEnglish', false);
       window.localStorage.setItem('langSpanish', true);
-      location.reload();
     },
     insertAllCategories() {
       if (this.langIta) {

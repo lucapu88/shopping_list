@@ -6,12 +6,21 @@ import { useSettingsStore } from '@/store/SettingsStore';
 
 <script>
 export default {
+  emits: ['chageLanguageEmit'],
   data() {
     return {
       theme: useThemeStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
     };
+  },
+  methods: {
+    onChageLanguageEmit(value) {
+      this.$emit('chageLanguageEmit', value);
+      setTimeout(() => {
+        location.reload();
+      }, 1150);
+    },
   },
 };
 </script>
@@ -41,7 +50,10 @@ export default {
               languages.langEnglish && theme.retroTheme,
             'retro-helper-btn': theme.retroTheme,
           }"
-          @click="languages.setEnglishLanguage()"
+          @click="
+            languages.setEnglishLanguage();
+            onChageLanguageEmit('english');
+          "
         >
           {{ languages.languagesBtns.english }}
         </button>
@@ -54,7 +66,10 @@ export default {
 
             'retro-helper-btn': theme.retroTheme,
           }"
-          @click="languages.setSpanishLanguage()"
+          @click="
+            languages.setSpanishLanguage();
+            onChageLanguageEmit('spanish');
+          "
         >
           {{ languages.languagesBtns.spanish }}
         </button>
@@ -66,7 +81,10 @@ export default {
 
             'retro-helper-btn': theme.retroTheme,
           }"
-          @click="languages.setItalianoLanguage()"
+          @click="
+            languages.setItalianoLanguage();
+            onChageLanguageEmit('italian');
+          "
         >
           {{ languages.languagesBtns.italian }}
         </button>

@@ -5,6 +5,7 @@ import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore'
 
 <script>
 export default {
+  emits: ['backupLoadingEmit'],
   data() {
     return {
       languages: useLanguageStore(),
@@ -19,7 +20,10 @@ export default {
       const savedLastTodosCopy = window.localStorage.getItem('todosBackup');
       if (savedLastTodosCopy !== '[]') {
         window.localStorage.setItem('todos', savedLastTodosCopy);
-        location.reload();
+        this.$emit('backupLoadingEmit', true);
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
       } else {
         this.noBackupAlert();
       }

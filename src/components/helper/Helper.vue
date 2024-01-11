@@ -28,6 +28,8 @@ export default {
       settings: useSettingsStore(),
       themeLoading: false,
       updating: false,
+      backup: false,
+      languageChanged: null,
       copyrightText: '',
     };
   },
@@ -47,6 +49,12 @@ export default {
     updatingAppEmited(value) {
       this.updating = value;
     },
+    backupLoadingEmitted(value) {
+      this.backup = value;
+    },
+    changeLanguageEmitted(value) {
+      this.languageChanged = value;
+    },
     closeHelper() {
       this.settings.closeHelper();
     },
@@ -61,9 +69,14 @@ export default {
 
 <template>
   <div>
-    <LoadinfOrUpdating :themeLoading="themeLoading" :updating="updating" />
+    <LoadinfOrUpdating
+      :themeLoading="themeLoading"
+      :updating="updating"
+      :backup="backup"
+      :languageChanged="languageChanged"
+    />
     <div
-      v-if="!themeLoading && !updating"
+      v-if="!themeLoading && !updating && !backup && !languageChanged"
       id="helper-description-container"
       class="helper-description"
       :class="{
@@ -123,7 +136,7 @@ export default {
       <div id="helper-description">
         <UpdateApp @updatingAppEmit="updatingAppEmited" />
 
-        <ChangeLanguages />
+        <ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
 
         <SafeDeleteMode />
 
@@ -131,7 +144,7 @@ export default {
 
         <AutoDeleteEmptyCategories />
 
-        <BackupList />
+        <BackupList @backupLoadingEmit="backupLoadingEmitted" />
 
         <ExportList />
 

@@ -7,6 +7,8 @@ export default {
   props: {
     themeLoading: Boolean,
     updating: Boolean,
+    backup: Boolean,
+    languageChanged: String,
   },
   data() {
     return {
@@ -17,9 +19,9 @@ export default {
 </script>
 
 <template>
-  <!-- CONTAINER LOADING DEI TEMI -->
+  <!-- CONTAINER LOADING -->
   <div
-    v-if="themeLoading"
+    v-if="themeLoading || backup || languageChanged"
     id="loading-themes-container"
     :class="{
       light: theme.lightTheme,
@@ -32,7 +34,36 @@ export default {
     }"
   >
     <img src="@/img/Loading.webp" alt="loading" />
-    <img src="@/img/favicon.png" alt="loading" />
+    <img
+      v-if="!languageChanged && !backup"
+      src="@/img/favicon.webp"
+      alt="loading"
+    />
+
+    <div v-if="backup" class="backup-container gelatine">
+      <img src="@/img/icons/cloud.webp" alt="backup_loading" />
+    </div>
+
+    <div v-if="languageChanged" class="flags-container">
+      <img
+        v-if="languageChanged === 'english'"
+        class="language-spinner"
+        src="@/img/flags/inglese.webp"
+        alt="english_flag"
+      />
+      <img
+        v-if="languageChanged === 'spanish'"
+        class="language-spinner"
+        src="@/img/flags/spagnolo.webp"
+        alt="spanish_flag"
+      />
+      <img
+        v-if="languageChanged === 'italian'"
+        class="language-spinner"
+        src="@/img/flags/italiano.webp"
+        alt="italian_flag"
+      />
+    </div>
   </div>
 
   <!-- CONTAINER LOADING UPDATE APP -->
@@ -131,5 +162,46 @@ export default {
 
 .elegant {
   background-color: #045687 !important;
+}
+
+.flags-container,
+.backup-container {
+  margin-top: 30%;
+}
+.backup-container > img {
+  width: 85vw;
+}
+.gelatine {
+  animation: gelatine 0.5s infinite;
+}
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+.flags-container > img {
+  width: 200px;
+}
+.language-spinner {
+  animation: spin 1s infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
 }
 </style>
