@@ -185,13 +185,9 @@ export const useLanguageStore = defineStore('Language', {
     worldWideWebText: 'On 6 August 1991, the World Wide Web was born',
     backupListText: {
       title: 'Import Last Backup:',
-      description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion. \n WARNING: backups are temporary so they do not remain in memory forever!",
+      description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion.",
       confirm: 'Are you sure?',
       noBackupText: 'There are no backups saved'
-    },
-    backupListTextMomentary: {
-      part1: 'If you accidentally delete a list item, you can retrieve the latest version by pasting it below. BUT BEWARE: it only works on the last deleted item or the last few if you have done multiple deletions.',
-      part2: 'The backup is temporary!'
     },
     infoCategoriesAlert: 'If you cannot find the categories, make sure the language is correct. Categories are imported correctly if they are written in the selected language.'
   }),
@@ -297,11 +293,9 @@ export const useLanguageStore = defineStore('Language', {
         this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
         this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
         this.backupListText.title = 'Importa ultimo backup:';
-        this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione. \n ATTENZIONE: i backup sono temporanei quindi non restano in memoria per sempre!";
+        this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
         this.backupListText.confirm = "Sei sicuro?";
         this.backupListText.noBackupText = 'Non ci sono backup salvati';
-        this.backupListTextMomentary.part1 = "Se per sbaglio elimini un elemento della lista, puoi recuperare l'ultima versione incollandola qui sotto.MA ATTENZIONE: funziona solo sull'ultimo elemento eliminato o gli ultimi se hai fatto l'eliminazione multipla.";
-        this.backupListTextMomentary.part2 = 'Il backup è momentaneo!';
         this.infoCategoriesAlert = 'Se non ritrovi le categorie assicurati che la lingua sia quella esatta. Le categorie vengono importate correttamente se sono scritte nella lingua selezionata.';
 
       } else if (this.langSpanish) {
@@ -392,11 +386,9 @@ export const useLanguageStore = defineStore('Language', {
         this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
         this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
         this.backupListText.title = 'Importar la última copia de seguridad:';
-        this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado. \n ATENCIÓN: ¡las copias de seguridad son temporales, por lo que no permanecen en la memoria para siempre!";
+        this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
         this.backupListText.confirm = '¿Seguro?';
         this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
-        this.backupListTextMomentary.part1 = "Si borras accidentalmente un elemento de la lista, puedes recuperar la última versión pegándola a continuación. PERO CUIDADO: sólo funciona con el último elemento borrado o con los últimos si has hecho varios borrados.";
-        this.backupListTextMomentary.part2 = 'La copia de seguridad es temporal.';
         this.infoCategoriesAlert = 'Si no encuentra las categorías, asegúrese de que el idioma es correcto. Las categorías se importan correctamente si están escritas en el idioma seleccionado.';
 
       } else {

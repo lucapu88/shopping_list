@@ -16,31 +16,13 @@ export default {
   },
   methods: {
     importBackup() {
-      navigator.clipboard
-        .readText()
-        .then((clipboardText) => {
-          const listCopiedToArray = clipboardText
-            .split('\n')
-            .filter((el) => el !== '')
-            .map((todo) => todo.replace(/\b-\b/g, '').trim());
-
-          if (listCopiedToArray.includes('ListCopied')) {
-            this.addNewTodo.todos = [];
-            listCopiedToArray
-              .filter((item) => item !== 'ListCopied')
-              .forEach((td) => {
-                this.addNewTodo.newTodo = td;
-                this.addNewTodo.addTodo();
-              });
-            location.reload();
-          } else {
-            this.noBackupAlert();
-          }
-        })
-        .catch((err) => {
-          console.log('backup-error: ', err);
-          this.noBackupAlert();
-        });
+      const savedLastTodosCopy = window.localStorage.getItem('todosBackup');
+      if (savedLastTodosCopy !== '[]') {
+        window.localStorage.setItem('todos', savedLastTodosCopy);
+        location.reload();
+      } else {
+        this.noBackupAlert();
+      }
     },
     noBackupAlert() {
       this.noBackup = true;
@@ -59,7 +41,7 @@ export default {
     <span class="info-icon" @click="backupListInfo = !backupListInfo">i</span>
     <li class="ml-4" v-if="backupListInfo">
       ({{ languages.backupListText.description }}). <br />
-      <small>{{ languages.infoCategoriesAlert }}</small>
+      <!-- <small>{{ languages.infoCategoriesAlert }}</small> -->
     </li>
     <div v-if="!showConfirmBackup" class="backup-btn-container">
       <button id="backup-button" @click="showConfirmBackup = true">

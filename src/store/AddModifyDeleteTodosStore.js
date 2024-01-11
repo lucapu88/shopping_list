@@ -264,32 +264,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       location.reload();
     },
     backupList() {
-      const copied = {
-        name: "ListCopied",
-        class: false,
-        emojy: "",
-        isActive: false,
-        isSelected: false,
-        modify: false,
-        multipleDelete: false,
-        todoAdded: false
-      };
-      // eslint-disable-next-line no-unused-vars
-      const newTodoList = [...this.todos, copied]; //aggiungo un elemento che identifica che questa lista è stata copiata
-
-      //TOFIX per il momento ho sostituito newTodoList con i todo dato che la funzione di backup è disabilitata (non funziona su android)
-      const copiedList = this.todos.map((todo) =>
-        todo.class ? `${todo.name.toUpperCase()}\n` : ` ${todo.name}\n`
-      );
-      const arrayNoCommas = copiedList.join(' ');
-
-      navigator.clipboard.writeText(arrayNoCommas); //copio negli appunti una lista della spesa per poterla condividere
-      document.addEventListener('copy', function (e) {
-        //copio negli appunti anche qui per sistemare su android (quello di sopra non funziona)
-        e.clipboardData.setData('text/plain', arrayNoCommas);
-        e.preventDefault();
-      });
-      document.execCommand('copy'); //riprovo/ricopio negli appunti anche qui per sistemare su android (per essere sicuri)
+      const newTodoList = [...this.todos];
+      const parsedTodos = JSON.stringify(newTodoList);
+      window.localStorage.setItem('todosBackup', parsedTodos);
     },
   },
 });

@@ -15,7 +15,6 @@ export default {
       settings: useSettingsStore(),
       textAreaHeight: 55,
       pasteListInfo: false,
-      backupListInfo: false,
       listPasted: null,
     };
   },
@@ -55,7 +54,6 @@ export default {
         .filter((el) => el !== '')
         .map((todo) => todo.replace(/\b-\b/g, '').trim());
       // .map((todo) => todo.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '').trim());
-      this.addNewTodo.todos = []; //TOFIX messo per la funzione di backup
       listPastedToArray.forEach((td) => {
         this.addNewTodo.newTodo = td;
         this.addNewTodo.addTodo();
@@ -85,18 +83,6 @@ export default {
     <li class="ml-4" v-if="pasteListInfo">
       ({{ languages.pasteListText.subtitle }}). <br />
       <small>{{ languages.infoCategoriesAlert }}</small>
-    </li>
-    <!-- BACKUP LIST -->
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(4)">
-      &#x2699;
-    </span>
-    <span>{{ languages.backupListText.title }}</span>
-    <span class="info-icon" @click="backupListInfo = !backupListInfo">i</span>
-    <small class="new">NEW</small>
-    <br />
-    <li class="ml-4" v-if="backupListInfo">
-      ({{ languages.backupListTextMomentary.part1 }} <br />
-      <u> {{ languages.backupListTextMomentary.part2 }} </u>).
     </li>
 
     <div class="add-list-copied">
