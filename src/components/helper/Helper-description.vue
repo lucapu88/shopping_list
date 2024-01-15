@@ -333,7 +333,9 @@ export default {
       <template v-if="settings.support">
         <li>
           {{ languages.helperDescription.supportText }}
-          <a href="mailto:lucarhcp88@hotmail.it">lucarhcp88@hotmail.it</a>
+          <a href="mailto:shoppinglist.service@outlook.com">
+            shoppinglist.service@outlook.com
+          </a>
         </li>
         <li>
           {{ languages.helperDescription.twitterText }}

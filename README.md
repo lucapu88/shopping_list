@@ -13,7 +13,7 @@
 - <span><img src="src/img/readme/ENG.png" alt="eng"/></span> For any advice on improvements in the code, please contact me at the email address below.<br><br>
 
 - <span><img src="src/img/readme/ESP.png" alt="esp"/></span> Para cualquier consejo sobre mejoras en el código, póngase en contacto conmigo en la dirección de correo electrónico que figura más abajo.<br><br>
-  lucarhcp88@hotmail.it <br><br>
+  shoppinglist.service@outlook.com <br><br>
 
 Questo era un progetto iniziato per esercitarmi con Vue.js. Partito nel 2020 come semplice esercitazione per imparare questo framework, ho voluto creare una semplicissima app per la lista della spesa, poichè ne avevo bisogno sopratutto nel periodo covid dove la spesa era l'unica cosa bella che si poteva fare e per prendere aria se ne facevano anche tante.<br>
 Prima per la lista della spesa usavo la semplicissima e bruttissima app blocco-note dove scrivevo cose tutte messe in disordine, e le app "todo list" che avevo provato non mi piacevano ne come stile ne come funzionalità! Quindi è partito tutto anche come una necessità personale.<br>
