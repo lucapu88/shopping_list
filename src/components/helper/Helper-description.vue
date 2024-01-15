@@ -4,6 +4,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import ListIstructionAccordion from './List-istruction-accordion.vue';
+import Tutorial from './Tutorial.vue';
 </script>
 
 <script>
@@ -39,6 +40,7 @@ export default {
         :istructions-text="languages.helperDescription.addEditDelete"
         :select-deselect-arrow="settings.addEditDelete"
       />
+      <!-- AGGIUNGI MODIFICA ELIMINA -->
       <template v-if="settings.addEditDelete">
         <li>
           <img
@@ -101,12 +103,14 @@ export default {
           </button>
           {{ languages.helperDescription.backToTop }}
         </li>
+        <Tutorial :features="'addEditDelete'" />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="categoriesInfo"
         :istructions-text="languages.helperDescription.categories"
         :select-deselect-arrow="settings.categoriesInfo"
       />
+      <!-- CATEGORIE -->
       <template v-if="settings.categoriesInfo">
         <li>
           {{ languages.helperDescription.addCategory.part1 }}
@@ -177,12 +181,14 @@ export default {
             <span>{{ languages.removeEmpty }}</span></button
           >.
         </li>
+        <Tutorial :features="'categories'" />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="dragNdrop"
         :istructions-text="languages.helperDescription.dragNdropTitle"
         :select-deselect-arrow="settings.dragNdrop"
       />
+      <!-- DRAG N DROP -->
       <template v-if="settings.dragNdrop">
         <li>
           {{ languages.helperDescription.dragNdropText.part1 }}
@@ -213,12 +219,14 @@ export default {
             <span> >> </span>
           </button>
         </li>
+        <Tutorial :features="'dragNdrop'" />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="selectAndDelete"
         :istructions-text="languages.helperDescription.multipleDeleteTitle"
         :select-deselect-arrow="settings.selectAndDelete"
       />
+      <!-- SELEZIONE MULTIPLA -->
       <template v-if="settings.selectAndDelete">
         <li>
           {{ languages.helperDescription.multipleDeleteText.part1 }}
@@ -243,12 +251,14 @@ export default {
           </button>
           {{ languages.helperDescription.multipleDeleteText.part3 }}
         </li>
+        <Tutorial :features="'multipleDelete'" />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="copyHighlights"
         :istructions-text="languages.helperDescription.copyListTitle"
         :select-deselect-arrow="settings.copyHighlights"
       />
+      <!-- COPIA E INCOLLA - EVIDENZIA -->
       <template v-if="settings.copyHighlights">
         <li>
           <span
@@ -270,12 +280,14 @@ export default {
           </span>
           {{ languages.helperDescription.highlightImportant.part3 }}
         </li>
+        <Tutorial :features="'copyPaste'" />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="deleteAllInfo"
         :istructions-text="languages.helperDescription.deleteAllTitle"
         :select-deselect-arrow="settings.deleteAllInfo"
       />
+      <!-- CANCELLA TUTTO -->
       <template v-if="settings.deleteAllInfo">
         <li>
           {{ languages.helperDescription.deleteAllText.part1 }}
@@ -292,44 +304,11 @@ export default {
         </li>
       </template>
       <ListIstructionAccordion
-        show-list-istructions-input="tutorial"
-        :istructions-text="'Video tutorial'"
-        :select-deselect-arrow="settings.tutorial"
-      />
-      <template v-if="settings.tutorial">
-        <video
-          :class="{ video: !theme.retroTheme }"
-          width="325"
-          height="500"
-          poster="@/img/favicon.png"
-          controls
-        >
-          <source
-            v-if="languages.langEnglish"
-            src="@/video/ENG.mp4"
-            type="video/mp4"
-          />
-          <source
-            v-if="languages.langIta"
-            src="@/video/ITA.mp4"
-            type="video/mp4"
-          />
-          <source
-            v-if="languages.langSpanish"
-            src="@/video/SPA.mp4"
-            type="video/mp4"
-          />
-          {{ languages.helperDescription.videoAlert }}
-          <!-- <a href="https://www.youtube.com/watch?v=H1E9ynY9f9w" target="_blank"
-          >by clicking here</a
-        > -->
-        </video>
-      </template>
-      <ListIstructionAccordion
         show-list-istructions-input="support"
         :istructions-text="languages.helperDescription.support"
         :select-deselect-arrow="settings.support"
       />
+      <!-- CONTATTI -->
       <template v-if="settings.support">
         <li>
           {{ languages.helperDescription.supportText }}
@@ -430,11 +409,6 @@ export default {
 .social {
   width: 35px;
   height: 30px;
-}
-
-.video {
-  z-index: 100;
-  border-radius: 15px;
 }
 
 .update-alert {

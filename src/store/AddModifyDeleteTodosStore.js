@@ -18,7 +18,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     categoryListChildren: null,
     helper: null,
     christmasTheme: false,
-    highlits: null,
     categoryClass: false,
     categoryEmoji: '',
     addTodoInCategory: { condition: false, id: null },

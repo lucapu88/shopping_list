@@ -1,6 +1,7 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import Tutorial from './Tutorial.vue';
 </script>
 
 <script>
@@ -39,5 +40,6 @@ export default {
       </u>
       <span class="text-primary">{{ settings.canDeleteText }}</span>
     </div>
+    <Tutorial :features="'safeDelete'" />
   </div>
 </template>

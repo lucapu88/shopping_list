@@ -1,6 +1,7 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import Tutorial from './Tutorial.vue';
 </script>
 
 <script>
@@ -50,5 +51,6 @@ export default {
         {{ settings.canDeleteEmptyCategoriesText }}
       </span>
     </li>
+    <Tutorial :features="'autoDeleteEmptyCategories'" />
   </div>
 </template>

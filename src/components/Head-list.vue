@@ -120,8 +120,8 @@ export default {
     </span>
     <div class="input-btns-container">
       <span
-        style="color: red"
         v-if="addTodo.focusIn"
+        class="remove-selected-cat"
         @click="addTodo.removeSelectedCategoryToAddItem()"
         >X</span
       >
@@ -286,6 +286,10 @@ export default {
   }
 }
 
+.remove-selected-cat {
+  color: #d00000;
+  font-size: larger;
+}
 .input-btns-container {
   display: flex;
   align-items: baseline;

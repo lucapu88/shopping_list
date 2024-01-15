@@ -1,6 +1,8 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import { useSettingsStore } from '@/store/SettingsStore';
+import Tutorial from './Tutorial.vue';
 </script>
 
 <script>
@@ -10,6 +12,7 @@ export default {
     return {
       languages: useLanguageStore(),
       addNewTodo: useAddModifyDeleteTodosStore(),
+      settings: useSettingsStore(),
       backupListInfo: false,
       showConfirmBackup: false,
       noBackup: false,
@@ -41,7 +44,12 @@ export default {
 
 <template>
   <div class="helper-settings">
-    <span>{{ languages.backupListText.title }}</span>
+    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(9)">
+      &#x2699;
+    </span>
+    <span :class="{ 'tutorial-highlights': settings.highlits === 9 }">{{
+      languages.backupListText.title
+    }}</span>
     <span class="info-icon" @click="backupListInfo = !backupListInfo">i</span>
     <li class="ml-4" v-if="backupListInfo">
       ({{ languages.backupListText.description }}). <br />
@@ -76,6 +84,7 @@ export default {
         {{ languages.backupListText.noBackupText }}
       </p>
     </div>
+    <Tutorial :features="'backupList'" />
   </div>
 </template>
 

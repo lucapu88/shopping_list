@@ -3,6 +3,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import Tutorial from './Tutorial.vue';
 </script>
 
 <script>
@@ -128,6 +129,7 @@ export default {
         <small>{{ languages.importText }}</small>
       </button>
     </div>
+    <Tutorial :features="'exportList'" />
   </div>
 </template>
 
