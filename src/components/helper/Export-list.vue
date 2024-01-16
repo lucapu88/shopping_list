@@ -3,7 +3,8 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import Tutorial from './Tutorial.vue';
+import Tutorial from './tutorials/Tutorial.vue';
+import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
 </script>
 
 <script>
@@ -17,6 +18,7 @@ export default {
       textAreaHeight: 55,
       pasteListInfo: false,
       listPasted: null,
+      exportList: 'exportList',
     };
   },
   mounted() {
@@ -129,7 +131,12 @@ export default {
         <small>{{ languages.importText }}</small>
       </button>
     </div>
-    <Tutorial :features="'exportList'" />
+
+    <ToggleTutorialButton :features="exportList" />
+    <Tutorial
+      v-if="settings.video && settings.feature === exportList"
+      :features="exportList"
+    />
   </div>
 </template>
 

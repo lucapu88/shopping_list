@@ -4,7 +4,8 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import ListIstructionAccordion from './List-istruction-accordion.vue';
-import Tutorial from './Tutorial.vue';
+import Tutorial from './tutorials/Tutorial.vue';
+import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
 </script>
 
 <script>
@@ -15,6 +16,11 @@ export default {
       isChristmas: useChristmasStore(),
       settings: useSettingsStore(),
       languages: useLanguageStore(),
+      addEditDelete: 'addEditDelete',
+      categories: 'categories',
+      dragNdrop: 'dragNdrop',
+      multipleDelete: 'multipleDelete',
+      copyPaste: 'copyPaste',
     };
   },
 };
@@ -103,7 +109,12 @@ export default {
           </button>
           {{ languages.helperDescription.backToTop }}
         </li>
-        <Tutorial :features="'addEditDelete'" />
+
+        <ToggleTutorialButton :features="addEditDelete" />
+        <Tutorial
+          v-if="settings.video && settings.feature === addEditDelete"
+          :features="addEditDelete"
+        />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="categoriesInfo"
@@ -181,7 +192,12 @@ export default {
             <span>{{ languages.removeEmpty }}</span></button
           >.
         </li>
-        <Tutorial :features="'categories'" />
+
+        <ToggleTutorialButton :features="categories" />
+        <Tutorial
+          v-if="settings.video && settings.feature === categories"
+          :features="categories"
+        />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="dragNdrop"
@@ -219,7 +235,12 @@ export default {
             <span> >> </span>
           </button>
         </li>
-        <Tutorial :features="'dragNdrop'" />
+
+        <ToggleTutorialButton :features="dragNdrop" />
+        <Tutorial
+          v-if="settings.video && settings.feature === dragNdrop"
+          :features="dragNdrop"
+        />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="selectAndDelete"
@@ -251,7 +272,12 @@ export default {
           </button>
           {{ languages.helperDescription.multipleDeleteText.part3 }}
         </li>
-        <Tutorial :features="'multipleDelete'" />
+
+        <ToggleTutorialButton :features="multipleDelete" />
+        <Tutorial
+          v-if="settings.video && settings.feature === multipleDelete"
+          :features="multipleDelete"
+        />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="copyHighlights"
@@ -280,7 +306,12 @@ export default {
           </span>
           {{ languages.helperDescription.highlightImportant.part3 }}
         </li>
-        <Tutorial :features="'copyPaste'" />
+
+        <ToggleTutorialButton :features="copyPaste" />
+        <Tutorial
+          v-if="settings.video && settings.feature === copyPaste"
+          :features="copyPaste"
+        />
       </template>
       <ListIstructionAccordion
         show-list-istructions-input="deleteAllInfo"

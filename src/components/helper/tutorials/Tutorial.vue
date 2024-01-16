@@ -12,28 +12,13 @@ export default {
     return {
       theme: useThemeStore(),
       languages: useLanguageStore(),
-      video: false,
     };
-  },
-  methods: {
-    toggleVideo() {
-      this.video = !this.video;
-    },
   },
 };
 </script>
 
 <template>
-  <button
-    class="tutorial-btn"
-    :class="{ 'retro-tutorial-btn': theme.retroTheme }"
-    @click="toggleVideo()"
-  >
-    <img v-if="!video" src="@/img/icons/video-logo.webp" alt="video_tutorial" />
-    <span v-if="video">X</span>
-  </button>
   <video
-    v-if="video"
     class="video-container"
     :class="{ video: !theme.retroTheme }"
     width="300"
@@ -92,20 +77,6 @@ export default {
 </template>
 
 <style scoped>
-.tutorial-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 88%;
-  border-radius: 25px;
-  width: 40px;
-  color: #000000 !important;
-  font-weight: bold;
-}
-.tutorial-btn > img {
-  width: 25px;
-}
-
 .video-container {
   margin-left: 10%;
 }

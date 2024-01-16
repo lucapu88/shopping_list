@@ -1,7 +1,9 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import Tutorial from './Tutorial.vue';
+import { useThemeStore } from '@/store/ThemeStore';
+import Tutorial from './tutorials/Tutorial.vue';
+import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
 </script>
 
 <script>
@@ -10,7 +12,9 @@ export default {
     return {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
+      theme: useThemeStore(),
       autoDeleteEmptyCategoriesInfo: false,
+      autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',
     };
   },
 };
@@ -51,6 +55,11 @@ export default {
         {{ settings.canDeleteEmptyCategoriesText }}
       </span>
     </li>
-    <Tutorial :features="'autoDeleteEmptyCategories'" />
+
+    <ToggleTutorialButton :features="autoDeleteEmptyCategories" />
+    <Tutorial
+      v-if="settings.video && settings.feature === autoDeleteEmptyCategories"
+      :features="autoDeleteEmptyCategories"
+    />
   </div>
 </template>

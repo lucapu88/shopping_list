@@ -2,7 +2,8 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import Tutorial from './Tutorial.vue';
+import Tutorial from './tutorials/Tutorial.vue';
+import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
 </script>
 
 <script>
@@ -16,6 +17,7 @@ export default {
       backupListInfo: false,
       showConfirmBackup: false,
       noBackup: false,
+      backupList: 'backupList',
     };
   },
   methods: {
@@ -84,7 +86,12 @@ export default {
         {{ languages.backupListText.noBackupText }}
       </p>
     </div>
-    <Tutorial :features="'backupList'" />
+
+    <ToggleTutorialButton :features="backupList" />
+    <Tutorial
+      v-if="settings.video && settings.feature === backupList"
+      :features="backupList"
+    />
   </div>
 </template>
 

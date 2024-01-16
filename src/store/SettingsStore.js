@@ -21,6 +21,8 @@ export const useSettingsStore = defineStore('settings', {
     tutorial: false,
     support: false,
     highlits: null,
+    feature: null,
+    video: true,
   }),
   getters: {},
   actions: {
@@ -137,5 +139,12 @@ export const useSettingsStore = defineStore('settings', {
       /*  --------------------------------------IMPORTANTISSIMO------------------------------------------------
                   RICORDATI DI RICOMMENTARE TUTTO QUESTO CODICE DOPO CHE HAI REGISTRATO IL TUTORIAL!            */
     },
+    toggleTutorial(feature) {
+      /*  tutto ciò è fatto per far si che al click su un pulsante mostra il video, 
+          al click su un altro pulsante ne mostra un altro e nasconde il precedente, 
+          ma se clicchi sullo stesso video deve poterlo nascondere o rimostrare.    */
+      this.feature === feature ? this.video = !this.video : this.video = true;
+      this.feature = feature;
+    }
   },
 });
