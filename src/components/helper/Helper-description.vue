@@ -110,7 +110,7 @@ export default {
           {{ languages.helperDescription.backToTop }}
         </li>
 
-        <ToggleTutorialButton :features="addEditDelete" />
+        <ToggleTutorialButton :alignRight="true" :features="addEditDelete" />
         <Tutorial
           v-if="settings.video && settings.feature === addEditDelete"
           :features="addEditDelete"
@@ -193,7 +193,7 @@ export default {
           >.
         </li>
 
-        <ToggleTutorialButton :features="categories" />
+        <ToggleTutorialButton :alignRight="true" :features="categories" />
         <Tutorial
           v-if="settings.video && settings.feature === categories"
           :features="categories"
@@ -236,7 +236,7 @@ export default {
           </button>
         </li>
 
-        <ToggleTutorialButton :features="dragNdrop" />
+        <ToggleTutorialButton :alignRight="true" :features="dragNdrop" />
         <Tutorial
           v-if="settings.video && settings.feature === dragNdrop"
           :features="dragNdrop"
@@ -273,7 +273,7 @@ export default {
           {{ languages.helperDescription.multipleDeleteText.part3 }}
         </li>
 
-        <ToggleTutorialButton :features="multipleDelete" />
+        <ToggleTutorialButton :alignRight="true" :features="multipleDelete" />
         <Tutorial
           v-if="settings.video && settings.feature === multipleDelete"
           :features="multipleDelete"
@@ -307,7 +307,7 @@ export default {
           {{ languages.helperDescription.highlightImportant.part3 }}
         </li>
 
-        <ToggleTutorialButton :features="copyPaste" />
+        <ToggleTutorialButton :alignRight="true" :features="copyPaste" />
         <Tutorial
           v-if="settings.video && settings.feature === copyPaste"
           :features="copyPaste"

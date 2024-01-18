@@ -13,7 +13,7 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
-      safeModeInfo: false,
+      safeModeInfo: 'safeModeInfo',
       safeDelete: 'safeDelete',
     };
   },
@@ -28,9 +28,14 @@ export default {
     <span :class="{ 'tutorial-highlights': settings.highlits === 1 }">
       {{ languages.safeModeText.title }}:
     </span>
-    <span class="info-icon" @click="safeModeInfo = !safeModeInfo">i</span><br />
-    <li class="ml-4" v-if="safeModeInfo">
+    <span class="info-icon" @click="settings.toggleInfo(safeModeInfo)">i</span
+    ><br />
+    <li
+      class="ml-4"
+      v-if="settings.info && settings.featureInfo === safeModeInfo"
+    >
       ({{ languages.safeModeText.description }})
+      <ToggleTutorialButton :features="safeDelete" />
     </li>
     <div class="toggle-delete-confirm-container" id="safe-delete">
       <span
@@ -45,7 +50,6 @@ export default {
       <span class="text-primary">{{ settings.canDeleteText }}</span>
     </div>
 
-    <ToggleTutorialButton :features="safeDelete" />
     <Tutorial
       v-if="settings.video && settings.feature === safeDelete"
       :features="safeDelete"

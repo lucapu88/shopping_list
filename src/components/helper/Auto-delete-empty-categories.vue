@@ -13,7 +13,7 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
-      autoDeleteEmptyCategoriesInfo: false,
+      autoDeleteEmptyCategoriesInfo: 'autoDeleteEmptyCategoriesInfo',
       autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',
     };
   },
@@ -34,12 +34,18 @@ export default {
     </span>
     <span
       class="info-icon"
-      @click="autoDeleteEmptyCategoriesInfo = !autoDeleteEmptyCategoriesInfo"
+      @click="settings.toggleInfo(autoDeleteEmptyCategoriesInfo)"
       >i</span
     >
     <br />
-    <li class="ml-4" v-if="autoDeleteEmptyCategoriesInfo">
+    <li
+      class="ml-4"
+      v-if="
+        settings.info && settings.featureInfo === autoDeleteEmptyCategoriesInfo
+      "
+    >
       ({{ languages.autoDeleteEmptyCategoriesText.description }})
+      <ToggleTutorialButton :features="autoDeleteEmptyCategories" />
     </li>
     <li class="toggle-delete-confirm-container" id="auto-delete">
       <div
@@ -56,7 +62,6 @@ export default {
       </span>
     </li>
 
-    <ToggleTutorialButton :features="autoDeleteEmptyCategories" />
     <Tutorial
       v-if="settings.video && settings.feature === autoDeleteEmptyCategories"
       :features="autoDeleteEmptyCategories"

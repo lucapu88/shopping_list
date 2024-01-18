@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 export default {
   props: {
     features: String,
+    alignRight: Boolean,
   },
   data() {
     return {
@@ -17,31 +18,39 @@ export default {
 };
 </script>
 <template>
-  <button
-    class="tutorial-btn"
-    :class="{
-      'retro-tutorial-btn': theme.retroTheme,
-      'tutorial-selected': settings.video && features === settings.feature,
-    }"
-    @click="settings.toggleTutorial(features)"
-  >
-    <img src="@/img/icons/video-logo.webp" alt="video_tutorial" />
-  </button>
+  <div :class="alignRight ? 'align-right' : 'block'">
+    <button
+      class="tutorial-btn"
+      :class="{
+        'retro-tutorial-btn': theme.retroTheme,
+        'tutorial-selected': settings.video && features === settings.feature,
+      }"
+      @click="settings.toggleTutorial(features)"
+    >
+      <small>Tutorial </small>
+      <img src="@/img/icons/video-logo.webp" alt="video_tutorial" />
+    </button>
+  </div>
 </template>
 
 <style scoped>
+.block {
+  display: inline-block;
+}
 .tutorial-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 88%;
-  border-radius: 25px;
-  width: 40px;
+  border-radius: 10px;
   color: #000000 !important;
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
-  /* non so perchè se scrivo margin: 3px 0; non funziona! non dovrebbe essere la stessa cosa? */
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
 }
 .tutorial-btn > img {
   width: 25px;

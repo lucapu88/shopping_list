@@ -23,6 +23,8 @@ export const useSettingsStore = defineStore('settings', {
     highlits: null,
     feature: null,
     video: true,
+    featureInfo: false,
+    info: true,
   }),
   getters: {},
   actions: {
@@ -145,6 +147,12 @@ export const useSettingsStore = defineStore('settings', {
           ma se clicchi sullo stesso video deve poterlo nascondere o rimostrare.    */
       this.feature === feature ? this.video = !this.video : this.video = true;
       this.feature = feature;
+    },
+    toggleInfo(featureInfo) {
+      //uguale a sopra ma in un punto diverso, e voglio tenere le cose ben separate con i propri nomi di riferimento
+      this.featureInfo === featureInfo ? this.info = !this.info : this.info = true;
+      this.featureInfo = featureInfo;
+      this.video = false;
     }
   },
 });

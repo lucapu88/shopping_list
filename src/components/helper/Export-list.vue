@@ -16,7 +16,7 @@ export default {
       addNewTodo: useAddModifyDeleteTodosStore(),
       settings: useSettingsStore(),
       textAreaHeight: 55,
-      pasteListInfo: false,
+      pasteListInfo: 'pasteListInfo',
       listPasted: null,
       exportList: 'exportList',
     };
@@ -81,11 +81,15 @@ export default {
     >
       {{ languages.pasteListText.title }}
     </span>
-    <span class="info-icon" @click="pasteListInfo = !pasteListInfo">i</span>
+    <span class="info-icon" @click="settings.toggleInfo(pasteListInfo)">i</span>
     <br />
-    <li class="ml-4" v-if="pasteListInfo">
+    <li
+      class="ml-4"
+      v-if="settings.info && settings.featureInfo === pasteListInfo"
+    >
       ({{ languages.pasteListText.subtitle }}). <br />
       <small>{{ languages.infoCategoriesAlert }}</small>
+      <ToggleTutorialButton :features="exportList" />
     </li>
 
     <div class="add-list-copied">
@@ -132,9 +136,8 @@ export default {
       </button>
     </div>
 
-    <ToggleTutorialButton :features="exportList" />
     <Tutorial
-      v-if="settings.video && settings.feature === exportList"
+      v-if="settings.video && settings.feature === exportList && pasteListInfo"
       :features="exportList"
     />
   </div>

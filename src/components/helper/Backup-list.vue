@@ -14,7 +14,7 @@ export default {
       languages: useLanguageStore(),
       addNewTodo: useAddModifyDeleteTodosStore(),
       settings: useSettingsStore(),
-      backupListInfo: false,
+      backupListInfo: 'backupListInfo',
       showConfirmBackup: false,
       noBackup: false,
       backupList: 'backupList',
@@ -52,9 +52,15 @@ export default {
     <span :class="{ 'tutorial-highlights': settings.highlits === 9 }">{{
       languages.backupListText.title
     }}</span>
-    <span class="info-icon" @click="backupListInfo = !backupListInfo">i</span>
-    <li class="ml-4" v-if="backupListInfo">
-      ({{ languages.backupListText.description }}). <br />
+    <span class="info-icon" @click="settings.toggleInfo(backupListInfo)"
+      >i</span
+    >
+    <li
+      class="ml-4"
+      v-if="settings.info && settings.featureInfo === backupListInfo"
+    >
+      ({{ languages.backupListText.description }})
+      <ToggleTutorialButton :features="backupList" /> <br />
       <!-- <small>{{ languages.infoCategoriesAlert }}</small> -->
     </li>
     <div v-if="!showConfirmBackup" class="backup-btn-container">
@@ -87,7 +93,6 @@ export default {
       </p>
     </div>
 
-    <ToggleTutorialButton :features="backupList" />
     <Tutorial
       v-if="settings.video && settings.feature === backupList"
       :features="backupList"
