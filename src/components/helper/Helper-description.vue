@@ -58,6 +58,9 @@ export default {
           {{ languages.helperDescription.add }}
         </li>
         <li>
+          {{ languages.priceText }}
+        </li>
+        <li>
           <img
             class="btn-primary rounded-circle btn-sm helper-icon"
             :class="{

@@ -28,6 +28,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     confirmRemove: false,
     canDeleteMultipleTodo: false,
     focusIn: false,
+    totalPrice: 0,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -110,6 +111,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement ? draggedElement : this.todos);
       window.localStorage.setItem('todos', parsedTodos);
+      this.priceCalculator();
     },
     createTodosList() {
       if (window.localStorage.getItem('todos')) {
@@ -126,6 +128,20 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     changeTodoAdded(array) {
       //mi serve solo per "evidenziare" il bordo con il boxshadow (per n secondi) quando si aggiunge un nuovo todo
       array.forEach(item => item.todoAdded = false);
+    },
+    priceCalculator() {
+      //se nell'input scrivo un numero che sia preceduto o anticipato da £,$ oppure € deduco sia un prezzo e quindi calcolo la somma
+      let numbersArray = [];
+      for (const todo of this.todos) {
+        if (todo.name.includes("£") || todo.name.includes("$") || todo.name.includes("€")) {
+          // const newTodo = todo.name.includes('.') ? todo.name.replace(/\./g, ",") : todo.name;
+          const numero = todo.name.match(/[£$€]?(\d+(?:[.,]\d+)?)/)[1];
+          numbersArray.push(numero);
+        }
+      }
+      // eslint-disable-next-line no-useless-escape
+      numbersArray = numbersArray.map(el => el.replace(/\,/g, "."));
+      this.totalPrice = numbersArray.reduce((a, b) => +a + +b, 0).toFixed(2);
     },
     toggleDragDrop() {
       this.isDraggable = !this.isDraggable;

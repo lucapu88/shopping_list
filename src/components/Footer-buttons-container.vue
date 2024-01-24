@@ -18,6 +18,9 @@ export default {
       todosStore: useAddModifyDeleteTodosStore(),
     };
   },
+  created() {
+    this.todosStore.priceCalculator();
+  },
   methods: {
     emitScrollTop() {
       this.$emit('scrollToTop', true);
@@ -68,6 +71,9 @@ export default {
         alt="delete_all_and_merry_christmas"
       />
     </button>
+    <span v-if="todosStore.totalPrice > 0" style="line-height: 2">{{
+      todosStore.totalPrice
+    }}</span>
     <!-- PULSANTE TORNA IN CIMA -->
     <button
       class="btn btn-outline-info btn-back-to-top"
