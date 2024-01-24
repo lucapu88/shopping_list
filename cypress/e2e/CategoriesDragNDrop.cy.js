@@ -20,7 +20,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('[index="3"] > #draggable-children').dragTo('[index="5"] > #draggable-children', { steps: 10 });
         //posizione FINALE deglli elementi
         cy.get('[index="3"] > #draggable-children > #todo').should('include.text', phrases.frase5);
-        cy.get('[index="5"] > #draggable-children > #todo').should('include.text', phrases.frase4);
+        cy.get('[index="4"] > #draggable-children > #todo').should('include.text', phrases.frase4);
     });
 
     it('verifico il copia e incolla', () => {
