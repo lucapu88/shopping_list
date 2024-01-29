@@ -67,7 +67,6 @@ export default {
       <button id="backup-button" @click="showConfirmBackup = true">
         <img class="cloud" src="@/img/icons/cloud.webp" alt="backup" />
       </button>
-      <small class="new">NEW</small>
     </div>
 
     <div class="confirm-backup-container">
