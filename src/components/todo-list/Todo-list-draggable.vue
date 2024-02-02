@@ -70,6 +70,7 @@ export default {
     >
       <template #item="{ todo }"> -->
   <Container orientation="vertical" @drop="onDrop">
+    <!-- TOFIX anche questo drag n drop presenta rotture di cazzo! ho aperto una segnalazione: https://github.com/gilnd/vue3-smooth-dnd/issues/19 -->
     <Draggable
       v-for="(todo, n) in todosStore.todos"
       :key="n"

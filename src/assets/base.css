@@ -19,6 +19,10 @@ body {
   }
 } */
 
+.smooth-dnd-disable-touch-action * {
+  touch-action: auto !important;
+}
+
 /* ----------------------------------------NATALEEEEEE------------------------------------ */
 .christmas-garland {
   width: 100%;
