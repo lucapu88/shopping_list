@@ -160,7 +160,8 @@ button {
   width: 22px;
 }
 
-.copy {
+.copy,
+.important {
   width: 23px;
   height: 22px;
 }

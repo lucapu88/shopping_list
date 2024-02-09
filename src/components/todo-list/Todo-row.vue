@@ -19,6 +19,10 @@ export default {
 </script>
 
 <template>
+  <div
+    class="only-important-visible"
+    v-if="todosStore.showOnlyImportantTodos"
+  ></div>
   <div v-if="todo.class && theme.minimalTheme" class="category-emoji-minimal">
     &#x2022;
   </div>
@@ -164,5 +168,14 @@ export default {
 <style scoped>
 .transparent {
   background-color: transparent !important;
+}
+.only-important-visible {
+  position: absolute;
+  top: 0;
+  background-color: #66666669;
+  border-radius: 10px;
+  width: 98vw;
+  height: 100%;
+  z-index: 200;
 }
 </style>

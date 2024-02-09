@@ -68,7 +68,7 @@ export default {
     />
     <source
       v-if="features === 'copyPaste'"
-      src="@/video/copy-paste.mp4"
+      src="@/video/copy-paste-select-important.mp4"
       type="video/mp4"
     />
 

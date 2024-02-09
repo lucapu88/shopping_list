@@ -48,9 +48,11 @@ export default {
         'minimal-btn': theme.minimalTheme,
         'minimal-selected-btn': theme.minimalTheme && todosStore.isDraggable,
         'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
+        'retro-selected-btn': theme.retroTheme && todosStore.isDraggable,
         'retro-teme-btns': theme.retroTheme,
         'elegant-btn': theme.elegantTheme,
       }"
+      :disabled="todosStore.showOnlyImportantTodos"
       @click="todosStore.toggleDragDrop()"
     >
       <img
@@ -95,13 +97,47 @@ export default {
         'minimal-btn': theme.minimalTheme,
         'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
         'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
+        'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
         'retro-teme-btns': theme.retroTheme,
         'elegant-btn': theme.elegantTheme,
       }"
+      :disabled="todosStore.showOnlyImportantTodos"
       @click="todosStore.showCategoryList()"
     >
       <strong v-if="!todosStore.categoryList">+</strong>
       <strong v-else>-</strong>
+    </button>
+    <!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
+    <button
+      class="btn custom-show-listbtn"
+      :class="{
+        'btn-selected': todosStore.showOnlyImportantTodos,
+        'btn-important-selected':
+          todosStore.showOnlyImportantTodos && !theme.retroTheme,
+        'minimal-btn': theme.minimalTheme,
+        'minimal-selected-btn':
+          theme.minimalTheme && todosStore.showOnlyImportantTodos,
+        'elegant-selected-btn':
+          theme.elegantTheme && todosStore.showOnlyImportantTodos,
+        'retro-selected-btn':
+          theme.retroTheme && todosStore.showOnlyImportantTodos,
+        'retro-teme-btns': theme.retroTheme,
+        'elegant-btn': theme.elegantTheme,
+      }"
+      @click="todosStore.showOnlyImportant()"
+    >
+      <img
+        v-if="!theme.elegantTheme"
+        class="important"
+        src="@/img/icons/important.webp"
+        alt="important"
+      />
+      <img
+        v-if="theme.elegantTheme"
+        class="important"
+        src="@/img/icons/important-elegant.webp"
+        alt="important"
+      />
     </button>
   </div>
   <div class="drag-n-drop-text">
@@ -111,6 +147,9 @@ export default {
   </div>
   <p class="list-copied" v-if="languages.copyList.visible">
     {{ languages.copyList.text }}
+  </p>
+  <p class="no-important-todos-alert" v-if="languages.importantTodos.visible">
+    {{ languages.importantTodos.alert }}
   </p>
 
   <CategoriesPanel />
@@ -140,7 +179,28 @@ export default {
 
 .list-copied {
   font-size: 13px;
-  margin: 0 20%;
   color: #28a745;
+  text-align: center;
+}
+
+.btn-important-selected {
+  animation: zoominout 1.5s infinite;
+}
+@keyframes zoominout {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.no-important-todos-alert {
+  font-size: 15px;
+  text-align: center;
+  color: #c30000;
 }
 </style>

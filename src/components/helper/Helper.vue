@@ -6,6 +6,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import LoadinfOrUpdating from '../Loading-or-updating.vue';
 import ChangeLanguages from './Change-languages.vue';
 import SafeDeleteMode from './Safe-delete-mode.vue';
@@ -26,6 +27,7 @@ export default {
       festivities: useOthersFestivitiesStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
+      todosStore: useAddModifyDeleteTodosStore(),
       themeLoading: false,
       updating: false,
       backup: false,
@@ -38,6 +40,9 @@ export default {
     this.isChristmas.merryChristmasTheme();
     this.festivities.checkFestivities();
     this.copyright();
+    if (this.todosStore.showOnlyImportantTodos) {
+      this.todosStore.showOnlyImportant();
+    }
   },
   mounted() {
     document.getElementById('helper-description').scrollTo(0, 0);

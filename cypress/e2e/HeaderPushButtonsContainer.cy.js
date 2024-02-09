@@ -62,4 +62,27 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('.add-remove-empty > :nth-child(2)').click({ force: true });
         cy.get('#todo-list').should('be.empty');
     });
+
+    it('Verifico se funziona la visualizzazione degli elementi importanti', () => {
+        cy.addSomeItemsToList(phrases);
+        cy.wait(1000);
+        cy.get('[index="2"] > #todo').click();
+        cy.get('[index="4"] > #todo').click();
+        cy.get('.pushbutton-container > :nth-child(4)').click();
+        cy.get(`.active:contains(${phrases.frase3})`).should('exist');
+        cy.get(`.active:contains(${phrases.frase5})`).should('exist');
+        cy.get(`.todo:contains(${phrases.frase1})`).should('not.exist');
+        cy.get(`.todo:contains(${phrases.frase2})`).should('not.exist');
+        cy.get(`.todo:contains(${phrases.frase4})`).should('not.exist');
+        cy.get(`.todo:contains(${phrases.frase6})`).should('not.exist');
+
+        cy.get('.pushbutton-container > :nth-child(4)').click();
+        cy.get(`.active:contains(${phrases.frase3})`).should('exist');
+        cy.get(`.active:contains(${phrases.frase5})`).should('exist');
+        cy.get(`.todo:contains(${phrases.frase1})`).should('exist');
+        cy.get(`.todo:contains(${phrases.frase2})`).should('exist');
+        cy.get(`.todo:contains(${phrases.frase4})`).should('exist');
+        cy.get(`.todo:contains(${phrases.frase6})`).should('exist');
+
+    });
 });

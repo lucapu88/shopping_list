@@ -17,6 +17,7 @@
 
   --dos-primary-color: #35c50d;
   --dos-secondary-color: #000000;
+  --dos-selected-color: #ffffff;
   --dos-helper-primary-color: #c0c0c0;
   --dos-title-background-color: #042457;
   --dos-title-background-second-color: #0f81ce;
@@ -349,6 +350,9 @@
 .retro-tutorial-btn {
   border-radius: 0 !important;
   border-color: #ffffff;
+}
+.retro-selected-btn {
+  background-color: var(--dos-selected-color) !important;
 }
 /* SUMMER */
 .summer-theme {

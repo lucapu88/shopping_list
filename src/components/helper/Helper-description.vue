@@ -309,6 +309,31 @@ export default {
           </span>
           {{ languages.helperDescription.highlightImportant.part3 }}
         </li>
+        <li>
+          {{ languages.importantTodos.text.part1 }}
+          <button
+            class="btn custom-show-listbtn"
+            :class="{
+              'minimal-helper-btn': theme.minimalTheme,
+              'retro-teme-btns': theme.retroTheme,
+              'elegant-helper-btn': theme.elegantTheme,
+            }"
+          >
+            <img
+              v-if="!theme.elegantTheme"
+              class="important"
+              src="@/img/icons/important.webp"
+              alt="important"
+            />
+            <img
+              v-if="theme.elegantTheme"
+              class="important"
+              src="@/img/icons/important-elegant.webp"
+              alt="important"
+            />
+          </button>
+          {{ languages.importantTodos.text.part2 }}
+        </li>
 
         <ToggleTutorialButton :alignRight="true" :features="copyPaste" />
         <Tutorial

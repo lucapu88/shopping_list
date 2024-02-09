@@ -29,6 +29,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     canDeleteMultipleTodo: false,
     focusIn: false,
     totalPrice: 0,
+    showOnlyImportantTodos: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -283,5 +284,28 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       const parsedTodos = JSON.stringify(newTodoList);
       window.localStorage.setItem('todosBackup', parsedTodos);
     },
+    showOnlyImportant() {
+      const thereAreTodoFiltered = this.todos.filter((todo) => todo.isActive);
+      if (!thereAreTodoFiltered.length) {
+        this.showNoImportantTodosAlert();
+        return;
+      }
+      this.showOnlyImportantTodos = !this.showOnlyImportantTodos;
+
+      if (this.showOnlyImportantTodos) {
+        this.isDraggable = false;
+        this.categoryList = false;
+        this.canDeleteMultipleTodo = false;
+        this.todos = this.todos.filter((todo) => todo.isActive);
+      } else {
+        this.createTodosList();
+        this.toggleButtonDeleteSelectedTodo();
+        this.changeTodoAdded(this.todos);
+      }
+    },
+    showNoImportantTodosAlert() {
+      this.languages.importantTodos.visible = true;
+      setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
+    }
   },
 });

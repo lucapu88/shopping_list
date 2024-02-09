@@ -37,6 +37,9 @@ export default {
       this.isChristmas.merryChristmasTheme();
     },
     addNewTodo() {
+      if (this.addTodo.showOnlyImportantTodos) {
+        this.addTodo.showOnlyImportant();
+      }
       this.addTodo.addTodo();
     },
     scrollToBottom() {
@@ -157,7 +160,7 @@ export default {
 
 <style scoped>
 .header-container {
-  width: 95vw;
+  width: 100vw;
   min-width: 345px;
   max-width: 600px;
   position: relative;
@@ -304,9 +307,8 @@ export default {
 .helper {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   border-radius: 50%;
-  /* padding: 0 5px; */
   z-index: 300;
   margin-right: 2%;
 }
