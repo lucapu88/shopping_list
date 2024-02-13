@@ -92,7 +92,7 @@ export default {
       <span> >> </span>
     </button>
   </div>
-  <div v-if="isChristmas.christmasTheme">
+  <div v-if="isChristmas.christmasTheme && todosStore.todos.length">
     <img
       class="christmas-footer"
       src="@/img/festivities/christmas.webp"

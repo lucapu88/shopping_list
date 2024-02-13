@@ -5,6 +5,7 @@ import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore'
 import { Container, Draggable } from '../../../node_modules/vue3-smooth-dnd'; //DOCUMENTAZIONE: https://github.com/gilnd/vue3-smooth-dnd
 // import draggable from 'vuedraggable';
 import TodoRow from './Todo-row.vue';
+import EmptyList from './Empty-list.vue';
 </script>
 
 <script>
@@ -43,6 +44,7 @@ export default {
 </script>
 
 <template>
+  <EmptyList v-if="!todosStore.todos.length" />
   <!-- TOFIX questa parte è commentata poichè la libreria in questione è buggata,
      ma siccome mi piace più di quella che uso, vorrei utilizzarla nel caso risolvono il problema che ho segnalato: 
     https://github.com/SortableJS/Vue.Draggable/issues/1227-->

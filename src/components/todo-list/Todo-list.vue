@@ -3,6 +3,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import TodoRow from './Todo-row.vue';
+import EmptyList from './Empty-list.vue';
 </script>
 
 <script>
@@ -18,6 +19,7 @@ export default {
 </script>
 
 <template>
+  <EmptyList v-if="!todosStore.todos.length" />
   <div
     v-for="(todo, n) in todosStore.todos"
     :key="n"

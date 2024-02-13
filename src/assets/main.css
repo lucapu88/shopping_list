@@ -354,6 +354,10 @@
 .retro-selected-btn {
   background-color: var(--dos-selected-color) !important;
 }
+.retro-border {
+  border: 3px var(--white) inset !important;
+  border-radius: 0 !important;
+}
 /* SUMMER */
 .summer-theme {
   background-color: var(--summer-secondary-color) !important;
