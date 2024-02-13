@@ -314,7 +314,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     setOnlyDeletedTodos(index) {
       if (index !== 'multipleDelete') {
         //Salvo IL todo da eliminare
-        // const singleTodoDeleted = `${this.todos[index].name}  ${this.getDate()}`;
         const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
         window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
       } else {

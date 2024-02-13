@@ -52,7 +52,7 @@ export default {
         'retro-teme-btns': theme.retroTheme,
         'elegant-btn': theme.elegantTheme,
       }"
-      :disabled="todosStore.showOnlyImportantTodos"
+      :disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
       @click="todosStore.toggleDragDrop()"
     >
       <img
@@ -74,6 +74,7 @@ export default {
         'retro-teme-btns': theme.retroTheme,
         'elegant-btn': theme.elegantTheme,
       }"
+      :disabled="!todosStore.todos.length"
       @click="copy()"
     >
       <img
