@@ -30,6 +30,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     focusIn: false,
     totalPrice: 0,
     showOnlyImportantTodos: false,
+    deletedTodos: null,
+    deletedSingleTodo: null,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -101,6 +103,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     confirmedRemoveTodo(x) {
       this.backupList();
+      this.setOnlyDeletedTodos(x);
       this.todos.splice(x, 1);
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
@@ -110,7 +113,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       navigator.vibrate(220);
     },
     saveTodos(draggedElement) {
-      const parsedTodos = JSON.stringify(draggedElement ? draggedElement : this.todos);
+      const parsedTodos = JSON.stringify(draggedElement || this.todos);
       window.localStorage.setItem('todos', parsedTodos);
       this.priceCalculator();
     },
@@ -179,19 +182,20 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     removeOnlyEmpty() {
       const last = this.todos[this.todos.length - 1];
       //se l'ultimo della lista è una classe (allora al suo interno sarà vuoto) aggiungo una proprietà per rimuoverlo
-      if (last?.class) { last.classToBedeleted = true; }
+      if (last?.class) { last.classToBeDeleted = true; }
 
       this.todos.forEach((todo, index) => {
         const next = this.todos[index + 1];
         //se l'elemento è una categoria ed il suo successivo/precedente pure, vuol dire che sono categorie vuote
-        if (todo?.class && next?.class) { todo.classToBedeleted = true; }
+        if (todo?.class && next?.class) { todo.classToBeDeleted = true; }
       });
-      this.todos = this.todos.filter((todo) => !todo.classToBedeleted);
+      this.todos = this.todos.filter((todo) => !todo.classToBeDeleted);
       this.saveTodos();
       this.categoryList = false;
     },
     deleteSelectedTodos() {
       this.backupList();
+      this.setOnlyDeletedTodos('multipleDelete');
       //Elimina solo i to do che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
@@ -306,6 +310,36 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     showNoImportantTodosAlert() {
       this.languages.importantTodos.visible = true;
       setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
+    },
+    setOnlyDeletedTodos(index) {
+      if (index !== 'multipleDelete') {
+        //Salvo IL todo da eliminare
+        // const singleTodoDeleted = `${this.todos[index].name}  ${this.getDate()}`;
+        const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
+        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
+      } else {
+        //Salvo i todo da eliminare
+        const deletedTodos = this.todos.filter((todo) => todo.multipleDelete).map(t => t.name);
+        deletedTodos.push(this.getDate());
+        window.localStorage.setItem('deletedTodos', deletedTodos);
+      }
+    },
+    getOnlyDeletedTodos() {
+      const deletedSingleTodo = window.localStorage.getItem('singleTodoDeleted');
+      if (deletedSingleTodo) { this.deletedSingleTodo = deletedSingleTodo.split(","); }
+      const getDeletedTodos = window.localStorage.getItem('deletedTodos');
+      if (getDeletedTodos) { this.deletedTodos = getDeletedTodos.split(","); }
+    },
+    getDate() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      let mm = today.getMonth() + 1;
+      let dd = today.getDate();
+
+      if (dd < 10) dd = '0' + dd;
+      if (mm < 10) mm = '0' + mm;
+
+      return dd + '/' + mm + '/' + yyyy;
     }
   },
 });

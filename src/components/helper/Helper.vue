@@ -8,14 +8,15 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import LoadinfOrUpdating from '../Loading-or-updating.vue';
-import ChangeLanguages from './Change-languages.vue';
-import SafeDeleteMode from './Safe-delete-mode.vue';
-import ChangeThemes from './Change-themes.vue';
-import AutoDeleteEmptyCategories from './Auto-delete-empty-categories.vue';
-import BackupList from './Backup-list.vue';
-import ExportList from './Export-list.vue';
-import Share from './Share.vue';
-import UpdateApp from './Update-app.vue';
+import ChangeLanguages from './settings/Change-languages.vue';
+import ChangeThemes from './settings/Change-themes.vue';
+import SafeDeleteMode from './settings/Safe-delete-mode.vue';
+import AutoDeleteEmptyCategories from './settings/Auto-delete-empty-categories.vue';
+import BackupList from './settings/Backup-list.vue';
+import ExportList from './settings/Export-list.vue';
+import ShowOnlyLatestDeleted from './settings/Show-only-latest-deleted.vue';
+import Share from './settings/Share.vue';
+import UpdateApp from './settings/Update-app.vue';
 </script>
 
 <script>
@@ -143,11 +144,13 @@ export default {
 
         <ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
 
-        <SafeDeleteMode />
-
         <ChangeThemes @themeLoadingEmit="themeLoadingEmitted" />
 
+        <SafeDeleteMode />
+
         <AutoDeleteEmptyCategories />
+
+        <ShowOnlyLatestDeleted />
 
         <BackupList @backupLoadingEmit="backupLoadingEmitted" />
 

@@ -3,7 +3,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useLanguageStore } from '@/store/LanguageStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from './settings/List-istruction-accordion.vue';
 import Tutorial from './tutorials/Tutorial.vue';
 import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
 </script>

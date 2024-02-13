@@ -122,6 +122,23 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category').should('not.exist');
     });
 
+    it('mostra ultime eliminazioni', () => {
+        cy.addSomeItemsToList(phrases);
+        cy.get('[index="0"] > .cart > img').click({ force: true });
+        cy.get('[index="1"] > .cart > img').click({ force: true });
+        cy.get('[index="4"] > .cart > img').click({ force: true });
+        cy.get('.text-danger').click();
+        cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
+        cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
+
+        cy.get('.settings').click();
+        cy.get('#show-hide-deleted').click();
+        cy.get('.todo-deleted-container').should('include.text', phrases.frase4);
+        cy.get('.multiple-deleted-container > :nth-child(1)').should('include.text', phrases.frase1);
+        cy.get('.multiple-deleted-container > :nth-child(2)').should('include.text', phrases.frase2);
+        cy.get('.multiple-deleted-container > :nth-child(3)').should('include.text', phrases.frase5);
+    });
+
     it('importa ultimo backup lista', () => { //TOFIX disabilitato perchè il componente non è attivo
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });

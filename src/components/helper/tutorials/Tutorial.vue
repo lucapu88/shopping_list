@@ -71,6 +71,11 @@ export default {
       src="@/video/copy-paste-select-important.mp4"
       type="video/mp4"
     />
+    <source
+      v-if="features === 'showOnlyLatestDeleted'"
+      src="@/video/show-only-latest-deleted.mp4"
+      type="video/mp4"
+    />
 
     {{ languages.helperDescription.videoAlert }}
   </video>
