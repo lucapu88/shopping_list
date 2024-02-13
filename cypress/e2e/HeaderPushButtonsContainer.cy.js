@@ -60,7 +60,9 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('.btn-outline-info').click({ force: true });
         cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.add-remove-empty > :nth-child(2)').click({ force: true });
-        cy.get('#todo-list').should('be.empty');
+        cy.get('#todo-list').within(() => {
+            cy.get('div.empty-logo-container').should('exist');
+        });
     });
 
     it('Verifico se funziona la visualizzazione degli elementi importanti', () => {

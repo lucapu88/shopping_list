@@ -172,13 +172,17 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
         cy.get('.delete-all').click();
         cy.get('.confirm > .btn-primary').click();
-        cy.get('#todo-list').should('be.empty');
+        cy.get('#todo-list').within(() => {
+            cy.get('div.empty-logo-container').should('exist');
+        });
 
         cy.get('.settings').click();
         cy.get('#text-area').click();
         cy.document().invoke('execCommand', 'paste');
         cy.get('.add-list-copied > .btn').click();
-        cy.get('#todo-list').should('not.be.empty');
+        cy.get('#todo-list').within(() => {
+            cy.get('div.empty-logo-container').should('not.exist');
+        });
     });
 
     it('condividi link app', () => {
