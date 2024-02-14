@@ -23,6 +23,7 @@ export default {
     class="only-important-visible"
     v-if="todosStore.showOnlyImportantTodos"
   ></div>
+
   <div v-if="todo.class && theme.minimalTheme" class="category-emoji-minimal">
     &#x2022;
   </div>

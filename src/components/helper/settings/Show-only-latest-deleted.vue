@@ -187,6 +187,8 @@ export default {
 }
 .show-last-deleted-title {
   color: #d00000;
+  font-weight: bold;
+  font-size: large;
 }
 .multiple-deleted-container {
   margin-bottom: 10px;

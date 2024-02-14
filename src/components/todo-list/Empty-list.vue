@@ -172,7 +172,7 @@ export default {
 
 .flip {
   position: relative;
-  border-bottom: 2px solid #000000;
+  border-bottom: 3px solid #000000;
 }
 .flip span {
   position: relative;

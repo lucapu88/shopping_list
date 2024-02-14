@@ -7,6 +7,8 @@
 
   --dark-primary-color: #385336;
   --dark-secondary-color: #d17e47;
+  --dark-background-color: #333333;
+  --dark-white: #ffffffe4;
 
   --minimal-primary-color: #a5becc;
   --minimal-primary-color-dark: #8aa5b4;
@@ -26,6 +28,7 @@
   --summer-primary-color: #efcb8f;
   --summer-secondary-color: #12a1df;
   --summer-tertiary-color: #bbf2dd;
+  --summer-category-color: #00b0fca7;
   --summer-gradient-color-2: #81d7eb;
   --summer-gradient-color-3: #2e98f2;
   --summer-button-color: #007bff;
@@ -102,6 +105,10 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.category-dark {
+  background-color: var(--dark-white);
+  color: var(--dark-background-color);
 }
 .dark-theme-helper {
   background-image: none;
@@ -362,6 +369,10 @@
 .summer-theme {
   background-color: var(--summer-secondary-color) !important;
   color: var(--summer-primary-color);
+}
+.category-summer {
+  background-color: var(--summer-category-color) !important;
+  color: var(--summer-primary-color) !important;
 }
 .summer-theme-helper {
   background-image: none;

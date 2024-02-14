@@ -28,8 +28,10 @@ export default {
     class="todo-n"
     :class="{
       category: todo.class,
+      'category-dark': todo.class && theme.darkTheme,
       'category-retro': todo.class && theme.retroTheme,
       'category-minimal': todo.class && theme.minimalTheme,
+      'category-summer': todo.class && theme.summerTheme,
       'category-elegant': todo.class && theme.elegantTheme,
       'todo-added': todo.todoAdded,
     }"

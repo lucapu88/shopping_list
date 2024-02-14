@@ -81,7 +81,10 @@ export default {
       <div id="container-list" class="row">
         <FestivitiesAndOccurrences />
 
-        <div class="mt-3 mx-auto padding-bottom-custom">
+        <div
+          class="mt-3 mx-auto padding-bottom-custom"
+          :class="{ 'dark-sub-container': theme.darkTheme }"
+        >
           <header>
             <HeadList />
             <ConfirmModal />
@@ -108,6 +111,15 @@ export default {
 <style scoped>
 .container {
   height: 100vh;
+}
+
+.dark-sub-container {
+  width: 97vw;
+}
+@media (min-width: 370px) {
+  .dark-sub-container {
+    overflow-x: hidden;
+  }
 }
 .light {
   background-image: url('@/img/foglio_righe.webp');
