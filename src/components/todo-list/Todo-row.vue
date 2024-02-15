@@ -61,7 +61,7 @@ export default {
   <!-- NO CARRELLO PER MINIMAL -->
   <span
     v-if="theme.minimalTheme && !todo.class && !todo.modify"
-    class="mr-4 ml-1"
+    class="mr-3 ml-1 boldi-cipollino"
     @click="todosStore.selectTodoForDelete(index)"
   >
     -
@@ -69,7 +69,7 @@ export default {
   <!-- NO CARRELLO PER ELEGANT -->
   <span
     v-if="theme.elegantTheme && !todo.class && !todo.modify"
-    class="mr-4 ml-1 boldi-cipollino"
+    class="mr-3 ml-1 boldi-cipollino"
     @click="todosStore.selectTodoForDelete(index)"
   >
     <template v-if="todo.multipleDelete"> / </template>
@@ -94,6 +94,7 @@ export default {
         !theme.elegantTheme,
       'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
       'elegant-line-through': todo.multipleDelete && theme.elegantTheme,
+      'boldi-cipollino': theme.elegantTheme,
       'winter-todo': theme.winterTheme,
     }"
   >

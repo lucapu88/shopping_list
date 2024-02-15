@@ -37,6 +37,7 @@
   --winter-primary-color: #d5effa;
   --winter-secondary-color: #6d3001;
   --winter-tertiary-color: #b4e659;
+  --winter-category-color: #31beff75;
 
   --elegant-primary-color-dark: #073c5c;
   --elegant-primary-color-light: #045687;
@@ -417,6 +418,10 @@
   border: 2px solid var(--winter-tertiary-color);
   border-radius: var(--default-radius);
 }
+.category-winter {
+  background-color: var(--winter-category-color);
+  box-shadow: inset 0px 0px 40px 0px var(--white);
+}
 .winter-theme-helper {
   background-image: url('@/img/inverno.webp') !important;
   background-size: cover !important;
@@ -519,6 +524,7 @@
 .category-elegant {
   border: 1px solid var(--elegant-text-color) !important;
   background-color: var(--elegant-primary-color-light) !important;
+  color: var(--white);
   border-radius: 4px;
 }
 .category-elegant > .todo {

@@ -32,6 +32,7 @@ export default {
       'category-retro': todo.class && theme.retroTheme,
       'category-minimal': todo.class && theme.minimalTheme,
       'category-summer': todo.class && theme.summerTheme,
+      'category-winter': todo.class && theme.winterTheme,
       'category-elegant': todo.class && theme.elegantTheme,
       'todo-added': todo.todoAdded,
     }"

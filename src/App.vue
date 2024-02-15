@@ -113,9 +113,6 @@ export default {
   height: 100vh;
 }
 
-.dark-sub-container {
-  width: 97vw;
-}
 @media (min-width: 370px) {
   .dark-sub-container {
     overflow-x: hidden;
