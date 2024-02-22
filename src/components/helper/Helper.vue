@@ -95,6 +95,7 @@ export default {
         'summer-theme-helper': theme.summerTheme,
         'helper-light': theme.lightTheme,
         'elegant-theme-helper': theme.elegantTheme,
+        'pink-helper': theme.pinkTheme,
       }"
     >
       <div class="close-helper-container" @click="closeHelper()">

@@ -66,7 +66,7 @@ export default {
   />
   <link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />
   <link
-    v-if="theme.summerTheme"
+    v-if="theme.winterTheme"
     rel="preload"
     as="image"
     :href="montagnePreload"

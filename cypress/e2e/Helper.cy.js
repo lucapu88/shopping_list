@@ -104,6 +104,14 @@ describe("test dell'helper e delle impostazioni", () => {
         });
         cy.get('.settings').click();
 
+        //pink
+        cy.get('.bottom > .pink-theme-btn').click().then(() => {
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(232, 172, 208)');
+            cy.get('body').should('have.css', 'color').and('include', 'rgb(147, 0, 54)');
+            cy.get('body').should('have.css', 'font-family').and('include', '"Protest Riot", sans-serif');
+        });
+        cy.get('.settings').click();
+
     });
 
     it('autoeliminazione categorie vuote', () => {

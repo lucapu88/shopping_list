@@ -31,6 +31,7 @@ export default {
       summer: theme.summerTheme,
       winter: theme.winterTheme,
       elegant: theme.elegantTheme,
+      pink: theme.pinkTheme,
     }"
   >
     <img src="@/img/Loading.webp" alt="loading" />
@@ -162,6 +163,9 @@ export default {
 
 .elegant {
   background-color: #045687 !important;
+}
+.pink {
+  background-color: #f8c1d7 !important;
 }
 
 .flags-container,

@@ -75,6 +75,7 @@ export default {
       retro: theme.retroTheme,
       summer: theme.summerTheme,
       winter: theme.winterTheme,
+      pink: theme.pinkTheme,
     }"
   >
     <div id="app">

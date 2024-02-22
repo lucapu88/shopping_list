@@ -34,6 +34,7 @@ export default {
       'category-summer': todo.class && theme.summerTheme,
       'category-winter': todo.class && theme.winterTheme,
       'category-elegant': todo.class && theme.elegantTheme,
+      'category-pink': todo.class && theme.pinkTheme,
       'todo-added': todo.todoAdded,
     }"
   >

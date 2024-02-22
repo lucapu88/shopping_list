@@ -25,6 +25,7 @@ export default {
       'waterfall-ascent': todosStore.categoryList === false,
       'retro-theme-confirm': theme.retroTheme,
       'light-theme-confirm': theme.lightTheme,
+      'category-pink-container': theme.pinkTheme,
     }"
   >
     <div v-if="todosStore.categoryListChildren" class="categories">
@@ -41,7 +42,10 @@ export default {
       </p>
       <p
         class="category-list"
-        :class="{ 'retro-category-list': theme.retroTheme }"
+        :class="{
+          'retro-category-list': theme.retroTheme,
+          'category-pink-btn': theme.pinkTheme,
+        }"
         v-for="(category, i) in languages.categories"
         :key="i"
       >
@@ -72,6 +76,7 @@ export default {
           'summer-btn': theme.summerTheme,
           'winter-btn': theme.winterTheme,
           'elegant-btn': theme.elegantTheme,
+          'category-pink-btn': theme.pinkTheme,
         }"
         @click="languages.insertAllCategories()"
       >
@@ -88,6 +93,7 @@ export default {
           'summer-btn': theme.summerTheme,
           'winter-btn': theme.winterTheme,
           'elegant-btn': theme.elegantTheme,
+          'category-pink-btn': theme.pinkTheme,
         }"
         @click="todosStore.removeOnlyEmpty()"
       >

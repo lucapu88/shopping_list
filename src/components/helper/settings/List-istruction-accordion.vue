@@ -34,12 +34,23 @@ export default {
   >
     {{ istructionsText }}
     <img
+      v-if="!theme.elegantTheme"
       class="arrow"
       :class="{
         'arrow-selected': selectDeselectArrow,
         'arrow-deselected': !selectDeselectArrow,
       }"
       src="@/img/icons/arrow-down.webp"
+      alt="arrow"
+    />
+    <img
+      v-if="theme.elegantTheme"
+      class="arrow"
+      :class="{
+        'arrow-selected': selectDeselectArrow,
+        'arrow-deselected': !selectDeselectArrow,
+      }"
+      src="@/img/icons/arrow-down-white.webp"
       alt="arrow"
     />
   </div>

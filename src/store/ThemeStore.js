@@ -9,6 +9,7 @@ export const useThemeStore = defineStore('theme', {
         summerTheme: false,
         winterTheme: false,
         elegantTheme: false,
+        pinkTheme: false,
         themeName: 'Light',
     }),
     getters: {},
@@ -56,13 +57,20 @@ export const useThemeStore = defineStore('theme', {
                 this.changeThemeStyle('Elegant', 'rgb(7,60,92)', '#D98410', "Courier New");
             }
 
+            const pinkThemeSelected = window.localStorage.getItem('pinkTheme');
+            this.pinkTheme = pinkThemeSelected === 'true';
+            if (this.pinkTheme) {
+                this.changeThemeStyle('Pink', '#E8ACD0', '#930036', '"Protest Riot", sans-serif');
+            }
+
             if (!lightThemeSelected
                 && !darkThemeSelected
                 && !minimalThemeSelected
                 && !retroThemeSelected
                 && !summerThemeSelected
                 && !winterThemeSelected
-                && !elegantThemeSelected) {
+                && !elegantThemeSelected
+                && !pinkThemeSelected) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
                 this.lightThemeDefaultSetting();
             }
@@ -72,7 +80,6 @@ export const useThemeStore = defineStore('theme', {
             this.lightTheme = await window.localStorage.getItem('lightTheme');
         },
         changeThemeStyle(themeName, backgroundColor, color, fontFamily) {
-
             this.themeName = themeName;
             document.body.style.backgroundColor = backgroundColor;
             if (color) { document.body.style.color = color; }
@@ -97,6 +104,8 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('winterTheme', false);
             this.elegantTheme = false;
             window.localStorage.setItem('elegantTheme', false);
+            this.pinkTheme = false;
+            window.localStorage.setItem('pinkTheme', false);
         },
     },
 });

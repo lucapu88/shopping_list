@@ -43,10 +43,13 @@ export default {
           this.theme.winterTheme = true;
           window.localStorage.setItem('winterTheme', true);
           break;
-
         case 'elegant':
           this.theme.elegantTheme = true;
           window.localStorage.setItem('elegantTheme', true);
+          break;
+        case 'pink':
+          this.theme.pinkTheme = true;
+          window.localStorage.setItem('pinkTheme', true);
           break;
 
         default:
@@ -127,6 +130,13 @@ export default {
           @click="changeTheme('elegant')"
         >
           Elegant
+        </button>
+        <button
+          type="button"
+          class="btn pink-theme-btn p-1"
+          @click="changeTheme('pink')"
+        >
+          Mr.Pink
         </button>
       </div>
     </div>

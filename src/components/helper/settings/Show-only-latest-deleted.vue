@@ -133,9 +133,9 @@ export default {
 .animate-charcter {
   background-image: linear-gradient(
     -225deg,
-    #ff1361 67%,
+    #e30000 67%,
     #44107a 29%,
-    #231557 0%,
+    #153557 0%,
     #fff800 100%
   );
   background-size: auto auto;

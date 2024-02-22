@@ -76,7 +76,7 @@ export default {
     }}</span>
     <!-- PULSANTE TORNA IN CIMA -->
     <button
-      class="btn btn-outline-info btn-back-to-top"
+      class="btn btn-back-to-top"
       :class="{
         christmas: isChristmas.christmasTheme,
         'minimal-theme-back-top': theme.minimalTheme,
@@ -85,6 +85,8 @@ export default {
         'summer-theme-back-top': theme.summerTheme,
         'winter-theme-back-top': theme.winterTheme,
         'elegant-theme-back-top': theme.elegantTheme,
+        'pink-theme-btn': theme.pinkTheme,
+        'btn-outline-info': !theme.pinkTheme,
         'is-dragginn': todosStore.isDraggable && todosStore.todos.length > 8,
       }"
       @click="emitScrollTop()"
@@ -133,6 +135,7 @@ export default {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+  z-index: 150;
 }
 .multiple-delete > img {
   width: 25px;

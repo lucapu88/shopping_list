@@ -32,6 +32,7 @@ export default {
       'summer-confirm': theme.summerTheme,
       'winter-confirm': theme.winterTheme,
       'elegant-theme-confirm': theme.elegantTheme,
+      'pink-theme-confirm': theme.pinkTheme,
     }"
     v-if="!todosStore.visible"
   >
@@ -41,13 +42,18 @@ export default {
     </p>
     <button
       class="btn btn-primary"
+      :class="{ 'pink-theme-btn': theme.pinkTheme }"
       v-on:click="todosStore.visible = true"
       @click="todosStore.removeAllTodo()"
     >
       <span v-if="languages.langIta || languages.langSpanish">SI</span>
       <span v-if="languages.langEnglish">YES</span>
     </button>
-    <button class="btn btn-secondary" v-on:click="todosStore.visible = true">
+    <button
+      class="btn btn-secondary"
+      :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }"
+      v-on:click="todosStore.visible = true"
+    >
       NO
     </button>
   </div>
@@ -73,11 +79,14 @@ export default {
 }
 .confirm > p {
   font-size: 18px;
+  margin: 0 auto;
+  padding-bottom: 10px;
   font-weight: bold;
   max-width: 25ch;
 }
 .confirm > button {
   margin-right: 15px;
+  width: 2.8125rem;
 }
 
 .confirm-light {

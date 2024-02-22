@@ -49,6 +49,7 @@ export default {
             'retro-helper-btn-selected':
               languages.langEnglish && theme.retroTheme,
             'retro-helper-btn': theme.retroTheme,
+            'pink-theme-btn': theme.pinkTheme,
           }"
           @click="
             languages.setEnglishLanguage();
@@ -63,8 +64,8 @@ export default {
             'language-selected': languages.langSpanish && !theme.retroTheme,
             'retro-helper-btn-selected':
               languages.langSpanish && theme.retroTheme,
-
             'retro-helper-btn': theme.retroTheme,
+            'pink-theme-btn': theme.pinkTheme,
           }"
           @click="
             languages.setSpanishLanguage();
@@ -78,8 +79,8 @@ export default {
           :class="{
             'language-selected': languages.langIta && !theme.retroTheme,
             'retro-helper-btn-selected': languages.langIta && theme.retroTheme,
-
             'retro-helper-btn': theme.retroTheme,
+            'pink-theme-btn': theme.pinkTheme,
           }"
           @click="
             languages.setItalianoLanguage();

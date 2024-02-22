@@ -23,7 +23,7 @@ export default {
     <div
       class="confirm-delete-modal-content"
       :class="{
-        'delete-selected': todosStore.deleteSelected,
+        'delete-selected': todosStore.deleteSelected && !theme.pinkTheme,
         'confirm-light': theme.lightTheme,
         'confirm-dark': theme.darkTheme,
         'confirm-minimal': theme.minimalTheme,
@@ -31,6 +31,7 @@ export default {
         'confirm-summer': theme.summerTheme,
         'confirm-winter': theme.winterTheme,
         'confirm-elegant': theme.elegantTheme,
+        'confirm-pink': theme.pinkTheme,
       }"
     >
       <img
@@ -44,6 +45,7 @@ export default {
       <span style="display: none">{{ todosStore.index }} </span>
       <button
         id="yes-delete"
+        :class="{ 'pink-theme-btn': theme.pinkTheme }"
         v-if="todosStore.confirmRemove"
         @click="todosStore.confirmedRemoveTodo(todosStore.index)"
       >
@@ -58,7 +60,11 @@ export default {
         <span v-if="languages.langIta || languages.langSpanish">SI</span>
         <span v-if="languages.langEnglish">YES</span>
       </button>
-      <button id="no-delete" @click="todosStore.confirmDeleteModal = false">
+      <button
+        id="no-delete"
+        :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }"
+        @click="todosStore.confirmDeleteModal = false"
+      >
         NO
       </button>
     </div>

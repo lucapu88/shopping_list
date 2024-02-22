@@ -38,7 +38,9 @@ export default {
   <!-- CARRELLO -->
   <span
     alt="cart"
-    v-if="!todo.class && !theme.minimalTheme && !todo.modify"
+    v-if="
+      !todo.class && !theme.minimalTheme && !theme.pinkTheme && !todo.modify
+    "
     class="cart"
     :class="{
       'hide-minimal-icon': theme.minimalTheme || theme.elegantTheme,
@@ -75,6 +77,22 @@ export default {
     <template v-if="todo.multipleDelete"> / </template>
     <template v-else> > </template>
   </span>
+  <!-- CHECKBOX PER PINK -->
+  <div
+    v-if="theme.pinkTheme && !todo.class && !todo.modify"
+    class="pink-checkbox pink-theme-btn"
+    :class="{ checked: todo.multipleDelete }"
+    @click="todosStore.selectTodoForDelete(index)"
+  >
+    <img
+      v-if="todo.multipleDelete"
+      class="checkbox"
+      src="@/img/icons/checked.webp"
+      alt="checked"
+    />
+  </div>
+
+  <!-- CONTENITORE DEL TODO -->
   <li
     v-if="!todo.modify"
     class="todo"
@@ -106,6 +124,7 @@ export default {
       alt="line-through"
     />
   </li>
+
   <!--CONTENITORE PULSANTI (edit, delete, modify)-->
   <li
     class="button-container bg-light"
@@ -113,6 +132,7 @@ export default {
       'minimal-btn': theme.minimalTheme,
       'retro-btn': theme.retroTheme,
       'elegant-btn': theme.elegantTheme,
+      'pink-theme-btn': theme.pinkTheme && !todo.class,
       transparent: theme.elegantTheme && todo.class,
       categoryActive: todo.class,
       modify: todo.modify,
@@ -123,7 +143,10 @@ export default {
       class="btn btn-primary rounded-circle btn-sm"
       @click="todosStore.modifyTodo(index)"
       v-if="!todo.modify && !todo.class"
-      :class="todo.isDisabled ? 'disabled' : ''"
+      :class="{
+        disabled: todo.isDisabled,
+        'pink-theme-btn-secondary': theme.pinkTheme,
+      }"
       :disabled="!!todo.isDisabled || todo.multipleDelete"
     >
       <img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
@@ -133,7 +156,10 @@ export default {
       class="btn btn-primary rounded-circle btn-sm"
       v-if="!todo.modify"
       @click="todosStore.removeTodo(index, todo)"
-      :class="todo.isDisabled ? 'disabled' : ''"
+      :class="{
+        disabled: todo.isDisabled,
+        'pink-theme-btn-secondary': theme.pinkTheme,
+      }"
       :disabled="!!todo.isDisabled"
     >
       <img class="trash" src="@/img/icons/trash.webp" alt="delete" />
@@ -179,5 +205,9 @@ export default {
   width: 98vw;
   height: 100%;
   z-index: 200;
+}
+
+.checked {
+  background-color: #ffffff !important;
 }
 </style>

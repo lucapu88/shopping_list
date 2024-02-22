@@ -67,6 +67,7 @@ export default {
               'minimal-helper-btn': theme.minimalTheme,
               'retro-btn-button': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'pink-theme-btn': theme.pinkTheme,
             }"
             src="@/img/icons/pencil.webp"
             alt="pencil"
@@ -90,6 +91,7 @@ export default {
               'minimal-helper-btn': theme.minimalTheme,
               'retro-btn-button': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'pink-theme-btn': theme.pinkTheme,
             }"
             src="@/img/icons/trash.webp"
             alt="trash"
@@ -98,14 +100,16 @@ export default {
         </li>
         <li>
           <button
-            class="btn btn-outline-info btn-back-to-top p-0"
+            class="btn btn-back-to-top p-1 mr-1"
             :class="{
+              'btn-outline-info': theme.lightTheme || theme.darkTheme,
               'minimal-theme-back-top': theme.minimalTheme,
               'dark-theme-back-top': theme.darkTheme,
               'retro-theme-back-top': theme.retroTheme,
               'summer-theme-back-top': theme.summerTheme,
               'winter-theme-back-top': theme.winterTheme,
               'elegant-theme-back-top': theme.elegantTheme,
+              'pink-theme-btn': theme.pinkTheme,
             }"
           >
             <span> >> </span>
@@ -142,17 +146,25 @@ export default {
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'pink-theme-btn': theme.pinkTheme,
+              'summer-header-btn': theme.summerTheme,
+              'winter-header-btn': theme.winterTheme,
             }"
           >
             +
           </span>
           . {{ languages.helperDescription.addCategory.part3 }}
           <span
-            class="category p-1"
+            class="p-1"
             :class="{
+              category: theme.lightTheme,
               'category-retro': theme.retroTheme,
               'category-minimal': theme.minimalTheme,
               'category-elegant': theme.elegantTheme,
+              'category-dark': theme.darkTheme,
+              'category-summer': theme.summerTheme,
+              'category-winter': theme.winterTheme,
+              'category-pink': theme.pinkTheme,
             }"
           >
             {{ languages.helperDescription.addCategory.part4 }}
@@ -217,26 +229,23 @@ export default {
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'pink-theme-btn': theme.pinkTheme,
+              'summer-header-btn': theme.summerTheme,
+              'winter-header-btn': theme.winterTheme,
             }"
           >
-            <img src="@/img/icons/drag-and-drop.webp" alt="move" />
+            <img
+              v-if="!theme.elegantTheme"
+              src="@/img/icons/drag-and-drop.webp"
+              alt="move"
+            />
+            <img
+              v-if="theme.elegantTheme"
+              src="@/img/icons/drag-and-drop-elegant.webp"
+              alt="move"
+            />
           </button>
           {{ languages.helperDescription.dragNdropText.part2 }} <br />
-          {{ languages.helperDescription.dragNdropText.part3 }}
-          <button
-            class="btn btn-outline-info btn-back-to-top"
-            :class="{
-              christmas: isChristmas.christmasTheme,
-              'minimal-theme-back-top': theme.minimalTheme,
-              'dark-theme-back-top': theme.darkTheme,
-              'retro-theme-back-top': theme.retroTheme,
-              'summer-theme-back-top': theme.summerTheme,
-              'winter-theme-back-top': theme.winterTheme,
-              'elegant-theme-back-top': theme.elegantTheme,
-            }"
-          >
-            <span> >> </span>
-          </button>
         </li>
 
         <ToggleTutorialButton :alignRight="true" :features="dragNdrop" />
@@ -266,6 +275,13 @@ export default {
             <strong class="large" v-if="theme.minimalTheme"> - </strong>
             <strong class="large" v-if="theme.elegantTheme"> > </strong>
           </span>
+          <span class="pink-checkbox pink-theme-btn" v-if="theme.pinkTheme">
+            <img
+              class="checkbox"
+              src="@/img/icons/checked.webp"
+              alt="checked"
+            />
+          </span>
           {{ languages.helperDescription.multipleDeleteText.part2 }}
           <button
             class="text-danger border-danger rounded"
@@ -291,14 +307,29 @@ export default {
       <template v-if="settings.copyHighlights">
         <li>
           <span
-            class="btn custom-show-listbtn"
+            class="btn helper-btn-size"
             :class="{
+              'custom-show-listbtn': theme.lightTheme || theme.darkTheme,
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'category-summer': theme.summerTheme,
+              'category-winter': theme.winterTheme,
+              'category-pink': theme.pinkTheme,
             }"
           >
-            <img class="copy" src="@/img/icons/copy.webp" alt="copy" />
+            <img
+              v-if="!theme.elegantTheme"
+              class="copy"
+              src="@/img/icons/copy.webp"
+              alt="copy"
+            />
+            <img
+              v-if="theme.elegantTheme"
+              class="copy"
+              src="@/img/icons/copy-elegant.webp"
+              alt="copy"
+            />
           </span>
           {{ languages.helperDescription.copyListText }}
         </li>
@@ -312,11 +343,15 @@ export default {
         <li>
           {{ languages.importantTodos.text.part1 }}
           <button
-            class="btn custom-show-listbtn"
+            class="btn helper-btn-size"
             :class="{
+              'custom-show-listbtn': theme.lightTheme || theme.darkTheme,
               'minimal-helper-btn': theme.minimalTheme,
               'retro-teme-btns': theme.retroTheme,
               'elegant-helper-btn': theme.elegantTheme,
+              'category-summer': theme.summerTheme,
+              'category-winter': theme.winterTheme,
+              'category-pink': theme.pinkTheme,
             }"
           >
             <img
