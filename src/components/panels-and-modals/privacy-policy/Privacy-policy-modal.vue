@@ -75,7 +75,7 @@ export default {
               <strong>Contact information</strong>
             </p>
             <p>Owner: Luca Caputo</p>
-            <p>Contact email: lucarhcp88@hotmail.it</p>
+            <p>Contact email: shoppinglist.service@outlook.com</p>
           </div>
           <div class="privacy-modal-footer">
             <p>Latest update: 22 October 2023</p>

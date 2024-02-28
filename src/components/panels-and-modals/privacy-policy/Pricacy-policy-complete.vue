@@ -8,7 +8,7 @@ export default {};
   <!-- GENERATO CON:  https://www.privacypolicygenerator.info/ -->
   <div>
     <h1>Privacy Policy</h1>
-    <p>Last updated: December 19, 2023</p>
+    <p>Last updated: February 28, 2024</p>
     <p>
       This Privacy Policy describes Our policies and procedures on the
       collection, use and disclosure of Your information when You use the
@@ -19,7 +19,12 @@ export default {};
       We use Your Personal data to provide and improve the Service. By using the
       Service, You agree to the collection and use of information in accordance
       with this Privacy Policy. This Privacy Policy has been created with the
-      help of the https://www.termsfeed.com/privacy-policy-generator/.
+      help of the
+      <a
+        href="https://www.termsfeed.com/privacy-policy-generator/"
+        target="_blank"
+        >Privacy Policy Generator</a
+      >.
     </p>
     <h2>Interpretation and Definitions</h2>
     <h3>Interpretation</h3>
@@ -378,7 +383,20 @@ export default {};
       If you have any questions about this Privacy Policy, You can contact us:
     </p>
     <ul>
-      <li>By email: lucarhcp88@hotmail.it</li>
+      <li>
+        <p>By email: shoppinglist.service@outlook.com</p>
+      </li>
+      <li>
+        <p>
+          By visiting this page on our website:
+          <a
+            href="https://twitter.com/shoppList231023"
+            rel="external nofollow noopener"
+            target="_blank"
+            >https://twitter.com/shoppList231023</a
+          >
+        </p>
+      </li>
     </ul>
   </div>
 </template>

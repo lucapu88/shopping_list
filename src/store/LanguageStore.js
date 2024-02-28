@@ -34,7 +34,7 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'other', emojy: String.fromCodePoint(0x1f4b8) },
     ],
     itaCategories: [
-      { name: 'verdura', emojy: String.fromCodePoint(0x1f966) },
+      { name: 'vegetali', emojy: String.fromCodePoint(0x1f966) },
       { name: 'carne', emojy: String.fromCodePoint(0x1f969) },
       { name: 'pesce', emojy: String.fromCodePoint(0x1f99e) },
       { name: 'frutta', emojy: String.fromCodePoint(0x1f353) },
