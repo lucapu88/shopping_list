@@ -165,7 +165,7 @@ export default {
   background-color: #045687 !important;
 }
 .pink {
-  background-color: #f8c1d7 !important;
+  background-color: #e8acd0 !important;
 }
 
 .flags-container,

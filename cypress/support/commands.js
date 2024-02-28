@@ -3,6 +3,9 @@
 // PER FAR PARTIRE CYPRESS CON INTERFACCIA GRAFICA:  npx cypress open
 // PER FAR PARTIRE CYPRESS SOLO DA TERMINALE:  npx cypress run
 
+// PER FAR PARTIRE I TEST E PUSHARE SE I TEST VANNO A BUON FINE: npm run push
+// PER FAR PARTIRE I TEST E PUSHARE CON FORCE SE C'È STATO UN COMMIT CON AMEND: npm run push-amend
+
 // ***********************************************
 // This example commands.js shows you how to create various custom commands and overwrite existing commands.
 // For more comprehensive examples of custom

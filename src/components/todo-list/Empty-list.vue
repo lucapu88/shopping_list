@@ -152,7 +152,7 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #f1f1f19d;
-  border: 2px solid #949494;
+  border: 10px solid #ad5d31;
   border-radius: 5%;
   width: 330px;
   height: 450px;
