@@ -24,6 +24,19 @@ export default {
       document.execCommand('copy');
       this.languages.share.visible = true;
       setTimeout(() => (this.languages.share.visible = false), 5000);
+      this.openShareOptions();
+    },
+    async openShareOptions() {
+      let shareData = {
+        title: 'Shopping List',
+        text: 'Share with whoever you want',
+        url: 'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List',
+      };
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

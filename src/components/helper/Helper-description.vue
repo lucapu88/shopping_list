@@ -21,7 +21,25 @@ export default {
       dragNdrop: 'dragNdrop',
       multipleDelete: 'multipleDelete',
       copyPaste: 'copyPaste',
+      isAndroid: false,
     };
+  },
+  created() {
+    this.isAndroid = navigator.userAgentData.platform === 'Android';
+  },
+  methods: {
+    async openLink() {
+      let shareData = {
+        title: 'Github project',
+        text: '',
+        url: 'https://github.com/lucapu88/shopping_list',
+      };
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>
@@ -418,7 +436,16 @@ export default {
         </li>
         <li>
           {{ languages.helperDescription.githubText }}
-          <a href="https://github.com/lucapu88/shopping_list" target="_blank">
+          <!-- lo faccio perchè ho anche un iphone e questa cosa qui sotto non funziona per android -->
+          <span v-if="!isAndroid" @click="openLink()">
+            <img src="@/img/icons/github.webp" alt="github" class="social" />
+          </span>
+
+          <a
+            v-if="isAndroid"
+            href="https://github.com/lucapu88/shopping_list"
+            target="_blank"
+          >
             <img src="@/img/icons/github.webp" alt="github" class="social" />
           </a>
         </li>
@@ -449,10 +476,6 @@ export default {
 }
 .helper-list {
   padding-inline-start: 25px;
-}
-.helper-list > li {
-  display: list-item;
-  animation: fadeIn 0.6s;
 }
 
 .cart {
@@ -510,6 +533,8 @@ export default {
 }
 
 .helper-list > li {
+  display: list-item;
+  animation: fadeIn 0.6s;
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
