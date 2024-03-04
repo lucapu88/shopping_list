@@ -61,7 +61,6 @@ export default {
     >
       ({{ languages.backupListText.description }})
       <ToggleTutorialButton :features="backupList" /> <br />
-      <!-- <small>{{ languages.infoCategoriesAlert }}</small> -->
     </li>
     <div v-if="!showConfirmBackup" class="backup-btn-container">
       <button id="backup-button" @click="showConfirmBackup = true">

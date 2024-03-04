@@ -226,7 +226,6 @@ export default {
 }
 .category-list {
   display: inline-block;
-  margin: 2px;
   font-weight: bold;
   text-transform: capitalize;
   border: 1px solid;

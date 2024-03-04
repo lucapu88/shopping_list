@@ -422,6 +422,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.75);
 }
 .summer-confirm > p {
   color: var(--summer-confirm-color);
@@ -629,6 +630,7 @@
 }
 .pink-theme-confirm {
   border: 3px solid var(--pink-modal-color) !important;
+  box-shadow: 0px 0px 40px 0px rgb(147, 0, 54);
 }
 .pink-checkbox,
 .checkbox {

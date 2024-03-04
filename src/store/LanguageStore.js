@@ -207,7 +207,7 @@ export const useLanguageStore = defineStore('Language', {
     showOnlyLatestDeletedText: {
       title: 'Show only the last deleted',
       description: 'Here you will only find your last single or multiple deletion, just as a summary',
-      singleTodoText: 'Last single item',
+      singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
       buttonShowText: "Show",
       buttonHideText: "Hide",
@@ -393,7 +393,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
       this.showOnlyLatestDeletedText.title = "Mostra solo gli ultimi cancellati";
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
-      this.showOnlyLatestDeletedText.singleTodoText = "Ultimo elemento singolo";
+      this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
       this.showOnlyLatestDeletedText.buttonShowText = "Mostra";
       this.showOnlyLatestDeletedText.buttonHideText = "Nascondi";
@@ -495,7 +495,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
       this.showOnlyLatestDeletedText.title = "Mostrar sólo los últimos borrados";
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
-      this.showOnlyLatestDeletedText.singleTodoText = "Último elemento individual";
+      this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
       this.showOnlyLatestDeletedText.buttonShowText = "Mostrar";
       this.showOnlyLatestDeletedText.buttonHideText = "Ocultar";

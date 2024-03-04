@@ -36,7 +36,7 @@ export default {
     }"
     v-if="!todosStore.visible"
   >
-    <p>
+    <p class="confirm-delete-all-text">
       <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
       {{ languages.deleteAllConfirmText }}
     </p>
@@ -61,6 +61,7 @@ export default {
 
 <style scoped>
 .confirm {
+  min-height: 155px;
   padding: 10px 5px;
   opacity: 1;
   animation-name: fadeInOpacity;
@@ -77,12 +78,13 @@ export default {
     opacity: 1;
   }
 }
-.confirm > p {
+.confirm-delete-all-text {
   font-size: 18px;
   margin: 0 auto;
   padding-bottom: 10px;
   font-weight: bold;
   max-width: 25ch;
+  margin-top: 5%;
 }
 .confirm > button {
   margin-right: 15px;
