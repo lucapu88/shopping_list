@@ -48,7 +48,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('.category-list').each(($ele) => {
             categories.push($ele.text());
         }).then(() => {
-            expect(categories.length).to.equal(20);
+            expect(categories.length).to.equal(21);
         }); //avrei voluto testare se le categorie vere e proprie sono le stesse nello store ma al momento ho problemi con la lettura dei componenti importati in cypress...non riesce a trovare i file che sono importati con la shortcut di vite: ovvero @/nome-path
 
         //verifico se il numero di categorie INSERITE è giusto
