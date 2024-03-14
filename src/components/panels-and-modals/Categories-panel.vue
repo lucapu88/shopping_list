@@ -230,7 +230,7 @@ export default {
   text-transform: capitalize;
   border: 1px solid;
   border-radius: 5px;
-  padding: 0 3px;
+  padding: 1px 3px;
   margin: 5px;
 }
 .category-list:hover {
