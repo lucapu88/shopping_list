@@ -103,7 +103,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     confirmedRemoveTodo(x) {
       this.backupList();
-      this.setOnlyDeletedTodos(x);
+      if (!this.todos[x].class) { this.setOnlyDeletedTodos(x); }
       this.todos.splice(x, 1);
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();

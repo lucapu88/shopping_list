@@ -117,7 +117,7 @@ export const useLanguageStore = defineStore('Language', {
       function: 'Click to activate/deactivate',
     },
     pasteListText: {
-      title: 'Export a list from other apps:',
+      title: 'Import a list from other apps:',
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
     },
     importText: 'Import',
@@ -327,7 +327,7 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.title = 'Auto eliminazione categorie vuote';
       this.autoDeleteEmptyCategoriesText.description = 'Scegli se eliminare manualmente le categorie rimaste vuote, oppure che vengano eliminate automaticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Clicca per attivare/disattivare';
-      this.pasteListText.title = "Esporta una lista da altre app:";
+      this.pasteListText.title = "Importa una lista da altre app:";
       this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
       this.shareText = 'Condividi';
       this.importText = 'Importa';
@@ -429,7 +429,7 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
       this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
-      this.pasteListText.title = "Exportar una lista desde otras aplicaciones:";
+      this.pasteListText.title = "Importar una lista desde otras aplicaciones:";
       this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
       this.shareText = 'Compartir';
       this.importText = 'Importar';
