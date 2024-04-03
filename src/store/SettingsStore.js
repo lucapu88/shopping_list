@@ -12,6 +12,13 @@ export const useSettingsStore = defineStore('settings', {
     helper: false,
     helperInClosing: false,
     privacyPolicy: false,
+    changeLanguage: false,
+    changeTheme: false,
+    autoDeleteEmptyCategories: false,
+    safeMode: false,
+    pasteList: false,
+    showOnlyLatestDeleted: false,
+    backupList: false,
     addEditDelete: false,
     categoriesInfo: false,
     dragNdrop: false,
@@ -22,6 +29,7 @@ export const useSettingsStore = defineStore('settings', {
     support: false,
     highlits: null,
     feature: null,
+    section: null,
     video: true,
     featureInfo: false,
     info: true,
@@ -56,6 +64,7 @@ export const useSettingsStore = defineStore('settings', {
       }
     },
     toggleDeleteConfirm() {
+      //Per IMPOSTARE il popup di conferma prima dell'eliminazione
       this.canDelete = !this.canDelete;
       if (this.canDelete) {
         this.canDeleteText = 'ON';
@@ -94,6 +103,15 @@ export const useSettingsStore = defineStore('settings', {
       this.privacyPolicy = false;
     },
     resetListIstructions() {
+      //IMPOSTAZIONI
+      this.changeLanguage = false;
+      this.changeTheme = false;
+      this.autoDeleteEmptyCategories = false;
+      this.safeMode = false;
+      this.pasteList = false;
+      this.showOnlyLatestDeleted = false;
+      this.backupList = false;
+      //ISTRUZIONI
       this.addEditDelete = false;
       this.categoriesInfo = false;
       this.dragNdrop = false;
@@ -104,8 +122,41 @@ export const useSettingsStore = defineStore('settings', {
       this.support = false;
     },
     showListIstructions(section) {
+      //Per gli accordion nell'helper
       this.highlits = null;
+      this.feature = null;
+      this.video = true;
       switch (section) {
+        // -------------------------------------------------------------- IMPOSTAZIONI
+        case 'changeLanguage':
+          this.section === section ? this.changeLanguage = !this.changeLanguage : this.changeLanguage = true;
+          this.section = section;
+          break;
+        case 'changeTheme':
+          this.section === section ? this.changeTheme = !this.changeTheme : this.changeTheme = true;
+          this.section = section;
+          break;
+        case 'autoDeleteEmptyCategories':
+          this.section === section ? this.autoDeleteEmptyCategories = !this.autoDeleteEmptyCategories : this.autoDeleteEmptyCategories = true;
+          this.section = section;
+          break;
+        case 'safeMode':
+          this.section === section ? this.safeMode = !this.safeMode : this.safeMode = true;
+          this.section = section;
+          break;
+        case 'pasteList':
+          this.section === section ? this.pasteList = !this.pasteList : this.pasteList = true;
+          this.section = section;
+          break;
+        case 'showOnlyLatestDeleted':
+          this.section === section ? this.showOnlyLatestDeleted = !this.showOnlyLatestDeleted : this.showOnlyLatestDeleted = true;
+          this.section = section;
+          break;
+        case 'backupList':
+          this.section === section ? this.backupList = !this.backupList : this.backupList = true;
+          this.section = section;
+          break;
+        // ---------------------------------------------------- ISTRUZIONI
         case 'addEditDelete':
           this.addEditDelete = !this.addEditDelete;
           break;
@@ -133,7 +184,8 @@ export const useSettingsStore = defineStore('settings', {
       }
     },
     highlightsForTutorial(num) {
-      console.log(num);
+      console.log(num); //faccio questo console.log solo perchè il compilatore mi caga il cazzo se non uso la variabile passata in input
+
       /*Mi serve solo quando creo i video tutorial. In pratica evidenzia il testo per il quale sto mostrando la funzionalità.
         RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI DECOMMENTA LA RIGA SUCCESSIVA! */
       // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
@@ -147,12 +199,6 @@ export const useSettingsStore = defineStore('settings', {
           ma se clicchi sullo stesso video deve poterlo nascondere o rimostrare.    */
       this.feature === feature ? this.video = !this.video : this.video = true;
       this.feature = feature;
-    },
-    toggleInfo(featureInfo) {
-      //uguale a sopra ma in un punto diverso, e voglio tenere le cose ben separate con i propri nomi di riferimento
-      this.featureInfo === featureInfo ? this.info = !this.info : this.info = true;
-      this.featureInfo = featureInfo;
-      this.video = false;
     }
   },
 });

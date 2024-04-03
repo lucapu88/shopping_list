@@ -2,6 +2,7 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 </script>
@@ -13,7 +14,6 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
-      safeModeInfo: 'safeModeInfo',
       safeDelete: 'safeDelete',
     };
   },
@@ -22,37 +22,36 @@ export default {
 
 <template>
   <div class="helper-settings">
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(1)">
-      &#x2699;
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 1 }">
-      {{ languages.safeModeText.title }}:
-    </span>
-    <span class="info-icon" @click="settings.toggleInfo(safeModeInfo)">i</span
-    ><br />
-    <li
-      class="ml-4"
-      v-if="settings.info && settings.featureInfo === safeModeInfo"
-    >
-      ({{ languages.safeModeText.description }})
-      <ToggleTutorialButton :features="safeDelete" />
-    </li>
-    <div class="toggle-delete-confirm-container" id="safe-delete">
-      <span
-        class="toggle-delete-confirm"
-        @click="settings.toggleDeleteConfirm()"
-      >
-        &#x1F449;
-      </span>
-      <u class="mr-2" @click="settings.toggleDeleteConfirm()">
-        {{ languages.safeModeText.function }}
-      </u>
-      <span class="text-primary">{{ settings.canDeleteText }}</span>
-    </div>
-
-    <Tutorial
-      v-if="settings.video && settings.feature === safeDelete"
-      :features="safeDelete"
+    <ListIstructionAccordion
+      show-list-istructions-input="safeMode"
+      :istructions-text="languages.safeModeText.title"
+      :select-deselect-arrow="
+        settings.safeMode && settings.section === 'safeMode'
+      "
+      :isSettings="true"
     />
+    <template v-if="settings.safeMode && settings.section === 'safeMode'">
+      <li class="ml-3">
+        <small>{{ languages.safeModeText.description }}</small>
+        <ToggleTutorialButton :features="safeDelete" />
+      </li>
+      <div class="toggle-delete-confirm-container" id="safe-delete">
+        <span
+          class="toggle-delete-confirm"
+          @click="settings.toggleDeleteConfirm()"
+        >
+          &#x1F449;
+        </span>
+        <u class="mr-2" @click="settings.toggleDeleteConfirm()">
+          {{ languages.safeModeText.function }}
+        </u>
+        <span class="text-primary">{{ settings.canDeleteText }}</span>
+      </div>
+
+      <Tutorial
+        v-if="settings.video && settings.feature === safeDelete"
+        :features="safeDelete"
+      />
+    </template>
   </div>
 </template>

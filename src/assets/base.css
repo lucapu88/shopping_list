@@ -95,14 +95,7 @@ button {
 }
 
 .helper-settings {
-  margin-bottom: 13px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid;
-}
-
-.tutorial-highlights {
-  background-color: orangered;
-  color: white;
+  padding-bottom: 5px;
 }
 
 .info-icon {

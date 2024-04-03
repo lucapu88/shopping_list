@@ -266,7 +266,6 @@
   border-radius: 0 !important;
 }
 .retro-theme-helper {
-  background-image: none;
   background-color: var(--dos-helper-primary-color) !important;
   background-image: none;
   color: var(--dos-secondary-color) !important;

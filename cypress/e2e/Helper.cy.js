@@ -20,16 +20,19 @@ describe("test dell'helper e delle impostazioni", () => {
     it("cambio lingue", () => {
         //Spagnolo
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(2) > .list-title').click();
         cy.get('.btn-lang-center').click();
         cy.wait(1500);
         cy.get('.title').should('include.text', 'Lista de la compra');
         //Italiano
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(2) > .list-title').click();
         cy.get('.btn-lang-right').click();
         cy.wait(1500);
         cy.get('.title').should('include.text', 'Lista Spesa');
         //Inglese
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(2) > .list-title').click();
         cy.get('.btn-lang-left').click();
         cy.wait(1500);
         cy.get('.title').should('include.text', 'Shopping List');
@@ -41,12 +44,14 @@ describe("test dell'helper e delle impostazioni", () => {
     it("cambio temi", () => {
         // light
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.top > .btn-light').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
             cy.get('.container').should('have.css', 'background-image').and('include', '/src/img/foglio_righe.webp');
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.helper-light').should('have.css', 'background-image').and('include', 'repeating-linear-gradient(rgb(204, 204, 204) 0px, rgb(204, 204, 204) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 100%), repeating-linear-gradient(90deg, rgb(204, 204, 204) 0px, rgb(204, 204, 204) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 100%)');
 
         // dark
@@ -56,6 +61,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'border').and('include', '10px solid rgb(209, 126, 71)');
         });
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.dark-theme-helper').should('have.css', 'background-color').and('include', 'rgb(56, 83, 54)');
         cy.get('.dark-theme-helper').should('have.css', 'border').and('include', 'rgb(209, 126, 71)');
 
@@ -66,6 +72,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Cabin, sans-serif');
         });
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.minimal-theme-helper').should('have.css', 'background-color').and('include', 'rgb(211, 235, 205)');
 
         // retro/dos
@@ -75,6 +82,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'DotGothic16, sans-serif');
         });
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.retro-theme-helper').should('have.css', 'border').and('include', '3px outset rgb(255, 255, 255)');
         cy.get('.retro-theme-helper').should('have.css', 'border-radius').and('include', '0');
         cy.get('.retro-theme-helper').should('have.css', 'background-color').and('include', 'rgb(192, 192, 192)');
@@ -86,7 +94,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
-
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         //winter
         cy.get('.bottom > .winter-theme').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
@@ -94,6 +102,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.winter-theme-helper').should('have.css', 'background-image').and('include', '/src/img/inverno.webp');
 
         // elegant
@@ -103,7 +112,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Courier New');
         });
         cy.get('.settings').click();
-
+        cy.get('#helper-description > :nth-child(3) > .list-title').click();
         //pink
         cy.get('.bottom > .pink-theme-btn').click().then(() => {
             cy.get('body').should('have.css', 'background-color').and('include', 'rgb(232, 172, 208)');
@@ -120,6 +129,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category > .button-container > .btn').click();
 
         cy.get('.settings').click().then(() => {
+            cy.get('#helper-description > :nth-child(5) > .list-title').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'OFF');
             cy.get('#auto-delete > .mr-2').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'ON');
@@ -140,14 +150,14 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
 
         cy.get('.settings').click();
-        cy.get('#show-hide-deleted').click();
+        cy.get('#helper-description > :nth-child(6) > .list-title').click();
         cy.get('.todo-deleted-container').should('include.text', phrases.frase4);
         cy.get('.multiple-deleted-container > :nth-child(1)').should('include.text', phrases.frase1);
         cy.get('.multiple-deleted-container > :nth-child(2)').should('include.text', phrases.frase2);
         cy.get('.multiple-deleted-container > :nth-child(3)').should('include.text', phrases.frase5);
     });
 
-    it('importa ultimo backup lista', () => { //TOFIX disabilitato perchè il componente non è attivo
+    it('importa ultimo backup lista', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
         cy.get('.delete-all').click();
@@ -164,6 +174,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         function checkBackupSuccessful() {
             cy.get('.settings').click();
+            cy.get('#helper-description > :nth-child(7) > .list-title').click();
             cy.get('#backup-button').click();
             cy.get('#confirm-backup').click();
             cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
@@ -185,6 +196,7 @@ describe("test dell'helper e delle impostazioni", () => {
         });
 
         cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(8) > .list-title').click();
         cy.get('#text-area').click();
         cy.document().invoke('execCommand', 'paste');
         cy.get('.add-list-copied > .btn').click();

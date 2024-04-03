@@ -7,7 +7,6 @@ import { useThemeStore } from '@/store/ThemeStore';
 export default {
   props: {
     features: String,
-    alignRight: Boolean,
   },
   data() {
     return {
@@ -18,7 +17,7 @@ export default {
 };
 </script>
 <template>
-  <div :class="alignRight ? 'align-right' : 'block'">
+  <div class="align-right">
     <button
       class="tutorial-btn"
       :class="{
@@ -44,7 +43,7 @@ export default {
   border-radius: 10px;
   color: #000000 !important;
   font-weight: bold;
-  margin-top: 5px;
+  margin-left: 5px;
   margin-bottom: 5px;
 }
 

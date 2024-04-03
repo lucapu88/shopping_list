@@ -117,7 +117,7 @@ export const useLanguageStore = defineStore('Language', {
       function: 'Click to activate/deactivate',
     },
     pasteListText: {
-      title: 'Import a list from other apps:',
+      title: 'Import a list from other apps',
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
     },
     importText: 'Import',
@@ -195,7 +195,7 @@ export const useLanguageStore = defineStore('Language', {
     toiletDayText: '19 November: World Toilet Day 🤣',
     worldWideWebText: 'On 6 August 1991, the World Wide Web was born',
     backupListText: {
-      title: 'Import Last Backup:',
+      title: 'Import Last Backup',
       description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion.",
       confirm: 'Are you sure?',
       noBackupText: 'There are no backups saved'
@@ -215,8 +215,6 @@ export const useLanguageStore = defineStore('Language', {
       description: 'Here you will only find your last single or multiple deletion, just as a summary',
       singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
-      buttonShowText: "Show",
-      buttonHideText: "Hide",
     }
   }),
   getters: {},
@@ -323,11 +321,11 @@ export const useLanguageStore = defineStore('Language', {
         'ti chiederà conferma di eliminazione per ogni singolo prodotto della lista';
       this.safeModeText.function = 'Clicca per attivare/disattivare';
       this.chosenThemeText = 'Tema impostato';
-      this.changeThemeText = 'Cambia tema';
+      this.changeThemeText = 'Cambio tema';
       this.autoDeleteEmptyCategoriesText.title = 'Auto eliminazione categorie vuote';
       this.autoDeleteEmptyCategoriesText.description = 'Scegli se eliminare manualmente le categorie rimaste vuote, oppure che vengano eliminate automaticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Clicca per attivare/disattivare';
-      this.pasteListText.title = "Importa una lista da altre app:";
+      this.pasteListText.title = "Importa una lista da altre app";
       this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
       this.shareText = 'Condividi';
       this.importText = 'Importa';
@@ -388,7 +386,7 @@ export const useLanguageStore = defineStore('Language', {
       this.parentsDayText = '1 Giugno: Auguri a tutti i genitori';
       this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
       this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
-      this.backupListText.title = 'Importa ultimo backup:';
+      this.backupListText.title = 'Importa ultimo backup';
       this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
       this.backupListText.confirm = "Sei sicuro?";
       this.backupListText.noBackupText = 'Non ci sono backup salvati';
@@ -401,8 +399,6 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
-      this.showOnlyLatestDeletedText.buttonShowText = "Mostra";
-      this.showOnlyLatestDeletedText.buttonHideText = "Nascondi";
     },
     setSpanishTranslations() {
       this.placeholder = 'Escriba aquí qué comprar';
@@ -429,7 +425,7 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
       this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
-      this.pasteListText.title = "Importar una lista desde otras aplicaciones:";
+      this.pasteListText.title = "Importar una lista desde otras aplicaciones";
       this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
       this.shareText = 'Compartir';
       this.importText = 'Importar';
@@ -490,7 +486,7 @@ export const useLanguageStore = defineStore('Language', {
       this.parentsDayText = '1 de junio: saludos a todos los padres';
       this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
       this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
-      this.backupListText.title = 'Importar la última copia de seguridad:';
+      this.backupListText.title = 'Importar la última copia de seguridad';
       this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
       this.backupListText.confirm = '¿Seguro?';
       this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
@@ -503,8 +499,6 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
-      this.showOnlyLatestDeletedText.buttonShowText = "Mostrar";
-      this.showOnlyLatestDeletedText.buttonHideText = "Ocultar";
     }
   },
 });

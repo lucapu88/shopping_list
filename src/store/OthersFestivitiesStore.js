@@ -49,7 +49,8 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
                 //questa l'ho messa solo perchè è divertente XD
                 this.toiletDay = true;
             }
-            if (currentDay === 6 && currentMonth === 8 && !this.beerDay) { //diamo precedenza assoluta alla birra
+            if (currentDay === 6 && currentMonth === 8 && !this.beerDay) {
+                //diamo precedenza assoluta alla birra
                 this.internetDay = true;
             }
         }

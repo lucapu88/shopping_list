@@ -3,6 +3,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useThemeStore } from '@/store/ThemeStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 </script>
@@ -17,109 +18,94 @@ export default {
       showDelete: false,
       showDeleteText: null,
       showOnlyLatestDeleted: 'showOnlyLatestDeleted',
-      showOnlyLatestDeletedInfo: 'showOnlyLatestDeletedInfo',
     };
   },
   created() {
     this.todosStore.getOnlyDeletedTodos();
-    this.showDeleteText =
-      this.languages.showOnlyLatestDeletedText.buttonShowText;
-  },
-  methods: {
-    showDeleted() {
-      this.showDelete = !this.showDelete;
-      this.showDeleteText = this.showDelete
-        ? this.languages.showOnlyLatestDeletedText.buttonHideText
-        : this.languages.showOnlyLatestDeletedText.buttonShowText;
-    },
   },
 };
 </script>
 
 <template>
   <div class="helper-settings">
-    <span
-      class="settings-icon mr-1"
-      @click="settings.highlightsForTutorial(10)"
-    >
-      &#x2699;
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 10 }">
-      {{ languages.showOnlyLatestDeletedText.title }}:
-    </span>
-    <span
-      class="info-icon"
-      @click="settings.toggleInfo(showOnlyLatestDeletedInfo)"
-      >i</span
-    ><br />
-    <li
-      class="ml-4"
-      v-if="settings.info && settings.featureInfo === showOnlyLatestDeletedInfo"
-    >
-      ({{ languages.showOnlyLatestDeletedText.description }})
-      <ToggleTutorialButton :features="showOnlyLatestDeleted" />
-    </li>
-    <div class="show-hide-deleted-list-container">
-      <p id="show-hide-deleted" class="show-hide-btn" @click="showDeleted()">
-        <span class="toggle-delete-confirm"> &#x1F449; </span>
-        {{ showDeleteText }}
-      </p>
-      <div class="show-hide-deleted-container" v-if="showDelete">
-        <!-- TODO SINGOLO -->
-        <span
-          class="show-last-deleted-title"
-          :class="{ 'animate-charcter': !theme.retroTheme }"
-        >
-          {{ languages.showOnlyLatestDeletedText.singleTodoText }}:
-        </span>
-        <ul
-          v-if="
-            todosStore.deletedSingleTodo && todosStore.deletedSingleTodo.length
-          "
-          class="todo-deleted-container"
-          :class="{ 'retro-border': theme.retroTheme }"
-        >
-          <li
-            class="todo-deleted"
-            v-for="(todo, index) in todosStore.deletedSingleTodo"
-            :key="index"
-          >
-            <!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-            <span v-if="index < todosStore.deletedSingleTodo.length - 1"
-              >></span
-            >
-            {{ todo }}
-          </li>
-        </ul>
-        <!-- TODO MULTIPLI -->
-        <span
-          class="show-last-deleted-title"
-          :class="{ 'animate-charcter': !theme.retroTheme }"
-        >
-          {{ languages.showOnlyLatestDeletedText.multipleTodosText }}:
-        </span>
-        <ul
-          class="multiple-deleted-container"
-          :class="{ 'retro-border': theme.retroTheme }"
-          v-if="todosStore.deletedTodos && todosStore.deletedTodos.length"
-        >
-          <li
-            class="todo-deleted"
-            v-for="(todo, index) in todosStore.deletedTodos"
-            :key="index"
-          >
-            <!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-            <span v-if="index < todosStore.deletedTodos.length - 1">></span>
-            {{ todo }}
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <Tutorial
-      v-if="settings.video && settings.feature === showOnlyLatestDeleted"
-      :features="showOnlyLatestDeleted"
+    <ListIstructionAccordion
+      show-list-istructions-input="showOnlyLatestDeleted"
+      :istructions-text="languages.showOnlyLatestDeletedText.title"
+      :select-deselect-arrow="
+        settings.showOnlyLatestDeleted &&
+        settings.section === 'showOnlyLatestDeleted'
+      "
+      :isSettings="true"
     />
+    <template
+      v-if="
+        settings.showOnlyLatestDeleted &&
+        settings.section === 'showOnlyLatestDeleted'
+      "
+    >
+      <li class="ml-3">
+        <small>{{ languages.showOnlyLatestDeletedText.description }}</small>
+        <ToggleTutorialButton :features="showOnlyLatestDeleted" />
+      </li>
+      <div class="show-hide-deleted-list-container">
+        <div class="show-hide-deleted-container">
+          <!-- TODO SINGOLO -->
+          <span
+            class="show-last-deleted-title"
+            :class="{ 'animate-charcter': !theme.retroTheme }"
+          >
+            {{ languages.showOnlyLatestDeletedText.singleTodoText }}:
+          </span>
+          <ul
+            v-if="
+              todosStore.deletedSingleTodo &&
+              todosStore.deletedSingleTodo.length
+            "
+            class="todo-deleted-container"
+            :class="{ 'retro-border': theme.retroTheme }"
+          >
+            <li
+              class="todo-deleted"
+              v-for="(todo, index) in todosStore.deletedSingleTodo"
+              :key="index"
+            >
+              <!-- sull'ultimo elemento non voglio nulla perchè è la data -->
+              <span v-if="index < todosStore.deletedSingleTodo.length - 1"
+                >></span
+              >
+              {{ todo }}
+            </li>
+          </ul>
+          <!-- TODO MULTIPLI -->
+          <span
+            class="show-last-deleted-title"
+            :class="{ 'animate-charcter': !theme.retroTheme }"
+          >
+            {{ languages.showOnlyLatestDeletedText.multipleTodosText }}:
+          </span>
+          <ul
+            class="multiple-deleted-container"
+            :class="{ 'retro-border': theme.retroTheme }"
+            v-if="todosStore.deletedTodos && todosStore.deletedTodos.length"
+          >
+            <li
+              class="todo-deleted"
+              v-for="(todo, index) in todosStore.deletedTodos"
+              :key="index"
+            >
+              <!-- sull'ultimo elemento non voglio nulla perchè è la data -->
+              <span v-if="index < todosStore.deletedTodos.length - 1">></span>
+              {{ todo }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <Tutorial
+        v-if="settings.video && settings.feature === showOnlyLatestDeleted"
+        :features="showOnlyLatestDeleted"
+      />
+    </template>
   </div>
 </template>
 

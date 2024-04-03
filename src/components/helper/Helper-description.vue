@@ -49,9 +49,11 @@ export default {
     <p class="helper-title" @click="settings.highlightsForTutorial(7)">
       {{ languages.helperDescription.troubleshooting }}
     </p>
-    <small :class="{ 'tutorial-highlights': settings.highlits === 7 }">
-      {{ languages.helperDescription.troubleshootingText }}
-    </small>
+    <p class="troubleshooting">
+      <small :class="{ 'tutorial-highlights': settings.highlits === 7 }">
+        {{ languages.helperDescription.troubleshootingText }}
+      </small>
+    </p>
     <p
       class="helper-title"
       :class="{ 'christmas-red': isChristmas.christmasTheme }"
@@ -135,7 +137,7 @@ export default {
           {{ languages.helperDescription.backToTop }}
         </li>
 
-        <ToggleTutorialButton :alignRight="true" :features="addEditDelete" />
+        <ToggleTutorialButton :features="addEditDelete" />
         <Tutorial
           v-if="settings.video && settings.feature === addEditDelete"
           :features="addEditDelete"
@@ -226,7 +228,7 @@ export default {
           >.
         </li>
 
-        <ToggleTutorialButton :alignRight="true" :features="categories" />
+        <ToggleTutorialButton :features="categories" />
         <Tutorial
           v-if="settings.video && settings.feature === categories"
           :features="categories"
@@ -266,7 +268,7 @@ export default {
           {{ languages.helperDescription.dragNdropText.part2 }} <br />
         </li>
 
-        <ToggleTutorialButton :alignRight="true" :features="dragNdrop" />
+        <ToggleTutorialButton :features="dragNdrop" />
         <Tutorial
           v-if="settings.video && settings.feature === dragNdrop"
           :features="dragNdrop"
@@ -310,7 +312,7 @@ export default {
           {{ languages.helperDescription.multipleDeleteText.part3 }}
         </li>
 
-        <ToggleTutorialButton :alignRight="true" :features="multipleDelete" />
+        <ToggleTutorialButton :features="multipleDelete" />
         <Tutorial
           v-if="settings.video && settings.feature === multipleDelete"
           :features="multipleDelete"
@@ -388,7 +390,7 @@ export default {
           {{ languages.importantTodos.text.part2 }}
         </li>
 
-        <ToggleTutorialButton :alignRight="true" :features="copyPaste" />
+        <ToggleTutorialButton :features="copyPaste" />
         <Tutorial
           v-if="settings.video && settings.feature === copyPaste"
           :features="copyPaste"
@@ -470,6 +472,10 @@ export default {
   text-align: center;
   margin-top: 20px;
 }
+.troubleshooting {
+  text-align: center;
+}
+
 .tutorial-highlights {
   background-color: orangered;
   color: white;

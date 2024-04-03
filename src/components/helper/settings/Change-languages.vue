@@ -2,6 +2,7 @@
 import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -27,13 +28,18 @@ export default {
 
 <template>
   <div class="helper-settings">
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(0)">
-      &#x2699;
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 0 }">
-      {{ languages.changeLanguage }}:
-    </span>
-    <div class="languages-btns-container">
+    <ListIstructionAccordion
+      show-list-istructions-input="changeLanguage"
+      :istructions-text="languages.changeLanguage"
+      :select-deselect-arrow="
+        settings.changeLanguage && settings.section === 'changeLanguage'
+      "
+      :isSettings="true"
+    />
+    <div
+      class="languages-btns-container"
+      v-if="settings.changeLanguage && settings.section === 'changeLanguage'"
+    >
       <div
         class="btns-language-container"
         :class="{

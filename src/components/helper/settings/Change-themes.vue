@@ -2,6 +2,7 @@
 import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -67,79 +68,82 @@ export default {
 
 <template>
   <div class="helper-settings">
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(2)">
-      &#x2699;
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 2 }"
-      >{{ languages.chosenThemeText }}:
-    </span>
-    <span class="text-primary">{{ theme.themeName }}</span
-    ><br />
-    <li class="ml-4">{{ languages.changeThemeText }}</li>
-    <br />
-    <div class="btns-container">
-      <div class="top">
-        <button
-          type="button"
-          class="btn btn-light p-1 border border-dark"
-          @click="changeTheme('light')"
-        >
-          Light
-        </button>
-        <button
-          type="button"
-          class="btn btn-dark p-1"
-          @click="changeTheme('dark')"
-        >
-          Dark
-        </button>
-        <button
-          type="button"
-          class="btn minimal-theme p-1"
-          @click="changeTheme('minimal')"
-        >
-          Minimal
-        </button>
-        <button
-          type="button"
-          class="btn retro-theme p-1"
-          @click="changeTheme('retro')"
-        >
-          Dos
-        </button>
-      </div>
+    <ListIstructionAccordion
+      show-list-istructions-input="changeTheme"
+      :istructions-text="languages.changeThemeText"
+      :select-deselect-arrow="
+        settings.changeTheme && settings.section === 'changeTheme'
+      "
+      :isSettings="true"
+    />
+    <template v-if="settings.changeTheme && settings.section === 'changeTheme'">
+      <span class="ml-4">{{ languages.chosenThemeText }}: </span>
+      <span class="text-primary">{{ theme.themeName }}</span>
+      <br />
+      <div class="btns-container">
+        <div class="top">
+          <button
+            type="button"
+            class="btn btn-light p-1 border border-dark"
+            @click="changeTheme('light')"
+          >
+            Light
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark p-1"
+            @click="changeTheme('dark')"
+          >
+            Dark
+          </button>
+          <button
+            type="button"
+            class="btn minimal-theme p-1"
+            @click="changeTheme('minimal')"
+          >
+            Minimal
+          </button>
+          <button
+            type="button"
+            class="btn retro-theme p-1"
+            @click="changeTheme('retro')"
+          >
+            Dos
+          </button>
+        </div>
 
-      <div class="bottom">
-        <button
-          type="button"
-          class="btn summer-theme p-1"
-          @click="changeTheme('summer')"
-        >
-          Summer
-        </button>
-        <button
-          type="button"
-          class="btn winter-theme p-1"
-          @click="changeTheme('winter')"
-        >
-          Winter
-        </button>
-        <button
-          type="button"
-          class="btn elegant-theme elegant-border p-1"
-          @click="changeTheme('elegant')"
-        >
-          Elegant
-        </button>
-        <button
-          type="button"
-          class="btn pink-theme-btn p-1"
-          @click="changeTheme('pink')"
-        >
-          Mr.Pink
-        </button>
+        <div class="bottom">
+          <button
+            type="button"
+            class="btn summer-theme p-1"
+            @click="changeTheme('summer')"
+          >
+            Summer
+          </button>
+          <button
+            type="button"
+            class="btn winter-theme p-1"
+            @click="changeTheme('winter')"
+          >
+            Winter
+          </button>
+          <button
+            type="button"
+            class="btn elegant-theme elegant-border p-1"
+            @click="changeTheme('elegant')"
+          >
+            Elegant
+          </button>
+          <button
+            type="button"
+            class="btn pink-theme-btn p-1"
+            @click="changeTheme('pink')"
+          >
+            Mr.Pink
+          </button>
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 

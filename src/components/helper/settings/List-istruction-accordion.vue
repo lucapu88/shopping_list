@@ -10,6 +10,7 @@ export default {
     showListIstructionsInput: String,
     istructionsText: [Object, String],
     selectDeselectArrow: Boolean,
+    isSettings: Boolean,
   },
   data() {
     return {
@@ -25,6 +26,9 @@ export default {
   <div
     class="list-title"
     :class="{
+      'list-title-selected': selectDeselectArrow,
+      'list-title-deselected': !selectDeselectArrow,
+      'margin-negative': !isSettings,
       'list-title-color':
         theme.lightTheme || theme.winterTheme || theme.darkTheme,
       'list-title-summer': theme.summerTheme,
@@ -32,6 +36,7 @@ export default {
     }"
     @click="settings.showListIstructions(showListIstructionsInput)"
   >
+    <span v-if="isSettings" class="settings-icon mr-1"> &#x2699; </span>
     {{ istructionsText }}
     <img
       v-if="!theme.elegantTheme"
@@ -62,9 +67,17 @@ export default {
   border: 1px solid;
   border-radius: 5px;
   margin-bottom: 5px;
-  margin-left: -15px;
   display: flex;
   justify-content: space-between;
+}
+.list-title-selected {
+  box-shadow: inset 2px 2px 90px -50px rgba(46, 46, 46, 0.85);
+}
+.list-title-deselected {
+  box-shadow: none;
+}
+.margin-negative {
+  margin-left: -15px;
 }
 .list-title-color {
   background-color: #ededed;

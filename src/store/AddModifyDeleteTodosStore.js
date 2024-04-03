@@ -37,7 +37,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     openDeleteAllModal: (state) => state.visible = !state.visible,
   },
   actions: {
-    addTodo() {
+    addTodo() { //TOFIX questo metodo fa un po cagare, è da migliorare!
+
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
       this.languages.categories.forEach((category) => {
@@ -196,7 +197,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     deleteSelectedTodos() {
       this.backupList();
       this.setOnlyDeletedTodos('multipleDelete');
-      //Elimina solo i to do che sono stati selezionati.
+      //Elimina solo i todo che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
       this.saveTodos();

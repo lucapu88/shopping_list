@@ -3,6 +3,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import ListIstructionAccordion from './List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 </script>
@@ -21,16 +22,7 @@ export default {
       exportList: 'exportList',
     };
   },
-  mounted() {
-    this.resetTextarea();
-  },
   methods: {
-    resetTextarea() {
-      if (!document.getElementById('text-area').value) {
-        this.textAreaHeight = 55;
-        this.adjustTextareaHeight();
-      }
-    },
     adjustTextareaHeight() {
       document.getElementById(
         'text-area'
@@ -69,77 +61,70 @@ export default {
 
 <template>
   <div class="add-list-copied-container helper-settings">
-    <!-- PASTE LIST -->
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(4)">
-      &#x2699;
-    </span>
-    <span
-      :class="{
-        'tutorial-highlights': settings.highlits === 4,
-        'spanish-size': languages.langSpanish,
-      }"
-    >
-      {{ languages.pasteListText.title }}
-    </span>
-    <span class="info-icon" @click="settings.toggleInfo(pasteListInfo)">i</span>
-    <br />
-    <li
-      class="ml-4"
-      v-if="settings.info && settings.featureInfo === pasteListInfo"
-    >
-      ({{ languages.pasteListText.subtitle }}). <br />
-      <small>{{ languages.infoCategoriesAlert }}</small>
-      <ToggleTutorialButton :features="exportList" />
-    </li>
+    <ListIstructionAccordion
+      show-list-istructions-input="pasteList"
+      :istructions-text="languages.pasteListText.title"
+      :select-deselect-arrow="
+        settings.pasteList && settings.section === 'pasteList'
+      "
+      :isSettings="true"
+    />
+    <template v-if="settings.pasteList && settings.section === 'pasteList'">
+      <li class="ml-3">
+        <small>{{ languages.pasteListText.subtitle }}. </small>
+        <small>{{ languages.infoCategoriesAlert }}</small>
+        <ToggleTutorialButton :features="exportList" />
+      </li>
 
-    <div class="add-list-copied">
-      <div class="increase-decrease-container">
-        <button
-          :class="{ 'retro-btn-border': theme.retroTheme }"
-          @click="startDecreasing()"
-          touch-action="none"
+      <div class="add-list-copied">
+        <div class="increase-decrease-container">
+          <button
+            :class="{ 'retro-btn-border': theme.retroTheme }"
+            @click="startDecreasing()"
+            touch-action="none"
+          >
+            <img
+              class="increase-decrease"
+              src="@/img/icons/decrease.webp"
+              alt="decrease"
+            />
+          </button>
+          <button
+            :class="{ 'retro-btn-border': theme.retroTheme }"
+            @click="startIncreasing()"
+            touch-action="none"
+          >
+            <img
+              class="increase-decrease"
+              src="@/img/icons/increase.webp"
+              alt="increase"
+            />
+          </button>
+        </div>
+        <textarea
+          id="text-area"
+          :class="{ 'add-list-textarea': !theme.retroTheme }"
+          rows="2"
+          v-model="listPasted"
         >
-          <img
-            class="increase-decrease"
-            src="@/img/icons/decrease.webp"
-            alt="decrease"
-          />
-        </button>
+        </textarea>
         <button
-          :class="{ 'retro-btn-border': theme.retroTheme }"
-          @click="startIncreasing()"
-          touch-action="none"
+          class="btn btn-light share-update-btn add-list-copied-btn"
+          :class="{
+            'retro-btn-border': theme.retroTheme,
+            'border-dark': !theme.retroTheme,
+          }"
+          @click="addListCopied()"
         >
-          <img
-            class="increase-decrease"
-            src="@/img/icons/increase.webp"
-            alt="increase"
-          />
+          <small>{{ languages.importText }}</small>
         </button>
       </div>
-      <textarea
-        id="text-area"
-        :class="{ 'add-list-textarea': !theme.retroTheme }"
-        rows="2"
-        v-model="listPasted"
-      >
-      </textarea>
-      <button
-        class="btn btn-light share-update-btn add-list-copied-btn"
-        :class="{
-          'retro-btn-border': theme.retroTheme,
-          'border-dark': !theme.retroTheme,
-        }"
-        @click="addListCopied()"
-      >
-        <small>{{ languages.importText }}</small>
-      </button>
-    </div>
 
-    <Tutorial
-      v-if="settings.video && settings.feature === exportList && pasteListInfo"
-      :features="exportList"
-    />
+      <Tutorial
+        v-if="settings.video && settings.feature === exportList"
+        :features="exportList"
+      />
+    </template>
   </div>
 </template>
 

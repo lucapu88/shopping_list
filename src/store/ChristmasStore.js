@@ -11,7 +11,7 @@ export const useChristmasStore = defineStore('christmas', {
     actions: {
         /*TOFIX potrei, anzi dovrei inserirlo in useOthersFestivitiesStore e creare un unico store per le festività */
         merryChristmasTheme() {
-            //solo per tutto il mese di natale ci saranno decorazioni natalizie, e se è natale vi auguro buon natale :)
+            //solo per tutto il mese di natale ci saranno decorazioni natalizie, e se è natale, e stai leggendo, ti auguro buon natale :)
             const today = new Date();
             const currentMonth = today.getMonth() + 1;
             const currentDay = today.getDate();
