@@ -7,7 +7,7 @@ import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import LoadinfOrUpdating from '../Loading-or-updating.vue';
+import LoadingOrUpdating from '../Loading-or-updating.vue';
 import ChangeLanguages from './settings/Change-languages.vue';
 import ChangeThemes from './settings/Change-themes.vue';
 import SafeDeleteMode from './settings/Safe-delete-mode.vue';
@@ -75,7 +75,7 @@ export default {
 
 <template>
   <div>
-    <LoadinfOrUpdating
+    <LoadingOrUpdating
       :themeLoading="themeLoading"
       :updating="updating"
       :backup="backup"

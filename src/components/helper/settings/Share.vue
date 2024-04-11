@@ -1,6 +1,7 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
+import ShareModal from '../../panels-and-modals/Share-modal.vue';
 </script>
 
 <script>
@@ -9,6 +10,7 @@ export default {
     return {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
+      showModal: false,
     };
   },
   methods: {
@@ -22,14 +24,20 @@ export default {
         e.preventDefault();
       });
       document.execCommand('copy');
-      this.languages.share.visible = true;
+      /*this.languages.share.visible = true;
       setTimeout(() => (this.languages.share.visible = false), 5000);
-      this.openShareOptions();
+      this.openShareOptions(); */
+      this.showModal = true;
+    },
+    onCloseModal(value) {
+      this.showModal = value;
     },
     async openShareOptions() {
+      /*Purtroppo questa cosa magnifica di visualizzare le opzioni di condivisione funziona per il web ma non per android.
+        La lascio magari in futuro le cose cambiano...Nel frattempo comunque sia condividi questa cazzo di app prima di subito!!! XD */
       let shareData = {
         title: 'Shopping List',
-        text: 'Share with whoever you want',
+        text: 'Download this beautiful, cool and fantastic app: ',
         url: 'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List',
       };
       try {
@@ -61,6 +69,7 @@ export default {
       {{ languages.share.text }}
     </p>
   </div>
+  <ShareModal :showModal="showModal" @closeModal="onCloseModal" />
 </template>
 
 <style scoped>
