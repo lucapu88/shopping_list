@@ -74,7 +74,7 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.75);
 }
-@media (min-width: 1000px) {
+@media (min-width: 650px) {
   .modal {
     padding-top: 130px; /* SI VOLAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!! */
   }

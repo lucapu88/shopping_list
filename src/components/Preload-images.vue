@@ -13,6 +13,7 @@ import cartWhitePreload from '@/img/icons/cart-white.webp';
 import cartRedPreload from '@/img/icons/cart-red.webp';
 import DragDropElegant from '@/img/icons/drag-and-drop-elegant.webp';
 import copyElegant from '@/img/icons/copy-elegant.webp';
+import importantElegant from '@/img/icons/important-elegant.webp';
 
 import merryChristmas from '@/img/festivities/christmas.webp';
 import christmasSkull from '@/img/icons/christmas-skull.webp';
@@ -33,8 +34,10 @@ import computerLogo from '@/img/festivities/computer.webp';
 import halloweenPumpkin from '@/img/festivities/zucca.webp';
 import halloweenCobwebs from '@/img/festivities/ragnatele.webp';
 import arrowDown from '@/img/icons/arrow-down.webp';
-import update from '@/img/icons/update.webp';
-import share from '@/img/icons/share.webp';
+import shareLogo from '@/img/icons/share.webp';
+import shareBackgr from '@/img/shared.webp';
+import cloud from '@/img/icons/cloud.webp';
+import tutorial from '@/img/icons/video-logo.webp';
 </script>
 
 <script>
@@ -49,7 +52,7 @@ export default {
   },
 };
 </script>
-
+<!--  -------------------------------GLI IMPORT PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
 <template>
   <!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
   <link
@@ -98,6 +101,12 @@ export default {
     rel="preload"
     as="image"
     :href="copyElegant"
+  />
+  <link
+    v-if="theme.elegantTheme"
+    rel="preload"
+    as="image"
+    :href="importantElegant"
   />
   <!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
   <link
@@ -206,6 +215,8 @@ export default {
   />
   <!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
   <link v-if="settings.helper" rel="preload" as="image" :href="arrowDown" />
-  <link v-if="settings.helper" rel="preload" as="image" :href="update" />
-  <link v-if="settings.helper" rel="preload" as="image" :href="share" />
+  <link v-if="settings.helper" rel="preload" as="image" :href="shareLogo" />
+  <link v-if="settings.helper" rel="preload" as="image" :href="shareBackgr" />
+  <link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
+  <link v-if="settings.helper" rel="preload" as="image" :href="tutorial" />
 </template>
