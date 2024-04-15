@@ -32,7 +32,12 @@ export default {
       'list-title-color':
         theme.lightTheme || theme.winterTheme || theme.darkTheme,
       'list-title-summer': theme.summerTheme,
+      'list-title-dark': theme.darkTheme,
       'list-title-retro': theme.retroTheme,
+      'list-title-dark-selected': selectDeselectArrow && theme.darkTheme,
+      'list-title-retro-selected': selectDeselectArrow && theme.retroTheme,
+      'list-title-elegant-selected': selectDeselectArrow && theme.elegantTheme,
+      'list-title-pink-selected': selectDeselectArrow && theme.pinkTheme,
     }"
     @click="settings.showListIstructions(showListIstructionsInput)"
   >
@@ -71,7 +76,7 @@ export default {
   justify-content: space-between;
 }
 .list-title-selected {
-  box-shadow: inset 2px 2px 90px -50px rgba(46, 46, 46, 0.85);
+  box-shadow: inset 2px 2px 90px -50px rgba(0, 0, 0, 0.85);
 }
 .list-title-deselected {
   box-shadow: none;
@@ -83,13 +88,33 @@ export default {
   background-color: #ededed;
   color: #000000;
 }
+
 .list-title-summer {
-  background-color: #efcb8f;
+  background-color: var(--summer-primary-color);
 }
+
+.list-title-dark {
+  background-color: var(--dark-white);
+}
+.list-title-dark-selected {
+  color: var(--white);
+}
+
 .list-title-retro {
   border-radius: 0 !important;
   border: 2px outset;
 }
+.list-title-retro-selected {
+  border: 2px inset;
+}
+
+.list-title-elegant-selected {
+  color: var(--elegant-text-color);
+}
+.list-title-pink-selected {
+  box-shadow: inset 2px 2px 90px -50px var(--pink-text-color);
+}
+
 .arrow {
   width: 1.5625rem;
   height: 1.5625rem;

@@ -57,7 +57,7 @@ export default {
   background-color: #bfbfbf6f;
 }
 .share-text {
-  background-color: #63636384;
+  background-color: #63636359;
   border-radius: 10px;
   color: var(--shared-text);
   font-size: larger;

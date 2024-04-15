@@ -34,7 +34,7 @@ export default {
     },
     async openShareOptions() {
       /*Purtroppo questa cosa magnifica di visualizzare le opzioni di condivisione funziona per il web ma non per android.
-        La lascio magari in futuro le cose cambiano...Nel frattempo comunque sia condividi questa cazzo di app prima di subito!!! XD */
+        La lascio, magari in futuro le cose cambiano...Nel frattempo comunque sia condividi questa cazzo di app prima di subito!!! XD */
       let shareData = {
         title: 'Shopping List',
         text: 'Download this beautiful, cool and fantastic app: ',
@@ -51,16 +51,17 @@ export default {
 </script>
 
 <template>
-  <div class="share-update helper-settings">
+  <div class="share-container share-update helper-settings">
     <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(5)">
       &#x2699;
     </span>
     <span :class="{ 'tutorial-highlights': settings.highlits === 5 }">
-      {{ languages.shareText }}:
+      {{ languages.shareText }}
     </span>
+    <span class="hand-pointing ml-3"> &#x1F449; </span>
     <button
       id="share"
-      class="btn btn-light border-dark share-update-btn"
+      class="btn btn-light border-dark share-update-btn ml-3"
       @click="shareLink()"
     >
       <img src="@/img/icons/share.webp" alt="share" />
@@ -73,6 +74,9 @@ export default {
 </template>
 
 <style scoped>
+.share-container > button {
+  padding: 3px 25px;
+}
 .link-copied {
   font-size: 13px;
   margin-left: 5px;

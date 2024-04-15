@@ -115,8 +115,9 @@ button {
   cursor: pointer;
 }
 
-.toggle-delete-confirm {
+.hand-pointing {
   display: inline-block;
+  margin-right: 10px;
   animation: zoominout 1.5s infinite;
 }
 @keyframes zoominout {

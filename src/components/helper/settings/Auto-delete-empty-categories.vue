@@ -43,7 +43,7 @@ export default {
       </li>
       <li class="toggle-delete-confirm-container" id="auto-delete">
         <div
-          class="toggle-delete-confirm"
+          class="hand-pointing"
           @click="settings.toggleAutomaticDeleteEmptyCategories()"
         >
           &#x1F449;

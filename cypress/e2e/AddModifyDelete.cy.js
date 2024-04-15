@@ -34,7 +34,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.wait(1500);
     cy.get('#helper-description > :nth-child(4) > .list-title').click();
     cy.get('#safe-delete > .text-primary').should('include.text', 'OFF');
-    cy.get('#safe-delete > .toggle-delete-confirm').click({ multiple: true });
+    cy.get('#safe-delete > .hand-pointing').click({ multiple: true });
     cy.get('#safe-delete > .text-primary').should('include.text', 'ON');
     cy.get('.close-helper-container > .close-helper').click();
 

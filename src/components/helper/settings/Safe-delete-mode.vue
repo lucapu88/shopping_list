@@ -36,10 +36,7 @@ export default {
         <ToggleTutorialButton :features="safeDelete" />
       </li>
       <div class="toggle-delete-confirm-container" id="safe-delete">
-        <span
-          class="toggle-delete-confirm"
-          @click="settings.toggleDeleteConfirm()"
-        >
+        <span class="hand-pointing" @click="settings.toggleDeleteConfirm()">
           &#x1F449;
         </span>
         <u class="mr-2" @click="settings.toggleDeleteConfirm()">
