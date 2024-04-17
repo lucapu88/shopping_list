@@ -53,10 +53,6 @@ export default {
         class="btn btn-light border-dark mr-3 share-update-btn"
         @click="updateApp()"
       >
-        <!--L'img impiega tempo a caricarsi, per il momento la tolgo, poi si vede ma sono ancora indeciso su cosa utilizzare-->
-
-        <!-- <img src="@/img/icons/update.webp" alt="update" /> -->
-        <!-- <span>{{ String.fromCodePoint(0x1f503) }}</span> -->
         <span>{{
           !languages.updateText.readyForUpdate
             ? languages.updateText.available

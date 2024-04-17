@@ -58,7 +58,7 @@ export default {
     <span :class="{ 'tutorial-highlights': settings.highlits === 5 }">
       {{ languages.shareText }}
     </span>
-    <span class="hand-pointing ml-3"> &#x1F449; </span>
+    <span class="hand-pointing size-larger ml-3"> &#x1F449; </span>
     <button
       id="share"
       class="btn btn-light border-dark share-update-btn ml-3"
@@ -76,6 +76,9 @@ export default {
 <style scoped>
 .share-container > button {
   padding: 3px 25px;
+}
+.size-larger {
+  font-size: larger;
 }
 .link-copied {
   font-size: 13px;

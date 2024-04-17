@@ -461,7 +461,14 @@ export default {
     </span>
     <span :class="{ 'tutorial-highlights': settings.highlits === 8 }">
       {{ languages.helperDescription.adviceText }}
-      <span style="color: green">{{ settings.dateLastUpdate }}</span>
+      <span
+        :class="{
+          updated: languages.updateText.readyForUpdate,
+          'need-update': !languages.updateText.readyForUpdate,
+        }"
+      >
+        {{ settings.dateLastUpdate }}
+      </span>
     </span>
   </p>
 </template>
@@ -556,5 +563,12 @@ export default {
   100% {
     opacity: 1;
   }
+}
+
+.updated {
+  color: #008000;
+}
+.need-update {
+  color: #ff0000;
 }
 </style>
