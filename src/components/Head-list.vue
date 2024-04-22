@@ -6,6 +6,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import FestivitiesAndOccurrences from './Festivities-and-occurrences.vue';
 </script>
 
 <script>
@@ -77,6 +78,8 @@ export default {
     class="header-container"
     :class="{ christmas: isChristmas.christmasTheme }"
   >
+    <FestivitiesAndOccurrences />
+
     <img
       v-if="festivities.halloweenTheme"
       class="halloween-witch-hat"

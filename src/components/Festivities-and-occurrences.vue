@@ -17,7 +17,7 @@ export default {
       this.description = true;
       setTimeout(() => {
         this.description = false;
-      }, 3000);
+      }, 2500);
       if (
         this.festivitiesOrOccurrences.toiletDay ||
         this.festivitiesOrOccurrences.beerDay
@@ -170,8 +170,8 @@ export default {
   width: 20%;
   height: 6%;
   position: absolute;
-  top: 5px;
-  left: 3px;
+  top: -10px;
+  left: 5px;
   z-index: 200;
 }
 .cancer-day {
