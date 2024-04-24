@@ -275,6 +275,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     removeAllTodo(x) {
       this.backupList();
+      this.setOnlyDeletedTodos('deleteAll');
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
@@ -313,15 +314,20 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
     },
     setOnlyDeletedTodos(index) {
-      if (index !== 'multipleDelete') {
-        //Salvo IL todo da eliminare
-        const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
-        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
-      } else {
-        //Salvo i todo da eliminare
+      if (index === 'multipleDelete') {
+        //Salvo I todo selezionati da eliminare
         const deletedTodos = this.todos.filter((todo) => todo.multipleDelete).map(t => t.name);
         deletedTodos.push(this.getDate());
         window.localStorage.setItem('deletedTodos', deletedTodos);
+      } else if (index === 'deleteAll') {
+        //Salvo TUTTI i todo da eliminare
+        const deletedTodos = this.todos.map(t => t.name);
+        deletedTodos.push(this.getDate());
+        window.localStorage.setItem('deletedTodos', deletedTodos);
+      } else {
+        //Salvo IL todo singolo da eliminare
+        const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
+        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
       }
     },
     getOnlyDeletedTodos() {

@@ -455,22 +455,22 @@ export default {
     </ul>
   </div>
   <br />
-  <p id="helper-important-alert" class="update-alert">
-    <span style="color: red" @click="settings.highlightsForTutorial(8)">
-      {{ languages.helperDescription.adviceTitle }}
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 8 }">
-      {{ languages.helperDescription.adviceText }}
-      <span
-        :class="{
-          updated: languages.updateText.readyForUpdate,
-          'need-update': !languages.updateText.readyForUpdate,
-        }"
-      >
+  <section id="helper-important-alert">
+    <p class="update-alert">
+      <span style="color: red" @click="settings.highlightsForTutorial(8)">
+        {{ languages.helperDescription.adviceTitle }}
+      </span>
+      <span :class="{ 'tutorial-highlights': settings.highlits === 8 }">
+        {{ languages.helperDescription.adviceText }}
+      </span>
+    </p>
+    <p v-if="languages.updateText.readyForUpdate">
+      {{ languages.helperDescription.dateLastUpdateText }}
+      <span class="updated">
         {{ settings.dateLastUpdate }}
       </span>
-    </span>
-  </p>
+    </p>
+  </section>
 </template>
 
 <style scoped>
@@ -543,6 +543,7 @@ export default {
 
 .update-alert {
   border-top: 1px solid;
+  margin-bottom: 0;
 }
 
 .helper-list > li {
@@ -567,8 +568,5 @@ export default {
 
 .updated {
   color: #008000;
-}
-.need-update {
-  color: #ff0000;
 }
 </style>

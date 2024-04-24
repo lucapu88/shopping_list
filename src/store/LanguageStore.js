@@ -182,8 +182,9 @@ export const useLanguageStore = defineStore('Language', {
       supportText: 'For any report you can contact me:',
       twitterText: 'You can also find us on twitter:',
       githubText: 'If you are a developer maybe you can give me some advice on how to improve in the code:',
-      adviceTitle: 'IMPORTANT:',
-      adviceText: "This is a web app converted to a smartphone app, and is always maintained, so don't pay attention to the date of the last update that appears in the store. The actual date of the last update is: ",
+      adviceTitle: 'IMPORTANT: ',
+      adviceText: "This is a web app converted to a smartphone app, and is always maintained, so don't pay attention to the date of the last update that appears in the store.",
+      dateLastUpdateText: "The actual date of the last update is: "
     },
     cancerDayText: '4 February: World Cancer Day',
     peaceDayText: '1 January: World Peace Day',
@@ -215,7 +216,7 @@ export const useLanguageStore = defineStore('Language', {
       },
     },
     showOnlyLatestDeletedText: {
-      title: 'Show only the last deleted',
+      title: 'Show latest deleted',
       description: 'Here you will only find your last single or multiple deletion, just as a summary',
       singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
@@ -379,8 +380,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.supportText = 'Per qualsiasi segnalazione puoi contattarmi:';
       this.helperDescription.twitterText = 'Ci trovi anche su twitter:';
       this.helperDescription.githubText = 'Se sei uno sviluppatore magari puoi darmi qualche consiglio su come migliorare nel codice:';
-      this.helperDescription.adviceTitle = 'IMPORTANTE:';
-      this.helperDescription.adviceText = "Questa è una web app convertita in app per smartphone, ed è sempre manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che appare nello store. La data reale dell'ultimo aggiornamento è:";
+      this.helperDescription.adviceTitle = 'IMPORTANTE: ';
+      this.helperDescription.adviceText = "Questa è una web app convertita in app per smartphone, ed è sempre manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che appare nello store.";
+      this.helperDescription.dateLastUpdateText = "La data reale dell'ultimo aggiornamento è: ";
       this.cancerDayText = '4 Febbraio: Giornata mondiale contro il cancro';
       this.peaceDayText = '1 Gennaio: Giornata mondiale della pace';
       this.womensDayText = 'Auguri a tutte le donne';
@@ -403,7 +405,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.alert = "Non ci sono elementi selezionati come importanti";
       this.importantTodos.text.part1 = "Cliccando su";
       this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
-      this.showOnlyLatestDeletedText.title = "Mostra solo gli ultimi cancellati";
+      this.showOnlyLatestDeletedText.title = "Mostra gli ultimi cancellati";
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
@@ -483,8 +485,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.supportText = 'Para cualquier informe puede ponerse en contacto conmigo:';
       this.helperDescription.twitterText = 'También puede encontrarnos en twitter:';
       this.helperDescription.githubText = 'Si usted es un desarrollador tal vez usted me puede dar algunos consejos sobre cómo mejorar en el código:';
-      this.helperDescription.adviceTitle = 'IMPORTANTE:';
-      this.helperDescription.adviceText = "Esta es una aplicación web convertida en aplicación para smartphone, y se mantiene siempre, así que no prestes atención a la fecha de la última actualización que aparece en la tienda. La fecha real de la última actualización es:";
+      this.helperDescription.adviceTitle = 'IMPORTANTE: ';
+      this.helperDescription.adviceText = "Esta es una aplicación web convertida en aplicación para smartphone, y se mantiene siempre, así que no prestes atención a la fecha de la última actualización que aparece en la tienda.";
+      this.helperDescription.dateLastUpdateText = "La fecha real de la última actualización es: ";
       this.cancerDayText = '4 de febrero: Día Mundial contra el Cáncer';
       this.peaceDayText = '1 de enero: Día Mundial de la Paz';
       this.womensDayText = 'Mis mejores deseos a todas las mujeres';
@@ -507,7 +510,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.alert = "No hay elementos seleccionados como importantes";
       this.importantTodos.text.part1 = "Haga clic en";
       this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
-      this.showOnlyLatestDeletedText.title = "Mostrar sólo los últimos borrados";
+      this.showOnlyLatestDeletedText.title = "Mostrar los últimos borrados";
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
