@@ -162,6 +162,58 @@ export default {
     >
       {{ languages.worldWideWebText }}
     </p>
+    <!-- ---------------------------------------------------------- GIORNATA DELLA PIZZAAAAAA-->
+    <img
+      v-if="festivitiesOrOccurrences.worldPizzaDay && !description"
+      class="pizza-day"
+      src="@/img/festivities/pizza.webp"
+      alt="pizza_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.worldPizzaDay && description"
+    >
+      {{ languages.worldPizzaDayText }}
+    </p>
+    <!-- ---------------------------------------------------------- SAN VALENTINO-->
+    <img
+      v-if="festivitiesOrOccurrences.valentinesDay && !description"
+      class="valentines-day"
+      src="@/img/festivities/cupido.webp"
+      alt="valentine'valentines_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.valentinesDay && description"
+    >
+      {{ languages.valentinesDayText }}
+    </p>
+    <!-- ---------------------------------------------------------- GIORNATA DELL'AMBIENTE-->
+    <img
+      v-if="festivitiesOrOccurrences.worldEnvironmentDay && !description"
+      class="environment-day"
+      src="@/img/festivities/plant.webp"
+      alt="environment_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.worldEnvironmentDay && description"
+    >
+      {{ languages.worldEnvironmentDayText }}
+    </p>
+    <!-- ---------------------------------------------------------- GIORNATA DEI DIRITTI UMANI-->
+    <img
+      v-if="festivitiesOrOccurrences.humanRightsDayText && !description"
+      class="humans-rights-day"
+      src="@/img/festivities/humans-rights.webp"
+      alt="humans-rights_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.humanRightsDayText && description"
+    >
+      {{ languages.humanRightsDayText }}
+    </p>
   </div>
 </template>
 
@@ -174,21 +226,28 @@ export default {
   left: 5px;
   z-index: 200;
 }
+
 .cancer-day {
   width: 30px;
   margin-left: 10px;
 }
+
 .peace-day {
   width: 60px;
 }
+
 .womens-day {
   width: 50px;
   height: 65px;
 }
-.shoah-day {
+
+.shoah-day,
+.environment-day {
   height: 50px;
 }
-.earth-day {
+
+.earth-day,
+.pizza-day {
   width: 60px;
   -webkit-animation: spin 3s linear;
   -moz-animation: spin 3s linear;
@@ -228,10 +287,21 @@ export default {
 .internet-day {
   width: 60px;
 }
+
+.valentines-day {
+  width: 75px;
+  margin-left: -10px; /* TOFIX: Modificare immagine e tagliare i bordi */
+  margin-top: -5px; /* TOFIX: Modificare immagine e tagliare i bordi */
+}
+
+.humans-rights-day {
+  width: 100px;
+}
+
 .description {
   font-family: sans-serif;
   font-size: 13px;
-  width: 12ch;
+  width: 15ch;
   padding: 10px;
   position: absolute;
   color: #bf0000;
