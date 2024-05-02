@@ -34,7 +34,6 @@ export default {
       } else {
         document.documentElement.style.overflow = 'auto';
       }
-      this.settings.checkingUpdates();
       this.isChristmas.merryChristmasTheme();
     },
     addNewTodo() {

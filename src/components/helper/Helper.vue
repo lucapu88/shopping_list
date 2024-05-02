@@ -37,7 +37,6 @@ export default {
     };
   },
   created() {
-    this.settings.checkingUpdates();
     this.isChristmas.merryChristmasTheme();
     this.festivities.checkFestivities();
     this.copyright();

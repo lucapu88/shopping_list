@@ -74,6 +74,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.categoryEmoji = '';
       this.categoryList = false;
       this.isDraggable = false;
+      this.settings.checkingUpdates();
       this.settings.resetListIstructions();
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
