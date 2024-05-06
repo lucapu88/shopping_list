@@ -78,7 +78,6 @@ export default {
             <p>Contact email: shoppinglist.service@outlook.com</p>
           </div>
           <div class="privacy-modal-footer">
-            <p>Latest update: 22 October 2023</p>
             <p
               style="
                 color: #12a1df;

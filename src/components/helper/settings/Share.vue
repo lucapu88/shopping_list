@@ -11,6 +11,8 @@ export default {
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       showModal: false,
+      color: null,
+      colorsNum: 11,
     };
   },
   methods: {
@@ -28,6 +30,7 @@ export default {
       setTimeout(() => (this.languages.share.visible = false), 5000);
       this.openShareOptions(); */
       this.showModal = true;
+      this.color = Math.floor(Math.random() * this.colorsNum);
     },
     onCloseModal(value) {
       this.showModal = value;
@@ -70,7 +73,11 @@ export default {
       {{ languages.share.text }}
     </p>
   </div>
-  <ShareModal :showModal="showModal" @closeModal="onCloseModal" />
+  <ShareModal
+    :showModal="showModal"
+    :color="color"
+    @closeModal="onCloseModal"
+  />
 </template>
 
 <style scoped>

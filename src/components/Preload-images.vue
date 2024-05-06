@@ -52,7 +52,7 @@ export default {
   },
 };
 </script>
-<!--  -------------------------------GLI IMPORT PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
+<!--  -------------------------------I PRELOAD PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
 <template>
   <!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
   <link
