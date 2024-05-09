@@ -39,6 +39,7 @@ export default {
   created() {
     this.isChristmas.merryChristmasTheme();
     this.festivities.checkFestivities();
+    this.settings.checkingUpdates(); // Non va tolto!!! altrimenti la data dell'ultimo aggiornamento resta in inglese.
     this.copyright();
     if (this.todosStore.showOnlyImportantTodos) {
       this.todosStore.showOnlyImportant();

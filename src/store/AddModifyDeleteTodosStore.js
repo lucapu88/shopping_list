@@ -275,6 +275,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
     },
     removeAllTodo(x) {
+      if (!this.todos.length) {
+        return;
+      }
       this.backupList();
       this.setOnlyDeletedTodos('deleteAll');
       this.todos.splice(x);

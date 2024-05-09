@@ -290,8 +290,7 @@ export default {
 
 .valentines-day {
   width: 75px;
-  margin-left: -10px; /* TOFIX: Modificare immagine e tagliare i bordi */
-  margin-top: -5px; /* TOFIX: Modificare immagine e tagliare i bordi */
+  height: 65px;
 }
 
 .humans-rights-day {
