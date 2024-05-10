@@ -65,7 +65,7 @@ export default {
   <PreloadImages />
 
   <div
-    class="container"
+    class="app-container"
     :class="{
       light: theme.lightTheme,
       dark: theme.darkTheme,
@@ -106,7 +106,7 @@ export default {
 </template>
 
 <style scoped>
-.container {
+.app-container {
   height: 100vh;
 }
 

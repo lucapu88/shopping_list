@@ -86,7 +86,7 @@ export default {
   background-size: contain;
   z-index: 450;
   background-color: #ffffff;
-  color: #d0e8a4;
+  color: #b5db6f;
   text-align: center;
   font-family: Verdana, sans-serif;
 }
@@ -206,6 +206,46 @@ export default {
 
   to {
     transform: rotate(359deg);
+  }
+}
+
+@media (min-width: 700px) {
+  .flags-container,
+  .backup-container {
+    margin-top: 5%;
+  }
+  .backup-container > img {
+    width: 50vw;
+  }
+  #loading-themes-container > img:first-child {
+    margin-top: 5%;
+    max-width: 500px;
+    animation: zoominoutsinglefeatured 1s infinite;
+  }
+  #loading-themes-container > img:last-child {
+    max-width: 850px;
+  }
+  #updating-container > img {
+    margin-top: 0;
+    max-width: 850px;
+    -webkit-animation: slideDino 3.5s forwards;
+    animation: slideDino 3.5s forwards;
+  }
+  @-webkit-keyframes slideDino {
+    50% {
+      left: 0;
+    }
+    100% {
+      left: 1000px;
+    }
+  }
+  @keyframes slideDino {
+    50% {
+      left: 0;
+    }
+    100% {
+      left: 1000px;
+    }
   }
 }
 </style>

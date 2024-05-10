@@ -47,7 +47,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('#helper-description > :nth-child(3) > .list-title').click();
         cy.get('.top > .btn-light').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
-            cy.get('.container').should('have.css', 'background-image').and('include', '/src/img/foglio_righe.webp');
+            cy.get('.app-container').should('have.css', 'background-image').and('include', '/src/img/foglio_righe.webp');
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
