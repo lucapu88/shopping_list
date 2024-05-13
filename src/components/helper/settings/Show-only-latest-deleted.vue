@@ -44,7 +44,7 @@ export default {
       "
     >
       <li class="ml-3">
-        <small>{{ languages.showOnlyLatestDeletedText.description }}</small>
+        <small>{{ languages.showOnlyLatestDeletedText.description }}.</small>
         <ToggleTutorialButton :features="showOnlyLatestDeleted" />
       </li>
       <div class="show-hide-deleted-list-container">

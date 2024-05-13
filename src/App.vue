@@ -140,4 +140,19 @@ export default {
 .padding-bottom-custom {
   padding-bottom: 10%;
 }
+
+@media (min-width: 500px) {
+  .summer {
+    background-image: url('@/img/mare-tablet.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+@media (min-width: 650px) {
+  .winter {
+    background-image: url('@/img/montagne-tablet.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
 </style>

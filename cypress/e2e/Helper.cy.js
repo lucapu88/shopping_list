@@ -90,7 +90,7 @@ describe("test dell'helper e delle impostazioni", () => {
         //summer
         cy.get('.bottom > .summer-theme').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
-            cy.get('.summer').should('have.css', 'background-image').and('include', '/src/img/mare.webp');
+            cy.get('.summer').should('have.css', 'background-image').and('include', '/src/img/mare-tablet.webp');
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();
@@ -98,7 +98,7 @@ describe("test dell'helper e delle impostazioni", () => {
         //winter
         cy.get('.bottom > .winter-theme').click().then(() => {
             //funziona solo in locale, in produzione ovviamente l'url dell'immagine cambia
-            cy.get('.winter').should('have.css', 'background-image').and('include', '/src/img/montagne.webp');
+            cy.get('.winter').should('have.css', 'background-image').and('include', '/src/img/montagne-tablet.webp');
             cy.get('body').should('have.css', 'font-family').and('include', 'Permanent Marker", cursive');
         });
         cy.get('.settings').click();

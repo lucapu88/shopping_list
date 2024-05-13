@@ -197,7 +197,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     deleteSelectedTodos() {
       this.backupList();
-      this.setOnlyDeletedTodos('multipleDelete');
+      const multipleDeleteFiltered = this.todos.filter(t => t.multipleDelete);
+      multipleDeleteFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', multipleDeleteFiltered) : this.setOnlyDeletedTodos('multipleDelete');
       //Elimina solo i todo che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
@@ -279,7 +280,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         return;
       }
       this.backupList();
-      this.setOnlyDeletedTodos('deleteAll');
+      const todoClassFiltered = this.todos.filter(t => !t.class);
+      todoClassFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', todoClassFiltered) : this.setOnlyDeletedTodos('deleteAll');
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
@@ -317,17 +319,28 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.importantTodos.visible = true;
       setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
     },
-    setOnlyDeletedTodos(index) {
+    setOnlyDeletedTodos(index, arrayWithOneElement) {
+      //TOFIX: usare uno switch? boh, pensiamoci! Comunque sia tutto questo metodo è da migliorare.
       if (index === 'multipleDelete') {
         //Salvo I todo selezionati da eliminare
         const deletedTodos = this.todos.filter((todo) => todo.multipleDelete).map(t => t.name);
         deletedTodos.push(this.getDate());
         window.localStorage.setItem('deletedTodos', deletedTodos);
+
       } else if (index === 'deleteAll') {
         //Salvo TUTTI i todo da eliminare
-        const deletedTodos = this.todos.map(t => t.name);
+        const deletedTodos = this.todos.filter((todo) => !todo.class).map(t => t.name);
+        if (!deletedTodos.length) { return; }
         deletedTodos.push(this.getDate());
         window.localStorage.setItem('deletedTodos', deletedTodos);
+
+      } else if (index === 'onlyOne') {
+        //In questo caso ho cliccato elimina tutti o elimina selezionati ma la lista ne conteneva solo uno. Allora va inserito in eliminazione singola
+        const todosName = arrayWithOneElement;
+        const [todoName] = todosName;
+        const singleTodoDeleted = [`${todoName.name}`, `${this.getDate()}`];
+        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
+
       } else {
         //Salvo IL todo singolo da eliminare
         const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
