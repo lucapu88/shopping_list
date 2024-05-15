@@ -320,31 +320,37 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
     },
     setOnlyDeletedTodos(index, arrayWithOneElement) {
-      //TOFIX: usare uno switch? boh, pensiamoci! Comunque sia tutto questo metodo è da migliorare.
-      if (index === 'multipleDelete') {
-        //Salvo I todo selezionati da eliminare
-        const deletedTodos = this.todos.filter((todo) => todo.multipleDelete).map(t => t.name);
-        deletedTodos.push(this.getDate());
-        window.localStorage.setItem('deletedTodos', deletedTodos);
+      let todosToDelete = [];
+      let storageKey = '';
 
-      } else if (index === 'deleteAll') {
-        //Salvo TUTTI i todo da eliminare
-        const deletedTodos = this.todos.filter((todo) => !todo.class).map(t => t.name);
-        if (!deletedTodos.length) { return; }
-        deletedTodos.push(this.getDate());
-        window.localStorage.setItem('deletedTodos', deletedTodos);
+      switch (index) {
+        case 'multipleDelete':
+          //Salvo I todo selezionati da eliminare
+          todosToDelete = this.todos.filter(todo => todo.multipleDelete).map(t => t.name);
+          storageKey = 'deletedTodos';
+          break;
+        case 'deleteAll':
+          //Salvo TUTTI i todo da eliminare
+          todosToDelete = this.todos.filter(todo => !todo.class).map(t => t.name);
+          storageKey = 'deletedTodos';
+          break;
+        case 'onlyOne':
+          //Se ho cliccato elimina tutti o elimina selezionati ma la lista ne conteneva solo uno. Allora diventa un'eliminazione singola
+          // eslint-disable-next-line no-case-declarations
+          const [todoName] = arrayWithOneElement;
+          todosToDelete = [todoName.name];
+          storageKey = 'singleTodoDeleted';
+          break;
+        default:
+          //Salvo IL todo singolo da eliminare
+          todosToDelete = [this.todos[index].name];
+          storageKey = 'singleTodoDeleted';
+          break;
+      }
 
-      } else if (index === 'onlyOne') {
-        //In questo caso ho cliccato elimina tutti o elimina selezionati ma la lista ne conteneva solo uno. Allora va inserito in eliminazione singola
-        const todosName = arrayWithOneElement;
-        const [todoName] = todosName;
-        const singleTodoDeleted = [`${todoName.name}`, `${this.getDate()}`];
-        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
-
-      } else {
-        //Salvo IL todo singolo da eliminare
-        const singleTodoDeleted = [`${this.todos[index].name}`, `${this.getDate()}`];
-        window.localStorage.setItem('singleTodoDeleted', singleTodoDeleted);
+      if (todosToDelete.length > 0) {
+        todosToDelete.push(this.getDate());
+        window.localStorage.setItem(storageKey, todosToDelete);
       }
     },
     getOnlyDeletedTodos() {
