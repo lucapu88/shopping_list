@@ -6,12 +6,14 @@ import MainList from './components/Main-list.vue';
 import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue';
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';
 import PreloadImages from './components/Preload-images.vue';
+import SuggestionsModal from './components/panels-and-modals/Suggestions-modal.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import { useSuggestionsStore } from '@/store/SuggestionsStore';
 </script>
 
 <script>
@@ -24,6 +26,7 @@ export default {
       settings: useSettingsStore(),
       theme: useThemeStore(),
       todosStore: useAddModifyDeleteTodosStore(),
+      suggestionsStore: useSuggestionsStore(),
     };
   },
   created() {
@@ -85,6 +88,7 @@ export default {
           <header>
             <HeadList />
             <ConfirmModal />
+            <SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
           </header>
 
           <main>

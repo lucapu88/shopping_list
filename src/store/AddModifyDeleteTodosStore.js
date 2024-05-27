@@ -3,6 +3,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
+import { useSuggestionsStore } from '@/store/SuggestionsStore';
 
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   state: () => ({
@@ -10,6 +11,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     settings: useSettingsStore(),
     christmas: useChristmasStore(),
     festivities: useOthersFestivitiesStore(),
+    suggestionsStore: useSuggestionsStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -22,6 +24,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     categoryEmoji: '',
     addTodoInCategory: { condition: false, id: null },
     isDraggable: false,
+    inModification: false,
+    categoryName: null,
     confirmDeleteModal: false,
     index: null,
     deleteSelected: false,
@@ -37,8 +41,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     openDeleteAllModal: (state) => state.visible = !state.visible,
   },
   actions: {
-    addTodo() { //TOFIX questo metodo fa un po cagare, è da migliorare!
-
+    addTodo(tip) { //TOFIX questo metodo fa un po cagare, è da migliorare!
+      if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
       this.languages.categories.forEach((category) => {
@@ -161,6 +165,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.addTodoInCategory.condition = false;
       this.focusIn = false;
+      this.inModification = false;
     },
     resetModify(copiedTodo) {
       const todoEmpty = this.todos.find((todo) => todo.modify);
@@ -225,8 +230,13 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
               this.languages.placeholder = (this.languages.langIta ? 'Aggiungi in '
                 : this.languages.langSpanish ? 'Añadir en '
                   : 'Add in ') + todo.emojy + todo.name.toUpperCase();
+
+              this.inModification = true;
+              this.categoryName = todo.name.toUpperCase();
+              this.suggestionsStore.checkAndSetSuggestionsLanguage(this.categoryName);
             } else {
               this.focusIn = false;
+              this.inModification = false;
               this.languages.placeholder = this.languages.defaultPlaceholderText;
             }
           }

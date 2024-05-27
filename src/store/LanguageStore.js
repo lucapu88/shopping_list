@@ -223,7 +223,8 @@ export const useLanguageStore = defineStore('Language', {
       description: 'Here you will only find your last single or multiple deletion, just as a summary',
       singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
-    }
+    },
+    tipsText: 'Show suggestions',
   }),
   getters: {},
   actions: {
@@ -412,6 +413,7 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
+      this.tipsText = 'Mostra suggerimenti';
     },
     setSpanishTranslations() {
       this.placeholder = 'Escriba aquí qué comprar';
@@ -517,6 +519,7 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
+      this.tipsText = 'Mostrar consejos';
     }
   },
 });
