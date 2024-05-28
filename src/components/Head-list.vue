@@ -184,7 +184,7 @@ export default {
             block: addTodo.inModification,
           }"
         >
-          {{ languages.tipsText }}
+          {{ languages.suggestions.tipsBtnText }}
         </span>
       </button>
     </div>
@@ -199,6 +199,7 @@ export default {
   min-width: 345px;
   max-width: 600px;
   position: relative;
+  margin: 0 auto;
 }
 .christmas {
   margin-top: 40px;
@@ -402,14 +403,6 @@ export default {
   }
 }
 
-.tips-btn {
-  border-top: none;
-  min-width: 295px;
-  max-width: 475px;
-  width: 83%;
-  margin-left: 20px;
-  padding: 5px;
-}
 .tips-text.block {
   animation-name: displayBlock;
   animation-iteration-count: 1;

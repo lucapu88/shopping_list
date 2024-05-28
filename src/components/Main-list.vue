@@ -25,7 +25,7 @@ export default {
 <template>
   <ul
     id="todo-list"
-    class="col-12"
+    class="col-12 todo-list"
     :class="{
       christmas: isChristmas.christmasTheme,
     }"
@@ -35,4 +35,8 @@ export default {
   </ul>
 </template>
 
-<style scoped></style>
+<style scoped>
+.todo-list {
+  max-width: 100vw;
+}
+</style>
