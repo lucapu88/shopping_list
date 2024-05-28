@@ -26,6 +26,21 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('#draggable-children').should('not.exist');
   });
 
+  it('verifico se funzionano i suggerimenti nelle categorie', () => {
+    cy.get('.pushbutton-container > :nth-child(3)').click({ multiple: true });
+    cy.get('.categories > :nth-child(24) > .animation-no-retro').click({ force: true });
+    cy.get('#todo-list').children().should('have.length', 1);
+
+    cy.get('#todo').click();
+    cy.get('.tips-btn').should('exist').click();
+
+    cy.get('.suggestions-modal-container').should('exist');
+    cy.get('main > :nth-child(2)').click();
+    cy.get('.suggestions-modal-container').should('not.exist');
+
+    cy.get('#todo-list').children().should('have.length', 2);
+  });
+
   it('verifico se funziona la modalità eliminazione sicura', () => {
     cy.get('.inputText').click().type(parola);
     cy.get('.input-btns-container > .btn-info').click();
