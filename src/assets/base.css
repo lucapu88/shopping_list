@@ -70,6 +70,11 @@ button {
   font-weight: bold;
 }
 
+.under-pressure {
+  /* border-bottom: 2px solid; */
+  text-decoration: underline;
+}
+
 .large {
   font-size: larger;
 }
@@ -92,6 +97,15 @@ button {
   100% {
     transform: scale(1, 1);
   }
+}
+
+.tips-btn {
+  border-top: none;
+  min-width: 295px;
+  max-width: 475px;
+  width: 83%;
+  margin-left: 20px;
+  padding: 5px;
 }
 
 .helper-settings {

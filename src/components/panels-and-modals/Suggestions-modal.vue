@@ -34,22 +34,31 @@ export default {
       }"
     >
       <header>
-        <h4>{{ todosStore.categoryName }}</h4>
-        <span
-          class="close-sugg-modal"
-          @click="suggestionsStore.toggleSuggestionsModal()"
-        >
-          X
-        </span>
+        <div>
+          <h4>{{ todosStore.categoryName }}</h4>
+          <span
+            class="close-sugg-modal"
+            @click="suggestionsStore.toggleSuggestionsModal()"
+          >
+            X
+          </span>
+        </div>
+        <div class="header-info">
+          <small>{{ languages.suggestions.headerInfo }}</small>
+        </div>
       </header>
       <main>
         <p
           class="tip"
+          :class="{
+            'boldi-cipollino': themes.elegantTheme,
+            'under-pressure': themes.lightTheme,
+          }"
           v-for="(tip, n) in suggestionsStore.suggestionsList"
           :key="n"
           @click="suggestionsStore.addTip(tip)"
         >
-          {{ tip }}
+          <strong> + </strong> {{ tip }}
         </p>
       </main>
     </div>
@@ -74,11 +83,18 @@ export default {
 .suggestions-modal-container > header {
   text-align: center;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.header-info {
+  line-height: 1;
 }
 .suggestions-modal-container > main {
-  height: 95%;
+  height: 88%;
   padding: 0 15px;
   overflow: auto;
+  text-align: center;
+  font-size: 20px;
 }
 .close-sugg-modal {
   position: absolute;
@@ -87,6 +103,8 @@ export default {
   width: 40px;
   height: 40px;
   text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
 }
 .tip {
   margin-bottom: 5px;

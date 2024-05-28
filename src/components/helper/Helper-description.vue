@@ -18,6 +18,7 @@ export default {
       languages: useLanguageStore(),
       addEditDelete: 'addEditDelete',
       categories: 'categories',
+      suggestions: 'suggestions',
       dragNdrop: 'dragNdrop',
       multipleDelete: 'multipleDelete',
       copyPaste: 'copyPaste',
@@ -61,12 +62,12 @@ export default {
       {{ languages.helperDescription.instructionsTitle }}
     </p>
     <ul class="helper-list">
+      <!-- AGGIUNGI MODIFICA ELIMINA -->
       <ListIstructionAccordion
         show-list-istructions-input="addEditDelete"
         :istructions-text="languages.helperDescription.addEditDelete"
         :select-deselect-arrow="settings.addEditDelete"
       />
-      <!-- AGGIUNGI MODIFICA ELIMINA -->
       <template v-if="settings.addEditDelete">
         <li>
           <img
@@ -143,12 +144,12 @@ export default {
           :features="addEditDelete"
         />
       </template>
+      <!-- CATEGORIE -->
       <ListIstructionAccordion
         show-list-istructions-input="categoriesInfo"
         :istructions-text="languages.helperDescription.categories"
         :select-deselect-arrow="settings.categoriesInfo"
       />
-      <!-- CATEGORIE -->
       <template v-if="settings.categoriesInfo">
         <li>
           {{ languages.helperDescription.addCategory.part1 }}
@@ -227,19 +228,53 @@ export default {
             <span>{{ languages.removeEmpty }}</span></button
           >.
         </li>
-
         <ToggleTutorialButton :features="categories" />
         <Tutorial
           v-if="settings.video && settings.feature === categories"
           :features="categories"
         />
       </template>
+      <!-- SUGGERIMENTI -->
+      <ListIstructionAccordion
+        show-list-istructions-input="suggestions"
+        :istructions-text="languages.helperDescription.suggestionsTitle"
+        :select-deselect-arrow="settings.suggestions"
+      />
+      <template v-if="settings.suggestions">
+        <li>
+          {{ languages.helperDescription.suggestions.part1 }}:
+          <button
+            class="tips-btn"
+            :class="{
+              'tips-btn-light': theme.lightTheme,
+              'tips-btn-dark': theme.darkTheme,
+              'tips-btn-minimal': theme.minimalTheme,
+              'tips-btn-retro': theme.retroTheme,
+              'tips-btn-summer': theme.summerTheme,
+              'tips-btn-winter': theme.winterTheme,
+              'tips-btn-elegant': theme.elegantTheme,
+              'tips-btn-pink': theme.pinkTheme,
+            }"
+          >
+            <span class="tips-text">
+              {{ languages.suggestions.tipsBtnText }}
+            </span>
+          </button>
+          <br />
+          {{ languages.helperDescription.suggestions.part2 }}
+        </li>
+        <ToggleTutorialButton :features="suggestions" />
+        <Tutorial
+          v-if="settings.video && settings.feature === suggestions"
+          :features="suggestions"
+        />
+      </template>
+      <!-- DRAG N DROP -->
       <ListIstructionAccordion
         show-list-istructions-input="dragNdrop"
         :istructions-text="languages.helperDescription.dragNdropTitle"
         :select-deselect-arrow="settings.dragNdrop"
       />
-      <!-- DRAG N DROP -->
       <template v-if="settings.dragNdrop">
         <li>
           {{ languages.helperDescription.dragNdropText.part1 }}
@@ -274,12 +309,12 @@ export default {
           :features="dragNdrop"
         />
       </template>
+      <!-- SELEZIONE MULTIPLA -->
       <ListIstructionAccordion
         show-list-istructions-input="selectAndDelete"
         :istructions-text="languages.helperDescription.multipleDeleteTitle"
         :select-deselect-arrow="settings.selectAndDelete"
       />
-      <!-- SELEZIONE MULTIPLA -->
       <template v-if="settings.selectAndDelete">
         <li>
           {{ languages.helperDescription.multipleDeleteText.part1 }}
@@ -318,12 +353,12 @@ export default {
           :features="multipleDelete"
         />
       </template>
+      <!-- COPIA E INCOLLA - EVIDENZIA -->
       <ListIstructionAccordion
         show-list-istructions-input="copyHighlights"
         :istructions-text="languages.helperDescription.copyListTitle"
         :select-deselect-arrow="settings.copyHighlights"
       />
-      <!-- COPIA E INCOLLA - EVIDENZIA -->
       <template v-if="settings.copyHighlights">
         <li>
           <span
@@ -396,12 +431,12 @@ export default {
           :features="copyPaste"
         />
       </template>
+      <!-- CANCELLA TUTTO -->
       <ListIstructionAccordion
         show-list-istructions-input="deleteAllInfo"
         :istructions-text="languages.helperDescription.deleteAllTitle"
         :select-deselect-arrow="settings.deleteAllInfo"
       />
-      <!-- CANCELLA TUTTO -->
       <template v-if="settings.deleteAllInfo">
         <li>
           {{ languages.helperDescription.deleteAllText.part1 }}
@@ -417,12 +452,12 @@ export default {
           {{ languages.helperDescription.deleteAllText.part2 }}
         </li>
       </template>
+      <!-- CONTATTI -->
       <ListIstructionAccordion
         show-list-istructions-input="support"
         :istructions-text="languages.helperDescription.support"
         :select-deselect-arrow="settings.support"
       />
-      <!-- CONTATTI -->
       <template v-if="settings.support">
         <li>
           {{ languages.helperDescription.supportText }}

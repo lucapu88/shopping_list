@@ -122,6 +122,7 @@
   border-right: 2px solid var(--black);
   border-bottom: 2px solid var(--black);
   border-radius: 0 0 10px 10px;
+  color: var(--black);
 }
 .sugg-modal-light {
   background-color: var(--white);
@@ -176,7 +177,7 @@
   border-right: 2px solid var(--dark-white);
   border-bottom: 2px solid var(--dark-white);
   border-radius: 0 0 10px 10px;
-  color: var(--dark-white);
+  color: var(--white);
 }
 .sugg-modal-dark {
   background-color: var(--dark-background-color);
@@ -268,6 +269,7 @@
   border-right: 2px solid var(--minimal-secondary-color);
   border-bottom: 2px solid var(--minimal-secondary-color);
   border-radius: 0 0 5px 5px;
+  color: var(--minimal-secondary-color);
 }
 .sugg-modal-minimal {
   background-color: var(--minimal-primary-color);

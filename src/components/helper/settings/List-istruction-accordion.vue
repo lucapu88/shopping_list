@@ -43,6 +43,12 @@ export default {
   >
     <span v-if="isSettings" class="settings-icon mr-1"> &#x2699; </span>
     {{ istructionsText }}
+    <span
+      v-if="istructionsText === languages.helperDescription.suggestionsTitle"
+      class="new"
+    >
+      NEW
+    </span>
     <img
       v-if="!theme.elegantTheme"
       class="arrow"

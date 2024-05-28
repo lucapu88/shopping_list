@@ -57,6 +57,11 @@ export default {
       type="video/mp4"
     />
     <source
+      v-if="features === 'suggestions'"
+      src="@/video/suggestions.mp4"
+      type="video/mp4"
+    />
+    <source
       v-if="features === 'dragNdrop'"
       src="@/video/drag-drop.mp4"
       type="video/mp4"

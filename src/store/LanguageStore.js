@@ -158,6 +158,11 @@ export const useLanguageStore = defineStore('Language', {
       },
       addAllCat: 'You can add all the categories by clicking on',
       removeEmptyCat: 'You can delete only the categories left empty by clicking on',
+      suggestionsTitle: 'Suggestions',
+      suggestions: {
+        part1: 'When you click on a category to add items, this button appears',
+        part2: 'which upon clicking shows you a series of product suggestions related to the selected category. Simply click on the item you are interested in and you will find it listed in the appropriate category.'
+      },
       dragNdropTitle: 'Drag and Drop',
       dragNdropText: {
         part1: 'By clicking on',
@@ -226,7 +231,10 @@ export const useLanguageStore = defineStore('Language', {
       singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
     },
-    tipsText: 'Show suggestions',
+    suggestions: {
+      tipsBtnText: 'Show suggestions',
+      headerInfo: 'Click on one of these items to add it to the list',
+    },
   }),
   getters: {},
   actions: {
@@ -295,17 +303,17 @@ export const useLanguageStore = defineStore('Language', {
     },
     insertAllCategories() {
       if (this.langIta) {
-        this.itaCategories.forEach((category) => {
+        this.itaCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
           this.todosStore.addTodo();
         });
       } else if (this.langSpanish) {
-        this.spanCategories.forEach((category) => {
+        this.spanCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
           this.todosStore.addTodo();
         });
       } else {
-        this.engCategories.forEach((category) => {
+        this.engCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
           this.todosStore.addTodo();
         });
@@ -365,6 +373,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.addCategory.part7 = ' così potrai aggiungerci roba al suo interno.Una volta finito basta ricliccare sul nome o su qualsiasi altro nome di altre categorie.';
       this.helperDescription.addAllCat = 'È possibile aggiungere tutte le categorie cliccando su';
       this.helperDescription.removeEmptyCat = 'È possibile eliminare solo le categorie lasciate vuote cliccando su';
+      this.helperDescription.suggestionsTitle = 'Suggerimenti';
+      this.helperDescription.suggestions.part1 = 'Quando clicchi su una categoria per aggiungere elementi, compare questo pulsante';
+      this.helperDescription.suggestions.part2 = "che al click ti mostra una serie di suggerimenti di prodotti inerenti alla categoria selezionata. Basta cliccare su l'elemento che ti interessa e lo troverai inserito in lista nella categoria apposita.";
       this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi';
       this.helperDescription.dragNdropText.part1 = 'Cliccando su';
       this.helperDescription.dragNdropText.part2 = 'potrai trascinare gli elementi e, tenendo premuto, spostarli dove vuoi.';
@@ -415,7 +426,8 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
-      this.tipsText = 'Mostra suggerimenti';
+      this.suggestions.tipsBtnText = 'Mostra suggerimenti';
+      this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
     },
     setSpanishTranslations() {
       this.placeholder = 'Escriba aquí qué comprar';
@@ -471,6 +483,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.addCategory.part7 = ' Una vez que hayas terminado, haz clic en el nombre de la categoría o en cualquier otro nombre.';
       this.helperDescription.addAllCat = 'Puede añadir todas las categorías haciendo clic en';
       this.helperDescription.removeEmptyCat = 'Sólo puede eliminar las categorías que quedan vacías pulsando en';
+      this.helperDescription.suggestionsTitle = 'Consejos';
+      this.helperDescription.suggestions.part1 = 'Al hacer clic en una categoría para añadir artículos, aparece este botón';
+      this.helperDescription.suggestions.part2 = "que al pulsarlo le muestra una serie de sugerencias de productos relacionados con la categoría seleccionada. Simplemente haga clic en el artículo que le interese y lo encontrará listado en la categoría correspondiente.";
       this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos';
       this.helperDescription.dragNdropText.part1 = 'Haciendo clic en';
       this.helperDescription.dragNdropText.part2 = 'puedes arrastrar elementos y, manteniéndolos pulsados, moverlos donde quieras.';
@@ -521,7 +536,9 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
-      this.tipsText = 'Mostrar consejos';
+      this.suggestions.tipsBtnText = 'Mostrar consejos';
+      this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
+
     }
   },
 });

@@ -21,6 +21,7 @@ export const useSettingsStore = defineStore('settings', {
     backupList: false,
     addEditDelete: false,
     categoriesInfo: false,
+    suggestions: false,
     dragNdrop: false,
     selectAndDelete: false,
     copyHighlights: false,
@@ -114,6 +115,7 @@ export const useSettingsStore = defineStore('settings', {
       //ISTRUZIONI
       this.addEditDelete = false;
       this.categoriesInfo = false;
+      this.suggestions = false;
       this.dragNdrop = false;
       this.selectAndDelete = false;
       this.copyHighlights = false;
@@ -162,6 +164,9 @@ export const useSettingsStore = defineStore('settings', {
           break;
         case 'categoriesInfo':
           this.categoriesInfo = !this.categoriesInfo;
+          break;
+        case 'suggestions':
+          this.suggestions = !this.suggestions;
           break;
         case 'dragNdrop':
           this.dragNdrop = !this.dragNdrop;
