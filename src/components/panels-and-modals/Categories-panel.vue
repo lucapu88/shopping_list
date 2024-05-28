@@ -40,29 +40,30 @@ export default {
           {{ languages.choseCategoryText }}
         </span>
       </p>
-      <p
-        class="category-list"
-        :class="{
-          'retro-category-list': theme.retroTheme,
-          'category-pink-btn': theme.pinkTheme,
-        }"
-        v-for="(category, i) in languages.categories"
-        :key="i"
-      >
-        <span
+      <template v-for="(category, i) in languages.categories" :key="i">
+        <p
+          class="category-list"
           :class="{
-            'animation-no-retro': !theme.retroTheme,
-            'winter-category-list': theme.winterTheme,
+            'retro-category-list': theme.retroTheme,
+            'category-pink-btn': theme.pinkTheme,
           }"
-          @click="todosStore.selectCategoryName(category.name)"
+          v-if="category.active"
         >
-          {{
-            theme.minimalTheme || theme.retroTheme
-              ? category.name
-              : category.emojy + ' ' + category.name
-          }}
-        </span>
-      </p>
+          <span
+            :class="{
+              'animation-no-retro': !theme.retroTheme,
+              'winter-category-list': theme.winterTheme,
+            }"
+            @click="todosStore.selectCategoryName(category.name)"
+          >
+            {{
+              theme.minimalTheme || theme.retroTheme
+                ? category.name
+                : category.emojy + ' ' + category.name
+            }}
+          </span>
+        </p>
+      </template>
     </div>
     <div v-if="todosStore.categoryListChildren" class="add-remove-empty">
       <button
@@ -116,8 +117,8 @@ export default {
 
 .categories {
   opacity: 1;
-  -webkit-animation: fadeIn 0.6s;
-  animation: fadeIn 0.6s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 @-webkit-keyframes fadeIn {
   from {
