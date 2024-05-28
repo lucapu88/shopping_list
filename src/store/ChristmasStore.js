@@ -21,9 +21,9 @@ export const useChristmasStore = defineStore('christmas', {
             }
         },
         addChristmasCategory() {
-            this.languages.itaCategories.push({ name: 'regali di natale', emojy: String.fromCodePoint(0x1f385) });
-            this.languages.spanCategories.push({ name: 'regalos de navidad', emojy: String.fromCodePoint(0x1f385) });
-            this.languages.engCategories.push({ name: 'christmas gifts', emojy: String.fromCodePoint(0x1f385) });
+            this.languages.itaCategories.find(cat => cat.name === 'regali di natale').active = true;
+            this.languages.spanCategories.find(cat => cat.name === 'regalos de navidad').active = true;
+            this.languages.engCategories.find(cat => cat.name === 'christmas gifts').active = true;
         }
     },
 });
