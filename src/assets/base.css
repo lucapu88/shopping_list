@@ -311,7 +311,7 @@ button {
 }
 
 .modify {
-  width: 20.938rem;
+  width: 90%;
   animation: enlarge 0.8s ease-out;
 }
 @-moz-keyframes enlarge {
@@ -320,7 +320,7 @@ button {
     margin-left: auto;
   }
   100% {
-    width: 300px;
+    width: 90%;
     margin-left: auto;
   }
 }
@@ -330,7 +330,7 @@ button {
     margin-left: auto;
   }
   100% {
-    width: 300px;
+    width: 90%;
     margin-left: auto;
   }
 }
@@ -340,7 +340,7 @@ button {
     margin-left: auto;
   }
   100% {
-    width: 300px;
+    width: 90%;
     margin-left: auto;
   }
 }
@@ -354,7 +354,7 @@ button {
     width: 0;
   }
   100% {
-    width: 200px;
+    width: 90%;
   }
 }
 @-moz-keyframes enlargeInput {
@@ -362,7 +362,7 @@ button {
     width: 0;
   }
   100% {
-    width: 200px;
+    width: 90%;
   }
 }
 @-webkit-keyframes enlargeInput {
@@ -370,7 +370,7 @@ button {
     width: 0;
   }
   100% {
-    width: 200px;
+    width: 90%;
   }
 }
 .undo {

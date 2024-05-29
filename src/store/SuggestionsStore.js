@@ -14,16 +14,16 @@ export const useSuggestionsStore = defineStore('suggestions', {
     toggleSuggestionsModal() {
       this.suggestionsModal = !this.suggestionsModal;
     },
-    checkAndSetSuggestionsLanguage(catName) {
+    checkAndSetSuggestionsLanguage(catName) { //TOFIX Sicuramente migliorabile sto coso gigante di merda qui sotto!
       const categoryName = catName.toLowerCase();
       // ------------------------------------------------------------- INGLESE
       switch (categoryName) {
         case 'vegetables':
-          this.suggestionsList = ["Carrots", "Tomatoes", "Potatoes", "Onions", "Zucchini", "Bell peppers", "Cucumbers", "Eggplants", "Spinach", "Lettuce", "Broccoli", "Cauliflower", "Asparagus", "Green beans", "Celery", "Fennel", "Radishes", "Swiss chard", "Cabbage", "Pumpkin"];
+          this.suggestionsList = ["Carrots", "Tomatoes", "Potatoes", "Onions", "courgettes", "Bell peppers", "Cucumbers", "Eggplants", "Spinach", "Lettuce", "Broccoli", "Cauliflower", "Asparagus", "Green beans", "Celery", "Fennel", "Radishes", "Swiss chard", "Cabbage", "Pumpkin"];
           break;
 
         case 'meat':
-          this.suggestionsList = ["Chicken", "Beef", "Pork", "Cotechino", "Sausage", "Lamb", "Duck", "Veal", "Rabbit", "Mortadella", "Salami", "Cooked ham", "Prosciutto", "Bresaola", "Turkey breast", "Chicken breast", "Bacon", "Chicken breast", "Chicken thigh", "Chicken drumstick", "Chicken wings", "Beef fillet", "Beef sirloin", "Beef rib", "Beef steak", "T-bone steak", "Beef tenderloin", "Pork fillet", "Pork ribs", "Pork loin", "Pork shoulder", "Pork neck", "Pork shank", "Pork chops", "Pork lard", "Pork jowl"];
+          this.suggestionsList = ["Chicken", "Beef", "Pork", "Cotechino", "Sausage", "Lamb", "Duck", "Veal", "Rabbit", "Mortadella", "Salami", "Cooked ham", "Prosciutto", "Bresaola", "Turkey breast", "Chicken breast", "Chicken burger", "Turkey burger", "Veal burger", "Bacon", "Chicken breast", "Chicken thigh", "Chicken drumstick", "Chicken wings", "Beef fillet", "Beef sirloin", "Beef rib", "Beef steak", "T-bone steak", "Beef tenderloin", "Pork fillet", "Pork ribs", "Pork loin", "Pork shoulder", "Pork neck", "Pork shank", "Pork chops", "Pork lard", "Pork jowl"];
           break;
 
         case 'fish':
@@ -122,7 +122,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
 
         case 'carne':
-          this.suggestionsList = ["Pollo", "Manzo", "Maiale", "Cotechino", "Salsiccia", "Agnello", "Anatra", "Vitello", "Coniglio", "Mortadella", "Salame", "Prosciutto cotto", "Prosciutto crudo", "Bresaola", "Fesa di tacchino", "Fesa di pollo", "Bacon", "Petto di pollo", "Coscia di pollo", "Sovracoscia di pollo", "Ali di pollo", "Filetto di manzo", "Controfiletto di manzo", "Costata di manzo", "Bistecca di manzo", "Fiorentina di manzo", "Sottofiletto di manzo", "Filetto di maiale", "Costine di maiale", "Lonza di maiale", "Spalla di maiale", "Coppa di maiale", "Stinco di maiale", "Braciole di maiale", "Lardo di maiale", "Guanciale di maiale"];
+          this.suggestionsList = ["Pollo", "Manzo", "Maiale", "Cotechino", "Salsiccia", "Agnello", "Anatra", "Vitello", "Coniglio", "Mortadella", "Salame", "Prosciutto cotto", "Prosciutto crudo", "Bresaola", "Fesa di tacchino", "Fesa di pollo", "Hamburger di pollo", "Hamburger di tacchino", "Hamburger di vitello", "Bacon", "Petto di pollo", "Coscia di pollo", "Sovracoscia di pollo", "Ali di pollo", "Filetto di manzo", "Controfiletto di manzo", "Costata di manzo", "Bistecca di manzo", "Fiorentina di manzo", "Sottofiletto di manzo", "Filetto di maiale", "Costine di maiale", "Lonza di maiale", "Spalla di maiale", "Coppa di maiale", "Stinco di maiale", "Braciole di maiale", "Lardo di maiale", "Guanciale di maiale"];
           break;
 
         case 'pesce':
@@ -221,7 +221,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
 
         case 'carnes':
-          this.suggestionsList = ["Pollo", "Ternera", "Cerdo", "Cotechino", "Salchicha", "Cordero", "Pato", "Ternera", "Conejo", "Mortadela", "Salami", "Jamón cocido", "Jamón crudo", "Bresaola", "Pechuga de pavo", "Pechuga de pollo", "Tocino", "Pechuga de pollo", "Muslo de pollo", "Contramuslo de pollo", "Alas de pollo", "Solomillo de ternera", "Lomo de ternera", "Costilla de ternera", "Bistec de ternera", "Chuleta de ternera", "Lomo de ternera", "Solomillo de cerdo", "Costillas de cerdo", "Lomo de cerdo", "Paletilla de cerdo", "Cuello de cerdo", "Codillo de cerdo", "Chuletas de cerdo", "Lardo de cerdo", "Carrillera de cerdo"];
+          this.suggestionsList = ["Pollo", "Ternera", "Cerdo", "Cotechino", "Salchicha", "Cordero", "Pato", "Ternera", "Conejo", "Mortadela", "Salami", "Jamón cocido", "Jamón crudo", "Bresaola", "Pechuga de pavo", "Pechuga de pollo", "Tocino", "Hamburguesa de pollo", "Hamburguesa de pavo", "Hamburguesa de ternera", "Bacon", "Pechuga de pollo", "Muslo de pollo", "Contramuslo de pollo", "Alas de pollo", "Solomillo de ternera", "Lomo de ternera", "Costilla de ternera", "Bistec de ternera", "Chuleta de ternera", "Lomo de ternera", "Solomillo de cerdo", "Costillas de cerdo", "Lomo de cerdo", "Paletilla de cerdo", "Cuello de cerdo", "Codillo de cerdo", "Chuletas de cerdo", "Lardo de cerdo", "Carrillera de cerdo"];
           break;
 
         case 'pescado':

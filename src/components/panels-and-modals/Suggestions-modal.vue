@@ -3,6 +3,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSuggestionsStore } from '@/store/SuggestionsStore';
+import { useChristmasStore } from '@/store/ChristmasStore';
 </script>
 
 <script>
@@ -13,6 +14,7 @@ export default {
       themes: useThemeStore(),
       todosStore: useAddModifyDeleteTodosStore(),
       suggestionsStore: useSuggestionsStore(),
+      isChristmas: useChristmasStore(),
     };
   },
 };
@@ -34,6 +36,12 @@ export default {
       }"
     >
       <header>
+        <img
+          v-if="isChristmas.christmasTheme"
+          class="santa-claus"
+          src="@/img/festivities/babbo-natale.webp"
+          alt="OH-OH-OOOOH-Merry-Christmas"
+        />
         <div>
           <h4>{{ todosStore.categoryName }}</h4>
           <span
@@ -41,6 +49,12 @@ export default {
             @click="suggestionsStore.toggleSuggestionsModal()"
           >
             X
+            <img
+              v-if="isChristmas.christmasTheme"
+              class="ghirlanda-tonda"
+              src="@/img/festivities/ghirlanda-tonda.webp"
+              alt="merry-christmas"
+            />
           </span>
         </div>
         <div class="header-info">
@@ -61,6 +75,18 @@ export default {
           <strong> + </strong> {{ tip }}
         </p>
       </main>
+      <footer v-if="isChristmas.christmasTheme">
+        <img
+          class="decorations"
+          src="@/img/festivities/christmas-decorations-sinistra.webp"
+          alt="Merry-Christmas"
+        />
+        <img
+          class="decorations"
+          src="@/img/festivities/christmas-decorations-destra.webp"
+          alt="Merry-Christmas"
+        />
+      </footer>
     </div>
   </div>
 </template>
@@ -85,9 +111,19 @@ export default {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.santa-claus {
+  position: absolute;
+  top: -8px;
+  left: 3px;
+  height: 65px;
+  width: 55px;
+  z-index: 10;
 }
 .header-info {
   line-height: 1;
+  z-index: 20;
 }
 .suggestions-modal-container > main {
   height: 88%;
@@ -106,7 +142,23 @@ export default {
   font-weight: bold;
   padding-top: 5px;
 }
+.ghirlanda-tonda {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+}
 .tip {
   margin-bottom: 5px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.decorations {
+  width: 100px;
 }
 </style>

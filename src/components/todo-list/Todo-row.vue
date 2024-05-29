@@ -113,7 +113,7 @@ export default {
       'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
       'elegant-line-through': todo.multipleDelete && theme.elegantTheme,
       'boldi-cipollino': theme.elegantTheme,
-      'winter-todo': theme.winterTheme,
+      'winter-todo': theme.winterTheme && !todo.isSelected,
     }"
   >
     {{ todo.name }}
