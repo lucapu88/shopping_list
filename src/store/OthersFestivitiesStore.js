@@ -51,7 +51,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             if (currentMonth === 8 && currentDay <= 7 && weekDay === 5) {
                 this.beerDay = true;
             }
-            if (currentDay === 1 && currentMonth === 7) {
+            if (currentDay === 1 && currentMonth === 6) {
                 this.parentsDay = true;
                 //volevo aggiungere anche la festa dei nonni ma purtroppo la chiesa è stronza e non da una data precisa ma sceglie a cazzi suoi
             }

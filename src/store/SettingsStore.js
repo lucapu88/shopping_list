@@ -59,7 +59,7 @@ export const useSettingsStore = defineStore('settings', {
           ? ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
           : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-      if ((lastMonth !== null && lastYear !== null) && monthNow == lastMonth && yearNow == lastYear) {
+      if (lastMonth && lastYear && monthNow == lastMonth && yearNow == lastYear) {
         this.languages.updateText.readyForUpdate = true;
         this.dateLastUpdate = `${month[lastMonth]}/${lastYear}`;
       }
@@ -87,6 +87,7 @@ export const useSettingsStore = defineStore('settings', {
     },
     openHelper() {
       this.helper = true;
+      this.checkingUpdates(); //Per una sicurezza maggiore, valutare se tenerlo
     },
     closeHelper() {
       this.helperInClosing = true;
