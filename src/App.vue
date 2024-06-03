@@ -112,6 +112,7 @@ export default {
 <style scoped>
 .app-container {
   height: 100vh;
+  overflow-x: hidden;
 }
 
 @media (min-width: 370px) {

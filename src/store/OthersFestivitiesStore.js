@@ -18,7 +18,23 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
     }),
     getters: {},
     actions: {
+        resetFestivities() {
+            this.halloweenTheme = false;
+            this.worldCancerDay = false;
+            this.worldPeaceDay = false;
+            this.HolocaustMemorialDay = false;
+            this.earthDay = false;
+            this.beerDay = false;
+            this.parentsDay = false;
+            this.toiletDay = false;
+            this.internetDay = false;
+            this.worldPizzaDay = false;
+            this.valentinesDay = false;
+            this.worldEnvironmentDay = false;
+            this.humanRightsDayText = false;
+        },
         checkFestivities() {
+            this.resetFestivities();
             const today = new Date();
             const currentMonth = today.getMonth() + 1;
             const currentDay = today.getDate();

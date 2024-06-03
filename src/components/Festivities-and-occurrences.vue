@@ -1,6 +1,7 @@
 <script setup>
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
+import { useChristmasStore } from '@/store/ChristmasStore';
 </script>
 
 <script>
@@ -8,12 +9,15 @@ export default {
   data() {
     return {
       festivitiesOrOccurrences: useOthersFestivitiesStore(),
+      christmas: useChristmasStore(),
       languages: useLanguageStore(),
       description: false,
     };
   },
   methods: {
     showDescription() {
+      this.christmas.merryChristmasTheme();
+      this.festivitiesOrOccurrences.checkFestivities();
       this.description = true;
       setTimeout(() => {
         this.description = false;
