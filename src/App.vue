@@ -13,7 +13,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import { useSuggestionsStore } from '@/store/SuggestionsStore';
+import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 </script>
 
 <script>

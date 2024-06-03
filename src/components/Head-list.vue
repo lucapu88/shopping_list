@@ -6,7 +6,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import { useSuggestionsStore } from '@/store/SuggestionsStore';
+import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import FestivitiesAndOccurrences from './Festivities-and-occurrences.vue';
 </script>
 
@@ -130,8 +130,9 @@ export default {
         v-if="addTodo.inModification"
         class="remove-selected-cat"
         @click="addTodo.removeSelectedCategoryToAddItem()"
-        >X</span
       >
+        X
+      </span>
       <input
         class="inputText border border-primary rounded"
         :class="{
@@ -147,6 +148,7 @@ export default {
       />
       <button
         class="btn btn-info"
+        :disabled="addTodo.newTodo && !addTodo.newTodo.trim()"
         :class="{ 'elegant-btn': theme.elegantTheme }"
         @click="addNewTodo()"
       >

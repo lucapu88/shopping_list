@@ -3,7 +3,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
-import { useSuggestionsStore } from '@/store/SuggestionsStore';
+import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   state: () => ({
@@ -26,6 +26,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     isDraggable: false,
     inModification: false,
     categoryName: null,
+    categoryEmo: null,
     confirmDeleteModal: false,
     index: null,
     deleteSelected: false,
@@ -36,6 +37,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     showOnlyImportantTodos: false,
     deletedTodos: null,
     deletedSingleTodo: null,
+    todosCategorySelected: [],
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -166,6 +168,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.addTodoInCategory.condition = false;
       this.focusIn = false;
       this.inModification = false;
+      this.todosCategorySelected.length = 0;
     },
     resetModify(copiedTodo) {
       const todoEmpty = this.todos.find((todo) => todo.modify);
@@ -182,8 +185,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.isDraggable = false;
       this.categoryList ? setTimeout(() => { this.categoryListChildren = true; }, 400) : this.categoryListChildren = false;
     },
-    selectCategoryName(categoryName) {
-      this.newTodo = categoryName;
+    selectCategoryName(selectedCategoryName) {
+      this.newTodo = selectedCategoryName;
       this.addTodo();
     },
     removeOnlyEmpty() {
@@ -220,8 +223,17 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
         allCategories.forEach((category) => {
           if (todo.name.toLowerCase() === category.name) {
-            //se il nome è uguale alla categoria, permetto il toggle per la classe e salvo l'index
-            this.addTodoInCategory.condition = !this.addTodoInCategory.condition;
+
+            /*Tutto questo blocco if/else viene fatto per consentire all'utente di fare toggle selezione categoria se clicchi più volte sulla stessa
+              e il cambio di selezione categoria immediato se si clicca su un'altra */
+            this.todosCategorySelected.push(todo.name);
+            if (new Set(this.todosCategorySelected).size !== this.todosCategorySelected.length) {
+              this.addTodoInCategory.condition = !this.addTodoInCategory.condition;
+              this.todosCategorySelected.length = 0;
+            } else {
+              this.addTodoInCategory.condition = true;
+            }
+
             this.addTodoInCategory.id = index;
 
             if (this.addTodoInCategory.condition) {
@@ -233,6 +245,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
 
               this.inModification = true;
               this.categoryName = todo.name.toUpperCase();
+              this.categoryEmo = todo.emojy;
               this.suggestionsStore.checkAndSetSuggestionsLanguage(this.categoryName);
             } else {
               this.focusIn = false;

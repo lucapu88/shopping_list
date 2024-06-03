@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
-import { useSuggestionsStore } from '@/store/SuggestionsStore';
+import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
 </script>
 
@@ -43,7 +43,10 @@ export default {
           alt="OH-OH-OOOOH-Merry-Christmas"
         />
         <div>
-          <h4>{{ todosStore.categoryName }}</h4>
+          <h4>
+            {{ todosStore.categoryName }}
+            <span>{{ todosStore.categoryEmo }}</span>
+          </h4>
           <span
             class="close-sugg-modal"
             @click="suggestionsStore.toggleSuggestionsModal()"
