@@ -46,7 +46,7 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         jardineria: ["Guantes de jardinería", "Azada", "Tijeras de podar", "Regaderas", "Mangueras de jardín", "Rastrillo", "Estacas para plantas", "Maceta", "Plato para maceta", "Fertilizante", "Semillas", "Tierra para plantas", "Cubo", "Pulverizador", "Picos de jardín"],
 
-        otros: ["Pabellones", "Huevos", "Aperitivos", "Barras energéticas", "Patatas fritas envasadas", "Galletas saladas", "Chocolates", "Palomitas", "Salsa de soja", "Salsa barbacoa", "Ketchup", "Mayonesa", "Frutos secos", "Cereales para el desayuno", "Pilas", "Encendedor", "Papel de horno", "Papel de aluminio", "Velas", "Bandas elásticas", "Cuerda"],
+        otros: ["Pabellones", "Huevos", "Aperitivos", "Café en polvo", "Cápsulas de café/waffles", "Barras energéticas", "Patatas fritas envasadas", "Galletas saladas", "Chocolates", "Palomitas", "Salsa de soja", "Salsa barbacoa", "Ketchup", "Mayonesa", "Frutos secos", "Cereales para el desayuno", "Pilas", "Encendedor", "Papel de horno", "Papel de aluminio", "Velas", "Bandas elásticas", "Cuerda"],
 
         regalosDeNavidad: ["No creemos que podamos darle sugerencias para esta categoría, ya que es demasiado subjetiva.",
             "Sin embargo, sí podemos sugerirte que pases una feliz Navidad con tu familia, ya sea de sangre o no, ¡lo importante es ser feliz!",

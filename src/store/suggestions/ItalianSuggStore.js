@@ -47,7 +47,7 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         giardinaggio: ["Guanti da giardinaggio", "Zappetta", "Forbici da potatura", "Annaffiatoi", "Tubi da giardino", "Rastrello", "Paletti per le piante", "Vaso", "Sottovaso", "Concime", "Sementi", "Terreno per piante", "Secchio", "Spruzzatore", "Picconi da giardino"],
 
-        altro: ["Sale", "Uova", "Snack", "Barrette energetiche", "Patatine confezionate", "Salatini", "Cioccolatini", "Popcorn", "Salsa di soia", "Salsa barbecue", "ketchup", "Maionese", "Frutta secca", "Cereali per la colazione", "Pile", "Accendino", "Carta da forno", "Fogli di alluminio", "Candele", "Elastici", "Spago"],
+        altro: ["Sale", "Uova", "Snack", "Caffè in polvere", "Caffè capsule/cialde", "Barrette energetiche", "Patatine confezionate", "Salatini", "Cioccolatini", "Popcorn", "Salsa di soia", "Salsa barbecue", "ketchup", "Maionese", "Frutta secca", "Cereali per la colazione", "Pile", "Accendino", "Carta da forno", "Fogli di alluminio", "Candele", "Elastici", "Spago"],
 
         regaliDiNatale: ["Non crediamo di riuscire a darvi suggerimenti per questa categoria poiché è troppo soggettiva.",
             "Possiamo però suggerirti di passare un felice Natale in famiglia, che sia famiglia di sangue o non, l’importante è esser felici!",
