@@ -332,7 +332,7 @@ export default {
             v-if="!theme.elegantTheme"
           >
             <img
-              class="checkbox"
+              class="checkbox-img"
               src="@/img/icons/checked.webp"
               alt="checked"
             />

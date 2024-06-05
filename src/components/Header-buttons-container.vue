@@ -180,6 +180,9 @@ export default {
   <p class="no-important-todos-alert" v-if="languages.importantTodos.visible">
     {{ languages.importantTodos.alert }}
   </p>
+  <p class="category-tip" v-if="todosStore.categoryAdded">
+    {{ languages.categoryTipText }}
+  </p>
 
   <CategoriesPanel />
 </template>
@@ -231,5 +234,11 @@ export default {
   font-size: 15px;
   text-align: center;
   color: #c30000;
+}
+
+.category-tip {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 0;
 }
 </style>

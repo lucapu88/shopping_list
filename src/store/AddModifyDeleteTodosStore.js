@@ -38,6 +38,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     deletedTodos: null,
     deletedSingleTodo: null,
     todosCategorySelected: [],
+    categoryAdded: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -188,6 +189,10 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     selectCategoryName(selectedCategoryName) {
       this.newTodo = selectedCategoryName;
       this.addTodo();
+      this.categoryAdded = true;
+      setTimeout(() => {
+        this.categoryAdded = false;
+      }, 4000);
     },
     removeOnlyEmpty() {
       const last = this.todos[this.todos.length - 1];

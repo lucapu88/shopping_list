@@ -56,7 +56,7 @@ export default {
   >
     <img
       v-if="todo.multipleDelete"
-      class="checkbox"
+      class="checkbox-img"
       src="@/img/icons/checked.webp"
       alt="checked"
     />
