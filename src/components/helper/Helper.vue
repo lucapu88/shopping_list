@@ -115,7 +115,7 @@ export default {
       <img
         v-if="isChristmas.christmasTheme"
         class="left-christmas-info"
-        src="@/img/festivities/Gingerman-icon.webp"
+        src="@/img/festivities/gingerman-icon.webp"
         alt="Buon Natale!"
       />
       <p
@@ -130,7 +130,7 @@ export default {
       <img
         v-if="isChristmas.christmasTheme"
         class="right-christmas-info"
-        src="@/img/festivities/Decorations-icon.webp"
+        src="@/img/festivities/balls.webp"
         alt="E felice anno nuovo!"
       />
       <img

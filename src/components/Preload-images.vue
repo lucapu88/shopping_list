@@ -7,10 +7,10 @@ import { useSettingsStore } from '@/store/SettingsStore';
 import foglioRighePreload from '@/img/foglio_righe.webp';
 import cancellaPreload from '@/img/cancella.webp';
 import marePreload from '@/img/mare.webp';
+import mareTabletPreload from '@/img/mare-tablet.webp';
 import montagnePreload from '@/img/montagne.webp';
-import cartBlackPreload from '@/img/icons/cart-black.webp';
-import cartWhitePreload from '@/img/icons/cart-white.webp';
-import cartRedPreload from '@/img/icons/cart-red.webp';
+import montagneTabletPreload from '@/img/montagne-tablet.webp';
+import checked from '@/img/icons/checked.webp';
 import DragDropElegant from '@/img/icons/drag-and-drop-elegant.webp';
 import copyElegant from '@/img/icons/copy-elegant.webp';
 import importantElegant from '@/img/icons/important-elegant.webp';
@@ -18,9 +18,13 @@ import importantElegant from '@/img/icons/important-elegant.webp';
 import merryChristmas from '@/img/festivities/christmas.webp';
 import christmasSkull from '@/img/icons/christmas-skull.webp';
 import garland from '@/img/festivities/ghirlanda.webp';
-import biscotto from '@/img/festivities/Gingerman-icon.webp';
-import christmasBalls from '@/img/festivities/Decorations-icon.webp';
+import biscotto from '@/img/festivities/gingerman-icon.webp';
+import christmasBalls from '@/img/festivities/balls.webp';
 import bells from '@/img/festivities/christmas-bells.webp';
+import babboNatale from '@/img/festivities/babbo-natale.webp';
+import garlandCircle from '@/img/festivities/ghirlanda-tonda.webp';
+import christmasDecorationsRight from '@/img/festivities/christmas-decorations-destra.webp';
+import christmasDecorationsLeft from '@/img/festivities/christmas-decorations-sinistra.webp';
 
 import cancerLogo from '@/img/festivities/cancer-logo.webp';
 import paceLogo from '@/img/festivities/pace.webp';
@@ -67,29 +71,30 @@ export default {
     as="image"
     :href="cancellaPreload"
   />
+
   <link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />
+  <link
+    v-if="theme.summerTheme"
+    rel="preload"
+    as="image"
+    :href="mareTabletPreload"
+  />
+
   <link
     v-if="theme.winterTheme"
     rel="preload"
     as="image"
     :href="montagnePreload"
   />
+  <link
+    v-if="theme.winterTheme"
+    rel="preload"
+    as="image"
+    :href="montagneTabletPreload"
+  />
   <!-- --------------------------------preload delle icone in base ai temi------------------------- -->
-  <template v-if="!theme.minimalTheme && !theme.elegantTheme">
-    <link
-      v-if="theme.lightTheme || theme.summerTheme"
-      rel="preload"
-      as="image"
-      :href="cartBlackPreload"
-    />
-    <link
-      v-if="theme.darkTheme || theme.retroTheme || theme.winterTheme"
-      rel="preload"
-      as="image"
-      :href="cartWhitePreload"
-    />
-    <link rel="preload" as="image" :href="cartRedPreload" />
-  </template>
+  <link v-if="!theme.elegantTheme" rel="preload" as="image" :href="checked" />
+
   <link
     v-if="theme.elegantTheme"
     rel="preload"
@@ -109,42 +114,18 @@ export default {
     :href="importantElegant"
   />
   <!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="merryChristmas"
-  />
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="christmasSkull"
-  />
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="garland"
-  />
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="biscotto"
-  />
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="christmasBalls"
-  />
-  <link
-    v-if="isChristmas.christmasTheme"
-    rel="preload"
-    as="image"
-    :href="bells"
-  />
+  <template v-if="isChristmas.christmasTheme">
+    <link rel="preload" as="image" :href="merryChristmas" />
+    <link rel="preload" as="image" :href="christmasSkull" />
+    <link rel="preload" as="image" :href="garland" />
+    <link rel="preload" as="image" :href="biscotto" />
+    <link rel="preload" as="image" :href="christmasBalls" />
+    <link rel="preload" as="image" :href="bells" />
+    <link rel="preload" as="image" :href="babboNatale" />
+    <link rel="preload" as="image" :href="garlandCircle" />
+    <link rel="preload" as="image" :href="christmasDecorationsRight" />
+    <link rel="preload" as="image" :href="christmasDecorationsLeft" />
+  </template>
 
   <link
     v-if="festivitiesOrOccurrences.worldCancerDay"
