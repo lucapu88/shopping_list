@@ -319,24 +319,24 @@ export default {
         <li>
           {{ languages.helperDescription.multipleDeleteText.part1 }}
           <span class="cart">
-            <img
-              v-if="theme.darkTheme || theme.retroTheme || theme.winterTheme"
-              src="@/img/icons/cart-white.webp"
-            />
-            <img
-              v-if="theme.lightTheme || theme.summerTheme"
-              src="@/img/icons/cart-black.webp"
-            />
-            <strong class="large" v-if="theme.minimalTheme"> - </strong>
             <strong class="large" v-if="theme.elegantTheme"> > </strong>
           </span>
-          <span class="pink-checkbox pink-theme-btn" v-if="theme.pinkTheme">
+          <div
+            class="checkbox mettiti-in-riga-cazzo"
+            :class="{
+              'light-checkbox': theme.lightTheme,
+              'retro-checkbox': theme.retroTheme,
+              'summer-checked': theme.summerTheme,
+              'pink-checkbox pink-theme-btn': theme.pinkTheme,
+            }"
+            v-if="!theme.elegantTheme"
+          >
             <img
               class="checkbox"
               src="@/img/icons/checked.webp"
               alt="checked"
             />
-          </span>
+          </div>
           {{ languages.helperDescription.multipleDeleteText.part2 }}
           <button
             class="text-danger border-danger rounded"

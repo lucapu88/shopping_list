@@ -142,9 +142,9 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it('mostra ultime eliminazioni', () => {
         cy.addSomeItemsToList(phrases);
-        cy.get('[index="0"] > .cart > img').click({ force: true });
-        cy.get('[index="1"] > .cart > img').click({ force: true });
-        cy.get('[index="4"] > .cart > img').click({ force: true });
+        cy.get('[index="0"] > .checkbox').click({ force: true });
+        cy.get('[index="1"] > .checkbox').click({ force: true });
+        cy.get('[index="4"] > .checkbox').click({ force: true });
         cy.get('.text-danger').click();
         cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
         cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
@@ -167,7 +167,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('[index="0"] > .button-container > :nth-child(2)').click({ force: true });
         checkBackupSuccessful();
 
-        cy.get('[index="4"] > .cart > img').click({ force: true });
+        cy.get('[index="4"] > .checkbox').click({ force: true });
         cy.get('.text-danger').click();
         cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
         checkBackupSuccessful();

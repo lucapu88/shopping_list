@@ -75,6 +75,10 @@ button {
   text-decoration: underline;
 }
 
+.mettiti-in-riga-cazzo {
+  display: inline-block;
+}
+
 .large {
   font-size: larger;
 }
@@ -461,4 +465,16 @@ button {
   padding: 2px;
   min-width: 30px;
   width: 60px;
+}
+.checkbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 2px solid;
+  position: relative;
+}
+.checkbox > img {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

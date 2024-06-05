@@ -35,53 +35,23 @@ export default {
   >
     {{ todo.emojy }}
   </div>
-  <!-- CARRELLO -->
-  <span
-    alt="cart"
-    v-if="
-      !todo.class && !theme.minimalTheme && !theme.pinkTheme && !todo.modify
-    "
-    class="cart"
-    :class="{
-      'hide-minimal-icon': theme.minimalTheme || theme.elegantTheme,
-    }"
-    @click="todosStore.selectTodoForDelete(index)"
-  >
-    <img v-if="todo.multipleDelete" src="@/img/icons/cart-red.webp" />
-    <img
-      v-if="!todo.multipleDelete && (theme.darkTheme || theme.retroTheme)"
-      src="@/img/icons/cart-white.webp"
-    />
-    <img
-      v-if="
-        !todo.multipleDelete &&
-        (theme.lightTheme || theme.summerTheme || theme.winterTheme)
-      "
-      src="@/img/icons/cart-black.webp"
-    />
-  </span>
-  <!-- NO CARRELLO PER MINIMAL -->
-  <span
-    v-if="theme.minimalTheme && !todo.class && !todo.modify"
-    class="mr-3 ml-1 boldi-cipollino"
-    @click="todosStore.selectTodoForDelete(index)"
-  >
-    -
-  </span>
-  <!-- NO CARRELLO PER ELEGANT -->
-  <span
-    v-if="theme.elegantTheme && !todo.class && !todo.modify"
-    class="mr-3 ml-1 boldi-cipollino"
-    @click="todosStore.selectTodoForDelete(index)"
-  >
-    <template v-if="todo.multipleDelete"> / </template>
-    <template v-else> > </template>
-  </span>
-  <!-- CHECKBOX PER PINK -->
+
+  <!-- CHECKBOX -->
   <div
-    v-if="theme.pinkTheme && !todo.class && !todo.modify"
-    class="pink-checkbox pink-theme-btn"
-    :class="{ checked: todo.multipleDelete }"
+    v-if="!todo.class && !todo.modify && !theme.elegantTheme"
+    class="checkbox"
+    :class="{
+      checked:
+        todo.multipleDelete &&
+        !theme.minimalTheme &&
+        !theme.retroTheme &&
+        !theme.summerTheme,
+      'light-checkbox': theme.lightTheme,
+      'retro-checkbox': theme.retroTheme,
+      'summer-checked': todo.multipleDelete && theme.summerTheme,
+      'winter-checkbox': theme.winterTheme,
+      'pink-theme-btn': theme.pinkTheme,
+    }"
     @click="todosStore.selectTodoForDelete(index)"
   >
     <img
@@ -91,6 +61,15 @@ export default {
       alt="checked"
     />
   </div>
+  <!-- NO CHECKBOX PER ELEGANT -->
+  <span
+    v-if="theme.elegantTheme && !todo.class && !todo.modify"
+    class="mr-3 ml-1 boldi-cipollino"
+    @click="todosStore.selectTodoForDelete(index)"
+  >
+    <template v-if="todo.multipleDelete"> / </template>
+    <template v-else> > </template>
+  </span>
 
   <!-- CONTENITORE DEL TODO -->
   <li
@@ -209,5 +188,8 @@ export default {
 
 .checked {
   background-color: #ffffff !important;
+  -webkit-box-shadow: inset 0px 0px 44px -30px var(--black);
+  -moz-box-shadow: inset 0px 0px 44px -30px var(--black);
+  box-shadow: inset 0px 0px 44px -30px var(--black);
 }
 </style>

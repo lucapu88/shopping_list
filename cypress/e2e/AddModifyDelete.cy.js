@@ -64,10 +64,10 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.addSomeItemsToList(phrases);
 
     // eliminazione solo selezionati
-    cy.get('[index="0"] > .cart > img').click({ force: true });
-    cy.get('[index="1"] > .cart > img').click({ force: true });
-    cy.get('[index="4"] > .cart > img').click({ force: true });
-    cy.get('[index="5"] > .cart > img').click({ force: true });
+    cy.get('[index="0"] > .checkbox').click({ force: true });
+    cy.get('[index="1"] > .checkbox').click({ force: true });
+    cy.get('[index="4"] > .checkbox').click({ force: true });
+    cy.get('[index="5"] > .checkbox').click({ force: true });
 
     cy.get('.text-danger').click();
     cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
