@@ -47,11 +47,11 @@ export default {
 
 <template>
   <div>
-    <p class="helper-title" @click="settings.highlightsForTutorial(7)">
+    <p class="helper-title">
       {{ languages.helperDescription.troubleshooting }}
     </p>
     <p class="troubleshooting">
-      <small :class="{ 'tutorial-highlights': settings.highlits === 7 }">
+      <small>
         {{ languages.helperDescription.troubleshootingText }}
       </small>
     </p>
@@ -319,7 +319,7 @@ export default {
         <li>
           {{ languages.helperDescription.multipleDeleteText.part1 }}
           <span class="cart">
-            <strong class="large" v-if="theme.elegantTheme"> > </strong>
+            <strong class="galeazzi" v-if="theme.elegantTheme"> > </strong>
           </span>
           <div
             class="checkbox mettiti-in-riga-cazzo"
@@ -492,10 +492,10 @@ export default {
   <br />
   <section id="helper-important-alert">
     <p class="update-alert">
-      <span style="color: red" @click="settings.highlightsForTutorial(8)">
+      <span style="color: red">
         {{ languages.helperDescription.adviceTitle }}
       </span>
-      <span :class="{ 'tutorial-highlights': settings.highlits === 8 }">
+      <span>
         {{ languages.helperDescription.adviceText }}
       </span>
     </p>
@@ -518,10 +518,6 @@ export default {
   text-align: center;
 }
 
-.tutorial-highlights {
-  background-color: orangered;
-  color: white;
-}
 .helper-list {
   padding-inline-start: 25px;
 }

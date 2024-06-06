@@ -55,13 +55,11 @@ export default {
 
 <template>
   <div class="share-container share-update helper-settings">
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(5)">
-      &#x2699;
-    </span>
-    <span :class="{ 'tutorial-highlights': settings.highlits === 5 }">
+    <span class="settings-icon mr-1"> &#x2699; </span>
+    <span>
       {{ languages.shareText }}
     </span>
-    <span class="hand-pointing size-larger ml-3"> &#x1F449; </span>
+    <span class="hand-pointing galeazzi ml-3"> &#x1F449; </span>
     <button
       id="share"
       class="btn btn-light border-dark share-update-btn ml-3"
@@ -84,9 +82,7 @@ export default {
 .share-container > button {
   padding: 3px 25px;
 }
-.size-larger {
-  font-size: larger;
-}
+
 .link-copied {
   font-size: 13px;
   margin-left: 5px;

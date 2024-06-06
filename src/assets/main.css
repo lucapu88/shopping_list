@@ -55,7 +55,7 @@
   --pink-box-shadow-color: #ffc9ce;
   --pink-helper-color: #fdd4dc;
   --pink-modal-color: #d82d61;
-  /* Questi colori sono dedicati a voi feticisti bastardi perchè l'ho preso direttamente da un'immagine dei piedi di Margot Robbie, in onore di barbie anche se il tema non è dedicato a barbie, ma ho voluto fare sta cagata, ora non leccate lo schermo però! */
+  /* Questi colori sono dedicati a voi feticisti bastardi perchè l'ho preso direttamente da un'immagine dei piedi di Margot Robbie, in onore di barbie anche se il tema non è direttamente dedicato a barbie, perchè l'ho fatto? ma che cazzo ne so! mi andava di fare sta cagata, ora non leccate lo schermo però! */
   --margot-robbie-feet-color-one: #ac7465;
   --margot-robbie-feet-color-two: #9d5040;
 }
@@ -102,9 +102,9 @@
 }
 
 /* ----------------------------------------TEMI------------------------------------ */
-/* Gli important sono brutti, lo so che sono una brutta persona ma prometto di toglierli, per il momento fatti i cazzi tuoi :P */
+/* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 
-/* LIGHT */
+/* -------------------------------------------------------------- LIGHT --------------------------------------------------- */
 .light-btn {
   background-color: #ffffff;
   border: 2px solid #007bff;
@@ -134,7 +134,7 @@
   background-color: var(--white);
 }
 
-/* DARK */
+/* -------------------------------------------------------------- DARK --------------------------------------------------- */
 .dark-theme-title {
   background: var(--white);
   -webkit-background-clip: text;
@@ -189,7 +189,7 @@
   border-radius: 10px;
 }
 
-/* MINIMAL */
+/* -------------------------------------------------------------- MINIMAL --------------------------------------------------- */
 .minimal-theme-title {
   background: -webkit-radial-gradient(
     circle,
@@ -281,7 +281,7 @@
   border-radius: 10px;
 }
 
-/* DOS */
+/* -------------------------------------------------------------- DOS --------------------------------------------------- */
 .retro-theme-title {
   background: -webkit-radial-gradient(
     circle,
@@ -447,7 +447,7 @@
   border: 2px solid var(--dos-primary-color);
 }
 
-/* SUMMER */
+/* -------------------------------------------------------------- SUMMER --------------------------------------------------- */
 .summer-theme {
   background-color: var(--summer-secondary-color) !important;
   color: var(--summer-primary-color);
@@ -514,7 +514,7 @@
   background-color: var(--summer-tertiary-color);
 }
 
-/* WINTER */
+/* -------------------------------------------------------------- WINTER --------------------------------------------------- */
 .winter-theme {
   background-color: var(--winter-primary-color) !important;
   color: var(--winter-secondary-color);
@@ -578,7 +578,7 @@
   border: 2px solid var(--black);
 }
 
-/* ELEGANT */
+/* -------------------------------------------------------------- ELEGANT --------------------------------------------------- */
 .elegant-theme-title {
   background: linear-gradient(to right, #ffd95c, #6b3e00) !important;
   -webkit-background-clip: text !important;
@@ -702,7 +702,7 @@
   border-radius: 10px;
 }
 
-/* PINK */
+/* -------------------------------------------------------------- PINK --------------------------------------------------- */
 .pink-theme-btn {
   background-color: var(--pink-primary-color) !important;
   color: var(--pink-text-color) !important;

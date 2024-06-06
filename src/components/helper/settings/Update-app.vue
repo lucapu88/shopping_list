@@ -33,16 +33,10 @@ export default {
 
 <template>
   <div class="share-update helper-settings">
-    <span class="settings-icon mr-1" @click="settings.highlightsForTutorial(6)">
-      &#x2699;
+    <span class="settings-icon mr-1"> &#x2699; </span>
+    <span :class="{ 'english-size': languages.langEnglish }">
+      {{ languages.updateText.description }}:
     </span>
-    <span
-      :class="{
-        'tutorial-highlights': settings.highlits === 6,
-        'english-size': languages.langEnglish,
-      }"
-      >{{ languages.updateText.description }}:</span
-    >
     <div class="update-container">
       <button
         :disabled="languages.updateText.readyForUpdate"

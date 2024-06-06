@@ -7,17 +7,8 @@
 }
 
 body {
-  /* background-image: url('@/img/foglio_righe.webp'); */
   font-family: 'Permanent Marker', cursive;
 }
-/*
-@media screen and (min-width: 500px) {
-  body {
-    background-image: url('@/img/foglio.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-} */
 
 .smooth-dnd-disable-touch-action * {
   touch-action: auto !important;
@@ -50,7 +41,7 @@ button {
   border-radius: 10px;
 }
 
-.large {
+.galeazzi {
   font-size: larger;
 }
 
@@ -157,11 +148,6 @@ button {
 .spanish-size,
 .english-size {
   font-size: 0.8125rem;
-}
-
-.tutorial-highlights {
-  background-color: orangered;
-  color: #ffffff;
 }
 
 .btn-selected {

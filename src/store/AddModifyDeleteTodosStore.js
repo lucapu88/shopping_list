@@ -48,13 +48,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
-      this.languages.categories.forEach((category) => {
-        //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
-        if (this.newTodo.toLowerCase().trim() === category.name) {
-          this.categoryClass = true;
-          this.categoryEmoji = category.emojy;
-        }
-      });
+      this.createCategory();
 
       const todoObject = {
         name: this.newTodo.trim(),
@@ -76,18 +70,30 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.changeTodoAdded(this.todos);
       }, 1500);
 
-      this.newTodo = '';
-      this.categoryClass = false;
-      this.categoryEmoji = '';
-      this.categoryList = false;
-      this.isDraggable = false;
+      this.resetTodoProperty();
       this.settings.checkingUpdates();
-      this.settings.resetListIstructions();
+      this.settings.resetHelperSettingsAndIstructions();
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
       this.christmas.merryChristmasTheme();
       this.festivities.checkFestivities();
+    },
+    createCategory() {
+      this.languages.categories.forEach((category) => {
+        //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
+        if (this.newTodo.toLowerCase().trim() === category.name) {
+          this.categoryClass = true;
+          this.categoryEmoji = category.emojy;
+        }
+      });
+    },
+    resetTodoProperty() {
+      this.newTodo = '';
+      this.categoryClass = false;
+      this.categoryEmoji = '';
+      this.categoryList = false;
+      this.isDraggable = false;
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);
@@ -107,7 +113,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       } else {
         this.confirmedRemoveTodo(x);
       }
-      this.settings.resetListIstructions();
+      this.settings.resetHelperSettingsAndIstructions();
       this.toggleButtonDeleteSelectedTodo();
     },
     confirmedRemoveTodo(x) {
@@ -224,20 +230,11 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       //solo se è nella lista categorie faccio tutto
       if (todo.class) {
         const allCategories = [...this.languages.engCategories, ...this.languages.itaCategories, ...this.languages.spanCategories];
-
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
+
         allCategories.forEach((category) => {
           if (todo.name.toLowerCase() === category.name) {
-
-            /*Tutto questo blocco if/else viene fatto per consentire all'utente di fare toggle selezione categoria se clicchi più volte sulla stessa
-              e il cambio di selezione categoria immediato se si clicca su un'altra */
-            this.todosCategorySelected.push(todo.name);
-            if (new Set(this.todosCategorySelected).size !== this.todosCategorySelected.length) {
-              this.addTodoInCategory.condition = !this.addTodoInCategory.condition;
-              this.todosCategorySelected.length = 0;
-            } else {
-              this.addTodoInCategory.condition = true;
-            }
+            this.toggleCategorySelection(todo);
 
             this.addTodoInCategory.id = index;
 
@@ -261,6 +258,16 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
           todo.isSelected = this.addTodoInCategory.condition;
         });
         this.saveTodos();
+      }
+    },
+    toggleCategorySelection(todo) {
+      // L'utente fa toggle della categoria se clicca sulla stessa oppure ne seleziona un'altra se clicca su una diversa
+      this.todosCategorySelected.push(todo.name);
+      if (new Set(this.todosCategorySelected).size !== this.todosCategorySelected.length) {
+        this.addTodoInCategory.condition = !this.addTodoInCategory.condition;
+        this.todosCategorySelected.length = 0;
+      } else {
+        this.addTodoInCategory.condition = true;
       }
     },
     selectTodoForDelete(index) {

@@ -28,7 +28,6 @@ export const useSettingsStore = defineStore('settings', {
     deleteAllInfo: false,
     tutorial: false,
     support: false,
-    highlits: null,
     feature: null,
     section: null,
     video: true,
@@ -96,7 +95,7 @@ export const useSettingsStore = defineStore('settings', {
         this.helper = false;
         this.helperInClosing = false;
       }, 1500);
-      this.resetListIstructions();
+      this.resetHelperSettingsAndIstructions();
     },
     showPrivacyPolicy() {
       this.privacyPolicy = true;
@@ -104,7 +103,7 @@ export const useSettingsStore = defineStore('settings', {
     closePrivacyPolicy() {
       this.privacyPolicy = false;
     },
-    resetListIstructions() {
+    resetHelperSettingsAndIstructions() {
       //IMPOSTAZIONI
       this.changeLanguage = false;
       this.changeTheme = false;
@@ -126,7 +125,6 @@ export const useSettingsStore = defineStore('settings', {
     },
     showListIstructions(section) {
       //Per gli accordion nell'helper
-      this.highlits = null;
       this.feature = null;
       this.video = true;
       switch (section) {
@@ -188,16 +186,6 @@ export const useSettingsStore = defineStore('settings', {
           this.support = !this.support;
           break;
       }
-    },
-    highlightsForTutorial(num) {
-      console.log(num); //faccio questo console.log solo perchè il compilatore mi caga il cazzo se non uso la variabile passata in input
-
-      /*Mi serve solo quando creo i video tutorial. In pratica evidenzia il testo per il quale sto mostrando la funzionalità.
-        RICORDATI CHE PER IL TUTORIAL DEVI AVERE IL PULSANTA AGGIORNAMENTI ATTIVO, QUINDI DECOMMENTA LA RIGA SUCCESSIVA! */
-      // window.localStorage.removeItem('lastMonth'); window.localStorage.removeItem('lastYear');
-      // this.highlits = num;
-      /*  --------------------------------------IMPORTANTISSIMO------------------------------------------------
-                  RICORDATI DI RICOMMENTARE TUTTO QUESTO CODICE DOPO CHE HAI REGISTRATO IL TUTORIAL!            */
     },
     toggleTutorial(feature) {
       /*  tutto ciò è fatto per far si che al click su un pulsante mostra il video, 
