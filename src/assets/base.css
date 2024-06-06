@@ -23,39 +23,6 @@ body {
   touch-action: auto !important;
 }
 
-/* ----------------------------------------NATALEEEEEE------------------------------------ */
-.christmas-garland {
-  width: 100%;
-  max-height: 60px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 200;
-}
-.christmas-footer {
-  width: 300px;
-  display: table;
-  margin: 0 auto;
-}
-.christmas {
-  margin-top: 30px;
-}
-.christmas-red {
-  color: #ff0000;
-}
-.left-christmas-info {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 50px;
-}
-.right-christmas-info {
-  position: absolute;
-  top: 5px;
-  right: 10%;
-  width: 50px;
-}
-
 /* ----------------------------------------VARIE------------------------------------ */
 
 li {
@@ -77,6 +44,10 @@ button {
 
 .mettiti-in-riga-cazzo {
   display: inline-block;
+}
+
+.arrotonda-sto-bordo {
+  border-radius: 10px;
 }
 
 .large {
@@ -480,4 +451,36 @@ button {
   width: 25px;
   height: 25px;
   border-radius: 5px;
+}
+/* --------------------------------------------- NATALEEEEEE ------------------------------------ */
+.christmas-garland {
+  width: 100%;
+  max-height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
+.christmas-footer {
+  width: 300px;
+  display: table;
+  margin: 0 auto;
+}
+.christmas {
+  margin-top: 30px;
+}
+.christmas-red {
+  color: #ff0000;
+}
+.left-christmas-info {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 50px;
+}
+.right-christmas-info {
+  position: absolute;
+  top: 5px;
+  right: 10%;
+  width: 50px;
 }

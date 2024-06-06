@@ -61,7 +61,9 @@ export default {
           </span>
         </div>
         <div class="header-info">
-          <small>{{ languages.suggestions.headerInfo }}</small>
+          <small :class="{ 'christmas-subtitle': isChristmas.christmasTheme }">
+            {{ languages.suggestions.headerInfo }}
+          </small>
         </div>
       </header>
       <main>
@@ -80,11 +82,13 @@ export default {
       </main>
       <footer v-if="isChristmas.christmasTheme">
         <img
+          :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }"
           class="decorations"
           src="@/img/festivities/christmas-decorations-sinistra.webp"
           alt="Merry-Christmas"
         />
         <img
+          :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }"
           class="decorations"
           src="@/img/festivities/christmas-decorations-destra.webp"
           alt="Merry-Christmas"
@@ -163,5 +167,9 @@ footer {
 }
 .decorations {
   width: 100px;
+}
+.christmas-subtitle {
+  background-color: #dfbf5d;
+  color: #ff0000;
 }
 </style>
