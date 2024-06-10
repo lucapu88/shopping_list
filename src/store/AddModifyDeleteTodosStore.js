@@ -45,6 +45,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   },
   actions: {
     addTodo(tip) { //TOFIX questo metodo fa un po cagare, è da migliorare!
+
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 

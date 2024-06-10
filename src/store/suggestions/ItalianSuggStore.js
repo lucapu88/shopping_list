@@ -25,7 +25,7 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         igiene: ["Shampoo", "Balsamo", "Sapone", "Carta igienica", "Detergente intimo", "Dentifricio", "Spazzolino da denti", "Filo interdentale", "Dentifricio", "Collutorio", "Deodorante", "Sgrassatore", "Igienizzante", "Detersivo lavatrice", "Detersivo piatti", "Spugne", "Buste immondizia", "Salviettine detergenti", "Crema idratante per il corpo", "Rasoi", "Schiuma da barba", "Dopo barba", "Fazzoletti di carta", "Cotton fioc", "Smalto per unghie", "Profumo o colonia"],
 
-        farmaci: ["Paracetamolo", "Ibuprofene", "Aspirina", "Pomata per zanzare", "Cortisone", "Collirio", "Pomata per dolori muscolari", "Antidolorifico", "Lassativi", "Termometro", "Garze", "Cerotti", "Clorfenamina", "Lassativi a base di fibra", "Cetirizina", "Cannabis Legale", "Viagra"],
+        farmaci: ["Aspirina", "Statina", "Paracetamolo", "Ibuprofene", "Pomata per zanzare", "Cortisone", "Collirio", "Pomata per dolori muscolari", "Antidolorifico", "Lassativi", "Termometro", "Garze", "Cerotti", "Clorfenamina", "Lassativi a base di fibra", "Cetirizina", "Cannabis Legale", "Viagra"],
 
         cancelleria: ["Matite", "Pennarelli", "Righello", "Evidenziatori", "Penne", "Colori", "Gomme per cancellare", "Blocchi di carta", "Quaderni", "Album per disegno", "Correttori", "Forbici", "Righelli", "Colla", "Nastro adesivo", "Cartelle", "Cartoncino", "Graffette", "Pinzatrice", "Ricariche pinzatrice", "Post-it"],
 

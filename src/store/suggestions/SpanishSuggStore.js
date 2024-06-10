@@ -24,7 +24,7 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         higiene: ["Champú", "Acondicionador", "Jabón", "Papel higiénico", "Limpieza íntima", "Pasta de dientes", "Cepillo de dientes", "Hilo dental", "Pasta de dientes", "Enjuague bucal", "Desodorante", "Desengrasante", "Desinfectante", "Detergente para la ropa", "Detergente para platos", "Esponjas", "Bolsas de basura", "Toallitas limpiadoras", "Hidratante corporal", "Maquinillas de afeitar", "Espuma de afeitar", "After shave", "Pañuelos faciales", "Hisopos de algodón", "Esmalte de uñas", "Perfume o colonia"],
 
-        medicamentos: ["Paracetamol", "Ibuprofeno", "Aspirina", "Crema para mosquitos", "Cortisona", "Colirio", "Crema para el dolor muscular", "Analgésico", "Laxantes", "Termómetro", "Gasas", "Apósitos", "Clorfenamina", "Laxantes a base de fibra", "Cetirizina", "Cannabis legal", "Viagra"],
+        medicamentos: ["Aspirina", "Estatinas", "Paracetamol", "Ibuprofeno", "Crema para mosquitos", "Cortisona", "Colirio", "Crema para el dolor muscular", "Analgésico", "Laxantes", "Termómetro", "Gasas", "Apósitos", "Clorfenamina", "Laxantes a base de fibra", "Cetirizina", "Cannabis legal", "Viagra"],
 
         papeleria: ["Lápices", "Marcadores", "Regla", "Resaltadores", "Bolígrafos", "Pinturas", "Gomas de borrar", "Bloques de papel", "Cuadernos", "Álbumes para dibujo", "Correctores", "Tijeras", "Reglas", "Pegamento", "Cinta adhesiva", "Carpetas", "Cartulina", "Grapas", "Grapadora", "Recargas de grapas", "Notas Post-it"],
 

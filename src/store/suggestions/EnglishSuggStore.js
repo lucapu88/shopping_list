@@ -24,7 +24,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         hygiene: ["Shampoo", "Conditioner", "Soap", "Toilet paper", "Intimate wash", "Toothpaste", "Toothbrush", "Dental floss", "Toothpaste", "Mouthwash", "Deodorant", "Degreaser", "Sanitizer", "Laundry detergent", "Dish detergent", "Sponges", "Trash bags", "Cleansing wipes", "Body moisturizer", "Razors", "Shaving foam", "Aftershave", "Facial tissues", "Cotton swabs", "Nail polish", "Perfume or cologne"],
 
-        medications: ["Paracetamol", "Ibuprofen", "Aspirin", "Mosquito cream", "Cortisone", "Eye drops", "Muscle pain cream", "Painkiller", "Laxatives", "Thermometer", "Gauze pads", "Plasters", "Chlorphenamine", "Fiber-based laxatives", "Cetirizine", "Legal Cannabis", "Viagra"],
+        medications: ["Aspirin", "Statin", "Paracetamol", "Ibuprofen", "Mosquito cream", "Cortisone", "Eye drops", "Muscle pain cream", "Painkiller", "Laxatives", "Thermometer", "Gauze pads", "Plasters", "Chlorphenamine", "Fiber-based laxatives", "Cetirizine", "Legal Cannabis", "Viagra"],
 
         stationery: ["Pencils", "Markers", "Ruler", "Highlighters", "Pens", "Colors", "Erasers", "Notepads", "Notebooks", "Drawing albums", "Correction fluid", "Scissors", "Rulers", "Glue", "Adhesive tape", "Folders", "Cardstock", "Paper clips", "Stapler", "Stapler refills", "Post-it notes"],
 
