@@ -41,7 +41,6 @@ export default {
         alt="christmas_bells"
       />
       <p class="mt-5">{{ languages.completeConfirmText }}</p>
-      <!--{{ todo }} TOFIX era nel vecchio codice dentro lo span qui sotto. C'è da capire se serve e a cosa serve.-->
       <span style="display: none">{{ todosStore.index }} </span>
       <button
         id="yes-delete"

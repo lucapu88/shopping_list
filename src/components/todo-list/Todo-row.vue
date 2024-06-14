@@ -24,11 +24,14 @@ export default {
     v-if="todosStore.showOnlyImportantTodos"
   ></div>
 
-  <div v-if="todo.class && theme.minimalTheme" class="category-emoji-minimal">
+  <div
+    v-if="todo.category && theme.minimalTheme"
+    class="category-emoji-minimal"
+  >
     &#x2022;
   </div>
   <div
-    v-if="todo.class && !theme.minimalTheme"
+    v-if="todo.category && !theme.minimalTheme"
     class="category-emoji"
     :class="{ 'category-emoji-selected': todo.isSelected }"
     @click="todosStore.selectCategoryToAddItem(index, todo)"
@@ -38,7 +41,7 @@ export default {
 
   <!-- CHECKBOX -->
   <div
-    v-if="!todo.class && !todo.modify && !theme.elegantTheme"
+    v-if="!todo.category && !todo.modify && !theme.elegantTheme"
     class="checkbox"
     :class="{
       checked:
@@ -63,7 +66,7 @@ export default {
   </div>
   <!-- NO CHECKBOX PER ELEGANT -->
   <span
-    v-if="theme.elegantTheme && !todo.class && !todo.modify"
+    v-if="theme.elegantTheme && !todo.category && !todo.modify"
     class="mr-3 ml-1 boldi-cipollino"
     @click="todosStore.selectTodoForDelete(index)"
   >
@@ -111,9 +114,9 @@ export default {
       'minimal-btn': theme.minimalTheme,
       'retro-btn': theme.retroTheme,
       'elegant-btn': theme.elegantTheme,
-      'pink-theme-btn': theme.pinkTheme && !todo.class,
-      transparent: theme.elegantTheme && todo.class,
-      categoryActive: todo.class,
+      'pink-theme-btn': theme.pinkTheme && !todo.category,
+      transparent: theme.elegantTheme && todo.category,
+      categoryActive: todo.category,
       modify: todo.modify,
     }"
   >
@@ -121,7 +124,7 @@ export default {
     <button
       class="btn btn-primary rounded-circle btn-sm"
       @click="todosStore.modifyTodo(index)"
-      v-if="!todo.modify && !todo.class"
+      v-if="!todo.modify && !todo.category"
       :class="{
         disabled: todo.isDisabled,
         'pink-theme-btn-secondary': theme.pinkTheme,

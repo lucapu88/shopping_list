@@ -20,7 +20,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     categoryListChildren: null,
     helper: null,
     christmasTheme: false,
-    categoryClass: false,
+    isCategory: false,
     categoryEmoji: '',
     addTodoInCategory: { condition: false, id: null },
     isDraggable: false,
@@ -44,8 +44,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     openDeleteAllModal: (state) => state.visible = !state.visible,
   },
   actions: {
-    addTodo(tip) { //TOFIX questo metodo fa un po cagare, è da migliorare!
-
+    addTodo(tip) {
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
@@ -55,7 +54,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         name: this.newTodo.trim(),
         isActive: false,
         isSelected: false,
-        class: this.categoryClass,
+        category: this.isCategory,
         emojy: this.categoryEmoji,
         multipleDelete: false,
         modify: false,
@@ -84,14 +83,14 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.languages.categories.forEach((category) => {
         //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
         if (this.newTodo.toLowerCase().trim() === category.name) {
-          this.categoryClass = true;
+          this.isCategory = true;
           this.categoryEmoji = category.emojy;
         }
       });
     },
     resetTodoProperty() {
       this.newTodo = '';
-      this.categoryClass = false;
+      this.isCategory = false;
       this.categoryEmoji = '';
       this.categoryList = false;
       this.isDraggable = false;
@@ -119,7 +118,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     confirmedRemoveTodo(x) {
       this.backupList();
-      if (!this.todos[x].class) { this.setOnlyDeletedTodos(x); }
+      if (!this.todos[x].category) { this.setOnlyDeletedTodos(x); }
       this.todos.splice(x, 1);
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
@@ -137,7 +136,13 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       if (window.localStorage.getItem('todos')) {
         //se si deve prendere un oggetto da salvare in locale
         try {
-          this.todos = JSON.parse(window.localStorage.getItem('todos')); //prova a trasformare l'array in un oggetto javascript
+          const parsedTodoList = JSON.parse(window.localStorage.getItem('todos'));
+
+          parsedTodoList.forEach(todo => {
+            //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
+            if (todo.class) { todo.category = todo.class; }
+          });
+          this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
           this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
         } catch (e) {
           window.localStorage.removeItem('todos'); //se viene trovato un errore, rimuovi l'oggetto (o meglio, non salvare niente)
@@ -170,7 +175,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.removeSelectedCategoryToAddItem();
     },
     removeSelectedCategoryToAddItem() {
-      //serve per togliere la selezione di una categoria aggiunta (quando clicchi su un nome evidenziato verde e diventa blu)
+      //serve per togliere la selezione di una categoria aggiunta (quando clicchi su un nome di una categoria e diventa blu)
       this.todos.map((t) => (t.isSelected = false));
       this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.addTodoInCategory.condition = false;
@@ -203,15 +208,15 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     removeOnlyEmpty() {
       const last = this.todos[this.todos.length - 1];
-      //se l'ultimo della lista è una classe (allora al suo interno sarà vuoto) aggiungo una proprietà per rimuoverlo
-      if (last?.class) { last.classToBeDeleted = true; }
+      //se l'ultimo della lista è una categoria (allora sotto di lui non avrà nulla) aggiungo una proprietà per rimuoverlo
+      if (last?.category) { last.categoryToBeDeleted = true; }
 
       this.todos.forEach((todo, index) => {
         const next = this.todos[index + 1];
         //se l'elemento è una categoria ed il suo successivo/precedente pure, vuol dire che sono categorie vuote
-        if (todo?.class && next?.class) { todo.classToBeDeleted = true; }
+        if (todo?.category && next?.category) { todo.categoryToBeDeleted = true; }
       });
-      this.todos = this.todos.filter((todo) => !todo.classToBeDeleted);
+      this.todos = this.todos.filter((todo) => !todo.categoryToBeDeleted);
       this.saveTodos();
       this.categoryList = false;
     },
@@ -229,7 +234,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     },
     selectCategoryToAddItem(index, todo) {
       //solo se è nella lista categorie faccio tutto
-      if (todo.class) {
+      if (todo.category) {
         const allCategories = [...this.languages.engCategories, ...this.languages.itaCategories, ...this.languages.spanCategories];
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
 
@@ -281,7 +286,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.saveTodos();
     },
     myFilter(n) {
-      if (!this.todos[n].class) {
+      if (!this.todos[n].category) {
         //al click setta la proprietà del singolo todo isActive (evidenzia rosso l'elemento cliccato)
         this.todos[n].multipleDelete = false;
         this.todos[n].isActive = !this.todos[n].isActive;
@@ -310,14 +315,15 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.confirmRemove = false;
       this.deleteSelected = true;
       this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
+      this.removeSelectedCategoryToAddItem();
     },
     removeAllTodo(x) {
       if (!this.todos.length) {
         return;
       }
       this.backupList();
-      const todoClassFiltered = this.todos.filter(t => !t.class);
-      todoClassFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', todoClassFiltered) : this.setOnlyDeletedTodos('deleteAll');
+      const todoCategoryFiltered = this.todos.filter(t => !t.category);
+      todoCategoryFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', todoCategoryFiltered) : this.setOnlyDeletedTodos('deleteAll');
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
@@ -367,7 +373,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
           break;
         case 'deleteAll':
           //Salvo TUTTI i todo da eliminare
-          todosToDelete = this.todos.filter(todo => !todo.class).map(t => t.name);
+          todosToDelete = this.todos.filter(todo => !todo.category).map(t => t.name);
           storageKey = 'deletedTodos';
           break;
         case 'onlyOne':

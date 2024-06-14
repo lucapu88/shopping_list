@@ -83,14 +83,14 @@ export default {
         id="draggable-children"
         class="todo-n draggable-item"
         :class="{
-          category: todo.class,
-          'category-retro': todo.class && theme.retroTheme,
-          'category-minimal': todo.class && theme.minimalTheme,
+          category: todo.category,
+          'category-retro': todo.category && theme.retroTheme,
+          'category-minimal': todo.category && theme.minimalTheme,
           'category-elegant':
-            todo.class && theme.elegantTheme && !todosStore.isDraggable,
+            todo.category && theme.elegantTheme && !todosStore.isDraggable,
           'draggable-children': todosStore.isDraggable && !theme.elegantTheme,
           'draggable-children-category':
-            todosStore.isDraggable && todo.class && !theme.elegantTheme,
+            todosStore.isDraggable && todo.category && !theme.elegantTheme,
           'elegant-todo-draggable':
             todosStore.isDraggable && theme.elegantTheme,
           'todo-added': todo.todoAdded,

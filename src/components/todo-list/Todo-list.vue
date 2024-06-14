@@ -27,14 +27,14 @@ export default {
     id="draggable-children"
     class="todo-n"
     :class="{
-      category: todo.class,
-      'category-dark': todo.class && theme.darkTheme,
-      'category-retro': todo.class && theme.retroTheme,
-      'category-minimal': todo.class && theme.minimalTheme,
-      'category-summer': todo.class && theme.summerTheme,
-      'category-winter': todo.class && theme.winterTheme,
-      'category-elegant': todo.class && theme.elegantTheme,
-      'category-pink': todo.class && theme.pinkTheme,
+      category: todo.category,
+      'category-dark': todo.category && theme.darkTheme,
+      'category-retro': todo.category && theme.retroTheme,
+      'category-minimal': todo.category && theme.minimalTheme,
+      'category-summer': todo.category && theme.summerTheme,
+      'category-winter': todo.category && theme.winterTheme,
+      'category-elegant': todo.category && theme.elegantTheme,
+      'category-pink': todo.category && theme.pinkTheme,
       'todo-added': todo.todoAdded,
     }"
   >
