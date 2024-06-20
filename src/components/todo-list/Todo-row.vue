@@ -120,6 +120,8 @@ export default {
       modify: todo.modify,
     }"
   >
+    <!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
+    <h2 class="x-modify" v-if="!!todo.isDisabled || todo.multipleDelete">X</h2>
     <!-- PULSANTE MODIFICA-->
     <button
       class="btn btn-primary rounded-circle btn-sm"
@@ -133,6 +135,9 @@ export default {
     >
       <img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
     </button>
+
+    <!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
+    <h2 class="x-delete" v-if="!!todo.isDisabled">X</h2>
     <!--PULSANTE ELIMINA -->
     <button
       class="btn btn-primary rounded-circle btn-sm"
@@ -194,5 +199,22 @@ export default {
   -webkit-box-shadow: inset 0px 0px 44px -30px var(--black);
   -moz-box-shadow: inset 0px 0px 44px -30px var(--black);
   box-shadow: inset 0px 0px 44px -30px var(--black);
+}
+
+.x-modify,
+.x-delete {
+  position: absolute;
+  top: 0;
+  z-index: 105;
+  font-family: Monospace;
+  /* font-weight: bold; */
+  color: #ff0000;
+}
+
+.x-modify {
+  left: 8px;
+}
+.x-delete {
+  right: 8px;
 }
 </style>

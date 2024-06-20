@@ -252,6 +252,7 @@ button {
   border: 2px solid rgb(0, 172, 252);
   border-radius: 5px;
   padding: 2px;
+  position: relative;
 }
 .button-container > button {
   width: 32px;
