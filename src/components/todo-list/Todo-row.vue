@@ -44,11 +44,7 @@ export default {
     v-if="!todo.category && !todo.modify && !theme.elegantTheme"
     class="checkbox"
     :class="{
-      checked:
-        todo.multipleDelete &&
-        !theme.minimalTheme &&
-        !theme.retroTheme &&
-        !theme.summerTheme,
+      checked: todo.multipleDelete && !theme.summerTheme,
       'light-checkbox': theme.lightTheme,
       'retro-checkbox': theme.retroTheme,
       'summer-checked': todo.multipleDelete && theme.summerTheme,
@@ -196,9 +192,6 @@ export default {
 
 .checked {
   background-color: #ffffff !important;
-  -webkit-box-shadow: inset 0px 0px 44px -30px var(--black);
-  -moz-box-shadow: inset 0px 0px 44px -30px var(--black);
-  box-shadow: inset 0px 0px 44px -30px var(--black);
 }
 
 .x-modify,
