@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       checkChristmas: useChristmasStore(),
-      checkFestivities: useOthersFestivitiesStore(),
+      otherFestivities: useOthersFestivitiesStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
       theme: useThemeStore(),
@@ -33,7 +33,7 @@ export default {
     this.settings.checkingUpdates(); //controllo "aggiornamenti"
     this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
     this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
-    this.checkFestivities.checkFestivities(); //controllo se ci sono altre festività
+    this.otherFestivities.checkFestivities(); //controllo se ci sono altre festività
     this.todosStore.createTodosList(); //creo la lista se ci sono elementi
     this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
     this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente

@@ -71,7 +71,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       }, 1500);
 
       this.resetTodoProperty();
-      this.settings.checkingUpdates();
       this.settings.resetHelperSettingsAndIstructions();
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();

@@ -86,7 +86,6 @@ export const useSettingsStore = defineStore('settings', {
     },
     openHelper() {
       this.helper = true;
-      this.checkingUpdates(); //Per una sicurezza maggiore, valutare se tenerlo
     },
     closeHelper() {
       this.helperInClosing = true;
