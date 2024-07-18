@@ -49,7 +49,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
         other: ["Salt", "Eggs", "Snacks", "Coffee powder", "Coffee capsules/waffles", "Energy bars", "Packaged chips", "Pretzels", "Chocolates", "Popcorn", "Soy sauce", "Barbecue sauce", "Ketchup", "Mayonnaise", "Dried fruit", "Breakfast cereals", "Batteries", "Lighter", "Parchment paper", "Aluminum foil", "Candles", "Rubber bands", "String"],
 
         christmasGifts: ["We do not think we can give you suggestions for this category as it is too subjective.",
-            "However, we can suggest that you have a happy Christmas with your family, whether it is a blood family or not, the important thing is to be happy!",
+            "However, we can suggest that you have a happy Christmas with your family. Whether it is a blood family or not, the important thing is to be happy!",
             "This is the best gift...HAPPY CHRISTMAS!"],
     }),
     getters: {},

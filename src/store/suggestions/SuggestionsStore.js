@@ -4,6 +4,7 @@ import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore'
 import { useEnglishSuggStoreStore } from '@/store/suggestions/EnglishSuggStore';
 import { useItalianSuggStoreStore } from '@/store/suggestions/ItalianSuggStore';
 import { useSpanishSuggStoreStore } from '@/store/suggestions/SpanishSuggStore';
+import { useChristmasStore } from '@/store/ChristmasStore';
 
 export const useSuggestionsStore = defineStore('suggestions', {
   state: () => ({
@@ -12,6 +13,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
     eng: useEnglishSuggStoreStore(),
     ita: useItalianSuggStoreStore(),
     spa: useSpanishSuggStoreStore(),
+    christmas: useChristmasStore(),
     suggestionsModal: false,
     suggestionsList: [],
   }),
@@ -28,271 +30,271 @@ export const useSuggestionsStore = defineStore('suggestions', {
       const categoryName = catName.toLowerCase();
       // ------------------------------------------------------------- INGLESE
       switch (categoryName) {
-        case 'vegetables':
+        case this.languages.engCategories[0].name:
           this.suggestionsList = this.eng.vegetables;
           break;
-        case 'meat':
+        case this.languages.engCategories[1].name:
           this.suggestionsList = this.eng.meat;
           break;
-        case 'fish':
+        case this.languages.engCategories[2].name:
           this.suggestionsList = this.eng.fish;
           break;
-        case 'fruit':
+        case this.languages.engCategories[3].name:
           this.suggestionsList = this.eng.fruit;
           break;
-        case 'sweets':
+        case this.languages.engCategories[4].name:
           this.suggestionsList = this.eng.sweets;
           break;
-        case 'dairy products':
+        case this.languages.engCategories[5].name:
           this.suggestionsList = this.eng.dairyProducts;
           break;
-        case 'starchy':
+        case this.languages.engCategories[6].name:
           this.suggestionsList = this.eng.starchy;
           break;
-        case 'drinks':
+        case this.languages.engCategories[7].name:
           this.suggestionsList = this.eng.drinks;
           break;
-        case 'frozen foods':
+        case this.languages.engCategories[8].name:
           this.suggestionsList = this.eng.frozenFoods;
           break;
-        case 'spices':
+        case this.languages.engCategories[9].name:
           this.suggestionsList = this.eng.spices;
           break;
-        case 'hygiene':
+        case this.languages.engCategories[10].name:
           this.suggestionsList = this.eng.hygiene;
           break;
-        case 'medications':
+        case this.languages.engCategories[11].name:
           this.suggestionsList = this.eng.medications;
           break;
-        case 'stationery':
+        case this.languages.engCategories[12].name:
           this.suggestionsList = this.eng.stationery;
           break;
-        case 'babies':
+        case this.languages.engCategories[13].name:
           this.suggestionsList = this.eng.babies;
           break;
-        case 'electronics':
+        case this.languages.engCategories[14].name:
           this.suggestionsList = this.eng.electronics;
           break;
-        case 'pets':
+        case this.languages.engCategories[15].name:
           this.suggestionsList = this.eng.pets;
           break;
-        case 'work tools':
+        case this.languages.engCategories[16].name:
           this.suggestionsList = this.eng.workTools;
           break;
-        case 'clothes':
+        case this.languages.engCategories[17].name:
           this.suggestionsList = this.eng.clothes;
           break;
-        case 'toys':
+        case this.languages.engCategories[18].name:
           this.suggestionsList = this.eng.toys;
           break;
-        case 'furniture/decor':
+        case this.languages.engCategories[19].name:
           this.suggestionsList = this.eng.furnitureDecor;
           break;
-        case 'household objects':
+        case this.languages.engCategories[20].name:
           this.suggestionsList = this.eng.householdObjects;
           break;
-        case 'gardening':
+        case this.languages.engCategories[21].name:
           this.suggestionsList = this.eng.gardening;
           break;
-        case 'other':
+        case this.languages.engCategories[22].name:
           this.suggestionsList = this.eng.other;
           break;
 
-        case 'christmas gifts':
+        case this.languages.engCategories[23].name:
           this.suggestionsList = this.eng.christmasGifts;
           break;
 
         // ------------------------------------------------------------- ITALIANO
-        case 'vegetali':
+        case this.languages.itaCategories[0].name:
           this.suggestionsList = this.ita.vegetali;
           break;
 
-        case 'carne':
+        case this.languages.itaCategories[1].name:
           this.suggestionsList = this.ita.carne;
           break;
 
-        case 'pesce':
+        case this.languages.itaCategories[2].name:
           this.suggestionsList = this.ita.pesce;
           break;
 
-        case 'frutta':
+        case this.languages.itaCategories[3].name:
           this.suggestionsList = this.ita.frutta;
           break;
 
-        case 'dolci':
+        case this.languages.itaCategories[4].name:
           this.suggestionsList = this.ita.dolci;
           break;
 
-        case 'latticini':
+        case this.languages.itaCategories[5].name:
           this.suggestionsList = this.ita.latticini;
           break;
 
-        case 'farinacei':
+        case this.languages.itaCategories[6].name:
           this.suggestionsList = this.ita.farinacei;
           break;
 
-        case 'bevande':
+        case this.languages.itaCategories[7].name:
           this.suggestionsList = this.ita.bevande;
           break;
 
-        case 'surgelati':
+        case this.languages.itaCategories[8].name:
           this.suggestionsList = this.ita.surgelati;
           break;
 
-        case 'spezie':
+        case this.languages.itaCategories[9].name:
           this.suggestionsList = this.ita.spezie;
           break;
 
-        case 'igiene':
+        case this.languages.itaCategories[10].name:
           this.suggestionsList = this.ita.igiene;
           break;
 
-        case 'farmaci':
+        case this.languages.itaCategories[11].name:
           this.suggestionsList = this.ita.farmaci;
           break;
 
-        case 'cancelleria':
+        case this.languages.itaCategories[12].name:
           this.suggestionsList = this.ita.cancelleria;
           break;
 
-        case 'bimbi':
+        case this.languages.itaCategories[13].name:
           this.suggestionsList = this.ita.bimbi;
           break;
 
-        case 'elettronica':
+        case this.languages.itaCategories[14].name:
           this.suggestionsList = this.ita.elettronica;
           break;
 
-        case 'animali':
+        case this.languages.itaCategories[15].name:
           this.suggestionsList = this.ita.animali;
           break;
 
-        case 'attrezzi':
+        case this.languages.itaCategories[16].name:
           this.suggestionsList = this.ita.attrezzi;
           break;
 
-        case 'vestiti':
+        case this.languages.itaCategories[17].name:
           this.suggestionsList = this.ita.vestiti;
           break;
 
-        case 'giocattoli':
+        case this.languages.itaCategories[18].name:
           this.suggestionsList = this.ita.giocattoli;
           break;
 
-        case 'arredamento':
+        case this.languages.itaCategories[19].name:
           this.suggestionsList = this.ita.arredamento;
           break;
 
-        case 'oggetti domestici':
+        case this.languages.itaCategories[20].name:
           this.suggestionsList = this.ita.oggettiDomestici;
           break;
 
-        case 'giardinaggio':
+        case this.languages.itaCategories[21].name:
           this.suggestionsList = this.ita.giardinaggio;
           break;
 
-        case 'altro':
+        case this.languages.itaCategories[22].name:
           this.suggestionsList = this.ita.altro;
           break;
 
-        case 'regali di natale':
+        case this.languages.itaCategories[23].name:
           this.suggestionsList = this.ita.regaliDiNatale;
           break;
 
         // ------------------------------------------------------------- SPAGNOLO
-        case 'verduras':
+        case this.languages.spanCategories[0].name:
           this.suggestionsList = this.spa.verduras;
           break;
 
-        case 'carnes':
+        case this.languages.spanCategories[1].name:
           this.suggestionsList = this.spa.carnes;
           break;
 
-        case 'pescado':
+        case this.languages.spanCategories[2].name:
           this.suggestionsList = this.spa.pescado;
           break;
 
-        case 'fruta':
+        case this.languages.spanCategories[3].name:
           this.suggestionsList = this.spa.fruta;
           break;
 
-        case 'dulces':
+        case this.languages.spanCategories[4].name:
           this.suggestionsList = this.spa.dulces;
           break;
 
-        case 'lácteos':
+        case this.languages.spanCategories[5].name:
           this.suggestionsList = this.spa.lacteos;
           break;
 
-        case 'harina':
+        case this.languages.spanCategories[6].name:
           this.suggestionsList = this.spa.harina;
           break;
 
-        case 'bebidas':
+        case this.languages.spanCategories[7].name:
           this.suggestionsList = this.spa.bebidas;
           break;
 
-        case 'congelados':
+        case this.languages.spanCategories[8].name:
           this.suggestionsList = this.spa.congelados;
           break;
 
-        case 'especias':
+        case this.languages.spanCategories[9].name:
           this.suggestionsList = this.spa.especias;
           break;
 
-        case 'higiene':
+        case this.languages.spanCategories[10].name:
           this.suggestionsList = this.spa.higiene;
           break;
 
-        case 'medicamentos':
+        case this.languages.spanCategories[11].name:
           this.suggestionsList = this.spa.medicamentos;
           break;
 
-        case 'papelería':
+        case this.languages.spanCategories[12].name:
           this.suggestionsList = this.spa.papeleria;
           break;
 
-        case 'niños':
+        case this.languages.spanCategories[13].name:
           this.suggestionsList = this.spa.ninos;
           break;
 
-        case 'electrónica':
+        case this.languages.spanCategories[14].name:
           this.suggestionsList = this.spa.electronica;
           break;
 
-        case 'animales':
+        case this.languages.spanCategories[15].name:
           this.suggestionsList = this.spa.animales;
           break;
 
-        case 'herramientas':
+        case this.languages.spanCategories[16].name:
           this.suggestionsList = this.spa.herramientas;
           break;
 
-        case 'ropa':
+        case this.languages.spanCategories[17].name:
           this.suggestionsList = this.spa.ropa;
           break;
 
-        case 'juguetes':
+        case this.languages.spanCategories[18].name:
           this.suggestionsList = this.spa.juguetes;
           break;
 
-        case 'mobiliario':
+        case this.languages.spanCategories[19].name:
           this.suggestionsList = this.spa.mobiliario;
           break;
 
-        case 'objetos domésticos':
+        case this.languages.spanCategories[20].name:
           this.suggestionsList = this.spa.objetosDomesticos;
           break;
 
-        case 'jardinería':
+        case this.languages.spanCategories[21].name:
           this.suggestionsList = this.spa.jardineria;
           break;
 
-        case 'otros':
+        case this.languages.spanCategories[22].name:
           this.suggestionsList = this.spa.otros;
           break;
 
-        case 'regalos de navidad':
+        case this.languages.spanCategories[23].name:
           this.suggestionsList = this.spa.regalosDeNavidad;
           break;
 
@@ -300,7 +302,13 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
       }
     },
-    addTip(tip) {
+    addTip(tip, categoryEmo) {
+      if (categoryEmo === this.languages.engCategories[23].emojy
+        || categoryEmo === this.languages.itaCategories[23].emojy
+        || categoryEmo === this.languages.spanCategories[23].emojy
+      ) {
+        return;
+      }
       this.todosStore.addTodo(tip);
       this.suggestionsModal = false;
     }

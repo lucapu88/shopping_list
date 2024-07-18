@@ -203,7 +203,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.categoryAdded = true;
       setTimeout(() => {
         this.categoryAdded = false;
-      }, 4000);
+      }, 5500);
     },
     removeOnlyEmpty() {
       const last = this.todos[this.todos.length - 1];
@@ -284,7 +284,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.removeSelectedCategoryToAddItem();
       this.saveTodos();
     },
-    myFilter(n) {
+    setAsImportant(n) {
       if (!this.todos[n].category) {
         //al click setta la proprietà del singolo todo isActive (evidenzia rosso l'elemento cliccato)
         this.todos[n].multipleDelete = false;

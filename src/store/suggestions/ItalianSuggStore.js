@@ -50,7 +50,7 @@ export const useItalianSuggStoreStore = defineStore('italian', {
         altro: ["Sale", "Uova", "Snack", "Caffè in polvere", "Caffè capsule/cialde", "Barrette energetiche", "Patatine confezionate", "Salatini", "Cioccolatini", "Popcorn", "Salsa di soia", "Salsa barbecue", "ketchup", "Maionese", "Frutta secca", "Cereali per la colazione", "Pile", "Accendino", "Carta da forno", "Fogli di alluminio", "Candele", "Elastici", "Spago"],
 
         regaliDiNatale: ["Non crediamo di riuscire a darvi suggerimenti per questa categoria poiché è troppo soggettiva.",
-            "Possiamo però suggerirti di passare un felice Natale in famiglia, che sia famiglia di sangue o non, l’importante è esser felici!",
+            "Possiamo però suggerirti di passare un felice Natale in famiglia. Che sia famiglia di sangue o non, l’importante è esser felici!",
             "Questo è il miglior regalo… BUON NATALE!"],
     }),
     getters: {},

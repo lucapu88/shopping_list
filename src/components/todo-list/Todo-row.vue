@@ -76,7 +76,7 @@ export default {
     class="todo"
     id="todo"
     @click="
-      todosStore.myFilter(index);
+      todosStore.setAsImportant(index);
       todosStore.selectCategoryToAddItem(index, todo);
     "
     :class="{

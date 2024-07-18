@@ -45,7 +45,9 @@ export default {
         <div>
           <h4>
             {{ todosStore.categoryName }}
-            <span>{{ todosStore.categoryEmo }}</span>
+            <span v-if="!isChristmas.christmasTheme">
+              {{ todosStore.categoryEmo }}
+            </span>
           </h4>
           <span
             class="close-sugg-modal"
@@ -61,7 +63,10 @@ export default {
           </span>
         </div>
         <div class="header-info">
-          <small :class="{ 'christmas-subtitle': isChristmas.christmasTheme }">
+          <small
+            v-if="!isChristmas.christmasTheme"
+            :class="{ 'christmas-subtitle': isChristmas.christmasTheme }"
+          >
             {{ languages.suggestions.headerInfo }}
           </small>
         </div>
@@ -75,9 +80,9 @@ export default {
           }"
           v-for="(tip, n) in suggestionsStore.suggestionsList"
           :key="n"
-          @click="suggestionsStore.addTip(tip)"
+          @click="suggestionsStore.addTip(tip, todosStore.categoryEmo)"
         >
-          <strong> + </strong> {{ tip }}
+          <strong v-if="!isChristmas.christmasTheme"> + </strong> {{ tip }}
         </p>
       </main>
       <footer v-if="isChristmas.christmasTheme">
@@ -130,6 +135,7 @@ export default {
 }
 .header-info {
   line-height: 1;
+  min-height: 20px;
   z-index: 20;
 }
 .suggestions-modal-container > main {
