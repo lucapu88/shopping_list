@@ -138,7 +138,7 @@ export default {
           {{ languages.helperDescription.backToTop }}
         </li>
 
-        <ToggleTutorialButton :features="addEditDelete" />
+        <ToggleTutorialButton :features="addEditDelete" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === addEditDelete"
           :features="addEditDelete"
@@ -228,7 +228,7 @@ export default {
             <span>{{ languages.removeEmpty }}</span></button
           >.
         </li>
-        <ToggleTutorialButton :features="categories" />
+        <ToggleTutorialButton :features="categories" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === categories"
           :features="categories"
@@ -263,7 +263,7 @@ export default {
           <br />
           {{ languages.helperDescription.suggestions.part2 }}
         </li>
-        <ToggleTutorialButton :features="suggestions" />
+        <ToggleTutorialButton :features="suggestions" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === suggestions"
           :features="suggestions"
@@ -303,7 +303,7 @@ export default {
           {{ languages.helperDescription.dragNdropText.part2 }} <br />
         </li>
 
-        <ToggleTutorialButton :features="dragNdrop" />
+        <ToggleTutorialButton :features="dragNdrop" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === dragNdrop"
           :features="dragNdrop"
@@ -347,7 +347,7 @@ export default {
           {{ languages.helperDescription.multipleDeleteText.part3 }}
         </li>
 
-        <ToggleTutorialButton :features="multipleDelete" />
+        <ToggleTutorialButton :features="multipleDelete" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === multipleDelete"
           :features="multipleDelete"
@@ -425,7 +425,7 @@ export default {
           {{ languages.importantTodos.text.part2 }}
         </li>
 
-        <ToggleTutorialButton :features="copyPaste" />
+        <ToggleTutorialButton :features="copyPaste" :margin="true" />
         <Tutorial
           v-if="settings.video && settings.feature === copyPaste"
           :features="copyPaste"

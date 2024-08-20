@@ -55,43 +55,45 @@ export default {
       :isSettings="true"
     />
     <template v-if="settings.backupList && settings.section === 'backupList'">
-      <li class="ml-3">
-        <small>{{ languages.backupListText.description }}</small>
-        <ToggleTutorialButton :features="backupList" />
-      </li>
-      <div v-if="!showConfirmBackup" class="backup-btn-container">
-        <button id="backup-button" @click="showConfirmBackup = true">
-          <img class="cloud" src="@/img/icons/cloud.webp" alt="backup" />
-        </button>
-      </div>
-
-      <div class="confirm-backup-container">
-        <template v-if="showConfirmBackup && !noBackup">
-          <span>{{ languages.backupListText.confirm }}</span>
-          <button
-            id="confirm-backup"
-            style="background-color: lightgreen"
-            @click="importBackup()"
-          >
-            {{ languages.langEnglish ? 'YES' : 'SI' }}
+      <div class="last-backup-container mb-3">
+        <li class="ml-3">
+          <small>{{ languages.backupListText.description }}</small>
+          <ToggleTutorialButton :features="backupList" />
+        </li>
+        <div v-if="!showConfirmBackup" class="backup-btn-container">
+          <button id="backup-button" @click="showConfirmBackup = true">
+            <img class="cloud" src="@/img/icons/cloud.webp" alt="backup" />
           </button>
-          <button
-            style="background-color: lightcoral"
-            @click="showConfirmBackup = false"
-          >
-            NO
-          </button>
-        </template>
+        </div>
 
-        <p v-if="noBackup" class="no-backup">
-          {{ languages.backupListText.noBackupText }}
-        </p>
+        <div class="confirm-backup-container">
+          <template v-if="showConfirmBackup && !noBackup">
+            <span>{{ languages.backupListText.confirm }}</span>
+            <button
+              id="confirm-backup"
+              style="background-color: lightgreen"
+              @click="importBackup()"
+            >
+              {{ languages.langEnglish ? 'YES' : 'SI' }}
+            </button>
+            <button
+              style="background-color: lightcoral"
+              @click="showConfirmBackup = false"
+            >
+              NO
+            </button>
+          </template>
+
+          <p v-if="noBackup" class="no-backup">
+            {{ languages.backupListText.noBackupText }}
+          </p>
+        </div>
+
+        <Tutorial
+          v-if="settings.video && settings.feature === backupList"
+          :features="backupList"
+        />
       </div>
-
-      <Tutorial
-        v-if="settings.video && settings.feature === backupList"
-        :features="backupList"
-      />
     </template>
   </div>
 </template>

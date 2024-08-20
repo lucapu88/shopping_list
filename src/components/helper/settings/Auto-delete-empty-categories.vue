@@ -37,32 +37,38 @@ export default {
         settings.section === 'autoDeleteEmptyCategories'
       "
     >
-      <li class="ml-3">
-        <small>{{ languages.autoDeleteEmptyCategoriesText.description }}</small>
-        <ToggleTutorialButton :features="autoDeleteEmptyCategories" />
-      </li>
-      <li class="toggle-delete-confirm-container" id="auto-delete">
-        <div
-          class="hand-pointing"
-          @click="settings.toggleAutomaticDeleteEmptyCategories()"
-        >
-          &#x1F449;
-        </div>
-        <u
-          class="mr-2"
-          @click="settings.toggleAutomaticDeleteEmptyCategories()"
-        >
-          {{ languages.autoDeleteEmptyCategoriesText.function }}
-        </u>
-        <span class="text-primary">
-          {{ settings.canDeleteEmptyCategoriesText }}
-        </span>
-      </li>
+      <div class="auto-delete-container mb-3">
+        <li class="ml-3">
+          <small>{{
+            languages.autoDeleteEmptyCategoriesText.description
+          }}</small>
+          <ToggleTutorialButton :features="autoDeleteEmptyCategories" />
+        </li>
+        <li class="toggle-delete-confirm-container" id="auto-delete">
+          <div
+            class="hand-pointing"
+            @click="settings.toggleAutomaticDeleteEmptyCategories()"
+          >
+            &#x1F449;
+          </div>
+          <u
+            class="mr-2"
+            @click="settings.toggleAutomaticDeleteEmptyCategories()"
+          >
+            {{ languages.autoDeleteEmptyCategoriesText.function }}
+          </u>
+          <span class="text-primary">
+            {{ settings.canDeleteEmptyCategoriesText }}
+          </span>
+        </li>
 
-      <Tutorial
-        v-if="settings.video && settings.feature === autoDeleteEmptyCategories"
-        :features="autoDeleteEmptyCategories"
-      />
+        <Tutorial
+          v-if="
+            settings.video && settings.feature === autoDeleteEmptyCategories
+          "
+          :features="autoDeleteEmptyCategories"
+        />
+      </div>
     </template>
   </div>
 </template>

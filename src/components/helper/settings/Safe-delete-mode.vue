@@ -31,24 +31,26 @@ export default {
       :isSettings="true"
     />
     <template v-if="settings.safeMode && settings.section === 'safeMode'">
-      <li class="ml-3">
-        <small>{{ languages.safeModeText.description }}</small>
-        <ToggleTutorialButton :features="safeDelete" />
-      </li>
-      <div class="toggle-delete-confirm-container" id="safe-delete">
-        <span class="hand-pointing" @click="settings.toggleDeleteConfirm()">
-          &#x1F449;
-        </span>
-        <u class="mr-2" @click="settings.toggleDeleteConfirm()">
-          {{ languages.safeModeText.function }}
-        </u>
-        <span class="text-primary">{{ settings.canDeleteText }}</span>
-      </div>
+      <div class="safe-delete-container mb-3">
+        <li class="ml-3">
+          <small>{{ languages.safeModeText.description }}</small>
+          <ToggleTutorialButton :features="safeDelete" />
+        </li>
+        <div class="toggle-delete-confirm-container" id="safe-delete">
+          <span class="hand-pointing" @click="settings.toggleDeleteConfirm()">
+            &#x1F449;
+          </span>
+          <u class="mr-2" @click="settings.toggleDeleteConfirm()">
+            {{ languages.safeModeText.function }}
+          </u>
+          <span class="text-primary">{{ settings.canDeleteText }}</span>
+        </div>
 
-      <Tutorial
-        v-if="settings.video && settings.feature === safeDelete"
-        :features="safeDelete"
-      />
+        <Tutorial
+          v-if="settings.video && settings.feature === safeDelete"
+          :features="safeDelete"
+        />
+      </div>
     </template>
   </div>
 </template>

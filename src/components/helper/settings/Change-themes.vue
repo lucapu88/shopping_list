@@ -80,7 +80,7 @@ export default {
       <span class="ml-4">{{ languages.chosenThemeText }}: </span>
       <span class="text-primary">{{ theme.themeName }}</span>
       <br />
-      <div class="btns-container">
+      <div class="btns-container mb-3">
         <div class="top">
           <button
             type="button"

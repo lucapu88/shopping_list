@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 export default {
   props: {
     features: String,
+    margin: Boolean,
   },
   data() {
     return {
@@ -23,6 +24,7 @@ export default {
       :class="{
         'retro-tutorial-btn': theme.retroTheme,
         'tutorial-selected': settings.video && features === settings.feature,
+        'mb-3': margin,
       }"
       @click="settings.toggleTutorial(features)"
     >
@@ -45,6 +47,7 @@ export default {
   font-weight: bold;
   margin-left: 5px;
   margin-bottom: 5px;
+  padding: 3px 8px 3px 8px;
 }
 
 .align-right {

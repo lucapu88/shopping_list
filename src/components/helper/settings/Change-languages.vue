@@ -37,7 +37,7 @@ export default {
       :isSettings="true"
     />
     <div
-      class="languages-btns-container"
+      class="languages-btns-container mb-3"
       v-if="settings.changeLanguage && settings.section === 'changeLanguage'"
     >
       <div
