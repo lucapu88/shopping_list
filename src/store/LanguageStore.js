@@ -219,6 +219,7 @@ export const useLanguageStore = defineStore('Language', {
     priceText: 'If you type in a number with the currency € or £ or $ it will automatically calculate the total of all prices written in the list, but beware it only works if you type in the currency, e.g. bread 2.99€.',
     importantTodos: {
       alert: 'There are no elements selected as important',
+      addedImportantText: "Marked as important",
       visible: false,
       text: {
         part1: 'Click on',
@@ -423,6 +424,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.alert = "Non ci sono elementi selezionati come importanti";
       this.importantTodos.text.part1 = "Cliccando su";
       this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
+      this.importantTodos.addedImportantText = "Segnato come importante";
       this.showOnlyLatestDeletedText.title = "Mostra gli ultimi cancellati";
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
@@ -534,6 +536,7 @@ export const useLanguageStore = defineStore('Language', {
       this.importantTodos.alert = "No hay elementos seleccionados como importantes";
       this.importantTodos.text.part1 = "Haga clic en";
       this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
+      this.importantTodos.addedImportantText = "Marcado como importante";
       this.showOnlyLatestDeletedText.title = "Mostrar los últimos borrados";
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";

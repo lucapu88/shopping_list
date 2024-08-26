@@ -39,6 +39,7 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     deletedSingleTodo: null,
     todosCategorySelected: [],
     categoryAdded: false,
+    addedImportant: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -291,9 +292,21 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.todos[n].isActive = !this.todos[n].isActive;
         this.todos[n].isDisabled = !this.todos[n].isDisabled; //disabilito i pulsanti
 
+        this.showAddedImportantAlert();
         this.toggleButtonDeleteSelectedTodo();
         this.removeSelectedCategoryToAddItem();
         this.saveTodos();
+      }
+    },
+    showAddedImportantAlert() {
+      //imposto un piccolo alert per indicare che è stato settato come importante il todo
+      if (this.todos.some(todo => todo.isActive)) {
+        this.addedImportant = true;
+        setTimeout(() => {
+          this.addedImportant = false;
+        }, 3500);
+      } else {
+        this.addedImportant = false;
       }
     },
     saveModifiedTodo(x, y) {

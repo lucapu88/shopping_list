@@ -132,6 +132,7 @@ export default {
       class="btn custom-show-listbtn"
       :class="{
         'btn-selected': todosStore.showOnlyImportantTodos,
+        'btn-important-temporary': todosStore.addedImportant,
         'btn-important-selected':
           todosStore.showOnlyImportantTodos && !theme.retroTheme,
         'minimal-btn': theme.minimalTheme,
@@ -180,6 +181,9 @@ export default {
   <p class="no-important-todos-alert" v-if="languages.importantTodos.visible">
     {{ languages.importantTodos.alert }}
   </p>
+  <p class="no-important-todos-alert" v-if="todosStore.addedImportant">
+    {{ languages.importantTodos.addedImportantText }}
+  </p>
   <p class="category-tip" v-if="todosStore.categoryAdded">
     {{ languages.categoryTipText }}
   </p>
@@ -188,6 +192,10 @@ export default {
 </template>
 
 <style scoped>
+p {
+  margin: 0;
+}
+
 .pushbutton-container {
   display: flex;
   gap: 25px;
@@ -240,5 +248,23 @@ export default {
   font-size: 13px;
   text-align: center;
   margin-bottom: 0;
+}
+
+.btn-important-temporary {
+  animation: mark 3s;
+}
+@keyframes mark {
+  0% {
+    transform: scale(1, 1);
+    background-color: #6da505e1;
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+    background-color: #6da505e1;
+  }
+  100% {
+    transform: scale(1, 1);
+    background-color: #6da505e1;
+  }
 }
 </style>

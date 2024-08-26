@@ -222,6 +222,7 @@ button {
   line-height: 1;
   overflow-x: auto;
   overflow-y: hidden;
+  min-height: 25px;
 }
 @media (max-width: 380px) {
   .todo {
