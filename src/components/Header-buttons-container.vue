@@ -170,23 +170,25 @@ export default {
       />
     </button>
   </div>
-  <div class="drag-n-drop-text">
-    <small v-if="todosStore.isDraggable">
-      {{ languages.helperDescription.dragNdropText.dragginText }}
-    </small>
+  <div class="alerts-container">
+    <div class="drag-n-drop-text">
+      <small v-if="todosStore.isDraggable">
+        {{ languages.helperDescription.dragNdropText.dragginText }}
+      </small>
+    </div>
+    <p class="list-copied" v-if="languages.copyList.visible">
+      {{ languages.copyList.text }}
+    </p>
+    <p class="no-important-todos-alert" v-if="languages.importantTodos.visible">
+      {{ languages.importantTodos.alert }}
+    </p>
+    <p class="no-important-todos-alert" v-if="todosStore.addedImportant">
+      {{ languages.importantTodos.addedImportantText }}
+    </p>
+    <p class="category-tip" v-if="todosStore.categoryAdded">
+      {{ languages.categoryTipText }}
+    </p>
   </div>
-  <p class="list-copied" v-if="languages.copyList.visible">
-    {{ languages.copyList.text }}
-  </p>
-  <p class="no-important-todos-alert" v-if="languages.importantTodos.visible">
-    {{ languages.importantTodos.alert }}
-  </p>
-  <p class="no-important-todos-alert" v-if="todosStore.addedImportant">
-    {{ languages.importantTodos.addedImportantText }}
-  </p>
-  <p class="category-tip" v-if="todosStore.categoryAdded">
-    {{ languages.categoryTipText }}
-  </p>
 
   <CategoriesPanel />
 </template>
@@ -217,10 +219,15 @@ p {
   width: 20px;
 }
 
+.alerts-container {
+  min-height: 21px;
+}
+
 .list-copied {
-  font-size: 13px;
+  font-size: 14px;
   color: #28a745;
   text-align: center;
+  background-color: #ffffff;
 }
 
 .btn-important-selected {
@@ -239,9 +246,10 @@ p {
 }
 
 .no-important-todos-alert {
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   color: #c30000;
+  background-color: #ffffff;
 }
 
 .category-tip {

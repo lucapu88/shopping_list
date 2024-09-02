@@ -15,7 +15,14 @@ export default {
       todosStore: useAddModifyDeleteTodosStore(),
       suggestionsStore: useSuggestionsStore(),
       isChristmas: useChristmasStore(),
+      noSuggestions: false,
     };
+  },
+  created() {
+    //se l'emoticon della categoria scelta è uguale ad una delle emoticon per le quali NON ci sono suggerimenti
+    this.noSuggestions =
+      this.todosStore.categoryEmo === this.languages.engCategories[24].emojy ||
+      this.todosStore.categoryEmo === this.languages.engCategories[22].emojy;
   },
 };
 </script>
@@ -64,7 +71,7 @@ export default {
         </div>
         <div class="header-info">
           <small
-            v-if="!isChristmas.christmasTheme"
+            v-if="!noSuggestions"
             :class="{ 'christmas-subtitle': isChristmas.christmasTheme }"
           >
             {{ languages.suggestions.headerInfo }}
@@ -80,9 +87,10 @@ export default {
           }"
           v-for="(tip, n) in suggestionsStore.suggestionsList"
           :key="n"
-          @click="suggestionsStore.addTip(tip, todosStore.categoryEmo)"
+          @click="suggestionsStore.addTip(tip, noSuggestions)"
         >
-          <strong v-if="!isChristmas.christmasTheme"> + </strong> {{ tip }}
+          <strong v-if="!noSuggestions"> + </strong>
+          {{ tip }}
         </p>
       </main>
       <footer v-if="isChristmas.christmasTheme">

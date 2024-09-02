@@ -46,6 +46,8 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         gardening: ["Gardening gloves", "Trowel", "Pruning shears", "Watering cans", "Garden hoses", "Rake", "Plant stakes", "Pot", "Saucer", "Fertilizer", "Seeds", "Plant soil", "Bucket", "Sprayer", "Garden pickaxes"],
 
+        onlineShopping: ["Online you can buy anything, so we would find it difficult to make suggestions as anything in the other categories can be bought online."],
+
         other: ["Salt", "Eggs", "Snacks", "Bicarbonate", "Coffee powder", "Coffee capsules/waffles", "Energy bars", "Packaged chips", "Pretzels", "Chocolates", "Popcorn", "Soy sauce", "Barbecue sauce", "Ketchup", "Mayonnaise", "Dried fruit", "Breakfast cereals", "Batteries", "Lighter", "Parchment paper", "Aluminum foil", "Candles", "Rubber bands", "String"],
 
         christmasGifts: ["We do not think we can give you suggestions for this category as it is too subjective.",

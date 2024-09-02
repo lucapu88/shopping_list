@@ -97,10 +97,13 @@ export const useSuggestionsStore = defineStore('suggestions', {
           this.suggestionsList = this.eng.gardening;
           break;
         case this.languages.engCategories[22].name:
+          this.suggestionsList = this.eng.onlineShopping;
+          break;
+        case this.languages.engCategories[23].name:
           this.suggestionsList = this.eng.other;
           break;
 
-        case this.languages.engCategories[23].name:
+        case this.languages.engCategories[24].name:
           this.suggestionsList = this.eng.christmasGifts;
           break;
 
@@ -194,10 +197,14 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
 
         case this.languages.itaCategories[22].name:
-          this.suggestionsList = this.ita.altro;
+          this.suggestionsList = this.ita.acquistiOnline;
           break;
 
         case this.languages.itaCategories[23].name:
+          this.suggestionsList = this.ita.altro;
+          break;
+
+        case this.languages.itaCategories[24].name:
           this.suggestionsList = this.ita.regaliDiNatale;
           break;
 
@@ -291,10 +298,14 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
 
         case this.languages.spanCategories[22].name:
-          this.suggestionsList = this.spa.otros;
+          this.suggestionsList = this.spa.comprarEnIntenet;
           break;
 
         case this.languages.spanCategories[23].name:
+          this.suggestionsList = this.spa.otros;
+          break;
+
+        case this.languages.spanCategories[24].name:
           this.suggestionsList = this.spa.regalosDeNavidad;
           break;
 
@@ -302,11 +313,8 @@ export const useSuggestionsStore = defineStore('suggestions', {
           break;
       }
     },
-    addTip(tip, categoryEmo) {
-      if (categoryEmo === this.languages.engCategories[23].emojy
-        || categoryEmo === this.languages.itaCategories[23].emojy
-        || categoryEmo === this.languages.spanCategories[23].emojy
-      ) {
+    addTip(tip, noSuggestions) {
+      if (noSuggestions) {
         return;
       }
       this.todosStore.addTodo(tip);
