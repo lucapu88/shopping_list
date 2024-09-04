@@ -46,6 +46,10 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   },
   actions: {
     addTodo(tip) {
+      this.settings.checkingUpdates();
+      this.christmas.merryChristmasTheme();
+      this.festivities.checkFestivities();
+
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
@@ -76,8 +80,6 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
-      this.christmas.merryChristmasTheme();
-      this.festivities.checkFestivities();
     },
     createCategory() {
       this.languages.categories.forEach((category) => {

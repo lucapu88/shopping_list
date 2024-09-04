@@ -4,6 +4,9 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import crumpPaper from '@/img/carta-stropicciata.webp';
+import wave from '@/img/onda.webp';
+import cincia from '@/img/cincia.webp';
 </script>
 
 <script>
@@ -21,6 +24,10 @@ export default {
 </script>
 
 <template>
+  <link v-if="theme.lightTheme" rel="preload" as="image" :href="crumpPaper" />
+  <link v-if="theme.summerTheme" rel="preload" as="image" :href="wave" />
+  <link v-if="theme.winterTheme" rel="preload" as="image" :href="cincia" />
+
   <div
     class="confirm col-10 mx-auto rounded text-center mb-3"
     :class="{

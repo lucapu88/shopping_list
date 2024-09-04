@@ -37,7 +37,7 @@ export const useSettingsStore = defineStore('settings', {
   getters: {},
   actions: {
     canDeleteCheck() {
-      //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
+      //setto le impostazioni scelte dall'utente sia sulla conferma di cancellazione per todo, sia sull'autoeliminazione delle categorie vuote
       const canDelete = window.localStorage.getItem('canDelete');
       this.canDelete = canDelete === 'true';
       this.canDelete ? (this.canDeleteText = 'ON') : this.canDeleteText;

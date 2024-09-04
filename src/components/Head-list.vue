@@ -28,11 +28,6 @@ export default {
   },
   methods: {
     showHelper() {
-      //Per una sicurezza maggiore, valutare se tenere questi 3 metodi qui sotto, dato che sono presenti anche in altre parti del progetto
-      this.settings.checkingUpdates();
-      this.isChristmas.merryChristmasTheme();
-      this.festivities.checkFestivities();
-
       this.settings.openHelper();
       if (this.settings.helper) {
         window.scrollTo(0, 0);

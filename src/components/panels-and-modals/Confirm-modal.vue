@@ -3,6 +3,9 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useThemeStore } from '@/store/ThemeStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useChristmasStore } from '@/store/ChristmasStore';
+import postit from '@/img/postit.webp';
+import maldive from '@/img/maldive.webp';
+import forest from '@/img/winter-forest.webp';
 </script>
 
 <script>
@@ -19,6 +22,10 @@ export default {
 </script>
 
 <template>
+  <link v-if="theme.lightTheme" rel="preload" as="image" :href="postit" />
+  <link v-if="theme.summerTheme" rel="preload" as="image" :href="maldive" />
+  <link v-if="theme.winterTheme" rel="preload" as="image" :href="forest" />
+
   <div v-if="todosStore.confirmDeleteModal" class="modal">
     <div
       class="confirm-delete-modal-content"
