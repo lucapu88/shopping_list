@@ -5,6 +5,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 
+//TOFIX: Cambiare nome a sto store perchè fa schifo! trovarne uno più adatto
 export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
   state: () => ({
     languages: useLanguageStore(),
@@ -374,6 +375,17 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     showNoImportantTodosAlert() {
       this.languages.importantTodos.visible = true;
       setTimeout(() => (this.languages.importantTodos.visible = false), 2000);
+    },
+    deselectAllImportant() {
+      this.createTodosList();
+      this.toggleButtonDeleteSelectedTodo();
+      this.changeTodoAdded(this.todos);
+      this.todos.forEach((todo) => {
+        todo.isActive = false;
+        todo.isDisabled = false;
+      });
+      this.showOnlyImportantTodos = false;
+      this.saveTodos();
     },
     setOnlyDeletedTodos(index, arrayWithOneElement) {
       let todosToDelete = [];

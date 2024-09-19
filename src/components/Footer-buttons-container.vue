@@ -47,8 +47,22 @@ export default {
     >
       <img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
     </button>
+    <!-- PULSANTE DESELEZIONA TUTTI I SELEZIONATI COME IMPORTANTI -->
+    <button
+      v-if="todosStore.showOnlyImportantTodos"
+      class="deselect-all-imp-standard"
+      :class="{
+        'deselect-all-important': !theme.retroTheme && !theme.elegantTheme,
+        'deselect-all-important-retro': theme.retroTheme,
+        'deselect-all-important-elegant': theme.elegantTheme,
+      }"
+      @click="todosStore.deselectAllImportant()"
+    >
+      {{ languages.importantTodos.buttonText }}
+    </button>
     <!-- PULSANTE ELIMINA TUTTO-->
     <button
+      v-if="!todosStore.showOnlyImportantTodos"
       class="delete-all btn dark"
       :class="{
         christmas: isChristmas.christmasTheme,
@@ -140,5 +154,15 @@ export default {
 .multiple-delete > img {
   width: 25px;
   height: 25px;
+}
+.deselect-all-imp-standard {
+  width: 200px;
+  margin-left: 10%;
+  padding: 5px;
+}
+.deselect-all-important {
+  color: #ff0000;
+  border: 2px solid #ff0000;
+  border-radius: 7px;
 }
 </style>

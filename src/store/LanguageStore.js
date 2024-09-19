@@ -221,6 +221,7 @@ export const useLanguageStore = defineStore('Language', {
     infoCategoriesAlert: 'If you cannot find the categories, make sure the language is correct. Categories are imported correctly if they are written in the selected language.',
     priceText: 'If you type in a number with the currency € or £ or $ it will automatically calculate the total of all prices written in the list, but beware it only works if you type in the currency, e.g. bread 2.99€.',
     importantTodos: {
+      buttonText: 'Deselect All',
       alert: 'There are no elements selected as important',
       addedImportantText: "Marked as important",
       visible: false,
@@ -424,6 +425,7 @@ export const useLanguageStore = defineStore('Language', {
       this.backupListText.noBackupText = 'Non ci sono backup salvati';
       this.infoCategoriesAlert = 'Se non ritrovi le categorie assicurati che la lingua sia quella esatta. Le categorie vengono importate correttamente se sono scritte nella lingua selezionata.';
       this.priceText = 'Se scrivi un numero con la valuta € o £ o $ in automatico ti calcolerà il totale di tutti i prezzi scritti in lista, ma attenzione funziona solo se scrivi la valuta, ad esempio: pane 2,99€.';
+      this.importantTodos.buttonText = "Deseleziona tutti";
       this.importantTodos.alert = "Non ci sono elementi selezionati come importanti";
       this.importantTodos.text.part1 = "Cliccando su";
       this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
@@ -536,6 +538,7 @@ export const useLanguageStore = defineStore('Language', {
       this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
       this.infoCategoriesAlert = 'Si no encuentra las categorías, asegúrese de que el idioma es correcto. Las categorías se importan correctamente si están escritas en el idioma seleccionado.';
       this.priceText = 'Si tecleas un número con la moneda € o £ o $ calculará automáticamente el total de todos los precios escritos en la lista, pero cuidado, sólo funciona si tecleas la moneda, por ejemplo, pan 2,99€.';
+      this.importantTodos.buttonText = "Deseleccionar todo";
       this.importantTodos.alert = "No hay elementos seleccionados como importantes";
       this.importantTodos.text.part1 = "Haga clic en";
       this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
