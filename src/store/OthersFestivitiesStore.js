@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
     state: () => ({
+        halloweenDays: [25, 26, 27, 28, 29, 30, 31],
         halloweenTheme: false,
         worldCancerDay: false,
         worldPeaceDay: false,
@@ -40,7 +41,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             const currentDay = today.getDate();
             const weekDay = today.getDay();
 
-            if ((currentDay <= 2 && currentMonth === 11) || ((currentDay >= 23 || currentDay <= 31) && currentMonth === 10)) {
+            if ((this.halloweenDays.includes(currentDay) && currentMonth === 10) || (currentDay === 1 && currentMonth === 11)) {
                 this.halloweenTheme = true;
             }
             if (currentDay === 1 && currentMonth === 1) {
