@@ -86,6 +86,24 @@ export default {
       src="@/img/festivities/cappello-strega.webp"
       alt="halloween"
     />
+    <img
+      v-if="festivities.halloweenTheme"
+      class="halloween-bat bat-1"
+      src="@/img/festivities/pipistrello-1.webp"
+      alt="halloween_bat"
+    />
+    <img
+      v-if="festivities.halloweenTheme"
+      class="halloween-bat bat-2"
+      src="@/img/festivities/pipistrello-2.webp"
+      alt="halloween_bat"
+    />
+    <img
+      v-if="festivities.halloweenTheme"
+      class="halloween-bat bat-3"
+      src="@/img/festivities/pipistrello-3.webp"
+      alt="halloween_bat"
+    />
     <h2
       class="title text-center"
       :class="{
@@ -212,6 +230,38 @@ export default {
   top: 0;
   left: 0;
 }
+.halloween-bat {
+  width: 30px;
+  position: absolute;
+  opacity: 0;
+  animation: batAppear 3s infinite;
+  /* animation-fill-mode: forwards; */
+  /* animation-iteration-count: 2; */
+}
+.bat-1 {
+  top: -10px;
+  left: 12%;
+  animation-delay: 4s;
+}
+.bat-2 {
+  top: 8%;
+  left: 15%;
+  animation-delay: 6.5s;
+}
+.bat-3 {
+  top: 0;
+  left: 23%;
+  animation-delay: 8s;
+}
+@keyframes batAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .title {
   background: -webkit-radial-gradient(circle, #ff0000 0%, #3d0000 80%);
   -webkit-background-clip: text;
