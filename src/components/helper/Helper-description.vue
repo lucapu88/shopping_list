@@ -23,6 +23,7 @@ export default {
       multipleDelete: 'multipleDelete',
       copyPaste: 'copyPaste',
       isAndroid: false,
+      troubleshooting: 'troubleshooting',
     };
   },
   created() {
@@ -47,14 +48,32 @@ export default {
 
 <template>
   <div>
-    <p class="helper-title">
-      {{ languages.helperDescription.troubleshooting }}
-    </p>
-    <p class="troubleshooting">
-      <small>
-        {{ languages.helperDescription.troubleshootingText }}
-      </small>
-    </p>
+    <!-- RISOLUZIONE PROBLEMI -->
+    <!-- TOFIX: Crea un componente a parte per troubleshooting -->
+    <ListIstructionAccordion
+      show-list-istructions-input="troubleshooting"
+      :istructions-text="languages.helperDescription.troubleshooting"
+      :select-deselect-arrow="
+        settings.troubleshooting && settings.section === 'troubleshooting'
+      "
+      :isSettings="true"
+    />
+    <template
+      v-if="settings.troubleshooting && settings.section === 'troubleshooting'"
+    >
+      <p class="troubleshooting">
+        <small>
+          {{ languages.helperDescription.troubleshootingText }}
+        </small>
+      </p>
+      <p class="troubleshooting">
+        <small>
+          {{ languages.helperDescription.troubleshootingText2 }}
+        </small>
+      </p>
+    </template>
+
+    <!-- ISTRUZIONI -->
     <p
       class="helper-title"
       :class="{ 'christmas-red': isChristmas.christmasTheme }"
@@ -516,6 +535,7 @@ export default {
 }
 .troubleshooting {
   text-align: center;
+  border-bottom: 2px solid;
 }
 
 .helper-list {

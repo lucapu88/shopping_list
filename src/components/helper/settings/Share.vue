@@ -54,7 +54,7 @@ export default {
 </script>
 
 <template>
-  <div class="share-container share-update helper-settings">
+  <div class="share-container share-update helper-settings mb-3">
     <span class="settings-icon mr-1"> &#x2699; </span>
     <span>
       {{ languages.shareText }}

@@ -141,8 +141,9 @@ export const useLanguageStore = defineStore('Language', {
     deleteAll: 'Delete ALL',
     deleteAllConfirmText: 'Are you sure you want \n delete the whole list?',
     helperDescription: {
-      troubleshooting: 'Troubleshooting:',
+      troubleshooting: 'Troubleshooting',
       troubleshootingText: "If you experience slowness or blocks in loading images, check your connection, if it's ok try restarting the app. If the problem persists, report it to the e-mail in the support section.",
+      troubleshootingText2: "If, when comparing your app on different devices, you find that the refresh button is not active, restart the app and check again.",
       instructionsTitle: 'Instructions:',
       addEditDelete: 'Add, Edit, Delete',
       add: 'is used to add stuff to buy list.',
@@ -361,8 +362,9 @@ export const useLanguageStore = defineStore('Language', {
       this.removeEmpty = 'Rimuovi vuote';
       this.deleteAll = 'Cancella tutto';
       this.deleteAllConfirmText = 'Sei sicuro di voler eliminare \n tutta la lista?';
-      this.helperDescription.troubleshooting = 'Risoluzione Problemi:';
+      this.helperDescription.troubleshooting = 'Risoluzione Problemi';
       this.helperDescription.troubleshootingText = " Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini, controlla la tua connessione, se è ok prova a riavviare l'app. Se il problema persiste segnalalo all'email nella sezione contatti.";
+      this.helperDescription.troubleshootingText2 = "Se confrontando la tua app su diversi dispositivi, ti accorgessi che il pulsante di aggiornamento non è attivo, riavvia l'app e ricontrolla.";
       this.helperDescription.instructionsTitle = 'Istruzioni';
       this.helperDescription.addEditDelete = 'Aggiungere, Modificare, Eliminare';
       this.helperDescription.add = 'serve per aggiungere alla lista roba da comprare.';
@@ -474,8 +476,9 @@ export const useLanguageStore = defineStore('Language', {
       this.removeEmpty = 'Eliminar categorías vacías';
       this.deleteAll = 'Borrar todo';
       this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
-      this.helperDescription.troubleshooting = 'Solución de problemas:';
+      this.helperDescription.troubleshooting = 'Solución de problemas';
       this.helperDescription.troubleshootingText = "En caso de que experimentes lentitud o congelación al cargar las imágenes, comprueba tu conexión, si está bien prueba a reiniciar la aplicación. Si el problema persiste repórtalo al correo electrónico en la sección de contacto.";
+      this.helperDescription.troubleshootingText2 = "Si, al comparar tu aplicación en distintos dispositivos, ves que el botón de actualización no está activo, reinicia la aplicación y vuelve a comprobarlo.";
       this.helperDescription.instructionsTitle = 'Instrucciones';
       this.helperDescription.addEditDelete = 'Añadir, Editar, Borrar';
       this.helperDescription.add = 'sirve para añadir a la lista de cosas que comprar.';

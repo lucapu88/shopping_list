@@ -26,6 +26,7 @@ export default {
   <div
     class="list-title"
     :class="{
+      'troubleshooting-title': showListIstructionsInput === 'troubleshooting',
       'list-title-selected': selectDeselectArrow,
       'list-title-deselected': !selectDeselectArrow,
       'margin-negative': !isSettings,
@@ -75,6 +76,12 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
+.troubleshooting-title {
+  color: #008000 !important;
+  font-weight: bold !important;
+}
+
 .list-title-selected {
   box-shadow: inset 2px 2px 90px -50px rgba(0, 0, 0, 0.85);
 }

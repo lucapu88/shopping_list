@@ -12,6 +12,7 @@ export const useSettingsStore = defineStore('settings', {
     helper: false,
     helperInClosing: false,
     privacyPolicy: false,
+    troubleshooting: false,
     changeLanguage: false,
     changeTheme: false,
     autoDeleteEmptyCategories: false,
@@ -111,6 +112,8 @@ export const useSettingsStore = defineStore('settings', {
       this.pasteList = false;
       this.showOnlyLatestDeleted = false;
       this.backupList = false;
+      //RISOLUZIONE PROBLEMI
+      this.troubleshooting = false;
       //ISTRUZIONI
       this.addEditDelete = false;
       this.categoriesInfo = false;
@@ -154,6 +157,11 @@ export const useSettingsStore = defineStore('settings', {
           break;
         case 'backupList':
           this.section === section ? this.backupList = !this.backupList : this.backupList = true;
+          this.section = section;
+          break;
+        //----------------------------------------------------- RISOLUZIONE PROBLEMI
+        case 'troubleshooting':
+          this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
           this.section = section;
           break;
         // ---------------------------------------------------- ISTRUZIONI
