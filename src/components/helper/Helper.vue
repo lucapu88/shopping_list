@@ -125,7 +125,7 @@ export default {
           'retro-helper-settings-title': theme.retroTheme,
         }"
       >
-        {{ languages.settingsTextTitle }}:
+        {{ languages.settingsTextTitle }}
       </p>
       <img
         v-if="isChristmas.christmasTheme"

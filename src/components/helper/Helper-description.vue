@@ -6,6 +6,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import ListIstructionAccordion from './settings/List-istruction-accordion.vue';
 import Tutorial from './tutorials/Tutorial.vue';
 import ToggleTutorialButton from './tutorials/ToggleTutorialButton.vue';
+import Troubleshooting from './Troubleshooting.vue';
 </script>
 
 <script>
@@ -23,7 +24,6 @@ export default {
       multipleDelete: 'multipleDelete',
       copyPaste: 'copyPaste',
       isAndroid: false,
-      troubleshooting: 'troubleshooting',
     };
   },
   created() {
@@ -48,31 +48,6 @@ export default {
 
 <template>
   <div>
-    <!-- RISOLUZIONE PROBLEMI -->
-    <!-- TOFIX: Crea un componente a parte per troubleshooting -->
-    <ListIstructionAccordion
-      show-list-istructions-input="troubleshooting"
-      :istructions-text="languages.helperDescription.troubleshooting"
-      :select-deselect-arrow="
-        settings.troubleshooting && settings.section === 'troubleshooting'
-      "
-      :isSettings="true"
-    />
-    <template
-      v-if="settings.troubleshooting && settings.section === 'troubleshooting'"
-    >
-      <p class="troubleshooting">
-        <small>
-          {{ languages.helperDescription.troubleshootingText }}
-        </small>
-      </p>
-      <p class="troubleshooting">
-        <small>
-          {{ languages.helperDescription.troubleshootingText2 }}
-        </small>
-      </p>
-    </template>
-
     <!-- ISTRUZIONI -->
     <p
       class="helper-title"
@@ -507,6 +482,8 @@ export default {
         </li>
       </template>
     </ul>
+    <!-- RISOLUZIONE PROBLEMI -->
+    <Troubleshooting />
   </div>
   <br />
   <section id="helper-important-alert">
@@ -532,10 +509,7 @@ export default {
   margin-bottom: 0;
   text-align: center;
   margin-top: 20px;
-}
-.troubleshooting {
-  text-align: center;
-  border-bottom: 2px solid;
+  font-size: large;
 }
 
 .helper-list {

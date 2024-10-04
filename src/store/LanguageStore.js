@@ -142,8 +142,13 @@ export const useLanguageStore = defineStore('Language', {
     deleteAllConfirmText: 'Are you sure you want \n delete the whole list?',
     helperDescription: {
       troubleshooting: 'Troubleshooting',
-      troubleshootingText: "If you experience slowness or blocks in loading images, check your connection, if it's ok try restarting the app. If the problem persists, report it to the e-mail in the support section.",
-      troubleshootingText2: "If, when comparing your app on different devices, you find that the refresh button is not active, restart the app and check again.",
+      troubleshootingText: {
+        part1: "If you experience slowness or blocks in loading images, check your connection, if it's ok try restarting the app. If the problem persists, report it to the e-mail in the support section above.",
+        part2: "We do not save any of your personal data or location, nor do we save your shopping lists. The data is only saved locally on your device, so if you should lose your list by accident by deleting it, the only way to recover it is by clicking on the button in the ‘import last backup’ section above.",
+        part3: "Be careful! You only care about the last deletion made!",
+        part4: "If you should find your list emptied without having actually done so, it is most likely that your smartphone has low storage space.",
+        part5: "If, on the other hand, you claim to have memory and the data is still deleted, then report this to the email in the support section above."
+      },
       instructionsTitle: 'Instructions:',
       addEditDelete: 'Add, Edit, Delete',
       add: 'is used to add stuff to buy list.',
@@ -363,8 +368,11 @@ export const useLanguageStore = defineStore('Language', {
       this.deleteAll = 'Cancella tutto';
       this.deleteAllConfirmText = 'Sei sicuro di voler eliminare \n tutta la lista?';
       this.helperDescription.troubleshooting = 'Risoluzione Problemi';
-      this.helperDescription.troubleshootingText = " Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini, controlla la tua connessione, se è ok prova a riavviare l'app. Se il problema persiste segnalalo all'email nella sezione contatti.";
-      this.helperDescription.troubleshootingText2 = "Se confrontando la tua app su diversi dispositivi, ti accorgessi che il pulsante di aggiornamento non è attivo, riavvia l'app e ricontrolla.";
+      this.helperDescription.troubleshootingText.part1 = " Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini, controlla la tua connessione, se è ok prova a riavviare l'app. Se il problema persiste segnalalo all'email nella sezione contatti qui sopra.";
+      this.helperDescription.troubleshootingText.part2 = "Non salviamo dati, non salviamo nessun tuo dato personale, ne posizione, e non salviamo le tue liste della spesa. I dati vengono salvati in locale solamente sul tuo dispositivo, quindi se dovessi perdere la lista eliminandola per sbaglio, l'unico modo per recuperarla è cliccando sul pulsante nella sezione 'importa ultimo backup' più in alto.";
+      this.helperDescription.troubleshootingText.part3 = "Ma attenzione! ti importa solo l'ultima cancellazione fatta!";
+      this.helperDescription.troubleshootingText.part4 = "Se dovessi trovarti la lista svuotata senza che tu l'abbia fatto realmente, molto probabilmente il tuo smartphone ha uno spazio di archiviazione in memoria basso.";
+      this.helperDescription.troubleshootingText.part5 = "Se invece sostieni di avere memoria e i dati si cancellano ugualmente, allora segnalalo all'email nella sezione contatti qui sopra.";
       this.helperDescription.instructionsTitle = 'Istruzioni';
       this.helperDescription.addEditDelete = 'Aggiungere, Modificare, Eliminare';
       this.helperDescription.add = 'serve per aggiungere alla lista roba da comprare.';
@@ -477,8 +485,11 @@ export const useLanguageStore = defineStore('Language', {
       this.deleteAll = 'Borrar todo';
       this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
       this.helperDescription.troubleshooting = 'Solución de problemas';
-      this.helperDescription.troubleshootingText = "En caso de que experimentes lentitud o congelación al cargar las imágenes, comprueba tu conexión, si está bien prueba a reiniciar la aplicación. Si el problema persiste repórtalo al correo electrónico en la sección de contacto.";
-      this.helperDescription.troubleshootingText2 = "Si, al comparar tu aplicación en distintos dispositivos, ves que el botón de actualización no está activo, reinicia la aplicación y vuelve a comprobarlo.";
+      this.helperDescription.troubleshootingText.part1 = "En caso de que experimentes lentitud o congelación al cargar las imágenes, comprueba tu conexión, si está bien prueba a reiniciar la aplicación. Si el problema persiste repórtalo al correo electrónico en la sección de contactos anterior.";
+      this.helperDescription.troubleshootingText.part2 = "No guardamos ninguno de tus datos, ni ubicación, ni guardamos tus listas de la compra. Los datos solo se guardan localmente en tu dispositivo, por lo que si pierdes tu lista por accidente borrándola, la única forma de recuperarla es pulsando el botón de la sección 'importar última copia de seguridad' que aparece más arriba.";
+      this.helperDescription.troubleshootingText.part3 = "¡Cuidado! ¡Sólo te importa el último borrado realizado!";
+      this.helperDescription.troubleshootingText.part4 = "Si ves que tu lista se ha vaciado sin haberlo hecho realmente, lo más probable es que tu smartphone tenga poco espacio de almacenamiento.";
+      this.helperDescription.troubleshootingText.part5 = "Si, por el contrario, afirma tener memoria y los datos siguen borrados, comunícalo al correo electrónico de la sección de contactos anterior.";
       this.helperDescription.instructionsTitle = 'Instrucciones';
       this.helperDescription.addEditDelete = 'Añadir, Editar, Borrar';
       this.helperDescription.add = 'sirve para añadir a la lista de cosas que comprar.';

@@ -129,6 +129,16 @@ export const useSettingsStore = defineStore('settings', {
       //Per gli accordion nell'helper
       this.feature = null;
       this.video = true;
+
+      //RISOLUZIONE PROBLEMI
+      if (section === 'troubleshooting') {
+        //Non lo metto nello switch perchè questa sezione si deve chiudere anche quando si aprono le sezioni della parte "Istruzioni"
+        this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
+        this.section = section;
+      } else {
+        this.troubleshooting = false;
+      }
+
       switch (section) {
         // -------------------------------------------------------------- IMPOSTAZIONI
         case 'changeLanguage':
@@ -157,11 +167,6 @@ export const useSettingsStore = defineStore('settings', {
           break;
         case 'backupList':
           this.section === section ? this.backupList = !this.backupList : this.backupList = true;
-          this.section = section;
-          break;
-        //----------------------------------------------------- RISOLUZIONE PROBLEMI
-        case 'troubleshooting':
-          this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
           this.section = section;
           break;
         // ---------------------------------------------------- ISTRUZIONI

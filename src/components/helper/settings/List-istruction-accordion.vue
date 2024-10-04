@@ -17,7 +17,11 @@ export default {
       theme: useThemeStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
+      troubleshooting: false,
     };
+  },
+  created() {
+    this.troubleshooting = this.showListIstructionsInput === 'troubleshooting';
   },
 };
 </script>
@@ -26,10 +30,10 @@ export default {
   <div
     class="list-title"
     :class="{
-      'troubleshooting-title': showListIstructionsInput === 'troubleshooting',
+      'troubleshooting-title': troubleshooting,
       'list-title-selected': selectDeselectArrow,
       'list-title-deselected': !selectDeselectArrow,
-      'margin-negative': !isSettings,
+      'margin-negative': !isSettings && !troubleshooting,
       'list-title-color':
         theme.lightTheme || theme.winterTheme || theme.darkTheme,
       'list-title-summer': theme.summerTheme,
@@ -43,6 +47,7 @@ export default {
     @click="settings.showListIstructions(showListIstructionsInput)"
   >
     <span v-if="isSettings" class="settings-icon mr-1"> &#x2699; </span>
+    <span v-if="troubleshooting" class="troubleshooting-icon mr-1"> ? </span>
     {{ istructionsText }}
     <img
       v-if="!theme.elegantTheme"
@@ -80,6 +85,11 @@ export default {
 .troubleshooting-title {
   color: #008000 !important;
   font-weight: bold !important;
+}
+.troubleshooting-icon {
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 0 5px;
 }
 
 .list-title-selected {
