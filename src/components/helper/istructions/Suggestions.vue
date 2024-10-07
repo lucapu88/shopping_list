@@ -24,7 +24,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="suggestions"
+    show-list-instructions-input="suggestions"
     :istructions-text="languages.helperDescription.suggestionsTitle"
     :select-deselect-arrow="
       settings.suggestions && settings.section === suggestions

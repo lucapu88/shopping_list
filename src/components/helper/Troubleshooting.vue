@@ -20,7 +20,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="troubleshooting"
+    show-list-instructions-input="troubleshooting"
     :istructions-text="languages.helperDescription.troubleshooting"
     :select-deselect-arrow="
       settings.troubleshooting && settings.section === troubleshooting

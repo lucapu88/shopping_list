@@ -24,7 +24,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="dragNdrop"
+    show-list-instructions-input="dragNdrop"
     :istructions-text="languages.helperDescription.dragNdropTitle"
     :select-deselect-arrow="
       settings.dragNdrop && settings.section === dragNdrop

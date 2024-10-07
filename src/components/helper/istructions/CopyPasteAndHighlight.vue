@@ -25,7 +25,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="copyHighlights"
+    show-list-instructions-input="copyHighlights"
     :istructions-text="languages.helperDescription.copyListTitle"
     :select-deselect-arrow="
       settings.copyHighlights && settings.section === copyHighlights

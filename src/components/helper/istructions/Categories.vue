@@ -25,7 +25,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="categoriesInfo"
+    show-list-instructions-input="categoriesInfo"
     :istructions-text="languages.helperDescription.categories"
     :select-deselect-arrow="
       settings.categoriesInfo && settings.section === categoriesInfo

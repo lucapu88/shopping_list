@@ -69,7 +69,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="changeTheme"
+      show-list-instructions-input="changeTheme"
       :istructions-text="languages.changeThemeText"
       :select-deselect-arrow="
         settings.changeTheme && settings.section === 'changeTheme'

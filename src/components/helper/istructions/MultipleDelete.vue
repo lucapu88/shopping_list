@@ -25,7 +25,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="selectAndDelete"
+    show-list-instructions-input="selectAndDelete"
     :istructions-text="languages.helperDescription.multipleDeleteTitle"
     :select-deselect-arrow="
       settings.selectAndDelete && settings.section === selectAndDelete

@@ -23,7 +23,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="autoDeleteEmptyCategories"
+      show-list-instructions-input="autoDeleteEmptyCategories"
       :istructions-text="languages.autoDeleteEmptyCategoriesText.title"
       :select-deselect-arrow="
         settings.autoDeleteEmptyCategories &&

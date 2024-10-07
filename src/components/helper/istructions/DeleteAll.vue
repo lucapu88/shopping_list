@@ -22,7 +22,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="deleteAllInfo"
+    show-list-instructions-input="deleteAllInfo"
     :istructions-text="languages.helperDescription.deleteAllTitle"
     :select-deselect-arrow="
       settings.deleteAllInfo && settings.section === deleteAllInfo

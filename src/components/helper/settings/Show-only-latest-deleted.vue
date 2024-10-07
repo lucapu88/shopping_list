@@ -29,7 +29,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="showOnlyLatestDeleted"
+      show-list-instructions-input="showOnlyLatestDeleted"
       :istructions-text="languages.showOnlyLatestDeletedText.title"
       :select-deselect-arrow="
         settings.showOnlyLatestDeleted &&

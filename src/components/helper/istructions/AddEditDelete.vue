@@ -24,7 +24,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="addEditDelete"
+    show-list-instructions-input="addEditDelete"
     :istructions-text="languages.helperDescription.addEditDelete"
     :select-deselect-arrow="
       settings.addEditDelete && settings.section === addEditDelete

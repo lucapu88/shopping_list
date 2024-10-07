@@ -47,7 +47,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="backupList"
+      show-list-instructions-input="backupList"
       :istructions-text="languages.backupListText.title"
       :select-deselect-arrow="
         settings.backupList && settings.section === backupList

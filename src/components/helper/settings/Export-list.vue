@@ -63,7 +63,7 @@ export default {
 <template>
   <div class="add-list-copied-container helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="pasteList"
+      show-list-instructions-input="pasteList"
       :istructions-text="languages.pasteListText.title"
       :select-deselect-arrow="
         settings.pasteList && settings.section === pasteList

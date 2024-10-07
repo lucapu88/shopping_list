@@ -24,7 +24,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="safeMode"
+      show-list-instructions-input="safeMode"
       :istructions-text="languages.safeModeText.title"
       :select-deselect-arrow="
         settings.safeMode && settings.section === safeMode

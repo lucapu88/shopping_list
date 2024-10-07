@@ -7,7 +7,7 @@ import { useSettingsStore } from '@/store/SettingsStore';
 <script>
 export default {
   props: {
-    showListIstructionsInput: String,
+    showListInstructionsInput: String,
     istructionsText: [Object, String],
     selectDeselectArrow: Boolean,
     isSettings: Boolean,
@@ -21,7 +21,7 @@ export default {
     };
   },
   created() {
-    this.troubleshooting = this.showListIstructionsInput === 'troubleshooting';
+    this.troubleshooting = this.showListInstructionsInput === 'troubleshooting';
   },
 };
 </script>
@@ -43,7 +43,7 @@ export default {
       'list-title-elegant-selected': selectDeselectArrow && theme.elegantTheme,
       'list-title-pink-selected': selectDeselectArrow && theme.pinkTheme,
     }"
-    @click="settings.showListIstructions(showListIstructionsInput)"
+    @click="settings.showListInstructions(showListInstructionsInput)"
   >
     <span v-if="isSettings" class="settings-icon mr-1"> &#x2699; </span>
     <span v-if="troubleshooting" class="troubleshooting-icon mr-1"> ? </span>

@@ -30,7 +30,7 @@ export default {
 <template>
   <div class="helper-settings">
     <ListIstructionAccordion
-      show-list-istructions-input="changeLanguage"
+      show-list-instructions-input="changeLanguage"
       :istructions-text="languages.changeLanguage"
       :select-deselect-arrow="
         settings.changeLanguage && settings.section === changeLanguage

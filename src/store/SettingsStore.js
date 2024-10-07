@@ -125,84 +125,35 @@ export const useSettingsStore = defineStore('settings', {
       this.tutorial = false;
       this.support = false;
     },
-    showListIstructions(section) {
-      //Per gli accordion nell'helper
+    showListInstructions(section) {
+      // Per gli accordion nell'helper
       this.feature = null;
       this.video = true;
 
-      switch (section) {
-        // -------------------------------------------------------------- IMPOSTAZIONI
-        case 'changeLanguage':
-          this.section === section ? this.changeLanguage = !this.changeLanguage : this.changeLanguage = true;
-          this.section = section;
-          break;
-        case 'changeTheme':
-          this.section === section ? this.changeTheme = !this.changeTheme : this.changeTheme = true;
-          this.section = section;
-          break;
-        case 'autoDeleteEmptyCategories':
-          this.section === section ? this.autoDeleteEmptyCategories = !this.autoDeleteEmptyCategories : this.autoDeleteEmptyCategories = true;
-          this.section = section;
-          break;
-        case 'safeMode':
-          this.section === section ? this.safeMode = !this.safeMode : this.safeMode = true;
-          this.section = section;
-          break;
-        case 'pasteList':
-          this.section === section ? this.pasteList = !this.pasteList : this.pasteList = true;
-          this.section = section;
-          break;
-        case 'showOnlyLatestDeleted':
-          this.section === section ? this.showOnlyLatestDeleted = !this.showOnlyLatestDeleted : this.showOnlyLatestDeleted = true;
-          this.section = section;
-          break;
-        case 'backupList':
-          this.section === section ? this.backupList = !this.backupList : this.backupList = true;
-          this.section = section;
-          break;
-        // ---------------------------------------------------- ISTRUZIONI
-        case 'addEditDelete':
-          this.section === section ? this.addEditDelete = !this.addEditDelete : this.addEditDelete = true;
-          this.section = section;
-          break;
-        case 'categoriesInfo':
-          this.section === section ? this.categoriesInfo = !this.categoriesInfo : this.categoriesInfo = true;
-          this.section = section;
-          break;
-        case 'suggestions':
-          this.section === section ? this.suggestions = !this.suggestions : this.suggestions = true;
-          this.section = section;
-          break;
-        case 'dragNdrop':
-          this.section === section ? this.dragNdrop = !this.dragNdrop : this.dragNdrop = true;
-          this.section = section;
-          break;
-        case 'selectAndDelete':
-          this.section === section ? this.selectAndDelete = !this.selectAndDelete : this.selectAndDelete = true;
-          this.section = section;
-          break;
-        case 'copyHighlights':
-          this.section === section ? this.copyHighlights = !this.copyHighlights : this.copyHighlights = true;
-          this.section = section;
-          break;
-        case 'deleteAllInfo':
-          this.section === section ? this.deleteAllInfo = !this.deleteAllInfo : this.deleteAllInfo = true;
-          this.section = section;
-          break;
-        case 'tutorial':
-          this.section === section ? this.tutorial = !this.tutorial : this.tutorial = true;
-          this.section = section;
-          break;
-        case 'support':
-          this.section === section ? this.support = !this.support : this.support = true;
-          this.section = section;
-          break;
+      const sectionMap = {
+        changeLanguage: 'changeLanguage',
+        changeTheme: 'changeTheme',
+        autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',
+        safeMode: 'safeMode',
+        pasteList: 'pasteList',
+        showOnlyLatestDeleted: 'showOnlyLatestDeleted',
+        backupList: 'backupList',
+        addEditDelete: 'addEditDelete',
+        categoriesInfo: 'categoriesInfo',
+        suggestions: 'suggestions',
+        dragNdrop: 'dragNdrop',
+        selectAndDelete: 'selectAndDelete',
+        copyHighlights: 'copyHighlights',
+        deleteAllInfo: 'deleteAllInfo',
+        tutorial: 'tutorial',
+        support: 'support',
+        troubleshooting: 'troubleshooting',
+      };
 
-        //-------------------------------------------- RISOLUZIONE PROBLEMI
-        case 'troubleshooting':
-          this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
-          this.section = section;
-          break;
+      if (sectionMap[section]) {
+        const prop = sectionMap[section];
+        this[prop] = this.section === section ? !this[prop] : true;
+        this.section = section;
       }
     },
     toggleTutorial(feature) {

@@ -40,7 +40,7 @@ export default {
 
 <template>
   <ListIstructionAccordion
-    show-list-istructions-input="support"
+    show-list-instructions-input="support"
     :istructions-text="languages.helperDescription.support"
     :select-deselect-arrow="settings.support && settings.section === support"
   />
