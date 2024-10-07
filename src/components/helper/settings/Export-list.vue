@@ -3,7 +3,7 @@ import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 </script>
@@ -20,6 +20,7 @@ export default {
       pasteListInfo: 'pasteListInfo',
       listPasted: null,
       exportList: 'exportList',
+      pasteList: 'pasteList',
     };
   },
   methods: {
@@ -65,11 +66,11 @@ export default {
       show-list-istructions-input="pasteList"
       :istructions-text="languages.pasteListText.title"
       :select-deselect-arrow="
-        settings.pasteList && settings.section === 'pasteList'
+        settings.pasteList && settings.section === pasteList
       "
       :isSettings="true"
     />
-    <template v-if="settings.pasteList && settings.section === 'pasteList'">
+    <template v-if="settings.pasteList && settings.section === pasteList">
       <div class="export-list-container mb-3">
         <li class="ml-3">
           <small>{{ languages.pasteListText.subtitle }}. </small>

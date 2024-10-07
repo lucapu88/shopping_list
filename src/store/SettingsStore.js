@@ -130,15 +130,6 @@ export const useSettingsStore = defineStore('settings', {
       this.feature = null;
       this.video = true;
 
-      //RISOLUZIONE PROBLEMI
-      if (section === 'troubleshooting') {
-        //Non lo metto nello switch perchè questa sezione si deve chiudere anche quando si aprono le sezioni della parte "Istruzioni"
-        this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
-        this.section = section;
-      } else {
-        this.troubleshooting = false;
-      }
-
       switch (section) {
         // -------------------------------------------------------------- IMPOSTAZIONI
         case 'changeLanguage':
@@ -171,31 +162,46 @@ export const useSettingsStore = defineStore('settings', {
           break;
         // ---------------------------------------------------- ISTRUZIONI
         case 'addEditDelete':
-          this.addEditDelete = !this.addEditDelete;
+          this.section === section ? this.addEditDelete = !this.addEditDelete : this.addEditDelete = true;
+          this.section = section;
           break;
         case 'categoriesInfo':
-          this.categoriesInfo = !this.categoriesInfo;
+          this.section === section ? this.categoriesInfo = !this.categoriesInfo : this.categoriesInfo = true;
+          this.section = section;
           break;
         case 'suggestions':
-          this.suggestions = !this.suggestions;
+          this.section === section ? this.suggestions = !this.suggestions : this.suggestions = true;
+          this.section = section;
           break;
         case 'dragNdrop':
-          this.dragNdrop = !this.dragNdrop;
+          this.section === section ? this.dragNdrop = !this.dragNdrop : this.dragNdrop = true;
+          this.section = section;
           break;
         case 'selectAndDelete':
-          this.selectAndDelete = !this.selectAndDelete;
+          this.section === section ? this.selectAndDelete = !this.selectAndDelete : this.selectAndDelete = true;
+          this.section = section;
           break;
         case 'copyHighlights':
-          this.copyHighlights = !this.copyHighlights;
+          this.section === section ? this.copyHighlights = !this.copyHighlights : this.copyHighlights = true;
+          this.section = section;
           break;
         case 'deleteAllInfo':
-          this.deleteAllInfo = !this.deleteAllInfo;
+          this.section === section ? this.deleteAllInfo = !this.deleteAllInfo : this.deleteAllInfo = true;
+          this.section = section;
           break;
         case 'tutorial':
-          this.tutorial = !this.tutorial;
+          this.section === section ? this.tutorial = !this.tutorial : this.tutorial = true;
+          this.section = section;
           break;
         case 'support':
-          this.support = !this.support;
+          this.section === section ? this.support = !this.support : this.support = true;
+          this.section = section;
+          break;
+
+        //-------------------------------------------- RISOLUZIONE PROBLEMI
+        case 'troubleshooting':
+          this.section === section ? this.troubleshooting = !this.troubleshooting : this.troubleshooting = true;
+          this.section = section;
           break;
       }
     },

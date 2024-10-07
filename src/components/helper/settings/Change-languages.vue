@@ -2,7 +2,7 @@
 import { useThemeStore } from '@/store/ThemeStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -13,6 +13,7 @@ export default {
       theme: useThemeStore(),
       languages: useLanguageStore(),
       settings: useSettingsStore(),
+      changeLanguage: 'changeLanguage',
     };
   },
   methods: {
@@ -32,13 +33,13 @@ export default {
       show-list-istructions-input="changeLanguage"
       :istructions-text="languages.changeLanguage"
       :select-deselect-arrow="
-        settings.changeLanguage && settings.section === 'changeLanguage'
+        settings.changeLanguage && settings.section === changeLanguage
       "
       :isSettings="true"
     />
     <div
       class="languages-btns-container mb-3"
-      v-if="settings.changeLanguage && settings.section === 'changeLanguage'"
+      v-if="settings.changeLanguage && settings.section === changeLanguage"
     >
       <div
         class="btns-language-container"

@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 </script>
@@ -15,6 +15,7 @@ export default {
       settings: useSettingsStore(),
       theme: useThemeStore(),
       safeDelete: 'safeDelete',
+      safeMode: 'safeMode',
     };
   },
 };
@@ -26,11 +27,11 @@ export default {
       show-list-istructions-input="safeMode"
       :istructions-text="languages.safeModeText.title"
       :select-deselect-arrow="
-        settings.safeMode && settings.section === 'safeMode'
+        settings.safeMode && settings.section === safeMode
       "
       :isSettings="true"
     />
-    <template v-if="settings.safeMode && settings.section === 'safeMode'">
+    <template v-if="settings.safeMode && settings.section === safeMode">
       <div class="safe-delete-container mb-3">
         <li class="ml-3">
           <small>{{ languages.safeModeText.description }}</small>

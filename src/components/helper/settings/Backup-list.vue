@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 </script>
@@ -50,11 +50,11 @@ export default {
       show-list-istructions-input="backupList"
       :istructions-text="languages.backupListText.title"
       :select-deselect-arrow="
-        settings.backupList && settings.section === 'backupList'
+        settings.backupList && settings.section === backupList
       "
       :isSettings="true"
     />
-    <template v-if="settings.backupList && settings.section === 'backupList'">
+    <template v-if="settings.backupList && settings.section === backupList">
       <div class="last-backup-container mb-3">
         <li class="ml-3">
           <small>{{ languages.backupListText.description }}</small>

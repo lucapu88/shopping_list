@@ -3,7 +3,7 @@ import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useThemeStore } from '@/store/ThemeStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 </script>
@@ -33,14 +33,14 @@ export default {
       :istructions-text="languages.showOnlyLatestDeletedText.title"
       :select-deselect-arrow="
         settings.showOnlyLatestDeleted &&
-        settings.section === 'showOnlyLatestDeleted'
+        settings.section === showOnlyLatestDeleted
       "
       :isSettings="true"
     />
     <template
       v-if="
         settings.showOnlyLatestDeleted &&
-        settings.section === 'showOnlyLatestDeleted'
+        settings.section === showOnlyLatestDeleted
       "
     >
       <div class="auto-delete-container mb-3">

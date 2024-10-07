@@ -2,9 +2,9 @@
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useThemeStore } from '@/store/ThemeStore';
-import ListIstructionAccordion from './List-istruction-accordion.vue';
 import Tutorial from '../tutorials/Tutorial.vue';
 import ToggleTutorialButton from '../tutorials/ToggleTutorialButton.vue';
+import ListIstructionAccordion from '../../panels-and-modals/List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -27,14 +27,14 @@ export default {
       :istructions-text="languages.autoDeleteEmptyCategoriesText.title"
       :select-deselect-arrow="
         settings.autoDeleteEmptyCategories &&
-        settings.section === 'autoDeleteEmptyCategories'
+        settings.section === autoDeleteEmptyCategories
       "
       :isSettings="true"
     />
     <template
       v-if="
         settings.autoDeleteEmptyCategories &&
-        settings.section === 'autoDeleteEmptyCategories'
+        settings.section === autoDeleteEmptyCategories
       "
     >
       <div class="auto-delete-container mb-3">

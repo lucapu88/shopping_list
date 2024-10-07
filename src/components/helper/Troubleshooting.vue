@@ -2,7 +2,7 @@
 import { useThemeStore } from '@/store/ThemeStore';
 import { useSettingsStore } from '@/store/SettingsStore';
 import { useLanguageStore } from '@/store/LanguageStore';
-import ListIstructionAccordion from './settings/List-istruction-accordion.vue';
+import ListIstructionAccordion from '../panels-and-modals/List-istruction-accordion.vue';
 </script>
 
 <script>
@@ -23,11 +23,11 @@ export default {
     show-list-istructions-input="troubleshooting"
     :istructions-text="languages.helperDescription.troubleshooting"
     :select-deselect-arrow="
-      settings.troubleshooting && settings.section === 'troubleshooting'
+      settings.troubleshooting && settings.section === troubleshooting
     "
   />
   <template
-    v-if="settings.troubleshooting && settings.section === 'troubleshooting'"
+    v-if="settings.troubleshooting && settings.section === troubleshooting"
   >
     <p class="troubleshooting">
       <small>

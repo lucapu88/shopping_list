@@ -33,7 +33,6 @@ export default {
       'troubleshooting-title': troubleshooting,
       'list-title-selected': selectDeselectArrow,
       'list-title-deselected': !selectDeselectArrow,
-      'margin-negative': !isSettings && !troubleshooting,
       'list-title-color':
         theme.lightTheme || theme.winterTheme || theme.darkTheme,
       'list-title-summer': theme.summerTheme,
@@ -85,6 +84,7 @@ export default {
 .troubleshooting-title {
   color: #008000 !important;
   font-weight: bold !important;
+  margin-top: 20px;
 }
 .troubleshooting-icon {
   border: 2px solid;
@@ -97,9 +97,6 @@ export default {
 }
 .list-title-deselected {
   box-shadow: none;
-}
-.margin-negative {
-  margin-left: -15px;
 }
 .list-title-color {
   background-color: #ededed;
