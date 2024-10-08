@@ -48,26 +48,14 @@ export default {
     <span v-if="isSettings" class="settings-icon mr-1"> &#x2699; </span>
     <span v-if="troubleshooting" class="troubleshooting-icon mr-1"> ? </span>
     {{ istructionsText }}
-    <img
-      v-if="!theme.elegantTheme"
+    <span
       class="arrow"
       :class="{
         'arrow-selected': selectDeselectArrow,
         'arrow-deselected': !selectDeselectArrow,
+        'border-custom': theme.retroTheme,
       }"
-      src="@/img/icons/arrow-down.webp"
-      alt="arrow"
-    />
-    <img
-      v-if="theme.elegantTheme"
-      class="arrow"
-      :class="{
-        'arrow-selected': selectDeselectArrow,
-        'arrow-deselected': !selectDeselectArrow,
-      }"
-      src="@/img/icons/arrow-down-white.webp"
-      alt="arrow"
-    />
+    ></span>
   </div>
 </template>
 
@@ -130,8 +118,19 @@ export default {
 }
 
 .arrow {
-  width: 1.5625rem;
-  height: 1.5625rem;
+  width: 1.688rem;
+  height: 1.688rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lucida Console', 'Courier New', monospace;
+  font-weight: bold;
+  border: 2px solid;
+  border-radius: 50%;
+  padding-top: 0.188rem;
+}
+.arrow:after {
+  content: ' \0245';
 }
 .arrow-selected {
   -webkit-animation: spin 0.5s linear;
@@ -161,5 +160,8 @@ export default {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+}
+.border-custom {
+  border: 1px solid;
 }
 </style>

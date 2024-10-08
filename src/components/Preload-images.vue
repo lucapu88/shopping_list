@@ -37,7 +37,6 @@ import toiletLogo from '@/img/festivities/cesso.webp';
 import computerLogo from '@/img/festivities/computer.webp';
 import halloweenPumpkin from '@/img/festivities/zucca.webp';
 import halloweenCobwebs from '@/img/festivities/ragnatele.webp';
-import arrowDown from '@/img/icons/arrow-down.webp';
 import shareLogo from '@/img/icons/share.webp';
 import shareBackgr from '@/img/shared.webp';
 import cloud from '@/img/icons/cloud.webp';
@@ -212,7 +211,6 @@ export default {
     :href="halloweenCobwebs"
   />
   <!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
-  <link v-if="settings.helper" rel="preload" as="image" :href="arrowDown" />
   <link v-if="settings.helper" rel="preload" as="image" :href="shareLogo" />
   <link v-if="settings.helper" rel="preload" as="image" :href="shareBackgr" />
   <link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
