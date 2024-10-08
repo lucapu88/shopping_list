@@ -482,14 +482,16 @@ button {
 }
 .helper-list > li {
   display: list-item;
-  animation: fadeIn 0.6s;
+  z-index: 100;
+  padding: 5px;
+}
+
+.helper-description > div li {
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 0.5s;
-  z-index: 100;
-  padding: 5px;
+  animation-duration: 0.8s;
 }
 @keyframes fadeInOpacity {
   0% {
