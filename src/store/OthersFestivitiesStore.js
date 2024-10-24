@@ -16,6 +16,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
         valentinesDay: false,
         worldEnvironmentDay: false,
         humanRightsDayText: false,
+        starWarsDay: false
     }),
     getters: {},
     actions: {
@@ -33,6 +34,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             this.valentinesDay = false;
             this.worldEnvironmentDay = false;
             this.humanRightsDayText = false;
+            this.starWarsDay = false;
         },
         checkFestivities() {
             this.resetFestivities();
@@ -64,6 +66,9 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             }
             if (currentDay === 22 && currentMonth === 4) {
                 this.earthDay = true;
+            }
+            if (currentDay === 25 && currentMonth === 5) {
+                this.starWarsDay = true; // E CHE LA FORZA SIA CON TE!
             }
             if (currentMonth === 8 && currentDay <= 7 && weekDay === 5) {
                 this.beerDay = true;

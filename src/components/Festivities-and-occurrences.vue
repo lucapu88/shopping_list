@@ -218,6 +218,19 @@ export default {
     >
       {{ languages.humanRightsDayText }}
     </p>
+    <!-- ---------------------------------------------------------- NASCITA DI STAR WARS -->
+    <img
+      v-if="festivitiesOrOccurrences.starWarsDay && !description"
+      class="star-wars-day"
+      src="@/img/festivities/millenium-falcon.webp"
+      alt="star-wars_day"
+    />
+    <p
+      class="description"
+      v-if="festivitiesOrOccurrences.starWarsDay && description"
+    >
+      {{ languages.starWarsDay }}
+    </p>
   </div>
 </template>
 
@@ -299,6 +312,23 @@ export default {
 
 .humans-rights-day {
   width: 100px;
+}
+.star-wars-day {
+  width: 50px;
+  animation: halfSpin 3s linear;
+}
+
+@keyframes halfSpin {
+  50% {
+    -webkit-transform: rotate(95deg);
+    transform: rotate(95deg);
+    margin-left: 15px;
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    margin-left: 0;
+  }
 }
 
 .description {

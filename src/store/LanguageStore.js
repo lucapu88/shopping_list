@@ -218,6 +218,7 @@ export const useLanguageStore = defineStore('Language', {
     valentinesDayText: "Happy Valentine's Day",
     worldEnvironmentDayText: '5 June: World Environment Day',
     humanRightsDayText: '10 December: World Human Rights Day',
+    starWarsDay: '25 May 1977: Star Wars is released in cinemas',
     backupListText: {
       title: 'Import Last Backup',
       description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion.",
@@ -429,6 +430,7 @@ export const useLanguageStore = defineStore('Language', {
       this.valentinesDayText = 'Buon San Valentino';
       this.worldEnvironmentDayText = "5 Giugno: Giornata mondiale dell'ambiente";
       this.humanRightsDayText = '10 dicembre: Giornata mondiale dei diritti umani';
+      this.starWarsDay = '25 Maggio 1977: Esce al cinema Star Wars';
       this.backupListText.title = 'Importa ultimo backup';
       this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
       this.backupListText.confirm = "Sei sicuro?";
@@ -546,6 +548,7 @@ export const useLanguageStore = defineStore('Language', {
       this.valentinesDayText = 'Feliz Día de los Enamorados';
       this.worldEnvironmentDayText = '5 de junio: Día Mundial del Medio Ambiente';
       this.humanRightsDayText = '10 de diciembre: Día Mundial de los Derechos Humanos';
+      this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';
       this.backupListText.title = 'Importar la última copia de seguridad';
       this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
       this.backupListText.confirm = '¿Seguro?';
