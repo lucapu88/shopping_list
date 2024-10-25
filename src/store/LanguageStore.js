@@ -248,6 +248,7 @@ export const useLanguageStore = defineStore('Language', {
       headerInfo: 'Click on one of these items to add it to the list',
     },
     categoryTipText: 'If you click on the category you can add products to it',
+    reloadAppText: 'Reload app:'
   }),
   getters: {},
   actions: {
@@ -449,6 +450,7 @@ export const useLanguageStore = defineStore('Language', {
       this.suggestions.tipsBtnText = 'Mostra suggerimenti';
       this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
       this.categoryTipText = 'Se clicchi sulla categoria potrai aggiungere prodotti al suo interno';
+      this.reloadAppText = "Ricarica l'app:";
     },
     setSpanishTranslations() {
       this.placeholder = 'Escriba aquí qué comprar';
@@ -567,7 +569,7 @@ export const useLanguageStore = defineStore('Language', {
       this.suggestions.tipsBtnText = 'Mostrar consejos';
       this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
       this.categoryTipText = 'Si hace clic en la categoría puede añadir productos a la misma';
-
+      this.reloadAppText = "Recargar aplicación:";
     }
   },
 });

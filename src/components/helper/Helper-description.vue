@@ -30,12 +30,12 @@ export default {
 <template>
   <div>
     <!-- ISTRUZIONI -->
-    <p
+    <h4
       class="helper-title"
       :class="{ 'christmas-red': isChristmas.christmasTheme }"
     >
       {{ languages.helperDescription.instructionsTitle }}
-    </p>
+    </h4>
 
     <!-- AGGIUNGI MODIFICA ELIMINA -->
     <AddEditDelete />
@@ -88,7 +88,8 @@ export default {
   margin-bottom: 0;
   text-align: center;
   margin-top: 20px;
-  font-size: large;
+  border-top: 1px solid;
+  padding-top: 10px;
 }
 
 .update-alert {

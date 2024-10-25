@@ -17,6 +17,7 @@ import ExportList from './settings/Export-list.vue';
 import ShowOnlyLatestDeleted from './settings/Show-only-latest-deleted.vue';
 import Share from './settings/Share.vue';
 import UpdateApp from './settings/Update-app.vue';
+import ReloadApp from './settings/Reload-app.vue';
 </script>
 
 <script>
@@ -142,6 +143,8 @@ export default {
 
       <div id="helper-description">
         <UpdateApp @updatingAppEmit="updatingAppEmited" />
+
+        <ReloadApp />
 
         <ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
 
