@@ -28,6 +28,7 @@ export default {
     <span> {{ languages.reloadAppText }} </span>
     <button
       class="btn btn-light border-dark mr-3 reload-btn"
+      :class="{ clicked: loading }"
       @click="reloadApp()"
     >
       <img
@@ -54,13 +55,17 @@ export default {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.clicked {
+  background-color: #b1b1b1;
+}
 .reload-btn {
-  padding: 0 10px 2px;
+  padding: 2px 15px;
   margin-left: 15px;
   margin-right: 10px;
 }
 .reload-btn > img {
-  width: 25px;
+  width: 30px;
+  height: 27px;
 }
 .loading {
   animation: spin 1s infinite;
