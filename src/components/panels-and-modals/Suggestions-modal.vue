@@ -151,7 +151,7 @@ export default {
   padding: 0 15px;
   overflow: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .close-sugg-modal {
   position: absolute;

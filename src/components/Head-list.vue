@@ -314,7 +314,7 @@ export default {
   z-index: 19;
 }
 .title-spanish {
-  font-size: 25px;
+  font-size: 1.563rem;
 }
 .title1-spanish {
   margin-left: -17px;

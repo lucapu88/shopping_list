@@ -224,7 +224,7 @@ p {
 }
 
 .list-copied {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #28a745;
   text-align: center;
   background-color: #ffffff;
@@ -246,14 +246,14 @@ p {
 }
 
 .no-important-todos-alert {
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: center;
   color: #c30000;
   background-color: #ffffff;
 }
 
 .category-tip {
-  font-size: 13px;
+  font-size: 0.813rem;
   text-align: center;
   margin-bottom: 0;
 }

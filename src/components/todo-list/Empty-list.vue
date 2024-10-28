@@ -166,7 +166,7 @@ export default {
 }
 .notes {
   margin-top: 60px;
-  font-size: 35px;
+  font-size: 2.188rem;
   width: 200px;
 }
 

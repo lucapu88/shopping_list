@@ -196,7 +196,7 @@ button {
 
 .todo {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 1.25rem;
   width: 65%;
   line-height: 1;
   overflow-x: auto;

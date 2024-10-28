@@ -86,7 +86,7 @@ export default {
   }
 }
 .confirm-delete-all-text {
-  font-size: 18px;
+  font-size: 1.125rem;
   margin: 0 auto;
   padding-bottom: 10px;
   font-weight: bold;

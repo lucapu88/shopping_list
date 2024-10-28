@@ -333,7 +333,7 @@ export default {
 
 .description {
   font-family: sans-serif;
-  font-size: 13px;
+  font-size: 0.813rem;
   width: 15ch;
   padding: 10px;
   position: absolute;

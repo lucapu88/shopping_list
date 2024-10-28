@@ -84,7 +84,7 @@ export default {
 }
 
 .link-copied {
-  font-size: 13px;
+  font-size: 0.813rem;
   margin-left: 5px;
   color: rgb(197, 0, 0);
 }

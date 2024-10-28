@@ -265,7 +265,7 @@ export default {
 }
 
 .helper-description > span {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .helper-description > div:not(:first-child) {
   width: 100%;
