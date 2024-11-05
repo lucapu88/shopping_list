@@ -87,7 +87,7 @@ export default {
         >
           <header>
             <HeadList />
-            <ConfirmModal />
+            <ConfirmModal v-if="todosStore.confirmDeleteModal" />
             <SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
           </header>
 

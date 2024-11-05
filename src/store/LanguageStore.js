@@ -108,9 +108,9 @@ export const useLanguageStore = defineStore('Language', {
       text: 'Link copied to clipboard, paste it with whoever you want.',
       visible: false,
     },
-    confirmText: 'Are you sure you want to delete:',
-    completeConfirmText: '',
-    selectedTodosConfirmText: 'Are you sure you want to delete the selected items',
+    confirmText: 'Are you sure you want to delete:\n',
+    completeConfirmText: '', // Questo testo viene editato nell' AddModifyDeleteTodosStore.js
+    selectedTodosConfirmText: 'You are going to delete these elements',
     themeName: 'light',
     safeModeText: {
       title: 'Safe delete mode',
@@ -339,9 +339,9 @@ export const useLanguageStore = defineStore('Language', {
       this.categories = this.itaCategories;
       this.copyList.text = 'Lista copiata negli appunti';
       this.share.text = 'Link copiato negli appunti, incollalo con chi vuoi.';
-      this.confirmText = 'Sei sicuro di voler eliminare:';
+      this.confirmText = 'Sei sicuro di voler eliminare:\n';
       this.selectedTodosConfirmText =
-        'Sei sicuro di voler eliminare gli elementi selezionati';
+        'Stai per eliminare questi elementi';
       this.settingsTextTitle = 'Impostazioni';
       this.shoppingListTitle = 'Lista Spesa';
       this.choseCategoryText = 'Scegli una categoria tra queste:';
@@ -458,9 +458,9 @@ export const useLanguageStore = defineStore('Language', {
       this.categories = this.spanCategories;
       this.copyList.text = 'Lista copiada en el portapapeles';
       this.share.text = 'Copia el enlace en el portapapeles y pégalo con quien quieras.';
-      this.confirmText = '¿Estás seguro de que quieres borrar:';
+      this.confirmText = '¿Estás seguro de que quieres borrar:\n';
       this.selectedTodosConfirmText =
-        '¿Está seguro de que desea borrar los archivos seleccionados?';
+        'Está a punto de eliminar estos elementos';
       this.settingsTextTitle = 'Ajustes';
       this.shoppingListTitle = 'Lista de la compra';
       this.choseCategoryText = 'Elija una categoría de estas:';

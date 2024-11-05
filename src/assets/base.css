@@ -17,7 +17,7 @@ body {
 /* ----------------------------------------VARIE------------------------------------ */
 
 li {
-  display: inline-block;
+  display: inline-block; /*TOFIX: sono un coglione, lo so! Devo sistemarlo in tanti posti appena ne avrò voglia*/
 }
 
 button {

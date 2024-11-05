@@ -325,11 +325,11 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     toggleButtonDeleteSelectedTodo() {
       this.canDeleteMultipleTodo = this.todos.some((el) => el.multipleDelete);
     },
-    openModalFordeleteSelectedTodos() {
+    openModalForDeleteSelectedTodos() {
       this.confirmDeleteModal = true;
       this.confirmRemove = false;
       this.deleteSelected = true;
-      this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}?`;
+      this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}:`;
       this.removeSelectedCategoryToAddItem();
     },
     removeAllTodo(x) {

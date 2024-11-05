@@ -55,7 +55,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
 
     cy.get('.trash').click();
     cy.get('.confirm-delete-modal-content').should('exist');
-    cy.get('.confirm-delete-modal-content > #yes-delete').click();
+    cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete').click();
 
     cy.get('#draggable-children').should('not.exist');
   });
@@ -70,7 +70,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('[index="5"] > .checkbox').click({ force: true });
 
     cy.get('.text-danger').click();
-    cy.get('.confirm-delete-modal-content > #yes-delete-selected').click();
+    cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click();
     cy.get(`#todo:contains(${phrases.frase1})`).should('not.exist');
     cy.get(`#todo:contains(${phrases.frase2})`).should('not.exist');
     cy.get(`#todo:contains(${phrases.frase5})`).should('not.exist');

@@ -16,7 +16,13 @@ export default {
       languages: useLanguageStore(),
       todosStore: useAddModifyDeleteTodosStore(),
       isChristmas: useChristmasStore(),
+      multipleTodos: [],
     };
+  },
+  created() {
+    this.multipleTodos = this.todosStore.todos
+      .filter((todo) => todo.multipleDelete)
+      .map((t) => t.name);
   },
 };
 </script>
@@ -26,11 +32,10 @@ export default {
   <link v-if="theme.summerTheme" rel="preload" as="image" :href="maldive" />
   <link v-if="theme.winterTheme" rel="preload" as="image" :href="forest" />
 
-  <div v-if="todosStore.confirmDeleteModal" class="modal">
+  <div class="modal">
     <div
       class="confirm-delete-modal-content"
       :class="{
-        'delete-selected': todosStore.deleteSelected && !theme.pinkTheme,
         'confirm-light': theme.lightTheme,
         'confirm-dark': theme.darkTheme,
         'confirm-minimal': theme.minimalTheme,
@@ -47,32 +52,47 @@ export default {
         src="@/img/festivities/christmas-bells.webp"
         alt="christmas_bells"
       />
-      <p class="mt-5">{{ languages.completeConfirmText }}</p>
+      <p
+        class="mt-4 mb-1"
+        :class="{
+          'delete-selected': todosStore.deleteSelected && !theme.pinkTheme,
+        }"
+      >
+        {{ languages.completeConfirmText }}
+      </p>
       <span style="display: none">{{ todosStore.index }} </span>
-      <button
-        id="yes-delete"
-        :class="{ 'pink-theme-btn': theme.pinkTheme }"
-        v-if="todosStore.confirmRemove"
-        @click="todosStore.confirmedRemoveTodo(todosStore.index)"
-      >
-        <span v-if="languages.langIta || languages.langSpanish">SI</span>
-        <span v-if="languages.langEnglish">YES</span>
-      </button>
-      <button
-        id="yes-delete-selected"
-        v-if="todosStore.deleteSelected"
-        @click="todosStore.deleteSelectedTodos()"
-      >
-        <span v-if="languages.langIta || languages.langSpanish">SI</span>
-        <span v-if="languages.langEnglish">YES</span>
-      </button>
-      <button
-        id="no-delete"
-        :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }"
-        @click="todosStore.confirmDeleteModal = false"
-      >
-        NO
-      </button>
+      <ul v-if="todosStore.deleteSelected">
+        <li v-for="(todo, n) in multipleTodos" :key="n">
+          {{ todo }}
+        </li>
+      </ul>
+
+      <div class="confirm-buttons-container">
+        <button
+          id="yes-delete"
+          :class="{ 'pink-theme-btn': theme.pinkTheme }"
+          v-if="todosStore.confirmRemove"
+          @click="todosStore.confirmedRemoveTodo(todosStore.index)"
+        >
+          <span v-if="languages.langIta || languages.langSpanish">SI</span>
+          <span v-if="languages.langEnglish">YES</span>
+        </button>
+        <button
+          id="yes-delete-selected"
+          v-if="todosStore.deleteSelected"
+          @click="todosStore.deleteSelectedTodos()"
+        >
+          <span v-if="languages.langIta || languages.langSpanish">SI</span>
+          <span v-if="languages.langEnglish">YES</span>
+        </button>
+        <button
+          id="no-delete"
+          :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }"
+          @click="todosStore.confirmDeleteModal = false"
+        >
+          NO
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +107,10 @@ export default {
   max-width: 700px;
   overflow: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
@@ -118,7 +142,7 @@ export default {
 }
 .delete-selected {
   color: rgb(215, 0, 0) !important;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .confirm-light {
@@ -158,6 +182,7 @@ export default {
   background-image: url('@/img/maldive.webp');
   background-size: cover;
   background-repeat: no-repeat;
+  color: #ffffff;
 }
 
 .confirm-winter {
@@ -167,8 +192,11 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.confirm-winter > p {
-  background-color: #b7c3c390;
+.confirm-winter > p,
+.confirm-winter > ul,
+.confirm-summer > p,
+.confirm-summer > ul {
+  background-color: #afd2d2ac;
   border-radius: 5px;
 }
 
@@ -188,5 +216,33 @@ export default {
 
 button {
   margin-right: 15px;
+}
+ul {
+  max-height: 190px;
+  overflow: auto;
+  padding: 0;
+  width: 90%;
+}
+li {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(84, 84, 84, 0.5);
+  border-radius: 5px;
+  /* border: 2px solid #ffffff; */
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dbdbdb;
 }
 </style>
