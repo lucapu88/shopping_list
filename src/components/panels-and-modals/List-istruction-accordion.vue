@@ -55,7 +55,9 @@ export default {
         'arrow-deselected': !selectDeselectArrow,
         'border-custom': theme.retroTheme,
       }"
-    ></span>
+    >
+      ^
+    </span>
   </div>
 </template>
 
@@ -129,9 +131,9 @@ export default {
   border-radius: 50%;
   padding-top: 0.188rem;
 }
-.arrow:after {
+/* .arrow:after {
   content: ' \0245';
-}
+} */
 .arrow-selected {
   -webkit-animation: spin 0.5s linear;
   -moz-animation: spin 0.5s linear;
