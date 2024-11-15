@@ -129,7 +129,8 @@ export default {
   font-weight: bold;
   border: 2px solid;
   border-radius: 50%;
-  padding-top: 0.188rem;
+  font-size: 1.563rem;
+  padding-top: 0.625rem;
 }
 /* .arrow:after {
   content: ' \0245';
