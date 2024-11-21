@@ -85,7 +85,7 @@ export default {
             'boldi-cipollino': themes.elegantTheme,
             'under-pressure': themes.lightTheme,
           }"
-          v-for="(tip, n) in suggestionsStore.suggestionsList"
+          v-for="(tip, n) in suggestionsStore.suggestionsList.sort()"
           :key="n"
           @click="suggestionsStore.addTip(tip, noSuggestions)"
         >

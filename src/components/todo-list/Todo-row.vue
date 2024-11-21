@@ -13,7 +13,19 @@ export default {
     return {
       theme: useThemeStore(),
       todosStore: useAddModifyDeleteTodosStore(),
+      timer: false,
     };
+  },
+  methods: {
+    setDraggable(isDraggable) {
+      if (isDraggable) {
+        this.timer = setTimeout(() => {
+          this.todosStore.isDraggable = isDraggable;
+        }, 1500);
+      } else {
+        clearTimeout(this.timer);
+      }
+    },
   },
 };
 </script>
@@ -75,6 +87,8 @@ export default {
     v-if="!todo.modify"
     class="todo"
     id="todo"
+    @touchstart="setDraggable(true)"
+    @touchend="setDraggable(false)"
     @click="
       todosStore.setAsImportant(index);
       todosStore.selectCategoryToAddItem(index, todo);
@@ -209,5 +223,13 @@ export default {
 }
 .x-delete {
   right: 8px;
+}
+
+.todo {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 </style>

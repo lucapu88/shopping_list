@@ -174,7 +174,7 @@ export const useLanguageStore = defineStore('Language', {
       },
       dragNdropTitle: 'Drag and Drop',
       dragNdropText: {
-        part1: 'By clicking on',
+        part1: 'If you hold down on the product name for 3 seconds or if you click on',
         part2: 'you can drag elements and, by holding them down, move them wherever you want.',
         dragginText: 'Drag the elements of the list where you want'
       },
@@ -395,7 +395,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.suggestions.part1 = 'Quando clicchi su una categoria per aggiungere elementi, compare questo pulsante';
       this.helperDescription.suggestions.part2 = "che al click ti mostra una serie di suggerimenti di prodotti inerenti alla categoria selezionata. Basta cliccare su l'elemento che ti interessa e lo troverai inserito in lista nella categoria apposita.";
       this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi';
-      this.helperDescription.dragNdropText.part1 = 'Cliccando su';
+      this.helperDescription.dragNdropText.part1 = 'Se tieni premuto sul nome del prodotto per 3 secondi oppure se clicchi su';
       this.helperDescription.dragNdropText.part2 = 'potrai trascinare gli elementi e, tenendo premuto, spostarli dove vuoi.';
       this.helperDescription.dragNdropText.dragginText = 'Trascina gli elementi della lista dove vuoi';
       this.helperDescription.multipleDeleteTitle = 'Seleziona ed elimina più elementi';
@@ -514,7 +514,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.suggestions.part1 = 'Al hacer clic en una categoría para añadir artículos, aparece este botón';
       this.helperDescription.suggestions.part2 = "que al pulsarlo le muestra una serie de sugerencias de productos relacionados con la categoría seleccionada. Simplemente haga clic en el artículo que le interese y lo encontrará listado en la categoría correspondiente.";
       this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos';
-      this.helperDescription.dragNdropText.part1 = 'Haciendo clic en';
+      this.helperDescription.dragNdropText.part1 = 'Si mantiene pulsado el nombre del producto durante 3 segundos o si hace clic en';
       this.helperDescription.dragNdropText.part2 = 'puedes arrastrar elementos y, manteniéndolos pulsados, moverlos donde quieras.';
       this.helperDescription.dragNdropText.dragginText = 'Arrastre los elementos de la lista hasta donde desee';
       this.helperDescription.multipleDeleteTitle = 'Seleccionar y eliminar varios elementos';
