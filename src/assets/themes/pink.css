@@ -1,0 +1,75 @@
+:root {
+  --pink-primary-color: #f8c1d7;
+  --pink-secondary-color: #fa9596;
+  --pink-text-color: #930036;
+  --pink-box-shadow-color: #ffc9ce;
+  --pink-helper-color: #fdd4dc;
+  --pink-modal-color: #d82d61;
+  /* Questi colori sono dedicati a voi feticisti bastardi perchè l'ho preso direttamente da un'immagine dei piedi di Margot Robbie, in onore di barbie anche se il tema non è direttamente dedicato a barbie, perchè l'ho fatto? ma che cazzo ne so! mi andava di fare sta cagata, ora non leccate lo schermo però! */
+  --margot-robbie-feet-color-one: #ac7465;
+  --margot-robbie-feet-color-two: #9d5040;
+}
+
+.pink-theme-btn {
+  background-color: var(--pink-primary-color) !important;
+  color: var(--pink-text-color) !important;
+  border: 1px solid var(--pink-text-color) !important;
+  box-shadow: inset 0px 0px 10px 0px var(--pink-text-color) !important;
+  font-weight: bold;
+}
+.pink-theme-selected-btn {
+  background-color: var(--pink-modal-color) !important;
+  border: 2px solid var(--margot-robbie-feet-color-one) !important;
+}
+.pink-theme-btn-secondary {
+  background-color: var(--pink-text-color);
+  color: var(--pink-primary-color);
+  border: 1px solid var(--pink-text-color);
+  box-shadow: inset 0px 0px 10px 0px var(--pink-primary-color);
+  font-weight: bold;
+}
+.category-pink {
+  background-color: var(--pink-box-shadow-color);
+  box-shadow: inset 0px 0px 20px 0px var(--margot-robbie-feet-color-one);
+}
+.category-pink-container {
+  background-color: var(--pink-secondary-color);
+}
+.category-pink-btn {
+  background-color: var(--pink-helper-color);
+}
+.confirm-pink {
+  border: 3px solid var(--margot-robbie-feet-color-two);
+  background-color: var(--pink-modal-color);
+  color: var(--pink-primary-color);
+}
+.confirm-pink > p {
+  font-size: larger;
+}
+.pink-helper {
+  background-color: var(--pink-helper-color) !important;
+}
+.pink-theme-confirm {
+  border: 3px solid var(--pink-modal-color) !important;
+  box-shadow: 0px 0px 40px 0px rgb(147, 0, 54);
+}
+.tips-btn-pink {
+  background-color: var(--pink-helper-color);
+  border-left: 2px solid var(--pink-text-color);
+  border-right: 2px solid var(--pink-text-color);
+  border-bottom: 2px solid var(--pink-text-color);
+  border-radius: 0 0 5px 5px;
+  color: var(--pink-text-color);
+}
+.sugg-modal-pink {
+  background-color: var(--pink-box-shadow-color);
+  color: var(--pink-modal-color);
+  border: 2px solid var(--pink-modal-color);
+  border-radius: 15px;
+}
+
+.duplicate-container-pink {
+  background-color: var(--pink-box-shadow-color) !important;
+  border: 1px solid var(--margot-robbie-feet-color-one) !important;
+  border-radius: var(--default-radius) !important;
+}

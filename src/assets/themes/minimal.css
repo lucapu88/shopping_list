@@ -1,0 +1,105 @@
+:root {
+  --minimal-primary-color: #a5becc;
+  --minimal-primary-color-dark: #8aa5b4;
+  --minimal-secondary-color: #7c3e66;
+  --minimal-tertiary-color: #243a73;
+  --minimal-helper-primary-color: #d3ebcd;
+  --minimal-helper-secondary-color: #645767;
+}
+
+.minimal-theme-title {
+  background: -webkit-radial-gradient(
+    circle,
+    var(--minimal-tertiary-color) 0%,
+    var(--minimal-tertiary-color) 95%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Helvetica, sans-serif';
+  font-weight: bold;
+}
+.minimal-theme-title2 {
+  background: -webkit-radial-gradient(circle, #6493ae 0%, #7892a2 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Helvetica, sans-serif';
+  font-weight: bold;
+}
+.minimal-theme {
+  background-image: none;
+  background-color: var(--minimal-primary-color);
+  color: var(--minimal-secondary-color);
+}
+.minimal-theme-helper {
+  background-image: none;
+  background-color: var(--minimal-helper-primary-color) !important;
+  color: var(--minimal-helper-secondary-color);
+}
+.minimal-theme-confirm {
+  background-color: var(--minimal-tertiary-color);
+  background-image: none;
+  color: #f2ebe9;
+}
+.pushbutton-container > .minimal-selected-btn {
+  background-color: var(--minimal-helper-secondary-color) !important;
+  color: var(--white) !important;
+}
+.minimal-btn {
+  background-color: transparent !important;
+  border-color: var(--minimal-secondary-color) !important;
+  color: var(--minimal-secondary-color) !important;
+  border-radius: 5px !important;
+}
+.minimal-btn > button {
+  background-color: var(--minimal-primary-color-dark) !important;
+  border-color: var(--minimal-secondary-color) !important;
+  color: var(--minimal-secondary-color) !important;
+}
+.minimal-helper-btn {
+  background-color: var(--minimal-primary-color-dark) !important;
+  border-color: var(--minimal-secondary-color) !important;
+  color: var(--minimal-secondary-color) !important;
+}
+.hide-minimal-icon {
+  display: none;
+}
+.category-minimal {
+  font-weight: bold;
+  border: 1px solid var(--minimal-secondary-color) !important;
+  background-color: var(--minimal-primary-color-dark) !important;
+  border-radius: 7px;
+}
+.category-emoji-minimal {
+  font-size: 1.875rem;
+  margin: 0 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+.minimal-theme-back-top {
+  color: var(--minimal-secondary-color) !important;
+  border-color: var(--minimal-secondary-color) !important;
+  background-color: var(--minimal-primary-color-dark) !important;
+  padding: 5px 10px !important;
+}
+.tips-btn-minimal {
+  background-color: var(--minimal-primary-color-dark);
+  border-left: 2px solid var(--minimal-secondary-color);
+  border-right: 2px solid var(--minimal-secondary-color);
+  border-bottom: 2px solid var(--minimal-secondary-color);
+  border-radius: 0 0 5px 5px;
+  color: var(--minimal-secondary-color);
+}
+.sugg-modal-minimal {
+  background-color: var(--minimal-primary-color);
+  color: var(--minimal-secondary-color);
+  border: 2px solid var(--minimal-secondary-color);
+  border-radius: 10px;
+}
+.duplicate-container-minimal {
+  background-color: var(--minimal-primary-color) !important;
+  border: 1px solid var(--minimal-secondary-color) !important;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 0px !important;
+}

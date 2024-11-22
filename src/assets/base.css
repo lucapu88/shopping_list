@@ -339,7 +339,8 @@ button {
   border-radius: 15px;
 }
 .category-emoji {
-  font-size: 25px;
+  font-size: 1.563rem;
+  width: 25px;
   display: inline-block;
 }
 .category-emoji-selected {

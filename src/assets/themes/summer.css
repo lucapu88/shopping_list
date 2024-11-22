@@ -1,0 +1,83 @@
+:root {
+  --summer-primary-color: #efcb8f;
+  --summer-secondary-color: #12a1df;
+  --summer-tertiary-color: #bbf2dd;
+  --summer-category-color: #00b0fca7;
+  --summer-gradient-color-2: #81d7eb;
+  --summer-gradient-color-3: #2e98f2;
+  --summer-button-color: #007bff;
+  --summer-confirm-color: #7fffd4;
+}
+
+/* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
+.summer-theme {
+  background-color: var(--summer-secondary-color) !important;
+  color: var(--summer-primary-color);
+}
+.category-summer {
+  background-color: var(--summer-category-color) !important;
+  color: var(--summer-primary-color) !important;
+}
+.summer-header-btn {
+  background-color: var(--summer-category-color) !important;
+  color: var(--black) !important;
+  border: 1px solid var(--summer-primary-color) !important;
+}
+.summer-header-btn-selected {
+  background-color: var(--summer-primary-color) !important;
+  color: var(--black) !important;
+  border: 1px solid var(--summer-category-color) !important;
+}
+.summer-theme-helper {
+  background-image: none;
+  background-color: var(--summer-tertiary-color);
+  background: linear-gradient(
+    168deg,
+    var(--summer-tertiary-color) 0%,
+    var(--summer-gradient-color-2) 47%,
+    var(--summer-gradient-color-3) 100%
+  );
+}
+.summer-btn {
+  background-color: var(--summer-button-color);
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: var(--default-radius);
+}
+.summer-confirm {
+  background-image: url('@/img/onda.webp') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.75);
+}
+.summer-confirm > p {
+  color: var(--summer-confirm-color);
+  filter: drop-shadow(var(--black) 6px 6px 3px);
+}
+.summer-theme-back-top {
+  background-color: var(--summer-primary-color) !important;
+}
+.tips-btn-summer {
+  background-color: var(--summer-primary-color);
+  border-left: 2px solid var(--summer-button-color);
+  border-right: 2px solid var(--summer-button-color);
+  border-bottom: 2px solid var(--summer-button-color);
+  border-radius: 0 0 10px 10px;
+  color: var(--summer-button-color);
+}
+.sugg-modal-summer {
+  background-color: var(--summer-button-color);
+  color: var(--summer-primary-color);
+  border: 2px solid var(--summer-primary-color);
+  border-radius: 15px;
+}
+.summer-checked {
+  background-color: var(--summer-tertiary-color);
+}
+.duplicate-container-summer {
+  background-color: var(--summer-button-color) !important;
+  color: var(--summer-primary-color) !important;
+  border: 2px solid var(--summer-primary-color) !important;
+  border-radius: var(--default-radius) !important;
+}
