@@ -207,10 +207,6 @@ export default {
   background: rgba(192, 224, 133, 0.75);
   border-radius: 15px;
 }
-.category-emoji {
-  font-size: 25px;
-  display: inline-block;
-}
 .category-emoji-selected {
   animation: zoominoutsinglefeatured 1.5s infinite;
 }

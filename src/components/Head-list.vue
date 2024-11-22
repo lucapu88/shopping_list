@@ -8,10 +8,12 @@ import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import FestivitiesAndOccurrences from './Festivities-and-occurrences.vue';
+import DuplicateTodoAlert from './panels-and-modals/Duplicate-todo-alert.vue';
 </script>
 
 <script>
 export default {
+  components: { DuplicateTodoAlert },
   data() {
     return {
       theme: useThemeStore(),
@@ -142,6 +144,8 @@ export default {
     >
       <img class="settings" src="@/img/icons/settings.webp" alt="settings" />
     </span>
+
+    <!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
     <div class="input-btns-container">
       <span
         v-if="addTodo.inModification"
@@ -207,6 +211,8 @@ export default {
         </span>
       </button>
     </div>
+    <!-- SE CI SONO DUPLICATI APPARE -->
+    <DuplicateTodoAlert v-if="addTodo.duplicateFound" />
     <!-- PULSANTIERA -->
     <HeaderButtonsContainer />
   </div>
@@ -385,12 +391,14 @@ export default {
   align-items: baseline;
   gap: 10px;
   justify-content: center;
+  position: relative;
 }
 .inputText {
   padding: 10px;
   width: 70%;
   text-align: center;
 }
+
 .helper {
   position: absolute;
   top: 0;

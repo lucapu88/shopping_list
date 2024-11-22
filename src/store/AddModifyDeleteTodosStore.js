@@ -41,6 +41,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
     todosCategorySelected: [],
     categoryAdded: false,
     addedImportant: false,
+    duplicateFound: false,
+    insertDuplicate: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -67,6 +69,9 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         todoAdded: true,
       };
 
+      this.checkDuplicates(todoObject);
+      if (this.duplicateFound && !this.insertDuplicate) { return; }
+
       !this.addTodoInCategory.condition
         ? this.todos.push(todoObject)
         : this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
@@ -81,6 +86,24 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
+    },
+    checkDuplicates(todo) {
+      this.todos.forEach(t => {
+        if (t.name.toLowerCase() === todo.name.toLowerCase()) {
+          this.duplicateFound = true;
+        }
+      });
+    },
+    addTodoAfterDuplicateCheck(yesOrNo) {
+      if (yesOrNo) {
+        this.insertDuplicate = true;
+        this.addTodo();
+        this.duplicateFound = false;
+        this.insertDuplicate = false;
+      } else {
+        this.duplicateFound = false;
+        this.insertDuplicate = false;
+      }
     },
     createCategory() {
       this.languages.categories.forEach((category) => {
