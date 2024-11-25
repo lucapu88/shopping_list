@@ -86,4 +86,34 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     });
   });
 
+  it('verifico se inserendo un elemento duplicato, te lo segnala', () => {
+    cy.get('.inputText').click().type(parola);
+    cy.get('.input-btns-container > .btn-info').click();
+    cy.get('.inputText').click().type(parola);
+    cy.get('.input-btns-container > .btn-info').click();
+    cy.get('.duplicate-container').should('exist');
+    //Clicco su NO
+    cy.get('.btn-no').click();
+    cy.get('.duplicate-container').should('not.exist');
+    cy.get('.inputText').should('have.value', '');
+    cy.get('#todo-list').should('have.length', 1);
+    let todos = [];
+    cy.get('#todo-list').each(($todo) => {
+      todos.push($todo.text());
+    }).then(() => {
+      expect(todos.length).to.equal(1);
+    });
+    //Clicco su SI
+    todos = [];
+    cy.get('.inputText').click().type(parola);
+    cy.get('.input-btns-container > .btn-info').click();
+    cy.get('.btn-yes').click();
+    cy.get('.duplicate-container').should('not.exist');
+    cy.get('#todo-list').each(($todo) => {
+      todos.push($todo.text());
+    }).then(() => {
+      expect(todos.length).to.equal(2);
+    });
+  });
+
 });

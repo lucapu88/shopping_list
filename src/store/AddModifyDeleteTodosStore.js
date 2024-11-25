@@ -88,6 +88,8 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
       this.resetModify();
     },
     checkDuplicates(todo) {
+      this.focusIn = false;
+
       this.todos.forEach(t => {
         if (t.name.toLowerCase() === todo.name.toLowerCase()) {
           this.duplicateFound = true;
@@ -101,11 +103,14 @@ export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
         this.duplicateFound = false;
         this.insertDuplicate = false;
       } else {
+        this.newTodo = null;
         this.duplicateFound = false;
         this.insertDuplicate = false;
       }
     },
     createCategory() {
+      this.isCategory = false;
+      this.categoryEmoji = '';
       this.languages.categories.forEach((category) => {
         //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
         if (this.newTodo.toLowerCase().trim() === category.name) {

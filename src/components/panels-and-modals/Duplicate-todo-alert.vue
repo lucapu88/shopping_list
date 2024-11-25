@@ -19,48 +19,58 @@ export default {
 </script>
 
 <template>
-  <div
-    class="duplicate-container"
-    :class="{
-      'duplicate-container-light': themes.lightTheme,
-      'duplicate-container-dark': themes.darkTheme,
-      'duplicate-container-minimal': themes.minimalTheme,
-      'duplicate-container-retro': themes.retroTheme,
-      'duplicate-container-summer': themes.summerTheme,
-      'duplicate-container-winter': themes.winterTheme,
-      'duplicate-container-elegant': themes.elegantTheme,
-      'duplicate-container-pink': themes.pinkTheme,
-    }"
-  >
-    <p class="title">{{ languages.duplicateText.title }}</p>
-    <div class="body">
-      <p>{{ languages.duplicateText.body }}</p>
-      <button
-        class="btn btn-yes"
-        :class="{ 'pink-theme-btn': themes.pinkTheme }"
-        @click="todosStore.addTodoAfterDuplicateCheck(true)"
-      >
-        <span v-if="languages.langIta || languages.langSpanish">SI</span>
-        <span v-if="languages.langEnglish">YES</span>
-      </button>
-      <button
-        class="btn btn-no"
-        :class="{ 'pink-theme-btn-secondary': themes.pinkTheme }"
-        @click="todosStore.addTodoAfterDuplicateCheck(false)"
-      >
-        NO
-      </button>
+  <div class="duplicate-modal-background">
+    <div
+      class="duplicate-container"
+      :class="{
+        'duplicate-container-light': themes.lightTheme,
+        'duplicate-container-dark': themes.darkTheme,
+        'duplicate-container-minimal': themes.minimalTheme,
+        'duplicate-container-retro': themes.retroTheme,
+        'duplicate-container-summer': themes.summerTheme,
+        'duplicate-container-winter': themes.winterTheme,
+        'duplicate-container-elegant': themes.elegantTheme,
+        'duplicate-container-pink': themes.pinkTheme,
+      }"
+    >
+      <p class="title">{{ languages.duplicateText.title }}</p>
+      <div class="body">
+        <p>{{ languages.duplicateText.body }}</p>
+        <button
+          class="btn btn-yes"
+          :class="{ 'pink-theme-btn': themes.pinkTheme }"
+          @click="todosStore.addTodoAfterDuplicateCheck(true)"
+        >
+          <span v-if="languages.langIta || languages.langSpanish">SI</span>
+          <span v-if="languages.langEnglish">YES</span>
+        </button>
+        <button
+          class="btn btn-no"
+          :class="{ 'pink-theme-btn-secondary': themes.pinkTheme }"
+          @click="todosStore.addTodoAfterDuplicateCheck(false)"
+        >
+          NO
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.duplicate-modal-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(69, 69, 69, 0.616);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 .duplicate-container {
   width: 88%;
   position: absolute;
-  top: 10%;
-  left: 5%;
-  z-index: 205;
+  top: 3%;
+  left: 6%;
   background: white;
   display: flex;
   flex-direction: column;

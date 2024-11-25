@@ -8,12 +8,10 @@ import { useSettingsStore } from '@/store/SettingsStore';
 import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import FestivitiesAndOccurrences from './Festivities-and-occurrences.vue';
-import DuplicateTodoAlert from './panels-and-modals/Duplicate-todo-alert.vue';
 </script>
 
 <script>
 export default {
-  components: { DuplicateTodoAlert },
   data() {
     return {
       theme: useThemeStore(),
@@ -211,8 +209,6 @@ export default {
         </span>
       </button>
     </div>
-    <!-- SE CI SONO DUPLICATI APPARE -->
-    <DuplicateTodoAlert v-if="addTodo.duplicateFound" />
     <!-- PULSANTIERA -->
     <HeaderButtonsContainer />
   </div>
@@ -391,7 +387,6 @@ export default {
   align-items: baseline;
   gap: 10px;
   justify-content: center;
-  position: relative;
 }
 .inputText {
   padding: 10px;

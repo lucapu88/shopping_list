@@ -7,6 +7,7 @@ import DeleteAllPanel from './components/panels-and-modals/Delete-all-panel.vue'
 import FooterButtonsContainer from './components/Footer-buttons-container.vue';
 import PreloadImages from './components/Preload-images.vue';
 import SuggestionsModal from './components/panels-and-modals/Suggestions-modal.vue';
+import DuplicateTodoAlert from './components/panels-and-modals/Duplicate-todo-alert.vue';
 import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useLanguageStore } from '@/store/LanguageStore';
@@ -89,6 +90,7 @@ export default {
             <HeadList />
             <ConfirmModal v-if="todosStore.confirmDeleteModal" />
             <SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
+            <DuplicateTodoAlert v-if="todosStore.duplicateFound" />
           </header>
 
           <main>
