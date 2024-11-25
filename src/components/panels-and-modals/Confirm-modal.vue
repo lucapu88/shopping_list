@@ -111,10 +111,27 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 0.4s;
+  animation: wideningAppearance 1s ease;
+}
+@keyframes wideningAppearance {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.confirm-delete-modal-content > * {
+  animation: opacity 2s ease;
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .confirm-delete-modal-content > button {
   border-radius: 5px;

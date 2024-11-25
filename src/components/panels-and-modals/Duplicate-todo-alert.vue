@@ -79,6 +79,7 @@ export default {
   min-height: 135px;
   padding: 10px;
   box-shadow: 0px 5px 30px 5px;
+  animation: fadeInOpacity 0.8s ease;
 }
 
 .body {
