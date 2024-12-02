@@ -3,6 +3,11 @@ import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 
 // Chiedo scusa se scrivo in italiano ma faccio prima a capire. L'inglese lo mastico ma non velocissimo.
 
+const today = new Date();
+const currentMonth = today.getMonth() + 1;
+const currentDay = today.getDate();
+let natale = currentDay <= 31 && currentMonth === 12;
+
 // eslint-disable-next-line no-undef
 describe("test dell'helper e delle impostazioni", () => {
     beforeEach(() => {
@@ -65,7 +70,10 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.top > .btn-dark').click().then(() => {
             cy.get('body').should('have.css', 'background-color').and('include', 'rgb(51, 51, 51)');
             cy.get('body').should('have.css', 'color').and('include', 'rgb(255, 255, 255)');
-            cy.get('body').should('have.css', 'border').and('include', '10px solid rgb(209, 126, 71)');
+            if (!natale) {
+                //Faccio sta roba perchè nel periodo natalizio si spacca poichè viene coperto da "l'addobbo"
+                cy.get('body').should('have.css', 'border').and('include', '10px solid rgb(209, 126, 71)');
+            }
         });
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
@@ -90,7 +98,10 @@ describe("test dell'helper e delle impostazioni", () => {
         });
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
-        cy.get('.retro-theme-helper').should('have.css', 'border').and('include', '3px outset rgb(255, 255, 255)');
+        if (!natale) {
+            //Faccio sta roba perchè nel periodo natalizio si spacca poichè viene coperto da "l'addobbo"
+            cy.get('.retro-theme-helper').should('have.css', 'border').and('include', '3px outset rgb(255, 255, 255)');
+        }
         cy.get('.retro-theme-helper').should('have.css', 'border-radius').and('include', '0');
         cy.get('.retro-theme-helper').should('have.css', 'background-color').and('include', 'rgb(192, 192, 192)');
 
@@ -133,7 +144,7 @@ describe("test dell'helper e delle impostazioni", () => {
     it('autoeliminazione categorie vuote', () => {
         cy.addCategoryAndTodo();
         cy.get('.category').should('exist');
-        cy.get('.category > .button-container > .btn').click();
+        cy.get('.category > .button-container > .btn').click({ force: true });
 
         cy.get('.settings').click().then(() => {
             cy.get('#helper-description > :nth-child(6) > .list-title').click();

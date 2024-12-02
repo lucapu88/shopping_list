@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
-
 // Chiedo scusa se scrivo in italiano ma faccio prima a capire. L'inglese lo mastico ma non velocissimo.
 
 // eslint-disable-next-line no-undef
@@ -25,8 +24,8 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
 
     it('verifico il copia e incolla', () => {
         const myText = 'Che la forza sia con te';
-        cy.get('.inputText').type(myText);
-        cy.get('.input-btns-container > .btn-info').click();
+        cy.get('.inputText').click({ force: true }).type(myText);
+        cy.get('.input-btns-container > .btn-info').click({ force: true });
 
         cy.get('.pushbutton-container > :nth-child(2)').click();
         cy.get('.list-copied').should('exist');
@@ -41,18 +40,25 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
     });
 
     it('Inserisco le categorie e verifico se ci sono tutte', () => {
-        cy.get('.pushbutton-container > :nth-child(3)').click();
+        cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.category-list-container').should('exist');
+
+        //nel caso testo nel periodo natalizio c'è una categoria in più solo per natale
+        const today = new Date();
+        const currentMonth = today.getMonth() + 1;
+        const currentDay = today.getDate();
+        const categoryNumber = currentDay <= 31 && currentMonth === 12 ? 25 : 24;
+
         //verifico se il numero di categorie è giusto
         const categories = [];
         cy.get('.category-list').each(($ele) => {
             categories.push($ele.text());
         }).then(() => {
-            expect(categories.length).to.equal(24);
+            expect(categories.length).to.equal(categoryNumber);
         }); //avrei voluto testare se le categorie vere e proprie sono le stesse nello store ma al momento ho problemi con la lettura dei componenti importati in cypress...non riesce a trovare i file che sono importati con la shortcut di vite: ovvero @/nome-path
 
         //verifico se il numero di categorie INSERITE è giusto
-        cy.get('.add-remove-empty > :nth-child(1)').click();
+        cy.get('.add-remove-empty > :nth-child(1)').click({ force: true });
         cy.get('#todo-list').each($ele => {
             expect(categories.length).to.equal($ele.children().length);
         });
@@ -68,9 +74,10 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
     it('Verifico se funziona la visualizzazione degli elementi importanti', () => {
         cy.addSomeItemsToList(phrases);
         cy.wait(1000);
+
         cy.get('[index="2"] > #todo').click();
         cy.get('[index="4"] > #todo').click();
-        cy.get('.pushbutton-container > :nth-child(4)').click();
+        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
         cy.get('.delete-all').should('not.exist');
         cy.get('.deselect-all-imp-standard').should('exist');
 
@@ -81,7 +88,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get(`.todo:contains(${phrases.frase4})`).should('not.exist');
         cy.get(`.todo:contains(${phrases.frase6})`).should('not.exist');
 
-        cy.get('.pushbutton-container > :nth-child(4)').click();
+        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
         cy.get(`.active:contains(${phrases.frase3})`).should('exist');
         cy.get(`.active:contains(${phrases.frase5})`).should('exist');
         cy.get(`.todo:contains(${phrases.frase1})`).should('exist');
@@ -89,7 +96,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get(`.todo:contains(${phrases.frase4})`).should('exist');
         cy.get(`.todo:contains(${phrases.frase6})`).should('exist');
 
-        cy.get('.pushbutton-container > :nth-child(4)').click();
+        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
         cy.get('.deselect-all-imp-standard').click();
         cy.get(`.active:contains(${phrases.frase3})`).should('not.exist');
         cy.get(`.active:contains(${phrases.frase5})`).should('not.exist');

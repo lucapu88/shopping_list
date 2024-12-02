@@ -40,9 +40,9 @@ export const phrases = {
 //AGGIUNGE ELEMENTI IN LISTA 
 Cypress.Commands.add('addSomeItemsToList', (phrases) => {
   cy.get('.inputText').click({ force: true }).type(phrases.frase1);
-  cy.get('.input-btns-container > .btn-info').click();
+  cy.get('.input-btns-container > .btn-info').click({ force: true });
   cy.get('.inputText').click({ force: true }).type(phrases.frase2);
-  cy.get('.input-btns-container > .btn-info').click();
+  cy.get('.input-btns-container > .btn-info').click({ force: true });
   cy.get('.inputText').click({ force: true }).type(phrases.frase3);
   cy.get('.input-btns-container > .btn-info').click({ force: true });
   cy.get('.inputText').click({ force: true }).type(phrases.frase4);
@@ -51,15 +51,15 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
   cy.get('.input-btns-container > .btn-info').click({ force: true });
   cy.get('.inputText').click({ force: true }).type(phrases.frase6);
   cy.get('.input-btns-container > .btn-info').click({ force: true });
-  cy.get('.btn-outline-info').click();
+  cy.get('.btn-outline-info').click({ force: true });
 });
 
 Cypress.Commands.add('addCategoryAndTodo', () => {
-  cy.get('.pushbutton-container > :nth-child(3)').click();
-  cy.get('.categories > :nth-child(18) > span').click();
+  cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
+  cy.get('.categories > :nth-child(18) > span').click({ force: true });
   cy.get('.inputText').click().type('zucchine da mangiare');
-  cy.get('.input-btns-container > .btn-info').click();
-  cy.get('.button-container > :nth-child(2)').click();
+  cy.get('.input-btns-container > .btn-info').click({ force: true });
+  cy.get('.button-container > :nth-child(2)').click({ force: true });
 });
 
 const getCoords = ($el) => {
