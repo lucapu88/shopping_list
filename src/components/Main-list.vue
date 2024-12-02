@@ -5,7 +5,7 @@ import { useChristmasStore } from "@/store/ChristmasStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
-import { useAddModifyDeleteTodosStore } from "@/store/AddModifyDeleteTodosStore";
+import { useTodoStore } from "@/store/TodoStore";
 </script>
 
 <script>
@@ -16,7 +16,7 @@ export default {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
 			theme: useThemeStore(),
-			todos: useAddModifyDeleteTodosStore(),
+			todos: useTodoStore(),
 		};
 	},
 };

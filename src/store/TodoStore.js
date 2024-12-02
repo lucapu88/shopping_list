@@ -6,7 +6,7 @@ import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 
 //TOFIX: Cambiare nome a sto store perchè fa schifo! trovarne uno più adatto
-export const useAddModifyDeleteTodosStore = defineStore('addModifyDelete', {
+export const useTodoStore = defineStore('addModifyDelete', {
   state: () => ({
     languages: useLanguageStore(),
     settings: useSettingsStore(),

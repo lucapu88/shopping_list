@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '@/store/LanguageStore';
-import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import { useTodoStore } from '@/store/TodoStore';
 import { useEnglishSuggStoreStore } from '@/store/suggestions/EnglishSuggStore';
 import { useItalianSuggStoreStore } from '@/store/suggestions/ItalianSuggStore';
 import { useSpanishSuggStoreStore } from '@/store/suggestions/SpanishSuggStore';
@@ -9,7 +9,7 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 export const useSuggestionsStore = defineStore('suggestions', {
   state: () => ({
     languages: useLanguageStore(),
-    todosStore: useAddModifyDeleteTodosStore(),
+    todosStore: useTodoStore(),
     eng: useEnglishSuggStoreStore(),
     ita: useItalianSuggStoreStore(),
     spa: useSpanishSuggStoreStore(),

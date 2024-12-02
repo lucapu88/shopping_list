@@ -1,7 +1,7 @@
 <script setup>
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
-import { useAddModifyDeleteTodosStore } from "@/store/AddModifyDeleteTodosStore";
+import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useChristmasStore } from "@/store/ChristmasStore";
 </script>
@@ -12,7 +12,7 @@ export default {
 		return {
 			languages: useLanguageStore(),
 			themes: useThemeStore(),
-			todosStore: useAddModifyDeleteTodosStore(),
+			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
 			isChristmas: useChristmasStore(),
 			noSuggestions: false,

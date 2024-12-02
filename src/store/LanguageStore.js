@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { useAddModifyDeleteTodosStore } from '@/store/AddModifyDeleteTodosStore';
+import { useTodoStore } from '@/store/TodoStore';
 
 export const useLanguageStore = defineStore('Language', {
   state: () => ({
-    todosStore: useAddModifyDeleteTodosStore(),
+    todosStore: useTodoStore(),
     languagesBtns: {
       english: 'English',
       spanish: 'Spanish',
@@ -109,7 +109,7 @@ export const useLanguageStore = defineStore('Language', {
       visible: false,
     },
     confirmText: 'Are you sure you want to delete:\n',
-    completeConfirmText: '', // Questo testo viene editato nell' AddModifyDeleteTodosStore.js
+    completeConfirmText: '', // Questo testo viene editato nell' TodoStore.js
     selectedTodosConfirmText: 'You are going to delete these elements',
     themeName: 'light',
     safeModeText: {
