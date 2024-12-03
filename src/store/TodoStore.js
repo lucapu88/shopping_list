@@ -43,6 +43,7 @@ export const useTodoStore = defineStore('todoStore', {
     addedImportant: false,
     duplicateFound: false,
     insertDuplicate: false,
+    secondList: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,

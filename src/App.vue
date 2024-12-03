@@ -95,7 +95,7 @@ export default {
 
 					<footer>
 						<DeleteAllPanel />
-						<FooterButtonsContainer @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						<FooterButtonsContainer v-if="!todosStore.secondList" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
 					</footer>
 				</div>
 			</div>

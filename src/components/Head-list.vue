@@ -114,7 +114,7 @@ export default {
 		</span>
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container">
+		<div class="input-btns-container" v-if="!addTodo.secondList">
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
 				class="inputText border border-primary rounded"
