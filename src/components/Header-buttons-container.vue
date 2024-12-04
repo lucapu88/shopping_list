@@ -13,19 +13,19 @@ export default {
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
 			isAndroid: false,
+			isIphone: false,
 		};
 	},
 	created() {
-		const navigatorUserAgent = navigator.userAgentData || navigator.userAgent;
-		this.isAndroid = navigatorUserAgent.platform === "Android";
-		/*ALTRA TIPOLOGIA DI VERIFICA (DA VEDERE SE FUNZIONA)*/
-		// const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-		// if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-		// 	this.isAndroid = false;
-		// }
-		// if (/android/i.test(userAgent)) {
-		// 	this.isAndroid = true;
-		// }
+		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+			this.isAndroid = false;
+			this.isIphone = true;
+		}
+		if (/android/i.test(userAgent)) {
+			this.isIphone = false;
+			this.isAndroid = true;
+		}
 	},
 	methods: {
 		copy() {
@@ -51,7 +51,8 @@ export default {
 
 <template>
 	<div class="pushbutton-container">
-		<h3 class="developer-panel-title" v-if="todosStore.secondList">Pannello Sviluppatore</h3>
+		<h4 class="developer-panel-title" v-if="todosStore.secondList">Pannello Sviluppatore</h4>
+
 		<template v-if="!todosStore.secondList">
 			<!-- DRAG N DROP -->
 			<button
@@ -146,7 +147,7 @@ export default {
 		</template>
 	</div>
 
-	<div v-if="!isAndroid" class="shitch-lists-buttons">
+	<div v-if="!isAndroid && isIphone" class="shitch-lists-buttons">
 		<!-- CONTENITORE CAMBIO LISTA -->
 		<button
 			class="btn custom-show-listbtn"
@@ -310,8 +311,8 @@ p {
 	gap: 20px;
 }
 .shitch-lists-buttons > button {
-	width: 95px;
-	height: 15px;
+	width: 150px;
+	height: 17px;
 	padding: 0;
 	border-radius: 3px;
 }
