@@ -12,20 +12,7 @@ export default {
 			theme: useThemeStore(),
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
-			isAndroid: false,
-			isIphone: false,
 		};
-	},
-	created() {
-		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-			this.isAndroid = false;
-			this.isIphone = true;
-		}
-		if (/android/i.test(userAgent)) {
-			this.isIphone = false;
-			this.isAndroid = true;
-		}
 	},
 	methods: {
 		copy() {
@@ -51,7 +38,7 @@ export default {
 
 <template>
 	<div class="pushbutton-container">
-		<h4 class="developer-panel-title" v-if="todosStore.secondList">Pannello Sviluppatore</h4>
+		<h4 class="developer-panel-title" v-if="todosStore.secondList" @click="todosStore.secondList = false">Appunti Sviluppatore</h4>
 
 		<template v-if="!todosStore.secondList">
 			<!-- DRAG N DROP -->
@@ -145,48 +132,6 @@ export default {
 				<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
 			</button>
 		</template>
-	</div>
-
-	<div v-if="!isAndroid && isIphone" class="shitch-lists-buttons">
-		<!-- CONTENITORE CAMBIO LISTA -->
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': !todosStore.secondList,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
-				'summer-header-btn': theme.summerTheme,
-				'summer-header-btn-selected': theme.summerTheme && todosStore.categoryList,
-				'winter-header-btn': theme.winterTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.categoryList,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
-			}"
-			@click="todosStore.secondList = false"
-		></button>
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': todosStore.secondList,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
-				'summer-header-btn': theme.summerTheme,
-				'summer-header-btn-selected': theme.summerTheme && todosStore.categoryList,
-				'winter-header-btn': theme.winterTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.categoryList,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
-			}"
-			@click="todosStore.secondList = true"
-		></button>
 	</div>
 
 	<template v-if="!todosStore.secondList">
@@ -303,17 +248,5 @@ p {
 	background-color: #80808076;
 	border-radius: 5px;
 	padding: 5px 10px;
-}
-.shitch-lists-buttons {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-}
-.shitch-lists-buttons > button {
-	width: 150px;
-	height: 17px;
-	padding: 0;
-	border-radius: 3px;
 }
 </style>

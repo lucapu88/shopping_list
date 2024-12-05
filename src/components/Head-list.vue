@@ -21,10 +21,22 @@ export default {
 			settings: useSettingsStore(),
 			addTodo: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
+			isAndroid: false,
+			isIphone: false,
 		};
 	},
 	created() {
 		this.addTodo.changeTodoAdded(this.addTodo.todos);
+
+		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+			this.isAndroid = false;
+			this.isIphone = true;
+		}
+		if (/android/i.test(userAgent)) {
+			this.isIphone = false;
+			this.isAndroid = true;
+		}
 	},
 	methods: {
 		showHelper() {
@@ -59,6 +71,14 @@ export default {
 				this.$refs.myInput.focus();
 			});
 		},
+		openDevPanel() {
+			if (this.isAndroid) {
+				return;
+			}
+			if (this.isIphone && !this.isAndroid) {
+				this.addTodo.secondList = true;
+			}
+		},
 	},
 };
 </script>
@@ -85,6 +105,7 @@ export default {
 				'title-spanish': languages.langSpanish,
 				'title1-spanish': languages.langSpanish,
 			}"
+			@click="openDevPanel()"
 		>
 			{{ languages.shoppingListTitle }}
 		</h2>
@@ -97,6 +118,7 @@ export default {
 				'retro-theme-title2': theme.retroTheme,
 				'title-spanish': languages.langSpanish,
 			}"
+			@click="openDevPanel()"
 		>
 			{{ languages.shoppingListTitle }}
 		</h2>

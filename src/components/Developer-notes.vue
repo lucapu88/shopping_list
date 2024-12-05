@@ -3,6 +3,8 @@ import { useTodoStore } from "@/store/TodoStore";
 </script>
 
 <script>
+/* 	QUESTO COMPONENTE, PER IL MOMENTO, È ROBA MIA ED APPARE SOLO SU IPHONE.
+	PER IL MOMENTO LO TESTO E POI DECIDERO' SE METTERLO IN PRODUZIONE O MENO */
 export default {
 	data() {
 		return {
@@ -35,13 +37,19 @@ export default {
 			item.list = true;
 		},
 		addDash(event, item) {
-			const cursorPosition = event.target.selectionStart;
+			const textarea = event.target;
+			const cursorPosition = textarea.selectionStart;
 			const value = item.devNotes;
 			// Trova il testo prima e dopo il cursore
 			const beforeCursor = value.substring(0, cursorPosition);
 			const afterCursor = value.substring(cursorPosition);
-			// Aggiungi "- " dopo il ritorno a capo
-			item.devNotes = beforeCursor + "- " + afterCursor;
+
+			item.devNotes = beforeCursor + "\n- " + afterCursor;
+			// Aggiorna il valore del textarea (se necessario)
+			textarea.value = item.devNotes;
+			// Sposta il cursore immediatamente dopo "- "
+			const newCursorPosition = cursorPosition + 4; // Lunghezza di "\n\n- "
+			textarea.setSelectionRange(newCursorPosition, newCursorPosition);
 		},
 	},
 };
