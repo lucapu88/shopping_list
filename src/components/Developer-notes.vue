@@ -43,13 +43,18 @@ export default {
 			// Trova il testo prima e dopo il cursore
 			const beforeCursor = value.substring(0, cursorPosition);
 			const afterCursor = value.substring(cursorPosition);
+			// Trova il contenuto della riga corrente dopo il cursore
+			const currentLineAfterCursor = afterCursor.split("\n")[0];
 
-			item.devNotes = beforeCursor + "\n- " + afterCursor;
-			// Aggiorna il valore del textarea (se necessario)
-			textarea.value = item.devNotes;
-			// Sposta il cursore immediatamente dopo "- "
-			const newCursorPosition = cursorPosition + 4; // Lunghezza di "\n\n- "
-			textarea.setSelectionRange(newCursorPosition, newCursorPosition);
+			// Aggiungi il dash solo se il testo dopo il cursore è vuoto o contiene solo spazi
+			if (currentLineAfterCursor.trim() === "") {
+				item.devNotes = beforeCursor + "\n- " + afterCursor;
+				// Aggiorna il valore del textarea (se necessario)
+				textarea.value = item.devNotes;
+				// Sposta il cursore immediatamente dopo "- "
+				const newCursorPosition = cursorPosition + 3; // Lunghezza di "\n- "
+				textarea.setSelectionRange(newCursorPosition, newCursorPosition);
+			}
 		},
 	},
 };
