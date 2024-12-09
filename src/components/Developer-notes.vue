@@ -28,9 +28,7 @@ export default {
 	},
 	methods: {
 		saveNotes(el) {
-			if (el.devNotes.length > 3) {
-				window.localStorage.setItem(el.localStorageItem, el.devNotes);
-			}
+			window.localStorage.setItem(el.localStorageItem, el.devNotes);
 		},
 		switchList(item) {
 			this.textAreas.map((el) => (el.list = false));
@@ -68,7 +66,7 @@ export default {
 			</template>
 		</div>
 		<template v-for="(item, i) in textAreas" :key="i">
-			<textarea v-if="item.list" class="dev-notes" v-model="item.devNotes" name="dev-notes" rows="25" @input="saveNotes(item)" @keyup.enter="addDash($event, item)"></textarea>
+			<textarea v-if="item.list" class="dev-notes" v-model="item.devNotes" name="dev-notes" rows="30" @input="saveNotes(item)" @keyup.enter="addDash($event, item)"></textarea>
 		</template>
 	</div>
 </template>

@@ -275,6 +275,8 @@ export const useLanguageStore = defineStore('Language', {
       } else {
         this.categories = this.engCategories;
       }
+      // TOFIX: da aggiungere l'ordinamento ma poi sfasa tutti i suggerimenti perchè sono schiantati singolarmente in base al loro index...Sistemare i suggerimenti
+      // this.categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())); 
     },
     async englishDefaultSetting() {
       window.localStorage.setItem('langEnglish', true);

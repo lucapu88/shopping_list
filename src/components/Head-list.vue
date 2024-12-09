@@ -94,34 +94,55 @@ export default {
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-1" src="@/img/festivities/pipistrello-1.webp" alt="halloween_bat" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
-		<h2
-			class="title text-center"
-			:class="{
-				'christmas-title': isChristmas.christmasTheme,
-				'dark-theme-title': theme.darkTheme,
-				'minimal-theme-title': theme.minimalTheme,
-				'retro-theme-title': theme.retroTheme,
-				'elegant-theme-title': theme.elegantTheme,
-				'title-spanish': languages.langSpanish,
-				'title1-spanish': languages.langSpanish,
-			}"
-			@click="openDevPanel()"
-		>
-			{{ languages.shoppingListTitle }}
-		</h2>
-		<h2
-			v-if="!theme.elegantTheme"
-			class="title2 text-center"
-			:class="{
-				'christmas-title2': isChristmas.christmasTheme,
-				'minimal-theme-title2': theme.minimalTheme,
-				'retro-theme-title2': theme.retroTheme,
-				'title-spanish': languages.langSpanish,
-			}"
-			@click="openDevPanel()"
-		>
-			{{ languages.shoppingListTitle }}
-		</h2>
+
+		<template v-if="!addTodo.secondList">
+			<h2
+				class="title text-center"
+				:class="{
+					'christmas-title': isChristmas.christmasTheme,
+					'dark-theme-title': theme.darkTheme,
+					'minimal-theme-title': theme.minimalTheme,
+					'retro-theme-title': theme.retroTheme,
+					'elegant-theme-title': theme.elegantTheme,
+					'title-spanish': languages.langSpanish,
+					'title1-spanish': languages.langSpanish,
+				}"
+				@click="openDevPanel()"
+			>
+				{{ languages.shoppingListTitle }}
+			</h2>
+			<h2
+				v-if="!theme.elegantTheme"
+				class="title2 text-center"
+				:class="{
+					'christmas-title2': isChristmas.christmasTheme,
+					'minimal-theme-title2': theme.minimalTheme,
+					'retro-theme-title2': theme.retroTheme,
+					'title-spanish': languages.langSpanish,
+				}"
+				@click="openDevPanel()"
+			>
+				{{ languages.shoppingListTitle }}
+			</h2>
+		</template>
+
+		<template v-if="addTodo.secondList">
+			<h2
+				class="title text-center"
+				:class="{
+					'christmas-title': isChristmas.christmasTheme,
+					'dark-theme-title': theme.darkTheme,
+					'minimal-theme-title': theme.minimalTheme,
+					'retro-theme-title': theme.retroTheme,
+					'elegant-theme-title': theme.elegantTheme,
+					'title-spanish': languages.langSpanish,
+					'title1-spanish': languages.langSpanish,
+				}"
+				@click="addTodo.secondList = false"
+			>
+				Todo List
+			</h2>
+		</template>
 
 		<span
 			class="helper"
@@ -154,6 +175,7 @@ export default {
 			</button>
 		</div>
 		<div
+			v-if="!addTodo.secondList"
 			class="tips-container"
 			:class="{
 				'waterfall-descent': addTodo.inModification,

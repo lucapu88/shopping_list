@@ -37,101 +37,97 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container">
-		<h4 class="developer-panel-title" v-if="todosStore.secondList" @click="todosStore.secondList = false">Appunti Sviluppatore</h4>
-
-		<template v-if="!todosStore.secondList">
-			<!-- DRAG N DROP -->
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'btn-selected': todosStore.isDraggable,
-					'minimal-btn': theme.minimalTheme,
-					'minimal-selected-btn': theme.minimalTheme && todosStore.isDraggable,
-					'retro-teme-btns': theme.retroTheme,
-					'retro-selected-btn': theme.retroTheme && todosStore.isDraggable,
-					'summer-header-btn': theme.summerTheme,
-					'summer-header-btn-selected': theme.summerTheme && todosStore.isDraggable,
-					'winter-header-btn': theme.winterTheme,
-					'winter-header-selected-btn': theme.winterTheme && todosStore.isDraggable,
-					'elegant-btn': theme.elegantTheme,
-					'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
-					'pink-theme-btn': theme.pinkTheme,
-					'pink-theme-selected-btn': theme.pinkTheme && todosStore.isDraggable,
-				}"
-				:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
-				@click="todosStore.toggleDragDrop()"
-			>
-				<img v-if="!theme.elegantTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
-				<img v-if="theme.elegantTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
-			</button>
-			<!--PULSANTE COPIA LISTA-->
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'minimal-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'summer-header-btn': theme.summerTheme,
-					'winter-header-btn': theme.winterTheme,
-					'elegant-btn': theme.elegantTheme,
-					'pink-theme-btn': theme.pinkTheme,
-				}"
-				:disabled="!todosStore.todos.length"
-				@click="copy()"
-			>
-				<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
-				<img v-if="theme.elegantTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
-			</button>
-			<!--PULSANTE MOSTRA CATEGORIE -->
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'btn-selected': todosStore.categoryList,
-					'minimal-btn': theme.minimalTheme,
-					'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
-					'retro-teme-btns': theme.retroTheme,
-					'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
-					'summer-header-btn': theme.summerTheme,
-					'summer-header-btn-selected': theme.summerTheme && todosStore.categoryList,
-					'winter-header-btn': theme.winterTheme,
-					'winter-header-selected-btn': theme.winterTheme && todosStore.categoryList,
-					'elegant-btn': theme.elegantTheme,
-					'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
-					'pink-theme-btn': theme.pinkTheme,
-					'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
-				}"
-				:disabled="todosStore.showOnlyImportantTodos"
-				@click="todosStore.showCategoryList()"
-			>
-				<strong v-if="!todosStore.categoryList">+</strong>
-				<strong v-else>-</strong>
-			</button>
-			<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'btn-selected': todosStore.showOnlyImportantTodos,
-					'btn-important-temporary': todosStore.addedImportant,
-					'btn-important-selected': todosStore.showOnlyImportantTodos && !theme.retroTheme,
-					'minimal-btn': theme.minimalTheme,
-					'minimal-selected-btn': theme.minimalTheme && todosStore.showOnlyImportantTodos,
-					'retro-teme-btns': theme.retroTheme,
-					'retro-selected-btn': theme.retroTheme && todosStore.showOnlyImportantTodos,
-					'summer-header-btn-selected': theme.summerTheme && todosStore.showOnlyImportantTodos,
-					'summer-header-btn': theme.summerTheme,
-					'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
-					'winter-header-btn': theme.winterTheme,
-					'elegant-btn': theme.elegantTheme,
-					'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
-					'pink-theme-btn': theme.pinkTheme,
-					'pink-theme-selected-btn': theme.pinkTheme && todosStore.showOnlyImportantTodos,
-				}"
-				@click="todosStore.showOnlyImportant()"
-			>
-				<img v-if="!theme.elegantTheme" class="important" src="@/img/icons/important.webp" alt="important" />
-				<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
-			</button>
-		</template>
+	<div class="pushbutton-container" v-if="!todosStore.secondList">
+		<!-- DRAG N DROP -->
+		<button
+			class="btn custom-show-listbtn"
+			:class="{
+				'btn-selected': todosStore.isDraggable,
+				'minimal-btn': theme.minimalTheme,
+				'minimal-selected-btn': theme.minimalTheme && todosStore.isDraggable,
+				'retro-teme-btns': theme.retroTheme,
+				'retro-selected-btn': theme.retroTheme && todosStore.isDraggable,
+				'summer-header-btn': theme.summerTheme,
+				'summer-header-btn-selected': theme.summerTheme && todosStore.isDraggable,
+				'winter-header-btn': theme.winterTheme,
+				'winter-header-selected-btn': theme.winterTheme && todosStore.isDraggable,
+				'elegant-btn': theme.elegantTheme,
+				'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
+				'pink-theme-btn': theme.pinkTheme,
+				'pink-theme-selected-btn': theme.pinkTheme && todosStore.isDraggable,
+			}"
+			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
+			@click="todosStore.toggleDragDrop()"
+		>
+			<img v-if="!theme.elegantTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
+			<img v-if="theme.elegantTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
+		</button>
+		<!--PULSANTE COPIA LISTA-->
+		<button
+			class="btn custom-show-listbtn"
+			:class="{
+				'minimal-btn': theme.minimalTheme,
+				'retro-teme-btns': theme.retroTheme,
+				'summer-header-btn': theme.summerTheme,
+				'winter-header-btn': theme.winterTheme,
+				'elegant-btn': theme.elegantTheme,
+				'pink-theme-btn': theme.pinkTheme,
+			}"
+			:disabled="!todosStore.todos.length"
+			@click="copy()"
+		>
+			<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
+			<img v-if="theme.elegantTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
+		</button>
+		<!--PULSANTE MOSTRA CATEGORIE -->
+		<button
+			class="btn custom-show-listbtn"
+			:class="{
+				'btn-selected': todosStore.categoryList,
+				'minimal-btn': theme.minimalTheme,
+				'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
+				'retro-teme-btns': theme.retroTheme,
+				'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
+				'summer-header-btn': theme.summerTheme,
+				'summer-header-btn-selected': theme.summerTheme && todosStore.categoryList,
+				'winter-header-btn': theme.winterTheme,
+				'winter-header-selected-btn': theme.winterTheme && todosStore.categoryList,
+				'elegant-btn': theme.elegantTheme,
+				'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
+				'pink-theme-btn': theme.pinkTheme,
+				'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
+			}"
+			:disabled="todosStore.showOnlyImportantTodos"
+			@click="todosStore.showCategoryList()"
+		>
+			<strong v-if="!todosStore.categoryList">+</strong>
+			<strong v-else>-</strong>
+		</button>
+		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
+		<button
+			class="btn custom-show-listbtn"
+			:class="{
+				'btn-selected': todosStore.showOnlyImportantTodos,
+				'btn-important-temporary': todosStore.addedImportant,
+				'btn-important-selected': todosStore.showOnlyImportantTodos && !theme.retroTheme,
+				'minimal-btn': theme.minimalTheme,
+				'minimal-selected-btn': theme.minimalTheme && todosStore.showOnlyImportantTodos,
+				'retro-teme-btns': theme.retroTheme,
+				'retro-selected-btn': theme.retroTheme && todosStore.showOnlyImportantTodos,
+				'summer-header-btn-selected': theme.summerTheme && todosStore.showOnlyImportantTodos,
+				'summer-header-btn': theme.summerTheme,
+				'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
+				'winter-header-btn': theme.winterTheme,
+				'elegant-btn': theme.elegantTheme,
+				'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
+				'pink-theme-btn': theme.pinkTheme,
+				'pink-theme-selected-btn': theme.pinkTheme && todosStore.showOnlyImportantTodos,
+			}"
+			@click="todosStore.showOnlyImportant()"
+		>
+			<img v-if="!theme.elegantTheme" class="important" src="@/img/icons/important.webp" alt="important" />
+			<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
+		</button>
 	</div>
 
 	<template v-if="!todosStore.secondList">
@@ -241,12 +237,5 @@ p {
 		transform: scale(1, 1);
 		background-color: #6da505e1;
 	}
-}
-
-.developer-panel-title {
-	font-family: monospace;
-	background-color: #80808076;
-	border-radius: 5px;
-	padding: 5px 10px;
 }
 </style>

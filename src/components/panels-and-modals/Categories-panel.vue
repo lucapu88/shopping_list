@@ -46,6 +46,7 @@ export default {
 					:class="{
 						'retro-category-list': theme.retroTheme,
 						'category-pink-btn': theme.pinkTheme,
+						'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 					}"
 					v-if="category.active"
 				>
@@ -276,5 +277,9 @@ export default {
 .add-remove-empty {
 	display: flex;
 	justify-content: center;
+}
+.christmas-category {
+	border: 2px solid red;
+	box-shadow: 0px 0px 10px 0px #ff0000;
 }
 </style>
