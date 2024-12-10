@@ -34,6 +34,8 @@ export const useSettingsStore = defineStore('settings', {
     video: true,
     featureInfo: false,
     info: true,
+    isAndroid: false,
+    isIphone: false,
   }),
   getters: {},
   actions: {
@@ -162,6 +164,17 @@ export const useSettingsStore = defineStore('settings', {
           ma se clicchi sullo stesso video deve poterlo nascondere o rimostrare.    */
       this.feature === feature ? this.video = !this.video : this.video = true;
       this.feature = feature;
+    },
+    checkDevice() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/ iPad | iPhone | iPod /.test(userAgent) && !window.MSStream) {
+        this.isAndroid = false;
+        this.isIphone = true;
+      }
+      if (/android/i.test(userAgent)) {
+        this.isIphone = false;
+        this.isAndroid = true;
+      }
     }
   },
 });

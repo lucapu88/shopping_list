@@ -21,22 +21,11 @@ export default {
 			settings: useSettingsStore(),
 			addTodo: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
-			isAndroid: false,
-			isIphone: false,
 		};
 	},
 	created() {
 		this.addTodo.changeTodoAdded(this.addTodo.todos);
-
-		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-		if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-			this.isAndroid = false;
-			this.isIphone = true;
-		}
-		if (/android/i.test(userAgent)) {
-			this.isIphone = false;
-			this.isAndroid = true;
-		}
+		this.settings.checkDevice();
 	},
 	methods: {
 		showHelper() {
@@ -72,10 +61,10 @@ export default {
 			});
 		},
 		openDevPanel() {
-			if (this.isAndroid) {
+			if (this.settings.isAndroid) {
 				return;
 			}
-			if (this.isIphone && !this.isAndroid) {
+			if (this.settings.isIphone && !this.settings.isAndroid) {
 				this.addTodo.secondList = true;
 			}
 		},
