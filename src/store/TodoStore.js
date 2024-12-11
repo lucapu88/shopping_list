@@ -43,7 +43,8 @@ export const useTodoStore = defineStore('todoStore', {
     addedImportant: false,
     duplicateFound: false,
     insertDuplicate: false,
-    secondList: false,
+    devList: false,
+    todoSecondList: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -157,30 +158,42 @@ export const useTodoStore = defineStore('todoStore', {
       this.confirmDeleteModal = false;
       // se ho impostato l'eliminazione automatica categorie vuote
       if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
-      navigator.vibrate(220);
+      if ('vibrate' in navigator) { navigator.vibrate(220); }
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-      window.localStorage.setItem('todos', parsedTodos);
+
+      this.todoSecondList
+        ? window.localStorage.setItem('todos2', parsedTodos)
+        : window.localStorage.setItem('todos', parsedTodos);
+
       this.priceCalculator();
     },
     createTodosList() {
-      if (window.localStorage.getItem('todos')) {
-        //se si deve prendere un oggetto da salvare in locale
-        try {
-          const parsedTodoList = JSON.parse(window.localStorage.getItem('todos'));
-
-          parsedTodoList.forEach(todo => {
-            //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
-            if (todo.class) { todo.category = todo.class; }
-          });
-          this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
-          this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
-        } catch (e) {
-          window.localStorage.removeItem('todos'); //se viene trovato un errore, rimuovi l'oggetto (o meglio, non salvare niente)
+      if (this.todoSecondList) {
+        if (window.localStorage.getItem('todos2')) {
+          this.getCorrectTodoList('todos2');
+        }
+      } else {
+        if (window.localStorage.getItem('todos')) {
+          this.getCorrectTodoList('todos');
         }
       }
       if (!this.addTodoInCategory.condition) { this.todos.map((t) => (t.isSelected = false)); }
+    },
+    getCorrectTodoList(todos) {
+      //se si deve prendere un oggetto da salvare in locale
+      try {
+        const parsedTodoList = JSON.parse(window.localStorage.getItem(todos));
+        parsedTodoList.forEach(todo => {
+          //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
+          if (todo.class) { todo.category = todo.class; }
+        });
+        this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
+        this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
+      } catch (e) {
+        window.localStorage.removeItem(todos); //se viene trovato un errore, rimuovi l'oggetto (o meglio, non salvare niente)
+      }
     },
     changeTodoAdded(array) {
       //mi serve solo per "evidenziare" il bordo con il boxshadow (per n secondi) quando si aggiunge un nuovo todo
@@ -374,7 +387,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.canDeleteMultipleTodo = false;
       this.saveTodos();
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
-      navigator.vibrate(1000);
+      if ('vibrate' in navigator) { navigator.vibrate(1000); }
       location.reload();
     },
     backupList() {

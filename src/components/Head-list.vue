@@ -65,7 +65,7 @@ export default {
 				return;
 			}
 			if (this.settings.isIphone && !this.settings.isAndroid) {
-				this.addTodo.secondList = true;
+				this.addTodo.devList = true;
 			}
 		},
 	},
@@ -84,7 +84,7 @@ export default {
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
 
-		<template v-if="!addTodo.secondList">
+		<template v-if="!addTodo.devList">
 			<h2
 				class="title text-center"
 				:class="{
@@ -115,7 +115,7 @@ export default {
 			</h2>
 		</template>
 
-		<template v-if="addTodo.secondList">
+		<template v-if="addTodo.devList">
 			<h2
 				class="title text-center"
 				:class="{
@@ -127,7 +127,7 @@ export default {
 					'title-spanish': languages.langSpanish,
 					'title1-spanish': languages.langSpanish,
 				}"
-				@click="addTodo.secondList = false"
+				@click="addTodo.devList = false"
 			>
 				Todo List
 			</h2>
@@ -146,7 +146,7 @@ export default {
 		</span>
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container" v-if="!addTodo.secondList">
+		<div class="input-btns-container" v-if="!addTodo.devList">
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
 				class="inputText border border-primary rounded"
@@ -164,7 +164,7 @@ export default {
 			</button>
 		</div>
 		<div
-			v-if="!addTodo.secondList"
+			v-if="!addTodo.devList"
 			class="tips-container"
 			:class="{
 				'waterfall-descent': addTodo.inModification,

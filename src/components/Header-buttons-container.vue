@@ -3,10 +3,12 @@ import CategoriesPanel from "./panels-and-modals/Categories-panel.vue";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import switchListButtons from "./switchListButtons.vue";
 </script>
 
 <script>
 export default {
+	components: { switchListButtons },
 	data() {
 		return {
 			theme: useThemeStore(),
@@ -37,7 +39,8 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container" v-if="!todosStore.secondList">
+	<switch-list-buttons />
+	<div class="pushbutton-container" v-if="!todosStore.devList">
 		<!-- DRAG N DROP -->
 		<button
 			class="btn custom-show-listbtn"
@@ -130,7 +133,7 @@ export default {
 		</button>
 	</div>
 
-	<template v-if="!todosStore.secondList">
+	<template v-if="!todosStore.devList">
 		<div class="alerts-container" v-if="todosStore.isDraggable || languages.copyList.visible || languages.importantTodos.visible || todosStore.addedImportant || todosStore.categoryAdded">
 			<!-- CONTENITORE DEGLI AVVISI -->
 			<div class="drag-n-drop-text">
