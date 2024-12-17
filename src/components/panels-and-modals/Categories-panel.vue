@@ -114,6 +114,9 @@ export default {
 
 .categories {
 	opacity: 1;
+	/*TOFIX: Da valutare se mettere una dimensione fissa o meno...vediamo quando la modale sarà, se sarà, lunga */
+	/* max-height: 450px;
+	overflow: auto; */
 	-webkit-animation: fadeIn 1s;
 	animation: fadeIn 1s;
 }

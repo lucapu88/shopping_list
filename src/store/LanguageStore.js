@@ -30,7 +30,7 @@ export const useLanguageStore = defineStore('Language', {
       { name: 'work tools', emojy: String.fromCodePoint(0x1f6E0), active: true },
       { name: 'clothes', emojy: String.fromCodePoint(0x1f457), active: true },
       { name: 'toys', emojy: String.fromCodePoint(0x1f579), active: true },
-      { name: 'furniture/decor', emojy: String.fromCodePoint(0x1fA91), active: true },
+      { name: 'furniture', emojy: String.fromCodePoint(0x1fA91), active: true },
       { name: 'household objects', emojy: String.fromCodePoint(0x1f37d), active: true },
       { name: 'gardening', emojy: String.fromCodePoint(0x1fab4), active: true },
       { name: 'online shopping', emojy: String.fromCodePoint(0x1f310), active: true },
@@ -275,8 +275,7 @@ export const useLanguageStore = defineStore('Language', {
       } else {
         this.categories = this.engCategories;
       }
-      // TOFIX: da aggiungere l'ordinamento ma poi sfasa tutti i suggerimenti perchè sono schiantati singolarmente in base al loro index...Sistemare i suggerimenti
-      // this.categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())); 
+      this.categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
     },
     async englishDefaultSetting() {
       window.localStorage.setItem('langEnglish', true);
