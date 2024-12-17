@@ -5,7 +5,6 @@ import { useChristmasStore } from '@/store/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 
-//TOFIX: Cambiare nome a sto store perchè fa schifo! trovarne uno più adatto
 export const useTodoStore = defineStore('todoStore', {
   state: () => ({
     languages: useLanguageStore(),
@@ -157,7 +156,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.confirmDeleteModal = false;
       // se ho impostato l'eliminazione automatica categorie vuote
       if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
-      navigator.vibrate(220);
+      //navigator.vibrate(220); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
@@ -372,9 +371,11 @@ export const useTodoStore = defineStore('todoStore', {
       this.categoryList = false;
       this.isDraggable = false;
       this.canDeleteMultipleTodo = false;
+      this.inModification = false;
+      this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.saveTodos();
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
-      navigator.vibrate(1000);
+      //navigator.vibrate(1000); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
       location.reload();
     },
     backupList() {
@@ -419,7 +420,7 @@ export const useTodoStore = defineStore('todoStore', {
     setOnlyDeletedTodos(index, arrayWithOneElement) {
       let todosToDelete = [];
       let storageKey = '';
-
+      console.log(index, arrayWithOneElement);
       switch (index) {
         case 'multipleDelete':
           //Salvo I todo selezionati da eliminare

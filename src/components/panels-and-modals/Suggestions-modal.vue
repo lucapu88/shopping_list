@@ -19,8 +19,10 @@ export default {
 		};
 	},
 	created() {
+		const christmasEmojy = this.languages.engCategories.find((cat) => cat.name === "christmas gifts").emojy;
+		const onlineEmojy = this.languages.engCategories.find((cat) => cat.name === "online shopping").emojy;
 		//se l'emoticon della categoria scelta è uguale ad una delle emoticon per le quali NON ci sono suggerimenti
-		this.noSuggestions = this.todosStore.categoryEmo === this.languages.engCategories[24].emojy || this.todosStore.categoryEmo === this.languages.engCategories[22].emojy;
+		this.noSuggestions = this.todosStore.categoryEmo == christmasEmojy || this.todosStore.categoryEmo == onlineEmojy;
 	},
 };
 </script>
@@ -42,7 +44,7 @@ export default {
 		>
 			<header>
 				<img v-if="isChristmas.christmasTheme" class="santa-claus" src="@/img/festivities/babbo-natale.webp" alt="OH-OH-OOOOH-Merry-Christmas" />
-				<div>
+				<div class="title-close-container">
 					<h4>
 						{{ todosStore.categoryName }}
 						<span v-if="!isChristmas.christmasTheme">
@@ -112,6 +114,9 @@ export default {
 	height: 65px;
 	width: 55px;
 	z-index: 10;
+}
+.title-close-container {
+	z-index: 11;
 }
 .header-info {
 	line-height: 1;

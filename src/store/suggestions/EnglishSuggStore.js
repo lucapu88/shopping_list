@@ -10,7 +10,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         fruit: ["Apples", "Bananas", "Oranges", "Grapes", "Strawberries", "Lemons", "Pears", "Kiwi", "Peaches", "Pineapples", "Mangoes", "Melons", "Tangerines", "Cherries", "Limes", "Avocado", "Raspberries", "Grapefruits", "Apricots", "Pomegranates"],
 
-        sweets: ["Sugar", "Icing sugar", "Baking powder", "Chocolate", "Vanilla", "Fresh fruit", "Whipped cream", "Gelatin", "Cocoa powder", "Cornstarch", "Corn syrup", "Yogurt", "Jam", "Glaze", "Tiramisu", "Millefeuille", "Cheesecake", "Jam", "Nutella", "Honey"],
+        sweets: ["Sugar", "Icing sugar", "Baking powder", "Chocolate", "Vanilla", "Fresh fruit", "Whipped cream", "Gelatin", "Cocoa powder", "Cornstarch", "Corn syrup", "Yogurt", "Jam", "Glaze", "Tiramisu", "Millefeuille", "Cheesecake", "Nutella", "Honey"],
 
         dairyProducts: ["Mozzarella", "Milk", "Butter", "Cheddar cheese", "Yogurt", "Cream", "Ricotta cheese", "Parmesan cheese", "Parmesan cheese", "Gorgonzola cheese", "Cream cheese", "Swiss cheese", "Goat cheese", "Brie cheese", "Taleggio cheese", "Pecorino cheese"],
 
@@ -40,7 +40,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         toys: ["Dolls", "Toy cars", "Puzzles", "Building blocks", "Play kitchen set", "Soccer balls", "Painting and coloring sets", "Board games", "Tricycles", "Pokemon cards", "Magic the gathering cards", "Garden toys", "Science kits", "Toy trains", "Board games", "Cards", "Bicycle", "Electric scooter", "Remote control car", "Game boy", "Play station", "Xbox"],
 
-        furnitureDecor: ["Sofa", "Table", "Coffee table", "Carpet", "Chair", "Floor lamp", "Table lamp", "Shelf", "Bedside table", "Bed", "Desk", "Wall shelves", "Mirror", "Coat rack", "TV stand", "Wardrobe", "Ottoman", "Vase", "Picture frame", "Umbrella stand", "Decorative cushions", "Wall clock", "Painting", "Doormat"],
+        furniture: ["Sofa", "Table", "Coffee table", "Carpet", "Chair", "Floor lamp", "Table lamp", "Shelf", "Bedside table", "Bed", "Desk", "Wall shelves", "Mirror", "Coat rack", "TV stand", "Wardrobe", "Ottoman", "Vase", "Picture frame", "Umbrella stand", "Decorative cushions", "Wall clock", "Painting", "Doormat"],
 
         householdObjects: ["Cutlery", "Forks", "Knives", "Spoons", "Plates", "Glasses", "Cups", "Pots", "Pans", "Baking trays", "Kitchen utensils", "Can opener", "Cutting board", "Food containers", "Broom", "Mirror", "Towel"],
 
