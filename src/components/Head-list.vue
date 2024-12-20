@@ -65,7 +65,7 @@ export default {
 				return;
 			}
 			if (this.settings.isIphone && !this.settings.isAndroid) {
-				this.addTodo.secondList = true;
+				this.addTodo.secondList = !this.addTodo.secondList;
 			}
 		},
 	},
@@ -84,7 +84,7 @@ export default {
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
 
-		<template v-if="!addTodo.secondList">
+		<div class="title-container">
 			<h2
 				class="title text-center"
 				:class="{
@@ -98,9 +98,15 @@ export default {
 				}"
 				@click="openDevPanel()"
 			>
-				{{ languages.shoppingListTitle }}
+				<template v-if="!addTodo.secondList">
+					{{ languages.shoppingListTitle }}
+				</template>
+				<template v-else> Todo List </template>
 			</h2>
-			<h2
+			<img class="slide-cart" src="@/img/carrello-spesa.webp" alt="carrello" />
+		</div>
+
+		<!-- <h2
 				v-if="!theme.elegantTheme"
 				class="title2 text-center"
 				:class="{
@@ -112,26 +118,7 @@ export default {
 				@click="openDevPanel()"
 			>
 				{{ languages.shoppingListTitle }}
-			</h2>
-		</template>
-
-		<template v-if="addTodo.secondList">
-			<h2
-				class="title text-center"
-				:class="{
-					'christmas-title': isChristmas.christmasTheme,
-					'dark-theme-title': theme.darkTheme,
-					'minimal-theme-title': theme.minimalTheme,
-					'retro-theme-title': theme.retroTheme,
-					'elegant-theme-title': theme.elegantTheme,
-					'title-spanish': languages.langSpanish,
-					'title1-spanish': languages.langSpanish,
-				}"
-				@click="addTodo.secondList = false"
-			>
-				Todo List
-			</h2>
-		</template>
+			</h2> -->
 
 		<span
 			class="helper"
@@ -250,25 +237,31 @@ export default {
 	}
 }
 
+.title-container {
+	display: flex;
+	justify-content: center;
+}
 .title {
+	padding: 0 5px;
 	background: -webkit-radial-gradient(circle, #ff0000 0%, #3d0000 80%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	position: relative;
 	left: -300px;
-	-webkit-animation: slide 2s forwards;
-	animation: slide 2s forwards;
+	animation-timing-function: ease-out;
+	-webkit-animation: slide 3s forwards;
+	animation: slide 3s forwards;
 	z-index: 1;
 }
 @-webkit-keyframes slide {
 	100% {
-		left: 0;
+		left: 3%;
 	}
 }
 @keyframes slide {
 	100% {
-		left: 0;
+		left: 3%;
 	}
 }
 .title2 {
@@ -292,6 +285,27 @@ export default {
 	}
 	100% {
 		opacity: 0;
+	}
+}
+
+.slide-cart {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	left: -270px;
+	-webkit-animation: slideCart 13s forwards;
+	animation: slideCart 13s forwards;
+	animation-timing-function: ease-out;
+	z-index: 1;
+}
+@-webkit-keyframes slideCart {
+	100% {
+		left: 1000px;
+	}
+}
+@keyframes slideCart {
+	100% {
+		left: 1000px;
 	}
 }
 
