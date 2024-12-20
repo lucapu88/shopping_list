@@ -13,7 +13,7 @@ import ChangeThemes from "./settings/Change-themes.vue";
 import SafeDeleteMode from "./settings/Safe-delete-mode.vue";
 import AutoDeleteEmptyCategories from "./settings/Auto-delete-empty-categories.vue";
 import BackupList from "./settings/Backup-list.vue";
-import ExportList from "./settings/Export-list.vue";
+import ImportList from "./settings/Import-list.vue";
 import ShowOnlyLatestDeleted from "./settings/Show-only-latest-deleted.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
@@ -34,6 +34,7 @@ export default {
 			updating: false,
 			backup: false,
 			languageChanged: null,
+			listImported: false,
 			copyrightText: "",
 		};
 	},
@@ -62,6 +63,9 @@ export default {
 		changeLanguageEmitted(value) {
 			this.languageChanged = value;
 		},
+		importListEmitted(value) {
+			this.listImported = value;
+		},
 		closeHelper() {
 			this.settings.closeHelper();
 		},
@@ -76,9 +80,9 @@ export default {
 
 <template>
 	<div>
-		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" />
+		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImported="listImported" />
 		<div
-			v-if="!themeLoading && !updating && !backup && !languageChanged"
+			v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
 			id="helper-description-container"
 			class="helper-description"
 			:class="{
@@ -128,7 +132,7 @@ export default {
 
 				<BackupList @backupLoadingEmit="backupLoadingEmitted" />
 
-				<ExportList />
+				<ImportList @importListEmitted="importListEmitted" />
 
 				<Share />
 

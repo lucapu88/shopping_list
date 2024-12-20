@@ -10,6 +10,7 @@ import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
 
 <script>
 export default {
+	emits: ["importListEmitted"],
 	data() {
 		return {
 			theme: useThemeStore(),
@@ -52,7 +53,11 @@ export default {
 				this.addNewTodo.newTodo = td;
 				this.addNewTodo.addTodo();
 			});
-			location.reload();
+			this.addNewTodo.duplicateFound = false; //Così non mostra la modale dei duplicati nel caso ci sono. Tanto dopo fa il reload
+			this.$emit("importListEmitted", true);
+			setTimeout(() => {
+				location.reload();
+			}, 1700);
 		},
 	},
 };

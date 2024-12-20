@@ -30,7 +30,7 @@ export default {
 			this.languages.copyList.visible = true;
 			this.todosStore.removeSelectedCategoryToAddItem();
 			setTimeout(() => (this.languages.copyList.visible = false), 3000); //cambio il testo del pulsante copia
-			navigator.vibrate(400);
+			// navigator.vibrate(400); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
 		},
 	},
 };
