@@ -60,13 +60,13 @@ export default {
 				</div>
 
 				<div class="confirm-backup-container">
-					<template v-if="showConfirmBackup && !noBackup">
+					<div class="confirm-backup p-1" v-if="showConfirmBackup && !noBackup">
 						<span>{{ languages.backupListText.confirm }}</span>
 						<button id="confirm-backup" style="background-color: lightgreen" @click="importBackup()">
 							{{ languages.langEnglish ? "YES" : "SI" }}
 						</button>
 						<button style="background-color: lightcoral" @click="showConfirmBackup = false">NO</button>
-					</template>
+					</div>
 
 					<p v-if="noBackup" class="no-backup">
 						{{ languages.backupListText.noBackupText }}
@@ -94,8 +94,15 @@ export default {
 
 .confirm-backup-container {
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
-.confirm-backup-container > button {
+.confirm-backup {
+	max-width: 250px;
+	border: 2px solid #ff0000;
+	border-radius: 5px;
+}
+.confirm-backup-container > div > button {
 	margin-left: 10px;
 }
 
