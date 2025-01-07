@@ -100,7 +100,7 @@ export default {
 		}"
 	>
 		<!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
-		<h2 class="x-modify" v-if="!!todo.isDisabled || todo.multipleDelete">X</h2>
+		<h1 class="x-modify" v-if="!!todo.isDisabled || todo.multipleDelete">X</h1>
 		<!-- PULSANTE MODIFICA-->
 		<button
 			class="btn btn-primary rounded-circle btn-sm"
@@ -116,7 +116,7 @@ export default {
 		</button>
 
 		<!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
-		<h2 class="x-delete" v-if="!!todo.isDisabled">X</h2>
+		<h1 class="x-delete" v-if="!!todo.isDisabled">X</h1>
 		<!--PULSANTE ELIMINA -->
 		<button
 			class="btn btn-primary rounded-circle btn-sm"
@@ -167,7 +167,7 @@ export default {
 .x-modify,
 .x-delete {
 	position: absolute;
-	top: 0;
+	top: 1px;
 	z-index: 105;
 	font-family: Monospace;
 	/* font-weight: bold; */
@@ -175,10 +175,10 @@ export default {
 }
 
 .x-modify {
-	left: 8px;
+	left: 10px;
 }
 .x-delete {
-	right: 8px;
+	right: 10px;
 }
 
 .todo {

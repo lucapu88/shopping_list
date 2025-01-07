@@ -85,7 +85,7 @@ export default {
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
 
 		<div class="title-container">
-			<h2
+			<h1
 				class="title text-center"
 				:class="{
 					'christmas-title': isChristmas.christmasTheme,
@@ -102,8 +102,9 @@ export default {
 					{{ languages.shoppingListTitle }}
 				</template>
 				<template v-else> Todo List </template>
-			</h2>
-			<img class="slide-cart" src="@/img/carrello-spesa.webp" alt="carrello" />
+			</h1>
+			<img class="cart slide-cart" src="@/img/carrello-spesa.webp" alt="carrello" />
+			<img class="cart slide-cart-infinity" src="@/img/carrello-spesa.webp" alt="carrello" />
 		</div>
 
 		<!-- <h2
@@ -288,15 +289,17 @@ export default {
 	}
 }
 
-.slide-cart {
+.cart {
 	width: 40px;
 	height: 40px;
 	position: relative;
 	left: -270px;
+	z-index: 1;
+}
+.slide-cart {
 	-webkit-animation: slideCart 13s forwards;
 	animation: slideCart 13s forwards;
 	animation-timing-function: ease-out;
-	z-index: 1;
 }
 @-webkit-keyframes slideCart {
 	100% {
@@ -306,6 +309,23 @@ export default {
 @keyframes slideCart {
 	100% {
 		left: 1000px;
+	}
+}
+.slide-cart-infinity {
+	left: -500px;
+	animation: slideCartInfinity 13s infinite;
+	animation-delay: 3s;
+	z-index: 0;
+}
+
+@-webkit-keyframes slideCartInfinity {
+	100% {
+		left: 800px;
+	}
+}
+@keyframes slideCartInfinity {
+	100% {
+		left: 800px;
 	}
 }
 

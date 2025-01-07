@@ -39,6 +39,11 @@ export default {
 </template>
 
 <style scoped>
+.col-12 {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
 .todo-list {
 	max-width: 100vw;
 }
