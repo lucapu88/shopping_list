@@ -24,6 +24,7 @@ export const useTodoStore = defineStore('todoStore', {
     categoryEmoji: '',
     addTodoInCategory: { condition: false, id: null },
     isDraggable: false,
+    selectedByHolding: true,
     inModification: false,
     categoryName: null,
     categoryEmo: null,
@@ -201,6 +202,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     toggleDragDrop() {
       this.isDraggable = !this.isDraggable;
+      this.selectedByHolding = !this.isDraggable;
       this.categoryList = false;
       this.resetModify();
       this.removeSelectedCategoryToAddItem();

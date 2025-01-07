@@ -35,6 +35,9 @@ export default {
 			if (addedIndex !== null) {
 				result.splice(addedIndex, 0, itemToAdd);
 			}
+			if (this.todosStore.selectedByHolding) {
+				this.todosStore.isDraggable = false;
+			}
 			this.todosStore.removeSelectedCategoryToAddItem();
 			this.todosStore.saveTodos(result);
 			return result;
