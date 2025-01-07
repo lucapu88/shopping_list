@@ -249,68 +249,71 @@ button {
 }
 
 .modify {
-	width: 90%;
-	animation: enlarge 0.8s ease-out;
+	transform: scaleX(1);
+	transform-origin: right;
+	animation: enlarge 1s ease-out forwards;
+}
+
+@keyframes enlarge {
+	0% {
+		transform: scaleX(0.1);
+	}
+	100% {
+		transform: scaleX(1.2);
+		transform-origin: center;
+	}
 }
 @-moz-keyframes enlarge {
 	0% {
-		width: 85px;
-		margin-left: auto;
+		transform: scaleX(0.1);
 	}
 	100% {
-		width: 90%;
-		margin-left: auto;
+		transform: scaleX(1.2);
+		transform-origin: center;
 	}
 }
 @-webkit-keyframes enlarge {
 	0% {
-		width: 85px;
-		margin-left: auto;
+		transform: scaleX(0.1);
 	}
 	100% {
-		width: 90%;
-		margin-left: auto;
+		transform: scaleX(1.2);
+		transform-origin: center;
 	}
 }
-@keyframes enlarge {
-	0% {
-		width: 85px;
-		margin-left: auto;
-	}
-	100% {
-		width: 90%;
-		margin-left: auto;
-	}
-}
+
 .modify-input {
-	width: 85%;
+	transform: scaleX(0);
+	transform-origin: right;
 	margin-left: 5px;
-	animation: enlargeInput 0.8s ease-out;
+	animation: enlargeInput 1s ease-out forwards;
 }
+
 @keyframes enlargeInput {
 	0% {
-		width: 0;
+		transform: scaleX(0);
 	}
 	100% {
-		width: 90%;
+		transform: scaleX(1);
 	}
 }
 @-moz-keyframes enlargeInput {
 	0% {
-		width: 0;
+		transform: scaleX(0);
 	}
 	100% {
-		width: 90%;
+		transform: scaleX(1);
 	}
 }
 @-webkit-keyframes enlargeInput {
 	0% {
-		width: 0;
+		transform: scaleX(0);
 	}
 	100% {
-		width: 90%;
+		transform: scaleX(1);
 	}
 }
+
 .undo {
 	width: 15px; /*+ 18 quanto fa?! COGLIONEEEEE!!!*/
 }

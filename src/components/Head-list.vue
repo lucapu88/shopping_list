@@ -297,18 +297,18 @@ export default {
 	z-index: 1;
 }
 .slide-cart {
-	-webkit-animation: slideCart 13s forwards;
-	animation: slideCart 13s forwards;
+	-webkit-animation: slideCart 11s forwards;
+	animation: slideCart 11s forwards;
 	animation-timing-function: ease-out;
 }
 @-webkit-keyframes slideCart {
 	100% {
-		left: 1000px;
+		transform: translateX(1000px);
 	}
 }
 @keyframes slideCart {
 	100% {
-		left: 1000px;
+		transform: translateX(1000px);
 	}
 }
 .slide-cart-infinity {
@@ -320,12 +320,12 @@ export default {
 
 @-webkit-keyframes slideCartInfinity {
 	100% {
-		left: 800px;
+		transform: translateX(800px);
 	}
 }
 @keyframes slideCartInfinity {
 	100% {
-		left: 800px;
+		transform: translateX(800px);
 	}
 }
 
