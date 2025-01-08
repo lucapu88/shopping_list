@@ -56,12 +56,26 @@ export default {
 				{{ languages.deselectAllText }}
 			</button>
 			{{ languages.helperDescription.multipleDeleteText.confirmDeselectAllText }}
-			<div style="width: 110px" class="confirm-deselect-all-container deselect-all p-2">
-				<button class="btn btn-success rounded-circle btn-sm confirm-undo-button">
+			<div
+				style="width: 110px"
+				class="confirm-deselect-all-container deselect-all p-2"
+				:class="{
+					'multiple-delete': multipleDelete,
+					light: theme.lightTheme,
+					dark: theme.darkTheme,
+					minimal: theme.minimalTheme,
+					retro: theme.retroTheme,
+					summer: theme.summerTheme,
+					winter: theme.winterTheme,
+					elegant: theme.elegantTheme,
+					pink: theme.pinkTheme,
+				}"
+			>
+				<button class="btn btn-success rounded btn-sm confirm-undo-button">
 					<img class="confirm-deselect-all" src="@/img/icons/ok.webp" alt="ok" />
 				</button>
 
-				<button class="btn btn-danger rounded-circle btn-sm confirm-undo-button">
+				<button class="btn btn-danger rounded btn-sm confirm-undo-button">
 					<img class="undo" src="@/img/icons/close.webp" alt="X" />
 				</button>
 			</div>
