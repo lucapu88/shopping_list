@@ -41,17 +41,17 @@ export default {
 			'elegant-theme-confirm': theme.elegantTheme,
 			'pink-theme-confirm': theme.pinkTheme,
 		}"
-		v-if="!todosStore.visible"
+		v-if="todosStore.openDeleteAllModal"
 	>
 		<p class="confirm-delete-all-text">
 			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 			{{ languages.deleteAllConfirmText }}
 		</p>
-		<button class="btn btn-primary" :class="{ 'pink-theme-btn': theme.pinkTheme }" v-on:click="todosStore.visible = true" @click="todosStore.removeAllTodo()">
+		<button class="btn btn-primary" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="todosStore.removeAllTodo()">
 			<span v-if="languages.langIta || languages.langSpanish">SI</span>
 			<span v-if="languages.langEnglish">YES</span>
 		</button>
-		<button class="btn btn-secondary" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" v-on:click="todosStore.visible = true">NO</button>
+		<button class="btn btn-secondary" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.openDeleteAllModal = false">NO</button>
 	</div>
 </template>
 

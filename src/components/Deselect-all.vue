@@ -55,7 +55,17 @@ export default {
 	<div
 		v-if="(multipleDelete && todosStore.canDeleteMultipleTodo && todosStore.confirmDeselectAll) || (importantTodo && todosStore.showOnlyImportantTodos && todosStore.confirmDeselectAll)"
 		class="confirm-deselect-all-container deselect-all p-2"
-		:class="{ 'multiple-delete': multipleDelete }"
+		:class="{
+			'multiple-delete': multipleDelete,
+			light: theme.lightTheme,
+			dark: theme.darkTheme,
+			minimal: theme.minimalTheme,
+			retro: theme.retroTheme,
+			summer: theme.summerTheme,
+			winter: theme.winterTheme,
+			elegant: theme.elegantTheme,
+			pink: theme.pinkTheme,
+		}"
 	>
 		<button class="btn btn-success rounded-circle btn-sm confirm-undo-button" @click="deselectAll()">
 			<img class="confirm-deselect-all" src="@/img/icons/ok.webp" alt="ok" />

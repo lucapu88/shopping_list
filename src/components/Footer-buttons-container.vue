@@ -27,7 +27,7 @@ export default {
 			this.$emit("scrollToTop", true);
 		},
 		openDeleteAllModal() {
-			this.todosStore.openDeleteAllModal;
+			this.todosStore.openDeleteAllModal = true;
 			this.$emit("scrollToBottom", true);
 		},
 	},
@@ -58,7 +58,7 @@ export default {
 		<!-- PULSANTE ELIMINA TUTTO-->
 		<button
 			v-if="!todosStore.showOnlyImportantTodos"
-			class="delete-all btn dark"
+			class="delete-all btn dark-button"
 			:class="{
 				christmas: isChristmas.christmasTheme,
 				'delete-all-retro': theme.retroTheme,
@@ -102,7 +102,7 @@ export default {
 	display: flex;
 	justify-content: space-around;
 }
-.dark {
+.dark-button {
 	background-color: #000000;
 	color: #ffff;
 	min-width: 180px;

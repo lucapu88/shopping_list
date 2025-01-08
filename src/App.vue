@@ -69,13 +69,13 @@ export default {
 	<div
 		class="app-container"
 		:class="{
-			light: theme.lightTheme,
-			dark: theme.darkTheme,
-			minimal: theme.minimalTheme,
-			retro: theme.retroTheme,
-			summer: theme.summerTheme,
-			winter: theme.winterTheme,
-			pink: theme.pinkTheme,
+			'light-container': theme.lightTheme,
+			'dark-container': theme.darkTheme,
+			'minimal-container': theme.minimalTheme,
+			'retro-container': theme.retroTheme,
+			'summer-container': theme.summerTheme,
+			'winter-container': theme.winterTheme,
+			'pink-container': theme.pinkTheme,
 		}"
 	>
 		<div id="app">
@@ -115,20 +115,20 @@ export default {
 		overflow-x: hidden;
 	}
 }
-.light {
+.light-container {
 	background-image: url("@/img/foglio_righe.webp");
 }
 
-.dark,
-.minimal,
-.retro {
+.dark-container,
+.minimal-container,
+.retro-container {
 	background-image: none;
 }
-.summer {
+.summer-container {
 	background-image: url("@/img/mare.webp");
 	background-repeat: repeat-x;
 }
-.winter {
+.winter-container {
 	background-image: url("@/img/montagne.webp");
 	background-repeat: repeat-x;
 }
@@ -142,14 +142,14 @@ export default {
 }
 
 @media (min-width: 500px) {
-	.summer {
+	.summer-container {
 		background-image: url("@/img/mare-tablet.webp");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
 }
 @media (min-width: 650px) {
-	.winter {
+	.winter-container {
 		background-image: url("@/img/montagne-tablet.webp");
 		background-repeat: no-repeat;
 		background-size: cover;

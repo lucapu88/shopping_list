@@ -45,10 +45,8 @@ export const useTodoStore = defineStore('todoStore', {
     insertDuplicate: false,
     secondList: false,
     confirmDeselectAll: false,
+    openDeleteAllModal: false,
   }),
-  getters: {
-    openDeleteAllModal: (state) => state.visible = !state.visible,
-  },
   actions: {
     addTodo(tip) {
       this.settings.checkingUpdates();
@@ -400,6 +398,7 @@ export const useTodoStore = defineStore('todoStore', {
         this.isDraggable = false;
         this.categoryList = false;
         this.canDeleteMultipleTodo = false;
+        this.openDeleteAllModal = false;
         this.todos = this.todos.filter((todo) => todo.isActive);
       } else {
         this.createTodosList();

@@ -127,33 +127,6 @@ export default {
 	font-weight: bold;
 }
 
-.light {
-	background-color: white !important;
-}
-.dark {
-	background-color: #333333 !important;
-}
-.minimal {
-	background-color: #a5becc !important;
-}
-.retro {
-	background-color: black !important;
-}
-
-.summer {
-	background-color: #12a1df !important;
-}
-.winter {
-	background-color: #1a3159 !important;
-}
-
-.elegant {
-	background-color: #045687 !important;
-}
-.pink {
-	background-color: #e8acd0 !important;
-}
-
 .flags-container,
 .backup-container {
 	margin-top: 30%;
