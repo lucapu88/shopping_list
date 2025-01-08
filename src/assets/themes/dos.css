@@ -1,194 +1,181 @@
 :root {
-  --dos-primary-color: #35c50d;
-  --dos-secondary-color: #000000;
-  --dos-selected-color: #ffffff;
-  --dos-helper-primary-color: #c0c0c0;
-  --dos-title-background-color: #042457;
-  --dos-title-background-second-color: #0f81ce;
-  --dos-button-color: #efefef;
+	--dos-primary-color: #35c50d;
+	--dos-secondary-color: #000000;
+	--dos-selected-color: #ffffff;
+	--dos-helper-primary-color: #c0c0c0;
+	--dos-title-background-color: #042457;
+	--dos-title-background-second-color: #0f81ce;
+	--dos-button-color: #efefef;
 }
 
 /* Che poi in principio l'avevo chiamato retro, poi ho cambiato in dos, ma mi gira il cazzo cambiare nome ovunque :P */
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 
 .retro-theme-title {
-  background: -webkit-radial-gradient(
-    circle,
-    var(--dos-primary-color) 0%,
-    var(--dos-primary-color) 95%
-  ) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  font-family: 'DotGothic16', sans-serif;
-  font-weight: bold !important;
+	background: -webkit-radial-gradient(circle, var(--dos-primary-color) 0%, var(--dos-primary-color) 95%) !important;
+	-webkit-background-clip: text !important;
+	background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+	font-family: "DotGothic16", sans-serif;
+	font-weight: bold !important;
 }
 .retro-theme-title2 {
-  display: none;
+	display: none;
 }
 .retro-theme {
-  background-image: none;
-  background-color: var(--dos-secondary-color) !important;
-  color: var(--dos-primary-color) !important;
-  border: 1px solid var(--dos-primary-color) !important;
-  min-width: 45px !important;
+	background-image: none;
+	background-color: var(--dos-secondary-color) !important;
+	color: var(--dos-primary-color) !important;
+	border: 1px solid var(--dos-primary-color) !important;
+	min-width: 45px !important;
 }
 .retro-teme-btns {
-  background-color: var(--dos-primary-color) !important;
-  color: var(--dos-secondary-color) !important;
-  font-weight: bold !important;
-  border: 1px solid var(--dos-primary-color) !important;
-  border-radius: 0 !important;
+	background-color: var(--dos-primary-color) !important;
+	color: var(--dos-secondary-color) !important;
+	font-weight: bold !important;
+	border: 1px solid var(--dos-primary-color) !important;
+	border-radius: 0 !important;
 }
 .retro-theme-helper {
-  background-color: var(--dos-helper-primary-color) !important;
-  background-image: none;
-  color: var(--dos-secondary-color) !important;
-  border: 3px var(--white) outset !important;
-  border-radius: 0 !important;
+	background-color: var(--dos-helper-primary-color) !important;
+	background-image: none;
+	color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) outset !important;
+	border-radius: 0 !important;
 }
 .retro-helper-settings-title {
-  color: var(--white) !important;
-  background: linear-gradient(
-    90deg,
-    var(--dos-title-background-color) 0%,
-    var(--dos-title-background-second-color) 90%
-  );
-  padding: 10px !important;
-  font-weight: bold !important;
-  margin-bottom: 5px !important;
+	color: var(--white) !important;
+	background: linear-gradient(90deg, var(--dos-title-background-color) 0%, var(--dos-title-background-second-color) 90%);
+	padding: 10px !important;
+	font-weight: bold !important;
+	margin-bottom: 5px !important;
 }
 .retro-theme-confirm {
-  background-color: var(--dos-helper-primary-color) !important;
-  background-image: none !important;
-  color: var(--dos-secondary-color) !important;
-  border: 3px var(--white) outset !important;
-  border-radius: 0 !important;
+	background-color: var(--dos-helper-primary-color) !important;
+	background-image: none !important;
+	color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) outset !important;
+	border-radius: 0 !important;
 }
 .close-retro-theme-helper {
-  background-color: var(--dos-helper-primary-color) !important;
-  background-image: none;
-  color: var(--dos-secondary-color) !important;
-  border: 3px var(--white) outset !important;
-  border-radius: 0 !important;
-  margin: 5px 5px;
+	background-color: var(--dos-helper-primary-color) !important;
+	background-image: none;
+	color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) outset !important;
+	border-radius: 0 !important;
+	margin: 5px 5px;
 }
 .retro-category-list {
-  border-radius: 0px !important;
-  border: 2px outset !important;
-  background-color: var(--dos-button-color) !important;
+	border-radius: 0px !important;
+	border: 2px outset !important;
+	background-color: var(--dos-button-color) !important;
 }
 .retro-multiple-delete {
-  color: #d70a0a;
+	color: #d70a0a;
 }
 .retro-theme-confirm-delete {
-  border: 1px dashed var(--white) !important;
-  background-color: var(--dos-title-background-color) !important;
-  color: var(--white) !important;
-  background-image: none !important;
-  border-radius: 0 !important;
+	border: 1px dashed var(--white) !important;
+	background-color: var(--dos-title-background-color) !important;
+	color: var(--white) !important;
+	background-image: none !important;
+	border-radius: 0 !important;
 }
 .retro-theme-confirm-delete > button {
-  border: 1px solid var(--white) !important;
-  color: var(--white) !important;
-  background-color: var(--dos-title-background-color) !important;
-  border-radius: 0 !important;
+	border: 1px solid var(--white) !important;
+	color: var(--white) !important;
+	background-color: var(--dos-title-background-color) !important;
+	border-radius: 0 !important;
 }
 .retro-theme-back-top {
-  background-color: var(--dos-primary-color) !important;
-  border-radius: 0 !important;
-  color: black !important;
+	background-color: var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+	color: black !important;
 }
 .retro-category {
-  color: var(--white) !important;
+	color: var(--white) !important;
 }
 .retro-btn {
-  background-color: transparent !important;
-  border-color: var(--dos-primary-color) !important;
-  color: var(--dos-primary-color) !important;
+	background-color: transparent !important;
+	border-color: var(--dos-primary-color) !important;
+	color: var(--dos-primary-color) !important;
 }
 .retro-btn > button {
-  background-color: var(--dos-secondary-color) !important;
-  border-color: var(--dos-primary-color) !important;
-  border-radius: 0 !important;
-  color: var(--dos-primary-color) !important;
+	background-color: var(--dos-secondary-color) !important;
+	border-color: var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+	color: var(--dos-primary-color) !important;
 }
 .retro-helper-btn {
-  border: 3px var(--white) outset !important;
-  border-radius: 0px !important;
-  background-color: var(--dos-button-color) !important;
-  color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) outset !important;
+	border-radius: 0px !important;
+	background-color: var(--dos-button-color) !important;
+	color: var(--dos-secondary-color) !important;
 }
 .retro-helper-btn-selected {
-  border: 3px var(--white) inset !important;
-  background-color: var(--dos-helper-primary-color) !important;
-  color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) inset !important;
+	background-color: var(--dos-helper-primary-color) !important;
+	color: var(--dos-secondary-color) !important;
 }
 .retro-btn-border {
-  border: 3px var(--white) outset !important;
-  border-radius: 0px !important;
-  color: var(--dos-secondary-color) !important;
+	border: 3px var(--white) outset !important;
+	border-radius: 0px !important;
+	color: var(--dos-secondary-color) !important;
 }
 .category-retro {
-  background-color: var(--dos-secondary-color) !important;
-  border: 1px solid var(--dos-primary-color) !important;
-  border-radius: 0 !important;
-  color: var(--dos-primary-color) !important;
+	background-color: var(--dos-secondary-color) !important;
+	border: 1px solid var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+	color: var(--dos-primary-color) !important;
 }
 .delete-all-retro {
-  border-radius: 0 !important;
-  border: 1px solid var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+	border: 1px solid var(--dos-primary-color) !important;
 }
 .retro-btn-button {
-  background-color: var(--dos-secondary-color) !important;
-  border: 2px solid var(--dos-primary-color) !important;
-  border-radius: 0 !important;
-  color: var(--dos-primary-color) !important;
+	background-color: var(--dos-secondary-color) !important;
+	border: 2px solid var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+	color: var(--dos-primary-color) !important;
 }
 .retro-tutorial-btn {
-  border-radius: 0 !important;
-  border-color: #ffffff;
+	border-radius: 0 !important;
+	border-color: #ffffff;
 }
 .retro-selected-btn {
-  background-color: var(--dos-selected-color) !important;
+	background-color: var(--dos-selected-color) !important;
 }
 .retro-border {
-  border: 3px var(--white) inset !important;
-  border-radius: 0 !important;
+	border: 3px var(--white) inset !important;
+	border-radius: 0 !important;
 }
 .tips-btn-retro {
-  background-color: var(--black);
-  border-left: 2px solid var(--white);
-  border-right: 2px solid var(--white);
-  border-bottom: 2px solid var(--white);
-  border-radius: 0;
-  color: var(--white);
+	background-color: var(--black);
+	border-left: 2px solid var(--white);
+	border-right: 2px solid var(--white);
+	border-bottom: 2px solid var(--white);
+	border-radius: 0;
+	color: var(--white);
 }
 .sugg-modal-retro {
-  background-color: var(--dos-secondary-color);
-  color: var(--dos-primary-color);
-  border: 2px solid var(--dos-primary-color);
-  border-radius: none;
+	background-color: var(--dos-secondary-color);
+	color: var(--dos-primary-color);
+	border: 2px solid var(--dos-primary-color);
+	border-radius: none;
 }
 .retro-checkbox {
-  background-color: var(--black);
-  border-radius: 0 !important;
-  border: 2px solid var(--dos-primary-color);
-}
-.deselect-all-important-retro {
-  background-color: var(--dos-primary-color);
-  color: var(--dos-secondary-color);
-  border-radius: 0;
+	background-color: var(--black);
+	border-radius: 0 !important;
+	border: 2px solid var(--dos-primary-color);
 }
 .duplicate-container-retro {
-  border-radius: 0;
-  background-color: var(--dos-secondary-color) !important;
-  border: 2px solid var(--dos-primary-color) !important;
-  box-shadow: none !important;
+	border-radius: 0;
+	background-color: var(--dos-secondary-color) !important;
+	border: 2px solid var(--dos-primary-color) !important;
+	box-shadow: none !important;
 }
 .duplicate-container-retro > .body > button {
-  border-radius: 0;
-  background-color: var(--dos-secondary-color) !important;
-  border: 2px solid var(--dos-primary-color) !important;
-  color: var(--white);
+	border-radius: 0;
+	background-color: var(--dos-secondary-color) !important;
+	border: 2px solid var(--dos-primary-color) !important;
+	color: var(--white);
 }

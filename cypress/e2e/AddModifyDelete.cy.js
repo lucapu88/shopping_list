@@ -62,6 +62,18 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
 
   it("verifico l'eliminazione di alcuni e di tutti gli elementi", () => {
     cy.addSomeItemsToList(phrases);
+    //controllo deseleziona tutti
+    cy.get('[index="0"] > .checkbox').click({ force: true });
+    cy.get('[index="1"] > .checkbox').click({ force: true });
+    cy.get('[index="4"] > .checkbox').click({ force: true });
+    cy.get('[index="0"] > .checkbox').should('have.class', 'checked');
+    cy.get('[index="1"] > .checkbox').should('have.class', 'checked');
+    cy.get('[index="4"] > .checkbox').should('have.class', 'checked');
+    cy.get('.deselect-all').first().click({ multiple: true });
+    cy.get('.confirm-deselect-all-container > .btn-success').click();
+    cy.get('[index="0"] > .checkbox').should('not.have.class', 'checked');
+    cy.get('[index="1"] > .checkbox').should('not.have.class', 'checked');
+    cy.get('[index="4"] > .checkbox').should('not.have.class', 'checked');
 
     // eliminazione solo selezionati
     cy.get('[index="0"] > .checkbox').click({ force: true });
@@ -69,7 +81,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('[index="4"] > .checkbox').click({ force: true });
     cy.get('[index="5"] > .checkbox').click({ force: true });
 
-    cy.get('.text-danger').click();
+    cy.get('.text-danger').first().click({ multiple: true });
     cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
     cy.get(`#todo:contains(${phrases.frase1})`).should('not.exist');
     cy.get(`#todo:contains(${phrases.frase2})`).should('not.exist');

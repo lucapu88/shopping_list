@@ -44,6 +44,7 @@ export const useTodoStore = defineStore('todoStore', {
     duplicateFound: false,
     insertDuplicate: false,
     secondList: false,
+    confirmDeselectAll: false,
   }),
   getters: {
     openDeleteAllModal: (state) => state.visible = !state.visible,
@@ -354,6 +355,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     toggleButtonDeleteSelectedTodo() {
       this.canDeleteMultipleTodo = this.todos.some((el) => el.multipleDelete);
+      this.confirmDeselectAll = !this.canDeleteMultipleTodo;
     },
     openModalForDeleteSelectedTodos() {
       this.confirmDeleteModal = true;
@@ -394,6 +396,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.showOnlyImportantTodos = !this.showOnlyImportantTodos;
 
       if (this.showOnlyImportantTodos) {
+        this.confirmDeselectAll = false;
         this.isDraggable = false;
         this.categoryList = false;
         this.canDeleteMultipleTodo = false;

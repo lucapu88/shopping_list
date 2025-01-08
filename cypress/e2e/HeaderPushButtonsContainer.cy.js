@@ -79,7 +79,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('[index="4"] > #todo').click();
         cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
         cy.get('.delete-all').should('not.exist');
-        cy.get('.deselect-all-imp-standard').should('exist');
+        cy.get('.border-danger').should('exist');
 
         cy.get(`.active:contains(${phrases.frase3})`).should('exist');
         cy.get(`.active:contains(${phrases.frase5})`).should('exist');
@@ -97,7 +97,8 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get(`.todo:contains(${phrases.frase6})`).should('exist');
 
         cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
-        cy.get('.deselect-all-imp-standard').click();
+        cy.get('.deselect-all').click();
+        cy.get('.confirm-deselect-all-container > .btn-success').click();
         cy.get(`.active:contains(${phrases.frase3})`).should('not.exist');
         cy.get(`.active:contains(${phrases.frase5})`).should('not.exist');
     });
