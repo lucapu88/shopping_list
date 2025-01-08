@@ -326,16 +326,19 @@ export const useLanguageStore = defineStore('Language', {
       if (this.langIta) {
         this.itaCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
+          this.todosStore.skipCheck = true;
           this.todosStore.addTodo();
         });
       } else if (this.langSpanish) {
         this.spanCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
+          this.todosStore.skipCheck = true;
           this.todosStore.addTodo();
         });
       } else {
         this.engCategories.filter(cat => cat.active).forEach((category) => {
           this.todosStore.newTodo = category.name;
+          this.todosStore.skipCheck = true;
           this.todosStore.addTodo();
         });
       }

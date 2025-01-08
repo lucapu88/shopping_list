@@ -42,7 +42,7 @@ export default {
 		v-if="(multipleDelete && todosStore.canDeleteMultipleTodo && !todosStore.confirmDeselectAll) || (importantTodo && todosStore.showOnlyImportantTodos && !todosStore.confirmDeselectAll)"
 		class="border-danger deselect-all p-2"
 		:class="{
-			'text-danger multiple-delete': multipleDelete,
+			'text-danger multiple-delete opacity-75': multipleDelete,
 			active: importantTodo && !theme.elegantTheme,
 			christmas: isChristmas.christmasTheme,
 			'elegant-btn': theme.elegantTheme,
@@ -67,11 +67,11 @@ export default {
 			pink: theme.pinkTheme,
 		}"
 	>
-		<button class="btn btn-success rounded-circle btn-sm confirm-undo-button" @click="deselectAll()">
+		<button class="btn btn-success rounded btn-sm confirm-undo-button" @click="deselectAll()">
 			<img class="confirm-deselect-all" src="@/img/icons/ok.webp" alt="ok" />
 		</button>
 
-		<button class="btn btn-danger rounded-circle btn-sm confirm-undo-button" @click="todosStore.confirmDeselectAll = false">
+		<button class="btn btn-danger rounded btn-sm confirm-undo-button" @click="todosStore.confirmDeselectAll = false">
 			<img class="undo" src="@/img/icons/close.webp" alt="X" />
 		</button>
 	</div>
@@ -90,5 +90,8 @@ export default {
 	min-width: 160px;
 	height: 45px;
 	z-index: 150;
+}
+.confirm-deselect-all-container > button {
+	width: 45px;
 }
 </style>

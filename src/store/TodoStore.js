@@ -46,6 +46,7 @@ export const useTodoStore = defineStore('todoStore', {
     secondList: false,
     confirmDeselectAll: false,
     openDeleteAllModal: false,
+    skipCheck: false,
   }),
   actions: {
     addTodo(tip) {
@@ -69,7 +70,11 @@ export const useTodoStore = defineStore('todoStore', {
         todoAdded: true,
       };
 
-      this.checkDuplicates(todoObject);
+      if (!this.skipCheck) {
+        //skipCheck è inserito quando si inseriscono tutte le categorie dall'apposito pulsante. Le deve inserire comunque. 
+        this.checkDuplicates(todoObject);
+      }
+
       if (this.duplicateFound && !this.insertDuplicate) { return; }
 
       !this.addTodoInCategory.condition
@@ -125,6 +130,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.categoryEmoji = '';
       this.categoryList = false;
       this.isDraggable = false;
+      this.skipCheck = false; //non fa parte del todo, per il momento lo metto qui, cambia poco dove va messo.
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);

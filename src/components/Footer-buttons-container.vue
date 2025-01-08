@@ -39,7 +39,7 @@ export default {
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
-			class="text-danger border-danger rounded multiple-delete p-2"
+			class="opacity-75 text-danger border-danger rounded multiple-delete p-2"
 			:class="{
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
