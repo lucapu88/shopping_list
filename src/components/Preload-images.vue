@@ -3,6 +3,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
 import { useChristmasStore } from "@/store/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import { useTodoStore } from "@/store/TodoStore";
 
 import foglioRighePreload from "@/img/foglio_righe.webp";
 import cancellaPreload from "@/img/cancella.webp";
@@ -43,6 +44,9 @@ import cloud from "@/img/icons/cloud.webp";
 import tutorial from "@/img/icons/video-logo.webp";
 import winterHelperBackgr from "@/img/inverno.webp";
 import reloadIcon from "@/img/icons/reload-icon.webp";
+
+import okIcon from "@/img/icons/ok.webp";
+import closeIcon from "@/img/icons/close.webp";
 </script>
 
 <script>
@@ -53,6 +57,7 @@ export default {
 			festivitiesOrOccurrences: useOthersFestivitiesStore(),
 			isChristmas: useChristmasStore(),
 			settings: useSettingsStore(),
+			todosStore: useTodoStore(),
 		};
 	},
 };
@@ -105,6 +110,7 @@ export default {
 
 	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenPumpkin" />
 	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenCobwebs" />
+
 	<!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
 	<link rel="preload" as="image" :href="reloadIcon" />
 	<link rel="preload" as="image" :href="shareLogo" />
@@ -112,4 +118,8 @@ export default {
 	<link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="tutorial" />
 	<link v-if="settings.helper && theme.winterTheme" rel="preload" as="image" :href="winterHelperBackgr" />
+
+	<!-- -----------------------------------------------------------altri preload---------------------------- -->
+	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="okIcon" />
+	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="closeIcon" />
 </template>
