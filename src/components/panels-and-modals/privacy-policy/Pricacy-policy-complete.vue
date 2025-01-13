@@ -6,6 +6,7 @@ export default {};
 
 <template>
 	<!-- GENERATO CON:  https://www.privacypolicygenerator.info/ -->
+
 	<div>
 		<h1>Privacy Policy</h1>
 		<p>Last updated: January 13, 2025</p>

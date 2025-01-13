@@ -8,6 +8,7 @@ import FooterButtonsContainer from "./components/Footer-buttons-container.vue";
 import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
+import Advertisements from "./components/panels-and-modals/Advertisement.vue";
 
 import { useChristmasStore } from "@/store/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
@@ -98,6 +99,7 @@ export default {
 					<footer>
 						<DeleteAllPanel />
 						<FooterButtonsContainer v-if="!todosStore.secondList" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						<Advertisements />
 					</footer>
 				</div>
 			</div>

@@ -48,7 +48,7 @@ export default {
 		</li>
 		<li>
 			{{ languages.helperDescription.twitterText }}
-			<a href="https://twitter.com/shoppList231023" target="_blank">
+			<a href="https://x.com/developer231023" target="_blank">
 				<img src="@/img/icons/x.webp" alt="social_twitter" class="social" />
 			</a>
 		</li>
