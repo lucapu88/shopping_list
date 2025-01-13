@@ -42,9 +42,6 @@ export default {
 						</p>
 						<strong>Google Fonts</strong>
 						<p>Personal Data: Trackers; Usage Data</p>
-
-						<strong>Adsterra</strong>
-						<p>Personal Data: Trackers; Usage Data</p>
 						<hr />
 						<p class="text-center">
 							<strong>Hosting and backend infrastructure</strong>
