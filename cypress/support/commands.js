@@ -126,3 +126,9 @@ const dragTo = (subject, to) => {
 };
 
 Cypress.Commands.addAll({ prevSubject: 'element' }, { dragTo, });
+
+//QUESTO É AGGIUNTO PERCHÉ I TEST SI ROMPONO PER VIA DELLO SCRIPT PER LE PUBBLICITA' AGGIUNTO NELL'HEADER NEL FILE INDEX.HTML
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // Ignora errori specifici o restituisci false per ignorare tutti
+  return false;
+});
