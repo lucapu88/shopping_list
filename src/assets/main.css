@@ -58,12 +58,6 @@
 	background-color: #e8acd0 !important;
 }
 
-.qc-cmp2-persistent-link {
-	font-size: 10px;
-}
-.qc-cmp2-persistent-link > img {
-	display: none;
-}
 /* ---------------------------------------- MODALE ------------------------------------ */
 .modal {
 	display: block;
