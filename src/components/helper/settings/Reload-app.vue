@@ -24,9 +24,9 @@ export default {
 <template>
 	<div v-if="loading" class="empty-full-screen-panel"></div>
 	<div class="reload-container helper-settings">
-		<span class="settings-icon mr-1"> &#x2699; </span>
+		<span class="settings-icon me-1"> &#x2699; </span>
 		<span> {{ languages.reloadAppText }} </span>
-		<button class="btn btn-light border-dark mr-3 reload-btn" :class="{ clicked: loading }" @click="reloadApp()">
+		<button class="btn btn-light border-dark me-3 reload-btn" :class="{ clicked: loading }" @click="reloadApp()">
 			<img :class="{ loading: loading }" src="@/img/icons/reload-icon.webp" alt="reload" />
 		</button>
 		<span v-if="loading" class="loading-text">LOADING</span>

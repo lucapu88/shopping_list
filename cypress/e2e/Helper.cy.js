@@ -149,7 +149,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.settings').click().then(() => {
             cy.get('#helper-description > :nth-child(6) > .list-title').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'OFF');
-            cy.get('#auto-delete > .mr-2').click();
+            cy.get('#auto-delete > u').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'ON');
             cy.get('.close-helper-container > .close-helper').click();
         });

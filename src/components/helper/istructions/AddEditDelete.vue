@@ -90,7 +90,7 @@ export default {
 		</li>
 		<li>
 			<button
-				class="btn btn-back-to-top p-1 mr-1"
+				class="btn btn-back-to-top p-1 me-1"
 				:class="{
 					'btn-outline-info': theme.lightTheme || theme.darkTheme,
 					'minimal-theme-back-top': theme.minimalTheme,

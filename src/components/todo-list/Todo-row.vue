@@ -55,7 +55,7 @@ export default {
 		<img v-if="todo.multipleDelete" class="checkbox-img" src="@/img/icons/checked.webp" alt="checked" />
 	</div>
 	<!-- NO CHECKBOX PER ELEGANT -->
-	<span v-if="theme.elegantTheme && !todo.category && !todo.modify" class="mr-3 ml-1 boldi-cipollino" @click="todosStore.selectTodoForDelete(index)">
+	<span v-if="theme.elegantTheme && !todo.category && !todo.modify" class="me-3 ms-1 boldi-cipollino" @click="todosStore.selectTodoForDelete(index)">
 		<template v-if="todo.multipleDelete"> / </template>
 		<template v-else> > </template>
 	</span>

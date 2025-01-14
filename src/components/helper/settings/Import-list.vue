@@ -68,7 +68,7 @@ export default {
 		<ListIstructionAccordion show-list-instructions-input="pasteList" :istructions-text="languages.pasteListText.title" :select-deselect-arrow="settings.pasteList && settings.section === pasteList" :isSettings="true" />
 		<template v-if="settings.pasteList && settings.section === pasteList">
 			<div class="export-list-container mb-3">
-				<li class="ml-3">
+				<li class="ms-3">
 					<small>{{ languages.pasteListText.subtitle }}. </small>
 					<small>{{ languages.infoCategoriesAlert }}</small>
 					<ToggleTutorialButton :features="exportList" />

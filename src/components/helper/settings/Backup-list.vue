@@ -49,7 +49,7 @@ export default {
 		<ListIstructionAccordion show-list-instructions-input="backupList" :istructions-text="languages.backupListText.title" :select-deselect-arrow="settings.backupList && settings.section === backupList" :isSettings="true" />
 		<template v-if="settings.backupList && settings.section === backupList">
 			<div class="last-backup-container mb-3">
-				<li class="ml-3">
+				<li class="ms-3">
 					<small>{{ languages.backupListText.description }}</small>
 					<ToggleTutorialButton :features="backupList" />
 				</li>

@@ -36,7 +36,7 @@ export default {
 		/>
 		<template v-if="settings.showOnlyLatestDeleted && settings.section === showOnlyLatestDeleted">
 			<div class="auto-delete-container mb-3">
-				<li class="ml-3">
+				<li class="ms-3">
 					<small>{{ languages.showOnlyLatestDeletedText.description }}.</small>
 					<ToggleTutorialButton :features="showOnlyLatestDeleted" />
 				</li>
