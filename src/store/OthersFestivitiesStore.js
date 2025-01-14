@@ -16,7 +16,8 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
         valentinesDay: false,
         worldEnvironmentDay: false,
         humanRightsDayText: false,
-        starWarsDay: false
+        starWarsDay: false,
+        newYear: false,
     }),
     getters: {},
     actions: {
@@ -35,6 +36,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             this.worldEnvironmentDay = false;
             this.humanRightsDayText = false;
             this.starWarsDay = false;
+            this.newYear = false;
         },
         checkFestivities() {
             this.resetFestivities();
@@ -48,6 +50,11 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             }
             if (currentDay === 1 && currentMonth === 1) {
                 this.worldPeaceDay = true;
+                //faccio apparire per qualche secondo la scritta buon anno al posto del titolo
+                this.newYear = true;
+                setTimeout(() => {
+                    this.newYear = false;
+                }, 3500);
             }
             if (currentDay === 17 && currentMonth === 1) {
                 this.worldPizzaDay = true;

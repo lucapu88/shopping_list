@@ -88,6 +88,7 @@ export default {
 			<h1
 				class="title text-center"
 				:class="{
+					'happy-new-year': festivities.newYear,
 					'christmas-title': isChristmas.christmasTheme,
 					'dark-theme-title': theme.darkTheme,
 					'minimal-theme-title': theme.minimalTheme,
@@ -99,27 +100,18 @@ export default {
 				@click="openDevPanel()"
 			>
 				<template v-if="!addTodo.secondList">
-					{{ languages.shoppingListTitle }}
+					<template v-if="festivities.newYear">
+						{{ languages.newYearText }}
+					</template>
+					<template v-else>
+						{{ languages.shoppingListTitle }}
+					</template>
 				</template>
 				<template v-else> Todo List </template>
 			</h1>
 			<img class="cart slide-cart" src="@/img/carrello-spesa.webp" alt="carrello" />
 			<img class="cart slide-cart-infinity" src="@/img/carrello-spesa.webp" alt="carrello" />
 		</div>
-
-		<!-- <h2
-				v-if="!theme.elegantTheme"
-				class="title2 text-center"
-				:class="{
-					'christmas-title2': isChristmas.christmasTheme,
-					'minimal-theme-title2': theme.minimalTheme,
-					'retro-theme-title2': theme.retroTheme,
-					'title-spanish': languages.langSpanish,
-				}"
-				@click="openDevPanel()"
-			>
-				{{ languages.shoppingListTitle }}
-			</h2> -->
 
 		<span
 			class="helper"
@@ -251,41 +243,35 @@ export default {
 	position: relative;
 	left: -300px;
 	animation-timing-function: ease-out;
-	-webkit-animation: slide 3s forwards;
-	animation: slide 3s forwards;
+	-webkit-animation: slide 3.3s forwards;
+	animation: slide 3.3s forwards;
 	z-index: 1;
 }
 @-webkit-keyframes slide {
 	100% {
-		left: 3%;
+		left: 6%;
 	}
 }
 @keyframes slide {
 	100% {
-		left: 3%;
+		left: 6%;
 	}
 }
-.title2 {
-	background: -webkit-radial-gradient(circle, #333232 0%, #909090 95%);
+
+.happy-new-year {
+	color: #fe0000;
+	background-image: -webkit-linear-gradient(92deg, #ff8400, #fe3aee);
 	-webkit-background-clip: text;
-	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	position: absolute;
-	top: 0;
-	right: 29%;
-	animation-name: fadeOutOpacity;
-	animation-iteration-count: 1;
-	animation-delay: 2.5s;
-	animation-timing-function: ease-out;
-	animation-duration: 1s;
-	animation-fill-mode: forwards;
+	-webkit-animation: hue 2s infinite linear;
 }
-@keyframes fadeOutOpacity {
-	0% {
-		opacity: 1;
+
+@-webkit-keyframes hue {
+	from {
+		-webkit-filter: hue-rotate(0deg);
 	}
-	100% {
-		opacity: 0;
+	to {
+		-webkit-filter: hue-rotate(-360deg);
 	}
 }
 

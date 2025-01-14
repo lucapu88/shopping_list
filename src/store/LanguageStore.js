@@ -254,7 +254,8 @@ export const useLanguageStore = defineStore('Language', {
     duplicateText: {
       title: 'Product already listed',
       body: 'Insert it anyway?'
-    }
+    },
+    newYearText: 'Happy New Year!'
   }),
   getters: {},
   actions: {
@@ -465,6 +466,7 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Ricarica l'app:";
       this.duplicateText.title = "Prodotto già presente in lista";
       this.duplicateText.body = "Inserirlo comunque?";
+      this.newYearText = "Buon Anno!";
     },
     setSpanishTranslations() {
       this.placeholder = 'Escriba aquí qué comprar';
@@ -588,6 +590,7 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Recargar aplicación:";
       this.duplicateText.title = "Producto ya listado";
       this.duplicateText.body = "¿Insertarlo de todos modos?";
+      this.newYearText = "¡Feliz Año Nuevo!";
     }
   },
 });
