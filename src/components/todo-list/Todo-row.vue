@@ -167,7 +167,7 @@ export default {
 .x-modify,
 .x-delete {
 	position: absolute;
-	top: 1px;
+	top: 2px;
 	z-index: 105;
 	font-family: Monospace;
 	/* font-weight: bold; */

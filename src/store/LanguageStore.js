@@ -129,7 +129,7 @@ export const useLanguageStore = defineStore('Language', {
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
     },
     importText: 'Import',
-    shareText: 'Share',
+    shareText: 'Share App',
     updateText: {
       description: 'If the button is green, click to update the app',
       available: 'Update',
@@ -371,7 +371,7 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.function = 'Clicca per attivare/disattivare';
       this.pasteListText.title = "Importa una lista da altre app";
       this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
-      this.shareText = 'Condividi';
+      this.shareText = 'Condividi App';
       this.importText = 'Importa';
       this.updateText.description = "Se il pulsante è verde, clicca per aggiornare";
       this.updateText.available = 'Aggiorna';
@@ -495,7 +495,7 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
       this.pasteListText.title = "Importar una lista desde otras aplicaciones";
       this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
-      this.shareText = 'Compartir';
+      this.shareText = 'Compartir App';
       this.importText = 'Importar';
       this.updateText.description = "Si el botón está verde, pulse para actualizar";
       this.updateText.available = 'Actualización';

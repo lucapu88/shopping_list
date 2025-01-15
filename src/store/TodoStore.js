@@ -330,21 +330,19 @@ export const useTodoStore = defineStore('todoStore', {
         this.todos[n].isActive = !this.todos[n].isActive;
         this.todos[n].isDisabled = !this.todos[n].isDisabled; //disabilito i pulsanti
 
-        this.showAddedImportantAlert();
+        this.showAddedImportantAlert(this.todos[n].isActive);
         this.toggleButtonDeleteSelectedTodo();
         this.removeSelectedCategoryToAddItem();
         this.saveTodos();
       }
     },
-    showAddedImportantAlert() {
+    showAddedImportantAlert(important) {
       //imposto un piccolo alert per indicare che è stato settato come importante il todo
-      if (this.todos.some(todo => todo.isActive)) {
+      if (important) {
         this.addedImportant = true;
         setTimeout(() => {
           this.addedImportant = false;
-        }, 3500);
-      } else {
-        this.addedImportant = false;
+        }, 2500);
       }
     },
     saveModifiedTodo(x, y) {
