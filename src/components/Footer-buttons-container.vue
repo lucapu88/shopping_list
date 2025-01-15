@@ -5,7 +5,6 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import DeselectAll from "./Deselect-all.vue";
-import Advertisements from "./panels-and-modals/Advertisements.vue";
 </script>
 
 <script>
@@ -96,7 +95,6 @@ export default {
 		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
 	</div>
-	<Advertisements />
 </template>
 
 <style scoped>
