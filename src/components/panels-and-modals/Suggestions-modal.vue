@@ -40,6 +40,7 @@ export default {
 				'sugg-modal-winter': themes.winterTheme,
 				'sugg-modal-elegant': themes.elegantTheme,
 				'sugg-modal-pink': themes.pinkTheme,
+				'sugg-modal-panter': themes.panterTheme,
 			}"
 		>
 			<header>

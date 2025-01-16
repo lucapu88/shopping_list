@@ -15,6 +15,9 @@ import checked from "@/img/icons/checked.webp";
 import DragDropElegant from "@/img/icons/drag-and-drop-elegant.webp";
 import copyElegant from "@/img/icons/copy-elegant.webp";
 import importantElegant from "@/img/icons/important-elegant.webp";
+import DragDropPanter from "@/img/icons/drag-and-drop-panter.webp";
+import copyPanter from "@/img/icons/copy-panter.webp";
+import importantPanter from "@/img/icons/important-panter.webp";
 
 import merryChristmas from "@/img/festivities/christmas.webp";
 import christmasSkull from "@/img/icons/christmas-skull.webp";
@@ -84,6 +87,10 @@ export default {
 	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="DragDropElegant" />
 	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="copyElegant" />
 	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="importantElegant" />
+
+	<link v-if="theme.panterTheme" rel="preload" as="image" :href="DragDropPanter" />
+	<link v-if="theme.panterTheme" rel="preload" as="image" :href="copyPanter" />
+	<link v-if="theme.panterTheme" rel="preload" as="image" :href="importantPanter" />
 	<!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
 	<template v-if="isChristmas.christmasTheme">
 		<link rel="preload" as="image" :href="merryChristmas" />

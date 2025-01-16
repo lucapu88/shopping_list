@@ -94,6 +94,7 @@ export default {
 			'retro-btn': theme.retroTheme,
 			'elegant-btn': theme.elegantTheme,
 			'pink-theme-btn': theme.pinkTheme && !todo.category,
+			'panter-btns-container': theme.panterTheme && !todo.category,
 			transparent: theme.elegantTheme && todo.category,
 			categoryActive: todo.category,
 			modify: todo.modify,
@@ -109,6 +110,7 @@ export default {
 			:class="{
 				disabled: todo.isDisabled,
 				'pink-theme-btn-secondary': theme.pinkTheme,
+				'panter-btn-dark': theme.panterTheme,
 			}"
 			:disabled="!!todo.isDisabled || todo.multipleDelete"
 		>
@@ -125,6 +127,7 @@ export default {
 			:class="{
 				disabled: todo.isDisabled,
 				'pink-theme-btn-secondary': theme.pinkTheme,
+				'panter-btn-dark': theme.panterTheme,
 			}"
 			:disabled="!!todo.isDisabled"
 		>

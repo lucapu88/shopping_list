@@ -52,6 +52,10 @@ export default {
 					this.theme.pinkTheme = true;
 					window.localStorage.setItem("pinkTheme", true);
 					break;
+				case "panter":
+					this.theme.panterTheme = true;
+					window.localStorage.setItem("panterTheme", true);
+					break;
 
 				default:
 					this.theme.lightTheme = true;
@@ -74,18 +78,21 @@ export default {
 			<span class="text-primary">{{ theme.themeName }}</span>
 			<br />
 			<div class="btns-container mb-3">
-				<div class="top">
+				<div class="one">
 					<button type="button" class="btn btn-light p-1 border border-dark" @click="changeTheme('light')">Light</button>
 					<button type="button" class="btn btn-dark p-1" @click="changeTheme('dark')">Dark</button>
 					<button type="button" class="btn minimal-theme p-1" @click="changeTheme('minimal')">Minimal</button>
 					<button type="button" class="btn retro-theme p-1" @click="changeTheme('retro')">Dos</button>
 				</div>
 
-				<div class="bottom">
+				<div class="two">
 					<button type="button" class="btn summer-theme p-1" @click="changeTheme('summer')">Summer</button>
 					<button type="button" class="btn winter-theme p-1" @click="changeTheme('winter')">Winter</button>
 					<button type="button" class="btn elegant-theme elegant-border p-1" @click="changeTheme('elegant')">Elegant</button>
 					<button type="button" class="btn pink-theme-btn p-1" @click="changeTheme('pink')">Mr.Pink</button>
+				</div>
+				<div class="three">
+					<button type="button" class="btn panter-theme-btn p-1" @click="changeTheme('panter')">Panter</button>
 				</div>
 			</div>
 		</template>
@@ -103,8 +110,9 @@ button {
 	width: 75px;
 }
 
-.top,
-.bottom {
+.one,
+.two,
+.three {
 	display: flex;
 	align-items: center;
 }

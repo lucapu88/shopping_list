@@ -151,6 +151,7 @@ export default {
 				'waterfall-ascent': !addTodo.inModification,
 			}"
 		>
+			<!-- PULSANTE MOSTRA SUGGERIMENTI -->
 			<button
 				class="tips-btn"
 				:class="{
@@ -162,6 +163,7 @@ export default {
 					'tips-btn-winter': theme.winterTheme,
 					'tips-btn-elegant': theme.elegantTheme,
 					'tips-btn-pink': theme.pinkTheme,
+					'tips-btn-panter': theme.panterTheme,
 				}"
 				@click="suggestionsStore.toggleSuggestionsModal()"
 			>

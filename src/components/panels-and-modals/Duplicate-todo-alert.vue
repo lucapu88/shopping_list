@@ -31,6 +31,7 @@ export default {
 				'duplicate-container-winter': themes.winterTheme,
 				'duplicate-container-elegant': themes.elegantTheme,
 				'duplicate-container-pink': themes.pinkTheme,
+				'duplicate-container-panter': themes.panterTheme,
 			}"
 		>
 			<p class="title">{{ languages.duplicateText.title }}</p>

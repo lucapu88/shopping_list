@@ -63,6 +63,7 @@ export default {
 				christmas: isChristmas.christmasTheme,
 				'delete-all-retro': theme.retroTheme,
 				'elegant-delete-all-btn': theme.elegantTheme,
+				'panter-border': theme.panterTheme,
 			}"
 			@click="openDeleteAllModal()"
 		>
@@ -83,6 +84,7 @@ export default {
 				'winter-theme-back-top': theme.winterTheme,
 				'elegant-theme-back-top': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
+				'panter-theme-back-top': theme.panterTheme,
 				'btn-outline-info': !theme.pinkTheme,
 				'is-dragginn': todosStore.isDraggable && todosStore.todos.length > 8,
 			}"

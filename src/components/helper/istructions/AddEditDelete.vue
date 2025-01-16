@@ -46,6 +46,8 @@ export default {
 					class="btn btn-primary rounded-circle btn-sm"
 					:class="{
 						'pink-theme-btn-secondary': theme.pinkTheme,
+						'panter-btn-dark': theme.panterTheme,
+						'panter-border': theme.panterTheme,
 					}"
 				>
 					<img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
@@ -81,6 +83,8 @@ export default {
 					class="btn btn-primary rounded-circle btn-sm"
 					:class="{
 						'pink-theme-btn-secondary': theme.pinkTheme,
+						'panter-btn-dark': theme.panterTheme,
+						'panter-border': theme.panterTheme,
 					}"
 				>
 					<img class="trash" src="@/img/icons/trash.webp" alt="delete" />
@@ -100,6 +104,7 @@ export default {
 					'winter-theme-back-top': theme.winterTheme,
 					'elegant-theme-back-top': theme.elegantTheme,
 					'pink-theme-btn': theme.pinkTheme,
+					'panter-theme-back-top': theme.panterTheme,
 				}"
 			>
 				<span> >> </span>

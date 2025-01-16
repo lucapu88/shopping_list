@@ -10,6 +10,7 @@ export const useThemeStore = defineStore('theme', {
         winterTheme: false,
         elegantTheme: false,
         pinkTheme: false,
+        panterTheme: false,
         themeName: 'Light',
     }),
     getters: {},
@@ -63,6 +64,12 @@ export const useThemeStore = defineStore('theme', {
                 this.changeThemeStyle('Pink', '#E8ACD0', '#930036', '"Protest Riot", sans-serif');
             }
 
+            const panterThemeSelected = window.localStorage.getItem('panterTheme');
+            this.panterTheme = panterThemeSelected === 'true';
+            if (this.panterTheme) {
+                this.changeThemeStyle('Panter', '#00001e', '#656565', '"Audiowide", serif');
+            }
+
             if (!lightThemeSelected
                 && !darkThemeSelected
                 && !minimalThemeSelected
@@ -70,7 +77,9 @@ export const useThemeStore = defineStore('theme', {
                 && !summerThemeSelected
                 && !winterThemeSelected
                 && !elegantThemeSelected
-                && !pinkThemeSelected) {
+                && !pinkThemeSelected
+                && !panterThemeSelected
+            ) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
                 this.lightThemeDefaultSetting();
             }
@@ -106,6 +115,8 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('elegantTheme', false);
             this.pinkTheme = false;
             window.localStorage.setItem('pinkTheme', false);
+            this.panterTheme = false;
+            window.localStorage.setItem('panterTheme', false);
         },
     },
 });

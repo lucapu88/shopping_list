@@ -69,6 +69,7 @@ export default {
 					winter: theme.winterTheme,
 					elegant: theme.elegantTheme,
 					pink: theme.pinkTheme,
+					panter: theme.panterTheme,
 				}"
 			>
 				<button class="btn btn-success rounded btn-sm confirm-undo-button">

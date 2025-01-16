@@ -40,6 +40,7 @@ export default {
 			'winter-confirm': theme.winterTheme,
 			'elegant-theme-confirm': theme.elegantTheme,
 			'pink-theme-confirm': theme.pinkTheme,
+			'confirm-panter': theme.panterTheme,
 		}"
 		v-if="todosStore.openDeleteAllModal"
 	>

@@ -35,6 +35,7 @@ export default {
 			'category-winter': todo.category && theme.winterTheme,
 			'category-elegant': todo.category && theme.elegantTheme,
 			'category-pink': todo.category && theme.pinkTheme,
+			'panter-category-btn': todo.category && theme.panterTheme,
 			'todo-added': todo.todoAdded,
 		}"
 	>

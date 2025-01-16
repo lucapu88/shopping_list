@@ -34,6 +34,7 @@ export default {
 			winter: theme.winterTheme,
 			elegant: theme.elegantTheme,
 			pink: theme.pinkTheme,
+			panter: theme.panterTheme,
 		}"
 	>
 		<img v-if="!listImported" src="@/img/Loading.webp" alt="loading" />

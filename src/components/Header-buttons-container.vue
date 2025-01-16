@@ -55,12 +55,15 @@ export default {
 				'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
 				'pink-theme-btn': theme.pinkTheme,
 				'pink-theme-selected-btn': theme.pinkTheme && todosStore.isDraggable,
+				'panter-other-btn': theme.panterTheme,
+				'panter-theme-selected-btn': theme.panterTheme && todosStore.isDraggable,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
 			@click="todosStore.toggleDragDrop()"
 		>
-			<img v-if="!theme.elegantTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
-			<img v-if="theme.elegantTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" src="@/img/icons/drag-and-drop-panter.webp" alt="move" />
 		</button>
 		<!--PULSANTE COPIA LISTA-->
 		<button
@@ -72,12 +75,14 @@ export default {
 				'winter-header-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
+				'panter-other-btn': theme.panterTheme,
 			}"
 			:disabled="!todosStore.todos.length"
 			@click="copy()"
 		>
-			<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
-			<img v-if="theme.elegantTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" class="copy" src="@/img/icons/copy-panter.webp" alt="copy" />
 		</button>
 		<!--PULSANTE MOSTRA CATEGORIE -->
 		<button
@@ -96,6 +101,8 @@ export default {
 				'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
 				'pink-theme-btn': theme.pinkTheme,
 				'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
+				'panter-category-btn': theme.panterTheme,
+				'panter-theme-selected-btn': theme.panterTheme && todosStore.categoryList,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos"
 			@click="todosStore.showCategoryList()"
@@ -122,11 +129,14 @@ export default {
 				'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
 				'pink-theme-btn': theme.pinkTheme,
 				'pink-theme-selected-btn': theme.pinkTheme && todosStore.showOnlyImportantTodos,
+				'panter-other-btn': theme.panterTheme,
+				'panter-theme-selected-btn': theme.panterTheme && todosStore.showOnlyImportantTodos,
 			}"
 			@click="todosStore.showOnlyImportant()"
 		>
-			<img v-if="!theme.elegantTheme" class="important" src="@/img/icons/important.webp" alt="important" />
-			<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important.webp" alt="important" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" class="important" src="@/img/icons/important-panter.webp" alt="important" />
 		</button>
 	</div>
 

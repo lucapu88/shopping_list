@@ -1,0 +1,81 @@
+:root {
+	--panter-primary-color: #01011d;
+	--panter-secondary-color: #3e3e3e;
+	--panter-tertiary-color: #656565;
+	--panter-dark-color: #000000;
+	--panter-light-color: #888888;
+}
+
+.panter-theme-btn,
+.panter-theme-back-top {
+	background-color: var(--panter-primary-color);
+	color: var(--panter-tertiary-color);
+	border: 2px solid var(--panter-tertiary-color);
+}
+
+.confirm-panter {
+	border: 2px solid var(--panter-secondary-color);
+	background-color: var(--panter-dark-color);
+}
+
+.confirm-panter > .confirm-buttons-container > button {
+	background-color: var(--panter-tertiary-color);
+}
+
+.panter-other-btn {
+	background-color: var(--panter-secondary-color) !important;
+	color: var(--panter-dark-color) !important;
+	border: 2px solid var(--panter-dark-color) !important;
+}
+
+.duplicate-container-panter {
+	background-color: var(--panter-primary-color) !important;
+	color: var(--panter-light-color) !important;
+	border: 2px solid var(--panter-tertiary-color) !important;
+}
+
+.panter-category-btn {
+	background-color: var(--panter-secondary-color) !important;
+	color: var(--panter-light-color) !important;
+	border: 2px solid var(--panter-dark-color) !important;
+}
+
+.panter-theme-selected-btn {
+	background-color: var(--panter-dark-color) !important;
+	color: var(--panter-light-color) !important;
+	border: 2px solid var(--panter-light-color) !important;
+}
+
+.panter-btns-container {
+	border-color: var(--panter-light-color) !important;
+	background-color: var(--panter-secondary-color) !important;
+}
+
+.panter-btn-dark {
+	background-color: var(--panter-dark-color) !important;
+	border-color: var(--panter-dark-color) !important;
+}
+
+.panter-helper {
+	background-color: var(--panter-dark-color) !important;
+}
+
+.panter-border {
+	border: 2px solid var(--panter-tertiary-color) !important;
+}
+
+.sugg-modal-panter {
+	background-color: var(--panter-dark-color);
+	color: var(--panter-light-color);
+	border: 1px solid var(--panter-light-color);
+	border-radius: 10px;
+}
+
+.tips-btn-panter {
+	background-color: var(--panter-dark-color);
+	border-left: 2px solid var(--panter-light-color);
+	border-right: 2px solid var(--panter-light-color);
+	border-bottom: 2px solid var(--panter-light-color);
+	border-radius: 0 0 5px 5px;
+	color: var(--panter-light-color);
+}

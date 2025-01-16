@@ -75,6 +75,7 @@ export default {
 					'winter-btn': theme.winterTheme,
 					'elegant-btn': theme.elegantTheme,
 					'category-pink-btn': theme.pinkTheme,
+					'panter-other-btn': theme.panterTheme,
 				}"
 				@click="languages.insertAllCategories()"
 			>
@@ -92,6 +93,7 @@ export default {
 					'winter-btn': theme.winterTheme,
 					'elegant-btn': theme.elegantTheme,
 					'category-pink-btn': theme.pinkTheme,
+					'panter-other-btn': theme.panterTheme,
 				}"
 				@click="todosStore.removeOnlyEmpty()"
 			>
