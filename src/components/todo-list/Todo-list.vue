@@ -36,6 +36,7 @@ export default {
 			'category-elegant': todo.category && theme.elegantTheme,
 			'category-pink': todo.category && theme.pinkTheme,
 			'panter-category-btn': todo.category && theme.panterTheme,
+			'lemon-other-btn': todo.category && theme.lemonTheme,
 			'todo-added': todo.todoAdded,
 		}"
 	>

@@ -43,6 +43,7 @@ export default {
 				'confirm-elegant': theme.elegantTheme,
 				'confirm-pink': theme.pinkTheme,
 				'confirm-panter': theme.panterTheme,
+				'confirm-lemon': theme.lemonTheme,
 			}"
 		>
 			<img v-if="isChristmas.christmasTheme" class="christmas-bells" src="@/img/festivities/christmas-bells.webp" alt="christmas_bells" />

@@ -26,6 +26,7 @@ export default {
 			'retro-theme-confirm': theme.retroTheme,
 			'light-theme-confirm': theme.lightTheme,
 			'category-pink-container': theme.pinkTheme,
+			'category-lemon-container': theme.lemonTheme,
 		}"
 	>
 		<div v-if="todosStore.categoryListChildren" class="categories">
@@ -76,6 +77,7 @@ export default {
 					'elegant-btn': theme.elegantTheme,
 					'category-pink-btn': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-theme-btn': theme.lemonTheme,
 				}"
 				@click="languages.insertAllCategories()"
 			>
@@ -94,6 +96,7 @@ export default {
 					'elegant-btn': theme.elegantTheme,
 					'category-pink-btn': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-theme-btn': theme.lemonTheme,
 				}"
 				@click="todosStore.removeOnlyEmpty()"
 			>

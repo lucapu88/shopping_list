@@ -140,12 +140,22 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', '"Protest Riot", sans-serif');
         });
         cy.get('.settings').click();
+        cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
 
         //panter
         cy.get('.three > .panter-theme-btn').click().then(() => {
-            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(1, 1, 29)');
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(0, 0, 30)');
             cy.get('body').should('have.css', 'color').and('include', 'rgb(101, 101, 101)');
-            cy.get('body').should('have.css', 'font-family').and('include', '"Audiowide", serif');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Audiowide, serif');
+        });
+        cy.get('.settings').click();
+        cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
+
+        //lemon
+        cy.get('.three > .lemon-theme-btn').click().then(() => {
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(253, 237, 4)');
+            cy.get('body').should('have.css', 'color').and('include', 'rgb(130, 86, 169)');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Creepster, serif');
         });
         cy.get('.settings').click();
 

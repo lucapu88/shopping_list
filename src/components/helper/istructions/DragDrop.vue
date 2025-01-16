@@ -37,6 +37,7 @@ export default {
 					'summer-header-btn': theme.summerTheme,
 					'winter-header-btn': theme.winterTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-other-btn': theme.lemonTheme,
 				}"
 			>
 				<img v-if="!theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />

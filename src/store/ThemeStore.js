@@ -11,11 +11,14 @@ export const useThemeStore = defineStore('theme', {
         elegantTheme: false,
         pinkTheme: false,
         panterTheme: false,
+        lemonTheme: false,
         themeName: 'Light',
     }),
     getters: {},
     actions: {
         setThemeOnLoad() {
+            // TOFIX: aggiungere le rispettive variabili del tema che ci sono nei loro css, invece del codice del colore.
+
             const lightThemeSelected = window.localStorage.getItem('lightTheme');
             this.lightTheme = lightThemeSelected === 'true';
             if (this.lightTheme) { this.changeThemeStyle('Light', '#ffffff', '#000000', "'Permanent Marker', cursive"); }
@@ -64,10 +67,18 @@ export const useThemeStore = defineStore('theme', {
                 this.changeThemeStyle('Pink', '#E8ACD0', '#930036', '"Protest Riot", sans-serif');
             }
 
+            /* Lo so, che sono un coglione e panter non si scrive così, lo soooooo!!! 
+             purtroppo ho sbagliato all'inizio e col cazzo che cambio ovunque il termine per una fottuta H bastarda!!! :P */
             const panterThemeSelected = window.localStorage.getItem('panterTheme');
             this.panterTheme = panterThemeSelected === 'true';
             if (this.panterTheme) {
                 this.changeThemeStyle('Panter', '#00001e', '#656565', '"Audiowide", serif');
+            }
+
+            const lemonThemeSelected = window.localStorage.getItem('lemonTheme');
+            this.lemonTheme = lemonThemeSelected === 'true';
+            if (this.lemonTheme) {
+                this.changeThemeStyle('Lemon', '#fded04', '#8256a9', '"Creepster", serif');
             }
 
             if (!lightThemeSelected
@@ -79,6 +90,7 @@ export const useThemeStore = defineStore('theme', {
                 && !elegantThemeSelected
                 && !pinkThemeSelected
                 && !panterThemeSelected
+                && !lemonThemeSelected
             ) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
                 this.lightThemeDefaultSetting();
@@ -117,6 +129,8 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('pinkTheme', false);
             this.panterTheme = false;
             window.localStorage.setItem('panterTheme', false);
+            this.lemonTheme = false;
+            window.localStorage.setItem('lemonTheme', false);
         },
     },
 });

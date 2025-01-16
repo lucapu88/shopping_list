@@ -93,9 +93,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     //eliminazione tutti
     cy.get('.delete-all').click();
     cy.get('.confirm > .btn-primary').click();
-    cy.get('#todo-list').within(() => {
-      cy.get('div.empty-logo-container').should('exist');
-    });
+    cy.get('div.empty-logo-container').should('exist');
   });
 
   it('verifico se inserendo un elemento duplicato, te lo segnala', () => {

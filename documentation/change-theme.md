@@ -9,3 +9,7 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 - Nel nuovo file includi tutte le variabili e le classi riguardanti il tema. Dopo di che devi aggiungerle nei vari componenti prendendo spunto dagli altri temi già esistenti.
 
 - In fine aggiorna il test nella sezione "cambio temi" nel file Helper.cy.js
+
+- Se aggiungi immagini assicurati che vengano caricate nel componente Preload-images.vue
+
+- Assicurati che cambi anche lo stile all'interno delle varie sezioni dell'helper

@@ -26,7 +26,8 @@ export default {
 	<ListIstructionAccordion show-list-instructions-input="addEditDelete" :istructions-text="languages.helperDescription.addEditDelete" :select-deselect-arrow="settings.addEditDelete && settings.section === addEditDelete" />
 	<ul class="helper-list" v-if="settings.addEditDelete && settings.section === addEditDelete">
 		<li>
-			<img class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
+			<img v-if="!theme.lemonTheme" class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
+			<img v-else class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/lemon-send.webp" alt="paper-plane" />
 			{{ languages.helperDescription.add }}
 		</li>
 		<li>

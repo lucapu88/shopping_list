@@ -35,6 +35,7 @@ export default {
 			elegant: theme.elegantTheme,
 			pink: theme.pinkTheme,
 			panter: theme.panterTheme,
+			lemon: theme.lemonTheme,
 		}"
 	>
 		<img v-if="!listImported" src="@/img/Loading.webp" alt="loading" />

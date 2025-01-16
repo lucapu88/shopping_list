@@ -41,6 +41,7 @@ export default {
 			'elegant-theme-confirm': theme.elegantTheme,
 			'pink-theme-confirm': theme.pinkTheme,
 			'confirm-panter': theme.panterTheme,
+			'lemon-confirm-delete-all': theme.lemonTheme,
 		}"
 		v-if="todosStore.openDeleteAllModal"
 	>

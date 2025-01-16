@@ -38,6 +38,7 @@ export default {
 					'category-winter': theme.winterTheme,
 					'category-pink': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-other-btn': theme.lemonTheme,
 				}"
 			>
 				<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
@@ -63,6 +64,7 @@ export default {
 					'category-winter': theme.winterTheme,
 					'category-pink': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-other-btn': theme.lemonTheme,
 				}"
 			>
 				<img v-if="!theme.elegantTheme" class="important" src="@/img/icons/important.webp" alt="important" />

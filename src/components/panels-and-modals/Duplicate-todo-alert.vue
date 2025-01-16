@@ -32,6 +32,7 @@ export default {
 				'duplicate-container-elegant': themes.elegantTheme,
 				'duplicate-container-pink': themes.pinkTheme,
 				'duplicate-container-panter': themes.panterTheme,
+				lemon: themes.lemonTheme,
 			}"
 		>
 			<p class="title">{{ languages.duplicateText.title }}</p>

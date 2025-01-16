@@ -5,12 +5,17 @@
 	--panter-dark-color: #000000;
 	--panter-light-color: #888888;
 }
-
+/* 	Lo so, che sono un coglione e panter non si scrive così, lo soooooo!!! 
+	purtroppo ho sbagliato all'inizio e col cazzo che cambio ovunque il termine per una sola h!!! :P */
 .panter-theme-btn,
 .panter-theme-back-top {
 	background-color: var(--panter-primary-color);
 	color: var(--panter-tertiary-color);
 	border: 2px solid var(--panter-tertiary-color);
+}
+
+.panter-theme-btn {
+	min-width: 85px;
 }
 
 .confirm-panter {

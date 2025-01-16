@@ -7,7 +7,8 @@
 @import "./themes/winter.css";
 @import "./themes/elegant.css";
 @import "./themes/pink.css";
-@import "./themes/panter.css";
+@import "./themes/panther.css";
+@import "./themes/lemon.css";
 
 :root {
 	--black: #000000;
@@ -60,6 +61,9 @@
 }
 .panter {
 	background-color: #01011d !important;
+}
+.lemon {
+	background-color: #fded04 !important;
 }
 
 /* ---------------------------------------- MODALE ------------------------------------ */

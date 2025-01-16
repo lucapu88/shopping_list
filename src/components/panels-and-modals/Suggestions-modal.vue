@@ -41,6 +41,7 @@ export default {
 				'sugg-modal-elegant': themes.elegantTheme,
 				'sugg-modal-pink': themes.pinkTheme,
 				'sugg-modal-panter': themes.panterTheme,
+				'sugg-modal-lemon': themes.lemonTheme,
 			}"
 		>
 			<header>

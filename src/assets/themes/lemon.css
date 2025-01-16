@@ -1,0 +1,63 @@
+:root {
+	--lemon-primary-color: #fded04;
+	--lemon-secondary-color: #f2e4af;
+	--lemon-tertiary-color: #7db149;
+	--lemon-text-color: #8256a9;
+	--lemon-dark-color: #fddc04;
+}
+
+.lemon-theme-btn {
+	background-color: var(--lemon-primary-color);
+	color: var(--lemon-text-color);
+	border: 2px solid var(--lemon-tertiary-color);
+}
+
+.category-lemon-container,
+.confirm-lemon {
+	background-color: var(--lemon-secondary-color);
+	color: var(--lemon-tertiary-color);
+	border: 2px solid var(--lemon-secondary-color);
+}
+
+.confirm-lemon > .confirm-buttons-container > button {
+	padding: 3px 13px;
+	background-color: var(--lemon-dark-color);
+	border-color: var(--lemon-tertiary-color);
+	color: var(--lemon-text-color);
+}
+
+.lemon-other-btn {
+	background-color: var(--lemon-secondary-color) !important;
+	border: 2px solid var(--lemon-tertiary-color) !important;
+	color: var(--lemon-tertiary-color) !important;
+}
+
+.lemon-theme-selected-btn {
+	background-color: var(--lemon-dark-color) !important;
+	border-color: var(--lemon-text-color) !important;
+}
+
+.tips-btn-lemon {
+	background-color: var(--lemon-secondary-color);
+	border-left: 2px solid var(--lemon-text-color);
+	border-right: 2px solid var(--lemon-text-color);
+	border-bottom: 2px solid var(--lemon-text-color);
+	border-radius: 0 0 5px 5px;
+	color: var(--lemon-text-color);
+}
+
+.lemon-confirm-delete-all {
+	background-image: none;
+	background: linear-gradient(90deg, rgba(253, 237, 4, 1) 0%, rgba(125, 177, 73, 1) 50%, rgba(253, 220, 4, 1) 100%) !important;
+	border: 3px solid var(--lemon-text-color);
+}
+
+.sugg-modal-lemon {
+	background-color: var(--lemon-secondary-color);
+	border-radius: 10px;
+}
+
+.lemon-helper {
+	background-color: var(--lemon-secondary-color) !important;
+	color: var(--lemon-tertiary-color) !important;
+}

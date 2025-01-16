@@ -41,6 +41,7 @@ export default {
 					'summer-header-btn': theme.summerTheme,
 					'winter-header-btn': theme.winterTheme,
 					'panter-category-btn': theme.panterTheme,
+					'lemon-other-btn': theme.lemonTheme,
 				}"
 			>
 				+
@@ -77,6 +78,7 @@ export default {
 					'winter-btn': theme.winterTheme,
 					'elegant-helper-btn': theme.elegantTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-theme-btn': theme.lemonTheme,
 				}"
 			>
 				<span>{{ languages.insertAll }}</span></button
@@ -94,6 +96,7 @@ export default {
 					'winter-btn': theme.winterTheme,
 					'elegant-helper-btn': theme.elegantTheme,
 					'panter-other-btn': theme.panterTheme,
+					'lemon-theme-btn': theme.lemonTheme,
 				}"
 			>
 				<span>{{ languages.removeEmpty }}</span></button

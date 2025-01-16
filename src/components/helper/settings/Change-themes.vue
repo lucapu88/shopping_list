@@ -56,6 +56,10 @@ export default {
 					this.theme.panterTheme = true;
 					window.localStorage.setItem("panterTheme", true);
 					break;
+				case "lemon":
+					this.theme.lemonTheme = true;
+					window.localStorage.setItem("lemonTheme", true);
+					break;
 
 				default:
 					this.theme.lightTheme = true;
@@ -92,7 +96,10 @@ export default {
 					<button type="button" class="btn pink-theme-btn p-1" @click="changeTheme('pink')">Mr.Pink</button>
 				</div>
 				<div class="three">
-					<button type="button" class="btn panter-theme-btn p-1" @click="changeTheme('panter')">Panter</button>
+					<button type="button" class="btn panter-theme-btn p-1" @click="changeTheme('panter')">Panther</button>
+					<span class="new">NEW</span>
+					<button type="button" class="btn lemon-theme-btn p-1" @click="changeTheme('lemon')">Lemon</button>
+					<span class="new">NEW</span>
 				</div>
 			</div>
 		</template>

@@ -66,6 +66,7 @@ export default {
 			elegant: theme.elegantTheme,
 			pink: theme.pinkTheme,
 			panter: theme.panterTheme,
+			lemon: theme.lemonTheme,
 		}"
 	>
 		<button class="btn btn-success rounded btn-sm confirm-undo-button" @click="deselectAll()">
