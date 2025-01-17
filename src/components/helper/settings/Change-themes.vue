@@ -115,6 +115,8 @@ export default {
 button {
 	margin: 4px 8px;
 	width: 75px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
 }
 
 .one,
