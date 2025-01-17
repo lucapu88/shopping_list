@@ -80,6 +80,16 @@ export default {
 
 <template>
 	<div>
+		<!-- effettuo un preload dell'immagine da visualizzare in base a cosa deve caricare -->
+		<link v-if="themeLoading" rel="preload" as="image" href="@/img/Loading.webp" />
+		<link v-if="themeLoading" rel="preload" as="image" href="@/img/favicon.webp" />
+		<link v-if="updating" rel="preload" as="image" href="@/img/update-img.webp" />
+		<link v-if="backup" rel="preload" as="image" href="@/img/icons/cloud.webp" />
+		<link v-if="listImported" rel="preload" as="image" href="@/img/LOAD.webp" />
+		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/inglese.webp" />
+		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/spagnolo.webp" />
+		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/italiano.webp" />
+
 		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImported="listImported" />
 		<div
 			v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
