@@ -116,7 +116,7 @@ export default {
 	position: absolute;
 	top: 5px;
 	left: 5px;
-	z-index: 200;
+	z-index: 205;
 }
 
 .cancer-day {

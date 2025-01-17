@@ -72,7 +72,7 @@ export const useThemeStore = defineStore('theme', {
             const panterThemeSelected = window.localStorage.getItem('panterTheme');
             this.panterTheme = panterThemeSelected === 'true';
             if (this.panterTheme) {
-                this.changeThemeStyle('Panter', '#00001e', '#656565', '"Audiowide", serif');
+                this.changeThemeStyle('Panter', '#000018', '#656565', '"Audiowide", serif');
             }
 
             const lemonThemeSelected = window.localStorage.getItem('lemonTheme');
