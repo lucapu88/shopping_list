@@ -7,7 +7,6 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
-import FestivitiesAndOccurrences from "./Festivities-and-occurrences.vue";
 </script>
 
 <script>
@@ -77,8 +76,6 @@ export default {
 	{{ addTodo.focusIn ? focusOnInput() : null }}
 	<img v-if="isChristmas.christmasTheme" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
 	<div class="header-container" :class="{ christmas: isChristmas.christmasTheme }">
-		<FestivitiesAndOccurrences />
-
 		<img v-if="festivities.halloweenTheme" class="halloween-witch-hat" src="@/img/festivities/cappello-strega.webp" alt="halloween" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-1" src="@/img/festivities/pipistrello-1.webp" alt="halloween_bat" />
 		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />

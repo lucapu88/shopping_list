@@ -1,4 +1,5 @@
 <script setup>
+import FestivitiesAndOccurrences from "./components/Festivities-and-occurrences.vue";
 import HeadList from "./components/Head-list.vue";
 import ConfirmModal from "./components/panels-and-modals/Confirm-modal.vue";
 import Helper from "./components/helper/Helper.vue";
@@ -83,6 +84,7 @@ export default {
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<header style="overflow: hidden">
+						<FestivitiesAndOccurrences />
 						<HeadList />
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
