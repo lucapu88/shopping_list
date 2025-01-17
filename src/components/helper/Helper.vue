@@ -258,6 +258,8 @@ export default {
 	padding: 10px;
 }
 .close-helper {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	float: right;
 	width: 25px;
 	padding-left: 5px;
