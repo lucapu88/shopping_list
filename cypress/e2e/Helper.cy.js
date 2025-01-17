@@ -144,7 +144,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         //panter
         cy.get('.three > .panter-theme-btn').click().then(() => {
-            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(0, 0, 30)');
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(0, 0, 24)');
             cy.get('body').should('have.css', 'color').and('include', 'rgb(101, 101, 101)');
             cy.get('body').should('have.css', 'font-family').and('include', 'Audiowide, serif');
         });
