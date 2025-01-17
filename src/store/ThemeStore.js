@@ -17,68 +17,89 @@ export const useThemeStore = defineStore('theme', {
     getters: {},
     actions: {
         setThemeOnLoad() {
-            // TOFIX: aggiungere le rispettive variabili del tema che ci sono nei loro css, invece del codice del colore.
+            const root = document.documentElement;
+            const style = getComputedStyle(root);
 
             const lightThemeSelected = window.localStorage.getItem('lightTheme');
+            const lightBkgrColor = style.getPropertyValue("--light-background-color").trim();
+            const lightFontFamily = "'Permanent Marker', cursive";
             this.lightTheme = lightThemeSelected === 'true';
-            if (this.lightTheme) { this.changeThemeStyle('Light', '#ffffff', '#000000', "'Permanent Marker', cursive"); }
+            if (this.lightTheme) { this.changeThemeStyle('Light', lightBkgrColor, '#000000', lightFontFamily); }
 
             const darkThemeSelected = window.localStorage.getItem('darkTheme');
+            const darkBkgrColor = style.getPropertyValue("--dark-background-color").trim();
             this.darkTheme = darkThemeSelected === 'true';
             if (this.darkTheme) {
-                this.changeThemeStyle('Dark', '#333333', '#FFFFFF', "'Permanent Marker', cursive");
+                this.changeThemeStyle('Dark', darkBkgrColor, '#FFFFFF', lightFontFamily);
                 document.body.style.height = '100vh';
                 document.body.style.border = '10px solid #d17e47';
             }
 
             const minimalThemeSelected = window.localStorage.getItem('minimalTheme');
+            const minimalBkgrColor = style.getPropertyValue("--minimal-primary-color").trim();
+            const minimalTextColor = style.getPropertyValue("--minimal-secondary-color").trim();
             this.minimalTheme = minimalThemeSelected === 'true';
             if (this.minimalTheme) {
-                this.changeThemeStyle('Minimal', '#A5BECC', '#7C3E66', '"Cabin", sans-serif');
+                this.changeThemeStyle('Minimal', minimalBkgrColor, minimalTextColor, '"Cabin", sans-serif');
             }
 
+            //Questo tema inizialmente si chiamava Retro, poi l'ho rinominato in dos, perchè mi ricordava quando da piccolo usavo l'MSDOS
             const retroThemeSelected = window.localStorage.getItem('retroTheme');
+            const retroBkgrColor = style.getPropertyValue("--dos-secondary-color").trim();
+            const retroTextColor = style.getPropertyValue("--dos-text-color").trim();
             this.retroTheme = retroThemeSelected === 'true';
             if (this.retroTheme) {
-                this.changeThemeStyle('Dos', '#090A0C', '#FFFFFF', '"DotGothic16", sans-serif');
+                this.changeThemeStyle('Dos', retroBkgrColor, retroTextColor, '"DotGothic16", sans-serif');
             }
 
             const summerThemeSelected = window.localStorage.getItem('summerTheme');
+            const summerBkgrColor = style.getPropertyValue("--summer-primary-color").trim();
+            const summerTextColor = style.getPropertyValue("--summer-text-color").trim();
             this.summerTheme = summerThemeSelected === 'true';
             if (this.summerTheme) {
-                this.changeThemeStyle('Summer', '#EFCB8F', '#000000', "'Permanent Marker', cursive");
+                this.changeThemeStyle('Summer', summerBkgrColor, summerTextColor, lightFontFamily);
             }
 
             const winterThemeSelected = window.localStorage.getItem('winterTheme');
+            const winterBkgrColor = style.getPropertyValue("--winter-background-color").trim();
+            const winterTextColor = style.getPropertyValue("--winter-text-color").trim();
             this.winterTheme = winterThemeSelected === 'true';
             if (this.winterTheme) {
-                this.changeThemeStyle('Winter', '#232F34', '#FFFFFF', "'Permanent Marker', cursive");
+                this.changeThemeStyle('Winter', winterBkgrColor, winterTextColor, lightFontFamily);
             }
 
             const elegantThemeSelected = window.localStorage.getItem('elegantTheme');
+            const elegantBkgrColor = style.getPropertyValue("--elegant-primary-color-dark").trim();
+            const elegantTextColor = style.getPropertyValue("--elegant-text-color").trim();
             this.elegantTheme = elegantThemeSelected === 'true';
             if (this.elegantTheme) {
-                this.changeThemeStyle('Elegant', 'rgb(7,60,92)', '#D98410', "Courier New");
+                this.changeThemeStyle('Elegant', elegantBkgrColor, elegantTextColor, "Courier New");
             }
 
             const pinkThemeSelected = window.localStorage.getItem('pinkTheme');
+            const pinkBkgrColor = style.getPropertyValue("--pink-background-color").trim();
+            const pinkTextColor = style.getPropertyValue("--pink-text-color").trim();
             this.pinkTheme = pinkThemeSelected === 'true';
             if (this.pinkTheme) {
-                this.changeThemeStyle('Pink', '#E8ACD0', '#930036', '"Protest Riot", sans-serif');
+                this.changeThemeStyle('Pink', pinkBkgrColor, pinkTextColor, '"Protest Riot", sans-serif');
             }
 
             /* Lo so, che sono un coglione e panter non si scrive così, lo soooooo!!! 
              purtroppo ho sbagliato all'inizio e col cazzo che cambio ovunque il termine per una fottuta H bastarda!!! :P */
             const panterThemeSelected = window.localStorage.getItem('panterTheme');
+            const pantherBkgrColor = style.getPropertyValue("--panter-primary-color").trim();
+            const pantherTextColor = style.getPropertyValue("--panter-tertiary-color").trim();
             this.panterTheme = panterThemeSelected === 'true';
             if (this.panterTheme) {
-                this.changeThemeStyle('Panter', '#000018', '#656565', '"Audiowide", serif');
+                this.changeThemeStyle('Panter', pantherBkgrColor, pantherTextColor, '"Audiowide", serif');
             }
 
             const lemonThemeSelected = window.localStorage.getItem('lemonTheme');
+            const lemonBkgrColor = style.getPropertyValue("--lemon-primary-color").trim();
+            const lemonTextColor = style.getPropertyValue("--lemon-text-color").trim();
             this.lemonTheme = lemonThemeSelected === 'true';
             if (this.lemonTheme) {
-                this.changeThemeStyle('Lemon', '#fded04', '#8256a9', '"Creepster", serif');
+                this.changeThemeStyle('Lemon', lemonBkgrColor, lemonTextColor, '"Creepster", serif');
             }
 
             if (!lightThemeSelected

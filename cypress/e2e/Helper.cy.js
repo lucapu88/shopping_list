@@ -92,7 +92,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         // retro/dos
         cy.get('.one > .retro-theme').click().then(() => {
-            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(9, 10, 12)');
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(0, 0, 0)');
             cy.get('body').should('have.css', 'color').and('include', 'rgb(255, 255, 255)');
             cy.get('body').should('have.css', 'font-family').and('include', 'DotGothic16, sans-serif');
         });

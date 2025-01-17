@@ -1,77 +1,79 @@
 :root {
-  --winter-primary-color: #d5effa;
-  --winter-secondary-color: #6d3001;
-  --winter-tertiary-color: #b4e659;
-  --winter-category-color: #31beff75;
-  --winter-selected-color: #005a84;
+	--winter-primary-color: #d5effa;
+	--winter-secondary-color: #6d3001;
+	--winter-tertiary-color: #b4e659;
+	--winter-category-color: #31beff75;
+	--winter-selected-color: #005a84;
+	--winter-background-color: #232f34;
+	--winter-text-color: #ffffff;
 }
 
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 .winter-theme {
-  background-color: var(--winter-primary-color) !important;
-  color: var(--winter-secondary-color);
+	background-color: var(--winter-primary-color) !important;
+	color: var(--winter-secondary-color);
 }
 .winter-todo {
-  color: var(--black);
+	color: var(--black);
 }
 .winter-btn {
-  background-color: #c0e085e1;
-  border: 2px solid var(--winter-tertiary-color);
-  border-radius: var(--default-radius);
+	background-color: #c0e085e1;
+	border: 2px solid var(--winter-tertiary-color);
+	border-radius: var(--default-radius);
 }
 .category-winter {
-  background-color: var(--winter-category-color);
-  box-shadow: inset 0px 0px 40px 0px var(--white);
+	background-color: var(--winter-category-color);
+	box-shadow: inset 0px 0px 40px 0px var(--white);
 }
 .winter-header-btn {
-  background-color: var(--winter-category-color) !important;
-  box-shadow: inset 0px 0px 40px 0px var(--white) !important;
-  border: none !important;
+	background-color: var(--winter-category-color) !important;
+	box-shadow: inset 0px 0px 40px 0px var(--white) !important;
+	border: none !important;
 }
 .winter-header-selected-btn {
-  background-color: var(--winter-selected-color) !important;
+	background-color: var(--winter-selected-color) !important;
 }
 .winter-theme-helper {
-  background-image: url('@/img/inverno.webp') !important;
-  background-size: cover !important;
-  background-repeat: repeat-x !important;
+	background-image: url("@/img/inverno.webp") !important;
+	background-size: cover !important;
+	background-repeat: repeat-x !important;
 }
 .winter-theme-back-top {
-  background-color: var(--white);
+	background-color: var(--white);
 }
 .winter-category-list {
-  text-shadow: 2px 2px 10px #0000008c;
+	text-shadow: 2px 2px 10px #0000008c;
 }
 /* .winter-shadow {
   filter: drop-shadow(var(--black) 2px 4px 6px);
 } */
 .winter-confirm {
-  background-image: none;
-  background-image: url('@/img/cincia.webp') !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: var(--black);
+	background-image: none;
+	background-image: url("@/img/cincia.webp") !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: var(--black);
 }
 .tips-btn-winter {
-  background-color: var(--winter-primary-color);
-  border-left: 2px solid var(--winter-secondary-color);
-  border-right: 2px solid var(--winter-secondary-color);
-  border-bottom: 2px solid var(--winter-secondary-color);
-  border-radius: 0 0 5px 5px;
-  color: var(--winter-secondary-color);
+	background-color: var(--winter-primary-color);
+	border-left: 2px solid var(--winter-secondary-color);
+	border-right: 2px solid var(--winter-secondary-color);
+	border-bottom: 2px solid var(--winter-secondary-color);
+	border-radius: 0 0 5px 5px;
+	color: var(--winter-secondary-color);
 }
 .sugg-modal-winter {
-  background-color: var(--winter-secondary-color);
-  color: var(--winter-tertiary-color);
-  border: 2px solid var(--winter-tertiary-color);
-  border-radius: 15px;
+	background-color: var(--winter-secondary-color);
+	color: var(--winter-tertiary-color);
+	border: 2px solid var(--winter-tertiary-color);
+	border-radius: 15px;
 }
 .winter-checkbox {
-  border: 2px solid var(--black);
+	border: 2px solid var(--black);
 }
 .duplicate-container-winter {
-  background-color: var(--winter-selected-color) !important;
-  color: var(--winter-primary-color) !important;
-  border: var(--winter-primary-color) solid !important;
-  border-radius: var(--default-radius) !important;
+	background-color: var(--winter-selected-color) !important;
+	color: var(--winter-primary-color) !important;
+	border: var(--winter-primary-color) solid !important;
+	border-radius: var(--default-radius) !important;
 }

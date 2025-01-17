@@ -1,32 +1,36 @@
+:root {
+	--light-background-color: #ffffff;
+}
+
 .light-btn {
-  background-color: #ffffff;
-  border: 2px solid #007bff;
-  border-radius: 10px;
+	background-color: var(--light-background-color);
+	border: 2px solid #007bff;
+	border-radius: 10px;
 }
 .light-theme-confirm {
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-  -moz-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-  box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
+	background-color: var(--light-background-color);
+	-webkit-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
+	-moz-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
+	box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
 }
 .tips-btn-light {
-  background-color: var(--white);
-  border-left: 2px solid var(--black);
-  border-right: 2px solid var(--black);
-  border-bottom: 2px solid var(--black);
-  border-radius: 0 0 10px 10px;
-  color: var(--black);
+	background-color: var(--white);
+	border-left: 2px solid var(--black);
+	border-right: 2px solid var(--black);
+	border-bottom: 2px solid var(--black);
+	border-radius: 0 0 10px 10px;
+	color: var(--black);
 }
 .sugg-modal-light {
-  background-color: var(--white);
-  color: var(--black);
-  border: 2px solid var(--black);
-  border-radius: 15px;
+	background-color: var(--white);
+	color: var(--black);
+	border: 2px solid var(--black);
+	border-radius: 15px;
 }
 .light-checkbox {
-  background-color: var(--white);
+	background-color: var(--white);
 }
 .duplicate-container-light {
-  border: 2px solid var(--black);
-  border-radius: var(--default-radius);
+	border: 2px solid var(--black);
+	border-radius: var(--default-radius);
 }

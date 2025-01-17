@@ -69,11 +69,6 @@ export default {
 </script>
 <!--  -------------------------------I PRELOAD PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
 <template>
-	<!-- --------------------------------preload dei font in base ai temi------------------------- -->
-	<link v-if="theme.retroTheme" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
-	<link v-if="theme.minimalTheme" href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet" />
-	<link v-if="theme.pinkTheme" href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet" />
-
 	<!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="foglioRighePreload" />
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="cancellaPreload" />

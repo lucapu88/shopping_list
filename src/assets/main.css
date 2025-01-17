@@ -1,14 +1,4 @@
 @import "./base.css";
-@import "./themes/light.css";
-@import "./themes/dark.css";
-@import "./themes/minimal.css";
-@import "./themes/dos.css";
-@import "./themes/summer.css";
-@import "./themes/winter.css";
-@import "./themes/elegant.css";
-@import "./themes/pink.css";
-@import "./themes/panther.css";
-@import "./themes/lemon.css";
 
 :root {
 	--black: #000000;
