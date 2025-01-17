@@ -12,11 +12,19 @@
 	border: 2px solid var(--lemon-tertiary-color);
 }
 
-.category-lemon-container,
-.confirm-lemon {
+.category-lemon-container {
 	background-color: var(--lemon-secondary-color);
 	color: var(--lemon-tertiary-color);
 	border: 2px solid var(--lemon-secondary-color);
+}
+
+.confirm-lemon {
+	background-color: var(--lemon-secondary-color);
+	background-image: none;
+	background-image: url("@/img/foglie.webp") !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: var(--lemon-text-color);
 }
 
 .confirm-lemon > .confirm-buttons-container > button {
