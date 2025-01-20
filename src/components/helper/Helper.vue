@@ -7,6 +7,14 @@ import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import LoadingImg from "@/img/Loading.webp";
+import Logo from "@/img/favicon.webp";
+import UpdateImg from "@/img/update-img.webp";
+import BackupImg from "@/img/icons/cloud.webp";
+import LoadImg from "@/img/LOAD.webp";
+import IngFlag from "@/img/flags/inglese.webp";
+import ItaFlag from "@/img/flags/spagnolo.webp";
+import SpaFlag from "@/img/flags/italiano.webp";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
 import ChangeLanguages from "./settings/Change-languages.vue";
 import ChangeThemes from "./settings/Change-themes.vue";
@@ -79,17 +87,16 @@ export default {
 </script>
 
 <template>
+	<!-- effettuo un preload dell'immagine da visualizzare in base a cosa deve caricare -->
+	<link v-if="themeLoading" rel="preload" as="image" :href="LoadingImg" />
+	<link v-if="themeLoading" rel="preload" as="image" :href="Logo" />
+	<link v-if="updating" rel="preload" as="image" :href="UpdateImg" />
+	<link v-if="backup" rel="preload" as="image" :href="BackupImg" />
+	<link v-if="listImported" rel="preload" as="image" :href="LoadImg" />
+	<link v-if="languageChanged" rel="preload" as="image" :href="IngFlag" />
+	<link v-if="languageChanged" rel="preload" as="image" :href="ItaFlag" />
+	<link v-if="languageChanged" rel="preload" as="image" :href="SpaFlag" />
 	<div>
-		<!-- effettuo un preload dell'immagine da visualizzare in base a cosa deve caricare -->
-		<link v-if="themeLoading" rel="preload" as="image" href="@/img/Loading.webp" />
-		<link v-if="themeLoading" rel="preload" as="image" href="@/img/favicon.webp" />
-		<link v-if="updating" rel="preload" as="image" href="@/img/update-img.webp" />
-		<link v-if="backup" rel="preload" as="image" href="@/img/icons/cloud.webp" />
-		<link v-if="listImported" rel="preload" as="image" href="@/img/LOAD.webp" />
-		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/inglese.webp" />
-		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/spagnolo.webp" />
-		<link v-if="languageChanged" rel="preload" as="image" href="@/img/flags/italiano.webp" />
-
 		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImported="listImported" />
 		<div
 			v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
