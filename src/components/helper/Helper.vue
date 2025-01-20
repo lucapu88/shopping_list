@@ -278,8 +278,8 @@ export default {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	float: right;
-	width: 25px;
-	padding-left: 5px;
+	width: 30px;
+	padding-left: 10px;
 }
 
 .helper-footer {
