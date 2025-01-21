@@ -84,3 +84,7 @@
 	border-radius: 0 0 5px 5px;
 	color: var(--panter-light-color);
 }
+
+.list-title-panter-selected {
+	background-color: #88888880;
+}

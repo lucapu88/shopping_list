@@ -41,6 +41,7 @@ export default {
 			'list-title-retro-selected': selectDeselectArrow && theme.retroTheme,
 			'list-title-elegant-selected': selectDeselectArrow && theme.elegantTheme,
 			'list-title-pink-selected': selectDeselectArrow && theme.pinkTheme,
+			'list-title-panter-selected': selectDeselectArrow && theme.panterTheme,
 		}"
 		@click="settings.showListInstructions(showListInstructionsInput)"
 	>
