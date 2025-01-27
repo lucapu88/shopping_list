@@ -21,9 +21,13 @@ export default {
 			if (isDraggable) {
 				this.timer = setTimeout(() => {
 					this.todosStore.isDraggable = isDraggable;
-				}, 1500);
+				}, 3000);
 			} else {
 				clearTimeout(this.timer);
+			}
+
+			if (navigator.vibrate) {
+				navigator.vibrate(500);
 			}
 		},
 	},
