@@ -30,7 +30,7 @@ export default {
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="maldive" />
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="forest" />
 
-	<div class="modal">
+	<div class="modal" :class="{ 'multiple-delete': multipleTodos.length > 10 }">
 		<div
 			class="confirm-delete-modal-content"
 			:class="{
@@ -78,6 +78,10 @@ export default {
 </template>
 
 <style scoped>
+.multiple-delete {
+	padding-top: 5%;
+}
+
 .confirm-delete-modal-content {
 	position: relative;
 	margin: auto;
@@ -216,31 +220,12 @@ button {
 	margin-right: 15px;
 }
 ul {
-	max-height: 190px;
+	max-height: 90%;
 	overflow: auto;
 	padding: 0;
 	width: 90%;
 }
 li {
 	display: block;
-}
-
-::-webkit-scrollbar {
-	-webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical {
-	width: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: rgba(84, 84, 84, 0.5);
-	border-radius: 5px;
-	/* border: 2px solid #ffffff; */
-}
-
-::-webkit-scrollbar-track {
-	border-radius: 5px;
-	background-color: #dbdbdb;
 }
 </style>
