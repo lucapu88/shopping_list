@@ -6,6 +6,9 @@ import { useChristmasStore } from "@/store/ChristmasStore";
 
 <script>
 export default {
+	props: {
+		isVisibleOnScroll: Boolean,
+	},
 	data() {
 		return {
 			festivitiesOrOccurrences: useOthersFestivitiesStore(),
@@ -33,7 +36,7 @@ export default {
 </script>
 
 <template>
-	<div class="fest-occur-container" @click="showDescription()">
+	<div v-if="isVisibleOnScroll" class="fest-occur-container" @click="showDescription()">
 		<!-- ---------------------------------------------------------------------GIORNATA MONDIALE CANCRO -->
 		<img v-if="festivitiesOrOccurrences.worldCancerDay && !description" class="cancer-day" src="@/img/festivities/cancer-logo.webp" alt="cancer_day" />
 		<p v-if="festivitiesOrOccurrences.worldCancerDay && description" class="description">

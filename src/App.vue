@@ -29,6 +29,7 @@ export default {
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
+			isVisibleOnScroll: true,
 		};
 	},
 	created() {
@@ -59,6 +60,9 @@ export default {
 				});
 			}, 200);
 		},
+		scrollHandler(e) {
+			this.isVisibleOnScroll = e.target.scrollTop < 100;
+		},
 	},
 };
 </script>
@@ -80,11 +84,11 @@ export default {
 		}"
 	>
 		<div id="app">
-			<div id="container-list" class="row">
+			<div id="container-list" class="row" @scroll="scrollHandler">
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<header style="overflow: hidden">
-						<FestivitiesAndOccurrences />
+						<FestivitiesAndOccurrences :is-visible-on-scroll="isVisibleOnScroll" />
 						<HeadList />
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
