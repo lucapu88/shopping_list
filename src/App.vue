@@ -61,7 +61,7 @@ export default {
 			}, 200);
 		},
 		scrollHandler(e) {
-			this.isVisibleOnScroll = e.target.scrollTop < 100;
+			this.isVisibleOnScroll = e.target.scrollTop < 80;
 		},
 	},
 };
