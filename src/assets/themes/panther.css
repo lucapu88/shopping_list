@@ -18,6 +18,9 @@
 	min-width: 85px;
 }
 
+.panther-font-size {
+	font-size: 1.125rem;
+}
 .confirm-panter {
 	border: 2px solid var(--panter-secondary-color);
 	background-color: var(--panter-dark-color);

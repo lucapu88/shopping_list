@@ -84,6 +84,7 @@ export default {
 			'elegant-line-through': todo.multipleDelete && theme.elegantTheme,
 			'boldi-cipollino': theme.elegantTheme,
 			'winter-todo': theme.winterTheme && !todo.isSelected,
+			'panther-font-size': theme.panterTheme,
 		}"
 	>
 		{{ todo.name }}

@@ -1,5 +1,5 @@
 <script setup>
-import CategoriesPanel from "./panels-and-modals/Categories-panel.vue";
+import CategoriesPanel from "../panels-and-modals/Categories-panel.vue";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";

@@ -1,11 +1,11 @@
 <script setup>
 import FestivitiesAndOccurrences from "./components/Festivities-and-occurrences.vue";
-import HeadList from "./components/Head-list.vue";
+import HeadList from "./components/header/Head-list.vue";
 import ConfirmModal from "./components/panels-and-modals/Confirm-modal.vue";
 import Helper from "./components/helper/Helper.vue";
 import MainList from "./components/Main-list.vue";
 import DeleteAllPanel from "./components/panels-and-modals/Delete-all-panel.vue";
-import FooterButtonsContainer from "./components/Footer-buttons-container.vue";
+import FooterButtonsContainer from "./components/footer/Footer-buttons-container.vue";
 import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
