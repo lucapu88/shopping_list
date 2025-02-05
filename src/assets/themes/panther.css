@@ -4,6 +4,7 @@
 	--panter-tertiary-color: #656565;
 	--panter-dark-color: #000000;
 	--panter-light-color: #888888;
+	--panter-text-color: #c9c9c9;
 }
 /* 	Lo so, che sono un coglione e panter non si scrive così, lo soooooo!!! 
 	purtroppo ho sbagliato all'inizio e col cazzo che cambio ovunque il termine per una sola h!!! :P */
@@ -18,8 +19,9 @@
 	min-width: 85px;
 }
 
-.panther-font-size {
+.panther-todo {
 	font-size: 1.125rem;
+	color: var(--panter-text-color);
 }
 .confirm-panter {
 	border: 2px solid var(--panter-secondary-color);

@@ -113,7 +113,7 @@ export default {
 			/>
 			<button class="btn btn-info" :disabled="addTodo.newTodo && !addTodo.newTodo.trim()" :class="{ 'elegant-btn': theme.elegantTheme }" @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
-				<img v-if="theme.lemonTheme" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
+				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
 		</div>
 		<div

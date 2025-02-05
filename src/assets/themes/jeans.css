@@ -57,7 +57,7 @@
 }
 
 .jeans-category-btn {
-	border: 1px dashed var(--jeans-text-dark-color) !important;
+	border: 3px solid var(--jeans-text-light-color) !important;
 	border-radius: var(--jeans-radius);
 	color: var(--jeans-text-light-color);
 	/*Questa immagine è dei jeans della mia bimba :) A voi frega un cazzo? E A ME SI!!!*/

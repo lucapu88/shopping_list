@@ -82,9 +82,9 @@ export default {
 			'line-through': todo.multipleDelete && !theme.retroTheme && !theme.lightTheme && !theme.elegantTheme,
 			'retro-multiple-delete': todo.multipleDelete && theme.retroTheme,
 			'elegant-line-through': todo.multipleDelete && theme.elegantTheme,
-			'boldi-cipollino': theme.elegantTheme,
+			'boldi-cipollino': theme.elegantTheme || theme.jeansTheme,
 			'winter-todo': theme.winterTheme && !todo.isSelected,
-			'panther-font-size': theme.panterTheme,
+			'panther-todo': theme.panterTheme,
 		}"
 	>
 		{{ todo.name }}

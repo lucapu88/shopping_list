@@ -119,6 +119,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('body').should('have.css', 'font-family').and('include', 'Creepster, serif');
         });
         cy.get('.settings').click();
+        cy.get('#lemon-img').should('exist');
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
 
         //jeans
