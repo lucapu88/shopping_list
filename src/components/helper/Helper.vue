@@ -115,6 +115,7 @@ export default {
 				'pink-helper': theme.pinkTheme,
 				'panter-helper': theme.panterTheme,
 				'lemon-helper': theme.lemonTheme,
+				'jeans-helper': theme.jeansTheme,
 			}"
 		>
 			<div class="close-helper-container" @click="closeHelper()">

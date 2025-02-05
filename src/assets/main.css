@@ -26,34 +26,37 @@
 }
 
 .light {
-	background-color: white !important;
+	background-color: var(--light-background-color) !important;
 }
 .dark {
-	background-color: #333333 !important;
+	background-color: var(--dark-background-color) !important;
 }
 .minimal {
-	background-color: #a5becc !important;
+	background-color: var(--minimal-primary-color) !important;
 }
 .retro {
-	background-color: black !important;
+	background-color: var(--dos-secondary-color) !important;
 }
 .summer {
-	background-color: #12a1df !important;
+	background-color: var(--summer-secondary-color) !important;
 }
 .winter {
-	background-color: #1a3159 !important;
+	background-color: var(--winter-background-color) !important;
 }
 .elegant {
-	background-color: #045687 !important;
+	background-color: var(--elegant-primary-color-dark) !important;
 }
 .pink {
-	background-color: #e8acd0 !important;
+	background-color: var(--pink-primary-color) !important;
 }
 .panter {
-	background-color: #01011d !important;
+	background-color: var(--panter-primary-color) !important;
 }
 .lemon {
-	background-color: #fded04 !important;
+	background-color: var(--lemon-primary-color) !important;
+}
+.jeans {
+	background-color: var(--jeans-primary-color) !important;
 }
 
 /* ---------------------------------------- MODALE ------------------------------------ */

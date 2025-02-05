@@ -33,6 +33,7 @@ export const useTodoStore = defineStore('todoStore', {
     deleteSelected: false,
     confirmRemove: false,
     canDeleteMultipleTodo: false,
+    multiple: false,
     focusIn: false,
     totalPrice: 0,
     showOnlyImportantTodos: false,
@@ -359,7 +360,8 @@ export const useTodoStore = defineStore('todoStore', {
       this.canDeleteMultipleTodo = this.todos.some((el) => el.multipleDelete);
       this.confirmDeselectAll = !this.canDeleteMultipleTodo;
     },
-    openModalForDeleteSelectedTodos() {
+    openModalForDeleteSelectedTodos(multiple) {
+      this.multiple = !!multiple;
       this.confirmDeleteModal = true;
       this.confirmRemove = false;
       this.deleteSelected = true;

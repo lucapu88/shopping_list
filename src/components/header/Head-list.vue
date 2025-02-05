@@ -138,6 +138,7 @@ export default {
 					'tips-btn-pink': theme.pinkTheme,
 					'tips-btn-panter': theme.panterTheme,
 					'tips-btn-lemon': theme.lemonTheme,
+					'tips-btn-jeans': theme.jeansTheme,
 				}"
 				@click="suggestionsStore.toggleSuggestionsModal()"
 			>

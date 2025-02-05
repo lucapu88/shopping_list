@@ -59,6 +59,8 @@ export default {
 				'panter-theme-selected-btn': theme.panterTheme && todosStore.isDraggable,
 				'lemon-other-btn': theme.lemonTheme,
 				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.isDraggable,
+				'jeans-other-btn': theme.jeansTheme,
+				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.isDraggable,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
 			@click="todosStore.toggleDragDrop()"
@@ -79,6 +81,7 @@ export default {
 				'pink-theme-btn': theme.pinkTheme,
 				'panter-other-btn': theme.panterTheme,
 				'lemon-other-btn': theme.lemonTheme,
+				'jeans-other-btn': theme.jeansTheme,
 			}"
 			:disabled="!todosStore.todos.length"
 			@click="copy()"
@@ -108,6 +111,8 @@ export default {
 				'panter-theme-selected-btn': theme.panterTheme && todosStore.categoryList,
 				'lemon-other-btn': theme.lemonTheme,
 				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.categoryList,
+				'jeans-other-btn': theme.jeansTheme,
+				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.categoryList,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos"
 			@click="todosStore.showCategoryList()"
@@ -138,6 +143,8 @@ export default {
 				'panter-theme-selected-btn': theme.panterTheme && todosStore.showOnlyImportantTodos,
 				'lemon-other-btn': theme.lemonTheme,
 				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.showOnlyImportantTodos,
+				'jeans-other-btn': theme.jeansTheme,
+				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.showOnlyImportantTodos,
 			}"
 			@click="todosStore.showOnlyImportant()"
 		>

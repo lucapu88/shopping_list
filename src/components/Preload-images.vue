@@ -20,6 +20,10 @@ import copyPanter from "@/img/icons/copy-panter.webp";
 import importantPanter from "@/img/icons/important-panter.webp";
 import lemon from "@/img/lemon-send.webp";
 import leaves from "@/img/foglie.webp";
+import leotta from "@/img/jeans-zip.webp";
+import levisMio from "@/img/jeans-mio.webp";
+import jeansIle from "@/img/jeans-ile.webp";
+import jeansTasca from "@/img/jeans-ile.webp";
 
 import merryChristmas from "@/img/festivities/christmas.webp";
 import christmasSkull from "@/img/icons/christmas-skull.webp";
@@ -91,6 +95,11 @@ export default {
 
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="lemon" />
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="leaves" />
+
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="leotta" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="levisMio" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansIle" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansTasca" />
 
 	<!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
 	<template v-if="isChristmas.christmasTheme">

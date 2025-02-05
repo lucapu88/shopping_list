@@ -61,6 +61,11 @@ export default {
 					window.localStorage.setItem("lemonTheme", true);
 					break;
 
+				case "jeans":
+					this.theme.jeansTheme = true;
+					window.localStorage.setItem("jeansTheme", true);
+					break;
+
 				default:
 					this.theme.lightTheme = true;
 					window.localStorage.setItem("lightTheme", true);
@@ -97,9 +102,11 @@ export default {
 				</div>
 				<div class="three">
 					<button type="button" class="btn panter-theme-btn p-1" @click="changeTheme('panter')">Panther</button>
-					<span class="new">NEW</span>
+					<span class="new" v-if="!settings.isIphone">NEW</span>
 					<button type="button" class="btn lemon-theme-btn p-1" @click="changeTheme('lemon')">Lemon</button>
-					<span class="new">NEW</span>
+					<span class="new" v-if="!settings.isIphone">NEW</span>
+					<button v-if="settings.isIphone && !settings.isAndroid" type="button" class="btn jeans-theme-btn p-1" @click="changeTheme('jeans')">Jeans</button>
+					<span v-if="settings.isIphone && !settings.isAndroid" class="new">NEW</span>
 				</div>
 			</div>
 		</template>

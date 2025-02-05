@@ -42,6 +42,7 @@ export default {
 			'pink-theme-confirm': theme.pinkTheme,
 			'confirm-panter': theme.panterTheme,
 			'lemon-confirm-delete-all': theme.lemonTheme,
+			'jeans-confirm-delete-all': theme.jeansTheme,
 		}"
 		v-if="todosStore.openDeleteAllModal"
 	>

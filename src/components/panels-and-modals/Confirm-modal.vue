@@ -30,7 +30,13 @@ export default {
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="maldive" />
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="forest" />
 
-	<div class="modal" :class="{ 'multiple-delete': multipleTodos.length > 10 }">
+	<div
+		class="modal"
+		:class="{
+			'multiple-delete': multipleTodos.length > 10 && todosStore.multiple,
+			'multiple-jeans': theme.jeansTheme,
+		}"
+	>
 		<div
 			class="confirm-delete-modal-content"
 			:class="{
@@ -44,6 +50,7 @@ export default {
 				'confirm-pink': theme.pinkTheme,
 				'confirm-panter': theme.panterTheme,
 				'confirm-lemon': theme.lemonTheme,
+				'confirm-jeans': theme.jeansTheme,
 			}"
 		>
 			<img v-if="isChristmas.christmasTheme" class="christmas-bells" src="@/img/festivities/christmas-bells.webp" alt="christmas_bells" />
@@ -64,14 +71,25 @@ export default {
 
 			<div class="confirm-buttons-container">
 				<button id="yes-delete" :class="{ 'pink-theme-btn': theme.pinkTheme }" v-if="todosStore.confirmRemove" @click="todosStore.confirmedRemoveTodo(todosStore.index)">
-					<span v-if="languages.langIta || languages.langSpanish">SI</span>
-					<span v-if="languages.langEnglish">YES</span>
+					<div>
+						<!-- questo div è per lo stile bottoni del tema jeans -->
+						<span v-if="languages.langIta || languages.langSpanish">SI</span>
+						<span v-if="languages.langEnglish">YES</span>
+					</div>
 				</button>
 				<button id="yes-delete-selected" v-if="todosStore.deleteSelected" @click="todosStore.deleteSelectedTodos()">
-					<span v-if="languages.langIta || languages.langSpanish">SI</span>
-					<span v-if="languages.langEnglish">YES</span>
+					<div>
+						<!-- questo div è per lo stile bottoni del tema jeans -->
+						<span v-if="languages.langIta || languages.langSpanish">SI</span>
+						<span v-if="languages.langEnglish">YES</span>
+					</div>
 				</button>
-				<button id="no-delete" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.confirmDeleteModal = false">NO</button>
+				<button id="no-delete" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.confirmDeleteModal = false">
+					<div>
+						<!-- questo div è per lo stile bottoni del tema jeans -->
+						NO
+					</div>
+				</button>
 			</div>
 		</div>
 	</div>

@@ -35,28 +35,32 @@ export default {
 <template>
 	<div class="title-container">
 		<h1
-			class="title text-center"
+			class="text-center"
 			:class="{
+				title: !theme.jeansTheme,
 				'happy-new-year': festivities.newYear,
 				'christmas-title': isChristmas.christmasTheme,
 				'dark-theme-title': theme.darkTheme,
 				'minimal-theme-title': theme.minimalTheme,
 				'retro-theme-title': theme.retroTheme,
 				'elegant-theme-title': theme.elegantTheme,
+				'jeans-theme-title': theme.jeansTheme,
 				'title-spanish': languages.langSpanish,
 				'title1-spanish': languages.langSpanish,
 			}"
 			@click="openDevPanel()"
 		>
-			<template v-if="!addTodo.secondList">
-				<template v-if="festivities.newYear">
-					{{ languages.newYearText }}
+			<span :class="{ 'jeans-title-border': theme.jeansTheme }">
+				<template v-if="!addTodo.secondList">
+					<template v-if="festivities.newYear">
+						{{ languages.newYearText }}
+					</template>
+					<template v-else>
+						{{ languages.shoppingListTitle }}
+					</template>
 				</template>
-				<template v-else>
-					{{ languages.shoppingListTitle }}
-				</template>
-			</template>
-			<template v-else> Todo List </template>
+				<template v-else> Todo List </template>
+			</span>
 		</h1>
 		<img class="cart slide-cart" src="@/img/carrello-spesa.webp" alt="carrello" />
 		<img class="cart slide-cart-infinity" src="@/img/carrello-spesa.webp" alt="carrello" />

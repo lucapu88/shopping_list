@@ -44,7 +44,7 @@ export default {
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
 			}"
-			@click="todosStore.openModalForDeleteSelectedTodos()"
+			@click="todosStore.openModalForDeleteSelectedTodos('multiple')"
 		>
 			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 		</button>

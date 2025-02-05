@@ -12,6 +12,7 @@ export const useThemeStore = defineStore('theme', {
         pinkTheme: false,
         panterTheme: false,
         lemonTheme: false,
+        jeansTheme: false,
         themeName: 'Light',
     }),
     getters: {},
@@ -81,6 +82,12 @@ export const useThemeStore = defineStore('theme', {
                 this.changeThemeStyle('Lemon', '#fded04', '#8256a9', '"Creepster", serif');
             }
 
+            const jeansThemeSelected = window.localStorage.getItem('jeansTheme');
+            this.jeansTheme = jeansThemeSelected === 'true';
+            if (this.jeansTheme) {
+                this.changeThemeStyle('Jeans', '#3C628D', '#DAC29E', '"Lucida Console", "Courier New", monospace');
+            }
+
             if (!lightThemeSelected
                 && !darkThemeSelected
                 && !minimalThemeSelected
@@ -91,6 +98,7 @@ export const useThemeStore = defineStore('theme', {
                 && !pinkThemeSelected
                 && !panterThemeSelected
                 && !lemonThemeSelected
+                && !jeansThemeSelected
             ) {
                 //se nessun tema è stato impostato (quindi l'app è appena scaricata), imposto il tema di default che sarebbe light
                 this.lightThemeDefaultSetting();
@@ -131,6 +139,8 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('panterTheme', false);
             this.lemonTheme = false;
             window.localStorage.setItem('lemonTheme', false);
+            this.jeansTheme = false;
+            window.localStorage.setItem('jeansTheme', false);
         },
     },
 });

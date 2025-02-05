@@ -27,6 +27,7 @@ export default {
 			'light-theme-confirm': theme.lightTheme,
 			'category-pink-container': theme.pinkTheme,
 			'category-lemon-container': theme.lemonTheme,
+			'category-jeans-container': theme.jeansTheme,
 		}"
 	>
 		<div v-if="todosStore.categoryListChildren" class="categories">
@@ -35,6 +36,7 @@ export default {
 				:class="{
 					'blue-text': !theme.retroTheme && !theme.minimalTheme,
 					'retro-helper-settings-title': theme.retroTheme,
+					'jeans-category-modal-title': theme.jeansTheme,
 				}"
 			>
 				<span>
@@ -47,6 +49,7 @@ export default {
 					:class="{
 						'retro-category-list': theme.retroTheme,
 						'category-pink-btn': theme.pinkTheme,
+						'jeans-theme-btn': theme.jeansTheme,
 						'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 					}"
 					v-if="category.active"
@@ -78,6 +81,7 @@ export default {
 					'category-pink-btn': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
 					'lemon-theme-btn': theme.lemonTheme,
+					'jeans-theme-btn': theme.jeansTheme,
 				}"
 				@click="languages.insertAllCategories()"
 			>
@@ -97,6 +101,7 @@ export default {
 					'category-pink-btn': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
 					'lemon-theme-btn': theme.lemonTheme,
+					'jeans-theme-btn': theme.jeansTheme,
 				}"
 				@click="todosStore.removeOnlyEmpty()"
 			>

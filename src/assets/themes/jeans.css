@@ -1,0 +1,162 @@
+:root {
+	--jeans-primary-color: rgb(60, 98, 141);
+	--jeans-secondary-color: #2f3849;
+	--jeans-text-light-color: #dac29e;
+	--jeans-text-dark-color: #623815;
+	--jeans-label: #a56e47;
+	--jeans-radius: 5px;
+	--levis-red: #c4263d;
+	--jeans-btn-border-color: #808080;
+	--jeans-btn-external-backr-color: #845f4d;
+	--jeans-btn-internal-backr-color: #645954;
+	--jeans-helper-background: #29354f;
+}
+
+.jeans-theme-btn {
+	background-color: var(--jeans-primary-color);
+	color: var(--jeans-text-light-color);
+	border: 2px solid var(--jeans-text-light-color);
+}
+
+.jeans-theme-title {
+	background-color: var(--jeans-label) !important;
+	color: var(--jeans-text-dark-color);
+	border-radius: var(--jeans-radius);
+	padding: 5px 13px;
+	position: relative;
+	left: -300px;
+	animation-timing-function: ease-out;
+	-webkit-animation: slide 3.3s forwards;
+	animation: slide 3.3s forwards;
+	z-index: 1;
+}
+@-webkit-keyframes slide {
+	100% {
+		left: 6%;
+	}
+}
+@keyframes slide {
+	100% {
+		left: 6%;
+	}
+}
+
+.jeans-title-border {
+	border-radius: var(--jeans-radius);
+	border: 2px dashed var(--jeans-text-dark-color);
+	font-weight: bold;
+}
+
+.jeans-other-btn {
+	background-color: var(--jeans-text-light-color) !important;
+	border: 2px dashed var(--jeans-text-dark-color) !important;
+}
+
+.jeans-theme-selected-btn {
+	background-color: var(--jeans-label) !important;
+}
+
+.jeans-category-btn {
+	border: 1px dashed var(--jeans-text-dark-color) !important;
+	border-radius: var(--jeans-radius);
+	color: var(--jeans-text-light-color);
+	/*Questa immagine è dei jeans della mia bimba :) A voi frega un cazzo? E A ME SI!!!*/
+	background-image: url("@/img/jeans-ile.webp") !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.tips-btn-jeans {
+	width: 85%;
+	margin-left: 23px;
+	background-color: var(--jeans-text-light-color);
+	border-left: 2px dashed var(--jeans-label);
+	border-right: 2px dashed var(--jeans-label);
+	border-bottom: 2px dashed var(--jeans-label);
+	border-radius: 0 0 5px 5px;
+	color: var(--jeans-label);
+}
+
+.sugg-modal-jeans {
+	background-color: var(--jeans-secondary-color);
+	color: var(--jeans-text-light-color);
+	border-radius: 10px;
+	border: 3px dashed var(--jeans-text-light-color);
+}
+
+.category-jeans-container {
+	border: 1px dashed var(--jeans-text-dark-color);
+	border-radius: var(--jeans-radius);
+	color: var(--jeans-text-light-color);
+	background-image: url("@/img/jeans-tasca-culo.webp");
+	background-size: auto;
+}
+
+.jeans-category-modal-title {
+	text-transform: uppercase;
+	background-color: var(--levis-red);
+	color: #ffffff;
+	font-weight: bold !important;
+}
+
+.jeans-confirm-delete-all {
+	/*Vi do una chicca per voi depravati: questa foto è dei jeans di Diletta Leotta! per la precisione della parte pucchiacca...*/
+	background-image: url("@/img/jeans-zip.webp");
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
+.multiple-jeans > .confirm-jeans > p {
+	text-transform: uppercase;
+	background-color: var(--levis-red);
+	color: #ffffff !important;
+}
+
+.confirm-jeans {
+	/* Questa imagine è dei miei levis preferiti! A voi non frega nulla? E a me che cazzo me ne frea a me!!!*/
+	background-image: url("@/img/jeans-mio.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.confirm-jeans > ul > li {
+	background-color: var(--jeans-label);
+	color: var(--jeans-text-dark-color);
+	border-radius: var(--jeans-radius);
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.confirm-jeans > .confirm-buttons-container > button {
+	border: 2px solid var(--jeans-btn-border-color);
+	background-color: var(--jeans-btn-external-backr-color);
+	color: #ffffff;
+	border-radius: 50%;
+	padding: 9px;
+}
+
+.confirm-jeans > .confirm-buttons-container > button > div {
+	border: 2px solid var(--jeans-btn-border-color);
+	background-color: var(--jeans-btn-internal-backr-color);
+	box-shadow: 0px 0px 11px 0px white;
+	padding: 5px;
+	border-radius: 50%;
+}
+
+.jeans-helper {
+	background-color: var(--jeans-helper-background) !important;
+}
+
+.list-title-jeans-selected {
+	background-color: var(--jeans-label);
+	color: var(--jeans-text-dark-color);
+	font-weight: bold;
+}
+
+.duplicate-container-jeans {
+	background-color: var(--jeans-label) !important;
+	color: var(--jeans-text-dark-color);
+	box-shadow: none !important;
+	border-radius: var(--jeans-radius);
+	border: 3px dashed;
+}
