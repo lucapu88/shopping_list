@@ -47,9 +47,12 @@ export default {
 			<a href="mailto:shoppinglist.service@outlook.com"> shoppinglist.service@outlook.com </a>
 		</li>
 		<li>
-			{{ languages.helperDescription.twitterText }}
+			{{ languages.helperDescription.socialText }}
 			<a href="https://x.com/developer231023" target="_blank">
 				<img src="@/img/icons/x.webp" alt="social_twitter" class="social" />
+			</a>
+			<a href="https://www.instagram.com/informatico_stronzo" target="_blank">
+				<img src="@/img/icons/instagram.webp" alt="social_instagram" class="social" />
 			</a>
 		</li>
 		<li>
@@ -70,5 +73,6 @@ export default {
 .social {
 	width: 35px;
 	height: 30px;
+	margin-right: 10px;
 }
 </style>
