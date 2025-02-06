@@ -50,10 +50,17 @@
 .jeans-other-btn {
 	background-color: var(--jeans-text-light-color) !important;
 	border: 2px dashed var(--jeans-text-dark-color) !important;
+	color: var(--jeans-text-dark-color) !important;
 }
 
 .jeans-theme-selected-btn {
 	background-color: var(--jeans-label) !important;
+	color: var(--jeans-text-dark-color) !important;
+}
+
+.jeans-theme-selected-btn:hover,
+.jeans-other-btn:hover {
+	color: var(--jeans-text-dark-color) !important;
 }
 
 .jeans-category-btn {

@@ -134,7 +134,7 @@ export const useLanguageStore = defineStore('Language', {
       description: 'If the button is green, click to update the app',
       available: 'Update',
       unavailable: 'No Updates',
-      readyForUpdate: false,
+      updated: false,
     },
     insertAll: 'Insert all',
     removeEmpty: 'Remove only empty',

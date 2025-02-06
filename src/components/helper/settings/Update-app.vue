@@ -37,20 +37,20 @@ export default {
 		<span :class="{ 'english-size': languages.langEnglish }"> {{ languages.updateText.description }}: </span>
 		<div class="update-container">
 			<button
-				:disabled="languages.updateText.readyForUpdate"
+				:disabled="languages.updateText.updated"
 				id="update"
 				:class="{
-					'ready-for-update': !languages.updateText.readyForUpdate,
+					'ready-for-update': !languages.updateText.updated,
 				}"
 				class="btn btn-light border-dark me-3 share-update-btn"
 				@click="updateApp()"
 			>
-				<span>{{ !languages.updateText.readyForUpdate ? languages.updateText.available : languages.updateText.unavailable }}</span>
+				<span>{{ !languages.updateText.updated ? languages.updateText.available : languages.updateText.unavailable }}</span>
 			</button>
-			<!-- <small v-if="!languages.updateText.readyForUpdate">
+			<!-- <small v-if="!languages.updateText.updated">
         {{ languages.updateText.available }}
       </small>
-      <small v-if="languages.updateText.readyForUpdate">
+      <small v-if="languages.updateText.updated">
         {{ languages.updateText.unavailable }}
       </small> -->
 		</div>

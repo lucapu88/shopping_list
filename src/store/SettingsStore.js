@@ -62,7 +62,7 @@ export const useSettingsStore = defineStore('settings', {
           : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       if (lastMonth && lastYear && monthNow == lastMonth && yearNow == lastYear) {
-        this.languages.updateText.readyForUpdate = true;
+        this.languages.updateText.updated = true;
         this.dateLastUpdate = `${month[lastMonth]}/${lastYear}`;
       }
     },

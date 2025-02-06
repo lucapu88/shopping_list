@@ -4,6 +4,7 @@ import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
 import { useChristmasStore } from "@/store/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useLanguageStore } from "@/store/LanguageStore";
 
 import foglioRighePreload from "@/img/foglio_righe.webp";
 import cancellaPreload from "@/img/cancella.webp";
@@ -56,6 +57,7 @@ import reloadIcon from "@/img/icons/reload-icon.webp";
 
 import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
+import dino from "@/img/update-img.webp";
 </script>
 
 <script>
@@ -67,6 +69,7 @@ export default {
 			isChristmas: useChristmasStore(),
 			settings: useSettingsStore(),
 			todosStore: useTodoStore(),
+			languages: useLanguageStore(),
 		};
 	},
 };
@@ -139,4 +142,5 @@ export default {
 	<!-- -----------------------------------------------------------altri preload---------------------------- -->
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="okIcon" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="closeIcon" />
+	<link v-if="!languages.updateText.updated" rel="preload" as="image" :href="dino" />
 </template>
