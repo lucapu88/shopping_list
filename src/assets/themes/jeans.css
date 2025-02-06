@@ -67,7 +67,7 @@
 }
 
 .tips-btn-jeans {
-	width: 85%;
+	width: 84%;
 	margin-left: 23px;
 	background-color: var(--jeans-text-light-color);
 	border-left: 2px dashed var(--jeans-label);
@@ -97,6 +97,10 @@
 	background-color: var(--levis-red);
 	color: #ffffff;
 	font-weight: bold !important;
+}
+
+.jeans-category-modal-title > span {
+	font-weight: bold;
 }
 
 .jeans-confirm-delete-all {

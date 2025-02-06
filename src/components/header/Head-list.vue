@@ -105,6 +105,7 @@ export default {
 				:class="{
 					'placeholder-selected': languages.placeholder != languages.defaultPlaceholderText && !theme.elegantTheme,
 					'elegant-placeholder': theme.elegantTheme,
+					'boldi-cipollino': theme.jeansTheme,
 				}"
 				ref="myInput"
 				v-model="addTodo.newTodo"
@@ -146,6 +147,7 @@ export default {
 					class="tips-text"
 					:class="{
 						block: addTodo.inModification,
+						'boldi-cipollino': theme.jeansTheme,
 					}"
 				>
 					{{ languages.suggestions.tipsBtnText }}

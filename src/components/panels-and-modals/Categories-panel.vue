@@ -58,6 +58,7 @@ export default {
 						:class="{
 							'animation-no-retro': !theme.retroTheme,
 							'winter-category-list': theme.winterTheme,
+							'boldi-cipollino': theme.jeansTheme,
 						}"
 						@click="todosStore.selectCategoryName(category.name)"
 					>
@@ -85,7 +86,7 @@ export default {
 				}"
 				@click="languages.insertAllCategories()"
 			>
-				<span>{{ languages.insertAll }}</span>
+				<span :class="{ 'boldi-cipollino': theme.jeansTheme }">{{ languages.insertAll }}</span>
 			</button>
 			<button
 				class="insert-all-btn"
@@ -105,7 +106,7 @@ export default {
 				}"
 				@click="todosStore.removeOnlyEmpty()"
 			>
-				<span>{{ languages.removeEmpty }}</span>
+				<span :class="{ 'boldi-cipollino': theme.jeansTheme }">{{ languages.removeEmpty }}</span>
 			</button>
 		</div>
 	</div>
