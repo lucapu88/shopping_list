@@ -23,7 +23,7 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         spezie: ["Pepe nero", "Peperoncino in polvere", "Aglio in polvere", "Prezzemolo in polvere", "Cumino", "Curcuma", "Paprika", "Origano", "Cannella", "Noce moscata", "Zenzero in polvere", "Chiodi di garofano"],
 
-        igiene: ["Shampoo", "Balsamo", "Sapone", "Carta igienica", "Detergente intimo", "Dentifricio", "Spazzolino da denti", "Filo interdentale", "Dentifricio", "Collutorio", "Deodorante", "Sgrassatore", "Igienizzante", "Detersivo lavatrice", "Detersivo piatti", "Spugne", "Buste immondizia", "Salviettine detergenti", "Crema idratante per il corpo", "Rasoi", "Schiuma da barba", "Dopo barba", "Fazzoletti di carta", "Cotton fioc", "Smalto per unghie", "Profumo o colonia"],
+        igiene: ["Shampoo", "Balsamo", "Sapone", "Carta igienica", "Detergente intimo", "Dentifricio", "Spazzolino da denti", "Filo interdentale", "Dentifricio", "Collutorio", "Deodorante", "Sgrassatore", "Igienizzante", "Detersivo lavatrice", "Detersivo piatti", "Spugne", "Buste immondizia", "Salviettine detergenti", "Crema idratante per il corpo", "Rasoi", "Schiuma da barba", "Dopo barba", "Fazzoletti di carta", "Cotton fioc", "Smalto per unghie", "Profumo o colonia", "Assorbenti"],
 
         farmaci: ["Aspirina", "Statina", "Paracetamolo", "Ibuprofene", "Pomata per zanzare", "Cortisone", "Collirio", "Pomata per dolori muscolari", "Antidolorifico", "Lassativi", "Termometro", "Garze", "Cerotti", "Clorfenamina", "Lassativi a base di fibra", "Cetirizina", "Cannabis Legale", "Viagra"],
 

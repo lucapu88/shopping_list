@@ -22,7 +22,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         spices: ["Black pepper", "Chili powder", "Garlic powder", "Parsley flakes", "Cumin", "Turmeric", "Paprika", "Oregano", "Cinnamon", "Nutmeg", "Ground ginger", "Cloves"],
 
-        hygiene: ["Shampoo", "Conditioner", "Soap", "Toilet paper", "Intimate wash", "Toothpaste", "Toothbrush", "Dental floss", "Toothpaste", "Mouthwash", "Deodorant", "Degreaser", "Sanitizer", "Laundry detergent", "Dish detergent", "Sponges", "Trash bags", "Cleansing wipes", "Body moisturizer", "Razors", "Shaving foam", "Aftershave", "Facial tissues", "Cotton swabs", "Nail polish", "Perfume or cologne"],
+        hygiene: ["Shampoo", "Conditioner", "Soap", "Toilet paper", "Intimate wash", "Toothpaste", "Toothbrush", "Dental floss", "Toothpaste", "Mouthwash", "Deodorant", "Degreaser", "Sanitizer", "Laundry detergent", "Dish detergent", "Sponges", "Trash bags", "Cleansing wipes", "Body moisturizer", "Razors", "Shaving foam", "Aftershave", "Facial tissues", "Cotton swabs", "Nail polish", "Perfume or cologne", "Pads"],
 
         medications: ["Aspirin", "Statin", "Paracetamol", "Ibuprofen", "Mosquito cream", "Cortisone", "Eye drops", "Muscle pain cream", "Painkiller", "Laxatives", "Thermometer", "Gauze pads", "Plasters", "Chlorphenamine", "Fiber-based laxatives", "Cetirizine", "Legal Cannabis", "Viagra"],
 

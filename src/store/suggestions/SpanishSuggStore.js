@@ -22,7 +22,7 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         especias: ["Pimienta negra", "Pimentón", "Ajo en polvo", "Perejil en hojuelas", "Comino", "Cúrcuma", "Pimentón", "Orégano", "Canela", "Nuez moscada", "Jengibre molido", "Clavos de olor"],
 
-        higiene: ["Champú", "Acondicionador", "Jabón", "Papel higiénico", "Limpieza íntima", "Pasta de dientes", "Cepillo de dientes", "Hilo dental", "Pasta de dientes", "Enjuague bucal", "Desodorante", "Desengrasante", "Desinfectante", "Detergente para la ropa", "Detergente para platos", "Esponjas", "Bolsas de basura", "Toallitas limpiadoras", "Hidratante corporal", "Maquinillas de afeitar", "Espuma de afeitar", "After shave", "Pañuelos faciales", "Hisopos de algodón", "Esmalte de uñas", "Perfume o colonia"],
+        higiene: ["Champú", "Acondicionador", "Jabón", "Papel higiénico", "Limpieza íntima", "Pasta de dientes", "Cepillo de dientes", "Hilo dental", "Pasta de dientes", "Enjuague bucal", "Desodorante", "Desengrasante", "Desinfectante", "Detergente para la ropa", "Detergente para platos", "Esponjas", "Bolsas de basura", "Toallitas limpiadoras", "Hidratante corporal", "Maquinillas de afeitar", "Espuma de afeitar", "After shave", "Pañuelos faciales", "Hisopos de algodón", "Esmalte de uñas", "Perfume o colonia", "Toallas sanitarias"],
 
         medicamentos: ["Aspirina", "Estatinas", "Paracetamol", "Ibuprofeno", "Crema para mosquitos", "Cortisona", "Colirio", "Crema para el dolor muscular", "Analgésico", "Laxantes", "Termómetro", "Gasas", "Apósitos", "Clorfenamina", "Laxantes a base de fibra", "Cetirizina", "Cannabis legal", "Viagra"],
 
