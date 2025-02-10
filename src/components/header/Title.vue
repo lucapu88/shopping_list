@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-	<div class="title-container">
+	<div class="title-container" :class="{ 'happy-new-year-container': festivities.newYear }">
 		<h1
 			class="text-center"
 			:class="{
@@ -95,22 +95,19 @@ export default {
 		left: 6%;
 	}
 }
-
+.happy-new-year-container {
+	background-image: url("@/img/festivities/buon-anno.gif");
+	background-position: center;
+}
 .happy-new-year {
 	color: #fe0000;
-	background-image: -webkit-linear-gradient(92deg, #ff8400, #fe3aee);
+	background-image: -webkit-linear-gradient(92deg, #ffffff, #feda3a);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	-webkit-animation: hue 2s infinite linear;
-}
-
-@-webkit-keyframes hue {
-	from {
-		-webkit-filter: hue-rotate(0deg);
-	}
-	to {
-		-webkit-filter: hue-rotate(-360deg);
-	}
+	animation-timing-function: ease-out;
+	-webkit-animation: slide 3.3s forwards;
+	animation: slide 3.3s forwards;
+	z-index: 1;
 }
 
 .christmas-title {

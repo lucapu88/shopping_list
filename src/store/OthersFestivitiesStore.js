@@ -54,7 +54,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
                 this.newYear = true;
                 setTimeout(() => {
                     this.newYear = false;
-                }, 3500);
+                }, 4000);
             }
             if (currentDay === 17 && currentMonth === 1) {
                 this.worldPizzaDay = true;

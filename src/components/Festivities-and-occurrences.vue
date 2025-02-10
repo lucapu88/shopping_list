@@ -44,7 +44,7 @@ export default {
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNATA MONDIALE PACE -->
 		<img v-if="festivitiesOrOccurrences.worldPeaceDay && !description" class="peace-day" src="@/img/festivities/pace.webp" alt="peace_day" />
-		<p class="description" v-if="festivitiesOrOccurrences.worldPeaceDay && description">
+		<p class="description peace-day-text" v-if="festivitiesOrOccurrences.worldPeaceDay && description">
 			{{ languages.peaceDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------FESTA DELLA DONNA -->
@@ -131,6 +131,10 @@ export default {
 	width: 60px;
 }
 
+.peace-day-text {
+	color: #ffe600 !important;
+}
+
 .womens-day {
 	width: 50px;
 	height: 65px;
@@ -215,10 +219,11 @@ export default {
 	width: 15ch;
 	padding: 10px;
 	position: absolute;
-	color: #bf0000;
-	background-color: rgba(133, 131, 131, 0.49);
+	color: #db0505;
+	background-color: rgba(133, 131, 131, 0.616);
 	font-weight: bold;
 	border-radius: 10px;
 	text-transform: uppercase;
+	text-shadow: 0px 1px 23px rgba(255, 255, 255, 0.8);
 }
 </style>

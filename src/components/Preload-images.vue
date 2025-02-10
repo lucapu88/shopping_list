@@ -36,6 +36,7 @@ import babboNatale from "@/img/festivities/babbo-natale.webp";
 import garlandCircle from "@/img/festivities/ghirlanda-tonda.webp";
 import christmasDecorationsRight from "@/img/festivities/christmas-decorations-destra.webp";
 import christmasDecorationsLeft from "@/img/festivities/christmas-decorations-sinistra.webp";
+import fireworks from "@/img/festivities/buon-anno.gif";
 
 import cancerLogo from "@/img/festivities/cancer-logo.webp";
 import paceLogo from "@/img/festivities/pace.webp";
@@ -130,6 +131,7 @@ export default {
 
 	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenPumpkin" />
 	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenCobwebs" />
+	<link v-if="festivitiesOrOccurrences.newYear" rel="preload" as="image" :href="fireworks" />
 
 	<!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
 	<link rel="preload" as="image" :href="reloadIcon" />

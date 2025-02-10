@@ -217,7 +217,7 @@ export const useLanguageStore = defineStore('Language', {
     toiletDayText: '19 November: World Toilet Day 🤣',
     worldWideWebText: 'On 6 August 1991, the World Wide Web was born',
     worldPizzaDayText: '17 January: World Pizza day 🤌🏻',
-    valentinesDayText: "Happy Valentine's Day",
+    valentinesDayText: "Happy Valentine's Day ❤️",
     worldEnvironmentDayText: '5 June: World Environment Day',
     humanRightsDayText: '10 December: World Human Rights Day',
     starWarsDay: '25 May 1977: Star Wars is released in cinemas',
@@ -441,7 +441,7 @@ export const useLanguageStore = defineStore('Language', {
       this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
       this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
       this.worldPizzaDayText = '17 Gennaio: Giornata mondiale della Pizza 🤌🏻';
-      this.valentinesDayText = 'Buon San Valentino';
+      this.valentinesDayText = 'Buon San Valentino ❤️';
       this.worldEnvironmentDayText = "5 Giugno: Giornata mondiale dell'ambiente";
       this.humanRightsDayText = '10 dicembre: Giornata mondiale dei diritti umani';
       this.starWarsDay = '25 Maggio 1977: Esce al cinema Star Wars';
@@ -565,7 +565,7 @@ export const useLanguageStore = defineStore('Language', {
       this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
       this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
       this.worldPizzaDayText = '17 de enero: Día Mundial de la Pizza 🤌🏻';
-      this.valentinesDayText = 'Feliz Día de los Enamorados';
+      this.valentinesDayText = 'Feliz Día de los Enamorados ❤️';
       this.worldEnvironmentDayText = '5 de junio: Día Mundial del Medio Ambiente';
       this.humanRightsDayText = '10 de diciembre: Día Mundial de los Derechos Humanos';
       this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';

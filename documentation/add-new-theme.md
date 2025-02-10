@@ -8,7 +8,7 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 
 - Nel nuovo file includi tutte le variabili e le classi riguardanti il tema. Dopo di che devi aggiungerle nei vari componenti prendendo spunto dagli altri temi già esistenti.
 
-- In fine aggiorna il test nella sezione "cambio temi" nel file Helper.cy.js. Purtroppo in cypress si rompono i test se inserisci il formato esadecimale del colore, quindi per farlo funzionare devi inserire il formato rgb.
+- In fine aggiorna il test nel file Helper.cy.js. Purtroppo in cypress si rompono i test se inserisci il formato esadecimale del colore, quindi per farlo funzionare devi inserire il formato rgb.
 
 - Se aggiungi immagini assicurati che vengano caricate nel componente Preload-images.vue
 

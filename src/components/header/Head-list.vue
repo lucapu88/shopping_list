@@ -153,21 +153,25 @@ export default {
 	animation: batAppear 3s infinite;
 	/* animation-fill-mode: forwards; */
 	/* animation-iteration-count: 2; */
+	z-index: 5;
 }
 .bat-1 {
 	top: -10px;
 	left: 12%;
 	animation-delay: 4s;
+	z-index: 5;
 }
 .bat-2 {
 	top: 8%;
 	left: 15%;
 	animation-delay: 6.5s;
+	z-index: 5;
 }
 .bat-3 {
 	top: 0;
 	left: 23%;
 	animation-delay: 8s;
+	z-index: 5;
 }
 @keyframes batAppear {
 	0% {
