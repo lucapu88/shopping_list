@@ -10,6 +10,7 @@ describe("test dell'helper e delle impostazioni", () => {
     });
 
     it("cambio temi", () => {
+        // TOFIX verificare anche le immagini 
         const today = new Date();
         const currentMonth = today.getMonth() + 1;
         const currentDay = today.getDate();

@@ -140,6 +140,7 @@ export const useLanguageStore = defineStore('Language', {
     removeEmpty: 'Remove only empty',
     deleteAll: 'Delete ALL',
     deleteAllConfirmText: 'Are you sure you want \n delete the whole list?',
+    //-------------------------------------------------------------------------- HELPER DESCRIPTIONS
     helperDescription: {
       troubleshooting: 'Troubleshooting',
       troubleshootingText: {
@@ -207,6 +208,7 @@ export const useLanguageStore = defineStore('Language', {
       adviceText: "This is a web app converted to a smartphone app, and is always maintained, so don't pay attention to the date of the last update that appears in the store.",
       dateLastUpdateText: "The actual date of the last update is: "
     },
+    //--------------------------------------------------------------------- FESTIVITÀ
     cancerDayText: '4 February: World Cancer Day',
     peaceDayText: '1 January: World Peace Day',
     womensDayText: "Best wishes to all women",
@@ -221,6 +223,8 @@ export const useLanguageStore = defineStore('Language', {
     worldEnvironmentDayText: '5 June: World Environment Day',
     humanRightsDayText: '10 December: World Human Rights Day',
     starWarsDay: '25 May 1977: Star Wars is released in cinemas',
+    newYearText: 'Happy New Year!',
+    //----------------------------------------------------------------------------------------------------------
     backupListText: {
       title: 'Import Last Backup',
       description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion.",
@@ -255,7 +259,6 @@ export const useLanguageStore = defineStore('Language', {
       title: 'Product already listed',
       body: 'Insert it anyway?'
     },
-    newYearText: 'Happy New Year!'
   }),
   getters: {},
   actions: {
@@ -344,15 +347,14 @@ export const useLanguageStore = defineStore('Language', {
         });
       }
     },
-    setItalianTranslations() {
+    setItalianTranslations() { // ITA
       this.placeholder = 'Scrivi qui cosa comprare';
       this.defaultPlaceholderText = 'Scrivi qui cosa comprare';
       this.categories = this.itaCategories;
       this.copyList.text = 'Lista copiata negli appunti';
       this.share.text = 'Link copiato negli appunti, incollalo con chi vuoi.';
       this.confirmText = 'Sei sicuro di voler eliminare:\n';
-      this.selectedTodosConfirmText =
-        'Stai per eliminare questi elementi';
+      this.selectedTodosConfirmText = 'Stai per eliminare questi elementi';
       this.settingsTextTitle = 'Impostazioni';
       this.shoppingListTitle = 'Lista Spesa';
       this.choseCategoryText = 'Scegli una categoria tra queste:';
@@ -361,8 +363,7 @@ export const useLanguageStore = defineStore('Language', {
       this.languagesBtns.spanish = 'Spagnolo';
       this.languagesBtns.italian = 'Italiano';
       this.safeModeText.title = 'Modalità eliminazione sicura';
-      this.safeModeText.description =
-        'ti chiederà conferma di eliminazione per ogni singolo prodotto della lista';
+      this.safeModeText.description = 'ti chiederà conferma di eliminazione per ogni singolo prodotto della lista';
       this.safeModeText.function = 'Clicca per attivare/disattivare';
       this.chosenThemeText = 'Tema impostato';
       this.changeThemeText = 'Cambio tema';
@@ -380,6 +381,125 @@ export const useLanguageStore = defineStore('Language', {
       this.removeEmpty = 'Rimuovi vuote';
       this.deleteAll = 'Cancella tutto';
       this.deleteAllConfirmText = 'Sei sicuro di voler eliminare \n tutta la lista?';
+      this.helperItaTranslations();
+      this.festivitiesITATranslations();
+      this.backupListText.title = 'Importa ultimo backup';
+      this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
+      this.backupListText.confirm = "Sei sicuro?";
+      this.backupListText.noBackupText = 'Non ci sono backup salvati';
+      this.infoCategoriesAlert = 'Se non ritrovi le categorie assicurati che la lingua sia quella esatta. Le categorie vengono importate correttamente se sono scritte nella lingua selezionata.';
+      this.priceText = 'Se scrivi un numero con la valuta € o £ o $ in automatico ti calcolerà il totale di tutti i prezzi scritti in lista, ma attenzione funziona solo se scrivi la valuta, ad esempio: pane 2,99€.';
+      this.deselectAllText = 'Deseleziona Tutti';
+      this.importantTodos.alert = "Non ci sono elementi selezionati come importanti";
+      this.importantTodos.text.part1 = "Cliccando su";
+      this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
+      this.importantTodos.addedImportantText = "Segnato come importante";
+      this.showOnlyLatestDeletedText.title = "Mostra gli ultimi cancellati";
+      this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
+      this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
+      this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
+      this.suggestions.tipsBtnText = 'Mostra suggerimenti';
+      this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
+      this.categoryTipText = 'Se clicchi sulla categoria potrai aggiungere prodotti al suo interno';
+      this.reloadAppText = "Ricarica l'app:";
+      this.duplicateText.title = "Prodotto già presente in lista";
+      this.duplicateText.body = "Inserirlo comunque?";
+    },
+    setSpanishTranslations() { // SPA
+      this.placeholder = 'Escriba aquí qué comprar';
+      this.defaultPlaceholderText = 'Escriba aquí qué comprar';
+      this.categories = this.spanCategories;
+      this.copyList.text = 'Lista copiada en el portapapeles';
+      this.share.text = 'Copia el enlace en el portapapeles y pégalo con quien quieras.';
+      this.confirmText = '¿Estás seguro de que quieres borrar:\n';
+      this.selectedTodosConfirmText = 'Está a punto de eliminar estos elementos';
+      this.settingsTextTitle = 'Ajustes';
+      this.shoppingListTitle = 'Lista de la compra';
+      this.choseCategoryText = 'Elija una categoría de estas:';
+      this.changeLanguage = 'Cambio idioma';
+      this.languagesBtns.english = 'Inglés';
+      this.languagesBtns.spanish = 'Español';
+      this.languagesBtns.italian = 'Italiano';
+      this.safeModeText.title = 'Modo de borrado seguro';
+      this.safeModeText.description = 'le pedirá que confirme la eliminación de cada producto de la lista.';
+      this.safeModeText.function = 'Pulse para activar/desactivar';
+      this.chosenThemeText = 'Conjunto de temas';
+      this.changeThemeText = 'Cambiar de tema';
+      this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
+      this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
+      this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
+      this.pasteListText.title = "Importar una lista desde otras aplicaciones";
+      this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
+      this.shareText = 'Compartir App';
+      this.importText = 'Importar';
+      this.updateText.description = "Si el botón está verde, pulse para actualizar";
+      this.updateText.available = 'Actualización';
+      this.updateText.unavailable = 'Ninguna Actualización';
+      this.insertAll = 'Introduzca todos';
+      this.removeEmpty = 'Eliminar categorías vacías';
+      this.deleteAll = 'Borrar todo';
+      this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
+      this.helperSpaTranslations();
+      this.festivitiesSPATranslations();
+      this.backupListText.title = 'Importar la última copia de seguridad';
+      this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
+      this.backupListText.confirm = '¿Seguro?';
+      this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
+      this.infoCategoriesAlert = 'Si no encuentra las categorías, asegúrese de que el idioma es correcto. Las categorías se importan correctamente si están escritas en el idioma seleccionado.';
+      this.priceText = 'Si tecleas un número con la moneda € o £ o $ calculará automáticamente el total de todos los precios escritos en la lista, pero cuidado, sólo funciona si tecleas la moneda, por ejemplo, pan 2,99€.';
+      this.deselectAllText = 'Desmarcar Todo';
+      this.importantTodos.alert = "No hay elementos seleccionados como importantes";
+      this.importantTodos.text.part1 = "Haga clic en";
+      this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
+      this.importantTodos.addedImportantText = "Marcado como importante";
+      this.showOnlyLatestDeletedText.title = "Mostrar los últimos borrados";
+      this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
+      this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
+      this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
+      this.suggestions.tipsBtnText = 'Mostrar consejos';
+      this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
+      this.categoryTipText = 'Si hace clic en la categoría puede añadir productos a la misma';
+      this.reloadAppText = "Recargar aplicación:";
+      this.duplicateText.title = "Producto ya listado";
+      this.duplicateText.body = "¿Insertarlo de todos modos?";
+    },
+    //-------------------------------------------------------------------------------------  FESTIVITÀ
+    festivitiesITATranslations() { // ITALIANO
+      this.cancerDayText = '4 Febbraio: Giornata mondiale contro il cancro';
+      this.peaceDayText = '1 Gennaio: Giornata mondiale della pace';
+      this.womensDayText = 'Auguri a tutte le donne';
+      this.shoahText = '27 gennaio: Giorno della memoria';
+      this.earthDayText = '22 aprile: Giornata della terra';
+      this.beerDayText = 'Buona giornata della birra';
+      this.parentsDayText = '1 Giugno: Auguri a tutti i genitori';
+      this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
+      this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
+      this.worldPizzaDayText = '17 Gennaio: Giornata mondiale della Pizza 🤌🏻';
+      this.valentinesDayText = 'Buon San Valentino ❤️';
+      this.worldEnvironmentDayText = "5 Giugno: Giornata mondiale dell'ambiente";
+      this.humanRightsDayText = '10 dicembre: Giornata mondiale dei diritti umani';
+      this.starWarsDay = '25 Maggio 1977: Esce al cinema Star Wars';
+      this.newYearText = "Buon Anno!";
+    },
+    festivitiesSPATranslations() { // SPAGNOLO
+      this.cancerDayText = '4 de febrero: Día Mundial contra el Cáncer';
+      this.peaceDayText = '1 de enero: Día Mundial de la Paz';
+      this.womensDayText = 'Mis mejores deseos a todas las mujeres';
+      this.shoahText = '27 de enero: Día de la Memoria';
+      this.earthDayText = 'Día de la Tierra';
+      this.beerDayText = 'Feliz Día de la Cerveza';
+      this.parentsDayText = '1 de junio: saludos a todos los padres';
+      this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
+      this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
+      this.worldPizzaDayText = '17 de enero: Día Mundial de la Pizza 🤌🏻';
+      this.valentinesDayText = 'Feliz Día de los Enamorados ❤️';
+      this.worldEnvironmentDayText = '5 de junio: Día Mundial del Medio Ambiente';
+      this.humanRightsDayText = '10 de diciembre: Día Mundial de los Derechos Humanos';
+      this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';
+      this.newYearText = "¡Feliz Año Nuevo!";
+    },
+    //------------------------------------------------------------------------------------- HELPER
+    helperItaTranslations() { // ITALIANO
       this.helperDescription.troubleshooting = 'Risoluzione Problemi';
       this.helperDescription.troubleshootingText.part1 = " Nel caso riscontrassi lentezza o blocchi nel caricamento di immagini, controlla la tua connessione, se è ok prova a riavviare l'app. Se il problema persiste segnalalo all'email nella sezione contatti qui sopra.";
       this.helperDescription.troubleshootingText.part2 = "Non salviamo dati, non salviamo nessun tuo dato personale, ne posizione, e non salviamo le tue liste della spesa. I dati vengono salvati in locale solamente sul tuo dispositivo, quindi se dovessi perdere la lista eliminandola per sbaglio, l'unico modo per recuperarla è cliccando sul pulsante nella sezione 'importa ultimo backup' più in alto.";
@@ -431,79 +551,8 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.adviceTitle = 'IMPORTANTE: ';
       this.helperDescription.adviceText = "Questa è una web app convertita in app per smartphone, ed è sempre manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che appare nello store.";
       this.helperDescription.dateLastUpdateText = "La data reale dell'ultimo aggiornamento è: ";
-      this.cancerDayText = '4 Febbraio: Giornata mondiale contro il cancro';
-      this.peaceDayText = '1 Gennaio: Giornata mondiale della pace';
-      this.womensDayText = 'Auguri a tutte le donne';
-      this.shoahText = '27 gennaio: Giorno della memoria';
-      this.earthDayText = '22 aprile: Giornata della terra';
-      this.beerDayText = 'Buona giornata della birra';
-      this.parentsDayText = '1 Giugno: Auguri a tutti i genitori';
-      this.toiletDayText = '19 Novembre: Giornata Mondiale del Gabinetto 🤣';
-      this.worldWideWebText = 'Il 6 agosto 1991 nasce il World Wide Web';
-      this.worldPizzaDayText = '17 Gennaio: Giornata mondiale della Pizza 🤌🏻';
-      this.valentinesDayText = 'Buon San Valentino ❤️';
-      this.worldEnvironmentDayText = "5 Giugno: Giornata mondiale dell'ambiente";
-      this.humanRightsDayText = '10 dicembre: Giornata mondiale dei diritti umani';
-      this.starWarsDay = '25 Maggio 1977: Esce al cinema Star Wars';
-      this.backupListText.title = 'Importa ultimo backup';
-      this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
-      this.backupListText.confirm = "Sei sicuro?";
-      this.backupListText.noBackupText = 'Non ci sono backup salvati';
-      this.infoCategoriesAlert = 'Se non ritrovi le categorie assicurati che la lingua sia quella esatta. Le categorie vengono importate correttamente se sono scritte nella lingua selezionata.';
-      this.priceText = 'Se scrivi un numero con la valuta € o £ o $ in automatico ti calcolerà il totale di tutti i prezzi scritti in lista, ma attenzione funziona solo se scrivi la valuta, ad esempio: pane 2,99€.';
-      this.deselectAllText = 'Deseleziona Tutti';
-      this.importantTodos.alert = "Non ci sono elementi selezionati come importanti";
-      this.importantTodos.text.part1 = "Cliccando su";
-      this.importantTodos.text.part2 = "potrai visualizzare solo gli elementi importanti che hai selezionato. Attualmente è solo in modalità visualizzazione.";
-      this.importantTodos.addedImportantText = "Segnato come importante";
-      this.showOnlyLatestDeletedText.title = "Mostra gli ultimi cancellati";
-      this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
-      this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
-      this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
-      this.suggestions.tipsBtnText = 'Mostra suggerimenti';
-      this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
-      this.categoryTipText = 'Se clicchi sulla categoria potrai aggiungere prodotti al suo interno';
-      this.reloadAppText = "Ricarica l'app:";
-      this.duplicateText.title = "Prodotto già presente in lista";
-      this.duplicateText.body = "Inserirlo comunque?";
-      this.newYearText = "Buon Anno!";
     },
-    setSpanishTranslations() {
-      this.placeholder = 'Escriba aquí qué comprar';
-      this.defaultPlaceholderText = 'Escriba aquí qué comprar';
-      this.categories = this.spanCategories;
-      this.copyList.text = 'Lista copiada en el portapapeles';
-      this.share.text = 'Copia el enlace en el portapapeles y pégalo con quien quieras.';
-      this.confirmText = '¿Estás seguro de que quieres borrar:\n';
-      this.selectedTodosConfirmText =
-        'Está a punto de eliminar estos elementos';
-      this.settingsTextTitle = 'Ajustes';
-      this.shoppingListTitle = 'Lista de la compra';
-      this.choseCategoryText = 'Elija una categoría de estas:';
-      this.changeLanguage = 'Cambio idioma';
-      this.languagesBtns.english = 'Inglés';
-      this.languagesBtns.spanish = 'Español';
-      this.languagesBtns.italian = 'Italiano';
-      this.safeModeText.title = 'Modo de borrado seguro';
-      this.safeModeText.description =
-        'le pedirá que confirme la eliminación de cada producto de la lista.';
-      this.safeModeText.function = 'Pulse para activar/desactivar';
-      this.chosenThemeText = 'Conjunto de temas';
-      this.changeThemeText = 'Cambiar de tema';
-      this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
-      this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
-      this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
-      this.pasteListText.title = "Importar una lista desde otras aplicaciones";
-      this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
-      this.shareText = 'Compartir App';
-      this.importText = 'Importar';
-      this.updateText.description = "Si el botón está verde, pulse para actualizar";
-      this.updateText.available = 'Actualización';
-      this.updateText.unavailable = 'Ninguna Actualización';
-      this.insertAll = 'Introduzca todos';
-      this.removeEmpty = 'Eliminar categorías vacías';
-      this.deleteAll = 'Borrar todo';
-      this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
+    helperSpaTranslations() { // SPAGNOLO
       this.helperDescription.troubleshooting = 'Solución de problemas';
       this.helperDescription.troubleshootingText.part1 = "En caso de que experimentes lentitud o congelación al cargar las imágenes, comprueba tu conexión, si está bien prueba a reiniciar la aplicación. Si el problema persiste repórtalo al correo electrónico en la sección de contactos anterior.";
       this.helperDescription.troubleshootingText.part2 = "No guardamos ninguno de tus datos, ni ubicación, ni guardamos tus listas de la compra. Los datos solo se guardan localmente en tu dispositivo, por lo que si pierdes tu lista por accidente borrándola, la única forma de recuperarla es pulsando el botón de la sección 'importar última copia de seguridad' que aparece más arriba.";
@@ -555,43 +604,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.adviceTitle = 'IMPORTANTE: ';
       this.helperDescription.adviceText = "Esta es una aplicación web convertida en aplicación para smartphone, y se mantiene siempre, así que no prestes atención a la fecha de la última actualización que aparece en la tienda.";
       this.helperDescription.dateLastUpdateText = "La fecha real de la última actualización es: ";
-      this.cancerDayText = '4 de febrero: Día Mundial contra el Cáncer';
-      this.peaceDayText = '1 de enero: Día Mundial de la Paz';
-      this.womensDayText = 'Mis mejores deseos a todas las mujeres';
-      this.shoahText = '27 de enero: Día de la Memoria';
-      this.earthDayText = 'Día de la Tierra';
-      this.beerDayText = 'Feliz Día de la Cerveza';
-      this.parentsDayText = '1 de junio: saludos a todos los padres';
-      this.toiletDayText = '19 de noviembre: Día Mundial del Gabinete 🤣';
-      this.worldWideWebText = 'El 6 de agosto de 1991 nació la World Wide Web';
-      this.worldPizzaDayText = '17 de enero: Día Mundial de la Pizza 🤌🏻';
-      this.valentinesDayText = 'Feliz Día de los Enamorados ❤️';
-      this.worldEnvironmentDayText = '5 de junio: Día Mundial del Medio Ambiente';
-      this.humanRightsDayText = '10 de diciembre: Día Mundial de los Derechos Humanos';
-      this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';
-      this.backupListText.title = 'Importar la última copia de seguridad';
-      this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
-      this.backupListText.confirm = '¿Seguro?';
-      this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';
-      this.infoCategoriesAlert = 'Si no encuentra las categorías, asegúrese de que el idioma es correcto. Las categorías se importan correctamente si están escritas en el idioma seleccionado.';
-      this.priceText = 'Si tecleas un número con la moneda € o £ o $ calculará automáticamente el total de todos los precios escritos en la lista, pero cuidado, sólo funciona si tecleas la moneda, por ejemplo, pan 2,99€.';
-      this.deselectAllText = 'Desmarcar Todo';
-      this.importantTodos.alert = "No hay elementos seleccionados como importantes";
-      this.importantTodos.text.part1 = "Haga clic en";
-      this.importantTodos.text.part2 = "para visualizar sólo los elementos importantes que haya seleccionado. Actualmente sólo está en modo de visualización.";
-      this.importantTodos.addedImportantText = "Marcado como importante";
-      this.showOnlyLatestDeletedText.title = "Mostrar los últimos borrados";
-      this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
-      this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
-      this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
-      this.suggestions.tipsBtnText = 'Mostrar consejos';
-      this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
-      this.categoryTipText = 'Si hace clic en la categoría puede añadir productos a la misma';
-      this.reloadAppText = "Recargar aplicación:";
-      this.duplicateText.title = "Producto ya listado";
-      this.duplicateText.body = "¿Insertarlo de todos modos?";
-      this.newYearText = "¡Feliz Año Nuevo!";
     }
-  },
+  }
 });
 
