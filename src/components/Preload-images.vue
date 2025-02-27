@@ -24,7 +24,7 @@ import leaves from "@/img/foglie.webp";
 import leotta from "@/img/jeans-zip.webp";
 import levisMio from "@/img/jeans-mio.webp";
 import jeansIle from "@/img/jeans-ile.webp";
-import jeansTasca from "@/img/jeans-ile.webp";
+import jeansTasca from "@/img/jeans-tasca-culo.webp";
 
 import merryChristmas from "@/img/festivities/christmas.webp";
 import christmasSkull from "@/img/icons/christmas-skull.webp";
@@ -86,6 +86,12 @@ export default {
 
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="montagnePreload" />
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="montagneTabletPreload" />
+
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="leotta" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="levisMio" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansIle" />
+	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansTasca" />
+
 	<!-- --------------------------------preload delle icone in base ai temi------------------------- -->
 	<link v-if="!theme.elegantTheme" rel="preload" as="image" :href="checked" />
 
@@ -99,11 +105,6 @@ export default {
 
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="lemon" />
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="leaves" />
-
-	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="leotta" />
-	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="levisMio" />
-	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansIle" />
-	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansTasca" />
 
 	<!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
 	<template v-if="isChristmas.christmasTheme">
