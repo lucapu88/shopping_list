@@ -2,6 +2,7 @@
 import { useChristmasStore } from "@/store/ChristmasStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 import { Container, Draggable } from "../../../node_modules/vue3-smooth-dnd"; //DOCUMENTAZIONE: https://github.com/gilnd/vue3-smooth-dnd
 // import draggable from 'vuedraggable';
 import TodoRow from "./Todo-row.vue";
@@ -16,11 +17,15 @@ export default {
 			isChristmas: useChristmasStore(),
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
+			settingsStore: useSettingsStore(),
 		};
 	},
 	methods: {
 		onDrop(dropResult) {
 			this.todosStore.todos = this.applyDrag(this.todosStore.todos, dropResult);
+			if (this.settingsStore.canDeleteEmptyCategories) {
+				this.todosStore.removeOnlyEmpty();
+			}
 		},
 		applyDrag(arr, dragResult) {
 			const { removedIndex, addedIndex, payload } = dragResult;

@@ -21,7 +21,7 @@ export default {
 			if (isDraggable) {
 				this.timer = setTimeout(() => {
 					this.todosStore.isDraggable = isDraggable;
-				}, 3000);
+				}, 2000);
 			} else {
 				clearTimeout(this.timer);
 			}
