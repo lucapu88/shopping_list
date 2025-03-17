@@ -185,7 +185,9 @@ export const useLanguageStore = defineStore('Language', {
         part2: 'So you mark them and then at the end of shopping by clicking on',
         part3: 'at the bottom only the ones you marked will be deleted.',
         deselectAllText: 'You can deselect them all by clicking on',
-        confirmDeselectAllText: 'and then confirming (or cancelling) by clicking on'
+        confirmDeselectAllText: 'and then confirming (or cancelling) by clicking on',
+        hideText: 'You can choose to hide selected items by clicking on',
+        showText: 'Or show them by clicking on'
       },
       copyListTitle: 'Copy list, Highlight items',
       copyListText: 'is used to copy the list and paste it wherever you want.',
@@ -535,6 +537,8 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.part3 = 'in basso verranno eliminati solo quelli che hai smarcato.';
       this.helperDescription.multipleDeleteText.deselectAllText = 'Puoi deselezionarli tutti cliccando su';
       this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'e poi confermando (o annullando) cliccando su';
+      this.helperDescription.multipleDeleteText.hideText = 'Puoi scegliere di nascondere gli elementi selezionati cliccando su';
+      this.helperDescription.multipleDeleteText.showText = 'Oppure di mostrarli cliccando su';
       this.helperDescription.copyListTitle = 'Copia lista, Evidenzia elementi';
       this.helperDescription.copyListText = 'serve per copiare la lista e incollarla dove vuoi.';
       this.helperDescription.highlightImportant.part1 = 'Puoi rendere "importante" un prodotto cliccando sul nome e verrà';
@@ -588,6 +592,8 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.part3 = 'en la parte inferior, sólo se borrarán los que hayas desmarcado.';
       this.helperDescription.multipleDeleteText.deselectAllText = 'Puede anular la selección de todos ellos haciendo clic en';
       this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'y luego confirmar (o cancelar) pulsando en';
+      this.helperDescription.multipleDeleteText.hideText = 'Puede optar por ocultar los elementos seleccionados haciendo clic en';
+      this.helperDescription.multipleDeleteText.showText = 'O muéstrelas haciendo clic en';
       this.helperDescription.copyListTitle = 'Copiar lista, Resaltar elementos';
       this.helperDescription.copyListText = 'sirve para copiar la lista y pegarla donde quieras.';
       this.helperDescription.highlightImportant.part1 = 'Puede hacer que un producto sea "importante" haciendo clic en el nombre y será';

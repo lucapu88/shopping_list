@@ -39,10 +39,15 @@ export default {
 			'lemon-other-btn': todo.category && theme.lemonTheme,
 			'jeans-category-btn': todo.category && theme.jeansTheme,
 			'todo-added': todo.todoAdded,
+			hidden: todo.hidden,
 		}"
 	>
 		<TodoRow :todo="todo" :index="n" />
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.hidden {
+	display: none;
+}
+</style>

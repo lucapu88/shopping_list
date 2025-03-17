@@ -39,7 +39,7 @@ export default {
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
-			class="opacity-90 text-danger border-danger rounded multiple-delete p-2"
+			class="opacity-90 text-danger border-danger rounded multiple-delete left p-2"
 			:class="{
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
@@ -54,6 +54,20 @@ export default {
 
 		<!-- PULSANTE DESELEZIONA TUTTI I SELEZIONATI COME IMPORTANTI -->
 		<DeselectAll :important-todo="true" :multiple-delete="false" />
+
+		<!-- PULSANTE NASCONDI I SELEZIONATI -->
+		<button
+			v-if="todosStore.canDeleteMultipleTodo"
+			class="opacity-80 text-danger border-danger rounded multiple-delete right p-2"
+			:class="{
+				christmas: isChristmas.christmasTheme,
+				'elegant-btn': theme.elegantTheme,
+			}"
+			@click="todosStore.toggleSelectedTodosForDelete()"
+		>
+			<img v-if="todosStore.isVisible" class="eye" src="@/img/icons/eye-open.webp" alt="visible" />
+			<img v-if="!todosStore.isVisible" class="eye" src="@/img/icons/eye-close.webp" alt="hidden" />
+		</button>
 
 		<!-- PULSANTE ELIMINA TUTTO-->
 		<button
@@ -72,6 +86,7 @@ export default {
 			<img v-if="isChristmas.christmasTheme" class="christmas-skull" src="@/img/icons/christmas-skull.webp" alt="delete_all_and_merry_christmas" />
 		</button>
 		<span v-if="todosStore.totalPrice > 0" style="line-height: 2">{{ todosStore.totalPrice }}</span>
+
 		<!-- PULSANTE TORNA IN CIMA -->
 		<button
 			class="btn btn-back-to-top"
@@ -86,7 +101,6 @@ export default {
 				'pink-theme-btn': theme.pinkTheme,
 				'panter-theme-back-top': theme.panterTheme,
 				'btn-outline-info': !theme.pinkTheme,
-				'is-dragginn': todosStore.isDraggable && todosStore.todos.length > 8,
 			}"
 			@click="emitScrollTop()"
 		>
@@ -116,28 +130,36 @@ export default {
 	margin-left: 7px;
 }
 
-.is-dragginn {
-	position: fixed;
-	bottom: 30px;
-	right: 30px;
-	z-index: 200;
-}
-
 .multiple-delete {
 	position: fixed;
 	bottom: 3%;
-	left: 3%;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	z-index: 150;
 }
-.multiple-delete > img {
+.trash {
 	width: 25px;
+	height: 25px;
+}
+
+.left {
+	left: 3%;
+}
+.right {
+	right: 3%;
+}
+
+.eye {
+	width: 35px;
 	height: 25px;
 }
 
 .opacity-90 {
 	opacity: 0.9;
+}
+
+.opacity-80 {
+	opacity: 0.8;
 }
 </style>

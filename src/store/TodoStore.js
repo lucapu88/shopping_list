@@ -48,6 +48,7 @@ export const useTodoStore = defineStore('todoStore', {
     confirmDeselectAll: false,
     openDeleteAllModal: false,
     skipCheck: false,
+    isVisible: false,
   }),
   actions: {
     addTodo(tip) {
@@ -210,6 +211,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.isDraggable = !this.isDraggable;
       this.selectedByHolding = !this.isDraggable;
       this.categoryList = false;
+      this.resetVisibility();
       this.resetModify();
       this.removeSelectedCategoryToAddItem();
     },
@@ -477,6 +479,20 @@ export const useTodoStore = defineStore('todoStore', {
       if (mm < 10) mm = '0' + mm;
 
       return dd + '/' + mm + '/' + yyyy;
+    },
+    toggleSelectedTodosForDelete() {
+      this.isVisible = !this.isVisible;
+      this.isVisible
+        ? this.todos.forEach(todo => { if (todo.multipleDelete) todo.hidden = true; })
+        : this.todos.forEach(todo => { todo.hidden = false; });
+      /* TO FIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
+        this.saveTodos(); */
+    },
+    resetVisibility() {
+      this.isVisible = false;
+      this.todos.forEach(todo => { todo.hidden = false; });
+      /* TO FIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
+        this.saveTodos(); */
     }
-  },
+  }
 });

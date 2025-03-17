@@ -82,6 +82,29 @@ export default {
 				</button>
 			</div>
 		</li>
+		<li>
+			{{ languages.helperDescription.multipleDeleteText.hideText }}
+			<button
+				class="opacity-80 text-danger border-danger rounded multiple-delete right"
+				:class="{
+					christmas: isChristmas.christmasTheme,
+					'elegant-btn': theme.elegantTheme,
+				}"
+			>
+				<img class="eye" src="@/img/icons/eye-open.webp" alt="visible" />
+			</button>
+			<br />
+			{{ languages.helperDescription.multipleDeleteText.showText }}
+			<button
+				class="opacity-80 text-danger border-danger rounded multiple-delete right"
+				:class="{
+					christmas: isChristmas.christmasTheme,
+					'elegant-btn': theme.elegantTheme,
+				}"
+			>
+				<img class="eye" src="@/img/icons/eye-close.webp" alt="hidden" />
+			</button>
+		</li>
 
 		<ToggleTutorialButton :features="multipleDelete" :margin="true" />
 		<Tutorial v-if="settings.video && settings.feature === multipleDelete" :features="multipleDelete" />
@@ -91,6 +114,10 @@ export default {
 <style scoped>
 .cart {
 	width: 28px;
+	height: 24px;
+}
+.eye {
+	width: 30px;
 	height: 24px;
 }
 </style>

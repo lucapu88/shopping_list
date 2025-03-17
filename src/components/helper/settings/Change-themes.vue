@@ -104,7 +104,6 @@ export default {
 					<button type="button" class="btn panter-theme-btn p-1" @click="changeTheme('panter')">Panther</button>
 					<button type="button" class="btn lemon-theme-btn p-1" @click="changeTheme('lemon')">Lemon</button>
 					<button type="button" class="btn jeans-theme-btn p-1" @click="changeTheme('jeans')">Jeans</button>
-					<span class="new">NEW</span>
 				</div>
 			</div>
 		</template>

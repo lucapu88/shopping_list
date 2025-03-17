@@ -126,4 +126,17 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     });
   });
 
+  it('verifico se nasconde/mostra gli elementi selezionati', () => {
+    cy.addSomeItemsToList(phrases);
+
+    cy.get('[index="0"] > .checkbox').click({ force: true });
+    cy.get('.eye').click();
+    cy.get('.eye').should('have.attr', 'src', '/src/img/icons/eye-open.webp');
+    cy.get(`#todo:contains(${phrases.frase1})`).should('not.be.visible');
+
+    cy.get('.eye').click();
+    cy.get('.eye').should('have.attr', 'src', '/src/img/icons/eye-close.webp');
+    cy.get(`#todo:contains(${phrases.frase1})`).should('be.visible');
+  });
+
 });
