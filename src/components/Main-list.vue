@@ -1,7 +1,7 @@
 <script setup>
 import TodoListDraggable from "./todo-list/Todo-list-draggable.vue";
 import TodoList from "./todo-list/Todo-list.vue";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";

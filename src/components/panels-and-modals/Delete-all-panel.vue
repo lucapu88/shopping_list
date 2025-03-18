@@ -1,5 +1,5 @@
 <script setup>
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";

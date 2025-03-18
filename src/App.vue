@@ -9,8 +9,8 @@ import FooterButtonsContainer from "./components/footer/Footer-buttons-container
 import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
-import { useChristmasStore } from "@/store/ChristmasStore";
-import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";

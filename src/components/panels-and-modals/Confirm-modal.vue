@@ -2,7 +2,7 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import postit from "@/img/postit.webp";
 import maldive from "@/img/maldive.webp";
 import forest from "@/img/winter-forest.webp";

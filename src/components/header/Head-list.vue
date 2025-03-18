@@ -1,8 +1,8 @@
 <script setup>
 import Title from "./Title.vue";
 import HeaderButtonsContainer from "./Header-buttons-container.vue";
-import { useChristmasStore } from "@/store/ChristmasStore";
-import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";

@@ -1,7 +1,7 @@
 <script setup>
 import { useLanguageStore } from "@/store/LanguageStore";
-import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 </script>
 
 <script>

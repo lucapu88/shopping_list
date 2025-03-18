@@ -1,6 +1,6 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
@@ -91,9 +91,10 @@ export default {
 					'elegant-btn': theme.elegantTheme,
 				}"
 			>
-				<img class="eye" src="@/img/icons/eye-open.webp" alt="visible" />
+				<img class="eye" src="@/img/icons/eye-close.webp" alt="hidden" />
 			</button>
 			<br />
+
 			{{ languages.helperDescription.multipleDeleteText.showText }}
 			<button
 				class="opacity-80 text-danger border-danger rounded multiple-delete right"
@@ -102,7 +103,7 @@ export default {
 					'elegant-btn': theme.elegantTheme,
 				}"
 			>
-				<img class="eye" src="@/img/icons/eye-close.webp" alt="hidden" />
+				<img class="eye" src="@/img/icons/eye-open.webp" alt="visible" />
 			</button>
 		</li>
 

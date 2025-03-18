@@ -4,7 +4,7 @@ import { useTodoStore } from '@/store/TodoStore';
 import { useEnglishSuggStoreStore } from '@/store/suggestions/EnglishSuggStore';
 import { useItalianSuggStoreStore } from '@/store/suggestions/ItalianSuggStore';
 import { useSpanishSuggStoreStore } from '@/store/suggestions/SpanishSuggStore';
-import { useChristmasStore } from '@/store/ChristmasStore';
+import { useChristmasStore } from '@/store/festivities/ChristmasStore';
 
 export const useSuggestionsStore = defineStore('suggestions', {
   state: () => ({

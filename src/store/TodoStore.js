@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useSettingsStore } from '@/store/SettingsStore';
-import { useChristmasStore } from '@/store/ChristmasStore';
-import { useOthersFestivitiesStore } from '@/store/OthersFestivitiesStore';
+import { useChristmasStore } from '@/store/festivities/ChristmasStore';
+import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 
 export const useTodoStore = defineStore('todoStore', {
@@ -494,5 +494,6 @@ export const useTodoStore = defineStore('todoStore', {
       /* TO FIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
         this.saveTodos(); */
     }
+    //------------------- HAI RAGGIUNTO IL LIMITE DI LUNGHEZZA DI QUESTO FILE, DAI PROSSIMI METODI IN POI CREA UN NUOVO STORE.
   }
 });

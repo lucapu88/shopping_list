@@ -1,6 +1,6 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";

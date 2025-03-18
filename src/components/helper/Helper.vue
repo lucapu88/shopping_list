@@ -2,8 +2,8 @@
 import HelperDescription from "./Helper-description.vue";
 import PrivacyPolicyModal from "../panels-and-modals/privacy-policy/Privacy-policy-modal.vue";
 import { useThemeStore } from "@/store/ThemeStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
-import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";

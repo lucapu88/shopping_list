@@ -1,7 +1,7 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
-import { useOthersFestivitiesStore } from "@/store/OthersFestivitiesStore";
-import { useChristmasStore } from "@/store/ChristmasStore";
+import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
@@ -55,6 +55,8 @@ import cloud from "@/img/icons/cloud.webp";
 import tutorial from "@/img/icons/video-logo.webp";
 import winterHelperBackgr from "@/img/inverno.webp";
 import reloadIcon from "@/img/icons/reload-icon.webp";
+import eyeClosed from "@/img/icons/eye-close.webp";
+import eyeOpen from "@/img/icons/eye-open.webp";
 
 import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
@@ -145,5 +147,7 @@ export default {
 	<!-- -----------------------------------------------------------altri preload---------------------------- -->
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="okIcon" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="closeIcon" />
+	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeClosed" />
+	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeOpen" />
 	<link v-if="!languages.updateText.updated" rel="preload" as="image" :href="dino" />
 </template>
