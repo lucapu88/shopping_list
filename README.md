@@ -8,24 +8,30 @@
 
 <br><hr>
 
-<p>
+<div>
   <a href="readme-traslations/Italiano.md" target="_blank" rel="noopener noreferrer">
     <span><img src="src/img/readme/ITA.png" alt="ita"/></span> 
   </a>
-  Per qualsiasi consiglio su migliorie nel codice potete contattarmi all'indirizzo email qui sotto.
+</div>
+<p>
+  Per qualsiasi consiglio su migliorie nel codice potete contattarmi all'indirizzo email in fondo.
 </p>
 
-<p>
+<div>
   <a href="readme-traslations/English.md" target="_blank" rel="noopener noreferrer">
     <span style="margin-right: 10px"><img src="src/img/readme/ENG.png" alt="eng"/></span> 
   </a>
+</div>
+<p>
   For any advice on improvements in the code, please contact me at the email address below.
 </p>
 
-<p>
+<div>
   <a href="readme-traslations/Espanol.md" target="_blank" rel="noopener noreferrer">
     <span style="margin-right: 10px"><img src="src/img/readme/ESP.png" alt="esp"/></span> 
   </a>
+</div>
+<p>
   Para cualquier consejo sobre mejoras en el código, póngase en contacto conmigo en la dirección de correo electrónico que figura más abajo.
 </p>
 <br><br>
