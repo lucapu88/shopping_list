@@ -212,7 +212,7 @@ export default {
 	height: 100%;
 	padding: 10px;
 	background-size: contain;
-	z-index: 300;
+	z-index: 500;
 	background-color: #ffffff;
 }
 

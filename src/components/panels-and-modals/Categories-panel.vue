@@ -114,13 +114,15 @@ export default {
 
 <style scoped>
 .category-list-container {
-	width: 365px;
+	width: 95%;
 	display: none;
 	text-align: center;
 	border: 1px solid;
 	border-radius: 5px;
 	margin: 0 auto;
 	margin-bottom: 10px;
+	position: relative;
+	z-index: 200;
 }
 
 .categories {
@@ -150,7 +152,6 @@ export default {
 
 .category-list-container.waterfall-descent {
 	display: block;
-	z-index: 100;
 	animation-name: waterfallDescent;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -238,9 +239,22 @@ export default {
 	text-transform: capitalize;
 	border: 1px solid;
 	border-radius: 5px;
+	/* 	TOFIX Valutare possibilità di permettere all'utente di ingrandire o diminuire la dimensione dei pulsanti, 
+		aggiungendo un pulsante + ed uno - che cambiano le dimensioni con le classi plus/minus commentate dopo.
+		Sinceramente a me piacciono piccolini ma li metto più grandi per una questione di usabilità, per chi ci vede poco o per chi ha le dita grosse.
+	*/
+	padding: 5px 10px;
+	margin: 8px;
+}
+/* .plus {
+	padding: 5px 10px;
+	margin: 8px;
+}
+.minus {
 	padding: 1px 3px;
 	margin: 5px;
-}
+} */
+
 .category-list:hover {
 	cursor: pointer;
 }
