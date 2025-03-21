@@ -432,7 +432,7 @@ export const useTodoStore = defineStore('todoStore', {
     setOnlyDeletedTodos(index, arrayWithOneElement) {
       let todosToDelete = [];
       let storageKey = '';
-      console.log(index, arrayWithOneElement);
+
       switch (index) {
         case 'multipleDelete':
           //Salvo I todo selezionati da eliminare
@@ -459,7 +459,7 @@ export const useTodoStore = defineStore('todoStore', {
       }
 
       if (todosToDelete.length > 0) {
-        todosToDelete.push(this.getDate());
+        todosToDelete.push(this.settings.setDate());
         window.localStorage.setItem(storageKey, todosToDelete);
       }
     },
@@ -468,17 +468,6 @@ export const useTodoStore = defineStore('todoStore', {
       if (deletedSingleTodo) { this.deletedSingleTodo = deletedSingleTodo.split(","); }
       const getDeletedTodos = window.localStorage.getItem('deletedTodos');
       if (getDeletedTodos) { this.deletedTodos = getDeletedTodos.split(","); }
-    },
-    getDate() {
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      let mm = today.getMonth() + 1;
-      let dd = today.getDate();
-
-      if (dd < 10) dd = '0' + dd;
-      if (mm < 10) mm = '0' + mm;
-
-      return dd + '/' + mm + '/' + yyyy;
     },
     toggleSelectedTodosForDelete() {
       this.isVisible = !this.isVisible;
