@@ -485,13 +485,13 @@ export const useTodoStore = defineStore('todoStore', {
       this.isVisible
         ? this.todos.forEach(todo => { if (todo.multipleDelete) todo.hidden = true; })
         : this.todos.forEach(todo => { todo.hidden = false; });
-      /* TO FIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
+      /* TOFIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
         this.saveTodos(); */
     },
     resetVisibility() {
       this.isVisible = false;
       this.todos.forEach(todo => { todo.hidden = false; });
-      /* TO FIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
+      /* TOFIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
         this.saveTodos(); */
     }
     //------------------- HAI RAGGIUNTO IL LIMITE DI LUNGHEZZA DI QUESTO FILE, DAI PROSSIMI METODI IN POI CREA UN NUOVO STORE.

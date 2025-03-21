@@ -127,9 +127,6 @@ export default {
 
 .categories {
 	opacity: 1;
-	/*TOFIX: Da valutare se mettere una dimensione fissa o meno...vediamo quando la modale sarà, se sarà, lunga */
-	/* max-height: 450px;
-	overflow: auto; */
 	-webkit-animation: fadeIn 1s;
 	animation: fadeIn 1s;
 }
@@ -239,21 +236,10 @@ export default {
 	text-transform: capitalize;
 	border: 1px solid;
 	border-radius: 5px;
-	/* 	TOFIX Valutare possibilità di permettere all'utente di ingrandire o diminuire la dimensione dei pulsanti, 
-		aggiungendo un pulsante + ed uno - che cambiano le dimensioni con le classi plus/minus commentate dopo.
-		Sinceramente a me piacciono piccolini ma li metto più grandi per una questione di usabilità, per chi ci vede poco o per chi ha le dita grosse.
-	*/
-	padding: 5px 10px;
+	padding: 5px 5px;
 	margin: 8px;
+	font-size: 1.25rem;
 }
-/* .plus {
-	padding: 5px 10px;
-	margin: 8px;
-}
-.minus {
-	padding: 1px 3px;
-	margin: 5px;
-} */
 
 .category-list:hover {
 	cursor: pointer;
@@ -300,7 +286,8 @@ export default {
 	width: 20px;
 }
 .insert-all-btn {
-	margin: 15px 5px 10px;
+	margin: 15px 10px;
+	font-size: 1.25rem;
 }
 .add-remove-empty {
 	display: flex;
