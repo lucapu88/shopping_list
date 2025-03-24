@@ -15,6 +15,9 @@
 	background-color: var(--summer-secondary-color) !important;
 	color: var(--summer-primary-color);
 }
+.category-summer-container {
+	background-color: var(--summer-tertiary-color);
+}
 .category-summer {
 	background-color: var(--summer-category-color) !important;
 	color: var(--summer-primary-color) !important;

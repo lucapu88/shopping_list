@@ -18,7 +18,9 @@
 .panter-theme-btn {
 	min-width: 85px;
 }
-
+.category-panther-container {
+	background-color: var(--panter-dark-color);
+}
 .panther-todo {
 	font-size: 1.125rem;
 	color: var(--panter-text-color);

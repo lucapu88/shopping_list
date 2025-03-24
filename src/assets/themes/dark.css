@@ -11,6 +11,10 @@
 	background-clip: text !important;
 	-webkit-text-fill-color: transparent !important;
 }
+.category-dark-container {
+	width: 93%;
+	background-color: var(--dark-primary-color);
+}
 .category-dark {
 	background-color: var(--dark-white);
 	color: var(--dark-background-color);

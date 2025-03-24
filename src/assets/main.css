@@ -7,6 +7,10 @@
 	--default-radius: 10px;
 }
 
+.category-padding-btn {
+	padding: 3px !important;
+}
+
 .confirm-deselect-all-container {
 	border: 2px solid;
 	display: flex;

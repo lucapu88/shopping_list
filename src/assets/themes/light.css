@@ -9,9 +9,9 @@
 }
 .light-theme-confirm {
 	background-color: var(--light-background-color);
-	-webkit-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-	-moz-box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
-	box-shadow: 0px 25px 35px 1px rgba(0, 0, 0, 0.81);
+	-webkit-box-shadow: 0px 15px 30px 1px rgba(0, 0, 0, 0.81);
+	-moz-box-shadow: 0px 15px 30px 1px rgba(0, 0, 0, 0.81);
+	box-shadow: 0px 15px 30px 1px rgba(0, 0, 0, 0.81);
 }
 .tips-btn-light {
 	background-color: var(--white);

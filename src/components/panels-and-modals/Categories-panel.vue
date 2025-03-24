@@ -25,30 +25,36 @@ export default {
 			'waterfall-ascent': todosStore.categoryList === false,
 			'retro-theme-confirm': theme.retroTheme,
 			'light-theme-confirm': theme.lightTheme,
+			'category-dark-container': theme.darkTheme,
+			'category-summer-container': theme.summerTheme,
+			'category-winter-container': theme.winterTheme,
+			'category-elegant-container': theme.elegantTheme,
 			'category-pink-container': theme.pinkTheme,
+			'category-panther-container': theme.panterTheme,
 			'category-lemon-container': theme.lemonTheme,
 			'category-jeans-container': theme.jeansTheme,
 		}"
 	>
+		<p
+			class="category-list-description"
+			:class="{
+				'blue-text': !theme.retroTheme && !theme.minimalTheme,
+				'retro-helper-settings-title': theme.retroTheme,
+				'jeans-category-modal-title': theme.jeansTheme,
+			}"
+		>
+			<span>
+				{{ languages.choseCategoryText }}
+			</span>
+		</p>
 		<div v-if="todosStore.categoryListChildren" class="categories">
-			<p
-				class="category-list-description"
-				:class="{
-					'blue-text': !theme.retroTheme && !theme.minimalTheme,
-					'retro-helper-settings-title': theme.retroTheme,
-					'jeans-category-modal-title': theme.jeansTheme,
-				}"
-			>
-				<span>
-					{{ languages.choseCategoryText }}
-				</span>
-			</p>
 			<template v-for="(category, i) in languages.categories" :key="i">
 				<p
 					class="category-list"
 					:class="{
 						'retro-category-list': theme.retroTheme,
 						'category-pink-btn': theme.pinkTheme,
+						'category-padding-btn': theme.elegantTheme || theme.panterTheme || theme.jeansTheme,
 						'jeans-theme-btn': theme.jeansTheme,
 						'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 					}"
@@ -114,13 +120,10 @@ export default {
 
 <style scoped>
 .category-list-container {
-	width: 95%;
 	display: none;
 	text-align: center;
 	border: 1px solid;
 	border-radius: 5px;
-	margin: 0 auto;
-	margin-bottom: 10px;
 	position: relative;
 	z-index: 200;
 }
@@ -129,6 +132,8 @@ export default {
 	opacity: 1;
 	-webkit-animation: fadeIn 1s;
 	animation: fadeIn 1s;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 @-webkit-keyframes fadeIn {
 	from {
@@ -236,16 +241,20 @@ export default {
 	text-transform: capitalize;
 	border: 1px solid;
 	border-radius: 5px;
-	padding: 5px 5px;
-	margin: 8px;
-	font-size: 1.25rem;
+	padding: 3px 5px;
+	margin: 5px;
+	font-size: 0.938rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 50px;
 }
 
 .category-list:hover {
 	cursor: pointer;
 }
 .category-list-description {
-	font-size: small;
+	font-size: 0.938rem;
 	margin: 0;
 }
 .selected {
@@ -287,7 +296,7 @@ export default {
 }
 .insert-all-btn {
 	margin: 15px 10px;
-	font-size: 1.25rem;
+	font-size: 1.125rem;
 }
 .add-remove-empty {
 	display: flex;
@@ -296,5 +305,11 @@ export default {
 .christmas-category {
 	border: 2px solid red;
 	box-shadow: 0px 0px 10px 0px #ff0000;
+}
+
+@media (min-width: 350px) {
+	.category-list-container {
+		margin: 0 5px 35px;
+	}
 }
 </style>

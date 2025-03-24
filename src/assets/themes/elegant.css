@@ -25,6 +25,9 @@
 .elegant-border {
 	border: 1px solid var(--elegant-text-color) !important;
 }
+.category-elegant-container {
+	background-color: var(--elegant-secondary-color);
+}
 .elegant-theme-helper {
 	background-image: none;
 	background: linear-gradient(0deg, var(--helper-color-2) 0%, var(--helper-color-1) 100%) !important;

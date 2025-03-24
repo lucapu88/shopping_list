@@ -21,6 +21,9 @@
 	border: 2px solid var(--winter-tertiary-color);
 	border-radius: var(--default-radius);
 }
+.category-winter-container {
+	background-color: var(--winter-selected-color);
+}
 .category-winter {
 	background-color: var(--winter-category-color);
 	box-shadow: inset 0px 0px 40px 0px var(--white);
