@@ -386,7 +386,10 @@ export const useTodoStore = defineStore('todoStore', {
       this.saveTodos();
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       //navigator.vibrate(1000); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
-      location.reload();
+      const range = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
+      setTimeout(() => {
+        location.reload();
+      }, range);
     },
     backupList() {
       const newTodoList = [...this.todos];

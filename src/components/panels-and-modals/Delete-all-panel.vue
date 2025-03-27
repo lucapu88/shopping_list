@@ -4,6 +4,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import LoadingOrUpdating from "../Loading-or-updating.vue";
 import crumpPaper from "@/img/carta-stropicciata.webp";
 import wave from "@/img/onda.webp";
 import cincia from "@/img/cincia.webp";
@@ -18,7 +19,17 @@ export default {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
 			todosStore: useTodoStore(),
+			deleted: false,
 		};
+	},
+	methods: {
+		removeAllTodos() {
+			if (!this.todosStore.todos.length) {
+				return;
+			}
+			this.deleted = true;
+			this.todosStore.removeAllTodo();
+		},
 	},
 };
 </script>
@@ -27,6 +38,7 @@ export default {
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="crumpPaper" />
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="wave" />
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="cincia" />
+	<LoadingOrUpdating :listImportedOrDeleted="deleted" />
 
 	<div
 		class="confirm col-10 mx-auto rounded text-center mb-3"
@@ -50,7 +62,7 @@ export default {
 			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 			{{ languages.deleteAllConfirmText }}
 		</p>
-		<button class="btn btn-primary" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="todosStore.removeAllTodo()">
+		<button class="btn btn-primary" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="removeAllTodos()">
 			<span v-if="languages.langIta || languages.langSpanish">SI</span>
 			<span v-if="languages.langEnglish">YES</span>
 		</button>

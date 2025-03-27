@@ -8,7 +8,7 @@ export default {
 		themeLoading: Boolean,
 		updating: Boolean,
 		backup: Boolean,
-		listImported: Boolean,
+		listImportedOrDeleted: Boolean,
 		languageChanged: String,
 	},
 	data() {
@@ -22,10 +22,11 @@ export default {
 <template>
 	<!-- CONTAINER LOADING -->
 	<div
-		v-if="themeLoading || backup || languageChanged || listImported"
+		v-if="themeLoading || backup || languageChanged || listImportedOrDeleted"
 		id="loading-themes-container"
 		:class="{
-			'zoom-animation': !listImported,
+			'zoom-animation': !listImportedOrDeleted,
+			'zoom-animation-small': listImportedOrDeleted,
 			light: theme.lightTheme,
 			dark: theme.darkTheme,
 			minimal: theme.minimalTheme,
@@ -39,13 +40,13 @@ export default {
 			jeans: theme.jeansTheme,
 		}"
 	>
-		<img v-if="!listImported" src="@/img/Loading.webp" alt="loading" />
+		<img v-if="!listImportedOrDeleted" src="@/img/Loading.webp" alt="loading" />
 
-		<img v-if="!languageChanged && !backup && !listImported" src="@/img/favicon.webp" alt="loading" />
+		<img v-if="!languageChanged && !backup && !listImportedOrDeleted" src="@/img/favicon.webp" alt="loading" />
 
-		<img style="margin-top: 25%" v-if="listImported && !languageChanged && !backup" src="@/img/LOAD.webp" alt="loading" />
+		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup" src="@/img/LOAD.webp" alt="loading" />
 
-		<div v-if="backup && !listImported" class="backup-container gelatine">
+		<div v-if="backup && !listImportedOrDeleted" class="backup-container gelatine">
 			<img src="@/img/icons/cloud.webp" alt="backup_loading" />
 		</div>
 
@@ -93,7 +94,22 @@ export default {
 		transform: scale(1, 1);
 	}
 	50% {
-		transform: scale(1.3, 1.3);
+		transform: scale(1.2, 1.3);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
+.zoom-animation-small {
+	animation: zoominoutSmall 1s infinite;
+}
+@keyframes zoominoutSmall {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.1, 1.2);
 	}
 	100% {
 		transform: scale(1, 1);

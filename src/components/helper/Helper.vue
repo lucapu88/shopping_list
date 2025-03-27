@@ -97,7 +97,7 @@ export default {
 	<link v-if="languageChanged" rel="preload" as="image" :href="ItaFlag" />
 	<link v-if="languageChanged" rel="preload" as="image" :href="SpaFlag" />
 	<div>
-		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImported="listImported" />
+		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImportedOrDeleted="listImported" />
 		<div
 			v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
 			id="helper-description-container"
