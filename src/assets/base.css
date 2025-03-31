@@ -212,6 +212,9 @@ button {
 	margin-bottom: 5px;
 	position: relative;
 }
+.todo-modify {
+	justify-content: flex-end;
+}
 .todo-added {
 	border-radius: 7px;
 	box-shadow: 0px 0px 20px 0px #138496;
@@ -256,29 +259,66 @@ button {
 
 @keyframes enlarge {
 	0% {
-		transform: scaleX(0.1);
+		transform: scaleX(0);
 	}
 	100% {
 		transform: scaleX(1.3);
-		transform-origin: center;
 	}
 }
 @-moz-keyframes enlarge {
 	0% {
-		transform: scaleX(0.1);
+		transform: scaleX(0);
 	}
 	100% {
 		transform: scaleX(1.3);
-		transform-origin: center;
 	}
 }
 @-webkit-keyframes enlarge {
 	0% {
-		transform: scaleX(0.1);
+		transform: scaleX(0);
 	}
 	100% {
 		transform: scaleX(1.3);
-		transform-origin: center;
+	}
+}
+
+@media (min-width: 460px) {
+	/* Per display più grandi di 460 l'input si allarga di più e va al centro */
+	.todo-modify {
+		justify-content: space-evenly;
+	}
+	.modify {
+		transform: scaleX(1);
+		transform-origin: right;
+		animation: enlarge 1s ease-out forwards;
+	}
+
+	@keyframes enlarge {
+		0% {
+			transform: scaleX(0);
+		}
+		100% {
+			transform: scaleX(1.6);
+			transform-origin: center;
+		}
+	}
+}
+
+@media (max-width: 350px) {
+	/* Per display più piccoli di 350 l'input si allarga meno */
+	.modify {
+		transform: scaleX(1);
+		transform-origin: right;
+		animation: enlarge 1s ease-out forwards;
+	}
+
+	@keyframes enlarge {
+		0% {
+			transform: scaleX(0);
+		}
+		100% {
+			transform: scaleX(1.2);
+		}
 	}
 }
 

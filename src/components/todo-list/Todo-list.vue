@@ -40,6 +40,7 @@ export default {
 			'jeans-category-btn': todo.category && theme.jeansTheme,
 			'todo-added': todo.todoAdded,
 			hidden: todo.hidden,
+			'todo-modify': todo.modify,
 		}"
 	>
 		<TodoRow :todo="todo" :index="n" />
