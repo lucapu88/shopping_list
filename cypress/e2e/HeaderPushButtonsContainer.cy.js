@@ -47,7 +47,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         const today = new Date();
         const currentMonth = today.getMonth() + 1;
         const currentDay = today.getDate();
-        const categoryNumber = currentDay <= 31 && currentMonth === 12 ? 25 : 24;
+        const categoryNumber = currentDay <= 31 && currentMonth === 12 ? 27 : 26;
 
         //verifico se il numero di categorie è giusto
         const categories = [];

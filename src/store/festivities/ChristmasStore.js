@@ -1,11 +1,10 @@
 import { defineStore } from 'pinia';
-import { useLanguageStore } from '@/store/LanguageStore';
-
+import { useCategoriesStore } from '@/store/CategoriesStore';
 
 export const useChristmasStore = defineStore('christmas', {
     state: () => ({
         christmasTheme: false,
-        languages: useLanguageStore(),
+        categoriesStore: useCategoriesStore(),
     }),
     getters: {},
     actions: {
@@ -20,9 +19,9 @@ export const useChristmasStore = defineStore('christmas', {
             }
         },
         addChristmasCategory() {
-            this.languages.itaCategories.find(cat => cat.name === 'regali di natale').active = true;
-            this.languages.spanCategories.find(cat => cat.name === 'regalos de navidad').active = true;
-            this.languages.engCategories.find(cat => cat.name === 'christmas gifts').active = true;
+            this.categoriesStore.itaCategories.find(cat => cat.name === 'regali di natale').active = true;
+            this.categoriesStore.spanCategories.find(cat => cat.name === 'regalos de navidad').active = true;
+            this.categoriesStore.engCategories.find(cat => cat.name === 'christmas gifts').active = true;
         }
     },
 });

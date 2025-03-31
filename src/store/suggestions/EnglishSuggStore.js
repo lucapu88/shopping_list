@@ -48,6 +48,10 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         onlineShopping: ["Online you can buy anything, so we would find it difficult to make suggestions as anything in the other categories can be bought online."],
 
+        sports: ["Running shoes", "Treadmill", "Soccer ball", "Basketball", "Volleyball", "Rugby ball", "Tennis balls", "Golf balls", "Ping pong balls", "Tennis racket", "Ping pong racket", "Golf clubs", "Boxing gloves", "Punching bag", "Road bike", "Tracksuit", "Dumbbells", "Cycling helmet", "Swimming goggles", "Aerobic step", "Jump rope", "Soccer shin guards", "Baseball bat"],
+
+        beauty: ["Lipstick", "Foundation", "Mascara", "Eyeliner", "Powder", "Blush", "Nail polish", "Moisturizer", "Face toner", "Face cleanser", "Hair oil", "Shampoo", "Conditioner", "Perfume", "Body scrub"],
+
         other: ["Salt", "Eggs", "Snacks", "Bicarbonate", "Coffee powder", "Coffee capsules/waffles", "Energy bars", "Packaged chips", "Pretzels", "Chocolates", "Popcorn", "Soy sauce", "Barbecue sauce", "Ketchup", "Mayonnaise", "Dried fruit", "Breakfast cereals", "Batteries", "Lighter", "Parchment paper", "Aluminum foil", "Candles", "Rubber bands", "String"],
 
         christmasGifts: ["We do not think we can give you suggestions for this category as it is too subjective.",

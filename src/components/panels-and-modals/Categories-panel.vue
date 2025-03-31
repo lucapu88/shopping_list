@@ -2,6 +2,7 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useCategoriesStore } from "@/store/CategoriesStore";
 </script>
 
 <script>
@@ -11,6 +12,7 @@ export default {
 			theme: useThemeStore(),
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
+			categoriesStore: useCategoriesStore(),
 		};
 	},
 };
@@ -48,7 +50,7 @@ export default {
 			</span>
 		</p>
 		<div v-if="todosStore.categoryListChildren" class="categories">
-			<template v-for="(category, i) in languages.categories" :key="i">
+			<template v-for="(category, i) in categoriesStore.categories" :key="i">
 				<p
 					class="category-list"
 					:class="{
@@ -90,7 +92,7 @@ export default {
 					'lemon-theme-btn': theme.lemonTheme,
 					'jeans-theme-btn': theme.jeansTheme,
 				}"
-				@click="languages.insertAllCategories()"
+				@click="categoriesStore.insertAllCategories()"
 			>
 				<span :class="{ 'boldi-cipollino': theme.jeansTheme }">{{ languages.insertAll }}</span>
 			</button>

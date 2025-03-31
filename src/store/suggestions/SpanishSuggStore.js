@@ -48,6 +48,11 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         comprarEnIntenet: ["En línea se puede comprar de todo, por lo que nos resultaría difícil hacer sugerencias, ya que cualquier cosa de las otras categorías se puede comprar en línea."],
 
+        deporte: ["Zapatillas para correr", "Cinta de correr", "Balón de fútbol", "Balón de baloncesto", "Balón de voleibol", "Balón de rugby", "Pelotas de tenis", "Pelotas de golf", "Pelotas de ping pong", "Raqueta de tenis", "Raqueta de ping pong", "Palos de golf", "Guantes de boxeo", "Saco de boxeo", "Bicicleta de carretera", "Chándal", "Mancuernas", "Casco de ciclismo", "Gafas de natación", "Step aeróbico", "Cuerda para saltar", "Espinilleras de fútbol", "Bate de béisbol"],
+
+        belleza: ["Labial", "Base de maquillaje", "Máscara de pestañas", "Delineador", "Polvo", "Rubor", "Esmalte de uñas", "Crema hidratante", "Tónico facial", "Limpiador facial", "Aceite para el cabello", "Shampoo", "Acondicionador", "Perfume", "Exfoliante corporal"],
+
+
         otros: ["Pabellones", "Huevos", "Aperitivos", "Bicarbonato", "Café en polvo", "Cápsulas de café/waffles", "Barras energéticas", "Patatas fritas envasadas", "Galletas saladas", "Chocolates", "Palomitas", "Salsa de soja", "Salsa barbacoa", "Ketchup", "Mayonesa", "Frutos secos", "Cereales para el desayuno", "Pilas", "Encendedor", "Papel de horno", "Papel de aluminio", "Velas", "Bandas elásticas", "Cuerda"],
 
         regalosDeNavidad: ["No creemos que podamos darle sugerencias para esta categoría, ya que es demasiado subjetiva.",

@@ -2,6 +2,7 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useCategoriesStore } from "@/store/CategoriesStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 </script>
@@ -11,6 +12,7 @@ export default {
 	data() {
 		return {
 			languages: useLanguageStore(),
+			categoriesStore: useCategoriesStore(),
 			themes: useThemeStore(),
 			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
@@ -19,8 +21,8 @@ export default {
 		};
 	},
 	created() {
-		const christmasEmojy = this.languages.engCategories.find((cat) => cat.name === "christmas gifts").emojy;
-		const onlineEmojy = this.languages.engCategories.find((cat) => cat.name === "online shopping").emojy;
+		const christmasEmojy = this.categoriesStore.engCategories.find((cat) => cat.name === "christmas gifts").emojy;
+		const onlineEmojy = this.categoriesStore.engCategories.find((cat) => cat.name === "online shopping").emojy;
 		//se l'emoticon della categoria scelta è uguale ad una delle emoticon per le quali NON ci sono suggerimenti
 		this.noSuggestions = this.todosStore.categoryEmo == christmasEmojy || this.todosStore.categoryEmo == onlineEmojy;
 	},

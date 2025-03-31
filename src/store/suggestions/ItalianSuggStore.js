@@ -49,6 +49,10 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         acquistiOnline: ["Online puoi comprare di tutto, quindi ci verrebbe difficile dare suggerimenti poichè qualsiasi cosa che c'è nelle altre categorie è comprabile online."],
 
+        sport: ["Scarpe da running", "Tapis roulant", "Pallone da calcio", "Pallone da basket", "Pallone da palla a volo", "Pallone da rugby", "Palle da tennis", "Palle da golf", "Palle da ping pong", "Racchetta da tennis", "Racchetta da ping pong", "Mazze da golf", "Guantoni da boxe", "Sacco da boxe", "Bicicletta da corsa", "Tuta da ginnastica", "Pesi manubri", "Casco da ciclismo", "Occhialini da nuoto", "Step per aerobica", "Corda per saltare", "Parastinchi per calcio", "Mazza da baseball"],
+
+        estetica: ["Rossetto", "Fondotinta", "Mascara", "Eyeliner", "Cipria", "Blush", "Smalto per unghie", "Crema idratante", "Tonico viso", "Detergente viso", "Olio per capelli", "Shampoo", "Balsamo per capelli", "Profumo", "Scrub corpo"],
+
         altro: ["Sale", "Uova", "Snack", "Bicarbonato", "Caffè in polvere", "Caffè capsule/cialde", "Barrette energetiche", "Patatine confezionate", "Salatini", "Cioccolatini", "Popcorn", "Salsa di soia", "Salsa barbecue", "ketchup", "Maionese", "Frutta secca", "Cereali per la colazione", "Pile", "Accendino", "Carta da forno", "Fogli di alluminio", "Candele", "Elastici", "Spago"],
 
 

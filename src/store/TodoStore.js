@@ -4,6 +4,8 @@ import { useSettingsStore } from '@/store/SettingsStore';
 import { useChristmasStore } from '@/store/festivities/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
+import { useCategoriesStore } from '@/store/CategoriesStore';
+
 
 export const useTodoStore = defineStore('todoStore', {
   state: () => ({
@@ -12,6 +14,7 @@ export const useTodoStore = defineStore('todoStore', {
     christmas: useChristmasStore(),
     festivities: useOthersFestivitiesStore(),
     suggestionsStore: useSuggestionsStore(),
+    categoriesStore: useCategoriesStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -118,7 +121,7 @@ export const useTodoStore = defineStore('todoStore', {
     createCategory() {
       this.isCategory = false;
       this.categoryEmoji = '';
-      this.languages.categories.forEach((category) => {
+      this.categoriesStore.categories.forEach((category) => {
         //se scrivo un nome che è presente nella lista di categorie, creo una categoria evidenziata
         if (this.newTodo.toLowerCase().trim() === category.name) {
           this.isCategory = true;
@@ -276,7 +279,7 @@ export const useTodoStore = defineStore('todoStore', {
     selectCategoryToAddItem(index, todo) {
       //solo se è nella lista categorie faccio tutto
       if (todo.category) {
-        const allCategories = [...this.languages.engCategories, ...this.languages.itaCategories, ...this.languages.spanCategories];
+        const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories];
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
 
         allCategories.forEach((category) => {
