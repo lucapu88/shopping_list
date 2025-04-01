@@ -29,7 +29,7 @@ export const useLanguageStore = defineStore('Language', {
       visible: false,
     },
     confirmText: 'Are you sure you want to delete:\n',
-    completeConfirmText: '', // Questo testo viene editato nell' TodoStore.js
+    completeConfirmText: '', // Questo testo viene editato nel TodoStore.js
     selectedTodosConfirmText: 'You are going to delete these elements',
     themeName: 'light',
     safeModeText: {

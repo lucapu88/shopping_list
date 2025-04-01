@@ -219,6 +219,17 @@ export default {
 .helper-light {
 	background-image: repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%), repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
 	background-size: 30px 30px;
+	/* Primo repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%)
+        Crea un gradiente lineare ripetuto verticale.
+        Il colore #ccc (grigio chiaro) va da 0px a 1px.
+		Da 1px in poi è trasparente fino a 100% del ripetuto.
+
+    Secondo repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%)
+        Stessa logica ma ruotato di 90deg, quindi orizzontale.
+        Crea delle linee orizzontali di 1px di spessore.
+
+    background-size: 30px 30px;
+        Imposta la dimensione della griglia a 30x30 pixel, quindi le linee verticali e orizzontali si ripetono ogni 30px. */
 }
 
 .helper-description.slideUp {

@@ -4,7 +4,7 @@ PROCEDURA PER AGGIUNGERE UNA NUOVA CATEGORIA:
 
 - Per prendere l'emoticon io uso questo sito: https://unicode.org/emoji/charts/full-emoji-list.html#1f600 e mi prendo il codice, ad esempio U+1F600 e lo modifico in 0x1F600
 
-- Nel file SuggestionsStore.js aggiungerla nello switch. Va aggiunta 3 volte, una per ogni lingua.
+- Nel file SuggestionsStore.js aggiungerla nella costante categories all'interno del metodo checkAndSetSuggestionsLanguage. Va aggiunta 3 volte, una per ogni lingua.
 
 - Nei file EnglishSuggStore.js, ItalianSuggStore.js e SpanishSuggStore.js aggiungi l'array con i suggerimenti di prodotti.
 
