@@ -6,7 +6,6 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 
-import foglioRighePreload from "@/img/foglio_righe.webp";
 import cancellaPreload from "@/img/cancella.webp";
 import marePreload from "@/img/mare.webp";
 import mareTabletPreload from "@/img/mare-tablet.webp";
@@ -80,7 +79,6 @@ export default {
 <!--  -------------------------------I PRELOAD PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
 <template>
 	<!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
-	<link v-if="theme.lightTheme" rel="preload" as="image" :href="foglioRighePreload" />
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="cancellaPreload" />
 
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />

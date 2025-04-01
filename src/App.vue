@@ -122,7 +122,9 @@ export default {
 	}
 }
 .light-container {
-	background-image: url("@/img/foglio_righe.webp");
+	/* background-image: url("@/img/foglio_righe.webp"); */
+	background-image: repeating-linear-gradient(#575757a6 0 2px, transparent 2px 100%), linear-gradient(90deg, transparent 0 20px, #494949bb 20px 22px, transparent 22px 100%);
+	background-size: 100% 30px;
 }
 
 .dark-container,
