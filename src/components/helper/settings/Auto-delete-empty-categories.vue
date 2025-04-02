@@ -34,11 +34,9 @@ export default {
 					<small>{{ languages.autoDeleteEmptyCategoriesText.description }}</small>
 					<ToggleTutorialButton :features="autoDeleteEmptyCategories" />
 				</li>
-				<li class="toggle-delete-confirm-container" id="auto-delete">
-					<div class="hand-pointing" @click="settings.toggleAutomaticDeleteEmptyCategories()">&#x1F449;</div>
-					<u @click="settings.toggleAutomaticDeleteEmptyCategories()">
-						{{ languages.autoDeleteEmptyCategoriesText.function }}
-					</u>
+				<li class="toggle-delete-confirm-container" id="auto-delete" @click="settings.toggleAutomaticDeleteEmptyCategories()">
+					<div class="hand-pointing">&#x1F449;</div>
+					<u>{{ languages.autoDeleteEmptyCategoriesText.function }}</u>
 					<span class="text-primary ms-2">
 						{{ settings.canDeleteEmptyCategoriesText }}
 					</span>

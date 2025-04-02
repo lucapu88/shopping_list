@@ -91,6 +91,10 @@ export const useTodoStore = defineStore('todoStore', {
         this.changeTodoAdded(this.todos);
       }, 1500);
 
+      if (this.settings.canMultipleCategoryInsertion) {
+        //Se ho tolto l'inserimento di più elementi nella categoria, ad ogni singolo todo aggiunto in categoria, vado a togliere "l'evidenziazione" della categoria
+        this.removeSelectedCategoryToAddItem();
+      }
       this.resetTodoProperty();
       this.settings.resetHelperSettingsAndIstructions();
       this.saveTodos();

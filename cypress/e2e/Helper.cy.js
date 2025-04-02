@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 
-// Chiedo scusa se scrivo in italiano ma faccio prima a capire. L'inglese lo mastico ma non velocissimo.
 
 // eslint-disable-next-line no-undef
 describe("test dell'helper e delle impostazioni", () => {
@@ -64,6 +63,35 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category').should('not.exist');
     });
 
+    it('inserimento multiplo di elementi in categoria', () => {
+        cy.get('.pushbutton-container > :nth-child(3)').click();
+        cy.get('.categories > :nth-child(1)').click();
+        cy.get('#todo').click();
+        cy.get('.inputText').type('Ile <3');
+        cy.get('.plane').click();
+        categoryCheck();
+
+        cy.get('.settings').click();
+        cy.get('#helper-description > :nth-child(7) > .list-title').click();
+        cy.get('.text-primary').should('include.text', 'ON');
+        cy.get('#auto-delete > .hand-pointing').click();
+        cy.get('.text-primary').should('include.text', 'OFF');
+        cy.get('.close-helper').click();
+
+        cy.get('.inputText').type('Ile :-)');
+        cy.get('.plane').click();
+        categoryCheck('not');
+
+        function categoryCheck(not) {
+            const haveClass = not ? 'not.have.class' : 'have.class';
+            const exist = not ? 'not.exist' : 'exist';
+
+            cy.get('li').first().should(haveClass, 'selected');
+            cy.get('.tips-container').should(haveClass, 'waterfall-descent');
+            cy.get('.remove-selected-cat').should(exist);
+        }
+    });
+
     it('mostra ultime eliminazioni', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('[index="0"] > .checkbox').click({ force: true });
@@ -74,7 +102,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
 
         cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(7) > .list-title').click();
+        cy.get('#helper-description > :nth-child(8) > .list-title').click();
         cy.get('.todo-deleted-container').should('include.text', phrases.frase4);
         cy.get('.multiple-deleted-container > :nth-child(1)').should('include.text', phrases.frase1);
         cy.get('.multiple-deleted-container > :nth-child(2)').should('include.text', phrases.frase2);
@@ -98,7 +126,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         function checkBackupSuccessful() {
             cy.get('.settings').click();
-            cy.get('#helper-description > :nth-child(8) > .list-title').click();
+            cy.get('#helper-description > :nth-child(9) > .list-title').click();
             cy.get('#backup-button').click();
             cy.get('#confirm-backup').click();
             cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
@@ -120,7 +148,7 @@ describe("test dell'helper e delle impostazioni", () => {
         });
 
         cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(9) > .list-title').click();
+        cy.get('#helper-description > :nth-child(10) > .list-title').click();
         cy.get('#text-area').click();
         cy.document().invoke('execCommand', 'paste');
         cy.get('.add-list-copied > .btn').click();

@@ -11,6 +11,7 @@ export default {
 		istructionsText: [Object, String],
 		selectDeselectArrow: Boolean,
 		isSettings: Boolean,
+		isNew: Boolean,
 	},
 	data() {
 		return {
@@ -18,10 +19,14 @@ export default {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
 			troubleshooting: false,
+			customFontSize: false,
 		};
 	},
 	created() {
 		this.troubleshooting = this.showListInstructionsInput === "troubleshooting";
+		if (this.istructionsText.length > 36) {
+			this.customFontSize = true;
+		}
 	},
 };
 </script>
@@ -48,7 +53,7 @@ export default {
 	>
 		<span v-if="isSettings" class="settings-icon me-1"> &#x2699; </span>
 		<span v-if="troubleshooting" class="troubleshooting-icon me-1"> ? </span>
-		{{ istructionsText }}
+		<span :class="{ 'custom-font-size': customFontSize }"> {{ istructionsText }} <span v-if="isNew" class="new">NEW</span> </span>
 		<span
 			class="arrow"
 			:class="{
@@ -70,6 +75,10 @@ export default {
 	margin-bottom: 5px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.custom-font-size {
+	font-size: 0.875rem;
 }
 
 .troubleshooting-title {

@@ -20,6 +20,7 @@ import ChangeLanguages from "./settings/Change-languages.vue";
 import ChangeThemes from "./settings/Change-themes.vue";
 import SafeDeleteMode from "./settings/Safe-delete-mode.vue";
 import AutoDeleteEmptyCategories from "./settings/Auto-delete-empty-categories.vue";
+import MultipleCategoryInsertion from "./settings/Multiple-category-insertion.vue";
 import BackupList from "./settings/Backup-list.vue";
 import ImportList from "./settings/Import-list.vue";
 import ShowOnlyLatestDeleted from "./settings/Show-only-latest-deleted.vue";
@@ -147,6 +148,8 @@ export default {
 				<SafeDeleteMode />
 
 				<AutoDeleteEmptyCategories />
+
+				<MultipleCategoryInsertion />
 
 				<ShowOnlyLatestDeleted />
 

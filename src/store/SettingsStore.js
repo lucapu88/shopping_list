@@ -9,6 +9,8 @@ export const useSettingsStore = defineStore('settings', {
     dateLastUpdate: "--/--/----",
     canDeleteEmptyCategories: false,
     canDeleteEmptyCategoriesText: 'OFF',
+    canMultipleCategoryInsertion: false,
+    canMultipleCategoryInsertionText: 'ON',
     helper: false,
     helperInClosing: false,
     privacyPolicy: false,
@@ -16,6 +18,7 @@ export const useSettingsStore = defineStore('settings', {
     changeLanguage: false,
     changeTheme: false,
     autoDeleteEmptyCategories: false,
+    multipleCategoryInsertion: false,
     safeMode: false,
     pasteList: false,
     showOnlyLatestDeleted: false,
@@ -48,6 +51,10 @@ export const useSettingsStore = defineStore('settings', {
       const canDeleteAutoCategoriesStorage = window.localStorage.getItem('canDeleteEmptyCategories');
       this.canDeleteEmptyCategories = canDeleteAutoCategoriesStorage === 'true';
       this.canDeleteEmptyCategories ? (this.canDeleteEmptyCategoriesText = 'ON') : this.canDeleteEmptyCategoriesText;
+      //setto le impostazioni scelte dall'utente sull'aggiunta multipla all'inserimento in categoria
+      const canMultipleCategoryInsertionStorage = window.localStorage.getItem('canMultipleCategoryInsertion');
+      this.canMultipleCategoryInsertion = canMultipleCategoryInsertionStorage === 'true';
+      this.canMultipleCategoryInsertion ? (this.canMultipleCategoryInsertionText = 'OFF') : this.canMultipleCategoryInsertionText;
     },
     checkingUpdates() {
       const d = new Date();
@@ -87,6 +94,16 @@ export const useSettingsStore = defineStore('settings', {
         window.localStorage.setItem('canDeleteEmptyCategories', false);
       }
     },
+    toggleMultipleCategoryInsertion() {
+      this.canMultipleCategoryInsertion = !this.canMultipleCategoryInsertion;
+      if (!this.canMultipleCategoryInsertion) {
+        this.canMultipleCategoryInsertionText = 'ON';
+        window.localStorage.setItem('canMultipleCategoryInsertion', false);
+      } else {
+        this.canMultipleCategoryInsertionText = 'OFF';
+        window.localStorage.setItem('canMultipleCategoryInsertion', true);
+      }
+    },
     openHelper() {
       this.helper = true;
     },
@@ -110,6 +127,7 @@ export const useSettingsStore = defineStore('settings', {
       this.changeLanguage = false;
       this.changeTheme = false;
       this.autoDeleteEmptyCategories = false;
+      this.multipleCategoryInsertion = false;
       this.safeMode = false;
       this.pasteList = false;
       this.showOnlyLatestDeleted = false;
@@ -136,6 +154,7 @@ export const useSettingsStore = defineStore('settings', {
         changeLanguage: 'changeLanguage',
         changeTheme: 'changeTheme',
         autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',
+        multipleCategoryInsertion: 'multipleCategoryInsertion',
         safeMode: 'safeMode',
         pasteList: 'pasteList',
         showOnlyLatestDeleted: 'showOnlyLatestDeleted',

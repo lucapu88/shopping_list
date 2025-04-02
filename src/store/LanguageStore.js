@@ -44,6 +44,12 @@ export const useLanguageStore = defineStore('Language', {
       description: 'Choose whether to delete the categories left empty manually, or have them deleted automatically.',
       function: 'Click to activate/deactivate',
     },
+    multipleCategoryInsertionText: {
+      title: 'Multiple category entries',
+      description: 'Allows you to enter multiple items when selecting a category.',
+      function: 'Click to activate/deactivate',
+      momentaryAlert: 'The function is already active because it was already like that from the beginning, but now if you want you can deactivate it.'
+    },
     pasteListText: {
       title: 'Import a list from other apps',
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
@@ -271,6 +277,10 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.title = 'Auto eliminazione categorie vuote';
       this.autoDeleteEmptyCategoriesText.description = 'Scegli se eliminare manualmente le categorie rimaste vuote, oppure che vengano eliminate automaticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Clicca per attivare/disattivare';
+      this.multipleCategoryInsertionText.title = "Inserimento multiplo in categoria";
+      this.multipleCategoryInsertionText.description = "Ti permette di inserire più elementi quando selezioni una categoria.";
+      this.multipleCategoryInsertionText.function = 'Clicca per attivare/disattivare';
+      this.multipleCategoryInsertionText.momentaryAlert = "La funzione già è attiva perchè era già così dall'inizio, ma adesso se vuoi puoi disattivarla.";
       this.pasteListText.title = "Importa una lista da altre app";
       this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
       this.shareText = 'Condividi App';
@@ -329,6 +339,10 @@ export const useLanguageStore = defineStore('Language', {
       this.autoDeleteEmptyCategoriesText.title = 'Eliminación automática de categorías vacías';
       this.autoDeleteEmptyCategoriesText.description = 'Elija si desea eliminar manualmente las categorías vacías o que se eliminen automáticamente.';
       this.autoDeleteEmptyCategoriesText.function = 'Pulse para activar/desactivar';
+      this.multipleCategoryInsertionText.title = "Entradas de categorías múltiples";
+      this.multipleCategoryInsertionText.description = "Le permite ingresar múltiples elementos al seleccionar una categoría.";
+      this.multipleCategoryInsertionText.function = 'Pulse para activar/desactivar';
+      this.multipleCategoryInsertionText.momentaryAlert = 'La función ya está activa porque ya era así desde el principio, pero ahora si quieres puedes desactivarla.';
       this.pasteListText.title = "Importar una lista desde otras aplicaciones";
       this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
       this.shareText = 'Compartir App';

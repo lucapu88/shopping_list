@@ -30,6 +30,7 @@ export default {
 		<source v-if="features === 'multipleDelete'" src="@/video/multiple-delete.mp4" type="video/mp4" />
 		<source v-if="features === 'copyPaste'" src="@/video/copy-paste-select-important.mp4" type="video/mp4" />
 		<source v-if="features === 'showOnlyLatestDeleted'" src="@/video/show-only-latest-deleted.mp4" type="video/mp4" />
+		<source v-if="features === 'multipleCategoryInsertion'" src="@/video/multiple-category-insertion.mp4" type="video/mp4" />
 
 		{{ languages.helperDescription.videoAlert }}
 	</video>

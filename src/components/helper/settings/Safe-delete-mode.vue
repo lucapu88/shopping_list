@@ -30,11 +30,9 @@ export default {
 					<small>{{ languages.safeModeText.description }}</small>
 					<ToggleTutorialButton :features="safeDelete" />
 				</li>
-				<div class="toggle-delete-confirm-container" id="safe-delete">
-					<span class="hand-pointing" @click="settings.toggleDeleteConfirm()"> &#x1F449; </span>
-					<u @click="settings.toggleDeleteConfirm()">
-						{{ languages.safeModeText.function }}
-					</u>
+				<div class="toggle-delete-confirm-container" id="safe-delete" @click="settings.toggleDeleteConfirm()">
+					<span class="hand-pointing"> &#x1F449; </span>
+					<u>{{ languages.safeModeText.function }}</u>
 					<span class="text-primary ms-2">{{ settings.canDeleteText }}</span>
 				</div>
 
