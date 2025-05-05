@@ -27,7 +27,6 @@ export default {
 			:istructions-text="languages.multipleCategoryInsertionText.title"
 			:select-deselect-arrow="settings.multipleCategoryInsertion && settings.section === multipleCategoryInsertion"
 			:isSettings="true"
-			:isNew="true"
 		/>
 		<template v-if="settings.multipleCategoryInsertion && settings.section === multipleCategoryInsertion">
 			<div class="auto-delete-container mb-3">

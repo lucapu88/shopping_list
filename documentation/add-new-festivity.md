@@ -1,4 +1,4 @@
-PROCEDURA PER AGGIUNGERE UNA FESTIVITA':
+PROCEDURA PER AGGIUNGERE UNA FESTIVITÀ:
 
 - Nel file OthersFestivitiesStore.js aggiungere la variabile con il nome della festività.
 

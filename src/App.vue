@@ -122,8 +122,6 @@ export default {
 	}
 }
 .light-container {
-	background-image: repeating-linear-gradient(#575757a6 0 2px, transparent 2px 100%), linear-gradient(90deg, transparent 0 20px, #494949bb 20px 22px, transparent 22px 100%);
-	background-size: 100% 30px;
 	/* repeating-linear-gradient:
 			#575757a6 0 2px → Disegna una riga orizzontale colorata di 2px di altezza.
 			transparent 2px 100% → Il resto è trasparente fino al 100% dell'elemento.
@@ -132,6 +130,8 @@ export default {
 			transparent 0 20px → Lo sfondo è trasparente nei primi 20px.
 			#494949bb 20px 22px → Disegna una riga verticale di 2px di larghezza con colore #494949bb.
 			transparent 22px 100% → Il resto dell'elemento torna trasparente. */
+	background-image: repeating-linear-gradient(#575757a6 0 2px, transparent 2px 100%), linear-gradient(90deg, transparent 0 20px, #494949bb 20px 22px, transparent 22px 100%);
+	background-size: 100% 30px;
 }
 
 .dark-container,
