@@ -34,3 +34,8 @@
 	border: 2px solid var(--black);
 	border-radius: var(--default-radius);
 }
+
+.light-button-color {
+	background-color: rgba(192, 224, 133, 0.883) !important;
+	border: 2px solid rgb(180, 230, 89) !important;
+}

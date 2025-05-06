@@ -25,7 +25,7 @@ export default {
 
 <template>
 	<ul
-		v-if="!todos.secondList"
+		v-if="!todos.devNotes"
 		id="todo-list"
 		class="col-12 todo-list"
 		:class="{

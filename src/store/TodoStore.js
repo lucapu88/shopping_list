@@ -5,6 +5,7 @@ import { useChristmasStore } from '@/store/festivities/ChristmasStore';
 import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivitiesStore';
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 
 
 export const useTodoStore = defineStore('todoStore', {
@@ -15,6 +16,7 @@ export const useTodoStore = defineStore('todoStore', {
     festivities: useOthersFestivitiesStore(),
     suggestionsStore: useSuggestionsStore(),
     categoriesStore: useCategoriesStore(),
+    secondTodos: useSecondTodoStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -47,7 +49,7 @@ export const useTodoStore = defineStore('todoStore', {
     addedImportant: false,
     duplicateFound: false,
     insertDuplicate: false,
-    secondList: false,
+    devNotes: false,
     confirmDeselectAll: false,
     openDeleteAllModal: false,
     skipCheck: false,
@@ -175,26 +177,44 @@ export const useTodoStore = defineStore('todoStore', {
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-      window.localStorage.setItem('todos', parsedTodos);
+
+      if (window.localStorage.getItem('secondList')) {
+        window.localStorage.setItem('todos2', parsedTodos);
+      } else if (window.localStorage.getItem('thirdList')) {
+        window.localStorage.setItem('todos3', parsedTodos);
+      } else if (window.localStorage.getItem('fourthList')) {
+        window.localStorage.setItem('todos4', parsedTodos);
+      } else {
+        window.localStorage.setItem('todos', parsedTodos);
+      }
       this.priceCalculator();
     },
     createTodosList() {
-      if (window.localStorage.getItem('todos')) {
-        //se si deve prendere un oggetto da salvare in locale
-        try {
-          const parsedTodoList = JSON.parse(window.localStorage.getItem('todos'));
-
-          parsedTodoList.forEach(todo => {
-            //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
-            if (todo.class) { todo.category = todo.class; }
-          });
-          this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
-          this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
-        } catch (e) {
-          window.localStorage.removeItem('todos'); //se viene trovato un errore, rimuovi l'oggetto (o meglio, non salvare niente)
-        }
+      if (window.localStorage.getItem('secondList')) {
+        this.getCorrectTodoList('todos2');
+      } else if (window.localStorage.getItem('thirdList')) {
+        this.getCorrectTodoList('todos3');
+      } else if (window.localStorage.getItem('fourthList')) {
+        this.getCorrectTodoList('todos4');
+      } else {
+        this.getCorrectTodoList('todos');
       }
       if (!this.addTodoInCategory.condition) { this.todos.map((t) => (t.isSelected = false)); }
+      this.secondTodos.setSelectedLists();
+    },
+    getCorrectTodoList(todos) {
+      //se si deve prendere un oggetto da salvare in locale
+      try {
+        const parsedTodoList = JSON.parse(window.localStorage.getItem(todos));
+        parsedTodoList.forEach(todo => {
+          //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
+          if (todo.class) { todo.category = todo.class; }
+        });
+        this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
+        this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
+      } catch (e) {
+        window.localStorage.removeItem(todos); //se viene trovato un errore, rimuovi l'oggetto (o meglio, non salvare niente)
+      }
     },
     changeTodoAdded(array) {
       //mi serve solo per "evidenziare" il bordo con il boxshadow (per n secondi) quando si aggiunge un nuovo todo

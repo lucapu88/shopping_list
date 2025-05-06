@@ -25,7 +25,7 @@ export default {
 				return;
 			}
 			if (this.settings.isIphone && !this.settings.isAndroid) {
-				this.addTodo.secondList = !this.addTodo.secondList;
+				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},
 	},
@@ -51,7 +51,7 @@ export default {
 			@click="openDevPanel()"
 		>
 			<span :class="{ 'jeans-title-border': theme.jeansTheme }">
-				<template v-if="!addTodo.secondList">
+				<template v-if="!addTodo.devNotes">
 					<template v-if="festivities.newYear">
 						{{ languages.newYearText }}
 					</template>

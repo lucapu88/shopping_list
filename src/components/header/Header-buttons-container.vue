@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container" v-if="!todosStore.secondList">
+	<div class="pushbutton-container" v-if="!todosStore.devNotes">
 		<!-- DRAG N DROP -->
 		<button
 			class="btn custom-show-listbtn"
@@ -154,7 +154,7 @@ export default {
 		</button>
 	</div>
 
-	<template v-if="!todosStore.secondList">
+	<template v-if="!todosStore.devNotes">
 		<div class="alerts-container" v-if="todosStore.isDraggable || languages.copyList.visible || languages.importantTodos.visible || todosStore.addedImportant || todosStore.categoryAdded">
 			<!-- CONTENITORE DEGLI AVVISI -->
 			<div class="drag-n-drop-text">

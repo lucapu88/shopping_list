@@ -9,6 +9,8 @@ import FooterButtonsContainer from "./components/footer/Footer-buttons-container
 import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
+import LoadingOrUpdating from "./components/Loading-or-updating.vue";
+
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
@@ -16,6 +18,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 </script>
 
 <script>
@@ -29,6 +32,7 @@ export default {
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
+			secondTodos: useSecondTodoStore(),
 			isVisibleOnScroll: true,
 		};
 	},
@@ -87,6 +91,8 @@ export default {
 			<div id="container-list" class="row" @scroll="scrollHandler">
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
+					<LoadingOrUpdating :listImportedOrDeleted="secondTodos.loading" />
+
 					<header style="overflow: hidden">
 						<FestivitiesAndOccurrences :is-visible-on-scroll="isVisibleOnScroll" />
 						<HeadList />
@@ -102,7 +108,7 @@ export default {
 
 					<footer>
 						<DeleteAllPanel />
-						<FooterButtonsContainer v-if="!todosStore.secondList" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
 					</footer>
 				</div>
 			</div>

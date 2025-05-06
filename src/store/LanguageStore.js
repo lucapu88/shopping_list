@@ -187,6 +187,9 @@ export const useLanguageStore = defineStore('Language', {
       title: 'Product already listed',
       body: 'Insert it anyway?'
     },
+    list: "List ",
+    alertMomentaneo: "Now you can create multiple lists! Isn't that wonderful? If you shop at different supermarkets or want to have different lists based on your needs, you have 4 new lists at your disposal! Enjoy!",
+    alertMomentaneoTitolo: "New Feature: "
   }),
   getters: {},
   actions: {
@@ -315,6 +318,9 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Ricarica l'app:";
       this.duplicateText.title = "Prodotto già presente in lista";
       this.duplicateText.body = "Inserirlo comunque?";
+      this.list = "Lista ";
+      this.alertMomentaneo = "Ora puoi creare più liste! Non è meraviglioso? Nel caso fai spesa in supermercati diversi oppure vuoi avere liste diverse in base alle tue esigenze, insomma hai a disposizione 4 liste tutte nuove! Buon divertimento ";
+      this.alertMomentaneoTitolo = "Nuova Funzionalità: ";
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -377,6 +383,9 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Recargar aplicación:";
       this.duplicateText.title = "Producto ya listado";
       this.duplicateText.body = "¿Insertarlo de todos modos?";
+      this.list = "Lista ";
+      this.alertMomentaneo = "¡ahora puedes crear múltiples listas! ¿No es maravilloso? Si compras en diferentes supermercados o quieres tener listas diferentes en función de tus necesidades, ¡tienes 4 listas completamente nuevas a tu disposición! Divertirse";
+      this.alertMomentaneoTitolo = "Nueva característica: ";
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

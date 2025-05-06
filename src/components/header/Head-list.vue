@@ -9,6 +9,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
+import ListsButtonsSelection from "./Lists-buttons-selection.vue";
 </script>
 
 <script>
@@ -66,7 +67,7 @@ export default {
 				return;
 			}
 			if (this.settings.isIphone && !this.settings.isAndroid) {
-				this.addTodo.secondList = !this.addTodo.secondList;
+				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},
 	},
@@ -100,7 +101,7 @@ export default {
 		</span>
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container" v-if="!addTodo.secondList">
+		<div class="input-btns-container" v-if="!addTodo.devNotes">
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
 				class="inputText border border-primary rounded"
@@ -125,6 +126,9 @@ export default {
 
 		<!-- PULSANTIERA -->
 		<HeaderButtonsContainer />
+
+		<!-- SELEZIONE LISTE -->
+		<ListsButtonsSelection v-if="settings.isIphone && !settings.isAndroid && !addTodo.devNotes" />
 	</div>
 </template>
 

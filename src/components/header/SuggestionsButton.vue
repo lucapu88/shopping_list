@@ -20,7 +20,7 @@ export default {
 
 <template>
 	<div
-		v-if="!addTodo.secondList"
+		v-if="!addTodo.devNotes"
 		class="tips-container"
 		:class="{
 			'waterfall-descent': addTodo.inModification,
