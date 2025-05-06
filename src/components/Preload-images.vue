@@ -5,6 +5,7 @@ import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 
 import cancellaPreload from "@/img/cancella.webp";
 import marePreload from "@/img/mare.webp";
@@ -60,6 +61,7 @@ import eyeOpen from "@/img/icons/eye-open.webp";
 import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
 import dino from "@/img/update-img.webp";
+import listLoading from "@/img/Loading-list.webp";
 </script>
 
 <script>
@@ -72,6 +74,7 @@ export default {
 			settings: useSettingsStore(),
 			todosStore: useTodoStore(),
 			languages: useLanguageStore(),
+			secondTodosStore: useSecondTodoStore(),
 		};
 	},
 };
@@ -148,4 +151,5 @@ export default {
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeClosed" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeOpen" />
 	<link v-if="!languages.updateText.updated" rel="preload" as="image" :href="dino" />
+	<link v-if="secondTodosStore.loading" rel="preload" as="image" :href="listLoading" />
 </template>

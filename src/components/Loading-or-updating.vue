@@ -10,6 +10,7 @@ export default {
 		backup: Boolean,
 		listImportedOrDeleted: Boolean,
 		languageChanged: String,
+		listChanged: Boolean,
 	},
 	data() {
 		return {
@@ -22,11 +23,11 @@ export default {
 <template>
 	<!-- CONTAINER LOADING -->
 	<div
-		v-if="themeLoading || backup || languageChanged || listImportedOrDeleted"
+		v-if="themeLoading || backup || languageChanged || listImportedOrDeleted || listChanged"
 		id="loading-themes-container"
 		:class="{
-			'zoom-animation': !listImportedOrDeleted,
-			'zoom-animation-small': listImportedOrDeleted,
+			'zoom-animation': !listImportedOrDeleted && !listChanged,
+			'zoom-animation-small': listImportedOrDeleted || listChanged,
 			light: theme.lightTheme,
 			dark: theme.darkTheme,
 			minimal: theme.minimalTheme,
@@ -40,16 +41,24 @@ export default {
 			jeans: theme.jeansTheme,
 		}"
 	>
-		<img v-if="!listImportedOrDeleted" src="@/img/Loading.webp" alt="loading" />
+		<!-- Scritta di caricamento di qualsiasi cosa tranne per le liste importate, cancellate o cambio lista -->
+		<img v-if="!listImportedOrDeleted && !listChanged" src="@/img/Loading.webp" alt="loading" />
 
-		<img v-if="!languageChanged && !backup && !listImportedOrDeleted" src="@/img/favicon.webp" alt="loading" />
+		<!-- Caricamento classico -->
+		<img v-if="!languageChanged && !backup && !listImportedOrDeleted && !listChanged" src="@/img/favicon.webp" alt="loading" />
 
-		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup" src="@/img/LOAD.webp" alt="loading" />
+		<!-- Caricamento in caso di lista cancellata o importata -->
+		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup && !listChanged" src="@/img/LOAD.webp" alt="loading" />
 
-		<div v-if="backup && !listImportedOrDeleted" class="backup-container gelatine">
+		<!-- Caricamento al cambio lista -->
+		<img style="margin-top: 30%" v-if="listChanged && !listImportedOrDeleted && !languageChanged && !backup" src="@/img/Loading-list.webp" alt="loading_list" />
+
+		<!-- Caricamento quando si effettua un backup -->
+		<div v-if="backup && !listImportedOrDeleted && !listChanged" class="backup-container gelatine">
 			<img src="@/img/icons/cloud.webp" alt="backup_loading" />
 		</div>
 
+		<!-- Caricamento al cambio lingua -->
 		<div v-if="languageChanged" class="flags-container">
 			<img v-if="languageChanged === 'english'" class="language-spinner" src="@/img/flags/inglese.webp" alt="english_flag" />
 			<img v-if="languageChanged === 'spanish'" class="language-spinner" src="@/img/flags/spagnolo.webp" alt="spanish_flag" />

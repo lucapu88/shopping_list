@@ -14,6 +14,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
     }),
     actions: {
         resetAllLists() {
+            this.loading = true;
+
             this.secondList = false;
             window.localStorage.removeItem('secondList');
             this.thirdList = false;
@@ -22,7 +24,6 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             window.localStorage.removeItem('fourthList');
         },
         todosSettings() {
-            this.loading = true;
             this.todosStore.createTodosList();
             this.todosStore.toggleButtonDeleteSelectedTodo();
             this.todosStore.showOnlyImportantTodos = false;
@@ -40,21 +41,25 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.resetAllLists();
             this.secondList = true;
             window.localStorage.setItem('secondList', true);
+            window.localStorage.setItem('listNumber', `${this.languages.list.toUpperCase()} 2 `);
             this.todosSettings();
         },
         selectThirdList() {
             this.resetAllLists();
             this.thirdList = true;
             window.localStorage.setItem('thirdList', true);
+            window.localStorage.setItem('listNumber', `${this.languages.list.toUpperCase()} 3 `);
             this.todosSettings();
         },
         selectFourthList() {
             this.resetAllLists();
             this.fourthList = true;
             window.localStorage.setItem('fourthList', true);
+            window.localStorage.setItem('listNumber', `${this.languages.list.toUpperCase()} 4 `);
             this.todosSettings();
         },
         selectFirstList() {
+            window.localStorage.setItem('listNumber', `${this.languages.list.toUpperCase()} 1 `);
             this.resetAllLists();
             this.todosSettings();
         },

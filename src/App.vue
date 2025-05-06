@@ -32,7 +32,7 @@ export default {
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
-			secondTodos: useSecondTodoStore(),
+			secondTodosStore: useSecondTodoStore(),
 			isVisibleOnScroll: true,
 		};
 	},
@@ -91,7 +91,7 @@ export default {
 			<div id="container-list" class="row" @scroll="scrollHandler">
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
-					<LoadingOrUpdating :listImportedOrDeleted="secondTodos.loading" />
+					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 
 					<header style="overflow: hidden">
 						<FestivitiesAndOccurrences :is-visible-on-scroll="isVisibleOnScroll" />
