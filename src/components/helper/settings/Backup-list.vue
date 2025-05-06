@@ -22,9 +22,25 @@ export default {
 	},
 	methods: {
 		importBackup() {
-			const savedLastTodosCopy = window.localStorage.getItem("todosBackup");
-			if (savedLastTodosCopy !== "[]") {
-				window.localStorage.setItem("todos", savedLastTodosCopy);
+			//TOFIX Sistemare questi orripilanti if else if
+			if (window.localStorage.getItem("secondList")) {
+				const savedLastTodosBackup2 = window.localStorage.getItem("todosBackup2");
+				this.getBackup(savedLastTodosBackup2, "todos2");
+			} else if (window.localStorage.getItem("thirdList")) {
+				const savedLastTodosBackup3 = window.localStorage.getItem("todosBackup3");
+				this.getBackup(savedLastTodosBackup3, "todos3");
+			} else if (window.localStorage.getItem("fourthList")) {
+				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup4");
+				this.getBackup(savedLastTodosBackup4, "todos4");
+			} else {
+				const savedLastTodosBackup = window.localStorage.getItem("todosBackup");
+				this.getBackup(savedLastTodosBackup, "todos");
+			}
+		},
+		getBackup(lastCopy, list) {
+			if (lastCopy && lastCopy.length) {
+				window.localStorage.setItem(list, lastCopy);
+
 				this.$emit("backupLoadingEmit", true);
 				setTimeout(() => {
 					location.reload();

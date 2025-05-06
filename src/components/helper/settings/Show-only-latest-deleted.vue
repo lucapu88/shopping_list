@@ -47,7 +47,7 @@ export default {
 						<ul v-if="todosStore.deletedSingleTodo && todosStore.deletedSingleTodo.length" class="todo-deleted-container" :class="{ 'retro-border': theme.retroTheme }">
 							<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo" :key="index">
 								<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-								<span v-if="index < todosStore.deletedSingleTodo.length - 1">></span>
+								<span v-if="index < todosStore.deletedSingleTodo.length - 1 && index !== 0">></span>
 								{{ todo }}
 							</li>
 						</ul>
@@ -56,7 +56,7 @@ export default {
 						<ul class="multiple-deleted-container" :class="{ 'retro-border': theme.retroTheme }" v-if="todosStore.deletedTodos && todosStore.deletedTodos.length">
 							<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos" :key="index">
 								<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-								<span v-if="index < todosStore.deletedTodos.length - 1">></span>
+								<span v-if="index < todosStore.deletedTodos.length - 1 && index !== 0">></span>
 								{{ todo }}
 							</li>
 						</ul>

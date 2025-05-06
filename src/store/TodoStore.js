@@ -177,7 +177,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-
+      //TOFIX Sistemare questi orripilanti if else if
       if (window.localStorage.getItem('secondList')) {
         window.localStorage.setItem('todos2', parsedTodos);
       } else if (window.localStorage.getItem('thirdList')) {
@@ -190,6 +190,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.priceCalculator();
     },
     createTodosList() {
+      //TOFIX Sistemare questi orripilanti if else if
       if (window.localStorage.getItem('secondList')) {
         this.getCorrectTodoList('todos2');
       } else if (window.localStorage.getItem('thirdList')) {
@@ -421,7 +422,16 @@ export const useTodoStore = defineStore('todoStore', {
     backupList() {
       const newTodoList = [...this.todos];
       const parsedTodos = JSON.stringify(newTodoList);
-      window.localStorage.setItem('todosBackup', parsedTodos);
+      //TOFIX Sistemare questi orripilanti if else if
+      if (window.localStorage.getItem('secondList')) {
+        window.localStorage.setItem('todosBackup2', parsedTodos);
+      } else if (window.localStorage.getItem('thirdList')) {
+        window.localStorage.setItem('todosBackup3', parsedTodos);
+      } else if (window.localStorage.getItem('fourthList')) {
+        window.localStorage.setItem('todosBackup4', parsedTodos);
+      } else {
+        window.localStorage.setItem('todosBackup', parsedTodos);
+      }
     },
     showOnlyImportant() {
       const thereAreTodoFiltered = this.todos.filter((todo) => todo.isActive);
@@ -489,7 +499,9 @@ export const useTodoStore = defineStore('todoStore', {
       }
 
       if (todosToDelete.length > 0) {
+        const listNumber = window.localStorage.getItem('listNumber').toString();
         todosToDelete.push(this.settings.setDate());
+        todosToDelete.unshift(listNumber);
         window.localStorage.setItem(storageKey, todosToDelete);
       }
     },
