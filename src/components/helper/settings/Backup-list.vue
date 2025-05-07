@@ -22,7 +22,6 @@ export default {
 	},
 	methods: {
 		importBackup() {
-			//TOFIX Sistemare questi orripilanti if else if
 			if (window.localStorage.getItem("secondList")) {
 				const savedLastTodosBackup2 = window.localStorage.getItem("todosBackup2");
 				this.getBackup(savedLastTodosBackup2, "todos2");
@@ -66,6 +65,7 @@ export default {
 		<template v-if="settings.backupList && settings.section === backupList">
 			<div class="last-backup-container mb-3">
 				<li class="ms-3">
+					<small>{{ languages.backupListText.preDescriprion }}</small> <br />
 					<small>{{ languages.backupListText.description }}</small>
 					<ToggleTutorialButton :features="backupList" />
 				</li>

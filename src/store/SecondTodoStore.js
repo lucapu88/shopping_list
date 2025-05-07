@@ -67,6 +67,14 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.secondList = window.localStorage.getItem('secondList');
             this.thirdList = window.localStorage.getItem('thirdList');
             this.fourthList = window.localStorage.getItem('fourthList');
-        }
+        },
+        localStorageSettings(arrayOfObjects, listArray, defaultItem) {
+            const getItem = (param) => window.localStorage.getItem(param);
+            const setItem = (key, value) => window.localStorage.setItem(key, value);
+
+            const found = arrayOfObjects.find(item => getItem(item.check));
+
+            found ? setItem(found.set, listArray) : setItem(defaultItem, listArray);
+        },
     }
 });

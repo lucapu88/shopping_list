@@ -155,6 +155,7 @@ export const useLanguageStore = defineStore('Language', {
     //----------------------------------------------------------------------------------------------------------
     backupListText: {
       title: 'Import Last Backup',
+      preDescriprion: 'Every time you delete something, AND ONLY IF YOU DELETE IT, an automatic backup of THE LAST deletion is saved.',
       description: "If you have deleted something or the entire list by mistake, you can recover the entire list from the LAST deletion.",
       confirm: 'Are you sure?',
       noBackupText: 'There are no backups saved'
@@ -298,6 +299,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperItaTranslations();
       this.festivitiesITATranslations();
       this.backupListText.title = 'Importa ultimo backup';
+      this.backupListText.preDescriprion = "Ogni volta che elimini qualcosa, E SOLO SE LA ELIMINI, viene salvato un backup automatico DELL'ULTIMA eliminazione.";
       this.backupListText.description = "Se hai eliminato qualcosa o tutta la lista per sbaglio, puoi recuperare l'intera lista DALL'ULTIMA eliminazione.";
       this.backupListText.confirm = "Sei sicuro?";
       this.backupListText.noBackupText = 'Non ci sono backup salvati';
@@ -363,6 +365,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperSpaTranslations();
       this.festivitiesSPATranslations();
       this.backupListText.title = 'Importar la última copia de seguridad';
+      this.backupListText.preDescriprion = "Cada vez que eliminas algo, Y SÓLO SI LO ELIMINAS, se guarda una copia de seguridad automática de LA ÚLTIMA eliminación";
       this.backupListText.description = "Si has borrado algo o toda la lista por error, puedes recuperar toda la lista desde el ÙLTIMO borrado.";
       this.backupListText.confirm = '¿Seguro?';
       this.backupListText.noBackupText = 'No hay copias de seguridad guardadas';

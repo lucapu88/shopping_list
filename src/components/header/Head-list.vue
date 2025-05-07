@@ -128,7 +128,7 @@ export default {
 		<HeaderButtonsContainer />
 
 		<!-- SELEZIONE LISTE -->
-		<ListsButtonsSelection v-if="settings.isIphone && !settings.isAndroid && !addTodo.devNotes" />
+		<ListsButtonsSelection v-if="!addTodo.devNotes" />
 	</div>
 </template>
 

@@ -16,7 +16,7 @@ export const useTodoStore = defineStore('todoStore', {
     festivities: useOthersFestivitiesStore(),
     suggestionsStore: useSuggestionsStore(),
     categoriesStore: useCategoriesStore(),
-    secondTodos: useSecondTodoStore(),
+    secondTodosStore: useSecondTodoStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -177,21 +177,15 @@ export const useTodoStore = defineStore('todoStore', {
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-      //TOFIX Sistemare questi orripilanti if else if
-      if (window.localStorage.getItem('secondList')) {
-        window.localStorage.setItem('todos2', parsedTodos);
-      } else if (window.localStorage.getItem('thirdList')) {
-        window.localStorage.setItem('todos3', parsedTodos);
-      } else if (window.localStorage.getItem('fourthList')) {
-        window.localStorage.setItem('todos4', parsedTodos);
-      } else {
-        window.localStorage.setItem('todos', parsedTodos);
-      }
+      const checks = [
+        { check: 'secondList', set: 'todos2' },
+        { check: 'thirdList', set: 'todos3' },
+        { check: 'fourthList', set: 'todos4' },
+      ];
+      this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todos');
       this.priceCalculator();
-      this.backupList();
     },
     createTodosList() {
-      //TOFIX Sistemare questi orripilanti if else if
       if (window.localStorage.getItem('secondList')) {
         this.getCorrectTodoList('todos2');
       } else if (window.localStorage.getItem('thirdList')) {
@@ -202,7 +196,7 @@ export const useTodoStore = defineStore('todoStore', {
         this.getCorrectTodoList('todos');
       }
       if (!this.addTodoInCategory.condition) { this.todos.map((t) => (t.isSelected = false)); }
-      this.secondTodos.setSelectedLists();
+      this.secondTodosStore.setSelectedLists();
     },
     getCorrectTodoList(todos) {
       //se si deve prendere un oggetto da salvare in locale
@@ -423,16 +417,12 @@ export const useTodoStore = defineStore('todoStore', {
     backupList() {
       const newTodoList = [...this.todos];
       const parsedTodos = JSON.stringify(newTodoList);
-      //TOFIX Sistemare questi orripilanti if else if
-      if (window.localStorage.getItem('secondList')) {
-        window.localStorage.setItem('todosBackup2', parsedTodos);
-      } else if (window.localStorage.getItem('thirdList')) {
-        window.localStorage.setItem('todosBackup3', parsedTodos);
-      } else if (window.localStorage.getItem('fourthList')) {
-        window.localStorage.setItem('todosBackup4', parsedTodos);
-      } else {
-        window.localStorage.setItem('todosBackup', parsedTodos);
-      }
+      const checks = [
+        { check: 'secondList', set: 'todosBackup2' },
+        { check: 'thirdList', set: 'todosBackup3' },
+        { check: 'fourthList', set: 'todosBackup4' },
+      ];
+      this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todosBackup');
     },
     showOnlyImportant() {
       const thereAreTodoFiltered = this.todos.filter((todo) => todo.isActive);
@@ -500,9 +490,11 @@ export const useTodoStore = defineStore('todoStore', {
       }
 
       if (todosToDelete.length > 0) {
-        const listNumber = window.localStorage.getItem('listNumber').toString();
+        const listNumber = window.localStorage.getItem('listNumber');
         todosToDelete.push(this.settings.setDate());
-        todosToDelete.unshift(listNumber);
+        if (listNumber) {
+          todosToDelete.unshift(listNumber.toString());
+        }
         window.localStorage.setItem(storageKey, todosToDelete);
       }
     },
@@ -517,15 +509,11 @@ export const useTodoStore = defineStore('todoStore', {
       this.isVisible
         ? this.todos.forEach(todo => { if (todo.multipleDelete) todo.hidden = true; })
         : this.todos.forEach(todo => { todo.hidden = false; });
-      /* TOFIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
-        this.saveTodos(); */
     },
     resetVisibility() {
       this.isVisible = false;
       this.todos.forEach(todo => { todo.hidden = false; });
-      /* TOFIX Decidere se farlo permanente...Secondo me al momento va bene così perchè se resta permanente l'utente potrebbe dimenticarsi di averlo inserito ed andare in confusione
-        this.saveTodos(); */
     }
-    //------------------- HAI RAGGIUNTO IL LIMITE DI LUNGHEZZA DI QUESTO FILE, DAI PROSSIMI METODI IN POI CREA UN NUOVO STORE.
+    //------------------- HAI RAGGIUNTO IL LIMITE DI LUNGHEZZA DI QUESTO FILE! I prossimi metodi andranno nel SecondTodoStore.
   }
 });
