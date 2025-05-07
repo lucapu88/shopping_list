@@ -24,7 +24,7 @@ export default {
 		class="category-list-container"
 		:class="{
 			'waterfall-descent': todosStore.categoryList,
-			'waterfall-ascent': todosStore.categoryList === false,
+			'waterfall-ascent': !todosStore.categoryList,
 			'retro-theme-confirm': theme.retroTheme,
 			'light-theme-confirm': theme.lightTheme,
 			'category-dark-container': theme.darkTheme,

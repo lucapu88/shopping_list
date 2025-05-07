@@ -56,6 +56,7 @@ export default {
 					fourth: btn.name === 'fourth',
 					'selected-btn': btn.selectedCondition(),
 					'light-button-color': theme.lightTheme,
+					'dark-btn': theme.darkTheme,
 					'minimal-btn': theme.minimalTheme,
 					'retro-teme-btns': theme.retroTheme,
 					'summer-header-btn': theme.summerTheme,
@@ -80,10 +81,11 @@ export default {
 	grid-template-columns: repeat(4, 1fr);
 	width: 90%;
 	margin: auto;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
+	margin-top: -10px;
 }
 .buttons-container > button {
-	height: 20px;
+	height: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -96,13 +98,13 @@ export default {
 }
 
 .first {
-	border-radius: 5px 0 0 5px;
+	border-radius: 7px 0px 0px 7px;
 }
 .second,
 .third {
-	border-radius: 0;
+	border-radius: 0px;
 }
 .fourth {
-	border-radius: 0 5px 5px 0;
+	border-radius: 0px 7px 7px 0px;
 }
 </style>

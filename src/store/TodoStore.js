@@ -21,7 +21,7 @@ export const useTodoStore = defineStore('todoStore', {
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
     visible: true, //serve per la visibilità del contenitore dell'alert
-    categoryList: null,
+    categoryList: false,
     categoryListChildren: null,
     helper: null,
     christmasTheme: false,
@@ -188,6 +188,7 @@ export const useTodoStore = defineStore('todoStore', {
         window.localStorage.setItem('todos', parsedTodos);
       }
       this.priceCalculator();
+      this.backupList();
     },
     createTodosList() {
       //TOFIX Sistemare questi orripilanti if else if
