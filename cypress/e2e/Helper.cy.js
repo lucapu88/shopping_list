@@ -22,7 +22,7 @@ describe("test dell'helper e delle impostazioni", () => {
     // });
 
     it("cambio lingue", () => {
-        const childNumber = 3;
+        const childNumber = 4;
         //Spagnolo
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
@@ -52,7 +52,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category > .button-container > .btn').click({ force: true });
 
         cy.get('.settings').click().then(() => {
-            cy.get('#helper-description > :nth-child(6) > .list-title').click();
+            cy.get('#helper-description > :nth-child(7) > .list-title').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'OFF');
             cy.get('#auto-delete > u').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'ON');
@@ -72,7 +72,7 @@ describe("test dell'helper e delle impostazioni", () => {
         categoryCheck();
 
         cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(7) > .list-title').click();
+        cy.get('#helper-description > :nth-child(8) > .list-title').click();
         cy.get('.text-primary').should('include.text', 'ON');
         cy.get('#auto-delete > .hand-pointing').click();
         cy.get('.text-primary').should('include.text', 'OFF');
@@ -102,7 +102,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
 
         cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(8) > .list-title').click();
+        cy.get('#helper-description > :nth-child(9) > .list-title').click();
         cy.get('.todo-deleted-container').should('include.text', phrases.frase4);
         cy.get('.multiple-deleted-container > :nth-child(1)').should('include.text', phrases.frase1);
         cy.get('.multiple-deleted-container > :nth-child(2)').should('include.text', phrases.frase2);
@@ -126,7 +126,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         function checkBackupSuccessful() {
             cy.get('.settings').click();
-            cy.get('#helper-description > :nth-child(9) > .list-title').click();
+            cy.get('#helper-description > :nth-child(10) > .list-title').click();
             cy.get('#backup-button').click();
             cy.get('#confirm-backup').click();
             cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
@@ -148,7 +148,7 @@ describe("test dell'helper e delle impostazioni", () => {
         });
 
         cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(10) > .list-title').click();
+        cy.get('#helper-description > :nth-child(11) > .list-title').click();
         cy.get('#text-area').click();
         cy.document().invoke('execCommand', 'paste');
         cy.get('.add-list-copied > .btn').click();

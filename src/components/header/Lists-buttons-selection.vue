@@ -38,6 +38,7 @@ export default {
 					'elegant-btn': theme.elegantTheme,
 					'pink-theme-btn': theme.pinkTheme,
 					'panter-other-btn': theme.panterTheme,
+					'list-button-panther-size': theme.panterTheme,
 					'lemon-other-btn': theme.lemonTheme,
 					'jeans-other-btn': theme.jeansTheme,
 				}"
@@ -66,10 +67,12 @@ export default {
 	align-items: center;
 	font-size: small;
 }
+
 .btn-name {
 	max-width: 8ch;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .selected-btn {
 	box-shadow: inset 2px 2px 90px -50px rgba(0, 0, 0, 0.85);
@@ -88,11 +91,6 @@ export default {
 	border-radius: 0px 7px 7px 0px;
 }
 
-@media (max-width: 450px) {
-	.buttons-container > button {
-		max-width: 90px;
-	}
-}
 @media (max-width: 345px) {
 	.buttons-container {
 		width: 95%;

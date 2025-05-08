@@ -15,7 +15,7 @@ describe("test dell'helper e delle impostazioni", () => {
         const currentMonth = today.getMonth() + 1;
         const currentDay = today.getDate();
         const natale = currentDay <= 31 && currentMonth === 12;
-        const childNumber = 4;
+        const childNumber = 5;
         // light
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();

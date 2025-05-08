@@ -95,3 +95,9 @@
 .list-title-panter-selected {
 	background-color: #88888880;
 }
+
+@media (max-width: 430px) {
+	.list-button-panther-size {
+		max-width: 90px;
+	}
+}
