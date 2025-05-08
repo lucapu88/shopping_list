@@ -66,6 +66,10 @@ export const useLanguageStore = defineStore('Language', {
     removeEmpty: 'Remove only empty',
     deleteAll: 'Delete ALL',
     deleteAllConfirmText: 'Are you sure you want \n delete the whole list?',
+    renameListText: {
+      title: "Rename Lists",
+      description: 'Here you can give a name to your lists, just enter it in the input and then click on "save".'
+    },
     //-------------------------------------------------------------------------- HELPER DESCRIPTIONS
     helperDescription: {
       troubleshooting: 'Troubleshooting',
@@ -188,9 +192,9 @@ export const useLanguageStore = defineStore('Language', {
       title: 'Product already listed',
       body: 'Insert it anyway?'
     },
-    list: "List ",
     alertMomentaneo: "Now you can create multiple lists! Isn't that wonderful? If you shop at different supermarkets or want to have different lists based on your needs, you have 4 new lists at your disposal! Enjoy!",
-    alertMomentaneoTitolo: "New Feature: "
+    alertMomentaneoTitolo: "New Feature: ",
+    saveText: "Save",
   }),
   getters: {},
   actions: {
@@ -296,6 +300,8 @@ export const useLanguageStore = defineStore('Language', {
       this.removeEmpty = 'Rimuovi vuote';
       this.deleteAll = 'Cancella tutto';
       this.deleteAllConfirmText = 'Sei sicuro di voler eliminare \n tutta la lista?';
+      this.renameListText.title = 'Rinomina Liste';
+      this.renameListText.description = "Qui potrai dare un nome alle tue liste, basterà inserirlo nell'input e poi cliccare su 'salva'.";
       this.helperItaTranslations();
       this.festivitiesITATranslations();
       this.backupListText.title = 'Importa ultimo backup';
@@ -320,9 +326,9 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Ricarica l'app:";
       this.duplicateText.title = "Prodotto già presente in lista";
       this.duplicateText.body = "Inserirlo comunque?";
-      this.list = "Lista ";
       this.alertMomentaneo = "Ora puoi creare più liste! Non è meraviglioso? Nel caso fai spesa in supermercati diversi oppure vuoi avere liste diverse in base alle tue esigenze, insomma hai a disposizione 4 liste tutte nuove! Buon divertimento ";
       this.alertMomentaneoTitolo = "Nuova Funzionalità: ";
+      this.saveText = "Salva";
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -362,6 +368,8 @@ export const useLanguageStore = defineStore('Language', {
       this.removeEmpty = 'Eliminar categorías vacías';
       this.deleteAll = 'Borrar todo';
       this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
+      this.renameListText.title = 'Cambiar el nombre de las listas';
+      this.renameListText.description = "Aquí puedes dar un nombre a tus listas, solo introdúcelo en el campo y luego haz clic en 'guardar'.";
       this.helperSpaTranslations();
       this.festivitiesSPATranslations();
       this.backupListText.title = 'Importar la última copia de seguridad';
@@ -386,9 +394,9 @@ export const useLanguageStore = defineStore('Language', {
       this.reloadAppText = "Recargar aplicación:";
       this.duplicateText.title = "Producto ya listado";
       this.duplicateText.body = "¿Insertarlo de todos modos?";
-      this.list = "Lista ";
       this.alertMomentaneo = "¡ahora puedes crear múltiples listas! ¿No es maravilloso? Si compras en diferentes supermercados o quieres tener listas diferentes en función de tus necesidades, ¡tienes 4 listas completamente nuevas a tu disposición! Divertirse";
       this.alertMomentaneoTitolo = "Nueva característica: ";
+      this.saveText = "Guardar";
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

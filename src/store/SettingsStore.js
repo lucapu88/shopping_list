@@ -15,6 +15,7 @@ export const useSettingsStore = defineStore('settings', {
     helperInClosing: false,
     privacyPolicy: false,
     troubleshooting: false,
+    renameList: false,
     changeLanguage: false,
     changeTheme: false,
     autoDeleteEmptyCategories: false,
@@ -124,6 +125,7 @@ export const useSettingsStore = defineStore('settings', {
     },
     resetHelperSettingsAndIstructions() {
       //IMPOSTAZIONI
+      this.renameList = false;
       this.changeLanguage = false;
       this.changeTheme = false;
       this.autoDeleteEmptyCategories = false;
@@ -151,6 +153,7 @@ export const useSettingsStore = defineStore('settings', {
       this.video = true;
 
       const sectionMap = {
+        renameList: 'renameList',
         changeLanguage: 'changeLanguage',
         changeTheme: 'changeTheme',
         autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',

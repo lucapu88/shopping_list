@@ -11,49 +11,23 @@ export default {
 			secondTodos: useSecondTodoStore(),
 			languages: useLanguageStore(),
 			theme: useThemeStore(),
-			buttons: [],
 		};
 	},
 	created() {
-		this.buttons = [
-			{
-				name: "first",
-				number: 1,
-				selectedCondition: () => !this.secondTodos.secondList && !this.secondTodos.thirdList && !this.secondTodos.fourthList,
-				function: this.secondTodos.selectFirstList,
-			},
-			{
-				name: "second",
-				number: 2,
-				selectedCondition: () => this.secondTodos.secondList,
-				function: this.secondTodos.selectSecondList,
-			},
-			{
-				name: "third",
-				number: 3,
-				selectedCondition: () => this.secondTodos.thirdList,
-				function: this.secondTodos.selectThirdList,
-			},
-			{
-				name: "fourth",
-				number: 4,
-				selectedCondition: () => this.secondTodos.fourthList,
-				function: this.secondTodos.selectFourthList,
-			},
-		];
+		this.secondTodos.createListsButtons();
 	},
 };
 </script>
 
 <template>
 	<div class="buttons-container">
-		<template v-for="(btn, n) in buttons" :key="n">
+		<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
 			<button
 				:class="{
-					first: btn.name === 'first',
-					second: btn.name === 'second',
-					third: btn.name === 'third',
-					fourth: btn.name === 'fourth',
+					first: btn.class === 'first',
+					second: btn.class === 'second',
+					third: btn.class === 'third',
+					fourth: btn.class === 'fourth',
 					'selected-btn': btn.selectedCondition(),
 					'light-button-color': theme.lightTheme,
 					'dark-btn': theme.darkTheme,
@@ -69,7 +43,7 @@ export default {
 				}"
 				@click="btn.function"
 			>
-				<span>{{ languages.list }} {{ btn.number }}</span>
+				<span class="btn-name">{{ btn.name }}</span>
 			</button>
 		</template>
 	</div>
@@ -79,10 +53,11 @@ export default {
 .buttons-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	width: 90%;
+	width: 100%;
 	margin: auto;
 	margin-bottom: 20px;
 	margin-top: -10px;
+	padding: 0 15px;
 }
 .buttons-container > button {
 	height: 25px;
@@ -90,6 +65,11 @@ export default {
 	justify-content: center;
 	align-items: center;
 	font-size: small;
+}
+.btn-name {
+	max-width: 8ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .selected-btn {
 	box-shadow: inset 2px 2px 90px -50px rgba(0, 0, 0, 0.85);
@@ -106,5 +86,21 @@ export default {
 }
 .fourth {
 	border-radius: 0px 7px 7px 0px;
+}
+
+@media (max-width: 450px) {
+	.buttons-container > button {
+		max-width: 90px;
+	}
+}
+@media (max-width: 345px) {
+	.buttons-container {
+		width: 95%;
+		margin-top: 20px;
+		padding: 0;
+	}
+	.btn-name {
+		max-width: 7ch;
+	}
 }
 </style>

@@ -27,6 +27,7 @@ import ShowOnlyLatestDeleted from "./settings/Show-only-latest-deleted.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
 import ReloadApp from "./settings/Reload-app.vue";
+import RenameList from "./settings/Rename-list.vue";
 </script>
 
 <script>
@@ -140,13 +141,13 @@ export default {
 				<UpdateApp @updatingAppEmit="updatingAppEmited" />
 
 				<ReloadApp />
-
 				<!-- É TUTTO MOMENTANEO! QUESTO ALERT POI VA TOLTO -->
 				<div style="text-align: center; font-size: 0.75rem">
 					<strong class="new" style="color: red; text-shadow: none">{{ languages.alertMomentaneoTitolo }}</strong>
 					<img style="width: 85%; margin-bottom: 5px" src="@/img/new-feature.webp" alt="new_feature" />
 					<p>{{ languages.alertMomentaneo }} 🤗</p>
 				</div>
+				<RenameList />
 
 				<ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
 
