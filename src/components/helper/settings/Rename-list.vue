@@ -3,6 +3,8 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
+import Tutorial from "../tutorials/Tutorial.vue";
+import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
 </script>
 
 <script>
@@ -50,16 +52,25 @@ export default {
 	<div class="helper-settings">
 		<ListIstructionAccordion show-list-instructions-input="renameList" :istructions-text="languages.renameListText.title" :select-deselect-arrow="settings.renameList && settings.section === renameList" :isSettings="true" :isNew="true" />
 		<template v-if="settings.renameList && settings.section === renameList">
-			<li class="ms-3">
-				<small>{{ languages.renameListText.description }}</small>
-			</li>
-			<div class="buttons-container">
-				<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
-					<input class="button-name" type="text" :placeholder="`${btn.name}`" v-model="buffer[n]" />
-				</template>
-				<button class="save-btn" @click="renameButtons()">
-					{{ languages.saveText }}
-				</button>
+			<div class="rename-list-container mb-3">
+				<!-- É TUTTO MOMENTANEO! QUESTO ALERT POI VA TOLTO -->
+				<div style="text-align: center; font-size: 0.75rem">
+					<strong class="new" style="color: red; text-shadow: none">{{ languages.alertMomentaneoTitolo }}</strong>
+					<p>{{ languages.alertMomentaneo }} 🤗</p>
+				</div>
+				<li class="ms-3">
+					<small>{{ languages.renameListText.description }}</small>
+					<ToggleTutorialButton :features="renameList" />
+				</li>
+				<div class="buttons-container">
+					<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
+						<input class="button-name" type="text" :placeholder="`${btn.name}`" v-model="buffer[n]" />
+					</template>
+					<button class="save-btn" @click="renameButtons()">
+						{{ languages.saveText }}
+					</button>
+				</div>
+				<Tutorial v-if="settings.video && settings.feature === renameList" :features="renameList" />
 			</div>
 		</template>
 	</div>
@@ -80,6 +91,5 @@ export default {
 .save-btn {
 	width: 60%;
 	align-self: center;
-	margin-bottom: 20px;
 }
 </style>
