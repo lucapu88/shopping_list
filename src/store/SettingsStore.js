@@ -209,5 +209,22 @@ export const useSettingsStore = defineStore('settings', {
 
       return dd + '/' + mm + '/' + yyyy;
     },
+    logLocalStorageSize() {
+      //Questo metodo serve solo a me per rendermi conto semmai in futuro i dati in locale dovessero diventare troppo grossi.
+      let totalByte = 0;
+      for (let key in localStorage) {
+        if (Object.prototype.hasOwnProperty.call(localStorage, key)) {
+          totalByte += ((localStorage[key].length + key.length) * 2);
+        }
+      }
+      const totalKB = (totalByte / 1024).toFixed(2);
+
+      if (totalKB == 5120) {
+        console.log('%cATTENZIONE PORCA PUTTANA SEI ARRIVATO AL LIMITE DI MEMORIA DEL LOCALSTORAGE!!!', "color: red;font-size: 25px; font-weight: bold;");
+        console.log('%cMettiti comodo e inventati qualcosa per risolvere sto casino.', "color: red;font-size: 15px;");
+      } else {
+        console.log(`%cMemoria LocalStorage: ${totalByte} byte (${totalKB} KB)`, "color: green;font-size: 16px; font-weight: bold;");
+      }
+    }
   }
 });

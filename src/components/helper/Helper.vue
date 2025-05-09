@@ -56,6 +56,7 @@ export default {
 		if (this.todosStore.showOnlyImportantTodos) {
 			this.todosStore.showOnlyImportant();
 		}
+		this.settings.logLocalStorageSize();
 	},
 	mounted() {
 		document.getElementById("helper-description").scrollTo(0, 0);
