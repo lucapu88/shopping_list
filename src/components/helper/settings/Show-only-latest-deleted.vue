@@ -48,7 +48,8 @@ export default {
 							<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo" :key="index">
 								<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
 								<span v-if="index < todosStore.deletedSingleTodo.length - 1 && index !== 0">></span>
-								{{ todo }}
+								<span v-if="index === 0" style="color: red">Nome Lista: {{ todo }}</span>
+								<span v-else>{{ todo }}</span>
 							</li>
 						</ul>
 						<!-- TODO MULTIPLI -->
@@ -57,7 +58,8 @@ export default {
 							<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos" :key="index">
 								<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
 								<span v-if="index < todosStore.deletedTodos.length - 1 && index !== 0">></span>
-								{{ todo }}
+								<span v-if="index === 0" style="color: red">Nome Lista: {{ todo }}</span>
+								<span v-else>{{ todo }}</span>
 							</li>
 						</ul>
 					</div>
