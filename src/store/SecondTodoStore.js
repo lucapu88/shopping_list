@@ -41,7 +41,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         selectFirstList() {
             const listName1 = window.localStorage.getItem('ListName1');
 
-            window.localStorage.setItem('listNumber', `${listName1 ? listName1.toString() : "LIST 1"}`);
+            window.localStorage.setItem('listNumber1', `${listName1 ? listName1.toString() : "LIST 1"}`);
             this.resetAllLists();
             this.todosSettings();
         },
@@ -51,7 +51,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const listName2 = window.localStorage.getItem('ListName2');
 
             window.localStorage.setItem('secondList', true);
-            window.localStorage.setItem('listNumber', `${listName2 ? listName2.toString() : "LIST 2"}`);
+            window.localStorage.setItem('listNumber2', `${listName2 ? listName2.toString() : "LIST 2"}`);
             this.todosSettings();
         },
         selectThirdList() {
@@ -60,7 +60,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const listName3 = window.localStorage.getItem('ListName3');
 
             window.localStorage.setItem('thirdList', true);
-            window.localStorage.setItem('listNumber', `${listName3 ? listName3.toString() : "LIST 3"}`);
+            window.localStorage.setItem('listNumber3', `${listName3 ? listName3.toString() : "LIST 3"}`);
             this.todosSettings();
         },
         selectFourthList() {
@@ -69,7 +69,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const listName4 = window.localStorage.getItem('ListName4');
 
             window.localStorage.setItem('fourthList', true);
-            window.localStorage.setItem('listNumber', `${listName4 ? listName4.toString() : "LIST 4"}`);
+            window.localStorage.setItem('listNumber4', `${listName4 ? listName4.toString() : "LIST 4"}`);
             this.todosSettings();
         },
         setSelectedLists() {
@@ -117,6 +117,36 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                     function: this.selectFourthList,
                 },
             ];
+        },
+        getAndPushListsNumber(storageKey, todosToDelete) {
+            //TOFIX brutto brutto, togliere questi if
+            let todos1 = this.getTodosFromStorage('todos');
+            let todos2 = this.getTodosFromStorage('todos2');
+            let todos3 = this.getTodosFromStorage('todos3');
+            let todos4 = this.getTodosFromStorage('todos4');
+
+            const todosName = this.todosStore.todos.map(e => e.name);
+
+            if (this.areEqualArrays(todosName, todos1)) {
+                window.localStorage.setItem(`${storageKey}-1`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos2)) {
+                window.localStorage.setItem(`${storageKey}-2`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos3)) {
+                window.localStorage.setItem(`${storageKey}-3`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos4)) {
+                window.localStorage.setItem(`${storageKey}-4`, todosToDelete);
+            }
+        },
+        areEqualArrays(arr1, arr2) {
+            if (arr1.length !== arr2.length) return false;
+            return arr1.every((val, index) => val === arr2[index]);
+        },
+        getTodosFromStorage(key) {
+            const data = window.localStorage.getItem(key);
+            return data ? JSON.parse(data).map(e => e.name) : [];
         }
     }
 });

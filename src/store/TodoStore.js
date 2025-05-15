@@ -42,8 +42,8 @@ export const useTodoStore = defineStore('todoStore', {
     focusIn: false,
     totalPrice: 0,
     showOnlyImportantTodos: false,
-    deletedTodos: null,
-    deletedSingleTodo: null,
+    deletedTodos: [],
+    deletedSingleTodo: [],
     todosCategorySelected: [],
     categoryAdded: false,
     addedImportant: false,
@@ -286,8 +286,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     deleteSelectedTodos() {
       this.backupList();
-      const multipleDeleteFiltered = this.todos.filter(t => t.multipleDelete);
-      multipleDeleteFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', multipleDeleteFiltered) : this.setOnlyDeletedTodos('multipleDelete');
+      this.setOnlyDeletedTodos('multipleDelete');
       //Elimina solo i todo che sono stati selezionati.
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
@@ -398,8 +397,7 @@ export const useTodoStore = defineStore('todoStore', {
         return;
       }
       this.backupList();
-      const todoCategoryFiltered = this.todos.filter(t => !t.category);
-      todoCategoryFiltered.length === 1 ? this.setOnlyDeletedTodos('onlyOne', todoCategoryFiltered) : this.setOnlyDeletedTodos('deleteAll');
+      this.setOnlyDeletedTodos('deleteAll');
       this.todos.splice(x);
       this.categoryList = false;
       this.isDraggable = false;
@@ -460,9 +458,9 @@ export const useTodoStore = defineStore('todoStore', {
       this.showOnlyImportantTodos = false;
       this.saveTodos();
     },
-    setOnlyDeletedTodos(index, arrayWithOneElement) {
+    setOnlyDeletedTodos(index) {
       let todosToDelete = [];
-      let storageKey = '';
+      let storageKey = 'singleTodoDeleted';
 
       switch (index) {
         case 'multipleDelete':
@@ -475,34 +473,30 @@ export const useTodoStore = defineStore('todoStore', {
           todosToDelete = this.todos.filter(todo => !todo.category).map(t => t.name);
           storageKey = 'deletedTodos';
           break;
-        case 'onlyOne':
-          //Se ho cliccato elimina tutti o elimina selezionati ma la lista ne conteneva solo uno. Allora diventa un'eliminazione singola
-          // eslint-disable-next-line no-case-declarations
-          const [todoName] = arrayWithOneElement;
-          todosToDelete = [todoName.name];
-          storageKey = 'singleTodoDeleted';
-          break;
         default:
           //Salvo IL todo singolo da eliminare
           todosToDelete = [this.todos[index].name];
-          storageKey = 'singleTodoDeleted';
           break;
       }
 
-      if (todosToDelete.length > 0) {
-        const listNumber = window.localStorage.getItem('listNumber');
-        todosToDelete.push(this.settings.setDate());
-        if (listNumber) {
-          todosToDelete.unshift(listNumber.toString());
-        }
-        window.localStorage.setItem(storageKey, todosToDelete);
-      }
+      if (todosToDelete.length === 1) { storageKey = 'singleTodoDeleted'; }
+
+      todosToDelete.push(this.settings.setDate());
+      this.secondTodosStore.getAndPushListsNumber(storageKey, todosToDelete);
     },
     getOnlyDeletedTodos() {
-      const deletedSingleTodo = window.localStorage.getItem('singleTodoDeleted');
-      if (deletedSingleTodo) { this.deletedSingleTodo = deletedSingleTodo.split(","); }
-      const getDeletedTodos = window.localStorage.getItem('deletedTodos');
-      if (getDeletedTodos) { this.deletedTodos = getDeletedTodos.split(","); }
+      const singleTodoDeleted = ['singleTodoDeleted-1', 'singleTodoDeleted-2', 'singleTodoDeleted-3', 'singleTodoDeleted-4'];
+      this.deletedSingleTodo = singleTodoDeleted.map(el => {
+        const getSingleTodoDeleted = window.localStorage.getItem(el);
+        if (getSingleTodoDeleted) return getSingleTodoDeleted.split(",");
+      });
+
+      const multipleTodoDeleted = ['deletedTodos-1', 'deletedTodos-2', 'deletedTodos-3', 'deletedTodos-4'];
+      this.deletedTodos = multipleTodoDeleted.map(el => {
+        const getDeletedTodos = window.localStorage.getItem(el);
+        if (getDeletedTodos) return getDeletedTodos.split(",");
+      });
+      console.log(this.deletedTodos);
     },
     toggleSelectedTodosForDelete() {
       this.isVisible = !this.isVisible;
