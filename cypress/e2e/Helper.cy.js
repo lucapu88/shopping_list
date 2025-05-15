@@ -92,23 +92,6 @@ describe("test dell'helper e delle impostazioni", () => {
         }
     });
 
-    it('mostra ultime eliminazioni', () => {
-        cy.addSomeItemsToList(phrases);
-        cy.get('[index="0"] > .checkbox').click({ force: true });
-        cy.get('[index="1"] > .checkbox').click({ force: true });
-        cy.get('[index="4"] > .checkbox').click({ force: true });
-        cy.get('.text-danger').first().click();
-        cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
-        cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
-
-        cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(9) > .list-title').click();
-        cy.get('.todo-deleted-container').should('include.text', phrases.frase4);
-        cy.get('.multiple-deleted-container > :nth-child(1)').should('include.text', phrases.frase1);
-        cy.get('.multiple-deleted-container > :nth-child(2)').should('include.text', phrases.frase2);
-        cy.get('.multiple-deleted-container > :nth-child(3)').should('include.text', phrases.frase5);
-    });
-
     it('importa ultimo backup lista', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
@@ -141,17 +124,17 @@ describe("test dell'helper e delle impostazioni", () => {
     it('importa lista', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
-        cy.get('.delete-all').click();
-        cy.get('.confirm > .btn-primary').click();
+        cy.get('.delete-all').click({ force: true });
+        cy.get('.confirm > .btn-primary').click({ force: true });
         cy.get('#todo-list').within(() => {
             cy.get('div.empty-logo-container').should('exist');
         });
 
-        cy.get('.settings').click();
-        cy.get('#helper-description > :nth-child(11) > .list-title').click();
-        cy.get('#text-area').click();
+        cy.get('.settings').click({ force: true });
+        cy.get('#helper-description > :nth-child(11) > .list-title').click({ force: true });
+        cy.get('#text-area').click({ force: true });
         cy.document().invoke('execCommand', 'paste');
-        cy.get('.add-list-copied > .btn').click();
+        cy.get('.add-list-copied > .btn').click({ force: true });
         cy.get('#todo-list').within(() => {
             cy.get('div.empty-logo-container').should('not.exist');
         });

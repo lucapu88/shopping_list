@@ -4,6 +4,10 @@ import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 // eslint-disable-next-line no-undef
 describe("test delle liste multiple", () => {
     beforeEach(() => {
+        // Per ovviare ad un errore di cypress: TypeError: Cannot read properties of undefined (reading 'KeyboardEvent')     
+        if (typeof window !== 'undefined' && !window.KeyboardEvent) {
+            window.KeyboardEvent = KeyboardEvent;
+        }
         cy.visit(shoppingListLocalOrGlobal);
     });
 
