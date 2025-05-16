@@ -41,7 +41,7 @@ export default {
 		<template v-if="settings.showOnlyLatestDeleted && settings.section === showOnlyLatestDeleted">
 			<div class="auto-delete-container mb-3">
 				<li class="ms-3">
-					<small>{{ languages.showOnlyLatestDeletedText.description }}.</small>
+					<span>{{ languages.showOnlyLatestDeletedText.description }}.</span>
 					<ToggleTutorialButton :features="showOnlyLatestDeleted" />
 				</li>
 				<div class="show-hide-deleted-list-container">
@@ -51,38 +51,38 @@ export default {
 						<div v-if="todosStore.deletedSingleTodo && todosStore.deletedSingleTodo.length" class="todo-deleted-container" :class="{ 'retro-border': theme.retroTheme }">
 							<section class="top">
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[0].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[0].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo[0]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedSingleTodo[0].length - 1 && index !== 0">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedSingleTodo[0].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[1].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[1].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo[1]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedSingleTodo[1].length - 1 && index !== 0">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedSingleTodo[1].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 							</section>
 
 							<section class="bottom">
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[2].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[2].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo[2]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedSingleTodo[2].length - 1 && index !== 0">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedSingleTodo[2].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[3].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[3].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedSingleTodo[3]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedSingleTodo[3].length - 1 && index !== 0">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedSingleTodo[3].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 							</section>
@@ -92,40 +92,40 @@ export default {
 						<div class="multiple-deleted-container" :class="{ 'retro-border': theme.retroTheme }">
 							<section class="top">
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[0].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[0].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos[0]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedTodos[0].length - 1">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedTodos[0].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[1].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[1].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos[1]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedTodos[1].length - 1">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedTodos[1].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 							</section>
 
 							<section class="bottom">
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[2].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[2].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos[2]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedTodos[2].length - 1">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedTodos[2].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 
 								<ul>
-									<strong style="color: green">{{ secondTodosStore.listButtons[3].name }}</strong>
+									<div class="list-canceled-title">{{ secondTodosStore.listButtons[3].name }}</div>
 									<li class="todo-deleted" v-for="(todo, index) in todosStore.deletedTodos[3]" :key="index">
 										<!-- sull'ultimo elemento non voglio nulla perchè è la data -->
-										<span v-if="index < todosStore.deletedTodos[3].length - 1">></span>
-										{{ todo }}
+										<span v-if="index < todosStore.deletedTodos[3].length - 1">>{{ todo }}</span>
+										<span class="date" v-else> {{ todo }}</span>
 									</li>
 								</ul>
 							</section>
@@ -215,15 +215,28 @@ export default {
 }
 
 ul {
-	padding: 0;
+	padding: 5px;
 	padding-left: 10px;
 }
 
 .top,
 .bottom {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
-/* section > ul {
-	width: 50%;
-} */
+
+.list-canceled-title {
+	color: #008000;
+	background-color: #bdbdbd;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.date {
+	font-size: 0.6875rem;
+}
+
+.todo-deleted:last-child {
+	margin-top: 10px;
+}
 </style>
