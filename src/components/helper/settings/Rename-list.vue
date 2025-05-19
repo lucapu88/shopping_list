@@ -50,7 +50,7 @@ export default {
 
 <template>
 	<div class="helper-settings">
-		<ListIstructionAccordion show-list-instructions-input="renameList" :istructions-text="languages.renameListText.title" :select-deselect-arrow="settings.renameList && settings.section === renameList" :isSettings="true" :isNew="true" />
+		<ListIstructionAccordion show-list-instructions-input="renameList" :istructions-text="languages.renameListText.title" :select-deselect-arrow="settings.renameList && settings.section === renameList" :isSettings="true" />
 		<template v-if="settings.renameList && settings.section === renameList">
 			<div class="rename-list-container mb-3">
 				<!-- É TUTTO MOMENTANEO! QUESTO ALERT POI VA TOLTO -->
