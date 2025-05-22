@@ -107,13 +107,12 @@ export default {
 	border-radius: 10px;
 	width: 90%;
 	max-width: 700px;
-	overflow: auto;
+	max-height: 750px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
 	animation: wideningAppearance 1s ease;
 }
 @keyframes wideningAppearance {
@@ -233,9 +232,14 @@ export default {
 	border-color: #d98410;
 	color: #d98410;
 }
-
+.confirm-buttons-container {
+	display: flex;
+	gap: 20px;
+}
 button {
 	margin-right: 15px;
+	font-size: 1.25rem;
+	min-width: 50px;
 }
 ul {
 	max-height: 90%;
@@ -245,5 +249,6 @@ ul {
 }
 li {
 	display: block;
+	font-size: 1.25rem;
 }
 </style>
