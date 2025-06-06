@@ -53,11 +53,6 @@ export default {
 		<ListIstructionAccordion show-list-instructions-input="renameList" :istructions-text="languages.renameListText.title" :select-deselect-arrow="settings.renameList && settings.section === renameList" :isSettings="true" />
 		<template v-if="settings.renameList && settings.section === renameList">
 			<div class="rename-list-container mb-3">
-				<!-- É TUTTO MOMENTANEO! QUESTO ALERT POI VA TOLTO -->
-				<div style="text-align: center; font-size: 0.75rem">
-					<strong class="new" style="color: red; text-shadow: none">{{ languages.alertMomentaneoTitolo }}</strong>
-					<p>{{ languages.alertMomentaneo }} 🤗</p>
-				</div>
 				<li class="ms-3">
 					<small>{{ languages.renameListText.description }}</small>
 					<ToggleTutorialButton :features="renameList" />
