@@ -123,31 +123,27 @@ export default {
 }
 
 .cancer-day {
-	width: 30px;
+	width: 25px;
 	margin-left: 10px;
 }
 
 .peace-day {
-	width: 60px;
-}
-
-.peace-day-text {
-	color: #ffe600 !important;
+	width: 55px;
 }
 
 .womens-day {
-	width: 50px;
-	height: 65px;
+	width: 45px;
+	height: 60px;
 }
 
 .shoah-day,
 .environment-day {
-	height: 50px;
+	height: 45px;
 }
 
 .earth-day,
 .pizza-day {
-	width: 60px;
+	width: 55px;
 	-webkit-animation: spin 3s linear;
 	-moz-animation: spin 3s linear;
 	animation: spin 3s linear;
@@ -170,33 +166,33 @@ export default {
 }
 
 .beer-day {
-	width: 65px;
-	height: 60px;
+	width: 60px;
+	height: 55px;
 }
 
 .parents-day {
-	width: 65px;
-	height: 50px;
+	width: 60px;
+	height: 45px;
 }
 
 .toilet-day {
-	width: 55px;
+	width: 50px;
 }
 
 .internet-day {
-	width: 60px;
+	width: 55px;
 }
 
 .valentines-day {
-	width: 75px;
-	height: 65px;
+	width: 70px;
+	height: 60px;
 }
 
 .humans-rights-day {
-	width: 100px;
+	width: 95px;
 }
 .star-wars-day {
-	width: 50px;
+	width: 45px;
 	animation: halfSpin 3s linear;
 }
 
@@ -216,11 +212,11 @@ export default {
 .description {
 	font-family: sans-serif;
 	font-size: 0.813rem;
-	width: 15ch;
+	width: 35ch;
 	padding: 10px;
 	position: absolute;
 	color: #db0505;
-	background-color: rgba(133, 131, 131, 0.616);
+	background-color: rgba(255, 255, 255, 0.758);
 	font-weight: bold;
 	border-radius: 10px;
 	text-transform: uppercase;
