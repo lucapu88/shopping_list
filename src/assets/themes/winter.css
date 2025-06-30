@@ -73,6 +73,7 @@
 }
 .winter-checkbox {
 	border: 2px solid var(--black);
+	color: black;
 }
 .duplicate-container-winter {
 	background-color: var(--winter-selected-color) !important;

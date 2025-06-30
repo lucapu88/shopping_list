@@ -1,5 +1,6 @@
 <script setup>
 import { useLanguageStore } from "@/store/LanguageStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 </script>
 
 <script>
@@ -7,6 +8,7 @@ export default {
 	data() {
 		return {
 			languages: useLanguageStore(),
+			secondTodos: useSecondTodoStore(),
 			loading: false,
 		};
 	},
@@ -27,7 +29,9 @@ export default {
 		<span class="settings-icon me-1"> &#x2699; </span>
 		<span> {{ languages.reloadAppText }} </span>
 		<button class="btn btn-light border-dark me-3 reload-btn" :class="{ clicked: loading }" @click="reloadApp()">
-			<img :class="{ loading: loading }" src="@/img/icons/reload-icon.webp" alt="reload" />
+			<div :class="{ loading: loading }">
+				<span class="refresh-icon">{{ secondTodos.refreshIcon }}</span>
+			</div>
 		</button>
 		<span v-if="loading" class="loading-text">LOADING</span>
 	</div>
@@ -51,14 +55,14 @@ export default {
 	background-color: #b1b1b1;
 }
 .reload-btn {
-	padding: 2px 15px;
+	padding: 1px 15px;
 	margin-left: 15px;
 	margin-right: 10px;
 }
-.reload-btn > img {
-	width: 30px;
-	height: 27px;
+.refresh-icon {
+	font-size: 1.3rem;
 }
+
 .loading {
 	animation: spin 1s infinite;
 }

@@ -1,6 +1,7 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 </script>
 
 <script>
@@ -13,6 +14,7 @@ export default {
 		return {
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
+			secondTodos: useSecondTodoStore(),
 			timer: false,
 		};
 	},
@@ -49,14 +51,17 @@ export default {
 		:class="{
 			checked: todo.multipleDelete && !theme.summerTheme,
 			'light-checkbox': theme.lightTheme,
+			'dark-checkbox': theme.darkTheme,
+			'minimal-checkbox': theme.minimalTheme,
 			'retro-checkbox': theme.retroTheme,
 			'summer-checked': todo.multipleDelete && theme.summerTheme,
 			'winter-checkbox': theme.winterTheme,
 			'pink-theme-btn': theme.pinkTheme,
+			'lemon-checkbox': theme.lemonTheme,
 		}"
 		@click="todosStore.selectTodoForDelete(index)"
 	>
-		<img v-if="todo.multipleDelete" class="checkbox-img" src="@/img/icons/checked.webp" alt="checked" />
+		<span class="checked-icon" v-if="todo.multipleDelete">{{ secondTodos.checkedIcon }}</span>
 	</div>
 	<!-- NO CHECKBOX PER ELEGANT -->
 	<span v-if="theme.elegantTheme && !todo.category && !todo.modify" class="me-3 ms-1 boldi-cipollino" @click="todosStore.selectTodoForDelete(index)">
@@ -166,10 +171,6 @@ export default {
 	width: 98vw;
 	height: 100%;
 	z-index: 200;
-}
-
-.checked {
-	background-color: #ffffff !important;
 }
 
 .x-modify,

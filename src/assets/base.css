@@ -451,15 +451,15 @@ button {
 	border-radius: 5px;
 	border: 2px solid;
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.checkbox-img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 25px;
-	height: 25px;
-	border-radius: 5px;
+
+.checked-icon {
+	font-size: 1.25rem;
 }
+
 /* --------------------------------------------- NATALEEEEEE ------------------------------------ */
 .christmas-garland {
 	width: 100%;

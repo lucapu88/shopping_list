@@ -3,6 +3,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
@@ -16,6 +17,7 @@ export default {
 			isChristmas: useChristmasStore(),
 			settings: useSettingsStore(),
 			languages: useLanguageStore(),
+			secondTodos: useSecondTodoStore(),
 			multipleDelete: "multipleDelete",
 			selectAndDelete: "selectAndDelete",
 		};
@@ -41,7 +43,7 @@ export default {
 				}"
 				v-if="!theme.elegantTheme"
 			>
-				<img class="checkbox-img" src="@/img/icons/checked.webp" alt="checked" />
+				<span class="checked-icon">{{ secondTodos.checkedIcon }}</span>
 			</div>
 			{{ languages.helperDescription.multipleDeleteText.part2 }}
 			<button class="text-danger border-danger rounded" :class="{ 'elegant-btn': theme.elegantTheme }">

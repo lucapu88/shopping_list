@@ -69,7 +69,7 @@ export default {
 }
 
 .btn-name {
-	max-width: 8ch;
+	max-width: 9ch;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

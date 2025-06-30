@@ -67,3 +67,6 @@
 	border: 2px solid var(--dark-white) !important;
 	border-radius: var(--default-radius);
 }
+.dark-checkbox {
+	color: var(--dark-white);
+}

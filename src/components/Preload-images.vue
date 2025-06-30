@@ -12,7 +12,6 @@ import marePreload from "@/img/mare.webp";
 import mareTabletPreload from "@/img/mare-tablet.webp";
 import montagnePreload from "@/img/montagne.webp";
 import montagneTabletPreload from "@/img/montagne-tablet.webp";
-import checked from "@/img/icons/checked.webp";
 import DragDropElegant from "@/img/icons/drag-and-drop-elegant.webp";
 import copyElegant from "@/img/icons/copy-elegant.webp";
 import importantElegant from "@/img/icons/important-elegant.webp";
@@ -54,7 +53,6 @@ import shareBackgr from "@/img/shared.webp";
 import cloud from "@/img/icons/cloud.webp";
 import tutorial from "@/img/icons/video-logo.webp";
 import winterHelperBackgr from "@/img/inverno.webp";
-import reloadIcon from "@/img/icons/reload-icon.webp";
 import eyeClosed from "@/img/icons/eye-close.webp";
 import eyeOpen from "@/img/icons/eye-open.webp";
 
@@ -96,7 +94,6 @@ export default {
 	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansTasca" />
 
 	<!-- --------------------------------preload delle icone in base ai temi------------------------- -->
-	<link v-if="!theme.elegantTheme" rel="preload" as="image" :href="checked" />
 
 	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="DragDropElegant" />
 	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="copyElegant" />
@@ -138,7 +135,6 @@ export default {
 	<link v-if="festivitiesOrOccurrences.newYear" rel="preload" as="image" :href="fireworks" />
 
 	<!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
-	<link rel="preload" as="image" :href="reloadIcon" />
 	<link rel="preload" as="image" :href="shareLogo" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="shareBackgr" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
