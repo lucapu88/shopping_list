@@ -51,13 +51,10 @@ export default {
 		:class="{
 			checked: todo.multipleDelete && !theme.summerTheme,
 			'light-checkbox': theme.lightTheme,
-			'dark-checkbox': theme.darkTheme,
-			'minimal-checkbox': theme.minimalTheme,
 			'retro-checkbox': theme.retroTheme,
 			'summer-checked': todo.multipleDelete && theme.summerTheme,
 			'winter-checkbox': theme.winterTheme,
 			'pink-theme-btn': theme.pinkTheme,
-			'lemon-checkbox': theme.lemonTheme,
 		}"
 		@click="todosStore.selectTodoForDelete(index)"
 	>

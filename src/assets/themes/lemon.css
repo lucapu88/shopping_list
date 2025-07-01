@@ -69,7 +69,3 @@
 	background-color: var(--lemon-secondary-color) !important;
 	color: var(--lemon-tertiary-color) !important;
 }
-
-.lemon-checkbox {
-	color: var(--lemon-text-color) !important;
-}
