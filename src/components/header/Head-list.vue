@@ -25,6 +25,8 @@ export default {
 			addTodo: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
 			secondTodos: useSecondTodoStore(),
+			apikey: null,
+			showPrompt: false,
 		};
 	},
 	created() {
@@ -47,18 +49,23 @@ export default {
 				this.addTodo.showOnlyImportant();
 			}
 			//Se è un iphone (quindi solo il mio smartphone) utilizzo il sistema di classificazione dei prodotti altrimenti il sistema normale
+			//Dovrei implementare un sistema sicuro per non pubblicare la mia API key, ma dato che questa funzionalità è per uso personale e non la metterò mai al servizio del cliente, per il momento lascio così, ovvero con un prompt salvo la chiave in locale.
+			const openAIKey = window.localStorage.getItem("apikey");
+			if (this.settings.isIphone && (!openAIKey || openAIKey === null)) {
+				this.showPrompt = true;
+			}
+
 			if (this.settings.isIphone) {
-				const openAIKey = window.localStorage.getItem("apikey");
-				//Dovrei implementare un sistema sicuro per non pubblicare la mia API key, ma dato che questa funzionalità è per uso personale e non la metterò mai al servizio del cliente, per il momento lascio così, ovvero con un prompt salvo la chiave in locale.
-				if (!openAIKey || openAIKey === null) {
-					const promptKey = prompt("Inserisci la tua API-Key:");
-					if (promptKey !== null) {
-						window.localStorage.setItem("apikey", promptKey);
-					}
-				}
 				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
 			} else {
 				this.addTodo.addTodo();
+			}
+		},
+		saveApiKey() {
+			//serve solo per salvare la API key in locale
+			if (this.apikey !== null) {
+				window.localStorage.setItem("apikey", this.apikey);
+				this.showPrompt = false;
 			}
 		},
 		scrollToBottom() {
@@ -134,6 +141,9 @@ export default {
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
+
+			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY -->
+			<input v-if="showPrompt" v-model="apikey" @keypress.enter="saveApiKey()" />
 		</div>
 
 		<!-- PULSANTE MOSTRA SUGGERIMENTI -->
