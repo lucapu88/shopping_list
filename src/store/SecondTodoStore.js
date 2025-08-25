@@ -1,12 +1,14 @@
 import { defineStore } from 'pinia';
 import { useTodoStore } from '@/store/TodoStore';
 import { useLanguageStore } from '@/store/LanguageStore';
+import { useCategoriesStore } from '@/store/CategoriesStore';
 
 
 export const useSecondTodoStore = defineStore('secondTodoStore', {
     state: () => ({
         todosStore: useTodoStore(),
         languages: useLanguageStore(),
+        categoriesStore: useCategoriesStore(),
         secondList: false,
         thirdList: false,
         fourthList: false,
@@ -149,6 +151,87 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         getTodosFromStorage(key) {
             const data = window.localStorage.getItem(key);
             return data ? JSON.parse(data).map(e => e.name) : [];
+        },
+        async classificaProdotto(prodotto) {
+            const openaiApiKey = window.localStorage.getItem("apikey");
+
+            try {
+                const response = await fetch("https://api.openai.com/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${openaiApiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4o-mini",
+                        // model: "gpt-3.5-turbo",
+                        messages: [
+                            {
+                                role: "system", content: `Sei un classificatore di prodotti per una lista della spesa.  
+                                    Devi classificare il prodotto: "${prodotto}"  
+                                    nelle seguenti categorie già esistenti: ${this.categoriesStore.itaCategories.map(cat => cat.name)}  
+
+                                    Regole:  
+                                    - Il prodotto DEVE rientrare in una di queste categorie.  
+                                    - NON inventare nuove categorie.  
+                                    - Se il prodotto ha anche solo un’associazione *vaga* con una categoria, inseriscilo in quella categoria.  
+                                    (Esempi: "zucchine" → vegetali, "polpo" → pesce, "salsiccia" → carne, "pesce persico" → pesce)  
+                                    - Usa la categoria più generale se non sai quale scegliere.  
+                                    - Se proprio non rientra in nessuna, usa "altro".  
+
+                                    Rispondi SOLO con il nome della categoria scelta, senza aggiungere altro testo.`
+                            },
+                        ],
+                        max_tokens: 10,
+                        temperature: 0
+                    })
+                });
+
+                const data = await response.json();
+                const categoryFound = data.choices[0].message.content.trim().toLowerCase();
+                this.addTodoWithArtificialIntelligence(categoryFound);
+            } catch (err) {
+                console.error("Errore AI:", err);
+                alert("Errore AI:", err);
+                return;
+            }
+        },
+        addTodoWithArtificialIntelligence(cat) {
+            if (!this.todosStore.todos.length) {
+                this.createTodoWithCategory(cat);
+                return;
+            }
+            const categoryAlreadyExist = this.todosStore.todos.find(todo => todo.name === cat);
+            const indexOf = this.todosStore.todos.findIndex(todo => todo.name == cat);
+
+            if (categoryAlreadyExist) {
+                const todoCopied = this.todosStore.newTodo;
+                const objForCatSelection = {
+                    //creo il tipo di oggetto che si aspetta selectCategoryToAddItem
+                    name: cat,
+                    isActive: false,
+                    isSelected: false,
+                    category: true,
+                    emojy: null,
+                    multipleDelete: false,
+                    modify: false,
+                    todoAdded: true,
+                };
+
+                this.todosStore.selectCategoryToAddItem(indexOf, objForCatSelection);
+                this.todosStore.newTodo = todoCopied;
+                this.todosStore.addTodo();
+                this.todosStore.removeSelectedCategoryToAddItem();
+            } else {
+                this.createTodoWithCategory(cat);
+            }
+        },
+        createTodoWithCategory(cat) {
+            const todoCopied = this.todosStore.newTodo;
+            this.todosStore.selectCategoryName(cat);
+            this.todosStore.newTodo = todoCopied;
+            this.todosStore.addTodo();
         }
+
     }
 });

@@ -8,6 +8,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
 import ListsButtonsSelection from "./Lists-buttons-selection.vue";
 </script>
@@ -23,6 +24,7 @@ export default {
 			settings: useSettingsStore(),
 			addTodo: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
+			secondTodos: useSecondTodoStore(),
 		};
 	},
 	created() {
@@ -44,7 +46,20 @@ export default {
 			if (this.addTodo.showOnlyImportantTodos) {
 				this.addTodo.showOnlyImportant();
 			}
-			this.addTodo.addTodo();
+			//Se è un iphone (quindi solo il mio smartphone) utilizzo il sistema di classificazione dei prodotti altrimenti il sistema normale
+			if (this.settings.isIphone) {
+				const openAIKey = window.localStorage.getItem("apikey");
+				//Dovrei implementare un sistema sicuro per non pubblicare la mia API key, ma dato che questa funzionalità è per uso personale e non la metterò mai al servizio del cliente, per il momento lascio così, ovvero con un prompt salvo la chiave in locale.
+				if (!openAIKey || openAIKey === null) {
+					const promptKey = prompt("Inserisci la tua API-Key:");
+					if (promptKey !== null) {
+						window.localStorage.setItem("apikey", promptKey);
+					}
+				}
+				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
+			} else {
+				this.addTodo.addTodo();
+			}
 		},
 		scrollToBottom() {
 			const list = document.getElementById("todo-list");
