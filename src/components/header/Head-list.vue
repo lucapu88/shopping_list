@@ -55,11 +55,7 @@ export default {
 				this.showPrompt = true;
 			}
 
-			if (this.settings.isIphone) {
-				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
-			} else {
-				this.addTodo.addTodo();
-			}
+			this.settings.isIphone ? this.secondTodos.classificaProdotto(this.addTodo.newTodo) : this.addTodo.addTodo();
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
@@ -134,6 +130,7 @@ export default {
 				}"
 				ref="myInput"
 				v-model="addTodo.newTodo"
+				:disabled="secondTodos.loadingOpenAIRes"
 				@keypress.enter="addNewTodo()"
 				:placeholder="languages.placeholder"
 			/>

@@ -13,6 +13,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         thirdList: false,
         fourthList: false,
         loading: false,
+        loadingOpenAIRes: false,
         listButtons: [],
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504)
@@ -156,6 +157,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const openaiApiKey = window.localStorage.getItem("apikey");
 
             try {
+                this.loadingOpenAIRes = true;
                 const response = await fetch("https://api.openai.com/v1/chat/completions", {
                     method: "POST",
                     headers: {
@@ -163,8 +165,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                         "Authorization": `Bearer ${openaiApiKey}`
                     },
                     body: JSON.stringify({
-                        model: "gpt-4o-mini",
-                        // model: "gpt-3.5-turbo",
+                        //model: "gpt-4o-mini",
+                        model: "gpt-3.5-turbo",
                         messages: [
                             {
                                 role: "system", content: `Sei un classificatore di prodotti per una lista della spesa.  
@@ -182,8 +184,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                                     Rispondi SOLO con il nome della categoria scelta, senza aggiungere altro testo.`
                             },
                         ],
-                        max_tokens: 10,
-                        temperature: 0
+                        max_tokens: 10, //numero massimo di token nella risposta. Un token è una “unità di testo” (circa 3–4 caratteri di media in italiano/inglese).
+                        temperature: 0 //assicura che l’AI dia sempre la stessa categoria, senza variazioni. Si può impostare da 0 a 1, se imposti 1 da una risposta più creativa.
                     })
                 });
 
@@ -192,6 +194,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.addTodoWithArtificialIntelligence(categoryFound);
             } catch (err) {
                 console.error("Errore AI:", err);
+                this.loadingOpenAIRes = false;
                 alert("Errore AI:", err);
                 return;
             }
@@ -225,6 +228,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             } else {
                 this.createTodoWithCategory(cat);
             }
+            this.loadingOpenAIRes = false;
         },
         createTodoWithCategory(cat) {
             const todoCopied = this.todosStore.newTodo;
