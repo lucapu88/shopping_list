@@ -177,7 +177,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                                     - Il prodotto DEVE rientrare in una di queste categorie.  
                                     - NON inventare nuove categorie.  
                                     - Se il prodotto ha anche solo un’associazione *vaga* con una categoria, inseriscilo in quella categoria.  
-                                    (Esempi: "zucchine" → vegetali, "polpo" → pesce, "salsiccia" → carne, "pesce persico" → pesce)  
+                                        (Esempi: "zucchine" → vegetali, "polpo" → pesce, "salsiccia" → carne, "pesce persico" → pesce, "buste immondizia" → igiene, "pezzi per ragù" → carne)  
                                     - Usa la categoria più generale se non sai quale scegliere.  
                                     - Se proprio non rientra in nessuna, usa "altro".  
 
@@ -191,24 +191,26 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
 
                 const data = await response.json();
                 const categoryFound = data.choices[0].message.content.trim().toLowerCase();
-                this.addTodoWithArtificialIntelligence(categoryFound);
+                this.addTodoWithAI(categoryFound);
             } catch (err) {
                 console.error("Errore AI:", err);
-                this.loadingOpenAIRes = false;
-                alert("Errore AI:", err);
+                this.languages.placeholder = `Errore con OpenAI: ${err} Riavvia l'app e riprova.`;
                 return;
             }
         },
-        addTodoWithArtificialIntelligence(cat) {
-            if (!this.todosStore.todos.length) {
+        addTodoWithAI(cat) {
+            const todos = this.todosStore.todos;
+            //Se la lista è vuota, creo la todo con la categoria trovata. 
+            if (!todos.length) {
                 this.createTodoWithCategory(cat);
+                this.loadingOpenAIRes = false;
                 return;
             }
-            const categoryAlreadyExist = this.todosStore.todos.find(todo => todo.name === cat);
-            const indexOf = this.todosStore.todos.findIndex(todo => todo.name == cat);
 
-            if (categoryAlreadyExist) {
-                const todoCopied = this.todosStore.newTodo;
+            //Altrimenti controllo se esiste già la categoria e la seleziono per inserirsci il todo, altrimenti la creo.
+            const indexOf = todos.findIndex(todo => todo.name === cat);
+            if (indexOf !== -1) {
+                const todoBackup = structuredClone(this.todosStore.newTodo);
                 const objForCatSelection = {
                     //creo il tipo di oggetto che si aspetta selectCategoryToAddItem
                     name: cat,
@@ -222,7 +224,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 };
 
                 this.todosStore.selectCategoryToAddItem(indexOf, objForCatSelection);
-                this.todosStore.newTodo = todoCopied;
+                this.todosStore.newTodo = todoBackup;
                 this.todosStore.addTodo();
                 this.todosStore.removeSelectedCategoryToAddItem();
             } else {
