@@ -23,6 +23,7 @@ export const useTodoStore = defineStore('todoStore', {
     visible: true, //serve per la visibilità del contenitore dell'alert
     categoryList: false,
     categoryListChildren: null,
+    addingToCategoryInProgress: false,
     helper: null,
     christmasTheme: false,
     isCategory: false,
@@ -246,6 +247,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.focusIn = false;
       this.inModification = false;
       this.todosCategorySelected.length = 0;
+      this.addingToCategoryInProgress = false;
     },
     resetModify(copiedTodo) {
       const todoEmpty = this.todos.find((todo) => todo.modify);
@@ -297,6 +299,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     selectCategoryToAddItem(index, todo) {
       //solo se è nella lista categorie faccio tutto
+      this.addingToCategoryInProgress = true;
       if (todo.category) {
         const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories];
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
@@ -337,6 +340,10 @@ export const useTodoStore = defineStore('todoStore', {
         this.todosCategorySelected.length = 0;
       } else {
         this.addTodoInCategory.condition = true;
+      }
+
+      if (!this.addTodoInCategory.condition) {
+        this.addingToCategoryInProgress = false;
       }
     },
     selectTodoForDelete(index) {

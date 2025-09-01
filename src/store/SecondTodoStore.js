@@ -155,6 +155,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         async classificaProdotto(prodotto) {
             const openaiApiKey = window.localStorage.getItem("apikey");
+            if (!this.todosStore.newTodo) { return; }
 
             try {
                 this.loadingOpenAIRes = true;

@@ -54,8 +54,7 @@ export default {
 			if (this.settings.isIphone && (!openAIKey || openAIKey === null)) {
 				this.showPrompt = true;
 			}
-
-			this.settings.isIphone ? this.secondTodos.classificaProdotto(this.addTodo.newTodo) : this.addTodo.addTodo();
+			this.settings.isIphone && !this.addTodo.addingToCategoryInProgress ? this.secondTodos.classificaProdotto(this.addTodo.newTodo) : this.addTodo.addTodo();
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
@@ -120,6 +119,7 @@ export default {
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" v-if="!addTodo.devNotes">
+			<!-- X DI CHIUSURA CATEGORIA -->
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
 				class="inputText border border-primary rounded"
