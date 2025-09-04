@@ -26,7 +26,7 @@ async function generateRecipe() {
 		.map((item) => item.name)
 		.join(", ");
 
-	const response = await fetch("http://localhost:3000/generate-recipe", {
+	const response = await fetch("https://shopping-list-backend-uxr0.onrender.com/generate-recipe", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
