@@ -14,6 +14,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         fourthList: false,
         loading: false,
         loadingOpenAIRes: false,
+        loadingRecipes: false,
+        recipe: null,
         listButtons: [],
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504)

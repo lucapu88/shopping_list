@@ -7,6 +7,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import DeveloperNotes from "./Developer-notes.vue";
+import GenerateRecipesButton from "./not-in-prod/Generate-recipes-button.vue";
 </script>
 
 <script>
@@ -34,6 +35,7 @@ export default {
 	>
 		<TodoListDraggable v-if="todos.isDraggable" />
 		<TodoList v-if="!todos.isDraggable" />
+		<GenerateRecipesButton v-if="settings.isIphone" />
 	</ul>
 	<DeveloperNotes v-else />
 </template>
