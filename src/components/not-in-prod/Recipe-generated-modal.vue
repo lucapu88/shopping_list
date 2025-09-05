@@ -1,27 +1,14 @@
 <script setup>
 // QUESTO COMPONENTE NON VA IN PRODUZIONE, SERVE SOLO PER ESERCITARSI CON LANGCHAIN E LO USO SOLO IO SUL MIO IPHONE
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
-import { defineProps } from "vue";
-
-const props = defineProps({
-	openModal: {
-		type: Boolean,
-		// required: true,
-	},
-});
-const emit = defineEmits(["update:openModal"]);
 
 const secondTodosStore = useSecondTodoStore();
-
-function closeModal() {
-	emit("update:openModal", false);
-}
 </script>
 
 <template>
 	<div class="modal">
 		<div class="recipe-container">
-			<button class="close-modal" @click="closeModal">X</button>
+			<button class="close-modal" @click="secondTodosStore.showRecipeModal = false">X</button>
 			<h2>{{ secondTodosStore.recipe.titolo }}</h2>
 			<p v-if="secondTodosStore.recipe.ingredienti && secondTodosStore.recipe.ingredienti.length"><span style="color: red">Ingredienti:</span> {{ secondTodosStore.recipe.ingredienti.join(", ") }}</p>
 			<p v-if="secondTodosStore.recipe.preparazione"><span style="color: red">Preparazione:</span> {{ secondTodosStore.recipe.preparazione }}</p>

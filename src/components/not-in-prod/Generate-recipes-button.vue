@@ -3,14 +3,19 @@
 import { ref } from "vue";
 import { useTodoStore } from "@/store/TodoStore";
 import { storeToRefs } from "pinia";
-import RecipeGeneratedModal from "./Recipe-generated-modal.vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import ShowModalButton from "./Show-modal-button.vue";
 
+/* openaiApiKey: Non va fatto assolutamente così, ho implementato nell'altro progetto backend a parte la soluzione con la chiave presa dal file .env
+	Il progetto backend è deployato su Render.com e li ho impostato la variabile d'ambiente con la mia API key di OpenAI.
+	Ma non voglio che qualsiasi persona che scopre il progetto possa poi utilizzarlo per fare richieste a OpenAI a mie spese. Perciò uso questa soluzione solo per esercitarmi io sul mio iPhone.
+*/
 const openaiApiKey = window.localStorage.getItem("apikey");
 
 const secondTodosStore = useSecondTodoStore();
 
-const openModal = ref(false);
+const readyRecipe = ref(false);
+const errorRecipe = ref(false);
 
 const todoStore = useTodoStore();
 
@@ -19,6 +24,7 @@ async function generateRecipe() {
 	if (!todos.value.length) {
 		return;
 	}
+	errorRecipe.value = false;
 	secondTodosStore.loadingRecipes = true;
 
 	const ingredients = todos.value
@@ -26,38 +32,57 @@ async function generateRecipe() {
 		.map((item) => item.name)
 		.join(", ");
 
-	const response = await fetch("https://shopping-list-backend-uxr0.onrender.com/generate-recipe", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({
-			ingredients: ingredients,
-			apiKey: openaiApiKey,
-		}),
-	});
-	const data = await response.json();
+	try {
+		const response = await fetch("https://shopping-list-backend-uxr0.onrender.com/generate-recipe", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				ingredients: ingredients,
+				apiKey: openaiApiKey,
+			}),
+		});
+		if (!response.ok) {
+			ifError();
+			const text = await response.text();
+			console.error("Errore server:", text);
+			throw new Error(`Server error: ${response.status} - ${text}`);
+		}
+		const data = await response.json();
+		console.log("Ricetta generata:", data);
+		secondTodosStore.recipe = data;
+		readyRecipe.value = true;
+		secondTodosStore.loadingRecipes = false;
+	} catch (error) {
+		ifError();
+		console.error("Si è verificato un errore durante la richiesta:", error);
+	}
+}
 
-	console.log("Ricetta generata:", data);
-	secondTodosStore.recipe = data;
-	openModal.value = true;
+function ifError() {
+	readyRecipe.value = false;
 	secondTodosStore.loadingRecipes = false;
+	errorRecipe.value = true;
 }
 </script>
 
 <template>
 	<div class="recipe-generator">
-		<button :disabled="!todoStore.todos.length" @click="generateRecipe">
+		<button :class="{ error: errorRecipe }" :disabled="!todoStore.todos.length" @click="generateRecipe">
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
-		<RecipeGeneratedModal v-if="openModal" v-model:open-modal="openModal" />
+		<ShowModalButton v-if="readyRecipe" />
 	</div>
 </template>
 
 <style scoped>
 .recipe-generator {
 	margin-top: 20px;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	gap: 25px;
 }
 button {
+	width: 160px;
 	padding: 10px 20px;
 	background-color: #4caf50;
 	color: white;
@@ -68,5 +93,8 @@ button {
 
 button:hover {
 	background-color: #45a049;
+}
+.error {
+	background-color: red;
 }
 </style>

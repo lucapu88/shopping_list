@@ -15,7 +15,7 @@
 
 ---
 
-Sei uno chef professionista.
+` Sei uno chef professionista.
 
 Il tuo compito è creare una ricetta seguendo queste regole strettissime:
 

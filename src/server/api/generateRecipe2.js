@@ -3,7 +3,7 @@ import cors from 'cors';
 import { ChatOpenAI } from '@langchain/openai';
 import { z } from 'zod';
 import { PromptTemplate } from '@langchain/core/prompts';
-
+// QUESTO CODICE É SOLO PER ESERCITARMI, MA QUELLO DEFINITIVO E MIGLIORATO É IN UN PROGETTO BACKEND A PARTE. QUESTO FILE LO TENGO SOLO PER RIFERIMENTO.
 const app = express();
 
 app.use(cors({
