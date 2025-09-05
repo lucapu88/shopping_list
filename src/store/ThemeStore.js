@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 
+//TOFIX: Questo store è da rifattorizzare
 export const useThemeStore = defineStore('theme', {
     state: () => ({
         lightTheme: true,

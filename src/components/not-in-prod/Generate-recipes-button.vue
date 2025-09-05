@@ -67,7 +67,7 @@ function ifError() {
 
 <template>
 	<div class="recipe-generator">
-		<button :class="{ error: errorRecipe }" :disabled="!todoStore.todos.length" @click="generateRecipe">
+		<button :class="{ error: errorRecipe, disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes }" :disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes" @click="generateRecipe">
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
 		<ShowModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
@@ -85,7 +85,7 @@ button {
 	width: 160px;
 	padding: 10px 20px;
 	background-color: #4caf50;
-	color: white;
+	color: #ffffff;
 	border: none;
 	border-radius: 6px;
 	cursor: pointer;
@@ -95,6 +95,10 @@ button:hover {
 	background-color: #45a049;
 }
 .error {
-	background-color: red;
+	background-color: #ff0000;
+}
+.disabled {
+	background-color: #a1a1a1;
+	color: #575757;
 }
 </style>
