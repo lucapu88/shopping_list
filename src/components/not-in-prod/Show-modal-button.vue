@@ -7,7 +7,7 @@ const secondTodosStore = useSecondTodoStore();
 </script>
 
 <template>
-	<button @click="secondTodosStore.showRecipeModal = true">{{ String.fromCodePoint(0x1f37d) }}</button>
+	<button @click="secondTodosStore.showRecipeModal = true">{{ String.fromCodePoint(secondTodosStore.recipe.emojy) }}</button>
 	<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
 </template>
 

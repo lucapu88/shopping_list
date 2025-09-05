@@ -70,7 +70,7 @@ function ifError() {
 		<button :class="{ error: errorRecipe }" :disabled="!todoStore.todos.length" @click="generateRecipe">
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
-		<ShowModalButton v-if="readyRecipe" />
+		<ShowModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
 	</div>
 </template>
 
