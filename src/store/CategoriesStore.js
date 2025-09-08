@@ -8,6 +8,7 @@ export const useCategoriesStore = defineStore('Categories', {
         todosStore: useTodoStore(),
         languages: useLanguageStore(),
         categories: [],
+        //TOFIX Questi array qui sotto sono da sistemare. Fanno schifo, si potrebbe creare solo una lista di nomi (visto che cambiano solo quelli) e poi inserirli in un array di object (visto che è identico per tutti e 3)
         engCategories: [
             { name: 'vegetables', emojy: String.fromCodePoint(0x1f966), active: true },
             { name: 'meat', emojy: String.fromCodePoint(0x1f969), active: true },

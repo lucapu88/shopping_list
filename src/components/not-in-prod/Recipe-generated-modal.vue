@@ -24,9 +24,9 @@ const secondTodosStore = useSecondTodoStore();
 				<span style="color: red">Tempo:</span>
 				{{ secondTodosStore.recipe.tempo }}
 			</p>
-			<p v-if="secondTodosStore.recipe.difficoltà">
+			<p v-if="secondTodosStore.recipe.difficolta">
 				<span style="color: red">Difficoltà:</span>
-				{{ secondTodosStore.recipe.difficoltà }}
+				{{ secondTodosStore.recipe.difficolta }}
 			</p>
 		</div>
 	</div>

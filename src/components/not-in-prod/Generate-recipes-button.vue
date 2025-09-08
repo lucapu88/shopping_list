@@ -18,6 +18,8 @@ const readyRecipe = ref(false);
 const errorRecipe = ref(false);
 
 const todoStore = useTodoStore();
+const productionUrl = "https://shopping-list-backend-uxr0.onrender.com";
+const localUrl = "http://localhost:3000";
 
 async function generateRecipe() {
 	const { todos } = storeToRefs(todoStore);
@@ -33,7 +35,7 @@ async function generateRecipe() {
 		.join(", ");
 
 	try {
-		const response = await fetch("https://shopping-list-backend-uxr0.onrender.com/generate-recipe", {
+		const response = await fetch(`${productionUrl}/generate-recipe `, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
