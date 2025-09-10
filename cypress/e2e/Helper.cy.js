@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 
-
 // eslint-disable-next-line no-undef
 describe("test dell'helper e delle impostazioni", () => {
     beforeEach(() => {
@@ -123,20 +122,23 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it('importa lista', () => {
         cy.addSomeItemsToList(phrases);
+        const fraseDaIncollareMock = "DOTTORE CHIAMI UN DOTTOREEEE!!!!";
+
         cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
         cy.get('.delete-all').click({ force: true });
         cy.get('.confirm > .btn-primary').click({ force: true });
         cy.get('#todo-list').within(() => {
             cy.get('div.empty-logo-container').should('exist');
         });
-
         cy.get('.settings').click({ force: true });
         cy.get('#helper-description > :nth-child(11) > .list-title').click({ force: true });
         cy.get('#text-area').click({ force: true });
-        cy.document().invoke('execCommand', 'paste');
+        //Cypress non supporta nativamente execCommand('paste') e dato che non è lo scopo del test, lo vado a simulare inserendo un testo standard.
+        cy.get('#text-area').type(fraseDaIncollareMock);
         cy.get('.add-list-copied > .btn').click({ force: true });
         cy.get('#todo-list').within(() => {
             cy.get('div.empty-logo-container').should('not.exist');
+            cy.get('[index="0"] > #todo').should('have.text', `${fraseDaIncollareMock} `);
         });
     });
 

@@ -1,5 +1,6 @@
 <script setup>
 // QUESTO COMPONENTE NON VA IN PRODUZIONE, SERVE SOLO PER ESERCITARSI CON LANGCHAIN E LO USO SOLO IO SUL MIO IPHONE
+// Sto usando anche le Composition API perchè ormai il futuro è quello, anche se a me piace com'era con Options API, ma amen pian piano porterò tutto il codice al nuovo stato
 import { ref } from "vue";
 import { useTodoStore } from "@/store/TodoStore";
 import { storeToRefs } from "pinia";

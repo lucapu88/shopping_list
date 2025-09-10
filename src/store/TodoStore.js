@@ -9,6 +9,8 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 
 
 export const useTodoStore = defineStore('todoStore', {
+  /*TOFIX: Questo store è una vera Merda lo so, sono sviluppi molto datati, quando ero agli inizi e scrivevo tanta cacca, non che ora scrivo fiorellini ma comunque sia le cose so farle meglio.
+    Appena ho un po di pazienza e tempo faccio un bel refactor come ho fatto ad esempio con categoriesStore e ThemeStore.*/
   state: () => ({
     languages: useLanguageStore(),
     settings: useSettingsStore(),
