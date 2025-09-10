@@ -9,7 +9,7 @@ const THEMES_CONFIG = {
     winter: { name: 'winter', backgroundColor: '#232F34', color: '#FFFFFF', fontFamily: "'Permanent Marker', cursive" },
     elegant: { name: 'elegant', backgroundColor: 'rgb(7,60,92)', color: '#D98410', fontFamily: 'Courier New', hasCustomStyles: true },
     pink: { name: 'pink', backgroundColor: '#E8ACD0', color: '#930036', fontFamily: '"Protest Riot", sans-serif' },
-    panter: { name: 'panter', backgroundColor: '#000018', color: '#656565', fontFamily: '"Audiowide", serif' },
+    panter: { name: 'panter', backgroundColor: '#000018', color: '#656565', fontFamily: '"Audiowide", serif' }, // Mantiene il nome originale "panter" anche se sbagliato per compatibilità con le vecchie versioni
     lemon: { name: 'lemon', backgroundColor: '#fded04', color: '#8256a9', fontFamily: '"Creepster", serif' },
     jeans: { name: 'jeans', backgroundColor: '#3C628D', color: '#DAC29E', fontFamily: '"Lucida Console", "Courier New", monospace' }
 };

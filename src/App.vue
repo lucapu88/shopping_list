@@ -19,6 +19,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useCategoriesStore } from "@/store/CategoriesStore";
 </script>
 
 <script>
@@ -33,6 +34,7 @@ export default {
 			todosStore: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
+			categoriesStore: useCategoriesStore(),
 			isVisibleOnScroll: true,
 		};
 	},
@@ -41,6 +43,7 @@ export default {
 		this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
 		this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
 		this.otherFestivities.checkFestivities(); //controllo se ci sono altre festività
+		this.categoriesStore.initializeCategories(); //setto le categorie in base alla lingua
 		this.todosStore.createTodosList(); //creo la lista se ci sono elementi
 		this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
 		this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
