@@ -1,6 +1,8 @@
 PROCEDURA PER AGGIUNGERE UN TEMA:
 
-- Vai nel file ThemeStore.js ed aggiungi una nuova variabile con il nome del tema e poi cerca il nome di un tema qualsiasi già esistente e fai esattamente le stesse ed identiche cose. I temi che fanno cose diverse dallo standard sono il dark che aggiunge il bordo sul body, e l'elegant che aggiunge il gradient al body.
+- Vai nel file ThemeStore.js ed aggiungi in THEMES_CONFIG un nuovo nodo con il nome del tema e le sue rispettive proprietà, esattamente come gli altri.
+
+- Crea una variabile con il nome del tema setttandola a false. Se il tema ha proprietà particolari o diverse da quelle standart (come ad esempio il tema dark o elegant) puoi aggiungerle nel metodo applySpecialStyles.
 
 - Nel file Change-themes.vue inserisci l'elemento button html e poi aggiungi il relativo codice nella funzione changeTheme. Copia gli altri e cambia nome con il nuovo tema.
 

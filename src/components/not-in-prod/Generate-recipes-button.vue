@@ -79,7 +79,6 @@ function ifError() {
 
 <style scoped>
 .recipe-generator {
-	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	gap: 25px;
