@@ -39,6 +39,10 @@ export default {
 	<div class="footer-btns-container pb-3">
 		<MultipleSelection />
 
+		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
+		<div class="form-check form-switch p-0" v-if="settings.isIphone">
+			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="settings.enableAI" />
+		</div>
 		<!-- PULSANTE ELIMINA TUTTO-->
 		<button
 			v-if="!todosStore.showOnlyImportantTodos"
@@ -88,6 +92,7 @@ export default {
 .footer-btns-container {
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 }
 .dark-button {
 	background-color: #000000;
@@ -99,5 +104,10 @@ export default {
 	width: 38px;
 	height: 38px;
 	margin-left: 7px;
+}
+
+.form-check-input {
+	width: 3em;
+	height: 1.5em;
 }
 </style>

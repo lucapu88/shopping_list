@@ -54,7 +54,11 @@ export default {
 			if (this.settings.isIphone && (!openAIKey || openAIKey === null)) {
 				this.showPrompt = true;
 			}
-			this.settings.isIphone && !this.addTodo.addingToCategoryInProgress ? this.secondTodos.classificaProdotto(this.addTodo.newTodo) : this.addTodo.addTodo();
+			if (this.settings.isIphone && !this.addTodo.addingToCategoryInProgress && this.settings.enableAI) {
+				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
+			} else {
+				this.addTodo.addTodo();
+			}
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
