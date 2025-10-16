@@ -2,6 +2,7 @@
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 </script>
 
 <script>
@@ -15,15 +16,18 @@ export default {
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
 			secondTodos: useSecondTodoStore(),
+			settings: useSettingsStore(),
 			timer: false,
 		};
 	},
 	methods: {
 		setDraggable(isDraggable) {
 			if (isDraggable) {
+				const time = this.settings.isIphone ? 1000 : 2000;
+
 				this.timer = setTimeout(() => {
 					this.todosStore.isDraggable = isDraggable;
-				}, 2000);
+				}, time);
 			} else {
 				clearTimeout(this.timer);
 			}
