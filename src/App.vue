@@ -69,6 +69,7 @@ export default {
 		},
 		scrollHandler(e) {
 			this.isVisibleOnScroll = e.target.scrollTop < 80;
+			this.settings.positionSticky = e.target.scrollTop > 51 && this.settings.isIphone; //Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
 		},
 	},
 };

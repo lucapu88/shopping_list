@@ -122,7 +122,7 @@ export default {
 		</span>
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container" v-if="!addTodo.devNotes">
+		<div class="input-btns-container" :class="{ sticky: settings.positionSticky }" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
@@ -165,6 +165,18 @@ export default {
 	max-width: 600px;
 	position: relative;
 	margin: 0 auto;
+}
+.sticky {
+	/* Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io */
+	position: fixed;
+	top: 0;
+	z-index: 250;
+	padding-top: 10px;
+	width: 100%;
+	background-color: #ffffff;
+	box-shadow: -1px -200px 30px 200px #ffffff;
+	-webkit-box-shadow: -1px -200px 30px 200px #ffffff;
+	-moz-box-shadow: -1px -200px 30px 200px #ffffff;
 }
 .christmas {
 	margin-top: 40px;

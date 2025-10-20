@@ -40,7 +40,8 @@ export const useSettingsStore = defineStore('settings', {
     info: true,
     isAndroid: false,
     isIphone: false,
-    enableAI: true
+    enableAI: true,
+    positionSticky: false,
   }),
   getters: {},
   actions: {

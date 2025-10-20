@@ -3,6 +3,7 @@ import CategoriesPanel from "../panels-and-modals/Categories-panel.vue";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 </script>
 
 <script>
@@ -12,6 +13,7 @@ export default {
 			theme: useThemeStore(),
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
+			settings: useSettingsStore(),
 		};
 	},
 	methods: {
@@ -37,7 +39,7 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container" v-if="!todosStore.devNotes">
+	<div class="pushbutton-container" :class="{ sticky2: settings.positionSticky }" v-if="!todosStore.devNotes">
 		<!-- DRAG N DROP -->
 		<button
 			class="btn custom-show-listbtn"
@@ -183,6 +185,17 @@ export default {
 <style scoped>
 p {
 	margin: 0;
+}
+.sticky2 {
+	/* Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io */
+	position: fixed;
+	top: 60px;
+	z-index: 200;
+	margin-left: 8% !important;
+	background-color: #ffffff;
+	box-shadow: -1px -190px 30px 200px #ffffff;
+	-webkit-box-shadow: -1px -190px 30px 200px #ffffff;
+	-moz-box-shadow: -1px -190px 30px 200px #ffffff;
 }
 
 .pushbutton-container {
