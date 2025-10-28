@@ -23,11 +23,9 @@ export default {
 	methods: {
 		setDraggable(isDraggable) {
 			if (isDraggable) {
-				const time = this.settings.isIphone ? 1000 : 2000;
-
 				this.timer = setTimeout(() => {
 					this.todosStore.isDraggable = isDraggable;
-				}, time);
+				}, 2500);
 			} else {
 				clearTimeout(this.timer);
 			}
