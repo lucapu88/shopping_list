@@ -43,6 +43,8 @@ export default {
 		class="border-danger deselect-all p-2"
 		:class="{
 			'text-danger multiple-delete opacity-75': multipleDelete,
+			'left-25': !settings.isIphone,
+			'left-35': settings.isIphone,
 			active: importantTodo && !theme.elegantTheme,
 			christmas: isChristmas.christmasTheme,
 			'elegant-btn': theme.elegantTheme,
@@ -57,6 +59,8 @@ export default {
 		class="confirm-deselect-all-container deselect-all p-2"
 		:class="{
 			'multiple-delete': multipleDelete,
+			'left-25': !settings.isIphone,
+			'left-35': settings.isIphone,
 			light: theme.lightTheme,
 			dark: theme.darkTheme,
 			minimal: theme.minimalTheme,
@@ -83,10 +87,16 @@ export default {
 .multiple-delete {
 	position: fixed;
 	bottom: 3%;
-	left: 25%;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+}
+
+.left-25 {
+	left: 25%;
+}
+.left-35 {
+	left: 35%;
 }
 .deselect-all {
 	min-width: 160px;

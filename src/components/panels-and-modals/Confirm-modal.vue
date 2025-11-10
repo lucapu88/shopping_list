@@ -22,6 +22,9 @@ export default {
 	created() {
 		this.multipleTodos = this.todosStore.todos.filter((todo) => todo.multipleDelete).map((t) => t.name);
 	},
+	unmounted() {
+		this.todosStore.saveOnFirebase = false;
+	},
 };
 </script>
 
@@ -40,6 +43,7 @@ export default {
 		<div
 			class="confirm-delete-modal-content"
 			:class="{
+				'confirm-save-on-firebase': todosStore.saveOnFirebase,
 				'confirm-light': theme.lightTheme,
 				'confirm-dark': theme.darkTheme,
 				'confirm-minimal': theme.minimalTheme,
@@ -57,7 +61,8 @@ export default {
 			<p
 				class="mt-4 mb-1"
 				:class="{
-					'delete-selected': todosStore.deleteSelected && !theme.pinkTheme,
+					'delete-selected': todosStore.deleteSelected && !theme.pinkTheme && !todosStore.saveOnFirebase,
+					'confirm-selected': todosStore.deleteSelected && !theme.pinkTheme && todosStore.saveOnFirebase,
 				}"
 			>
 				{{ languages.completeConfirmText }}
@@ -160,8 +165,15 @@ export default {
 	}
 }
 .delete-selected {
-	color: rgb(215, 0, 0) !important;
+	color: #d70000 !important;
 	/* font-weight: bold; */
+}
+.confirm-selected {
+	color: #008000 !important;
+	font-weight: bold;
+}
+.confirm-save-on-firebase {
+	border: 5px solid #008000;
 }
 
 .confirm-light {

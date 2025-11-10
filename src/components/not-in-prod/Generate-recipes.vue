@@ -5,6 +5,7 @@ import { ref } from "vue";
 import { useTodoStore } from "@/store/TodoStore";
 import { storeToRefs } from "pinia";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 import ShowModalButton from "./Show-modal-button.vue";
 
 /* openaiApiKey: Non va fatto assolutamente così, ho implementato nell'altro progetto backend a parte la soluzione con la chiave presa dal file .env
@@ -14,6 +15,7 @@ import ShowModalButton from "./Show-modal-button.vue";
 const openaiApiKey = window.localStorage.getItem("apikey");
 
 const secondTodosStore = useSecondTodoStore();
+const settings = useSettingsStore();
 
 const readyRecipe = ref(false);
 const errorRecipe = ref(false);
@@ -70,9 +72,16 @@ function ifError() {
 
 <template>
 	<div class="recipe-generator">
+		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
+		<div class="form-check form-switch">
+			<label>AI</label>
+			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="settings.enableAI" />
+		</div>
+		<!-- PULSANBTE GENERA RICETTA -->
 		<button :class="{ error: errorRecipe, disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes }" :disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes" @click="generateRecipe">
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
+		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
 		<ShowModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
 	</div>
 </template>
@@ -80,8 +89,8 @@ function ifError() {
 <style scoped>
 .recipe-generator {
 	display: flex;
-	justify-content: center;
-	gap: 25px;
+	justify-content: space-around;
+	align-items: center;
 }
 button {
 	width: 160px;
@@ -102,5 +111,14 @@ button:hover {
 .disabled {
 	background-color: #a1a1a1;
 	color: #575757;
+}
+
+.form-check > label {
+	margin-left: 5px;
+	line-height: 2;
+}
+.form-check-input {
+	width: 3em;
+	height: 1.5em;
 }
 </style>

@@ -5,6 +5,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import DeselectAll from "./Deselect-all.vue";
+import ConfirmPurchaseBtn from "../not-in-prod/Confirm-purchase-btn.vue";
 </script>
 
 <script>
@@ -24,11 +25,15 @@ export default {
 
 <template>
 	<div>
+		<!-- PULSANTE CONFERMA ACQUISTO -->
+		<ConfirmPurchaseBtn v-if="settings.isIphone" />
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
-			class="opacity-90 text-danger border-danger rounded multiple-delete left p-2"
+			class="opacity-90 text-danger border-danger rounded multiple-delete p-2"
 			:class="{
+				'left-3': !settings.isIphone,
+				'left-18': settings.isIphone,
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
 			}"
@@ -73,8 +78,11 @@ export default {
 	height: 25px;
 }
 
-.left {
+.left-3 {
 	left: 3%;
+}
+.left-18 {
+	left: 18%;
 }
 .right {
 	right: 3%;

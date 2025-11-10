@@ -6,6 +6,7 @@ import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivities
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useFirebaseStore } from '@/store/FirebaseStore';
 
 
 export const useTodoStore = defineStore('todoStore', {
@@ -19,6 +20,7 @@ export const useTodoStore = defineStore('todoStore', {
     suggestionsStore: useSuggestionsStore(),
     categoriesStore: useCategoriesStore(),
     secondTodosStore: useSecondTodoStore(),
+    firebaseStore: useFirebaseStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -57,6 +59,7 @@ export const useTodoStore = defineStore('todoStore', {
     openDeleteAllModal: false,
     skipCheck: false,
     isVisible: false,
+    saveOnFirebase: false,
   }),
   actions: {
     addTodo(tip) {
@@ -393,11 +396,12 @@ export const useTodoStore = defineStore('todoStore', {
       this.canDeleteMultipleTodo = this.todos.some((el) => el.multipleDelete);
       this.confirmDeselectAll = !this.canDeleteMultipleTodo;
     },
-    openModalForDeleteSelectedTodos(multiple) {
+    openModalForDeleteSelectedTodos(multiple, saveOnFirebase) {
       this.multiple = !!multiple;
       this.confirmDeleteModal = true;
       this.confirmRemove = false;
       this.deleteSelected = true;
+      this.saveOnFirebase = saveOnFirebase;
       this.languages.completeConfirmText = `${this.languages.selectedTodosConfirmText}:`;
       this.removeSelectedCategoryToAddItem();
     },
@@ -491,6 +495,10 @@ export const useTodoStore = defineStore('todoStore', {
       if (todosToDelete.length === 1) { storageKey = 'singleTodoDeleted'; }
 
       todosToDelete.push(this.settings.setDate());
+      if (this.saveOnFirebase) {
+        this.firebaseStore.insertData(todosToDelete);
+        this.firebaseStore.getData();
+      }
       this.secondTodosStore.getAndPushListsNumber(storageKey, todosToDelete);
     },
     getOnlyDeletedTodos() {

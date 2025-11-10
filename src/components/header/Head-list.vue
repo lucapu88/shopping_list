@@ -26,7 +26,9 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodos: useSecondTodoStore(),
 			apikey: null,
+			firebaseUrl: null,
 			showPrompt: false,
+			showFirebasePrompt: false,
 		};
 	},
 	created() {
@@ -59,12 +61,24 @@ export default {
 			} else {
 				this.addTodo.addTodo();
 			}
+			// Stessa cosa per firebase, è solo roba mia personale per salvare le MIE spese nel cloud
+			const firebase = window.localStorage.getItem("firebase");
+			if (this.settings.isIphone && (!firebase || firebase === null)) {
+				this.showFirebasePrompt = true;
+			}
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
 			if (this.apikey !== null) {
 				window.localStorage.setItem("apikey", this.apikey);
 				this.showPrompt = false;
+			}
+		},
+		saveFirebaseUrl() {
+			//serve solo per salvare la API key di firebase in locale
+			if (this.firebaseUrl !== null) {
+				window.localStorage.setItem("firebase", this.firebaseUrl);
+				this.showFirebasePrompt = false;
 			}
 		},
 		scrollToBottom() {
@@ -143,8 +157,10 @@ export default {
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
 
-			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY -->
+			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY PER L'INTELLIGENZA ARTIFICIALE -->
 			<input v-if="showPrompt" v-model="apikey" @keypress.enter="saveApiKey()" />
+			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY PER FIREBASE -->
+			<input v-if="showFirebasePrompt" v-model="firebaseUrl" @keypress.enter="saveFirebaseUrl()" />
 		</div>
 
 		<!-- PULSANTE MOSTRA SUGGERIMENTI -->

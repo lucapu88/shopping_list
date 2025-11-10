@@ -14,6 +14,7 @@ describe("test delle liste multiple", () => {
     it('inserisco qualcosa nella lista, poi cambio lista e provo le altre', () => {
         cy.addSomeItemsToList(phrases);
         cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 1');
+        cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
         cy.get('.buttons-container > .second').click();
         cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 2');
@@ -28,6 +29,7 @@ describe("test delle liste multiple", () => {
         cy.get('.empty-logo-container').should('exist');
         cy.get('.inputText').click({ force: true }).type(phrases.frase2);
         cy.get('.input-btns-container > .btn-info').click({ force: true });
+        cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
         cy.get('.buttons-container > .third').click();
         cy.get('.empty-logo-container').should('not.exist');

@@ -5,7 +5,8 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import MultipleSelection from "./Multiple-selection.vue";
-import GenerateRecipesButton from "../not-in-prod/Generate-recipes-button.vue";
+import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
+import ShowAllShoppingDoneBtn from "../not-in-prod/Show-all-shopping-done-btn.vue";
 </script>
 
 <script>
@@ -38,11 +39,9 @@ export default {
 <template>
 	<div class="footer-btns-container pb-3">
 		<MultipleSelection />
+		<!-- SOLO PER ME E NON IN PROD -->
+		<ShowAllShoppingDoneBtn v-if="settings.isIphone && !settings.isAndroid && !todosStore.showOnlyImportantTodos" />
 
-		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
-		<div class="form-check form-switch p-0" v-if="settings.isIphone">
-			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="settings.enableAI" />
-		</div>
 		<!-- PULSANTE ELIMINA TUTTO-->
 		<button
 			v-if="!todosStore.showOnlyImportantTodos"
@@ -55,7 +54,7 @@ export default {
 			}"
 			@click="openDeleteAllModal()"
 		>
-			<span>{{ languages.deleteAll }}</span>
+			<span>{{ settings.isIphone ? "Svuota" : languages.deleteAll }}</span>
 			<img v-if="!isChristmas.christmasTheme" class="skull" src="@/img/icons/skull.webp" alt="delete_all" />
 			<img v-if="isChristmas.christmasTheme" class="christmas-skull" src="@/img/icons/christmas-skull.webp" alt="delete_all_and_merry_christmas" />
 		</button>
@@ -85,7 +84,8 @@ export default {
 		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
 	</div>
-	<GenerateRecipesButton v-if="settings.isIphone" />
+	<!-- SOLO PER ME E NON IN PROD -->
+	<GenerateRecipes v-if="settings.isIphone" />
 </template>
 
 <style scoped>
@@ -97,17 +97,12 @@ export default {
 .dark-button {
 	background-color: #000000;
 	color: #ffff;
-	min-width: 180px;
+	/* min-width: 180px; */
 }
 
 .christmas-skull {
 	width: 38px;
 	height: 38px;
 	margin-left: 7px;
-}
-
-.form-check-input {
-	width: 3em;
-	height: 1.5em;
 }
 </style>
