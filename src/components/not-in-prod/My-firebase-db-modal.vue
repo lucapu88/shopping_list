@@ -52,6 +52,7 @@ export default {
 .modal {
 	padding-top: 5%;
 	background-color: #363636;
+	overflow-x: hidden;
 }
 .modal-content {
 	position: absolute;

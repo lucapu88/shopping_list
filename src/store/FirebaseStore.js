@@ -135,12 +135,14 @@ export const useFirebaseStore = defineStore('firebase', {
       const forMonth = {};
 
       for (const arr of Object.values(list)) {
-        const date = arr[arr.length - 1]; // ultima voce è la data
+        const date = arr[arr.length - 1];
         // eslint-disable-next-line no-unused-vars
         const [day, month, year] = date.split("/");
         const monthKey = `${monthsNames[month]} ${year}`;
 
-        if (!forMonth[monthKey]) forMonth[monthKey] = [];
+        if (!forMonth[monthKey]) {
+          forMonth[monthKey] = [];
+        }
         forMonth[monthKey].push(arr);
       }
 

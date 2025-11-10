@@ -63,6 +63,7 @@ export default {
 			}
 			// Stessa cosa per firebase, è solo roba mia personale per salvare le MIE spese nel cloud
 			const firebase = window.localStorage.getItem("firebase");
+			window.localStorage.removeItem("firebase");
 			if (this.settings.isIphone && (!firebase || firebase === null)) {
 				this.showFirebasePrompt = true;
 			}
@@ -156,11 +157,12 @@ export default {
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
-
-			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY PER L'INTELLIGENZA ARTIFICIALE -->
-			<input v-if="showPrompt" v-model="apikey" @keypress.enter="saveApiKey()" />
-			<!-- QUESTO PROMPT MI SERVE SOLO PER INSERIRE LA API KEY PER FIREBASE -->
-			<input v-if="showFirebasePrompt" v-model="firebaseUrl" @keypress.enter="saveFirebaseUrl()" />
+		</div>
+		<div class="inputs" v-if="showPrompt || showFirebasePrompt">
+			<!-- QUESTO INPUT MI SERVE SOLO PER INSERIRE LA API KEY PER L'INTELLIGENZA ARTIFICIALE -->
+			<input v-if="showPrompt" placeholder="chatGPT" v-model="apikey" @keypress.enter="saveApiKey()" />
+			<!-- QUESTO INPUT MI SERVE SOLO PER INSERIRE LA API KEY PER FIREBASE -->
+			<input v-if="showFirebasePrompt" placeholder="fireBase" v-model="firebaseUrl" @keypress.enter="saveFirebaseUrl()" />
 		</div>
 
 		<!-- PULSANTE MOSTRA SUGGERIMENTI -->
@@ -322,5 +324,13 @@ export default {
 .settings {
 	width: 33px;
 	z-index: 300;
+}
+
+.inputs {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px;
 }
 </style>
