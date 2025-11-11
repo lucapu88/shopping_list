@@ -50,11 +50,6 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
             }
             if (currentDay === 1 && currentMonth === 1) {
                 this.worldPeaceDay = true;
-                //faccio apparire per qualche secondo la scritta buon anno al posto del titolo
-                this.newYear = true;
-                setTimeout(() => {
-                    this.newYear = false;
-                }, 4000);
             }
             if (currentDay === 17 && currentMonth === 1) {
                 this.worldPizzaDay = true;
@@ -88,7 +83,7 @@ export const useOthersFestivitiesStore = defineStore('OthersFestivities', {
                 this.worldEnvironmentDay = true;
             }
             if (currentDay === 6 && currentMonth === 8 && !this.beerDay) {
-                //diamo precedenza assoluta alla birra
+                //Se capita nel beerDay, diamo precedenza assoluta alla birra
                 this.internetDay = true;
             }
             if (currentDay === 19 && currentMonth === 11) {

@@ -17,18 +17,34 @@ export default {
 			description: false,
 		};
 	},
+	mounted() {
+		if (this.festivitiesOrOccurrences.worldPeaceDay) {
+			//In questo caso è il primo dell'anno nuovo e faccio apparire per qualche secondo la scritta buon anno al posto del titolo
+			setTimeout(() => {
+				this.festivitiesOrOccurrences.newYear = true;
+			}, 4000);
+			setTimeout(() => {
+				this.festivitiesOrOccurrences.newYear = false;
+			}, 14000);
+		}
+	},
 	methods: {
 		showDescription() {
-			this.christmas.merryChristmasTheme();
-			this.festivitiesOrOccurrences.checkFestivities();
+			this.christmas.merryChristmasTheme(); //TOFIX: da rimuovere se non serve più
+			this.festivitiesOrOccurrences.checkFestivities(); //TOFIX: da rimuovere se non serve più
 			this.description = true;
 			setTimeout(() => {
 				this.description = false;
 			}, 2500);
-			if (this.festivitiesOrOccurrences.toiletDay || this.festivitiesOrOccurrences.beerDay) {
-				const audioPlayer = this.$refs.audioPlayer;
-				audioPlayer.volume = 0.4;
-				audioPlayer.paused || audioPlayer.ended ? audioPlayer.play() : audioPlayer.pause();
+		},
+		audioPlay() {
+			const audioPlayer = this.$refs.audioPlayer;
+			audioPlayer.volume = 0.4;
+			audioPlayer.paused || audioPlayer.ended ? audioPlayer.play() : stopAudio();
+
+			function stopAudio() {
+				audioPlayer.pause();
+				audioPlayer.currentTime = 0;
 			}
 		},
 	},
@@ -63,22 +79,20 @@ export default {
 			{{ languages.earthDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNATA DELLA BIRRA -->
-		<img v-if="festivitiesOrOccurrences.beerDay && !description" class="beer-day" src="@/img/festivities/beer.webp" alt="beer_day" />
+		<img v-if="festivitiesOrOccurrences.beerDay && !description" class="beer-day" src="@/img/festivities/beer.webp" alt="beer_day" @click="audioPlay()" />
 		<p class="description" v-if="festivitiesOrOccurrences.beerDay && description">
 			{{ languages.beerDayText }}
 		</p>
-		<audio v-if="festivitiesOrOccurrences.beerDay" ref="audioPlayer" src="src/sounds/beerpour.mp3"></audio>
 		<!-- ---------------------------------------------------------------------FESTA DEI GENITORI -->
 		<img v-if="festivitiesOrOccurrences.parentsDay && !description" class="parents-day" src="@/img/festivities/genitori.webp" alt="parents_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.parentsDay && description">
 			{{ languages.parentsDayText }}
 		</p>
 		<!-- --------------------------------------------------FESTA DEL GABINETTO (Scusate ma è divertente e assurda come festa)-->
-		<img v-if="festivitiesOrOccurrences.toiletDay && !description" class="toilet-day" src="@/img/festivities/cesso.webp" alt="toilet_day" />
+		<img v-if="festivitiesOrOccurrences.toiletDay && !description" class="toilet-day" src="@/img/festivities/cesso.webp" alt="toilet_day" @click="audioPlay()" />
 		<p class="description" v-if="festivitiesOrOccurrences.toiletDay && description">
 			{{ languages.toiletDayText }}
 		</p>
-		<audio v-if="festivitiesOrOccurrences.toiletDay" ref="audioPlayer" src="src/sounds/toilet.mp3"></audio>
 		<!-- ---------------------------------------------------------- NASCITA DI INTERNET-->
 		<img v-if="festivitiesOrOccurrences.internetDay && !description" class="internet-day" src="@/img/festivities/computer.webp" alt="internet_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.internetDay && description">
@@ -110,6 +124,8 @@ export default {
 			{{ languages.starWarsDay }}
 		</p>
 	</div>
+	<audio v-if="festivitiesOrOccurrences.beerDay" ref="audioPlayer" src="src/sounds/beerpour.mp3"></audio>
+	<audio v-if="festivitiesOrOccurrences.toiletDay" ref="audioPlayer" src="src/sounds/toilet.mp3"></audio>
 </template>
 
 <style scoped>
