@@ -1,6 +1,7 @@
 <script setup>
 import { useFirebaseStore } from "@/store/FirebaseStore";
 import Accordion from "./Accordion.vue";
+import LoadingOrUpdating from "../Loading-or-updating.vue";
 </script>
 
 <script>
@@ -38,9 +39,17 @@ export default {
 					<span class="x" @click="close()">X</span>
 				</div>
 				<div class="shopping-container">
-					<template v-for="(element, i) in firebaseStore.myYearOfShoppingsArray" :key="i">
-						<template> </template>
-						<Accordion :title="element.month" :content="element.elements" />
+					<div v-if="firebaseStore.firebaseLoading">
+						<LoadingOrUpdating :listChanged="firebaseStore.firebaseLoading" />
+					</div>
+					<h2 v-if="firebaseStore.firebaseErrorMessage" style="color: red">
+						{{ firebaseStore.firebaseErrorMessage }}
+					</h2>
+					<template v-if="!firebaseStore.firebaseLoading && !firebaseStore.firebaseErrorMessage">
+						<template v-for="(element, i) in firebaseStore.myYearOfShoppingsArray" :key="i">
+							<template> </template>
+							<Accordion :title="element.month" :content="element.elements" />
+						</template>
 					</template>
 				</div>
 			</div>
@@ -52,7 +61,7 @@ export default {
 .modal {
 	padding-top: 5%;
 	background-color: #363636;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 .modal-content {
 	position: absolute;
@@ -70,6 +79,7 @@ export default {
 	align-items: center;
 	justify-content: flex-start;
 	background-color: #ffffff;
+	overflow-y: auto;
 }
 
 .slide-enter-active {

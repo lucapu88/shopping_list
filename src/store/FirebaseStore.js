@@ -21,6 +21,8 @@ export const useFirebaseStore = defineStore('firebase', {
     shoppingDoneList: null,
     openfirebaseModal: false,
     myYearOfShoppingsArray: [],
+    firebaseLoading: false,
+    firebaseErrorMessage: null,
     settings: useSettingsStore(),
     firebaseConfig: {
       apiKey: "AIzaSyCqF3MdeC9Q7F7YBUL-KqS354kvvSqnLf4",
@@ -97,6 +99,7 @@ export const useFirebaseStore = defineStore('firebase', {
     async getData() {
       this.init();
       try {
+        this.firebaseLoading = true;
         const snapshot = await get(child(ref(this.db), 'shopping-done/'));
         if (snapshot.exists()) {
           const val = snapshot.val();
@@ -106,12 +109,19 @@ export const useFirebaseStore = defineStore('firebase', {
           this.shoppingDoneList = parsedObj;
 
           this.createShoppingsYear(this.shoppingDoneList);
+          this.firebaseLoading = false;
+          this.firebaseErrorMessage = null;
           return { success: true, data: val };
         } else {
           this.shoppingDoneList = null;
+          this.firebaseLoading = false;
+          this.firebaseErrorMessage = 'Nessun dato trovato nel database.';
           return { success: true, data: null };
         }
       } catch (error) {
+        this.firebaseLoading = false;
+        this.firebaseErrorMessage = `Errore nel recupero dei dati dal database: 
+        ${error} `;
         console.error('❌ getData error:', error);
         return { success: false, error };
       }

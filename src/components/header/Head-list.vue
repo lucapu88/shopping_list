@@ -63,7 +63,6 @@ export default {
 			}
 			// Stessa cosa per firebase, è solo roba mia personale per salvare le MIE spese nel cloud
 			const firebase = window.localStorage.getItem("firebase");
-			window.localStorage.removeItem("firebase");
 			if (this.settings.isIphone && (!firebase || firebase === null)) {
 				this.showFirebasePrompt = true;
 			}
