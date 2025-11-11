@@ -47,6 +47,10 @@ export default {
 		this.todosStore.createTodosList(); //creo la lista se ci sono elementi
 		this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
 		this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
+
+		// Controllo se sono in locale o in produzione perché alcune funzionalità non devono essere disponibili in locale
+		this.secondTodosStore.isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+		this.settings.enableAI = !this.secondTodosStore.isLocal;
 	},
 	mounted() {
 		this.todosStore.toggleButtonDeleteSelectedTodo();

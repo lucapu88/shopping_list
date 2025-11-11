@@ -189,7 +189,7 @@ p {
 .sticky2 {
 	/* Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io */
 	position: fixed;
-	top: 60px;
+	top: 75px;
 	z-index: 200;
 	margin-left: 8% !important;
 	background-color: #ffffff;

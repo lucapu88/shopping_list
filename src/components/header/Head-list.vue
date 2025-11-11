@@ -301,6 +301,7 @@ export default {
 	align-items: baseline;
 	gap: 10px;
 	justify-content: center;
+	margin-top: 15px;
 }
 .inputText {
 	padding: 10px;
