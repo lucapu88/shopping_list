@@ -25,8 +25,6 @@ export default {
 
 <style scoped>
 .multiple-delete {
-	position: fixed;
-	bottom: 3%;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);

@@ -32,6 +32,16 @@ export default {
 			this.todosStore.openDeleteAllModal = true;
 			this.$emit("scrollToBottom", true);
 		},
+		ohohoh() {
+			const audioPlayer = this.$refs.audioPlayer;
+			audioPlayer.volume = 0.4;
+			audioPlayer.paused || audioPlayer.ended ? audioPlayer.play() : stopAudio();
+
+			function stopAudio() {
+				audioPlayer.pause();
+				audioPlayer.currentTime = 0;
+			}
+		},
 	},
 };
 </script>
@@ -81,8 +91,9 @@ export default {
 		</button>
 	</div>
 	<div v-if="isChristmas.christmasTheme && todosStore.todos.length">
-		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" />
+		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" @click="ohohoh()" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
+		<audio ref="audioPlayer" src="src/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3"></audio>
 	</div>
 	<!-- SOLO PER ME E NON IN PROD -->
 	<GenerateRecipes v-if="settings.isIphone" />

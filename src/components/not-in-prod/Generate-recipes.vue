@@ -6,7 +6,7 @@ import { useTodoStore } from "@/store/TodoStore";
 import { storeToRefs } from "pinia";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
-import ShowModalButton from "./Show-modal-button.vue";
+import ShowRecipeModalButton from "./Show-recipe-modal-button.vue";
 
 /* openaiApiKey: Non va fatto assolutamente così, ho implementato nell'altro progetto backend a parte la soluzione con la chiave presa dal file .env
 	Il progetto backend è deployato su Render.com e li ho impostato la variabile d'ambiente con la mia API key di OpenAI.
@@ -82,7 +82,7 @@ function ifError() {
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
-		<ShowModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
+		<ShowRecipeModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
 	</div>
 </template>
 

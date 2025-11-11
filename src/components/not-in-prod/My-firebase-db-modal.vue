@@ -2,6 +2,7 @@
 import { useFirebaseStore } from "@/store/FirebaseStore";
 import Accordion from "./Accordion.vue";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 </script>
 
 <script>
@@ -11,6 +12,7 @@ export default {
 		return {
 			firebaseStore: useFirebaseStore(),
 			visible: false,
+			isChristmas: useChristmasStore(),
 		};
 	},
 	created() {
@@ -35,7 +37,9 @@ export default {
 		<transition name="slide">
 			<div v-if="visible" class="modal-content">
 				<div class="title">
+					<span v-if="isChristmas.christmasTheme" class="christmas-decorations me-2">🎄</span>
 					<span>ELENCO SPESE</span>
+					<span v-if="isChristmas.christmasTheme" class="christmas-decorations ms-2">🎅 </span>
 					<span class="x" @click="close()">X</span>
 				</div>
 				<div class="shopping-container">
@@ -133,5 +137,9 @@ export default {
 	top: 5px;
 	width: 90px;
 	height: 35px;
+}
+
+.christmas-decorations {
+	font-size: 1.5625rem;
 }
 </style>
