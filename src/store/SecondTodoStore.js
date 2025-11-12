@@ -5,6 +5,7 @@ import { useCategoriesStore } from '@/store/CategoriesStore';
 
 
 export const useSecondTodoStore = defineStore('secondTodoStore', {
+    // Store per cose varie che non riguardano direttamente le todo, ma cose generali dell'app
     state: () => ({
         todosStore: useTodoStore(),
         languages: useLanguageStore(),
@@ -241,7 +242,6 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosStore.selectCategoryName(cat);
             this.todosStore.newTodo = todoCopied;
             this.todosStore.addTodo();
-        }
-
+        },
     }
 });

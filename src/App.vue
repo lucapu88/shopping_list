@@ -74,7 +74,7 @@ export default {
 		scrollHandler(e) {
 			this.isVisibleOnScroll = e.target.scrollTop < 80;
 			//Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
-			const shouldBeSticky = e.target.scrollTop > 100 && this.settings.isIphone;
+			const shouldBeSticky = e.target.scrollTop > 150 && this.settings.isIphone;
 
 			if (shouldBeSticky !== this.settings.positionSticky) {
 				/*Quando un elemento diventa position: fixed, viene tolto dal flusso del documento e quindi la sua altezza non occupa più spazio nel contenitore scrollabile.

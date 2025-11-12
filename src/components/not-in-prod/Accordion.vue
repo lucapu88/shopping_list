@@ -1,6 +1,12 @@
 <script setup></script>
 
 <script>
+const now = new Date();
+let month = now.toLocaleString("it-IT", { month: "long" });
+const year = now.getFullYear();
+month = month.charAt(0).toUpperCase() + month.slice(1);
+const monthYear = `${month} ${year}`;
+
 export default {
 	props: {
 		title: String,
@@ -9,6 +15,7 @@ export default {
 	data() {
 		return {
 			section: false,
+			monthYear: monthYear,
 		};
 	},
 	methods: {
@@ -36,7 +43,7 @@ export default {
 		}"
 		@click="showSection()"
 	>
-		<span> {{ title }} </span>
+		<span :class="{ 'current-month-year': title === monthYear }"> {{ title }} </span>
 		<span
 			class="arrow"
 			:class="{
@@ -65,6 +72,11 @@ export default {
 	margin-bottom: 5px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.current-month-year {
+	font-weight: bold;
+	color: #c70000;
 }
 
 .list-title-selected {
