@@ -64,7 +64,7 @@ export default {
 <style scoped>
 .modal {
 	padding-top: 5%;
-	background-color: #363636;
+	background-color: #363636d2;
 	overflow: hidden;
 }
 .modal-content {
@@ -130,6 +130,7 @@ export default {
 
 .title {
 	margin-bottom: 10px;
+	z-index: 600;
 }
 .x {
 	position: absolute;
@@ -137,6 +138,7 @@ export default {
 	top: 5px;
 	width: 90px;
 	height: 35px;
+	z-index: 600;
 }
 
 .christmas-decorations {
