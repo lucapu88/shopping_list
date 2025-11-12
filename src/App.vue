@@ -61,9 +61,9 @@ export default {
 		},
 		scrollBottom() {
 			setTimeout(() => {
-				/*Aggiunto il set timeout poichè senza non avviene nulla, 
-        mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
-        Non funziona con un if(this.visible). */
+				/*Aggiunto il set timeout poichè senza non avviene nulla,
+        		  mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
+        		  Non funziona con un if(this.visible). */
 				const containerList = document.getElementById("container-list");
 				containerList.scrollTo({
 					top: containerList.scrollHeight,
@@ -73,7 +73,21 @@ export default {
 		},
 		scrollHandler(e) {
 			this.isVisibleOnScroll = e.target.scrollTop < 80;
-			this.settings.positionSticky = e.target.scrollTop > 51 && this.settings.isIphone; //Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
+			//Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
+			const shouldBeSticky = e.target.scrollTop > 51 && this.settings.isIphone;
+
+			if (shouldBeSticky !== this.settings.positionSticky) {
+				/*Quando un elemento diventa position: fixed, viene tolto dal flusso del documento e quindi la sua altezza non occupa più spazio nel contenitore scrollabile.
+				  Quando poi togli position: fixed, il layout si ricostruisce improvvisamente, e il browser può perdere la posizione di scroll, o ricalcolarla in modo errato.*/
+				this.settings.positionSticky = shouldBeSticky;
+				// In questo modo, anche se l’header diventa fixed, il contenitore mantiene lo spazio originale → niente salti o scroll bloccato.
+				if (shouldBeSticky) {
+					// riserva spazio del header quando diventa fixed
+					this.$refs.headerWrapper.style.height = `${this.$refs.header.offsetHeight}px`;
+				} else {
+					this.$refs.headerWrapper.style.height = null;
+				}
+			}
 		},
 	},
 };
@@ -164,6 +178,7 @@ export default {
 .row {
 	height: 97vh;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .padding-bottom-custom {
