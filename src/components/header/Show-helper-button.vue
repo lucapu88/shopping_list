@@ -92,7 +92,7 @@ export default {
 	top: 10px;
 	right: 5px;
 	border-radius: 50%;
-	z-index: 300;
+	z-index: 510;
 	margin-right: 2%;
 }
 

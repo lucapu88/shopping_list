@@ -83,7 +83,7 @@ export default {
 	height: 100%;
 	padding: 10px;
 	background-size: contain;
-	z-index: 450;
+	z-index: 1000;
 	background-color: #ffffff;
 	color: #b5db6f;
 	text-align: center;

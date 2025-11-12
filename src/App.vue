@@ -73,6 +73,7 @@ export default {
 		},
 		setVisibilityOnScroll(e) {
 			this.settings.isVisibleOnScroll = e.target.scrollTop < 50;
+			this.settings.displayNone = e.target.scrollTop > 100 && this.settings.isIphone;
 		},
 	},
 };

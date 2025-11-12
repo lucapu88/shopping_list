@@ -122,7 +122,7 @@ export default {
 			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
 		</template>
 		<!-- TITOLO APPLICATIVO -->
-		<Title />
+		<Title v-if="!settings.displayNone" />
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" v-if="!addTodo.devNotes">
@@ -160,7 +160,7 @@ export default {
 		<HeaderButtonsContainer />
 
 		<!-- SELEZIONE LISTE -->
-		<ListsButtonsSelection v-if="!addTodo.devNotes" />
+		<ListsButtonsSelection v-if="!addTodo.devNotes && !settings.displayNone" />
 	</div>
 </template>
 
@@ -171,6 +171,11 @@ export default {
 	max-width: 600px;
 	position: relative;
 	margin: 0 auto;
+	position: fixed;
+	top: 0;
+	z-index: 500;
+	background-image: repeating-linear-gradient(#575757a6 0 2px, transparent 2px 100%), linear-gradient(90deg, transparent 0 20px, #494949bb 20px 22px, transparent 22px 100%);
+	background-size: 100% 30px;
 }
 
 .christmas {

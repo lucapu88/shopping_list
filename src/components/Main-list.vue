@@ -46,6 +46,7 @@ export default {
 
 .todo-list {
 	max-width: 100vw;
+	margin-top: 180px;
 }
 
 .margin-t {
