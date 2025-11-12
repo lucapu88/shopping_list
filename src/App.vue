@@ -10,6 +10,7 @@ import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
 import LoadingOrUpdating from "./components/Loading-or-updating.vue";
+import ShowHelperButton from "./components/header/Show-helper-button.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -35,7 +36,6 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
-			isVisibleOnScroll: true,
 		};
 	},
 	created() {
@@ -57,37 +57,36 @@ export default {
 	},
 	methods: {
 		scrollTop() {
-			document.getElementById("container-list").scrollTo({ top: 0, left: 0, behavior: "smooth" });
+			const containerList = this.settings.isIphone ? document.getElementById("wrapper") : document.getElementById("container-list");
+			containerList.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 		},
 		scrollBottom() {
 			setTimeout(() => {
 				/*Aggiunto il set timeout poichè senza non avviene nulla,
         		  mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
         		  Non funziona con un if(this.visible). */
-				const containerList = document.getElementById("container-list");
+				const containerList = this.settings.isIphone ? document.getElementById("wrapper") : document.getElementById("container-list");
 				containerList.scrollTo({
 					top: containerList.scrollHeight,
 					behavior: "smooth",
 				});
 			}, 200);
 		},
-		scrollHandler(e) {
-			this.isVisibleOnScroll = e.target.scrollTop < 80;
-			//Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
-			const shouldBeSticky = e.target.scrollTop > 150 && this.settings.isIphone;
-
-			if (shouldBeSticky !== this.settings.positionSticky) {
-				/*Quando un elemento diventa position: fixed, viene tolto dal flusso del documento e quindi la sua altezza non occupa più spazio nel contenitore scrollabile.
-				  Quando poi togli position: fixed, il layout si ricostruisce improvvisamente, e il browser può perdere la posizione di scroll, o ricalcolarla in modo errato.*/
-				this.settings.positionSticky = shouldBeSticky;
-				// In questo modo, anche se l’header diventa fixed, il contenitore mantiene lo spazio originale → niente salti o scroll bloccato.
-				if (shouldBeSticky) {
-					// riserva spazio del header quando diventa fixed
-					this.$refs.headerWrapper.style.height = `77px`;
-				} else {
-					this.$refs.headerWrapper.style.height = null;
-				}
+		setDisplayOnScroll(e) {
+			if (this.settings.isAndroid) {
+				return;
 			}
+			const shouldBeNone = e.target.scrollTop > 150 && this.settings.isIphone;
+
+			if (shouldBeNone !== this.settings.displayNone) {
+				this.settings.displayNone = shouldBeNone;
+			}
+		},
+		setVisibilityOnScroll(e) {
+			if (this.settings.isIphone) {
+				return;
+			}
+			this.settings.isVisibleOnScroll = e.target.scrollTop < 80;
 		},
 	},
 };
@@ -100,6 +99,7 @@ export default {
 	<div
 		class="app-container"
 		:class="{
+			'overflow-hidden': settings.isIphone,
 			'light-container': theme.lightTheme,
 			'dark-container': theme.darkTheme,
 			'minimal-container': theme.minimalTheme,
@@ -109,29 +109,31 @@ export default {
 			'pink-container': theme.pinkTheme,
 		}"
 	>
+		<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
+		<Helper v-if="settings.helper" />
 		<div id="app">
-			<div id="container-list" class="row" @scroll="scrollHandler">
+			<div id="container-list" class="row" :class="{ 'overflow-hidden': settings.isIphone }" @scroll="setVisibilityOnScroll">
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
-					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 
-					<header style="overflow: hidden" ref="headerWrapper">
-						<FestivitiesAndOccurrences :is-visible-on-scroll="isVisibleOnScroll" />
+					<header style="overflow: hidden">
+						<FestivitiesAndOccurrences v-if="!settings.displayNone && settings.isVisibleOnScroll" />
+						<ShowHelperButton v-if="!settings.displayNone && settings.isVisibleOnScroll" />
 						<HeadList />
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
 						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
 					</header>
+					<div id="wrapper" :class="{ wrapper: settings.isIphone }" @scroll="setDisplayOnScroll">
+						<main>
+							<MainList />
+						</main>
 
-					<main>
-						<MainList />
-						<Helper v-if="settings.helper" />
-					</main>
-
-					<footer>
-						<DeleteAllPanel />
-						<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
-					</footer>
+						<footer>
+							<DeleteAllPanel />
+							<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						</footer>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -142,6 +144,12 @@ export default {
 .app-container {
 	height: 100vh;
 	overflow-x: hidden;
+	position: relative;
+}
+
+.wrapper {
+	max-height: calc(100vh - 250px);
+	overflow: auto;
 }
 
 @media (min-width: 370px) {
@@ -179,6 +187,10 @@ export default {
 	height: 97vh;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+.overflow-hidden {
+	overflow: hidden;
 }
 
 .padding-bottom-custom {

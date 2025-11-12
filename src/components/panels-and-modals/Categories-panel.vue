@@ -3,6 +3,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useCategoriesStore } from "@/store/CategoriesStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 </script>
 
 <script>
@@ -13,6 +14,7 @@ export default {
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
 			categoriesStore: useCategoriesStore(),
+			settings: useSettingsStore(),
 		};
 	},
 };
@@ -23,6 +25,7 @@ export default {
 	<div
 		class="category-list-container"
 		:class="{
+			'max-height': settings.isIphone,
 			'waterfall-descent': todosStore.categoryList,
 			'waterfall-ascent': !todosStore.categoryList,
 			'retro-theme-confirm': theme.retroTheme,
@@ -128,6 +131,10 @@ export default {
 	border-radius: 5px;
 	position: relative;
 	z-index: 200;
+}
+.max-height {
+	max-height: 50vh;
+	overflow-y: auto;
 }
 
 .categories {
@@ -310,7 +317,7 @@ export default {
 }
 
 @media (min-width: 350px) {
-	.category-list-container {
+	.category-list-container.waterfall-descent {
 		margin: 0 5px 35px;
 	}
 }

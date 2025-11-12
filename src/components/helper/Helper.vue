@@ -181,19 +181,6 @@ export default {
 </template>
 
 <style scoped>
-.helper {
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-radius: 50%;
-	z-index: 5;
-	margin-right: 2%;
-}
-
-.helper:hover {
-	cursor: pointer;
-}
-
 .halloween-pumpkin {
 	width: 75px;
 	position: absolute;

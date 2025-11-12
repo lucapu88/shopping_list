@@ -114,29 +114,18 @@ export default {
 	{{ addTodo.focusIn ? focusOnInput() : null }}
 	<img v-if="isChristmas.christmasTheme" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
 	<div class="header-container" :class="{ christmas: isChristmas.christmasTheme }">
-		<img v-if="festivities.halloweenTheme" class="halloween-witch-hat" src="@/img/festivities/cappello-strega.webp" alt="halloween" />
-		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-1" src="@/img/festivities/pipistrello-1.webp" alt="halloween_bat" />
-		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
-		<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
-
+		<!-- DECORAZIONI HALLOWEEN -->
+		<template v-if="!settings.displayNone && settings.isVisibleOnScroll">
+			<img v-if="festivities.halloweenTheme" class="halloween-witch-hat" src="@/img/festivities/cappello-strega.webp" alt="halloween" />
+			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-1" src="@/img/festivities/pipistrello-1.webp" alt="halloween_bat" />
+			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
+			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
+		</template>
 		<!-- TITOLO APPLICATIVO -->
-		<Title />
-
-		<!-- PULSANTE TOGGLE HELPER -->
-		<span
-			class="helper"
-			:class="{
-				'helper-selected': settings.helper,
-				'helper-deselected': settings.helperInClosing,
-				'helper-btn-dark': theme.darkTheme,
-			}"
-			@click="showHelper()"
-		>
-			<img class="settings" src="@/img/icons/settings.webp" alt="settings" />
-		</span>
+		<Title v-if="!settings.displayNone" />
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container" :class="{ sticky: settings.positionSticky }" v-if="!addTodo.devNotes">
+		<div class="input-btns-container" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
 			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
 			<input
@@ -171,7 +160,7 @@ export default {
 		<HeaderButtonsContainer />
 
 		<!-- SELEZIONE LISTE -->
-		<ListsButtonsSelection v-if="!addTodo.devNotes" />
+		<ListsButtonsSelection v-if="!addTodo.devNotes && !settings.displayNone" />
 	</div>
 </template>
 
@@ -183,18 +172,7 @@ export default {
 	position: relative;
 	margin: 0 auto;
 }
-.sticky {
-	/* Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io */
-	position: fixed;
-	top: 0;
-	z-index: 250;
-	padding-top: 10px;
-	width: 100%;
-	background-color: #ffffff;
-	box-shadow: -1px -200px 30px 200px #ffffff;
-	-webkit-box-shadow: -1px -200px 30px 200px #ffffff;
-	-moz-box-shadow: -1px -200px 30px 200px #ffffff;
-}
+
 .christmas {
 	margin-top: 40px;
 }
@@ -248,50 +226,6 @@ export default {
 	padding: 10px;
 }
 
-.helper-selected {
-	-webkit-animation: spin 2s linear;
-	-moz-animation: spin 2s linear;
-	animation: spin 2s linear;
-}
-@-moz-keyframes spin {
-	100% {
-		-moz-transform: rotate(360deg);
-	}
-}
-@-webkit-keyframes spin {
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
-}
-@keyframes spin {
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
-.helper-deselected {
-	-webkit-animation: reverseSpin 1.5s linear;
-	-moz-animation: reverseSpin 1.5s linear;
-	animation: reverseSpin 1.5s linear;
-}
-@-moz-keyframes reverseSpin {
-	100% {
-		-moz-transform: rotate(-360deg);
-	}
-}
-@-webkit-keyframes reverseSpin {
-	100% {
-		-webkit-transform: rotate(-360deg);
-	}
-}
-@keyframes reverseSpin {
-	100% {
-		-webkit-transform: rotate(-360deg);
-		transform: rotate(-360deg);
-	}
-}
-
 .remove-selected-cat {
 	color: #d00000;
 	font-size: larger;
@@ -307,23 +241,6 @@ export default {
 	padding: 10px;
 	width: 70%;
 	text-align: center;
-}
-
-.helper {
-	position: absolute;
-	top: 0;
-	right: 10px;
-	border-radius: 50%;
-	z-index: 300;
-	margin-right: 2%;
-}
-
-.helper:hover {
-	cursor: pointer;
-}
-.settings {
-	width: 33px;
-	z-index: 300;
 }
 
 .inputs {
