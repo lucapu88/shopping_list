@@ -115,14 +115,14 @@ export default {
 	<img v-if="isChristmas.christmasTheme" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
 	<div class="header-container" :class="{ christmas: isChristmas.christmasTheme }">
 		<!-- DECORAZIONI HALLOWEEN -->
-		<template v-if="!settings.displayNone && settings.isVisibleOnScroll">
+		<template v-if="settings.isVisibleOnScroll">
 			<img v-if="festivities.halloweenTheme" class="halloween-witch-hat" src="@/img/festivities/cappello-strega.webp" alt="halloween" />
 			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-1" src="@/img/festivities/pipistrello-1.webp" alt="halloween_bat" />
 			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-2" src="@/img/festivities/pipistrello-2.webp" alt="halloween_bat" />
 			<img v-if="festivities.halloweenTheme" class="halloween-bat bat-3" src="@/img/festivities/pipistrello-3.webp" alt="halloween_bat" />
 		</template>
 		<!-- TITOLO APPLICATIVO -->
-		<Title v-if="!settings.displayNone" />
+		<Title />
 
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" v-if="!addTodo.devNotes">
@@ -160,7 +160,7 @@ export default {
 		<HeaderButtonsContainer />
 
 		<!-- SELEZIONE LISTE -->
-		<ListsButtonsSelection v-if="!addTodo.devNotes && !settings.displayNone" />
+		<ListsButtonsSelection v-if="!addTodo.devNotes" />
 	</div>
 </template>
 

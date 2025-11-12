@@ -71,7 +71,7 @@ function ifError() {
 </script>
 
 <template>
-	<div class="recipe-generator" :class="{ 'mb-50': settings.isIphone }">
+	<div class="recipe-generator">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
 		<div class="form-check form-switch">
 			<label>AI</label>
@@ -92,9 +92,7 @@ function ifError() {
 	justify-content: space-around;
 	align-items: center;
 }
-.mb-50 {
-	margin-bottom: 50px;
-}
+
 button {
 	width: 160px;
 	padding: 10px 20px;
