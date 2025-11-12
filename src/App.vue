@@ -74,7 +74,7 @@ export default {
 		scrollHandler(e) {
 			this.isVisibleOnScroll = e.target.scrollTop < 80;
 			//Faccio questo perchè la posizione sticky sui dispositivi iPhone non funziona benissimo, o meglio come vorrei io
-			const shouldBeSticky = e.target.scrollTop > 51 && this.settings.isIphone;
+			const shouldBeSticky = e.target.scrollTop > 100 && this.settings.isIphone;
 
 			if (shouldBeSticky !== this.settings.positionSticky) {
 				/*Quando un elemento diventa position: fixed, viene tolto dal flusso del documento e quindi la sua altezza non occupa più spazio nel contenitore scrollabile.
@@ -83,7 +83,7 @@ export default {
 				// In questo modo, anche se l’header diventa fixed, il contenitore mantiene lo spazio originale → niente salti o scroll bloccato.
 				if (shouldBeSticky) {
 					// riserva spazio del header quando diventa fixed
-					this.$refs.headerWrapper.style.height = `${this.$refs.header.offsetHeight}px`;
+					this.$refs.headerWrapper.style.height = `77px`;
 				} else {
 					this.$refs.headerWrapper.style.height = null;
 				}
@@ -115,7 +115,7 @@ export default {
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 
-					<header style="overflow: hidden">
+					<header style="overflow: hidden" ref="headerWrapper">
 						<FestivitiesAndOccurrences :is-visible-on-scroll="isVisibleOnScroll" />
 						<HeadList />
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
