@@ -258,78 +258,36 @@ button {
 }
 
 .modify {
-	transform: scaleX(1);
 	transform-origin: right;
 	animation: enlarge 1s ease-out forwards;
 }
 
 @keyframes enlarge {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1.3);
+		width: 100%;
 	}
 }
 @-moz-keyframes enlarge {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1.3);
+		width: 100%;
 	}
 }
 @-webkit-keyframes enlarge {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1.3);
-	}
-}
-
-@media (min-width: 460px) {
-	/* Per display più grandi di 460 l'input si allarga di più e va al centro */
-	.todo-modify {
-		justify-content: space-evenly;
-	}
-	.modify {
-		transform: scaleX(1);
-		transform-origin: right;
-		animation: enlarge 1s ease-out forwards;
-	}
-
-	@keyframes enlarge {
-		0% {
-			transform: scaleX(0);
-		}
-		100% {
-			transform: scaleX(1.6);
-			transform-origin: center;
-		}
-	}
-}
-
-@media (max-width: 350px) {
-	/* Per display più piccoli di 350 l'input si allarga meno */
-	.modify {
-		transform: scaleX(1);
-		transform-origin: right;
-		animation: enlarge 1s ease-out forwards;
-	}
-
-	@keyframes enlarge {
-		0% {
-			transform: scaleX(0);
-		}
-		100% {
-			transform: scaleX(1.2);
-		}
+		width: 100%;
 	}
 }
 
 .modify-input {
-	transform: scaleX(0);
 	transform-origin: right;
 	margin-left: 5px;
 	animation: enlargeInput 1s ease-out forwards;
@@ -337,26 +295,26 @@ button {
 
 @keyframes enlargeInput {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1);
+		width: 95%;
 	}
 }
 @-moz-keyframes enlargeInput {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1);
+		width: 95%;
 	}
 }
 @-webkit-keyframes enlargeInput {
 	0% {
-		transform: scaleX(0);
+		width: 0%;
 	}
 	100% {
-		transform: scaleX(1);
+		width: 95%;
 	}
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import HelperDescription from "./Helper-description.vue";
+import HelperIstructions from "./Helper-istructions.vue";
 import PrivacyPolicyModal from "../panels-and-modals/privacy-policy/Privacy-policy-modal.vue";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
@@ -164,7 +164,7 @@ export default {
 				<Share />
 
 				<div id="helper-istructions">
-					<HelperDescription />
+					<HelperIstructions />
 				</div>
 
 				<button id="privacy-policy-btn" class="privacy-policy-btn" @click="settings.showPrivacyPolicy()">
