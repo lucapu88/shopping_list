@@ -55,16 +55,24 @@ export default {
 		</span>
 	</div>
 	<div v-if="section" class="shopopings-list-container">
-		<section v-for="(item, index) in content" :key="index">
-			<p class="date">{{ formatDate(item.at(-1)) }}</p>
-			<p v-for="(val, i) in item.slice(0, -1)" :key="i">
-				{{ val }}
-			</p>
+		<template v-if="content.length">
+			<section v-for="(item, index) in content" :key="index">
+				<p class="date">{{ formatDate(item.at(-1)) }}</p>
+				<p v-for="(val, i) in item.slice(0, -1)" :key="i">- {{ val }}</p>
+			</section>
+		</template>
+		<section v-else>
+			<p>Non ci sono spese per questo mese.</p>
 		</section>
 	</div>
 </template>
 
 <style scoped>
+section {
+	margin-bottom: 15px;
+	border-bottom: 1px solid;
+}
+
 .list-title {
 	padding: 5px;
 	border: 1px solid;

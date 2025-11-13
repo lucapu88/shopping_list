@@ -127,38 +127,28 @@ export const useFirebaseStore = defineStore('firebase', {
       }
     },
     createShoppingsYear(list) {
-      const monthsNames = {
-        "01": "Gennaio",
-        "02": "Febbraio",
-        "03": "Marzo",
-        "04": "Aprile",
-        "05": "Maggio",
-        "06": "Giugno",
-        "07": "Luglio",
-        "08": "Agosto",
-        "09": "Settembre",
-        "10": "Ottobre",
-        "11": "Novembre",
-        "12": "Dicembre",
-      };
-
+      const monthsOrder = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
       const forMonth = {};
 
       for (const arr of Object.values(list)) {
         const date = arr[arr.length - 1];
         // eslint-disable-next-line no-unused-vars
         const [day, month, year] = date.split("/");
-        const monthKey = `${monthsNames[month]} ${year}`;
-
-        if (!forMonth[monthKey]) {
-          forMonth[monthKey] = [];
-        }
-        forMonth[monthKey].push(arr);
+        const monthName = monthsOrder[parseInt(month, 10) - 1];
+        if (!forMonth[monthName]) forMonth[monthName] = [];
+        forMonth[monthName].push(arr);
       }
 
-      this.myYearOfShoppingsArray = Object.entries(forMonth).map(([month, elements]) => ({
-        month,
-        elements,
+      let referenceYear = new Date().getFullYear().toString();
+      if (Object.values(list).length > 0) {
+        const firstDate = Object.values(list)[0].at(-1);
+        const [, , year] = firstDate.split("/");
+        referenceYear = year;
+      }
+
+      this.myYearOfShoppingsArray = monthsOrder.map(month => ({
+        month: `${month} ${referenceYear}`,
+        elements: forMonth[month] || []
       }));
     },
   },

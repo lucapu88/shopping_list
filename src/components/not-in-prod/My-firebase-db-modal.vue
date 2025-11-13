@@ -42,7 +42,7 @@ export default {
 					<span v-if="isChristmas.christmasTheme" class="christmas-decorations ms-2">🎅 </span>
 					<span class="x" @click="close()">X</span>
 				</div>
-				<div class="shopping-container">
+				<div class="shopping-container mx-auto">
 					<div v-if="firebaseStore.firebaseLoading">
 						<LoadingOrUpdating :listChanged="firebaseStore.firebaseLoading" />
 					</div>
@@ -51,7 +51,6 @@ export default {
 					</h2>
 					<template v-if="!firebaseStore.firebaseLoading && !firebaseStore.firebaseErrorMessage">
 						<template v-for="(element, i) in firebaseStore.myYearOfShoppingsArray" :key="i">
-							<template> </template>
 							<Accordion :title="element.month" :content="element.elements" />
 						</template>
 					</template>
@@ -81,9 +80,9 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-start;
 	background-color: #ffffff;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .slide-enter-active {
@@ -124,7 +123,8 @@ export default {
 }
 
 .shopping-container {
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	width: 100%;
 }
 
