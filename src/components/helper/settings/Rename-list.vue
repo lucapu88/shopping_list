@@ -58,6 +58,8 @@ export default {
 					<ToggleTutorialButton :features="renameList" />
 				</li>
 				<div class="buttons-container">
+					<Tutorial v-if="settings.video && settings.feature === renameList" :features="renameList" />
+
 					<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
 						<input class="button-name" type="text" :placeholder="`${btn.name}`" v-model="buffer[n]" />
 					</template>
@@ -65,7 +67,6 @@ export default {
 						{{ languages.saveText }}
 					</button>
 				</div>
-				<Tutorial v-if="settings.video && settings.feature === renameList" :features="renameList" />
 			</div>
 		</template>
 	</div>

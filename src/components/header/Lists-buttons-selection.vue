@@ -57,7 +57,7 @@ export default {
 	width: 100%;
 	margin: auto;
 	margin-bottom: 20px;
-	margin-top: 10px;
+	margin-top: 20px;
 	padding: 0 15px;
 }
 .buttons-container > button {
