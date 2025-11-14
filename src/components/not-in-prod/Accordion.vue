@@ -54,17 +54,19 @@ export default {
 			^
 		</span>
 	</div>
-	<div v-if="section" class="shopopings-list-container">
-		<template v-if="content.length">
-			<section v-for="(item, index) in content" :key="index">
-				<p class="date">{{ formatDate(item.at(-1)) }}</p>
-				<p v-for="(val, i) in item.slice(0, -1)" :key="i">- {{ val }}</p>
+	<transition name="opacity">
+		<div v-if="section" class="shopopings-list-container">
+			<template v-if="content.length">
+				<section v-for="(item, index) in content" :key="index">
+					<p class="date">{{ formatDate(item.at(-1)) }}</p>
+					<p v-for="(val, i) in item.slice(0, -1)" :key="i">- {{ val }}</p>
+				</section>
+			</template>
+			<section v-else>
+				<p>Non ci sono spese per questo mese.</p>
 			</section>
-		</template>
-		<section v-else>
-			<p>Non ci sono spese per questo mese.</p>
-		</section>
-	</div>
+		</div>
+	</transition>
 </template>
 
 <style scoped>
@@ -80,6 +82,9 @@ section {
 	margin-bottom: 5px;
 	display: flex;
 	justify-content: space-between;
+	background-color: #ffffff;
+	position: relative;
+	z-index: 5;
 }
 
 .current-month-year {
@@ -151,19 +156,28 @@ p {
 	color: #a00000;
 }
 
-.shopopings-list-container {
-	animation-name: waterfallDescent;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.5s;
+.opacity-enter-active {
+	animation: opacity1 1s ease-in forwards;
+}
+.opacity-leave-active {
+	animation: opacity0 0.5s ease-out forwards;
 }
 
-@keyframes waterfallDescent {
+@keyframes opacity1 {
 	0% {
-		height: 0;
+		opacity: 0;
 	}
 	100% {
-		height: 200px;
+		opacity: 1;
+	}
+}
+
+@keyframes opacity0 {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
 	}
 }
 </style>
