@@ -18,6 +18,13 @@ export default {
 			monthYear: monthYear,
 		};
 	},
+	created() {
+		this.content.sort((a, b) => {
+			const dateA = a[a.length - 1].split("/").reverse().join("-");
+			const dateB = b[b.length - 1].split("/").reverse().join("-");
+			return new Date(dateA) - new Date(dateB);
+		});
+	},
 	methods: {
 		showSection() {
 			this.section = !this.section;
