@@ -100,6 +100,9 @@ export const useCategoriesStore = defineStore('Categories', {
         },
         sortCategories() {
             this.categories.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        },
+        setAllActiveCategory() {
+            CATEGORIES_BASE_CONFIG.forEach(cat => { cat.active = true; });
         }
     }
 });
