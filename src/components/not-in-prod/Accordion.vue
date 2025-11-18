@@ -66,7 +66,7 @@ export default {
 			<template v-if="content.length">
 				<section v-for="(item, index) in content" :key="index">
 					<p class="date">{{ formatDate(item.at(-1)) }}</p>
-					<p v-for="(val, i) in item.slice(0, -1)" :key="i">- {{ val }}</p>
+					<p class="item" v-for="(val, i) in item.slice(0, -1)" :key="i">- {{ val }}</p>
 				</section>
 			</template>
 			<section v-else>
@@ -78,8 +78,9 @@ export default {
 
 <style scoped>
 section {
-	margin-bottom: 15px;
-	border-bottom: 1px solid;
+	padding-bottom: 15px;
+	border: 1px solid;
+	overflow-y: auto;
 }
 
 .list-title {
@@ -108,6 +109,12 @@ section {
 .list-title-color {
 	background-color: #ededed;
 	color: #000000;
+}
+
+.shopopings-list-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 10px;
 }
 
 .arrow {
@@ -161,6 +168,10 @@ p {
 .date {
 	font-weight: bold;
 	color: #a00000;
+}
+
+.item {
+	font-size: 0.8125rem;
 }
 
 .opacity-enter-active {

@@ -72,7 +72,7 @@ export default {
 	top: 50%;
 	transform: translate(-50%, -50%);
 	margin: auto;
-	padding: 25px;
+	padding: 25px 10px;
 	border-radius: 10px;
 	width: 95vw;
 	height: 95vh;
@@ -126,6 +126,7 @@ export default {
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 100%;
+	padding: 0 15px;
 }
 
 .title {
