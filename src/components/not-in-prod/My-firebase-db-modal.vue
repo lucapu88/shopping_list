@@ -1,5 +1,5 @@
 <script setup>
-import { useFirebaseStore } from "@/store/FirebaseStore";
+import { useFirebaseStore } from "@/server/FirebaseStore";
 import Accordion from "./Accordion.vue";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";

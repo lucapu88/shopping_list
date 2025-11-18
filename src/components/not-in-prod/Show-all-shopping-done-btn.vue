@@ -1,7 +1,7 @@
 <script setup>
 import MyFirebaseDbModal from "./My-firebase-db-modal.vue";
 import ListIstructionAccordion from "../panels-and-modals/List-istruction-accordion.vue";
-import { useFirebaseStore } from "@/store/FirebaseStore";
+import { useFirebaseStore } from "@/server/FirebaseStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 </script>
 

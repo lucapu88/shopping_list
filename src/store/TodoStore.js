@@ -6,7 +6,7 @@ import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivities
 import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
-import { useFirebaseStore } from '@/store/FirebaseStore';
+import { useFirebaseStore } from '@/server/FirebaseStore';
 
 
 export const useTodoStore = defineStore('todoStore', {
