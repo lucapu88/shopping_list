@@ -2,6 +2,8 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import beerpour from "@/sounds/beerpour.mp3";
+import toilet from "@/sounds/toilet.mp3";
 </script>
 
 <script>
@@ -36,10 +38,10 @@ export default {
 		},
 		audioPlay() {
 			const audioPlayer = this.$refs.audioPlayer;
-			audioPlayer.volume = 0.4;
-			audioPlayer.paused || audioPlayer.ended ? audioPlayer.play() : stopAudio();
-
-			function stopAudio() {
+			audioPlayer.load();
+			if (audioPlayer.paused || audioPlayer.ended) {
+				audioPlayer.play();
+			} else {
 				audioPlayer.pause();
 				audioPlayer.currentTime = 0;
 			}
@@ -121,8 +123,8 @@ export default {
 			{{ languages.starWarsDay }}
 		</p>
 	</div>
-	<audio v-if="festivitiesOrOccurrences.beerDay" ref="audioPlayer" src="src/sounds/beerpour.mp3"></audio>
-	<audio v-if="festivitiesOrOccurrences.toiletDay" ref="audioPlayer" src="src/sounds/toilet.mp3"></audio>
+	<audio v-if="festivitiesOrOccurrences.beerDay" ref="audioPlayer" :src="beerpour" preload="auto"></audio>
+	<audio v-if="festivitiesOrOccurrences.toiletDay" ref="audioPlayer" :src="toilet" preload="auto"></audio>
 </template>
 
 <style scoped>

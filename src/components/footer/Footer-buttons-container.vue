@@ -4,6 +4,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import hohoho from "@/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3";
 import MultipleSelection from "./Multiple-selection.vue";
 import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
 import ShowAllShoppingDoneBtn from "../not-in-prod/Show-all-shopping-done-btn.vue";
@@ -34,10 +35,11 @@ export default {
 		},
 		ohohoh() {
 			const audioPlayer = this.$refs.audioPlayer;
-			audioPlayer.volume = 0.4;
-			audioPlayer.paused || audioPlayer.ended ? audioPlayer.play() : stopAudio();
+			audioPlayer.load();
 
-			function stopAudio() {
+			if (audioPlayer.paused || audioPlayer.ended) {
+				audioPlayer.play();
+			} else {
 				audioPlayer.pause();
 				audioPlayer.currentTime = 0;
 			}
@@ -49,6 +51,7 @@ export default {
 <template>
 	<div class="footer-btns-container pb-3">
 		<MultipleSelection />
+
 		<!-- SOLO PER ME E NON IN PROD -->
 		<ShowAllShoppingDoneBtn v-if="settings.isIphone && !settings.isAndroid && !todosStore.showOnlyImportantTodos" />
 
@@ -93,7 +96,7 @@ export default {
 	<div v-if="isChristmas.christmasTheme && todosStore.todos.length">
 		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" @click="ohohoh()" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
-		<audio ref="audioPlayer" src="src/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3"></audio>
+		<audio ref="audioPlayer" :src="hohoho" preload="auto"></audio>
 	</div>
 	<!-- SOLO PER ME E NON IN PROD -->
 	<GenerateRecipes v-if="settings.isIphone" />
