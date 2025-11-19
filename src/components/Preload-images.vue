@@ -36,6 +36,8 @@ import garlandCircle from "@/img/festivities/ghirlanda-tonda.webp";
 import christmasDecorationsRight from "@/img/festivities/christmas-decorations-destra.webp";
 import christmasDecorationsLeft from "@/img/festivities/christmas-decorations-sinistra.webp";
 import fireworks from "@/img/festivities/buon-anno.gif";
+import christmasTree from "@/img/festivities/christmas-tree.webp";
+import christmasDecoration from "@/img/festivities/christmas-decorations.webp";
 
 import cancerLogo from "@/img/festivities/cancer-logo.webp";
 import paceLogo from "@/img/festivities/pace.webp";
@@ -118,6 +120,8 @@ export default {
 		<link rel="preload" as="image" :href="garlandCircle" />
 		<link rel="preload" as="image" :href="christmasDecorationsRight" />
 		<link rel="preload" as="image" :href="christmasDecorationsLeft" />
+		<link rel="preload" as="image" :href="christmasTree" />
+		<link rel="preload" as="image" :href="christmasDecoration" />
 	</template>
 
 	<link v-if="festivitiesOrOccurrences.worldCancerDay" rel="preload" as="image" :href="cancerLogo" />

@@ -22,12 +22,15 @@ export default {
 		};
 	},
 	created() {
-		this.feedbackPlaceholder = `${this.languages.feedback.placeholder}\n${this.languages.feedback.extraText}`;
+		this.feedbackPlaceholder = `${this.languages.feedback.placeholder}\n${this.languages.feedback.extraText} \n\n\n ${this.isChristmas.christmasTheme ? this.languages.merryChristmasText : ""}`;
 	},
 	methods: {
 		sendEmail() {
 			if (!this.message) {
-				this.status = "Inserisci un messaggio prima di inviare.";
+				this.status = this.languages.feedback.statusText;
+				setTimeout(() => {
+					this.status = "";
+				}, 3000);
 				return;
 			}
 			this.disableTextarea = true;
@@ -79,7 +82,12 @@ export default {
 				jeans: theme.jeansTheme,
 			}"
 		>
+			<div class="christmas-decorations-container" v-if="isChristmas.christmasTheme">
+				<img class="christmas-decorations" src="@/img/festivities/christmas-decorations.webp" alt="christmas_decorations" />
+			</div>
+
 			<span class="close-feedback-modal" @click="secondTodosStore.showFeedbackForm = false">X</span>
+
 			<form @submit.prevent="sendEmail">
 				<label class="title">{{ languages.feedback.title }}</label>
 
@@ -87,9 +95,11 @@ export default {
 
 				<textarea :disabled="disableTextarea" v-model="message" class="content" rows="5" :placeholder="feedbackPlaceholder"></textarea>
 
-				<button type="submit" class="send-message-button mt-3">
+				<button type="submit" class="btn btn-success send-message-button mt-3">
 					{{ languages.send }}
 				</button>
+
+				<img v-if="isChristmas.christmasTheme" class="christmas-tree" src="@/img/festivities/christmas-tree.webp" alt="christmas_tree" />
 			</form>
 		</div>
 	</div>
@@ -113,15 +123,35 @@ export default {
 	align-items: center;
 	justify-content: center;
 	overflow-y: auto;
+	overflow-x: hidden;
+	animation: modalEnter 0.8s ease forwards;
+}
+
+@keyframes modalEnter {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.95);
+	}
+	60% {
+		opacity: 1;
+		transform: translateY(5px) scale(1.03);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 .close-feedback-modal {
 	position: absolute;
 	top: 5px;
-	right: 15px;
+	right: -25px;
 	font-size: 1.25rem;
 	font-weight: bold;
 	cursor: pointer;
+	width: 100px;
+	height: 50px;
+	z-index: 20;
 }
 
 .title {
@@ -131,7 +161,7 @@ export default {
 }
 
 textarea {
-	height: 75vh;
+	height: 70vh;
 	width: 100%;
 	text-align: center;
 	padding: 10px;
@@ -194,5 +224,37 @@ textarea {
 	background-color: #045687;
 	border-color: #d98410;
 	color: #d98410;
+}
+
+.christmas-decorations-container {
+	width: 230px;
+	height: 50px;
+	position: relative;
+}
+
+.christmas-decorations-container img {
+	width: 100%;
+	position: absolute;
+	top: -300%;
+	left: 5px;
+	animation: dropDown 1s ease-out forwards;
+	animation-delay: 0.5s;
+	z-index: 10;
+}
+
+@keyframes dropDown {
+	from {
+		top: -300%;
+	}
+	to {
+		top: -20px;
+	}
+}
+
+.christmas-tree {
+	width: 100px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
 }
 </style>
