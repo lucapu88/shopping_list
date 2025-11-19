@@ -195,6 +195,14 @@ export const useLanguageStore = defineStore('Language', {
     alertMomentaneo: "Now you can create multiple lists! Isn't that wonderful? If you shop at different supermarkets or want to have different lists based on your needs, you have 4 new lists at your disposal! Enjoy!",
     alertMomentaneoTitolo: "New Feature: ",
     saveText: "Save",
+    feedback: {
+      title: "Send us reports of any problems, or simply a feedback",
+      placeholder: "Leave your comments or comments here to tell us what's wrong. ATTENTION: Messages containing swear words will be automatically discarded after sending. ✌️",
+      extraText: "If you'd like us to contact you, please include your email address in your message.",
+      successMessage: "Message sent successfully, thank you! 🤗",
+      errorMessage: "❌ Error sending message. Please try again. If the service doesn't work, please contact us directly at: "
+    },
+    send: "Send",
   }),
   getters: {},
   actions: {
@@ -329,6 +337,12 @@ export const useLanguageStore = defineStore('Language', {
       this.alertMomentaneo = "Ora puoi creare più liste! Non è meraviglioso? Nel caso fai spesa in supermercati diversi oppure vuoi avere liste diverse in base alle tue esigenze, insomma hai a disposizione 4 liste tutte nuove! Buon divertimento ";
       this.alertMomentaneoTitolo = "Nuova Funzionalità: ";
       this.saveText = "Salva";
+      this.feedback.title = "Inviaci segnalazioni su eventuali problemi, oppure un semplice parere";
+      this.feedback.placeholder = "Scrivi qui le tue osservazioni oppure cosa c'è che non funziona. ATTENZIONE: i messaggi con parolacce verranno automaticamente scartati dopo l'invio. ✌️";
+      this.feedback.extraText = "Se desideri essere ricontattato, includi nel tuo messaggio il tuo indirizzo e-mail.";
+      this.feedback.successMessage = "Messaggio inviato con successo, grazie! 🤗";
+      this.feedback.errorMessage = "❌ Errore nell'invio del messaggio. Riprova. Se il servizio non funziona, contattaci direttamente a: ";
+      this.send = "Invia";
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -397,6 +411,12 @@ export const useLanguageStore = defineStore('Language', {
       this.alertMomentaneo = "¡ahora puedes crear múltiples listas! ¿No es maravilloso? Si compras en diferentes supermercados o quieres tener listas diferentes en función de tus necesidades, ¡tienes 4 listas completamente nuevas a tu disposición! Divertirse";
       this.alertMomentaneoTitolo = "Nueva característica: ";
       this.saveText = "Guardar";
+      this.feedback.title = "Envíanos informes de cualquier problema o simplemente tus comentarios.";
+      this.feedback.placeholder = "Deja tus comentarios o comentarios aquí para contarnos qué está mal. ATENCIÓN: Los mensajes que contengan palabrotas serán automáticamente descartados después de enviarlos. ✌️";
+      this.feedback.extraText = "Si desea que nos pongamos en contacto con usted, incluya su dirección de correo electrónico en su mensaje.";
+      this.feedback.successMessage = "Mensaje enviado con éxito, ¡gracias! 🤗";
+      this.feedback.errorMessage = "❌ Error al enviar el mensaje. Por favor, inténtelo de nuevo. Si el servicio no funciona, contáctenos directamente en: ";
+      this.send = "Enviar";
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

@@ -6,6 +6,30 @@
 
 <p>Copyright© - Caputo Luca - All right reserved.</p>
 
+<br>
+
+A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and **Bootstrap**, converted into an Android app with **Kodular**.
+
+## Features
+
+- Create, edit, and delete shopping lists (local storage only, no DB. No user data collected)
+- Drag & drop to reorder items (with **vue3-smooth-dnd**)
+- Ability to send emails with **EmailJS**
+- Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
+- Data validation with **Zod** (<u>functionality NOT in production for users but for personal use only</u>)
+- Advanced features with **LangChain** and **OpenAI** (<u>functionality NOT in production for users but for personal use only</u>)
+
+## Technologies
+
+- Vue.js 3
+- Pinia
+- Bootstrap 5
+- Vite
+- Firebase (personal use)
+- LangChain, OpenAI (personal use)
+- Cypress (end-to-end testing)
+- Kodular (conversion to Android app)
+
 <br><hr>
 
 <div>

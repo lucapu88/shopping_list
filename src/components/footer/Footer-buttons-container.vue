@@ -8,6 +8,7 @@ import hohoho from "@/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3";
 import MultipleSelection from "./Multiple-selection.vue";
 import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
 import ShowAllShoppingDoneBtn from "../not-in-prod/Show-all-shopping-done-btn.vue";
+import FeedbackButton from "./Feedback-button.vue";
 </script>
 
 <script>
@@ -50,6 +51,8 @@ export default {
 
 <template>
 	<div class="footer-btns-container pb-3">
+		<FeedbackButton />
+
 		<MultipleSelection />
 
 		<!-- SOLO PER ME E NON IN PROD -->
