@@ -62,7 +62,6 @@ export default {
 				style="width: 110px"
 				class="confirm-deselect-all-container deselect-all p-2"
 				:class="{
-					'multiple-delete': multipleDelete,
 					light: theme.lightTheme,
 					dark: theme.darkTheme,
 					minimal: theme.minimalTheme,
@@ -87,7 +86,7 @@ export default {
 		<li>
 			{{ languages.helperDescription.multipleDeleteText.hideText }}
 			<button
-				class="opacity-80 text-danger border-danger rounded multiple-delete right"
+				class="opacity-80 text-danger border-danger rounded right"
 				:class="{
 					christmas: isChristmas.christmasTheme,
 					'elegant-btn': theme.elegantTheme,
@@ -99,7 +98,7 @@ export default {
 
 			{{ languages.helperDescription.multipleDeleteText.showText }}
 			<button
-				class="opacity-80 text-danger border-danger rounded multiple-delete right"
+				class="opacity-80 text-danger border-danger rounded right"
 				:class="{
 					christmas: isChristmas.christmasTheme,
 					'elegant-btn': theme.elegantTheme,
@@ -122,5 +121,8 @@ export default {
 .eye {
 	width: 30px;
 	height: 24px;
+}
+.checkbox {
+	border: none;
 }
 </style>
