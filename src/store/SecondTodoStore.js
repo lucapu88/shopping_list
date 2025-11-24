@@ -23,8 +23,10 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         showRecipeModal: false,
         listButtons: [],
         showFeedbackForm: false,
+        showChangeList: false,
+        showChangeListChildren: false,
         checkedIcon: String.fromCodePoint(0x2705),
-        refreshIcon: String.fromCodePoint(0x1F504)
+        refreshIcon: String.fromCodePoint(0x1F504),
     }),
     actions: {
         resetAllLists() {
@@ -340,5 +342,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosStore.newTodo = todoCopied;
             this.todosStore.addTodo();
         },
+        toggleChangeList() {
+            this.todosStore.categoryList = false;
+            this.showChangeList = !this.showChangeList;
+        }
     }
 });

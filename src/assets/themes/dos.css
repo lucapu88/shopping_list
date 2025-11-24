@@ -181,3 +181,11 @@
 	border: 2px solid var(--dos-primary-color) !important;
 	color: var(--white);
 }
+
+.container-retro,
+.container-retro > button {
+	background-color: var(--dos-secondary-color);
+	color: var(--dos-primary-color);
+	border: 1px solid var(--dos-primary-color);
+	border-radius: 0 !important;
+}

@@ -81,3 +81,10 @@
 	border: var(--winter-primary-color) solid !important;
 	border-radius: var(--default-radius) !important;
 }
+
+.container-winter {
+	background-color: var(--winter-background-color);
+	border: 2px solid var(--winter-text-color);
+	background-size: cover;
+	background-repeat: no-repeat;
+}

@@ -74,3 +74,9 @@
 	border: 1px solid var(--margot-robbie-feet-color-one) !important;
 	border-radius: var(--default-radius) !important;
 }
+
+.container-pink {
+	border: 3px solid var(--margot-robbie-feet-color-two);
+	background-color: var(--pink-modal-color);
+	color: var(--pink-primary-color);
+}

@@ -277,6 +277,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     showCategoryList() {
       this.removeSelectedCategoryToAddItem();
+      this.secondTodosStore.showChangeList = false;
       this.categoryList = !this.categoryList;
       this.isDraggable = false;
       this.categoryList ? setTimeout(() => { this.categoryListChildren = true; }, 400) : this.categoryListChildren = false;

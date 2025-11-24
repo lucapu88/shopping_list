@@ -69,3 +69,7 @@
 	background-color: var(--lemon-secondary-color) !important;
 	color: var(--lemon-tertiary-color) !important;
 }
+
+.container-lemon {
+	background-color: var(--lemon-primary-color) !important;
+}

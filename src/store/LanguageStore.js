@@ -205,6 +205,7 @@ export const useLanguageStore = defineStore('Language', {
     },
     send: "Send",
     merryChristmasText: 'Merry Christmas and Happy Holidays! 🎄',
+    listSelectionTitle: 'Choose the list you want',
   }),
   getters: {},
   actions: {
@@ -346,7 +347,7 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.errorMessage = "❌ Errore nell'invio del messaggio. Riprova. Se il servizio non funziona, contattaci direttamente a: ";
       this.feedback.statusText = "Inserisci un messaggio prima di inviare.";
       this.send = "Invia";
-      this.merryChristmasText = 'Buon Natale e Felici Feste! 🎄';
+      this.listSelectionTitle = 'Scegli la lista che desideri';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -422,7 +423,7 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.errorMessage = "❌ Error al enviar el mensaje. Por favor, inténtelo de nuevo. Si el servicio no funciona, contáctenos directamente en: ";
       this.feedback.statusText = "Por favor, introduzca un mensaje antes de enviarlo.";
       this.send = "Enviar";
-      this.merryChristmasText = '¡Feliz Navidad y Felices Fiestas! 🎄';
+      this.listSelectionTitle = 'Elija la lista que desee';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO
@@ -441,6 +442,7 @@ export const useLanguageStore = defineStore('Language', {
       this.humanRightsDayText = '10 dicembre: Giornata mondiale dei diritti umani';
       this.starWarsDay = '25 Maggio 1977: Esce al cinema Star Wars';
       this.newYearText = "Buon Anno!";
+      this.merryChristmasText = 'Buon Natale e Felici Feste! 🎄';
     },
     festivitiesSPATranslations() { // SPAGNOLO
       this.cancerDayText = '4 de febrero: Día Mundial contra el Cáncer';
@@ -458,6 +460,7 @@ export const useLanguageStore = defineStore('Language', {
       this.humanRightsDayText = '10 de diciembre: Día Mundial de los Derechos Humanos';
       this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';
       this.newYearText = "¡Feliz Año Nuevo!";
+      this.merryChristmasText = '¡Feliz Navidad y Felices Fiestas! 🎄';
     },
     //------------------------------------------------------------------------------------- HELPER
     helperItaTranslations() { // ITALIANO

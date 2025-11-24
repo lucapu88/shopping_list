@@ -101,3 +101,8 @@
 		max-width: 90px;
 	}
 }
+
+.container-panter {
+	background-color: var(--panter-primary-color) !important;
+	border: 1px solid var(--panter-text-color) !important;
+}

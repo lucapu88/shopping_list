@@ -67,3 +67,10 @@
 	border: 2px solid var(--dark-white) !important;
 	border-radius: var(--default-radius);
 }
+
+.container-dark,
+.container-dark > button {
+	background-color: var(--dark-background-color);
+	color: #ffff;
+	border: 2px solid #ffff;
+}

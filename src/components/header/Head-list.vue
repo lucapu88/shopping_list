@@ -10,7 +10,6 @@ import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
-import ListsButtonsSelection from "./Lists-buttons-selection.vue";
 </script>
 
 <script>
@@ -158,9 +157,6 @@ export default {
 
 		<!-- PULSANTIERA -->
 		<HeaderButtonsContainer />
-
-		<!-- SELEZIONE LISTE -->
-		<ListsButtonsSelection v-if="!addTodo.devNotes" />
 	</div>
 </template>
 

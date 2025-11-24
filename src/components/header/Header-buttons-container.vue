@@ -4,6 +4,8 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import ListsButtonsSelection from "./Lists-buttons-selection.vue";
 </script>
 
 <script>
@@ -14,6 +16,7 @@ export default {
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
 			settings: useSettingsStore(),
+			secondTodos: useSecondTodoStore(),
 		};
 	},
 	methods: {
@@ -40,6 +43,36 @@ export default {
 
 <template>
 	<div class="pushbutton-container" v-if="!todosStore.devNotes">
+		<!-- TOGGLE CAMBIO LISTE -->
+		<button
+			class="btn custom-show-listbtn"
+			:class="{
+				'btn-selected': secondTodos.showChangeList,
+				'minimal-btn': theme.minimalTheme,
+				'minimal-selected-btn': theme.minimalTheme && secondTodos.showChangeList,
+				'retro-teme-btns': theme.retroTheme,
+				'retro-selected-btn': theme.retroTheme && secondTodos.showChangeList,
+				'summer-header-btn': theme.summerTheme,
+				'summer-header-btn-selected': theme.summerTheme && secondTodos.showChangeList,
+				'winter-header-btn': theme.winterTheme,
+				'winter-header-selected-btn': theme.winterTheme && secondTodos.showChangeList,
+				'elegant-btn': theme.elegantTheme,
+				'elegant-selected-btn': theme.elegantTheme && secondTodos.showChangeList,
+				'pink-theme-btn': theme.pinkTheme,
+				'pink-theme-selected-btn': theme.pinkTheme && secondTodos.showChangeList,
+				'panter-other-btn': theme.panterTheme,
+				'panter-theme-selected-btn': theme.panterTheme && secondTodos.showChangeList,
+				'lemon-other-btn': theme.lemonTheme,
+				'lemon-theme-selected-btn': theme.lemonTheme && secondTodos.showChangeList,
+				'jeans-other-btn': theme.jeansTheme,
+				'jeans-theme-selected-btn': theme.jeansTheme && secondTodos.showChangeList,
+			}"
+			@click="secondTodos.toggleChangeList()"
+		>
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists.webp" alt="move" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-elegant.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-panter.webp" alt="move" />
+		</button>
 		<!-- DRAG N DROP -->
 		<button
 			class="btn custom-show-listbtn"
@@ -67,9 +100,9 @@ export default {
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
 			@click="todosStore.toggleDragDrop()"
 		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" src="@/img/icons/drag-and-drop-panter.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop.webp" alt="move" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop-panter.webp" alt="move" />
 		</button>
 		<!--PULSANTE COPIA LISTA-->
 		<button
@@ -180,6 +213,9 @@ export default {
 	</template>
 
 	<CategoriesPanel />
+
+	<!-- SELEZIONE LISTE -->
+	<ListsButtonsSelection v-if="!todosStore.devNotes" />
 </template>
 
 <style scoped>
@@ -205,9 +241,14 @@ p {
 	width: 60px;
 }
 .custom-show-listbtn > img {
-	width: 20px;
+	width: 25px;
 }
-
+.drag-n-drop-img {
+	width: 20px !important;
+}
+.show-lists-img {
+	width: 30px !important;
+}
 .alerts-container {
 	min-height: 21px;
 }

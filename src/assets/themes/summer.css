@@ -80,3 +80,11 @@
 	border: 2px solid var(--summer-primary-color) !important;
 	border-radius: var(--default-radius) !important;
 }
+
+.container-summer {
+	background-color: var(--summer-secondary-color);
+	border: 2px solid var(--summer-secondary-color);
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #ffffff;
+}

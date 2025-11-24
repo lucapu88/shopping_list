@@ -69,17 +69,17 @@ export default {
 		<div
 			class="modal-content"
 			:class="{
-				light: theme.lightTheme,
-				dark: theme.darkTheme,
-				minimal: theme.minimalTheme,
-				retro: theme.retroTheme,
-				summer: theme.summerTheme,
-				winter: theme.winterTheme,
-				elegant: theme.elegantTheme,
-				pink: theme.pinkTheme,
-				panter: theme.panterTheme,
-				lemon: theme.lemonTheme,
-				jeans: theme.jeansTheme,
+				'container-light': theme.lightTheme,
+				'container-dark': theme.darkTheme,
+				'container-minimal': theme.minimalTheme,
+				'container-retro': theme.retroTheme,
+				'container-summer': theme.summerTheme,
+				'container-winter': theme.winterTheme,
+				'container-elegant': theme.elegantTheme,
+				'container-pink': theme.pinkTheme,
+				'container-panter': theme.panterTheme,
+				'container-lemon': theme.lemonTheme,
+				'container-jeans': theme.jeansTheme,
 			}"
 		>
 			<div class="christmas-decorations-container" v-if="isChristmas.christmasTheme">
@@ -165,65 +165,6 @@ textarea {
 	width: 100%;
 	text-align: center;
 	padding: 10px;
-}
-
-.light {
-	background-color: #ffffff;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-.light > p {
-	max-width: 24ch;
-}
-
-.dark,
-.dark > button {
-	background-color: #333333;
-	color: #ffff;
-	border: 2px solid #ffff;
-}
-
-.minimal,
-.minimal > button {
-	background-color: #a5becc;
-	color: #7c3e66;
-}
-
-.retro,
-.retro > button {
-	background-color: #000000;
-	color: #35c50d;
-	border: 1px solid #35c50d;
-	border-radius: 0 !important;
-}
-
-.summer {
-	background-color: #12a1df;
-	border: 2px solid #12a1df;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: #ffffff;
-}
-
-.winter {
-	background-color: #ffff;
-	border: 2px solid #ffff;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.elegant {
-	background-color: #1d2731;
-	border: 1px solid #d98410;
-	color: #d98410;
-}
-.elegant > p {
-	font-weight: bold;
-}
-.elegant > button {
-	background-color: #045687;
-	border-color: #d98410;
-	color: #d98410;
 }
 
 .christmas-decorations-container {

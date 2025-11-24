@@ -132,3 +132,17 @@
 	border-radius: 5px !important;
 	box-shadow: none !important;
 }
+
+.container-elegant {
+	background-color: var(--elegant-secondary-color);
+	border: 1px solid var(--elegant-text-color);
+	color: var(--elegant-text-color);
+}
+.container-elegant > p {
+	font-weight: bold;
+}
+.container-elegant > button {
+	background-color: var(--elegant-primary-color-light);
+	border-color: var(--elegant-text-color);
+	color: var(--elegant-text-color);
+}

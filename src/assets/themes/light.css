@@ -39,3 +39,11 @@
 	background-color: rgba(192, 224, 133, 0.883) !important;
 	border: 2px solid rgb(180, 230, 89) !important;
 }
+
+.container-light {
+	background-color: var(--light-background-color);
+	border: 2px solid var(--black);
+}
+.container-light > p {
+	max-width: 24ch;
+}

@@ -42,6 +42,10 @@ button {
 	border-radius: 10px;
 }
 
+.border-radius-nooo-hai-rotto-il-cazzo {
+	border-radius: 0 !important;
+}
+
 .galeazzi {
 	font-size: larger;
 }
