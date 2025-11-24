@@ -3,7 +3,6 @@ import { useTodoStore } from '@/store/TodoStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
 
-
 export const useSecondTodoStore = defineStore('secondTodoStore', {
     // Store per cose varie che non riguardano direttamente le todo, ma cose generali dell'app
     state: () => ({
@@ -13,6 +12,10 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         secondList: false,
         thirdList: false,
         fourthList: false,
+        fifthList: false,
+        sixthList: false,
+        seventhList: false,
+        eighthList: false,
         loading: false,
         loadingOpenAIRes: false,
         loadingRecipes: false,
@@ -33,6 +36,14 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             window.localStorage.removeItem('thirdList');
             this.fourthList = false;
             window.localStorage.removeItem('fourthList');
+            this.fifthList = false;
+            window.localStorage.removeItem('fifthList');
+            this.sixthList = false;
+            window.localStorage.removeItem('sixthList');
+            this.seventhList = false;
+            window.localStorage.removeItem('seventhList');
+            this.eighthList = false;
+            window.localStorage.removeItem('eighthList');
         },
         todosSettings() {
             this.todosStore.createTodosList();
@@ -48,6 +59,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 location.reload();
             }, 700);
         },
+        //TOFIX ripetitivo, da ottimizzare
         selectFirstList() {
             const listName1 = window.localStorage.getItem('ListName1');
 
@@ -82,10 +94,50 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             window.localStorage.setItem('listNumber4', `${listName4 ? listName4.toString() : "LIST 4"}`);
             this.todosSettings();
         },
+        selectFifthList() {
+            this.resetAllLists();
+            this.fifthList = true;
+            const listName5 = window.localStorage.getItem('ListName5');
+
+            window.localStorage.setItem('fifthList', true);
+            window.localStorage.setItem('listNumber5', `${listName5 ? listName5.toString() : "LIST 5"}`);
+            this.todosSettings();
+        },
+        selectSixthList() {
+            this.resetAllLists();
+            this.sixthList = true;
+            const listName6 = window.localStorage.getItem('ListName6');
+
+            window.localStorage.setItem('sixthList', true);
+            window.localStorage.setItem('listNumber6', `${listName6 ? listName6.toString() : "LIST 6"}`);
+            this.todosSettings();
+        },
+        selectSeventhList() {
+            this.resetAllLists();
+            this.seventhList = true;
+            const listName7 = window.localStorage.getItem('ListName7');
+
+            window.localStorage.setItem('seventhList', true);
+            window.localStorage.setItem('listNumber7', `${listName7 ? listName7.toString() : "LIST 7"}`);
+            this.todosSettings();
+        },
+        selectEighthList() {
+            this.resetAllLists();
+            this.eighthList = true;
+            const listName8 = window.localStorage.getItem('ListName8');
+
+            window.localStorage.setItem('eighthList', true);
+            window.localStorage.setItem('listNumber8', `${listName8 ? listName8.toString() : "LIST 8"}`);
+            this.todosSettings();
+        },
         setSelectedLists() {
             this.secondList = window.localStorage.getItem('secondList');
             this.thirdList = window.localStorage.getItem('thirdList');
             this.fourthList = window.localStorage.getItem('fourthList');
+            this.fifthList = window.localStorage.getItem('fifthList');
+            this.sixthList = window.localStorage.getItem('sixthList');
+            this.seventhList = window.localStorage.getItem('seventhList');
+            this.eighthList = window.localStorage.getItem('eighthList');
         },
         localStorageSettings(arrayOfObjects, listArray, defaultItem) {
             const getItem = (param) => window.localStorage.getItem(param);
@@ -100,12 +152,16 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const listName2 = window.localStorage.getItem('ListName2');
             const listName3 = window.localStorage.getItem('ListName3');
             const listName4 = window.localStorage.getItem('ListName4');
+            const listName5 = window.localStorage.getItem('ListName5');
+            const listName6 = window.localStorage.getItem('ListName6');
+            const listName7 = window.localStorage.getItem('ListName7');
+            const listName8 = window.localStorage.getItem('ListName8');
 
             this.listButtons = [
                 {
                     class: "first",
                     name: `${listName1 ? listName1.toString() : "List 1"}`,
-                    selectedCondition: () => !this.secondList && !this.thirdList && !this.fourthList,
+                    selectedCondition: () => !this.secondList && !this.thirdList && !this.fourthList && !this.fifthList && !this.sixthList && !this.seventhList && !this.eighthList,
                     function: this.selectFirstList,
                 },
                 {
@@ -126,6 +182,30 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                     selectedCondition: () => this.fourthList,
                     function: this.selectFourthList,
                 },
+                {
+                    class: "fifth",
+                    name: `${listName5 ? listName5.toString() : "List 5"}`,
+                    selectedCondition: () => this.fifthList,
+                    function: this.selectFifthList,
+                },
+                {
+                    class: "sixth",
+                    name: `${listName6 ? listName6.toString() : "List 6"}`,
+                    selectedCondition: () => this.sixthList,
+                    function: this.selectSixthList,
+                },
+                {
+                    class: "seventh",
+                    name: `${listName7 ? listName7.toString() : "List 7"}`,
+                    selectedCondition: () => this.seventhList,
+                    function: this.selectSeventhList,
+                },
+                {
+                    class: "eighth",
+                    name: `${listName8 ? listName8.toString() : "List 8"}`,
+                    selectedCondition: () => this.eighthList,
+                    function: this.selectEighthList,
+                },
             ];
         },
         getAndPushListsNumber(storageKey, todosToDelete) {
@@ -134,6 +214,10 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             let todos2 = this.getTodosFromStorage('todos2');
             let todos3 = this.getTodosFromStorage('todos3');
             let todos4 = this.getTodosFromStorage('todos4');
+            let todos5 = this.getTodosFromStorage('todos5');
+            let todos6 = this.getTodosFromStorage('todos6');
+            let todos7 = this.getTodosFromStorage('todos7');
+            let todos8 = this.getTodosFromStorage('todos8');
 
             const todosName = this.todosStore.todos.map(e => e.name);
 
@@ -148,6 +232,18 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             }
             if (this.areEqualArrays(todosName, todos4)) {
                 window.localStorage.setItem(`${storageKey}-4`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos5)) {
+                window.localStorage.setItem(`${storageKey}-5`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos6)) {
+                window.localStorage.setItem(`${storageKey}-6`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos7)) {
+                window.localStorage.setItem(`${storageKey}-7`, todosToDelete);
+            }
+            if (this.areEqualArrays(todosName, todos8)) {
+                window.localStorage.setItem(`${storageKey}-8`, todosToDelete);
             }
         },
         areEqualArrays(arr1, arr2) {

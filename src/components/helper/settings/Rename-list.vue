@@ -23,7 +23,7 @@ export default {
 	},
 	methods: {
 		renameButtons() {
-			if (!this.buffer[0] && !this.buffer[1] && !this.buffer[2] && !this.buffer[3]) {
+			if (!this.buffer[0] && !this.buffer[1] && !this.buffer[2] && !this.buffer[3] && !this.buffer[4] && !this.buffer[5] && !this.buffer[6] && !this.buffer[7]) {
 				return;
 			}
 			if (this.buffer[0] && this.buffer[0].trim().length) {
@@ -37,6 +37,18 @@ export default {
 			}
 			if (this.buffer[3] && this.buffer[3].trim().length) {
 				window.localStorage.setItem("ListName4", this.buffer[3]);
+			}
+			if (this.buffer[4] && this.buffer[4].trim().length) {
+				window.localStorage.setItem("ListName5", this.buffer[4]);
+			}
+			if (this.buffer[5] && this.buffer[5].trim().length) {
+				window.localStorage.setItem("ListName6", this.buffer[5]);
+			}
+			if (this.buffer[6] && this.buffer[6].trim().length) {
+				window.localStorage.setItem("ListName7", this.buffer[6]);
+			}
+			if (this.buffer[7] && this.buffer[7].trim().length) {
+				window.localStorage.setItem("ListName8", this.buffer[7]);
 			}
 			this.secondTodos.loading = true;
 			this.settings.closeHelper();

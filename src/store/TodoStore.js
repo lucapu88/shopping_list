@@ -187,6 +187,10 @@ export const useTodoStore = defineStore('todoStore', {
         { check: 'secondList', set: 'todos2' },
         { check: 'thirdList', set: 'todos3' },
         { check: 'fourthList', set: 'todos4' },
+        { check: 'fifthList', set: 'todos5' },
+        { check: 'sixthList', set: 'todos6' },
+        { check: 'seventhList', set: 'todos7' },
+        { check: 'eighthList', set: 'todos8' },
       ];
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todos');
       this.priceCalculator();
@@ -198,6 +202,14 @@ export const useTodoStore = defineStore('todoStore', {
         this.getCorrectTodoList('todos3');
       } else if (window.localStorage.getItem('fourthList')) {
         this.getCorrectTodoList('todos4');
+      } else if (window.localStorage.getItem('fifthList')) {
+        this.getCorrectTodoList('todos5');
+      } else if (window.localStorage.getItem('sixthList')) {
+        this.getCorrectTodoList('todos6');
+      } else if (window.localStorage.getItem('seventhList')) {
+        this.getCorrectTodoList('todos7');
+      } else if (window.localStorage.getItem('eighthList')) {
+        this.getCorrectTodoList('todos8');
       } else {
         this.getCorrectTodoList('todos');
       }
@@ -432,6 +444,10 @@ export const useTodoStore = defineStore('todoStore', {
         { check: 'secondList', set: 'todosBackup2' },
         { check: 'thirdList', set: 'todosBackup3' },
         { check: 'fourthList', set: 'todosBackup4' },
+        { check: 'fifthList', set: 'todosBackup5' },
+        { check: 'sixthList', set: 'todosBackup6' },
+        { check: 'seventhList', set: 'todosBackup7' },
+        { check: 'eighthList', set: 'todosBackup8' },
       ];
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todosBackup');
     },
