@@ -519,13 +519,13 @@ export const useTodoStore = defineStore('todoStore', {
       this.secondTodosStore.getAndPushListsNumber(storageKey, todosToDelete);
     },
     getOnlyDeletedTodos() {
-      const singleTodoDeleted = ['singleTodoDeleted-1', 'singleTodoDeleted-2', 'singleTodoDeleted-3', 'singleTodoDeleted-4'];
+      const singleTodoDeleted = ['singleTodoDeleted-1', 'singleTodoDeleted-2', 'singleTodoDeleted-3', 'singleTodoDeleted-4', 'singleTodoDeleted-5', 'singleTodoDeleted-6', 'singleTodoDeleted-7', 'singleTodoDeleted-8'];
       this.deletedSingleTodo = singleTodoDeleted.map(el => {
         const getSingleTodoDeleted = window.localStorage.getItem(el);
         if (getSingleTodoDeleted) return getSingleTodoDeleted.split(",");
       });
 
-      const multipleTodoDeleted = ['deletedTodos-1', 'deletedTodos-2', 'deletedTodos-3', 'deletedTodos-4'];
+      const multipleTodoDeleted = ['deletedTodos-1', 'deletedTodos-2', 'deletedTodos-3', 'deletedTodos-4', 'deletedTodos-5', 'deletedTodos-6', 'deletedTodos-7', 'deletedTodos-8'];
       this.deletedTodos = multipleTodoDeleted.map(el => {
         const getDeletedTodos = window.localStorage.getItem(el);
         if (getDeletedTodos) return getDeletedTodos.split(",");

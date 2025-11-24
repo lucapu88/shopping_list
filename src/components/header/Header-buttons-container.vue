@@ -228,7 +228,7 @@ p {
 	gap: 25px;
 	height: 30px;
 	align-items: center;
-	margin: 10px;
+	margin: 15px;
 	justify-content: center;
 }
 
