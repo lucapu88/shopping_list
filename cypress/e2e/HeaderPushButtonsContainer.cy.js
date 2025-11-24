@@ -8,10 +8,17 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.visit(shoppingListLocalOrGlobal);
     });
 
+    it("verifico la visualizzazione del pannello cambio liste", () => {
+        cy.get('.pushbutton-container > :nth-child(1)').click({ force: true });
+        cy.get('.buttons-container').should('exist');
+        cy.get('.pushbutton-container > :nth-child(1)').click({ force: true });
+        cy.get('.buttons-container').should('not.exist');
+    });
+
     it("verifico il drag n drop", () => {
         cy.addSomeItemsToList(phrases);
         cy.wait(1000);
-        cy.get('.pushbutton-container > :nth-child(1)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
         //posizione INIZIALE deglli elementi
         cy.get('[index="3"] > #draggable-children > #todo').should('include.text', phrases.frase4);
         cy.get('[index="5"] > #draggable-children > #todo').should('include.text', phrases.frase6);
@@ -27,7 +34,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get('.inputText').click({ force: true }).type(myText);
         cy.get('.input-btns-container > .btn-info').click({ force: true });
 
-        cy.get('.pushbutton-container > :nth-child(2)').click();
+        cy.get('.pushbutton-container > :nth-child(3)').click();
         cy.get('.list-copied').should('exist');
         cy.wait(3100);
         cy.get('.list-copied').should('not.exist');
@@ -40,7 +47,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
     });
 
     it('Inserisco le categorie e verifico se ci sono tutte', () => {
-        cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
         cy.get('.category-list-container').should('exist');
 
         //nel caso testo nel periodo natalizio c'è una categoria in più solo per natale
@@ -77,7 +84,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
 
         cy.get('[index="2"] > #todo').click();
         cy.get('[index="4"] > #todo').click();
-        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(5)').click({ force: true });
         cy.get('.delete-all').should('not.exist');
         cy.get('.border-danger').should('exist');
 
@@ -88,7 +95,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get(`.todo:contains(${phrases.frase4})`).should('not.exist');
         cy.get(`.todo:contains(${phrases.frase6})`).should('not.exist');
 
-        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(5)').click({ force: true });
         cy.get(`.active:contains(${phrases.frase3})`).should('exist');
         cy.get(`.active:contains(${phrases.frase5})`).should('exist');
         cy.get(`.todo:contains(${phrases.frase1})`).should('exist');
@@ -96,7 +103,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         cy.get(`.todo:contains(${phrases.frase4})`).should('exist');
         cy.get(`.todo:contains(${phrases.frase6})`).should('exist');
 
-        cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(5)').click({ force: true });
         cy.get('.deselect-all').click();
         cy.get('.confirm-deselect-all-container > .btn-success').click();
         cy.get(`.active:contains(${phrases.frase3})`).should('not.exist');

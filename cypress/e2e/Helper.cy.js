@@ -63,7 +63,7 @@ describe("test dell'helper e delle impostazioni", () => {
     });
 
     it('inserimento multiplo di elementi in categoria', () => {
-        cy.get('.pushbutton-container > :nth-child(3)').click();
+        cy.get('.pushbutton-container > :nth-child(4)').click();
         cy.get('.categories > :nth-child(1)').click();
         cy.get('#todo').click();
         cy.get('.inputText').type('Ile <3');
@@ -93,7 +93,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it('importa ultimo backup lista', () => {
         cy.addSomeItemsToList(phrases);
-        cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.delete-all').click();
         cy.get('.confirm > .btn-primary').click();
         checkBackupSuccessful();
@@ -124,7 +124,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.addSomeItemsToList(phrases);
         const fraseDaIncollareMock = "DOTTORE CHIAMI UN DOTTOREEEE!!!!";
 
-        cy.get('.pushbutton-container > :nth-child(2)').click({ force: true });
+        cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.delete-all').click({ force: true });
         cy.get('.confirm > .btn-primary').click({ force: true });
         cy.get('#todo-list').within(() => {

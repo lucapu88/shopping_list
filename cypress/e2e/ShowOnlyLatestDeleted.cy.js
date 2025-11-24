@@ -16,19 +16,25 @@ describe("test del salvataggio ultime eliminazioni", () => {
         checkPhrasesDeleted(1, '.top');
 
         cy.get('.close-helper').click();
-        cy.get('.second').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(5)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(2, '.top');
 
         cy.get('.close-helper').click();
-        cy.get('.third').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(6)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(1, '.bottom');
 
         cy.get('.close-helper').click();
-        cy.get('.fourth').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(7)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(2, '.bottom');
@@ -54,19 +60,25 @@ describe("test del salvataggio ultime eliminazioni", () => {
         checkPhrasesDeleted(1, '.top');
 
         cy.get('.close-helper').click();
-        cy.get('.second').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(5)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(2, '.top');
 
         cy.get('.close-helper').click();
-        cy.get('.third').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(6)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(1, '.bottom');
 
         cy.get('.close-helper').click();
-        cy.get('.fourth').click();
+        cy.get('.show-lists-img').click();
+        cy.wait(1000);
+        cy.get('.buttons-container > :nth-child(7)').click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(2, '.bottom');

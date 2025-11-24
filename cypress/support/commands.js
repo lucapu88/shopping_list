@@ -55,7 +55,7 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
 });
 
 Cypress.Commands.add('addCategoryAndTodo', () => {
-  cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
+  cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
   cy.get('.categories > :nth-child(18) > span').click({ force: true });
   cy.get('.inputText').click().type('zucchine da mangiare');
   cy.get('.input-btns-container > .btn-info').click({ force: true });

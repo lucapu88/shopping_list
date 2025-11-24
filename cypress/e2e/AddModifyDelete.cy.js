@@ -27,7 +27,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
   });
 
   it('verifico se funzionano i suggerimenti nelle categorie', () => {
-    cy.get('.pushbutton-container > :nth-child(3)').click({ force: true, multiple: true });
+    cy.get('.pushbutton-container > :nth-child(4)').click({ force: true, multiple: true });
     cy.get('.categories > :nth-child(20) > .animation-no-retro').click({ force: true });
     cy.get('#todo-list').children().should('have.length', 1);
 

@@ -17,7 +17,6 @@ describe("test delle liste multiple", () => {
         cy.get('.show-lists-img').click();
         cy.wait(1000);
         cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 1');
-        cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
 
         cy.get('.buttons-container > :nth-child(5)').click();
@@ -31,10 +30,12 @@ describe("test delle liste multiple", () => {
         cy.get('.empty-logo-container').should('exist');
         cy.get('.inputText').click({ force: true }).type(phrases.frase1);
         cy.get('.input-btns-container > .btn-info').click({ force: true });
+        cy.wait(500);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
         cy.get('.buttons-container > :nth-child(7)').click();
+        cy.wait(500);
         cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 4');
         cy.get('.empty-logo-container').should('exist');
         cy.get('.inputText').click({ force: true }).type(phrases.frase2);
@@ -45,6 +46,7 @@ describe("test delle liste multiple", () => {
         cy.get('.show-lists-img').click();
         cy.wait(1000);
         cy.get('.buttons-container > :nth-child(6)').click();
+        cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
     });
 
@@ -63,6 +65,7 @@ describe("test delle liste multiple", () => {
 
         //Verifico se inserisco un nome vuoto non cambia nulla
         cy.get('.btn-back-to-top').click({ force: true });
+        cy.wait(500);
         cy.get('.settings').click({ force: true });
         cy.get(`#helper-description > :nth-child(${3}) > .list-title`).click();
         cy.get('[placeholder="A"]').type('A');
