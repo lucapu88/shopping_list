@@ -23,7 +23,6 @@ import AutoDeleteEmptyCategories from "./settings/Auto-delete-empty-categories.v
 import MultipleCategoryInsertion from "./settings/Multiple-category-insertion.vue";
 import BackupList from "./settings/Backup-list.vue";
 import ImportList from "./settings/Import-list.vue";
-import ShowOnlyLatestDeleted from "./settings/Show-only-latest-deleted.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
 import ReloadApp from "./settings/Reload-app.vue";
@@ -154,8 +153,6 @@ export default {
 				<AutoDeleteEmptyCategories />
 
 				<MultipleCategoryInsertion />
-
-				<ShowOnlyLatestDeleted />
 
 				<BackupList @backupLoadingEmit="backupLoadingEmitted" />
 

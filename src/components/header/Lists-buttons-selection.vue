@@ -36,7 +36,6 @@ export default {
 			'container-lemon': theme.lemonTheme,
 			'container-jeans': theme.jeansTheme,
 			'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
-			'light-border': theme.lightTheme,
 		}"
 	>
 		<div
@@ -54,7 +53,6 @@ export default {
 				'container-lemon': theme.lemonTheme,
 				'container-jeans': theme.jeansTheme,
 				'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
-				'light-border': theme.lightTheme,
 			}"
 		></div>
 		<div

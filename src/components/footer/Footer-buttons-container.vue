@@ -7,7 +7,7 @@ import { useTodoStore } from "@/store/TodoStore";
 import hohoho from "@/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3";
 import MultipleSelection from "./Multiple-selection.vue";
 import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
-import ShowAllShoppingDoneBtn from "../not-in-prod/Show-all-shopping-done-btn.vue";
+import ShowAllShoppingDoneBtn from "./Show-all-shopping-done-btn.vue";
 import FeedbackButton from "./Feedback-button.vue";
 </script>
 
@@ -54,9 +54,8 @@ export default {
 		<FeedbackButton />
 
 		<MultipleSelection />
-
-		<!-- SOLO PER ME E NON IN PROD -->
-		<ShowAllShoppingDoneBtn v-if="settings.isIphone && !settings.isAndroid && !todosStore.showOnlyImportantTodos" />
+		<!-- PULSANTE MOSTRA TUTTI GLI ACQUISTI FATTI -->
+		<ShowAllShoppingDoneBtn v-if="!todosStore.showOnlyImportantTodos" />
 
 		<!-- PULSANTE ELIMINA TUTTO-->
 		<button
@@ -70,7 +69,7 @@ export default {
 			}"
 			@click="openDeleteAllModal()"
 		>
-			<span>{{ settings.isIphone ? "Svuota" : languages.deleteAll }}</span>
+			<span>{{ languages.deleteAll }}</span>
 			<img v-if="!isChristmas.christmasTheme" class="skull" src="@/img/icons/skull.webp" alt="delete_all" />
 			<img v-if="isChristmas.christmasTheme" class="christmas-skull" src="@/img/icons/christmas-skull.webp" alt="delete_all_and_merry_christmas" />
 		</button>

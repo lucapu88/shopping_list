@@ -64,7 +64,7 @@ export const useLanguageStore = defineStore('Language', {
     },
     insertAll: 'Insert all',
     removeEmpty: 'Remove only empty',
-    deleteAll: 'Delete ALL',
+    deleteAll: 'Delete',
     deleteAllConfirmText: 'Are you sure you want \n delete the whole list?',
     renameListText: {
       title: "Rename Lists",
@@ -156,6 +156,7 @@ export const useLanguageStore = defineStore('Language', {
     humanRightsDayText: '10 December: World Human Rights Day',
     starWarsDay: '25 May 1977: Star Wars is released in cinemas',
     newYearText: 'Happy New Year!',
+    merryChristmasText: 'Merry Christmas and Happy Holidays! 🎄',
     //----------------------------------------------------------------------------------------------------------
     backupListText: {
       title: 'Import Last Backup',
@@ -181,6 +182,7 @@ export const useLanguageStore = defineStore('Language', {
       description: 'Here you will only find your last single or multiple deletion, just as a summary',
       singleTodoText: 'Last single elimination',
       multipleTodosText: 'Last multiple elimination',
+      emptyListText: 'No deletions made yet',
     },
     suggestions: {
       tipsBtnText: 'Show suggestions',
@@ -204,8 +206,8 @@ export const useLanguageStore = defineStore('Language', {
       statusText: "Please enter a message before sending.",
     },
     send: "Send",
-    merryChristmasText: 'Merry Christmas and Happy Holidays! 🎄',
     listSelectionTitle: 'Choose the list you want',
+    archive: 'Archive',
   }),
   getters: {},
   actions: {
@@ -309,7 +311,7 @@ export const useLanguageStore = defineStore('Language', {
       this.updateText.unavailable = 'Nessun Aggiornamento';
       this.insertAll = 'Inserisci tutte';
       this.removeEmpty = 'Rimuovi vuote';
-      this.deleteAll = 'Cancella tutto';
+      this.deleteAll = 'Svuota';
       this.deleteAllConfirmText = 'Sei sicuro di voler eliminare \n tutta la lista?';
       this.renameListText.title = 'Rinomina Liste';
       this.renameListText.description = "Qui potrai dare un nome alle tue liste, basterà inserirlo nell'input e poi cliccare su 'salva'.";
@@ -331,6 +333,7 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Qui troverai soltanto la tua ultima cancellazione singola o multipla, giusto come riepilogo";
       this.showOnlyLatestDeletedText.singleTodoText = "Ultima eliminazione singola";
       this.showOnlyLatestDeletedText.multipleTodosText = "Ultima eliminazione multipla";
+      this.showOnlyLatestDeletedText.emptyListText = "Nessuna eliminazione effettuata ancora";
       this.suggestions.tipsBtnText = 'Mostra suggerimenti';
       this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
       this.categoryTipText = 'Se clicchi sulla categoria potrai aggiungere prodotti al suo interno';
@@ -348,6 +351,7 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.statusText = "Inserisci un messaggio prima di inviare.";
       this.send = "Invia";
       this.listSelectionTitle = 'Scegli la lista che desideri';
+      this.archive = 'Archivio';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -385,7 +389,7 @@ export const useLanguageStore = defineStore('Language', {
       this.updateText.unavailable = 'Ninguna Actualización';
       this.insertAll = 'Introduzca todos';
       this.removeEmpty = 'Eliminar categorías vacías';
-      this.deleteAll = 'Borrar todo';
+      this.deleteAll = 'Vacíar';
       this.deleteAllConfirmText = '¿Estás seguro de que quieres borrar \n toda la lista?';
       this.renameListText.title = 'Cambiar el nombre de las listas';
       this.renameListText.description = "Aquí puedes dar un nombre a tus listas, solo introdúcelo en el campo y luego haz clic en 'guardar'.";
@@ -407,6 +411,7 @@ export const useLanguageStore = defineStore('Language', {
       this.showOnlyLatestDeletedText.description = "Aquí sólo encontrarás tu último borrado único o múltiple, a modo de resumen";
       this.showOnlyLatestDeletedText.singleTodoText = "Última eliminación simple";
       this.showOnlyLatestDeletedText.multipleTodosText = "Última eliminación múltiple";
+      this.showOnlyLatestDeletedText.emptyListText = "No se han realizado eliminaciones todavía";
       this.suggestions.tipsBtnText = 'Mostrar consejos';
       this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
       this.categoryTipText = 'Si hace clic en la categoría puede añadir productos a la misma';
@@ -424,6 +429,7 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.statusText = "Por favor, introduzca un mensaje antes de enviarlo.";
       this.send = "Enviar";
       this.listSelectionTitle = 'Elija la lista que desee';
+      this.archive = 'Archivo';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

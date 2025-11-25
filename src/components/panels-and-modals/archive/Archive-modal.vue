@@ -1,22 +1,23 @@
 <script setup>
 import { useFirebaseStore } from "@/server/FirebaseStore";
-import Accordion from "./Accordion.vue";
-import LoadingOrUpdating from "../Loading-or-updating.vue";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { useSettingsStore } from "@/store/SettingsStore";
+import { useThemeStore } from "@/store/ThemeStore";
+import ShowOnlyLatestDeleted from "./Show-only-latest-deleted.vue";
+import ShoppingsDB from "../../not-in-prod/Shoppings-db.vue";
 </script>
 
 <script>
 export default {
-	components: { Accordion },
 	data() {
 		return {
 			firebaseStore: useFirebaseStore(),
-			visible: false,
 			isChristmas: useChristmasStore(),
+			settings: useSettingsStore(),
+			theme: useThemeStore(),
+			visible: false,
+			showLatestDeleted: false,
 		};
-	},
-	created() {
-		this.firebaseStore.getData();
 	},
 	mounted() {
 		this.visible = true;
@@ -35,26 +36,36 @@ export default {
 <template>
 	<div class="modal" v-if="firebaseStore.openfirebaseModal">
 		<transition name="slide">
-			<div v-if="visible" class="modal-content">
+			<div
+				v-if="visible"
+				class="modal-content"
+				:class="{
+					'container-light': theme.lightTheme,
+					'container-dark': theme.darkTheme,
+					'container-minimal': theme.minimalTheme,
+					'container-retro': theme.retroTheme,
+					'container-summer': theme.summerTheme,
+					'container-winter': theme.winterTheme,
+					'container-elegant': theme.elegantTheme,
+					'confirm-pink': theme.pinkTheme,
+					'container-panter': theme.panterTheme,
+					'container-lemon': theme.lemonTheme,
+					'container-jeans': theme.jeansTheme,
+					'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
+				}"
+			>
 				<div class="title">
-					<span v-if="isChristmas.christmasTheme" class="christmas-decorations me-2">🎄</span>
-					<span>ELENCO SPESE</span>
-					<span v-if="isChristmas.christmasTheme" class="christmas-decorations ms-2">🎅 </span>
+					<span v-if="settings.isIphone && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations me-2">🎄</span>
+					<span v-if="settings.isIphone && !showLatestDeleted">ELENCO SPESE</span>
+					<span v-if="settings.isIphone && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations ms-2">🎅 </span>
 					<span class="x" @click="close()">X</span>
 				</div>
-				<div class="shopping-container mx-auto">
-					<div v-if="firebaseStore.firebaseLoading">
-						<LoadingOrUpdating :listChanged="firebaseStore.firebaseLoading" />
-					</div>
-					<h2 v-if="firebaseStore.firebaseErrorMessage" style="color: red">
-						{{ firebaseStore.firebaseErrorMessage }}
-					</h2>
-					<template v-if="!firebaseStore.firebaseLoading && !firebaseStore.firebaseErrorMessage">
-						<template v-for="(element, i) in firebaseStore.myYearOfShoppingsArray" :key="i">
-							<Accordion :title="element.month" :content="element.elements" />
-						</template>
-					</template>
-				</div>
+				<!-- SOLO PER ME, NON IN PRODUZIONE -->
+				<button v-if="settings.isIphone" @click="showLatestDeleted = !showLatestDeleted">Elenco eliminazioni</button>
+				<ShoppingsDB v-if="settings.isIphone" />
+
+				<!-- PER GLI ALTRI UTENTI MOSTRA SOLO GLI ULTIMI ELIMINATI CHE NON SONO SALVATI IN DB MA SOLO NEL LORO LOCALE -->
+				<ShowOnlyLatestDeleted v-if="!settings.isIphone || showLatestDeleted" />
 			</div>
 		</transition>
 	</div>
@@ -80,7 +91,6 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #ffffff;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -120,13 +130,6 @@ export default {
 		transform: translateY(-50%) scale(0.95);
 		opacity: 0;
 	}
-}
-
-.shopping-container {
-	overflow-y: auto;
-	overflow-x: hidden;
-	width: 100%;
-	padding: 0 15px;
 }
 
 .title {

@@ -22,7 +22,6 @@ export const useSettingsStore = defineStore('settings', {
     multipleCategoryInsertion: false,
     safeMode: false,
     pasteList: false,
-    showOnlyLatestDeleted: false,
     backupList: false,
     addEditDelete: false,
     categoriesInfo: false,
@@ -134,7 +133,6 @@ export const useSettingsStore = defineStore('settings', {
       this.multipleCategoryInsertion = false;
       this.safeMode = false;
       this.pasteList = false;
-      this.showOnlyLatestDeleted = false;
       this.backupList = false;
       //RISOLUZIONE PROBLEMI
       this.troubleshooting = false;
@@ -162,7 +160,6 @@ export const useSettingsStore = defineStore('settings', {
         multipleCategoryInsertion: 'multipleCategoryInsertion',
         safeMode: 'safeMode',
         pasteList: 'pasteList',
-        showOnlyLatestDeleted: 'showOnlyLatestDeleted',
         backupList: 'backupList',
         addEditDelete: 'addEditDelete',
         categoriesInfo: 'categoriesInfo',

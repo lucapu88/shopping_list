@@ -149,6 +149,10 @@
 	border: 3px var(--white) inset !important;
 	border-radius: 0 !important;
 }
+.retro-terminal-border {
+	border: 2px var(--dos-primary-color) solid !important;
+	border-radius: 0 !important;
+}
 .tips-btn-retro {
 	background-color: var(--black);
 	border-left: 2px solid var(--white);

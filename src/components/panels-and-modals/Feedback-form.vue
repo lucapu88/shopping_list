@@ -80,6 +80,7 @@ export default {
 				'container-panter': theme.panterTheme,
 				'container-lemon': theme.lemonTheme,
 				'container-jeans': theme.jeansTheme,
+				'pt-0': isChristmas.christmasTheme,
 			}"
 		>
 			<div class="christmas-decorations-container" v-if="isChristmas.christmasTheme">
@@ -89,7 +90,7 @@ export default {
 			<span class="close-feedback-modal" @click="secondTodosStore.showFeedbackForm = false">X</span>
 
 			<form @submit.prevent="sendEmail">
-				<label class="title">{{ languages.feedback.title }}</label>
+				<label class="title" :class="{ 'margin-30': isChristmas.christmasTheme }">{{ languages.feedback.title }}</label>
 
 				<p v-if="status" class="text-danger text-sm mt-2">{{ status }}</p>
 
@@ -157,7 +158,11 @@ export default {
 .title {
 	font-size: 1rem;
 	font-weight: bold;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+}
+
+.margin-30 {
+	margin-top: 30px;
 }
 
 textarea {
@@ -176,7 +181,7 @@ textarea {
 .christmas-decorations-container img {
 	width: 100%;
 	position: absolute;
-	top: -300%;
+	top: -400%;
 	left: 5px;
 	animation: dropDown 1s ease-out forwards;
 	animation-delay: 0.5s;
@@ -185,10 +190,10 @@ textarea {
 
 @keyframes dropDown {
 	from {
-		top: -300%;
+		top: -400%;
 	}
 	to {
-		top: -20px;
+		top: 0;
 	}
 }
 
@@ -197,5 +202,11 @@ textarea {
 	position: absolute;
 	bottom: 0px;
 	left: 0;
+}
+
+@media (max-width: 370px) {
+	.title {
+		font-size: 0.875rem;
+	}
 }
 </style>
