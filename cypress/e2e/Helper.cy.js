@@ -93,6 +93,8 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it('importa ultimo backup lista', () => {
         cy.addSomeItemsToList(phrases);
+
+        cy.get('body').click(0, 0); // click fittizio per dare focus
         cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.delete-all').click();
         cy.get('.confirm > .btn-primary').click();
@@ -108,7 +110,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         function checkBackupSuccessful() {
             cy.get('.settings').click();
-            cy.get('#helper-description > :nth-child(10) > .list-title').click();
+            cy.get('#helper-description > :nth-child(9) > .list-title').click();
             cy.get('#backup-button').click();
             cy.get('#confirm-backup').click();
             cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
@@ -124,6 +126,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.addSomeItemsToList(phrases);
         const fraseDaIncollareMock = "DOTTORE CHIAMI UN DOTTOREEEE!!!!";
 
+        cy.get('body').click(0, 0); // click fittizio per dare focus
         cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.delete-all').click({ force: true });
         cy.get('.confirm > .btn-primary').click({ force: true });
@@ -131,7 +134,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('div.empty-logo-container').should('exist');
         });
         cy.get('.settings').click({ force: true });
-        cy.get('#helper-description > :nth-child(11) > .list-title').click({ force: true });
+        cy.get('#helper-description > :nth-child(10) > .list-title').click({ force: true });
         cy.get('#text-area').click({ force: true });
         //Cypress non supporta nativamente execCommand('paste') e dato che non è lo scopo del test, lo vado a simulare inserendo un testo standard.
         cy.get('#text-area').type(fraseDaIncollareMock);

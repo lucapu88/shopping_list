@@ -123,6 +123,9 @@ export default {
 	padding-top: 35px;
 	position: relative;
 	border-radius: 10px;
+	box-shadow: 1px 19px 35px -2px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 1px 19px 35px -2px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 1px 19px 35px -2px rgba(0, 0, 0, 0.6);
 }
 
 .title {
