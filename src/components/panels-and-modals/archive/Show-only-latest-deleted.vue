@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-	<div class="helper-settings">
+	<div class="latest-deleted-container">
 		<div class="auto-delete-container mb-3">
 			<li class="title-info ms-3">
 				<span>{{ languages.showOnlyLatestDeletedText.description }}.</span>
@@ -78,6 +78,10 @@ export default {
 </template>
 
 <style scoped>
+.latest-deleted-container {
+	overflow: auto;
+}
+
 .show-hide-btn {
 	border: none;
 	background-color: transparent;
