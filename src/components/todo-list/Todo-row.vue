@@ -40,6 +40,7 @@ export default {
 
 <template>
 	<div class="only-important-visible" v-if="todosStore.showOnlyImportantTodos"></div>
+	<div class="is-moving-visible" :class="{ 'is-moving': todo.isMoving }" v-if="secondTodos.moving" @click="secondTodos.selectElementforMove(index, todo)"></div>
 
 	<div v-if="todo.category && theme.minimalTheme" class="category-emoji-minimal">&#x2022;</div>
 	<div v-if="todo.category && !theme.minimalTheme" class="category-emoji" :class="{ 'category-emoji-selected': todo.isSelected }" @click="todosStore.selectCategoryToAddItem(index, todo)">
@@ -162,7 +163,8 @@ export default {
 .transparent {
 	background-color: transparent !important;
 }
-.only-important-visible {
+.only-important-visible,
+.is-moving-visible {
 	position: absolute;
 	top: 0;
 	background-color: #66666669;
@@ -195,5 +197,10 @@ export default {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-webkit-tap-highlight-color: transparent;
+}
+
+.is-moving {
+	border: 2px dashed #ff9800;
+	background-color: #ffd5927d !important;
 }
 </style>

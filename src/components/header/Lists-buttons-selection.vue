@@ -2,6 +2,7 @@
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
+import { useTodoStore } from "@/store/TodoStore";
 </script>
 
 <script>
@@ -11,6 +12,7 @@ export default {
 			secondTodos: useSecondTodoStore(),
 			languages: useLanguageStore(),
 			theme: useThemeStore(),
+			todosStore: useTodoStore(),
 		};
 	},
 	created() {
@@ -20,9 +22,10 @@ export default {
 </script>
 
 <template>
+	<!-- CONTENITORE DELL'ANIMAZIONE -->
 	<div
 		v-if="secondTodos.showChangeList"
-		class="buttons-container"
+		class="container"
 		:class="{
 			'container-light': theme.lightTheme,
 			'container-dark': theme.darkTheme,
@@ -85,37 +88,53 @@ export default {
 		>
 			{{ languages.listSelectionTitle }}
 		</h4>
-
-		<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
-			<button
-				:class="{
-					'selected-btn': btn.selectedCondition(),
-					'light-button-color': theme.lightTheme,
-					'dark-btn': theme.darkTheme,
-					'minimal-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'summer-header-btn': theme.summerTheme,
-					'winter-header-btn': theme.winterTheme,
-					'elegant-btn': theme.elegantTheme,
-					'pink-theme-btn': theme.pinkTheme,
-					'panter-other-btn': theme.panterTheme,
-					'list-button-panther-size': theme.panterTheme,
-					'lemon-other-btn': theme.lemonTheme,
-					'jeans-other-btn': theme.jeansTheme,
-				}"
-				@click="btn.function"
-			>
-				<span class="btn-name">{{ btn.name }}</span>
-			</button>
-		</template>
+		<!-- CONTENITORE DEI BOTTONI -->
+		<div class="buttons-container">
+			<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
+				<button
+					id="list-btn"
+					:class="{
+						'selected-btn': btn.selectedCondition(),
+						'btn-in-moving-mode': secondTodos.istruction2Visible,
+						'light-button-color': theme.lightTheme,
+						'dark-btn': theme.darkTheme,
+						'minimal-btn': theme.minimalTheme,
+						'retro-teme-btns': theme.retroTheme,
+						'summer-header-btn': theme.summerTheme,
+						'winter-header-btn': theme.winterTheme,
+						'elegant-btn': theme.elegantTheme,
+						'pink-theme-btn': theme.pinkTheme,
+						'panter-other-btn': theme.panterTheme,
+						'list-button-panther-size': theme.panterTheme,
+						'lemon-other-btn': theme.lemonTheme,
+						'jeans-other-btn': theme.jeansTheme,
+					}"
+					:disabled="secondTodos.moving && !secondTodos.istruction2Visible"
+					@click="btn.function"
+				>
+					<div class="apply-moving-wrapper" @click="secondTodos.applyMoving(n)">
+						<span class="btn-name">{{ btn.name }}</span>
+					</div>
+				</button>
+			</template>
+		</div>
+		<div class="bottom">
+			<p v-if="secondTodos.moving">1- {{ languages.moveMode.istruction1 }}</p>
+			<p v-if="secondTodos.istruction2Visible">2- {{ languages.moveMode.istruction2 }}</p>
+			<div class="move-container">
+				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
+				<button class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode()">
+					<img class="move-img" src="@/img/icons/move.webp" alt="move" />
+					{{ languages.moveMode.moveElementText }}
+				</button>
+				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
+			</div>
+		</div>
 	</div>
 </template>
 
 <style scoped>
-.buttons-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 10px;
+.container {
 	margin: auto;
 	margin-bottom: 20px;
 	margin-top: 20px;
@@ -128,8 +147,15 @@ export default {
 	-moz-box-shadow: 1px 19px 35px -2px rgba(0, 0, 0, 0.6);
 }
 
+.buttons-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
 .title {
 	position: absolute;
+	top: 0;
 	left: 10%;
 	z-index: 10;
 }
@@ -211,6 +237,78 @@ export default {
 	}
 	.btn-name {
 		max-width: 7ch;
+	}
+}
+
+.bottom {
+	margin-top: 15px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+.bottom > p {
+	font-size: small;
+}
+
+.move-container {
+	display: flex;
+	justify-content: center;
+	gap: 10%;
+}
+
+.move-img,
+.move-arrow {
+	width: 25px;
+}
+.zoom-animation {
+	animation: zoominoutSmallX 1s infinite;
+}
+@keyframes zoominoutSmallX {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.1, 1.2);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
+.is-moving {
+	border: 2px solid #4caf50;
+	background-color: #a9a9a9;
+}
+
+.move-elements-btn {
+	cursor: pointer;
+	align-self: center;
+}
+
+.apply-moving-wrapper {
+	width: 100%;
+}
+
+.btn-in-moving-mode {
+	border: 2px dashed #ff9800 !important;
+	background-color: #ffd592 !important;
+	color: #ff6600 !important;
+}
+
+.rotate {
+	animation: zoominoutSmallY 1s infinite;
+}
+
+@keyframes zoominoutSmallY {
+	0% {
+		transform: scaleY(-1) scale(1, 1);
+	}
+	50% {
+		transform: scaleY(-1) scale(1.1, 1.2);
+	}
+	100% {
+		transform: scaleY(-1) scale(1, 1);
 	}
 }
 </style>

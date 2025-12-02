@@ -223,6 +223,8 @@ export const useTodoStore = defineStore('todoStore', {
         parsedTodoList.forEach(todo => {
           //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
           if (todo.class) { todo.category = todo.class; }
+          //resetto la proprietà isMoving perchè altrimenti rimarrebbe l'ultimo elemento selezionato per lo spostamento, mentre lo spostamento è terminato e quindi va resettato
+          todo.isMoving = false;
         });
         this.todos = parsedTodoList; //prova a trasformare l'array in un oggetto javascript
         this.resetModify(); //lo faccio qui perchè altrimenti non funzionerebbe il tasto del modifica todo per gli utenti con elementi vecchi inseriti nella lista
@@ -252,6 +254,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.isDraggable = !this.isDraggable;
       this.selectedByHolding = !this.isDraggable;
       this.categoryList = false;
+      this.secondTodosStore.moving = false;
       this.resetVisibility();
       this.resetModify();
       this.removeSelectedCategoryToAddItem();

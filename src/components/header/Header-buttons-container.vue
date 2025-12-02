@@ -69,9 +69,9 @@ export default {
 			}"
 			@click="secondTodos.toggleChangeList()"
 		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists.webp" alt="move" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-elegant.webp" alt="move" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-panter.webp" alt="move" />
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists.webp" alt="show_lists" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-elegant.webp" alt="show_lists" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-panter.webp" alt="show_lists" />
 		</button>
 		<!-- DRAG N DROP -->
 		<button

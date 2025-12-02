@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 
+const cinque = 5;
+const sei = 6;
+const tette = 7;
 
 // eslint-disable-next-line no-undef
 describe("test del salvataggio ultime eliminazioni", () => {
@@ -11,30 +14,31 @@ describe("test del salvataggio ultime eliminazioni", () => {
 
 
     it('mostra ultime eliminazioni singole', () => {
+
         addPhrasesAndRemoveSome();
 
         checkPhrasesDeleted(1);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(5)').click();
+        cy.get(`.buttons-container > :nth-child(${cinque})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(2);
+        checkPhrasesDeleted(cinque);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(6)').click();
+        cy.get(`.buttons-container > :nth-child(${sei})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(1);
+        checkPhrasesDeleted(sei);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(7)').click();
+        cy.get(`.buttons-container > :nth-child(${tette})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(2);
+        checkPhrasesDeleted(tette);
 
         function addPhrasesAndRemoveSome() {
             cy.get('.inputText').click({ force: true }).type(phrases.frase6);
@@ -57,24 +61,24 @@ describe("test del salvataggio ultime eliminazioni", () => {
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(5)').click();
+        cy.get(`.buttons-container > :nth-child(${cinque})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(2);
+        checkPhrasesDeleted(cinque);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(6)').click();
+        cy.get(`.buttons-container > :nth-child(${sei})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(1);
+        checkPhrasesDeleted(sei);
 
         cy.get('.show-lists-img').click();
         cy.wait(1000);
-        cy.get('.buttons-container > :nth-child(7)').click();
+        cy.get(`.buttons-container > :nth-child(${tette})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
-        checkPhrasesDeleted(2);
+        checkPhrasesDeleted(tette);
 
         function addPhrasesAndRemoveSome() {
             cy.addSomeItemsToList(phrases);

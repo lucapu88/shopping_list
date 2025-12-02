@@ -208,6 +208,11 @@ export const useLanguageStore = defineStore('Language', {
     send: "Send",
     listSelectionTitle: 'Choose the list you want',
     archive: 'Archive',
+    moveMode: {
+      moveElementText: 'Move products',
+      istruction1: 'Select the items to move from the list',
+      istruction2: 'Select the destination list',
+    },
   }),
   getters: {},
   actions: {
@@ -352,6 +357,10 @@ export const useLanguageStore = defineStore('Language', {
       this.send = "Invia";
       this.listSelectionTitle = 'Scegli la lista che desideri';
       this.archive = 'Archivio';
+      this.moveMode.moveElementText = 'Sposta prodoti';
+      this.moveMode.istruction1 = 'Seleziona dalla lista gli elementi da spostare';
+      this.moveMode.istruction2 = 'Seleziona la lista di destinazione';
+
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -430,6 +439,9 @@ export const useLanguageStore = defineStore('Language', {
       this.send = "Enviar";
       this.listSelectionTitle = 'Elija la lista que desee';
       this.archive = 'Archivo';
+      this.moveMode.moveElementText = 'Mover productos';
+      this.moveMode.istruction1 = 'Seleccione los elementos que desea mover de la lista';
+      this.moveMode.istruction2 = 'Seleccione la lista de destino';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

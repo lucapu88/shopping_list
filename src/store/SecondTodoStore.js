@@ -19,12 +19,15 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         loading: false,
         loadingOpenAIRes: false,
         loadingRecipes: false,
+        movingLoading: false,
         recipe: null,
         showRecipeModal: false,
         listButtons: [],
         showFeedbackForm: false,
         showChangeList: false,
         showChangeListChildren: false,
+        moving: false,
+        istruction2Visible: false,
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
     }),
@@ -63,6 +66,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         //TOFIX ripetitivo, da ottimizzare
         selectFirstList() {
+            if (this.istruction2Visible) { return; }
+
             const listName1 = window.localStorage.getItem('ListName1');
 
             window.localStorage.setItem('listNumber1', `${listName1 ? listName1.toString() : "LIST 1"}`);
@@ -70,6 +75,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectSecondList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.secondList = true;
             const listName2 = window.localStorage.getItem('ListName2');
@@ -79,6 +86,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectThirdList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.thirdList = true;
             const listName3 = window.localStorage.getItem('ListName3');
@@ -88,6 +97,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectFourthList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.fourthList = true;
             const listName4 = window.localStorage.getItem('ListName4');
@@ -97,6 +108,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectFifthList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.fifthList = true;
             const listName5 = window.localStorage.getItem('ListName5');
@@ -106,6 +119,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectSixthList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.sixthList = true;
             const listName6 = window.localStorage.getItem('ListName6');
@@ -115,6 +130,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectSeventhList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.seventhList = true;
             const listName7 = window.localStorage.getItem('ListName7');
@@ -124,6 +141,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosSettings();
         },
         selectEighthList() {
+            if (this.istruction2Visible) { return; }
+
             this.resetAllLists();
             this.eighthList = true;
             const listName8 = window.localStorage.getItem('ListName8');
@@ -345,6 +364,83 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         toggleChangeList() {
             this.todosStore.categoryList = false;
             this.showChangeList = !this.showChangeList;
+            if (!this.showChangeList) {
+                this.moving = false;
+                this.istruction2Visible = false;
+                this.todosStore.todos.forEach(t => t.isMoving = false);
+            }
+        },
+        moveElementMode() {
+            if (!this.showChangeList) { return; }
+
+            this.moving = !this.moving;
+            this.todosStore.isDraggable = false;
+            if (!this.moving) {
+                this.todosStore.todos.forEach(t => t.isMoving = false);
+                this.istruction2Visible = false;
+            }
+        },
+        selectElementforMove(n) {
+            if (!this.moving) { return; }
+            if (!this.todosStore.todos[n].category) {
+                this.todosStore.todos[n].isMoving = !this.todosStore.todos[n].isMoving;
+                this.istruction2Visible = this.todosStore.todos.some((t) => t.isMoving);
+            }
+        },
+        applyMoving(n) {
+            //in questo caso la modalità di spostamento è attiva, ma non è stato selezionato nessun elemento da spostare quindi non faccio nulla
+            if (!this.istruction2Visible) { return; }
+            const todosIsMovingFiltered = this.todosStore.todos.filter(t => t.isMoving);
+
+            switch (n) {
+                case 0: {
+                    const todosParsed = JSON.parse(window.localStorage.getItem('todos')) || [];
+                    window.localStorage.setItem('todos', JSON.stringify([...todosParsed, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 1: {
+                    const todosParsed2 = JSON.parse(window.localStorage.getItem('todos2')) || [];
+                    window.localStorage.setItem('todos2', JSON.stringify([...todosParsed2, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 2: {
+                    const todosParsed3 = JSON.parse(window.localStorage.getItem('todos3')) || [];
+                    window.localStorage.setItem('todos3', JSON.stringify([...todosParsed3, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 3: {
+                    const todosParsed4 = JSON.parse(window.localStorage.getItem('todos4')) || [];
+                    window.localStorage.setItem('todos4', JSON.stringify([...todosParsed4, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 4: {
+                    const todosParsed5 = JSON.parse(window.localStorage.getItem('todos5')) || [];
+                    window.localStorage.setItem('todos5', JSON.stringify([...todosParsed5, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 5: {
+                    const todosParsed6 = JSON.parse(window.localStorage.getItem('todos6')) || [];
+                    window.localStorage.setItem('todos6', JSON.stringify([...todosParsed6, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 6: {
+                    const todosParsed7 = JSON.parse(window.localStorage.getItem('todos7')) || [];
+                    window.localStorage.setItem('todos7', JSON.stringify([...todosParsed7, ...todosIsMovingFiltered]));
+                    break;
+                }
+                case 7: {
+                    const todosParsed8 = JSON.parse(window.localStorage.getItem('todos8')) || [];
+                    window.localStorage.setItem('todos8', JSON.stringify([...todosParsed8, ...todosIsMovingFiltered]));
+                    break;
+                }
+
+            }
+            this.movingLoading = true;
+            this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
+            this.todosStore.saveTodos();
+            setTimeout(() => {
+                location.reload();
+            }, 700);
         }
     }
 });

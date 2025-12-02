@@ -11,6 +11,7 @@ export default {
 		listImportedOrDeleted: Boolean,
 		languageChanged: String,
 		listChanged: Boolean,
+		moved: Boolean,
 	},
 	data() {
 		return {
@@ -23,7 +24,7 @@ export default {
 <template>
 	<!-- CONTAINER LOADING -->
 	<div
-		v-if="themeLoading || backup || languageChanged || listImportedOrDeleted || listChanged"
+		v-if="themeLoading || backup || languageChanged || listImportedOrDeleted || listChanged || moved"
 		id="loading-themes-container"
 		:class="{
 			'zoom-animation': !listImportedOrDeleted && !listChanged,
@@ -42,16 +43,20 @@ export default {
 		}"
 	>
 		<!-- Scritta di caricamento di qualsiasi cosa tranne per le liste importate, cancellate o cambio lista -->
-		<img v-if="!listImportedOrDeleted && !listChanged" src="@/img/Loading.webp" alt="loading" />
+		<img v-if="!listImportedOrDeleted && !listChanged && !moved" src="@/img/Loading.webp" alt="loading" />
 
 		<!-- Caricamento classico -->
-		<img v-if="!languageChanged && !backup && !listImportedOrDeleted && !listChanged" src="@/img/favicon.webp" alt="loading" />
+		<img v-if="!languageChanged && !backup && !listImportedOrDeleted && !listChanged && !moved" src="@/img/favicon.webp" alt="loading" />
 
 		<!-- Caricamento in caso di lista cancellata o importata -->
-		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup && !listChanged" src="@/img/LOAD.webp" alt="loading" />
+		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup && !listChanged && !moved" src="@/img/LOAD.webp" alt="loading" />
 
 		<!-- Caricamento al cambio lista -->
-		<img style="margin-top: 30%" v-if="listChanged && !listImportedOrDeleted && !languageChanged && !backup" src="@/img/Loading-list.webp" alt="loading_list" />
+		<img style="margin-top: 30%" v-if="listChanged && !listImportedOrDeleted && !languageChanged && !backup && !moved" src="@/img/Loading-list.webp" alt="loading_list" />
+
+		<!-- Caricamento quando si spostano gli elementi -->
+		<h1 class="moving-text" v-if="moved && !listImportedOrDeleted && !languageChanged && !backup && !listChanged">MOVING</h1>
+		<img style="margin-top: 10%" v-if="moved && !listImportedOrDeleted && !languageChanged && !backup && !listChanged" src="@/img/move-loading.webp" alt="moving" />
 
 		<!-- Caricamento quando si effettua un backup -->
 		<div v-if="backup && !listImportedOrDeleted && !listChanged" class="backup-container gelatine">
@@ -234,5 +239,12 @@ export default {
 			left: 1000px;
 		}
 	}
+}
+
+.moving-text {
+	margin-top: 40%;
+	font-weight: bold;
+	font-size: xx-large;
+	animation: zoominoutsinglefeatured 1s infinite;
 }
 </style>

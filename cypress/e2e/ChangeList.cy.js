@@ -12,38 +12,45 @@ describe("test delle liste multiple", () => {
     });
 
     it('inserisco qualcosa nella lista, poi cambio lista e provo le altre', () => {
+        // Resetto il localStorage altrimenti se rieseguo il test va in errore perchè tiene in canna i nomi delle liste salvati in precedenza
+        window.localStorage.clear();
+
         cy.addSomeItemsToList(phrases);
 
-        cy.get('.show-lists-img').click();
+        const lists = ['List 1', 'List 2', 'List 3', 'List 4'];
+        cy.get('.show-lists-img').click({ force: true });
         cy.wait(1000);
-        cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 1');
+        cy.get('.buttons-container > .selected-btn > .apply-moving-wrapper > .btn-name').each(($btn, $i) => {
+            cy.wrap($btn).should('contain.text', lists[$i]);
+        });
         cy.get('.empty-logo-container').should('not.exist');
 
         cy.get('.buttons-container > :nth-child(5)').click();
-        cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 2');
+        cy.wait(1000);
+
         cy.get('.empty-logo-container').should('exist');
 
-        cy.get('.show-lists-img').click();
+        cy.get('.show-lists-img').click({ force: true });
         cy.wait(1000);
         cy.get('.buttons-container > :nth-child(6)').click();
-        cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 3');
+
         cy.get('.empty-logo-container').should('exist');
         cy.get('.inputText').click({ force: true }).type(phrases.frase1);
         cy.get('.input-btns-container > .btn-info').click({ force: true });
         cy.wait(500);
 
-        cy.get('.show-lists-img').click();
+        cy.get('.show-lists-img').click({ force: true });
         cy.wait(1000);
         cy.get('.buttons-container > :nth-child(7)').click();
         cy.wait(500);
-        cy.get('.buttons-container > .selected-btn > .btn-name').contains('List 4');
+
         cy.get('.empty-logo-container').should('exist');
         cy.get('.inputText').click({ force: true }).type(phrases.frase2);
         cy.get('.input-btns-container > .btn-info').click({ force: true });
         cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
 
-        cy.get('.show-lists-img').click();
+        cy.get('.show-lists-img').click({ force: true });
         cy.wait(1000);
         cy.get('.buttons-container > :nth-child(6)').click();
         cy.wait(500);
@@ -79,10 +86,11 @@ describe("test delle liste multiple", () => {
         checkListNameChange('Z');
 
         function checkListNameChange(letter) {
-            cy.get('.buttons-container > :nth-child(4) > .btn-name').contains('A');
-            cy.get('.buttons-container > :nth-child(5) > .btn-name').contains('B');
-            cy.get('.buttons-container > :nth-child(6) > .btn-name').contains('C');
-            cy.get('.buttons-container > :nth-child(7) > .btn-name').contains(letter);
+            const letters = [letter, 'A', 'B', 'C'];
+            cy.get('.buttons-container > :nth-child(4) > .apply-moving-wrapper > .btn-name').each(($btn, $i) => {
+                cy.wrap($btn).should('contain.text', letters[$i]);
+
+            });
         }
     });
 
