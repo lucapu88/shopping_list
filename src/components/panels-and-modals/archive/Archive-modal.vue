@@ -61,8 +61,10 @@ export default {
 					<span class="x" @click="close()">X</span>
 				</div>
 				<!-- SOLO PER ME, NON IN PRODUZIONE -->
-				<button v-if="settings.isIphone" @click="showLatestDeleted = !showLatestDeleted">Elenco eliminazioni</button>
-				<ShoppingsDB v-if="settings.isIphone" />
+				<button v-if="settings.isIphone" @click="showLatestDeleted = !showLatestDeleted">
+					{{ showLatestDeleted ? "Elenca le spese" : "Elenca le eliminazioni" }}
+				</button>
+				<ShoppingsDB v-if="settings.isIphone && !showLatestDeleted" />
 
 				<!-- PER GLI ALTRI UTENTI MOSTRA SOLO GLI ULTIMI ELIMINATI CHE NON SONO SALVATI IN DB MA SOLO NEL LORO LOCALE -->
 				<ShowOnlyLatestDeleted v-if="!settings.isIphone || showLatestDeleted" />
