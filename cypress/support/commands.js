@@ -54,6 +54,11 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
   cy.get('.btn-outline-info').click({ force: true });
 });
 
+Cypress.Commands.add('showListsButtonClick', () => {
+  cy.get('.show-lists-img').click({ force: true });
+  cy.wait(1000); //Questo è inserito perchè il riquadro dei pulsanti impiega un secondo ad apparire, quindi aspetto che sia visibile
+});
+
 Cypress.Commands.add('addCategoryAndTodo', () => {
   cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
   cy.get('.categories > :nth-child(18) > span').click({ force: true });

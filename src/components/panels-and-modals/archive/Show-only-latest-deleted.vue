@@ -20,7 +20,6 @@ export default {
 	},
 	created() {
 		this.todosStore.getOnlyDeletedTodos();
-		this.secondTodosStore.createListsButtons();
 	},
 };
 </script>

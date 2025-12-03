@@ -206,13 +206,18 @@ export const useLanguageStore = defineStore('Language', {
       statusText: "Please enter a message before sending.",
     },
     send: "Send",
-    listSelectionTitle: 'Choose the list you want',
+    listSelection: {
+      title: 'Choose the list you want',
+      alert: 'You are already on this list'
+    },
     archive: 'Archive',
     moveMode: {
       moveElementText: 'Move products',
       istruction1: 'Select the items to move from the list',
       istruction2: 'Select the destination list',
+      istructionAlert: 'The item is already in this list. Please select another'
     },
+    selectedListText: 'You are writing on the list: '
   }),
   getters: {},
   actions: {
@@ -355,12 +360,14 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.errorMessage = "❌ Errore nell'invio del messaggio. Riprova. Se il servizio non funziona, contattaci direttamente a: ";
       this.feedback.statusText = "Inserisci un messaggio prima di inviare.";
       this.send = "Invia";
-      this.listSelectionTitle = 'Scegli la lista che desideri';
+      this.listSelection.title = 'Scegli la lista che desideri';
+      this.listSelection.alert = 'Sei già su questa lista';
       this.archive = 'Archivio';
       this.moveMode.moveElementText = 'Sposta prodoti';
       this.moveMode.istruction1 = 'Seleziona dalla lista gli elementi da spostare';
       this.moveMode.istruction2 = 'Seleziona la lista di destinazione';
-
+      this.moveMode.istructionAlert = "L'elemento è già in questa lista. Selezionane un'altra";
+      this.selectedListText = 'Stai scrivendo sulla lista: ';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -437,11 +444,14 @@ export const useLanguageStore = defineStore('Language', {
       this.feedback.errorMessage = "❌ Error al enviar el mensaje. Por favor, inténtelo de nuevo. Si el servicio no funciona, contáctenos directamente en: ";
       this.feedback.statusText = "Por favor, introduzca un mensaje antes de enviarlo.";
       this.send = "Enviar";
-      this.listSelectionTitle = 'Elija la lista que desee';
+      this.listSelection.title = 'Elija la lista que desee';
+      this.listSelection.alert = 'Ya estás en esta lista';
       this.archive = 'Archivo';
       this.moveMode.moveElementText = 'Mover productos';
       this.moveMode.istruction1 = 'Seleccione los elementos que desea mover de la lista';
       this.moveMode.istruction2 = 'Seleccione la lista de destino';
+      this.moveMode.istructionAlert = "El artículo ya está en esta lista. Seleccione otro";
+      this.selectedListText = 'Estás escribiendo en la lista: ';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

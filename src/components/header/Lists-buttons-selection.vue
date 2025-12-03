@@ -13,10 +13,20 @@ export default {
 			languages: useLanguageStore(),
 			theme: useThemeStore(),
 			todosStore: useTodoStore(),
+			listSelectionAlertVisible: false,
 		};
 	},
-	created() {
-		this.secondTodos.createListsButtons();
+	methods: {
+		selectList(btn) {
+			if (btn.selectedCondition()) {
+				this.listSelectionAlertVisible = true;
+				setTimeout(() => {
+					this.listSelectionAlertVisible = false;
+				}, 3000);
+				return;
+			}
+			btn.function();
+		},
 	},
 };
 </script>
@@ -86,7 +96,7 @@ export default {
 				'title-jeans': theme.jeansTheme,
 			}"
 		>
-			{{ languages.listSelectionTitle }}
+			{{ languages.listSelection.title }}
 		</h4>
 		<!-- CONTENITORE DEI BOTTONI -->
 		<div class="buttons-container">
@@ -110,7 +120,7 @@ export default {
 						'jeans-other-btn': theme.jeansTheme,
 					}"
 					:disabled="secondTodos.moving && !secondTodos.istruction2Visible"
-					@click="btn.function"
+					@click="selectList(btn)"
 				>
 					<div class="apply-moving-wrapper" @click="secondTodos.applyMoving(n)">
 						<span class="btn-name">{{ btn.name }}</span>
@@ -119,11 +129,18 @@ export default {
 			</template>
 		</div>
 		<div class="bottom">
+			<!-- MESSAGGI CHE SPIEGANO COSA FARE ALL'UTENTE -->
 			<p v-if="secondTodos.moving">1- {{ languages.moveMode.istruction1 }}</p>
 			<p v-if="secondTodos.istruction2Visible">2- {{ languages.moveMode.istruction2 }}</p>
+			<p v-if="secondTodos.moveSameList" class="text-danger">
+				<small>{{ languages.moveMode.istructionAlert }}</small>
+			</p>
+			<p v-if="listSelectionAlertVisible && !secondTodos.moveSameList" class="text-danger">{{ languages.listSelection.alert }}</p>
+
+			<!-- PULSANTE CHE ATTIVA/DISATTIVA LA MODALITÀ -->
 			<div class="move-container">
 				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
-				<button class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode()">
+				<button class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode()" :disabled="!todosStore.todos.length">
 					<img class="move-img" src="@/img/icons/move.webp" alt="move" />
 					{{ languages.moveMode.moveElementText }}
 				</button>

@@ -18,9 +18,6 @@ export default {
 			renameList: "renameList",
 		};
 	},
-	created() {
-		this.secondTodos.createListsButtons();
-	},
 	methods: {
 		renameButtons() {
 			if (!this.buffer[0] && !this.buffer[1] && !this.buffer[2] && !this.buffer[3] && !this.buffer[4] && !this.buffer[5] && !this.buffer[6] && !this.buffer[7]) {

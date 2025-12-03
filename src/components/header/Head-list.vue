@@ -28,23 +28,15 @@ export default {
 			firebaseUrl: null,
 			showPrompt: false,
 			showFirebasePrompt: false,
+			selectedList: null,
 		};
 	},
 	created() {
 		this.addTodo.changeTodoAdded(this.addTodo.todos);
 		this.settings.checkDevice();
+		this.selectedList = this.secondTodos.listButtons.find((b) => b.selectedCondition()).name;
 	},
 	methods: {
-		showHelper() {
-			this.settings.openHelper();
-			if (this.settings.helper) {
-				window.scrollTo(0, 0);
-				document.documentElement.style.overflow = "hidden";
-				this.addTodo.focusIn = false;
-			} else {
-				document.documentElement.style.overflow = "auto";
-			}
-		},
 		addNewTodo() {
 			if (this.addTodo.showOnlyImportantTodos) {
 				this.addTodo.showOnlyImportant();
@@ -122,7 +114,11 @@ export default {
 		</template>
 		<!-- TITOLO APPLICATIVO -->
 		<Title />
-
+		<div class="selected-list-name">
+			<span>
+				{{ languages.selectedListText }}<small class="text-danger">{{ selectedList }}</small>
+			</span>
+		</div>
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
@@ -215,6 +211,13 @@ export default {
 	}
 }
 
+.selected-list-name {
+	margin-left: 10%;
+}
+.selected-list-name > span {
+	font-size: 0.875rem;
+}
+
 .placeholder-selected {
 	background-color: #a6cef8;
 }
@@ -231,7 +234,6 @@ export default {
 	align-items: baseline;
 	gap: 10px;
 	justify-content: center;
-	margin-top: 15px;
 }
 .inputText {
 	padding: 10px;

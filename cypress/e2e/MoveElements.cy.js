@@ -9,10 +9,11 @@ describe("test dello spostamento elementi da una lista ad un'altra", () => {
     });
 
     it("verifico se lo spostamento funziona", () => {
+        //TOFIX: Spezzettatlo in più test
+
         cy.addSomeItemsToList(phrases);
         // apro il menu delle liste e attivo la modalità spostamento
-        cy.get('.show-lists-img').click({ force: true });
-        cy.wait(1000);
+        cy.showListsButtonClick();
         // verifico i pulsanti disabilitati
         cy.get('.move-elements-btn').click({ force: true });
         cy.get('#list-btn').each(($btn) => {
@@ -36,7 +37,7 @@ describe("test dello spostamento elementi da una lista ad un'altra", () => {
         cy.wait(1000);
         // verifico che l'elemento sia stato spostato
         cy.get(`#todo:contains(${phrases.frase2})`).should('not.exist');
-        cy.get('.show-lists-img').click({ force: true });
+        cy.showListsButtonClick();
         cy.get(':nth-child(2) > .apply-moving-wrapper').click({ force: true });
         cy.wait(1000);
         cy.get(`#todo:contains(${phrases.frase2})`).should('be.visible');
@@ -51,4 +52,16 @@ describe("test dello spostamento elementi da una lista ad un'altra", () => {
             cy.wrap($btn).should('not.have.class', 'btn-in-moving-mode');
         });
     });
+
+    it("verifico se selezionando la stessa lista impedisce lo spostamento e lancia l'alert", () => {
+        cy.get('.inputText').click({ force: true }).type(phrases.frase6);
+        cy.get('.input-btns-container > .btn-info').click({ force: true });
+
+        cy.showListsButtonClick();
+        cy.get('.move-elements-btn').click({ force: true });
+        cy.get('.is-moving-visible').click({ force: true });
+        cy.get('.selected-btn > .apply-moving-wrapper').click({ force: true });
+        cy.get('.text-danger > small').should('exist');
+    });
+
 });

@@ -18,8 +18,7 @@ describe("test delle liste multiple", () => {
         cy.addSomeItemsToList(phrases);
 
         const lists = ['List 1', 'List 2', 'List 3', 'List 4'];
-        cy.get('.show-lists-img').click({ force: true });
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get('.buttons-container > .selected-btn > .apply-moving-wrapper > .btn-name').each(($btn, $i) => {
             cy.wrap($btn).should('contain.text', lists[$i]);
         });
@@ -30,8 +29,7 @@ describe("test delle liste multiple", () => {
 
         cy.get('.empty-logo-container').should('exist');
 
-        cy.get('.show-lists-img').click({ force: true });
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(6)').click();
 
         cy.get('.empty-logo-container').should('exist');
@@ -39,8 +37,7 @@ describe("test delle liste multiple", () => {
         cy.get('.input-btns-container > .btn-info').click({ force: true });
         cy.wait(500);
 
-        cy.get('.show-lists-img').click({ force: true });
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(7)').click();
         cy.wait(500);
 
@@ -50,8 +47,7 @@ describe("test delle liste multiple", () => {
         cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
 
-        cy.get('.show-lists-img').click({ force: true });
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(6)').click();
         cy.wait(500);
         cy.get('.empty-logo-container').should('not.exist');
@@ -67,7 +63,7 @@ describe("test delle liste multiple", () => {
         cy.get('.save-btn').click();
         cy.wait(1000);
 
-        cy.get('.show-lists-img').click();
+        cy.showListsButtonClick();
         checkListNameChange('D');
 
         //Verifico se inserisco un nome vuoto non cambia nulla
@@ -82,7 +78,7 @@ describe("test delle liste multiple", () => {
         cy.get('.save-btn').click();
         cy.wait(1000);
 
-        cy.get('.show-lists-img').click();
+        cy.showListsButtonClick();
         checkListNameChange('Z');
 
         function checkListNameChange(letter) {
@@ -92,6 +88,29 @@ describe("test delle liste multiple", () => {
 
             });
         }
+    });
+
+    it('verifico se al cambio lista aggiorna la lista corrente sotto il titolo', () => {
+        cy.showListsButtonClick();
+        cy.get('.buttons-container > :nth-child(6)').click();
+        cy.get('.selected-list-name > span').should('contain.text', 'You are writing on the list: List 6');
+
+        cy.showListsButtonClick();
+        cy.get('.buttons-container > :nth-child(7)').click();
+        cy.get('.selected-list-name > span').should('contain.text', 'You are writing on the list: List 7');
+
+        //Me ne bastano solo 2, anzi teoricamente bastava 1, non li controllo tutti tutti dato che la funzione è sempre la stessa identica su tutti i pulsanti
+    });
+
+    it("verifico se selezionando la stessa lista impedisce il cambio e lancia l'alert", () => {
+        cy.showListsButtonClick();
+        cy.get('.buttons-container > :nth-child(6)').click({ force: true });
+        cy.wait(1000);
+        cy.showListsButtonClick();
+        cy.get('.buttons-container > :nth-child(6)').click({ force: true });
+        cy.get('.bottom > .text-danger').should('exist');
+        cy.wait(3100);
+        cy.get('.bottom > .text-danger').should('not.exist');
     });
 
 });
