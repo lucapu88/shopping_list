@@ -28,6 +28,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         showChangeListChildren: false,
         moving: false,
         istruction2Visible: false,
+        moveSameList: false,
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
     }),
@@ -63,91 +64,17 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
 
             location.reload();
         },
-        //TOFIX ripetitivo, da ottimizzare
-        selectFirstList() {
-            if (this.istruction2Visible) { return; }
-
-            const listName1 = window.localStorage.getItem('ListName1');
-
-            window.localStorage.setItem('listNumber1', `${listName1 ? listName1.toString() : "LIST 1"}`);
-            this.resetAllLists();
-            this.todosSettings();
-        },
-        selectSecondList() {
+        selectList(ListName, listNumber, listN, list) {
             if (this.istruction2Visible) { return; }
 
             this.resetAllLists();
-            this.secondList = true;
-            const listName2 = window.localStorage.getItem('ListName2');
 
-            window.localStorage.setItem('secondList', true);
-            window.localStorage.setItem('listNumber2', `${listName2 ? listName2.toString() : "LIST 2"}`);
-            this.todosSettings();
-        },
-        selectThirdList() {
-            if (this.istruction2Visible) { return; }
+            const listName = window.localStorage.getItem(ListName);
+            if (list) {
+                window.localStorage.setItem(list, true);
+            }
+            window.localStorage.setItem(listNumber, `${listName ? listName.toString() : listN}`);
 
-            this.resetAllLists();
-            this.thirdList = true;
-            const listName3 = window.localStorage.getItem('ListName3');
-
-            window.localStorage.setItem('thirdList', true);
-            window.localStorage.setItem('listNumber3', `${listName3 ? listName3.toString() : "LIST 3"}`);
-            this.todosSettings();
-        },
-        selectFourthList() {
-            if (this.istruction2Visible) { return; }
-
-            this.resetAllLists();
-            this.fourthList = true;
-            const listName4 = window.localStorage.getItem('ListName4');
-
-            window.localStorage.setItem('fourthList', true);
-            window.localStorage.setItem('listNumber4', `${listName4 ? listName4.toString() : "LIST 4"}`);
-            this.todosSettings();
-        },
-        selectFifthList() {
-            if (this.istruction2Visible) { return; }
-
-            this.resetAllLists();
-            this.fifthList = true;
-            const listName5 = window.localStorage.getItem('ListName5');
-
-            window.localStorage.setItem('fifthList', true);
-            window.localStorage.setItem('listNumber5', `${listName5 ? listName5.toString() : "LIST 5"}`);
-            this.todosSettings();
-        },
-        selectSixthList() {
-            if (this.istruction2Visible) { return; }
-
-            this.resetAllLists();
-            this.sixthList = true;
-            const listName6 = window.localStorage.getItem('ListName6');
-
-            window.localStorage.setItem('sixthList', true);
-            window.localStorage.setItem('listNumber6', `${listName6 ? listName6.toString() : "LIST 6"}`);
-            this.todosSettings();
-        },
-        selectSeventhList() {
-            if (this.istruction2Visible) { return; }
-
-            this.resetAllLists();
-            this.seventhList = true;
-            const listName7 = window.localStorage.getItem('ListName7');
-
-            window.localStorage.setItem('seventhList', true);
-            window.localStorage.setItem('listNumber7', `${listName7 ? listName7.toString() : "LIST 7"}`);
-            this.todosSettings();
-        },
-        selectEighthList() {
-            if (this.istruction2Visible) { return; }
-
-            this.resetAllLists();
-            this.eighthList = true;
-            const listName8 = window.localStorage.getItem('ListName8');
-
-            window.localStorage.setItem('eighthList', true);
-            window.localStorage.setItem('listNumber8', `${listName8 ? listName8.toString() : "LIST 8"}`);
             this.todosSettings();
         },
         setSelectedLists() {
@@ -182,89 +109,63 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                     class: "first",
                     name: `${listName1 ? listName1.toString() : "List 1"}`,
                     selectedCondition: () => !this.secondList && !this.thirdList && !this.fourthList && !this.fifthList && !this.sixthList && !this.seventhList && !this.eighthList,
-                    function: this.selectFirstList,
+                    function: () => this.selectList('ListName1', 'listNumber1', "LIST 1"),
                 },
                 {
                     class: "second",
                     name: `${listName2 ? listName2.toString() : "List 2"}`,
                     selectedCondition: () => this.secondList,
-                    function: this.selectSecondList,
+                    function: () => this.selectList('ListName2', 'listNumber2', "LIST 2", 'secondList'),
                 },
                 {
                     class: "third",
                     name: `${listName3 ? listName3.toString() : "List 3"}`,
                     selectedCondition: () => this.thirdList,
-                    function: this.selectThirdList,
+                    function: () => this.selectList('ListName3', 'listNumber3', "LIST 3", 'thirdList'),
                 },
                 {
                     class: "fourth",
                     name: `${listName4 ? listName4.toString() : "List 4"}`,
                     selectedCondition: () => this.fourthList,
-                    function: this.selectFourthList,
+                    function: () => this.selectList('ListName4', 'listNumber4', "LIST 4", 'fourthList'),
                 },
                 {
                     class: "fifth",
                     name: `${listName5 ? listName5.toString() : "List 5"}`,
                     selectedCondition: () => this.fifthList,
-                    function: this.selectFifthList,
+                    function: () => this.selectList('ListName5', 'listNumber5', "LIST 5", 'fifthList'),
                 },
                 {
                     class: "sixth",
                     name: `${listName6 ? listName6.toString() : "List 6"}`,
                     selectedCondition: () => this.sixthList,
-                    function: this.selectSixthList,
+                    function: () => this.selectList('ListName6', 'listNumber6', "LIST 6", 'sixthList'),
                 },
                 {
                     class: "seventh",
                     name: `${listName7 ? listName7.toString() : "List 7"}`,
                     selectedCondition: () => this.seventhList,
-                    function: this.selectSeventhList,
+                    function: () => this.selectList('ListName7', 'listNumber7', "LIST 7", 'seventhList'),
                 },
                 {
                     class: "eighth",
                     name: `${listName8 ? listName8.toString() : "List 8"}`,
                     selectedCondition: () => this.eighthList,
-                    function: this.selectEighthList,
+                    function: () => this.selectList('ListName8', 'listNumber8', "LIST 8", 'eighthList'),
                 },
             ];
         },
         getAndPushListsNumber(storageKey, todosToDelete) {
-            //TOFIX brutto brutto, togliere questi if
-            let todos1 = this.getTodosFromStorage('todos');
-            let todos2 = this.getTodosFromStorage('todos2');
-            let todos3 = this.getTodosFromStorage('todos3');
-            let todos4 = this.getTodosFromStorage('todos4');
-            let todos5 = this.getTodosFromStorage('todos5');
-            let todos6 = this.getTodosFromStorage('todos6');
-            let todos7 = this.getTodosFromStorage('todos7');
-            let todos8 = this.getTodosFromStorage('todos8');
-
+            const keys = ['todos', 'todos2', 'todos3', 'todos4', 'todos5', 'todos6', 'todos7', 'todos8'];
             const todosName = this.todosStore.todos.map(e => e.name);
 
-            if (this.areEqualArrays(todosName, todos1)) {
-                window.localStorage.setItem(`${storageKey}-1`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos2)) {
-                window.localStorage.setItem(`${storageKey}-2`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos3)) {
-                window.localStorage.setItem(`${storageKey}-3`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos4)) {
-                window.localStorage.setItem(`${storageKey}-4`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos5)) {
-                window.localStorage.setItem(`${storageKey}-5`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos6)) {
-                window.localStorage.setItem(`${storageKey}-6`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos7)) {
-                window.localStorage.setItem(`${storageKey}-7`, todosToDelete);
-            }
-            if (this.areEqualArrays(todosName, todos8)) {
-                window.localStorage.setItem(`${storageKey}-8`, todosToDelete);
-            }
+            keys.forEach((key, index) => {
+                const todos = this.getTodosFromStorage(key);
+
+                if (this.areEqualArrays(todosName, todos)) {
+                    window.localStorage.setItem(`${storageKey}-${index + 1}`, todosToDelete);
+                }
+            });
         },
         areEqualArrays(arr1, arr2) {
             if (arr1.length !== arr2.length) return false;
@@ -377,6 +278,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             if (!this.moving) {
                 this.todosStore.todos.forEach(t => t.isMoving = false);
                 this.istruction2Visible = false;
+                this.moveSameList = false;
             }
         },
         selectElementforMove(n) {
@@ -389,6 +291,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         applyMoving(n) {
             //in questo caso la modalità di spostamento è attiva, ma non è stato selezionato nessun elemento da spostare quindi non faccio nulla
             if (!this.istruction2Visible) { return; }
+
+            this.moveSameList = false;
             const todosIsMovingFiltered = this.todosStore.todos.filter(t => t.isMoving);
 
             switch (n) {
@@ -432,7 +336,11 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                     window.localStorage.setItem('todos8', JSON.stringify([...todosParsed8, ...todosIsMovingFiltered]));
                     break;
                 }
-
+            }
+            if (this.listButtons[n].selectedCondition()) {
+                // in questo caso praticamente l'utente ha cliccato la lista dove sta scrivendo come lista di destinazione, e quindi che cazzo sposti un elemento dalla stessa lista?! Metto un messaggio
+                this.moveSameList = true;
+                return;
             }
             this.movingLoading = true;
             this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
