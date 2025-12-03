@@ -104,7 +104,7 @@ describe("test dell'helper e delle impostazioni", () => {
         checkBackupSuccessful();
 
         cy.get('[index="4"] > .checkbox').click({ force: true });
-        cy.get('.text-danger').first().click();
+        cy.get('#trash').click();
         cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
         checkBackupSuccessful();
 

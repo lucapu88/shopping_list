@@ -30,6 +30,7 @@ export default {
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
+			id="trash"
 			class="opacity-90 text-danger border-danger rounded multiple-delete p-2"
 			:class="{
 				'left-3': !settings.isIphone,

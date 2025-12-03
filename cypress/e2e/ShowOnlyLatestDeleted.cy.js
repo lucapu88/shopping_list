@@ -85,7 +85,7 @@ describe("test del salvataggio ultime eliminazioni", () => {
             cy.get('[index="0"] > .checkbox').click({ force: true });
             cy.get('[index="1"] > .checkbox').click({ force: true });
             cy.get('[index="4"] > .checkbox').click({ force: true });
-            cy.get('.text-danger').first().click();
+            cy.get('#trash').click();
             cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
             cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
         }

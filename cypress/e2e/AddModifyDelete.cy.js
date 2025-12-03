@@ -81,7 +81,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('[index="4"] > .checkbox').click({ force: true });
     cy.get('[index="5"] > .checkbox').click({ force: true });
 
-    cy.get('.text-danger').first().click({ multiple: true });
+    cy.get('#trash').click({ multiple: true });
     cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
     cy.get(`#todo:contains(${phrases.frase1})`).should('not.exist');
     cy.get(`#todo:contains(${phrases.frase2})`).should('not.exist');
