@@ -60,9 +60,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.todosStore.todos.map((t) => (t.isSelected = false));
             this.todosStore.todos.forEach(item => item.todoAdded = false);
             this.languages.placeholder = this.languages.defaultPlaceholderText;
-            setTimeout(() => {
-                location.reload();
-            }, 700);
+
+            location.reload();
         },
         //TOFIX ripetitivo, da ottimizzare
         selectFirstList() {
@@ -438,9 +437,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.movingLoading = true;
             this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
             this.todosStore.saveTodos();
-            setTimeout(() => {
-                location.reload();
-            }, 700);
+
+            location.reload();
         }
     }
 });

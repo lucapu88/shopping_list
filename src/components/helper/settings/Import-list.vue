@@ -57,7 +57,7 @@ export default {
 			this.$emit("importListEmitted", true);
 			setTimeout(() => {
 				location.reload();
-			}, 1700);
+			}, 1500);
 		},
 	},
 };

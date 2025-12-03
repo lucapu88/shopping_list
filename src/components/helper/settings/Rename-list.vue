@@ -54,7 +54,7 @@ export default {
 			this.settings.closeHelper();
 			setTimeout(() => {
 				location.reload();
-			}, 600);
+			}, 400);
 		},
 	},
 };

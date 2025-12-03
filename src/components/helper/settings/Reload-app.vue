@@ -17,7 +17,7 @@ export default {
 			this.loading = true;
 			setTimeout(() => {
 				location.reload();
-			}, 1500);
+			}, 800);
 		},
 	},
 };

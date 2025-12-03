@@ -25,7 +25,7 @@ export default {
 			// const range = Math.random() * (1500 - 3500) + 1500;
 			setTimeout(() => {
 				location.reload();
-			}, 3700);
+			}, 2500);
 		},
 	},
 };

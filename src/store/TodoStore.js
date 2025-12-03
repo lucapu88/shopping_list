@@ -97,7 +97,7 @@ export const useTodoStore = defineStore('todoStore', {
       setTimeout(() => {
         //faccio questo per crearmi un'animazione visibile per un lasso di tempo appena si aggiunge un todo
         this.changeTodoAdded(this.todos);
-      }, 1500);
+      }, 2000);
 
       if (this.settings.canMultipleCategoryInsertion) {
         //Se ho tolto l'inserimento di più elementi nella categoria, ad ogni singolo todo aggiunto in categoria, vado a togliere "l'evidenziazione" della categoria
@@ -436,7 +436,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.saveTodos();
       this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       //navigator.vibrate(1000); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
-      const range = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
+      const range = Math.floor(Math.random() * (1500 - 600 + 1)) + 600;
       setTimeout(() => {
         location.reload();
       }, range);
