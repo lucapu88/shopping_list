@@ -90,7 +90,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.two > .elegant-theme').click().then(() => {
             cy.get('body').should('have.css', 'background').and('include', 'linear-gradient(90deg, rgb(7, 60, 92) 30%, rgb(29, 39, 49) 55%)');
             cy.get('body').should('have.css', 'color').and('include', 'rgb(217, 132, 16)');
-            cy.get('body').should('have.css', 'font-family').and('include', 'Courier New');
+            cy.get('body').should('have.css', 'font-family').and('include', 'Tauri, sans-serif');
         });
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();

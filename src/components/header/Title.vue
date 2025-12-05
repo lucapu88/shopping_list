@@ -46,7 +46,6 @@ export default {
 				'elegant-theme-title': theme.elegantTheme,
 				'jeans-theme-title': theme.jeansTheme,
 				'title-spanish': languages.langSpanish,
-				'title1-spanish': languages.langSpanish,
 			}"
 			@click="openDevPanel()"
 		>
@@ -115,10 +114,7 @@ export default {
 }
 
 .title-spanish {
-	font-size: 1.563rem;
-}
-.title1-spanish {
-	margin-left: -17px;
+	font-size: 1.4rem;
 }
 
 .cart {

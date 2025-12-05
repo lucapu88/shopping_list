@@ -86,18 +86,9 @@ export default {
 			}"
 		></div>
 
-		<h4
-			class="title"
-			:class="{
-				'title-elegant': theme.elegantTheme,
-				'title-minimal': theme.minimalTheme,
-				'title-pink': theme.pinkTheme,
-				'title-lemon': theme.lemonTheme,
-				'title-jeans': theme.jeansTheme,
-			}"
-		>
-			{{ languages.listSelection.title }}
-		</h4>
+		<div class="title-container">
+			<h4 class="title">{{ languages.listSelection.title }}</h4>
+		</div>
 		<!-- CONTENITORE DEI BOTTONI -->
 		<div class="buttons-container">
 			<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
@@ -170,21 +161,13 @@ export default {
 	gap: 10px;
 }
 
-.title {
+.title-container {
 	position: absolute;
 	top: 0;
-	left: 10%;
+	left: 0;
 	z-index: 10;
-}
-
-.title-elegant,
-.title-jeans {
-	left: 2%;
-}
-.title-minimal,
-.title-pink,
-.title-lemon {
-	left: 20%;
+	text-align: center;
+	width: 100%;
 }
 
 .left {
