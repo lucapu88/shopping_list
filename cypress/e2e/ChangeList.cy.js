@@ -4,11 +4,9 @@ import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 // eslint-disable-next-line no-undef
 describe("test delle liste multiple", () => {
     beforeEach(() => {
-        // Per ovviare ad un errore di cypress: TypeError: Cannot read properties of undefined (reading 'KeyboardEvent')     
-        if (typeof window !== 'undefined' && !window.KeyboardEvent) {
-            window.KeyboardEvent = KeyboardEvent;
-        }
+        cy.keyboardEventCheck();
         cy.visit(shoppingListLocalOrGlobal);
+        cy.closeBlockingElements();
     });
 
     it('inserisco qualcosa nella lista, poi cambio lista e provo le altre', () => {
@@ -26,6 +24,7 @@ describe("test delle liste multiple", () => {
 
         cy.get('.buttons-container > :nth-child(5)').click();
         cy.wait(1000);
+        cy.closeBlockingElements();
 
         cy.get('.empty-logo-container').should('exist');
 
@@ -62,6 +61,7 @@ describe("test delle liste multiple", () => {
         cy.get('[placeholder="List 4"]').type('D');
         cy.get('.save-btn').click();
         cy.wait(1000);
+        cy.closeBlockingElements();
 
         cy.showListsButtonClick();
         checkListNameChange('D');
@@ -77,6 +77,7 @@ describe("test delle liste multiple", () => {
         cy.get('[placeholder="D"]').type('Z');
         cy.get('.save-btn').click();
         cy.wait(1000);
+        cy.closeBlockingElements();
 
         cy.showListsButtonClick();
         checkListNameChange('Z');
@@ -93,10 +94,12 @@ describe("test delle liste multiple", () => {
     it('verifico se al cambio lista aggiorna la lista corrente sotto il titolo', () => {
         cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(6)').click();
+        cy.closeBlockingElements();
         cy.get('.selected-list-name > span').should('contain.text', 'You are writing on the list: List 6');
 
         cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(7)').click();
+        cy.closeBlockingElements();
         cy.get('.selected-list-name > span').should('contain.text', 'You are writing on the list: List 7');
 
         //Me ne bastano solo 2, anzi teoricamente bastava 1, non li controllo tutti tutti dato che la funzione è sempre la stessa identica su tutti i pulsanti
@@ -106,10 +109,14 @@ describe("test delle liste multiple", () => {
         cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(6)').click({ force: true });
         cy.wait(1000);
+        cy.closeBlockingElements();
+
         cy.showListsButtonClick();
         cy.get('.buttons-container > :nth-child(6)').click({ force: true });
         cy.get('.bottom > .text-danger').should('exist');
         cy.wait(3100);
+        cy.closeBlockingElements();
+
         cy.get('.bottom > .text-danger').should('not.exist');
     });
 

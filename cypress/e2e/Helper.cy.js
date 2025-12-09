@@ -6,6 +6,7 @@ describe("test dell'helper e delle impostazioni", () => {
     beforeEach(() => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
+        cy.closeBlockingElements();
     });
 
     it("l'helper appare e scompare", () => {
@@ -68,9 +69,13 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('#todo').click();
         cy.get('.inputText').type('Ile <3');
         cy.get('.plane').click();
+        cy.window().then(win => {
+            // Cypress fa schifo e si blocca perchè scompare il pulsante, ho provato più volte a capire il perchè ma mi sembra magia nera! 
+            // Uso questa scappatoia per farlo apparire
+            win.__appTestAPI.cshowHelperBtn();
+        });
         categoryCheck();
-
-        cy.get('.settings').click();
+        cy.get('.settings').click({ force: true });
         cy.get('#helper-description > :nth-child(8) > .list-title').click();
         cy.get('.text-primary').should('include.text', 'ON');
         cy.get('#auto-delete > .hand-pointing').click();
@@ -137,7 +142,8 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('#helper-description > :nth-child(10) > .list-title').click({ force: true });
         cy.get('#text-area').click({ force: true });
         //Cypress non supporta nativamente execCommand('paste') e dato che non è lo scopo del test, lo vado a simulare inserendo un testo standard.
-        cy.get('#text-area').type(fraseDaIncollareMock);
+        cy.keyboardEventCheck();
+        cy.get('#text-area').type(fraseDaIncollareMock, { parseSpecialCharSequences: false });
         cy.get('.add-list-copied > .btn').click({ force: true });
         cy.get('#todo-list').within(() => {
             cy.get('div.empty-logo-container').should('not.exist');

@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 
+
 // PER FAR PARTIRE CYPRESS CON INTERFACCIA GRAFICA:  npx cypress open
 // PER FAR PARTIRE CYPRESS SOLO DA TERMINALE:  npx cypress run
 
@@ -57,6 +58,21 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
 Cypress.Commands.add('showListsButtonClick', () => {
   cy.get('.show-lists-img').click({ force: true });
   cy.wait(1000); //Questo è inserito perchè il riquadro dei pulsanti impiega un secondo ad apparire, quindi aspetto che sia visibile
+  cy.closeBlockingElements();
+});
+
+Cypress.Commands.add('keyboardEventCheck', () => {
+  // Per ovviare ad un errore di cypress: TypeError: Cannot read properties of undefined (reading 'KeyboardEvent')     
+  if (typeof window !== 'undefined' && !window.KeyboardEvent) {
+    window.KeyboardEvent = KeyboardEvent;
+  }
+});
+
+Cypress.Commands.add('closeBlockingElements', () => {
+  //Mi serve per togliere immagini durante il periodo natalizio, oppure la modale del tutorial, che coprono la visuale.
+  cy.window().then(win => {
+    win.__appTestAPI.closeBlockingElements();
+  });
 });
 
 Cypress.Commands.add('addCategoryAndTodo', () => {
@@ -131,3 +147,4 @@ const dragTo = (subject, to) => {
 };
 
 Cypress.Commands.addAll({ prevSubject: 'element' }, { dragTo, });
+

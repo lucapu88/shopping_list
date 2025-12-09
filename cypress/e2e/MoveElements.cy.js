@@ -6,6 +6,7 @@ describe("test dello spostamento elementi da una lista ad un'altra", () => {
     beforeEach(() => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
+        cy.closeBlockingElements();
     });
 
     it("verifico se lo spostamento funziona", () => {

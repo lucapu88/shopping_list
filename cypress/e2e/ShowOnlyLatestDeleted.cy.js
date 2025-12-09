@@ -10,31 +10,27 @@ describe("test del salvataggio ultime eliminazioni", () => {
     beforeEach(() => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
+        cy.closeBlockingElements();
     });
 
-
     it('mostra ultime eliminazioni singole', () => {
-
         addPhrasesAndRemoveSome();
 
         checkPhrasesDeleted(1);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${cinque})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(cinque);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${sei})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(sei);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${tette})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
@@ -59,22 +55,19 @@ describe("test del salvataggio ultime eliminazioni", () => {
 
         checkPhrasesDeleted(1);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${cinque})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(cinque);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${sei})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();
         checkPhrasesDeleted(sei);
 
-        cy.get('.show-lists-img').click();
-        cy.wait(1000);
+        cy.showListsButtonClick();
         cy.get(`.buttons-container > :nth-child(${tette})`).click();
         cy.wait(900);
         addPhrasesAndRemoveSome();

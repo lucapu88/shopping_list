@@ -5,6 +5,7 @@ export const useChristmasStore = defineStore('christmas', {
     state: () => ({
         christmasTheme: false,
         categoriesStore: useCategoriesStore(),
+        hideElementForTest: false,
     }),
     getters: {},
     actions: {
