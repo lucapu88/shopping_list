@@ -37,9 +37,7 @@
 	background-color: var(--winter-selected-color) !important;
 }
 .winter-theme-helper {
-	background-image: url("@/img/inverno.webp") !important;
-	background-size: cover !important;
-	background-repeat: repeat-x !important;
+	background: radial-gradient(circle, rgba(35, 47, 52) 80%, rgba(191, 248, 255, 1) 100%) !important;
 }
 .winter-theme-back-top {
 	background-color: var(--white);

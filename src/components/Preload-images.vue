@@ -54,7 +54,6 @@ import shareLogo from "@/img/icons/share.webp";
 import shareBackgr from "@/img/shared.webp";
 import cloud from "@/img/icons/cloud.webp";
 import tutorial from "@/img/icons/video-logo.webp";
-import winterHelperBackgr from "@/img/inverno.webp";
 import eyeClosed from "@/img/icons/eye-close.webp";
 import eyeOpen from "@/img/icons/eye-open.webp";
 
@@ -143,7 +142,6 @@ export default {
 	<link v-if="settings.helper" rel="preload" as="image" :href="shareBackgr" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="tutorial" />
-	<link v-if="settings.helper && theme.winterTheme" rel="preload" as="image" :href="winterHelperBackgr" />
 
 	<!-- -----------------------------------------------------------altri preload---------------------------- -->
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="okIcon" />
