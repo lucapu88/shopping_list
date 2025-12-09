@@ -21,7 +21,7 @@ export default {
 	},
 	methods: {
 		copy() {
-			const myList = this.todosStore.todos.map((todo) => (todo.category ? `${todo.name.toUpperCase()}\n` : ` ${todo.name}\n`));
+			const myList = this.todosStore.todos.map((todo) => (todo.category ? `${todo.name.toUpperCase()}:\n` : ` ${todo.name}\n`));
 			const arrayNoCommas = myList.join(" ");
 
 			this.todosStore.categoryList = false;

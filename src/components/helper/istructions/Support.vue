@@ -46,7 +46,7 @@ export default {
 			{{ languages.helperDescription.supportText }}
 			<a href="mailto:shoppinglist.service@outlook.com"> shoppinglist.service@outlook.com </a>
 		</li>
-		<li>
+		<!-- <li>
 			{{ languages.helperDescription.socialText }}
 			<a href="https://x.com/developer231023" target="_blank">
 				<img src="@/img/icons/x.webp" alt="social_twitter" class="social" />
@@ -54,7 +54,7 @@ export default {
 			<a href="https://www.instagram.com/informatico_stronzo" target="_blank">
 				<img src="@/img/icons/instagram.webp" alt="social_instagram" class="social" />
 			</a>
-		</li>
+		</li> -->
 		<li>
 			{{ languages.helperDescription.githubText }}
 			<!-- lo faccio perchè ho anche un iphone e questa cosa qui sotto non funziona per android -->
