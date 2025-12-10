@@ -10,6 +10,7 @@ import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
+import GeneralTutorialBtn from "../helper/tutorials/General-tutorial-btn.vue";
 </script>
 
 <script>
@@ -103,7 +104,7 @@ export default {
 <template>
 	<!-- TOFIX non so se è una cosa brutta da fare ma per il momento è l'unica soluzione trovata. Avendo il componente Todo-list che al click su una categoria aziona un metodo nello store, questo metodo dovrebbe scatenare il focus in in questo componente nell'input. -->
 	{{ addTodo.focusIn ? focusOnInput() : null }}
-	<img v-if="isChristmas.christmasTheme" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
+	<img v-if="isChristmas.christmasTheme && !isChristmas.hideElementForTest" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
 	<div class="header-container" :class="{ christmas: isChristmas.christmasTheme }">
 		<!-- DECORAZIONI HALLOWEEN -->
 		<template v-if="settings.isVisibleOnScroll">
@@ -114,6 +115,9 @@ export default {
 		</template>
 		<!-- TITOLO APPLICATIVO -->
 		<Title />
+		<!-- PULSANTE TUTORIAL -->
+		<GeneralTutorialBtn :read-only="false" />
+
 		<div class="selected-list-name">
 			<span>
 				{{ languages.selectedListText }}<small class="text-danger">{{ selectedList }}</small>

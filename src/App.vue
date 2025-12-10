@@ -11,6 +11,7 @@ import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.v
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
 import LoadingOrUpdating from "./components/Loading-or-updating.vue";
 import ShowHelperButton from "./components/header/Show-helper-button.vue";
+import GeneralTutorialModal from "./components/helper/tutorials/General-tutoriar-modal.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -54,6 +55,14 @@ export default {
 		this.settings.enableAI = !this.secondTodosStore.isLocal;
 	},
 	mounted() {
+		for (let i = 0; i < localStorage.length; i++) {
+			//const key = localStorage.key(i);
+			if (localStorage.length === 2) {
+				// In questo caso l'app l'hai apena scaricata, poichè ci sono solo 2 chiavi salvate, e ciò accade solo appena scaricata.
+				// Già se setti una lingua o un tema o aggiorni o setti una qualsiasi impostazione, aggiungi altre chiavi al localstorage.
+				this.settings.isTutorialVisible = true;
+			}
+		}
 		this.todosStore.toggleButtonDeleteSelectedTodo();
 	},
 	methods: {
@@ -108,6 +117,7 @@ export default {
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
 						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
+						<GeneralTutorialModal v-if="settings.isTutorialVisible" />
 					</header>
 					<main>
 						<MainList />

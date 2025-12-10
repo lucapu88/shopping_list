@@ -217,7 +217,11 @@ export const useLanguageStore = defineStore('Language', {
       istruction2: 'Select the destination list',
       istructionAlert: 'The item is already in this list. Please select another'
     },
-    selectedListText: 'You are writing on the list: '
+    selectedListText: 'You are writing on the list: ',
+    generalTutorial: {
+      title: 'Do you want to see a short video tutorial?',
+      subtitle: 'You can always review it \n whenever you want by clicking on =>'
+    }
   }),
   getters: {},
   actions: {
@@ -368,6 +372,8 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.istruction2 = 'Seleziona la lista di destinazione';
       this.moveMode.istructionAlert = "L'elemento è già in questa lista. Selezionane un'altra";
       this.selectedListText = 'Stai scrivendo sulla lista: ';
+      this.generalTutorial.title = "vuoi vedere un breve video tutorial?";
+      this.generalTutorial.subtitle = "puoi sempre rivederlo \n quando vuoi cliccando su =>";
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -452,6 +458,8 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.istruction2 = 'Seleccione la lista de destino';
       this.moveMode.istructionAlert = "El artículo ya está en esta lista. Seleccione otro";
       this.selectedListText = 'Estás escribiendo en la lista: ';
+      this.generalTutorial.title = "¿Quieres ver un breve vídeo tutorial?";
+      this.generalTutorial.subtitle = "Siempre puedes revisarlo cuando quieras \n haciendo clic en =>";
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO
