@@ -13,7 +13,24 @@ export default {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
 			showVideo: false,
+			generalTutorial: {
+				title: "Do you want to see a short video tutorial?",
+				subtitle: "You can always review it \n whenever you want by clicking on =>",
+				istruction: "To change the language for the entire app, click (top right) on >",
+			},
+			selectedEng: false,
+			selectedSpa: false,
+			selectedIta: false,
 		};
+	},
+	created() {
+		if (this.languages.langIta) {
+			this.italian();
+		} else if (this.languages.langSpanish) {
+			this.spanish();
+		} else {
+			this.english();
+		}
 	},
 	methods: {
 		playTutorial() {
@@ -28,6 +45,33 @@ export default {
 		closeTutorial() {
 			this.settings.isTutorialVisible = false;
 			window.localStorage.setItem("tutorialWatched", true);
+		},
+		english() {
+			this.selectedEng = true;
+			this.selectedSpa = false;
+			this.selectedIta = false;
+
+			this.generalTutorial.title = "Do you want to see a short video tutorial?";
+			this.generalTutorial.subtitle = "You can always review it \n whenever you want by clicking on =>";
+			this.generalTutorial.istruction = "To change the language for the entire app, click (top right) on >";
+		},
+		italian() {
+			this.selectedEng = false;
+			this.selectedSpa = false;
+			this.selectedIta = true;
+
+			this.generalTutorial.title = "vuoi vedere un breve video tutorial?";
+			this.generalTutorial.subtitle = "puoi sempre rivederlo \n quando vuoi cliccando su =>";
+			this.generalTutorial.istruction = "Per cambiare lingua a tutta l'app clicca (in alto a destra) su >";
+		},
+		spanish() {
+			this.selectedEng = false;
+			this.selectedSpa = true;
+			this.selectedIta = false;
+
+			this.generalTutorial.title = "¿Quieres ver un breve vídeo tutorial?";
+			this.generalTutorial.subtitle = "Siempre puedes revisarlo cuando quieras \n haciendo clic en =>";
+			this.generalTutorial.istruction = "Para cambiar el idioma de toda la aplicación, haga clic (arriba a la derecha) en >";
 		},
 	},
 };
@@ -60,8 +104,31 @@ export default {
 			</video>
 
 			<div v-if="!showVideo" class="confirm-alert">
-				<p>{{ languages.generalTutorial.title }}</p>
-				<p>{{ languages.generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
+				<div class="welcome-container mb-3">
+					<p class="welcome-text text-danger m-1">
+						<small>Thank you for downloading Shopping List, and welcome!</small>
+					</p>
+					<p class="welcome-text text-danger m-1">
+						<small>Gracias por descargar Lista de Compras, ¡y bienvenido!</small>
+					</p>
+					<p class="welcome-text text-danger m-1">
+						<small>Grazie per aver scaricato Shopping List, e benvenuto!</small>
+					</p>
+				</div>
+				<div class="languages-selection">
+					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }" src="@/img/flags/inglese.webp" alt="english_flag" /></span>
+
+					<span @click="spanish()"><img class="flag" :class="{ 'selected-flag': selectedSpa }" src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
+
+					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }" src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+				</div>
+				<div>
+					<p>
+						{{ generalTutorial.istruction }} <span><img class="settings" src="@/img/icons/settings.webp" alt="settings" /></span>
+					</p>
+				</div>
+				<p class="boldi-cipollino">{{ generalTutorial.title }}</p>
+				<p>{{ generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
 
 				<button class="btn btn-primary me-4" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="playTutorial()">
 					<span v-if="languages.langIta || languages.langSpanish">SI</span>
@@ -80,12 +147,15 @@ export default {
 	top: 0;
 	width: 100%;
 }
+.modal {
+	background-color: #5252527c;
+}
 .modal-content {
 	position: absolute;
 	padding: 10px;
 	border-radius: 10px;
 	width: 96%;
-	min-height: 230px;
+	min-height: 450px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -95,8 +165,9 @@ export default {
 	overflow-x: hidden;
 	animation: modalEnter 0.8s ease forwards;
 	left: 2%;
-	top: 25%;
+	top: 20%;
 }
+
 .video {
 	top: 5%;
 	height: 90%;
@@ -116,5 +187,68 @@ export default {
 
 .btn {
 	width: 50px;
+}
+
+.settings {
+	width: 25px;
+}
+
+.languages-selection {
+	margin-top: 25%;
+	margin-bottom: 15px;
+}
+.flag {
+	width: 40px;
+	margin-right: 15px;
+}
+
+.bb {
+	border-bottom: 2px solid;
+}
+
+.welcome-container {
+	position: relative;
+}
+
+.welcome-text {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	animation: show 9s infinite;
+}
+
+.welcome-text:nth-child(1) {
+	animation-delay: 0s;
+}
+.welcome-text:nth-child(2) {
+	animation-delay: 3s;
+}
+.welcome-text:nth-child(3) {
+	animation-delay: 6s;
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	33% {
+		opacity: 1;
+	}
+	38% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.selected-flag {
+	border-radius: 50%;
+	box-shadow: 1px 1px 7px 8px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 1px 1px 7px 8px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 1px 1px 7px 8px rgba(0, 0, 0, 0.75);
 }
 </style>
