@@ -22,30 +22,30 @@ export default {
 	},
 	methods: {
 		importBackup() {
-			if (window.localStorage.getItem("secondList")) {
-				const savedLastTodosBackup2 = window.localStorage.getItem("todosBackup2");
-				this.getBackup(savedLastTodosBackup2, "todos2");
-			} else if (window.localStorage.getItem("thirdList")) {
-				const savedLastTodosBackup3 = window.localStorage.getItem("todosBackup3");
-				this.getBackup(savedLastTodosBackup3, "todos3");
-			} else if (window.localStorage.getItem("fourthList")) {
-				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup4");
-				this.getBackup(savedLastTodosBackup4, "todos4");
-			} else if (window.localStorage.getItem("fifthList")) {
-				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup5");
-				this.getBackup(savedLastTodosBackup4, "todos5");
-			} else if (window.localStorage.getItem("sixthList")) {
-				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup6");
-				this.getBackup(savedLastTodosBackup4, "todos6");
-			} else if (window.localStorage.getItem("seventhList")) {
-				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup7");
-				this.getBackup(savedLastTodosBackup4, "todos7");
-			} else if (window.localStorage.getItem("eighthList")) {
-				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup8");
-				this.getBackup(savedLastTodosBackup4, "todos8");
-			} else {
-				const savedLastTodosBackup = window.localStorage.getItem("todosBackup");
-				this.getBackup(savedLastTodosBackup, "todos");
+			const lists = [
+				{ key: "secondList", backup: "todosBackup2", name: "todos2" },
+				{ key: "thirdList", backup: "todosBackup3", name: "todos3" },
+				{ key: "fourthList", backup: "todosBackup4", name: "todos4" },
+				{ key: "fifthList", backup: "todosBackup5", name: "todos5" },
+				{ key: "sixthList", backup: "todosBackup6", name: "todos6" },
+				{ key: "seventhList", backup: "todosBackup7", name: "todos7" },
+				{ key: "eighthList", backup: "todosBackup8", name: "todos8" },
+			];
+
+			let loaded = false;
+
+			for (const item of lists) {
+				if (window.localStorage.getItem(item.key)) {
+					const saved = window.localStorage.getItem(item.backup);
+					this.getBackup(saved, item.name);
+					loaded = true;
+					break;
+				}
+			}
+
+			if (!loaded) {
+				const saved = window.localStorage.getItem("todosBackup");
+				this.getBackup(saved, "todos");
 			}
 		},
 		getBackup(lastCopy, list) {

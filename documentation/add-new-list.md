@@ -9,3 +9,5 @@ PROCEDURA PER AGGIUNGERE ALTRE LISTE:
 - Nelle const singleTodoDeleted e multipleTodoDeleted aggiungi agli array nuovi elementi cambiando il numero con quello della nuova lista (es.: 'singleTodoDeleted-9' 'deletedTodos-9').
 
 - Nel file Rename-list.vue stessa cosa, cerca l'ultima lista aggiunta e fai copia e incolla aggiungendo nuova lista con un numero in più.
+
+- Nel file Backup-list.vue aggiungere la lista nell'array lists nel metodo importBackup().
