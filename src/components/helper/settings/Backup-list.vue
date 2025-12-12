@@ -31,6 +31,18 @@ export default {
 			} else if (window.localStorage.getItem("fourthList")) {
 				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup4");
 				this.getBackup(savedLastTodosBackup4, "todos4");
+			} else if (window.localStorage.getItem("fifthList")) {
+				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup5");
+				this.getBackup(savedLastTodosBackup4, "todos5");
+			} else if (window.localStorage.getItem("sixthList")) {
+				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup6");
+				this.getBackup(savedLastTodosBackup4, "todos6");
+			} else if (window.localStorage.getItem("seventhList")) {
+				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup7");
+				this.getBackup(savedLastTodosBackup4, "todos7");
+			} else if (window.localStorage.getItem("eighthList")) {
+				const savedLastTodosBackup4 = window.localStorage.getItem("todosBackup8");
+				this.getBackup(savedLastTodosBackup4, "todos8");
 			} else {
 				const savedLastTodosBackup = window.localStorage.getItem("todosBackup");
 				this.getBackup(savedLastTodosBackup, "todos");
