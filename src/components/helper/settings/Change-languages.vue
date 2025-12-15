@@ -29,7 +29,7 @@ export default {
 
 <template>
 	<div class="helper-settings">
-		<ListIstructionAccordion show-list-instructions-input="changeLanguage" :istructions-text="languages.changeLanguage" :select-deselect-arrow="settings.changeLanguage && settings.section === changeLanguage" :isSettings="true" />
+		<ListIstructionAccordion show-list-instructions-input="changeLanguage" :istructions-text="languages.changeLanguage" :select-deselect-arrow="settings.changeLanguage && settings.section === changeLanguage" :isSettings="true" :language-flags="true" />
 		<div class="languages-btns-container mb-3" v-if="settings.changeLanguage && settings.section === changeLanguage">
 			<div
 				class="btns-language-container"

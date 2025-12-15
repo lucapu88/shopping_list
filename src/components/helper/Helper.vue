@@ -142,9 +142,9 @@ export default {
 
 				<ReloadApp />
 
-				<RenameList />
-
 				<ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
+
+				<RenameList />
 
 				<ChangeThemes @themeLoadingEmit="themeLoadingEmitted" />
 

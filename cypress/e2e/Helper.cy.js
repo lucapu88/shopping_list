@@ -22,7 +22,7 @@ describe("test dell'helper e delle impostazioni", () => {
     // });
 
     it("cambio lingue", () => {
-        const childNumber = 4;
+        const childNumber = 3;
         //Spagnolo
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();

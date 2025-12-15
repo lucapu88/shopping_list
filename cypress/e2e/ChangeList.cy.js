@@ -53,8 +53,10 @@ describe("test delle liste multiple", () => {
     });
 
     it('verifico se il cambio nome delle liste funziona', () => {
+        const child = 4;
+
         cy.get('.settings').click({ force: true });
-        cy.get(`#helper-description > :nth-child(${3}) > .list-title`).click();
+        cy.get(`#helper-description > :nth-child(${child}) > .list-title`).click();
         cy.get('[placeholder="List 1"]').type('A');
         cy.get('[placeholder="List 2"]').type('B');
         cy.get('[placeholder="List 3"]').type('C');
@@ -70,7 +72,7 @@ describe("test delle liste multiple", () => {
         cy.get('.btn-back-to-top').click({ force: true });
         cy.wait(500);
         cy.get('.settings').click({ force: true });
-        cy.get(`#helper-description > :nth-child(${3}) > .list-title`).click();
+        cy.get(`#helper-description > :nth-child(${child}) > .list-title`).click();
         cy.get('[placeholder="A"]').type('A');
         cy.get('[placeholder="B"]').type(' ');
         cy.get('[placeholder="C"]').type('  ');

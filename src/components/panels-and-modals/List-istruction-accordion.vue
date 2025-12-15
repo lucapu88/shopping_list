@@ -12,6 +12,7 @@ export default {
 		selectDeselectArrow: Boolean,
 		isSettings: Boolean,
 		isNew: Boolean,
+		languageFlags: Boolean,
 	},
 	data() {
 		return {
@@ -53,7 +54,17 @@ export default {
 	>
 		<span v-if="isSettings" class="settings-icon me-1"> &#x2699; </span>
 		<span v-if="troubleshooting" class="troubleshooting-icon me-1"> ? </span>
+
 		<span :class="{ 'custom-font-size': customFontSize }"> {{ istructionsText }} <span v-if="isNew" class="new">NEW</span> </span>
+
+		<div v-if="languageFlags" class="languages-selection">
+			<span class="flag"><img src="@/img/flags/inglese.webp" alt="english_flag" /></span>
+
+			<span class="flag"><img src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
+
+			<span class="flag"><img src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+		</div>
+
 		<span
 			class="arrow"
 			:class="{
@@ -176,5 +187,47 @@ export default {
 }
 .border-custom {
 	border: 1px solid;
+}
+
+.languages-selection {
+	position: relative;
+}
+.flag {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	animation: show 3s infinite;
+}
+
+.flag > img {
+	width: 25px;
+}
+
+.flag:nth-child(1) {
+	animation-delay: 0s;
+}
+.flag:nth-child(2) {
+	animation-delay: 1s;
+}
+.flag:nth-child(3) {
+	animation-delay: 2s;
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	33% {
+		opacity: 1;
+	}
+	43% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 </style>
