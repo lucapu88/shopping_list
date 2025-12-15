@@ -28,6 +28,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Firebase (personal use)
 - LangChain, OpenAI (personal use)
 - Cypress (end-to-end testing)
+- Vitest (unit testing)
 - Kodular (conversion to Android app)
 
 <br><hr>

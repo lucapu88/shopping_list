@@ -1,35 +1,43 @@
 {
-  "name": "shopping-list",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "push": "npx cypress run && git push",
-    "push-amend": "npx cypress run && git push --force"
-  },
-  "dependencies": {
-    "@langchain/core": "^0.3.73",
-    "@langchain/langgraph": "^0.4.9",
-    "@langchain/openai": "^0.6.11",
-    "bootstrap": "^5.3.3",
-    "cors": "^2.8.5",
-    "emailjs-com": "^3.2.0",
-    "express": "^5.1.0",
-    "firebase": "^12.5.0",
-    "langchain": "^0.3.32",
-    "pinia": "^2.1.6",
-    "vue": "^3.3.4",
-    "vue3-smooth-dnd": "^0.0.6",
-    "zod": "^3.25.76"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "cypress": "^13.6.1",
-    "eslint": "^8.39.0",
-    "eslint-plugin-vue": "^9.11.0",
-    "vite": "^4.3.9"
-  }
+	"name": "shopping-list",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+		"push": "npx cypress run && npx vitest run && git push",
+		"push-amend": "npx cypress run && npx vitest run && git push --force",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest --coverage"
+	},
+	"dependencies": {
+		"@langchain/core": "^0.3.73",
+		"@langchain/langgraph": "^0.4.9",
+		"@langchain/openai": "^0.6.11",
+		"bootstrap": "^5.3.3",
+		"cors": "^2.8.5",
+		"emailjs-com": "^3.2.0",
+		"express": "^5.1.0",
+		"firebase": "^12.5.0",
+		"langchain": "^0.3.32",
+		"pinia": "^2.1.6",
+		"vue": "^3.3.4",
+		"vue3-smooth-dnd": "^0.0.6",
+		"zod": "^3.25.76"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^4.2.3",
+		"@vitest/ui": "^1.6.1",
+		"cypress": "^13.6.1",
+		"eslint": "^8.39.0",
+		"eslint-plugin-vue": "^9.11.0",
+		"jsdom": "^23.2.0",
+		"pinia": "^2.1.6",
+		"vite": "^4.3.9",
+		"vitest": "^1.6.1",
+		"vue": "^3.3.4"
+	}
 }
