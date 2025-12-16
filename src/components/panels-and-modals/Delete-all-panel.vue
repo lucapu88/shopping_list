@@ -98,7 +98,7 @@ export default {
 	margin-top: 5%;
 }
 .confirm > button {
-	margin-right: 15px;
+	margin-right: 0.9375rem;
 	width: 2.8125rem;
 }
 

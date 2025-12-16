@@ -75,7 +75,7 @@
 
 .tips-btn-jeans {
 	width: 84%;
-	margin-left: 23px;
+	margin-left: 1.4375rem; /* 23px converted to rem */
 	background-color: var(--jeans-text-light-color);
 	border-left: 2px dashed var(--jeans-label);
 	border-right: 2px dashed var(--jeans-label);
@@ -134,7 +134,7 @@
 	background-color: var(--jeans-label);
 	color: var(--jeans-text-dark-color);
 	border-radius: var(--jeans-radius);
-	margin-top: 10px;
+	margin-top: 0.625rem;
 	font-weight: bold;
 }
 

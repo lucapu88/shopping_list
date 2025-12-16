@@ -244,7 +244,7 @@ export default {
 	border: 1px solid;
 	border-radius: 5px;
 	padding: 3px 5px;
-	margin: 5px;
+	margin: 0.3125rem;
 	font-size: 0.938rem;
 	display: flex;
 	align-items: center;
@@ -278,7 +278,7 @@ export default {
 
 .categoryActive {
 	padding-right: 0.625rem !important;
-	margin: 5px !important;
+	margin: 0.3125rem !important;
 	background-color: transparent !important;
 	border: none !important;
 	padding-top: 0 !important;

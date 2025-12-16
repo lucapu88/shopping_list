@@ -170,7 +170,7 @@ export default {
 }
 
 .christmas {
-	margin-top: 40px;
+	margin-top: 2.5rem;
 }
 
 .halloween-witch-hat {

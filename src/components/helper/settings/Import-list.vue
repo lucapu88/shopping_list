@@ -107,7 +107,7 @@ export default {
 	display: grid;
 	grid-template-columns: 9% 65% 20%;
 	gap: 10px;
-	margin-top: 5px;
+	margin-top: 0.3125rem;
 }
 
 .add-list-textarea {

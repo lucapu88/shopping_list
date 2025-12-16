@@ -249,7 +249,7 @@ export default {
 	gap: 20px;
 }
 button {
-	margin-right: 15px;
+	margin-right: 0.9375rem;
 	font-size: 1.25rem;
 	min-width: 50px;
 }

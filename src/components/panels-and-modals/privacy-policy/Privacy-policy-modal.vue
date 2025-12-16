@@ -80,7 +80,7 @@ export default {
 	border: 1px solid grey;
 	font-size: x-small;
 	text-transform: capitalize;
-	margin-top: 20px;
+	margin-top: 1.25rem;
 	border-radius: 5px;
 	background-color: transparent;
 }
@@ -99,7 +99,7 @@ export default {
 .privacy-modal-header,
 .privacy-modal-main {
 	border-bottom: 1px solid #000000;
-	margin-bottom: 40px;
+	margin-bottom: 2.5rem;
 }
 .privacy-modal-header,
 .privacy-modal-main,

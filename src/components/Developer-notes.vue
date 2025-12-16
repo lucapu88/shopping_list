@@ -92,7 +92,7 @@ export default {
 .buttons-container {
 	display: flex;
 	gap: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 0.9375rem;
 }
 .buttons-container > button {
 	width: 55px;

@@ -265,7 +265,7 @@ export default {
 	padding-bottom: 30%;
 }
 .helper-settings-title {
-	margin-bottom: 15px;
+	margin-bottom: 0.9375rem;
 	text-align: center;
 }
 
@@ -292,7 +292,7 @@ export default {
 	text-align: center;
 	color: #ff0000;
 	border-top: 1.5px solid #000000;
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 	margin-bottom: 0;
 }
 .left-christmas-info {
@@ -311,6 +311,6 @@ export default {
 .copyright {
 	text-align: center;
 	font-size: 15px;
-	margin-top: 40px;
+	margin-top: 2.5rem;
 }
 </style>

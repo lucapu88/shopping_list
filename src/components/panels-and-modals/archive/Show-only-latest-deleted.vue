@@ -84,8 +84,8 @@ export default {
 .show-hide-btn {
 	border: none;
 	background-color: transparent;
-	margin-left: 20px;
-	margin-bottom: 10px;
+	margin-left: 1.25rem;
+	margin-bottom: 0.625rem;
 }
 .animate-charcter {
 	background-image: linear-gradient(-225deg, #e30000 67%, #44107a 29%, #153557 0%, #fff800 100%);
@@ -121,7 +121,7 @@ export default {
 	font-size: large;
 }
 .multiple-deleted-container {
-	margin-bottom: 10px;
+	margin-bottom: 0.625rem;
 }
 .todo-deleted {
 	margin: 0;
@@ -160,7 +160,7 @@ li {
 }
 
 .todo-deleted:last-child {
-	margin-top: 10px;
+	margin-top: 0.625rem;
 }
 
 .empty-list-text {

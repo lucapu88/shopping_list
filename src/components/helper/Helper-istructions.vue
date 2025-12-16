@@ -84,7 +84,7 @@ export default {
 .helper-title {
 	margin-bottom: 0;
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 1.25rem;
 	border-top: 1px solid;
 	padding-top: 10px;
 }

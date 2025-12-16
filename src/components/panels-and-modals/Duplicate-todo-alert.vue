@@ -82,7 +82,7 @@ export default {
 }
 .body > p {
 	margin: 0;
-	margin-right: 15px;
+	margin-right: 0.9375rem;
 }
 
 .btn-yes {

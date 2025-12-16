@@ -15,6 +15,22 @@ body {
 	touch-action: auto !important;
 }
 
+/* TABELLA PX TO REM:
+
+	5px > 0.313rem
+
+	10px > 0.625rem
+
+	20px > 1.25rem
+
+	30px > 1.875rem
+
+	40px > 2.5rem
+
+	50px > 3.125
+	
+	60px > 3.75rem    */
+
 /* ----------------------------------------VARIE------------------------------------ */
 
 li {
@@ -53,7 +69,7 @@ button {
 /*Per quando si aggiungono nuove funzionalità*/
 .new {
 	color: red;
-	margin-left: 10px;
+	margin-left: 0.625rem;
 	text-shadow: 2px 2px 3px black;
 	display: inline-block;
 	animation: zoominoutnew 1.5s infinite;
@@ -75,13 +91,13 @@ button {
 	min-width: 295px;
 	max-width: 475px;
 	width: 83%;
-	margin-left: 20px;
+	margin-left: 1.25rem;
 	padding: 5px;
 }
 
 .hand-pointing {
 	display: inline-block;
-	margin-right: 10px;
+	margin-right: 0.625rem;
 	animation: zoominout 1.5s infinite;
 }
 @keyframes zoominout {
@@ -97,7 +113,7 @@ button {
 }
 
 .share-update {
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 }
 .share-update-btn {
 	padding: 0 10px 3px;
@@ -181,7 +197,7 @@ button {
 	display: flex;
 	flex-direction: row-reverse;
 	font-size: 0.4375rem;
-	margin-right: 10px;
+	margin-right: 0.625rem;
 }
 
 .overflow-hide {
@@ -219,7 +235,7 @@ button {
 	align-items: center;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
-	margin-bottom: 5px;
+	margin-bottom: 0.3125rem;
 	position: relative;
 }
 .todo-modify {
@@ -293,7 +309,7 @@ button {
 
 .modify-input {
 	transform-origin: right;
-	margin-left: 5px;
+	margin-left: 0.3125rem;
 	animation: enlargeInput 1s ease-out forwards;
 }
 
@@ -387,7 +403,7 @@ button {
 
 .categoryActive {
 	padding-right: 0.625rem !important;
-	margin: 5px !important;
+	margin: 0.3125rem !important;
 	background-color: transparent !important;
 	border: none !important;
 	padding-top: 0 !important;
@@ -442,7 +458,7 @@ button {
 	margin: 0 auto;
 }
 .christmas {
-	margin-top: 20px;
+	margin-top: 1.25rem;
 }
 .christmas-red {
 	color: #ff0000;
@@ -473,7 +489,7 @@ button {
 	border: 2px solid;
 	padding: 0 7px;
 	border-radius: 50%;
-	margin-left: 15px;
+	margin-left: 0.9375rem;
 }
 
 .helper-icon {
@@ -486,7 +502,7 @@ button {
 }
 
 .helper-list {
-	margin-left: -10px;
+	margin-left: -0.625rem;
 }
 .helper-list > li {
 	display: list-item;
@@ -511,7 +527,7 @@ button {
 }
 
 .toggle-delete-confirm-container {
-	margin-left: 20px;
+	margin-left: 1.25rem;
 }
 .toggle-delete-confirm-container:hover {
 	cursor: pointer;

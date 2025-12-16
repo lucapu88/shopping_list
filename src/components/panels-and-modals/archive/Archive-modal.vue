@@ -135,7 +135,7 @@ export default {
 }
 
 .title {
-	margin-bottom: 10px;
+	margin-bottom: 0.625rem;
 	z-index: 600;
 }
 .x {

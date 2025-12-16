@@ -76,7 +76,7 @@ export default {
 
 .link-copied {
 	font-size: 0.813rem;
-	margin-left: 5px;
+	margin-left: 0.313rem;
 	color: rgb(197, 0, 0);
 }
 </style>

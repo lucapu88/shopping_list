@@ -46,10 +46,10 @@ export default {
 
 .todo-list {
 	max-width: 100vw;
-	margin-top: 20px;
+	margin-top: 1.25rem;
 }
 
 .margin-t {
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 }
 </style>

@@ -48,16 +48,16 @@ export default {
 	background-color: #adadad56;
 }
 .reload-container {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 0.625rem;
+	margin-bottom: 0.625rem;
 }
 .clicked {
 	background-color: #b1b1b1;
 }
 .reload-btn {
 	padding: 1px 15px;
-	margin-left: 15px;
-	margin-right: 10px;
+	margin-left: 0.9375rem;
+	margin-right: 0.625rem;
 }
 .refresh-icon {
 	font-size: 1.3rem;

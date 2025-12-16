@@ -166,7 +166,7 @@ export default {
 	background-color: #b2b2b2;
 }
 .notes {
-	margin-top: 60px;
+	margin-top: 3.75rem;
 	font-size: 2.188rem;
 	width: 200px;
 }

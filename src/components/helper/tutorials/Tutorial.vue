@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .video-container {
-	margin: 10px;
+	margin: 0.625rem;
 }
 .video {
 	z-index: 100;

@@ -115,7 +115,7 @@ button:hover {
 }
 
 .form-check > label {
-	margin-left: 5px;
+	margin-left: 0.3125rem;
 	line-height: 2;
 }
 .form-check-input {

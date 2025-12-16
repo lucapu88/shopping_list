@@ -139,7 +139,7 @@ export default {
 
 .cancer-day {
 	width: 25px;
-	margin-left: 10px;
+	margin-left: 0.625rem;
 }
 
 .peace-day {
@@ -215,7 +215,7 @@ export default {
 	50% {
 		-webkit-transform: rotate(95deg);
 		transform: rotate(95deg);
-		margin-left: 15px;
+		margin-left: 0.9375rem;
 	}
 	100% {
 		-webkit-transform: rotate(0deg);

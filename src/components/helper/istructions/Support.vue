@@ -73,6 +73,6 @@ export default {
 .social {
 	width: 35px;
 	height: 30px;
-	margin-right: 10px;
+	margin-right: 0.625rem;
 }
 </style>

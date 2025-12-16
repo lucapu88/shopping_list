@@ -195,11 +195,11 @@ export default {
 
 .languages-selection {
 	margin-top: 25%;
-	margin-bottom: 15px;
+	margin-bottom: 0.9375rem;
 }
 .flag {
 	width: 40px;
-	margin-right: 15px;
+	margin-right: 0.9375rem;
 }
 
 .bb {

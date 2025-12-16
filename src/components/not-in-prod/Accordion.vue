@@ -87,7 +87,7 @@ section {
 	padding: 5px;
 	border: 1px solid;
 	border-radius: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 0.3125rem;
 	display: flex;
 	justify-content: space-between;
 	background-color: #ffffff;
@@ -114,7 +114,7 @@ section {
 .shopopings-list-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	margin-bottom: 10px;
+	margin-bottom: 0.625rem;
 }
 
 .arrow {

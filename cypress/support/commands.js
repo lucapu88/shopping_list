@@ -56,9 +56,11 @@ Cypress.Commands.add('showListsButtonClick', () => {
 
 Cypress.Commands.add('keyboardEventCheck', () => {
   // Per ovviare ad un errore di cypress: TypeError: Cannot read properties of undefined (reading 'KeyboardEvent')     
-  if (typeof window !== 'undefined' && !window.KeyboardEvent) {
-    window.KeyboardEvent = KeyboardEvent;
-  }
+  cy.window().then((win) => {
+    if (!win.KeyboardEvent) {
+      win.KeyboardEvent = window.KeyboardEvent;
+    }
+  });
 });
 
 Cypress.Commands.add('closeBlockingElements', () => {

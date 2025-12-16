@@ -107,7 +107,7 @@ export default {
 }
 .suggestions-modal-container > header {
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 0.625rem;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -154,7 +154,7 @@ export default {
 	width: 35px;
 }
 .tip {
-	margin-bottom: 5px;
+	margin-bottom: 0.313rem;
 }
 .suggestions-modal-container > footer {
 	display: flex;

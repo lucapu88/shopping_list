@@ -119,6 +119,6 @@ export default {
 .christmas-skull {
 	width: 38px;
 	height: 38px;
-	margin-left: 7px;
+	margin-left: 0.4375rem;
 }
 </style>

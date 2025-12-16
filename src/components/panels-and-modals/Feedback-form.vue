@@ -158,11 +158,11 @@ export default {
 .title {
 	font-size: 1rem;
 	font-weight: bold;
-	margin-bottom: 10px;
+	margin-bottom: 0.625rem;
 }
 
 .margin-30 {
-	margin-top: 30px;
+	margin-top: 1.875rem;
 }
 
 textarea {

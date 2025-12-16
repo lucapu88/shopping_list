@@ -83,7 +83,7 @@ export default {
 	padding: 5px;
 	border: 1px solid;
 	border-radius: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 0.313rem;
 	display: flex;
 	justify-content: space-between;
 }
@@ -95,7 +95,7 @@ export default {
 .troubleshooting-title {
 	color: #008000 !important;
 	font-weight: bold !important;
-	margin-top: 20px;
+	margin-top: 1.25rem;
 }
 .troubleshooting-icon {
 	border: 2px solid;

@@ -131,7 +131,7 @@ export default {
 	border-radius: 5px;
 }
 .confirm-backup-container > div > button {
-	margin-left: 10px;
+	margin-left: 0.625rem;
 }
 
 .no-backup {

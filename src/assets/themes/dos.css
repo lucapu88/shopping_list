@@ -49,7 +49,7 @@
 	background: linear-gradient(90deg, var(--dos-title-background-color) 0%, var(--dos-title-background-second-color) 90%);
 	padding: 10px !important;
 	font-weight: bold !important;
-	margin-bottom: 5px !important;
+	margin-bottom: 0.3125rem !important;
 }
 .retro-theme-confirm {
 	background-color: var(--dos-helper-primary-color) !important;
@@ -64,7 +64,8 @@
 	color: var(--dos-secondary-color) !important;
 	border: 3px var(--white) outset !important;
 	border-radius: 0 !important;
-	margin: 5px 5px;
+	padding-left: 7px !important;
+	margin: 0.3125rem;
 }
 .retro-category-list {
 	border-radius: 0px !important;

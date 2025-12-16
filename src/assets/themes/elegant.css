@@ -78,7 +78,7 @@
 	border: 1px solid var(--white) !important;
 	color: var(--white) !important;
 	border-radius: 3px !important;
-	margin-bottom: 15px;
+	margin-bottom: 0.9375rem;
 }
 .category-elegant {
 	border: 1px solid var(--elegant-text-color) !important;

@@ -144,8 +144,8 @@ export default {
 <style scoped>
 .container {
 	margin: auto;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-bottom: 1.25rem;
+	margin-top: 1.25rem;
 	padding: 15px;
 	padding-top: 35px;
 	position: relative;
@@ -241,7 +241,7 @@ export default {
 }
 
 .bottom {
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 	display: flex;
 	text-align: center;
 	flex-direction: column;
