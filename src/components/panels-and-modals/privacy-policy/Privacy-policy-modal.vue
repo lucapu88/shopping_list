@@ -52,6 +52,8 @@ export default {
 						<p>Various types of Data as specified in the privacy policy of the service</p>
 						<strong>Kodular</strong>
 						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<strong>EmailJS</strong>
+						<p>Various types of Data as specified in the privacy policy of the service</p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>
