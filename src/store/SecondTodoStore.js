@@ -19,7 +19,6 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         loading: false,
         loadingOpenAIRes: false,
         loadingRecipes: false,
-        movingLoading: false,
         recipe: null,
         showRecipeModal: false,
         listButtons: [],
@@ -29,6 +28,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         moving: false,
         istruction2Visible: false,
         moveSameList: false,
+        copy: null,
+        copied: false,
+        moved: false,
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
     }),
@@ -270,16 +272,20 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.todosStore.todos.forEach(t => t.isMoving = false);
             }
         },
-        moveElementMode() {
+        moveElementMode(isCopy) {
             if (!this.showChangeList) { return; }
-
+            this.copy = isCopy;
             this.moving = !this.moving;
             this.todosStore.isDraggable = false;
             if (!this.moving) {
-                this.todosStore.todos.forEach(t => t.isMoving = false);
-                this.istruction2Visible = false;
-                this.moveSameList = false;
+                this.hideMovingModeMessages();
             }
+        },
+        hideMovingModeMessages() {
+            this.todosStore.todos.forEach(t => t.isMoving = false);
+            this.istruction2Visible = false;
+            this.moveSameList = false;
+            this.copy = null;
         },
         selectElementforMove(n) {
             if (!this.moving) { return; }
@@ -342,11 +348,20 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.moveSameList = true;
                 return;
             }
-            this.movingLoading = true;
-            this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
+            if (!this.copy) {
+                this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
+            }
             this.todosStore.saveTodos();
-
-            location.reload();
+            this.copy ? this.copied = true : this.moved = true;
+            setTimeout(() => {
+                this.copied = false;
+                this.moved = false;
+            }, 3000);
+            setTimeout(() => {
+                //brutto brutto lo so va sistemato. Lo faccio per evitare che in list-buttons-selection.vue venga triggerato selectList()
+                this.hideMovingModeMessages();
+                this.moving = false;
+            }, 300);
         }
     }
 });

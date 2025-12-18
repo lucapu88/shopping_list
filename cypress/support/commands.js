@@ -51,7 +51,6 @@ Cypress.Commands.add('addSomeItemsToList', (phrases) => {
 Cypress.Commands.add('showListsButtonClick', () => {
   cy.get('.show-lists-img').click({ force: true });
   cy.wait(1000); //Questo è inserito perchè il riquadro dei pulsanti impiega un secondo ad apparire, quindi aspetto che sia visibile
-  cy.closeBlockingElements();
 });
 
 Cypress.Commands.add('keyboardEventCheck', () => {

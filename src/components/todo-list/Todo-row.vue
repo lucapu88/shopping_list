@@ -40,7 +40,7 @@ export default {
 
 <template>
 	<div class="only-important-visible" v-if="todosStore.showOnlyImportantTodos"></div>
-	<div class="is-moving-visible" :class="{ 'is-moving': todo.isMoving }" v-if="secondTodos.moving" @click="secondTodos.selectElementforMove(index, todo)"></div>
+	<div class="is-moving-visible" :class="{ 'is-moving': todo.isMoving, 'is-coping': todo.isMoving && secondTodos.copy }" v-if="secondTodos.moving" @click="secondTodos.selectElementforMove(index, todo)"></div>
 
 	<div v-if="todo.category && theme.minimalTheme" class="category-emoji-minimal">&#x2022;</div>
 	<div v-if="todo.category && !theme.minimalTheme" class="category-emoji" :class="{ 'category-emoji-selected': todo.isSelected }" @click="todosStore.selectCategoryToAddItem(index, todo)">
@@ -202,5 +202,9 @@ export default {
 .is-moving {
 	border: 2px dashed #ff9800;
 	background-color: #ffd5927d !important;
+}
+.is-coping {
+	border: 2px dashed #00eaff !important;
+	background-color: #80f3fd67 !important;
 }
 </style>

@@ -18,6 +18,10 @@ export default {
 	},
 	methods: {
 		selectList(btn) {
+			if (this.secondTodos.moving) {
+				return;
+			}
+
 			if (btn.selectedCondition()) {
 				this.listSelectionAlertVisible = true;
 				setTimeout(() => {
@@ -97,6 +101,7 @@ export default {
 					:class="{
 						'selected-btn': btn.selectedCondition(),
 						'btn-in-moving-mode': secondTodos.istruction2Visible,
+						'btn-in-coping-mode': secondTodos.copy && secondTodos.istruction2Visible,
 						'light-button-color': theme.lightTheme,
 						'dark-btn': theme.darkTheme,
 						'minimal-btn': theme.minimalTheme,
@@ -120,8 +125,9 @@ export default {
 			</template>
 		</div>
 		<div class="bottom">
+			<p class="border-t">{{ languages.moveMode.moveOrCopyTitle }}</p>
 			<!-- MESSAGGI CHE SPIEGANO COSA FARE ALL'UTENTE -->
-			<p v-if="secondTodos.moving">1- {{ languages.moveMode.istruction1 }}</p>
+			<p v-if="secondTodos.moving">1- {{ secondTodos.copy ? languages.moveMode.copyIstruction1 : languages.moveMode.istruction1 }}</p>
 			<p v-if="secondTodos.istruction2Visible">2- {{ languages.moveMode.istruction2 }}</p>
 			<p v-if="secondTodos.moveSameList" class="text-danger">
 				<small>{{ languages.moveMode.istructionAlert }}</small>
@@ -131,12 +137,19 @@ export default {
 			<!-- PULSANTE CHE ATTIVA/DISATTIVA LA MODALITÀ -->
 			<div class="move-container">
 				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
-				<button class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode()" :disabled="!todosStore.todos.length">
+				<!-- Questi vif sono fatti in questo modo perchè i pulsanti devono esserci entrambi e solo quando copy è true, viene nascosto il primo, mentre se copy è false viene nascosto il secondo, se invece copy è null ci sono entrambi -->
+				<button v-if="secondTodos.copy === null || secondTodos.copy === false" class="move-elements-btn" @click="secondTodos.moveElementMode(false)" :disabled="!todosStore.todos.length">
 					<img class="move-img" src="@/img/icons/move.webp" alt="move" />
 					{{ languages.moveMode.moveElementText }}
 				</button>
+				<button v-if="secondTodos.copy === null || secondTodos.copy === true" class="copy-elements-btn" @click="secondTodos.moveElementMode(true)" :disabled="!todosStore.todos.length">
+					<img class="copy-img" src="@/img/icons/copy-el.webp" alt="copy" />
+					{{ languages.moveMode.copyElementText }}
+				</button>
 				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
 			</div>
+			<p v-if="secondTodos.moved" class="text-success">{{ languages.moveMode.movedText }}</p>
+			<p v-if="secondTodos.copied" class="text-success">{{ languages.moveMode.copiedText }}</p>
 		</div>
 	</div>
 </template>
@@ -257,6 +270,9 @@ export default {
 	gap: 10%;
 }
 
+.copy-img {
+	width: 20px;
+}
 .move-img,
 .move-arrow {
 	width: 25px;
@@ -276,14 +292,22 @@ export default {
 	}
 }
 
-.is-moving {
-	border: 2px solid #4caf50;
-	background-color: #a9a9a9;
-}
-
+.copy-elements-btn,
 .move-elements-btn {
 	cursor: pointer;
 	align-self: center;
+	width: 100px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.copy-elements-btn {
+	color: #00bfff !important;
+}
+.move-elements-btn {
+	color: #ff6600 !important;
 }
 
 .apply-moving-wrapper {
@@ -293,7 +317,13 @@ export default {
 .btn-in-moving-mode {
 	border: 2px dashed #ff9800 !important;
 	background-color: #ffd592 !important;
-	color: #ff6600 !important;
+	color: #993d00 !important;
+}
+
+.btn-in-coping-mode {
+	border: 2px dashed #00eaff !important;
+	background-color: #80f3fd !important;
+	color: #006d91 !important;
 }
 
 .rotate {
@@ -310,5 +340,9 @@ export default {
 	100% {
 		transform: scaleY(-1) scale(1, 1);
 	}
+}
+
+.border-t {
+	border-top: 1px solid;
 }
 </style>

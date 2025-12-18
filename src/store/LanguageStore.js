@@ -212,10 +212,15 @@ export const useLanguageStore = defineStore('Language', {
     },
     archive: 'Archive',
     moveMode: {
-      moveElementText: 'Move products',
+      moveOrCopyTitle: 'Move or Copy items from lists',
+      moveElementText: 'Move',
+      copyElementText: 'Copy',
       istruction1: 'Select the items to move from the list',
+      copyIstruction1: 'Select the items to copy from the list',
       istruction2: 'Select the destination list',
-      istructionAlert: 'The item is already in this list. Please select another'
+      istructionAlert: 'The item is already in this list. Please select another',
+      movedText: 'MOVED successfully',
+      copiedText: 'COPIED successfully',
     },
     selectedListText: 'You are writing on the list: ',
     welcomeMessage: 'Thank you for downloading Shopping List, and welcome!'
@@ -364,10 +369,15 @@ export const useLanguageStore = defineStore('Language', {
       this.listSelection.title = 'Scegli la lista che desideri';
       this.listSelection.alert = 'Sei già su questa lista';
       this.archive = 'Archivio';
-      this.moveMode.moveElementText = 'Sposta prodoti';
+      this.moveMode.moveOrCopyTitle = 'Sposta o Copia elementi dalle liste';
+      this.moveMode.moveElementText = 'Sposta';
+      this.moveMode.copyElementText = 'Copia';
       this.moveMode.istruction1 = 'Seleziona dalla lista gli elementi da spostare';
+      this.moveMode.copyIstruction1 = 'Seleziona dalla lista gli elementi da copiare';
       this.moveMode.istruction2 = 'Seleziona la lista di destinazione';
       this.moveMode.istructionAlert = "L'elemento è già in questa lista. Selezionane un'altra";
+      this.moveMode.movedText = 'SPOSTATO con successo';
+      this.moveMode.copiedText = 'COPIATO con successo';
       this.selectedListText = 'Stai scrivendo sulla lista: ';
       this.welcomeMessage = "Grazie per aver scaricato Shopping List, e benvenuto!";
     },
@@ -449,10 +459,15 @@ export const useLanguageStore = defineStore('Language', {
       this.listSelection.title = 'Elija la lista que desee';
       this.listSelection.alert = 'Ya estás en esta lista';
       this.archive = 'Archivo';
-      this.moveMode.moveElementText = 'Mover productos';
+      this.moveMode.moveOrCopyTitle = 'Mover o Copiar elementos de las listas';
+      this.moveMode.moveElementText = 'Mover';
+      this.moveMode.copyElementText = 'Copiar';
       this.moveMode.istruction1 = 'Seleccione los elementos que desea mover de la lista';
+      this.moveMode.copyIstruction1 = 'Seleccione los elementos que desea copiar de la lista';
       this.moveMode.istruction2 = 'Seleccione la lista de destino';
       this.moveMode.istructionAlert = "El artículo ya está en esta lista. Seleccione otro";
+      this.moveMode.movedText = 'MOVIDO con éxito';
+      this.moveMode.copiedText = 'COPIADO con éxito';
       this.selectedListText = 'Estás escribiendo en la lista: ';
       this.welcomeMessage = 'Gracias por descargar Lista de Compras, ¡y bienvenido!';
     },

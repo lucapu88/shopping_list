@@ -108,7 +108,7 @@ export default {
 			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
 				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
-					<LoadingOrUpdating :listChanged="secondTodosStore.loading" :moved="secondTodosStore.movingLoading" />
+					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 
 					<header style="overflow: hidden">
 						<FestivitiesAndOccurrences v-if="settings.isVisibleOnScroll" />
