@@ -21,7 +21,11 @@ body {
 
 	10px > 0.625rem
 
+	15px > 0.938rem
+
 	20px > 1.25rem
+	
+	25px > 1.563rem
 
 	30px > 1.875rem
 
@@ -92,7 +96,7 @@ button {
 	max-width: 475px;
 	width: 83%;
 	margin-left: 1.25rem;
-	padding: 5px;
+	padding: 0.313rem;
 }
 
 .hand-pointing {
@@ -266,7 +270,7 @@ button {
 	animation-timing-function: ease-in;
 	animation-duration: 0.5s;
 	z-index: 100;
-	padding: 5px;
+	padding: 0.313rem;
 }
 @keyframes fadeInOpacity {
 	0% {
@@ -495,7 +499,7 @@ button {
 .helper-icon {
 	max-width: 30px;
 	max-height: 30px;
-	padding: 5px;
+	padding: 0.313rem;
 	text-align: center;
 	display: inline;
 	margin-left: 0;
@@ -507,7 +511,7 @@ button {
 .helper-list > li {
 	display: list-item;
 	z-index: 100;
-	padding: 5px;
+	padding: 0.313rem;
 }
 
 .helper-description > div li {

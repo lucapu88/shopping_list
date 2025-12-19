@@ -152,7 +152,7 @@ export default {
 }
 .modal-content {
 	position: absolute;
-	padding: 10px;
+	padding: 0.625rem;
 	border-radius: 10px;
 	width: 96%;
 	min-height: 450px;

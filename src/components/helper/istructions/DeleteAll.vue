@@ -44,6 +44,6 @@ export default {
 .delete-all-description {
 	background-color: #000000;
 	color: #ffffff;
-	padding: 5px;
+	padding: 0.313rem;
 }
 </style>

@@ -161,7 +161,7 @@ export default {
 	margin: auto;
 	margin-bottom: 1.25rem;
 	margin-top: 1.25rem;
-	padding: 15px;
+	padding: 0.938rem;
 	padding-top: 35px;
 	position: relative;
 	border-radius: 10px;

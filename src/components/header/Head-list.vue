@@ -226,7 +226,7 @@ export default {
 	background-color: #a6cef8;
 }
 .btn-info {
-	padding: 10px;
+	padding: 0.625rem;
 }
 
 .remove-selected-cat {
@@ -240,7 +240,7 @@ export default {
 	justify-content: center;
 }
 .inputText {
-	padding: 10px;
+	padding: 0.625rem;
 	width: 70%;
 	text-align: center;
 }
@@ -250,6 +250,6 @@ export default {
 	justify-content: center;
 	flex-direction: column;
 	gap: 10px;
-	padding: 10px;
+	padding: 0.625rem;
 }
 </style>

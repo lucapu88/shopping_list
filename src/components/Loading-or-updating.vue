@@ -83,7 +83,7 @@ export default {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	padding: 10px;
+	padding: 0.625rem;
 	background-size: contain;
 	z-index: 450;
 	background-color: #ffffff;

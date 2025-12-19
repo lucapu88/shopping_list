@@ -89,7 +89,7 @@ export default {
 .privacy-modal-content {
 	background-color: #efefef;
 	margin: auto;
-	padding: 25px;
+	padding: 1.563rem;
 	border-radius: 10px;
 	width: 95%;
 	height: 90%;

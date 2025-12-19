@@ -138,7 +138,7 @@ export default {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding: 15px;
+	padding: 0.938rem;
 }
 .square {
 	background-color: #b2b2b29d;

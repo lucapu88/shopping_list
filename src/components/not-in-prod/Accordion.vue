@@ -84,7 +84,7 @@ section {
 }
 
 .list-title {
-	padding: 5px;
+	padding: 0.313rem;
 	border: 1px solid;
 	border-radius: 5px;
 	margin-bottom: 0.3125rem;

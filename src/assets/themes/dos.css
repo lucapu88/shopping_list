@@ -46,7 +46,7 @@
 .retro-helper-settings-title {
 	color: var(--white) !important;
 	background: linear-gradient(90deg, var(--dos-title-background-color) 0%, var(--dos-title-background-second-color) 90%);
-	padding: 10px !important;
+	padding: 0.625rem !important;
 	font-weight: bold !important;
 	margin-bottom: 0.3125rem !important;
 }

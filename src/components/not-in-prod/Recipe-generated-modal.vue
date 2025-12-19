@@ -40,7 +40,7 @@ const secondTodosStore = useSecondTodoStore();
 	position: relative;
 	background-color: white;
 	margin: 0 20px;
-	padding: 10px;
+	padding: 0.625rem;
 }
 .close-modal {
 	position: absolute;

@@ -114,7 +114,7 @@ export default {
 .modal-content {
 	position: relative;
 	margin: auto;
-	padding: 25px;
+	padding: 1.563rem;
 	border-radius: 10px;
 	width: 95%;
 	height: 98%;
@@ -169,7 +169,7 @@ textarea {
 	height: 70vh;
 	width: 100%;
 	text-align: center;
-	padding: 10px;
+	padding: 0.625rem;
 }
 
 .christmas-decorations-container {

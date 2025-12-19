@@ -228,7 +228,7 @@ export default {
 	font-family: sans-serif;
 	font-size: 0.813rem;
 	width: 35ch;
-	padding: 10px;
+	padding: 0.625rem;
 	position: absolute;
 	color: #db0505;
 	background-color: rgba(255, 255, 255, 0.758);

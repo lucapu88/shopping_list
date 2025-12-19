@@ -108,7 +108,7 @@ export default {
 .confirm-delete-modal-content {
 	position: relative;
 	margin: auto;
-	padding: 25px;
+	padding: 1.563rem;
 	border-radius: 10px;
 	width: 90%;
 	max-width: 700px;
@@ -143,7 +143,7 @@ export default {
 .confirm-delete-modal-content > button {
 	border-radius: 5px;
 	width: 40px;
-	padding: 5px;
+	padding: 0.313rem;
 }
 
 .christmas-bells {

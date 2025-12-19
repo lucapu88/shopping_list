@@ -135,7 +135,7 @@ export default {
 }
 
 ul {
-	padding: 5px;
+	padding: 0.313rem;
 	padding-left: 10px;
 }
 
@@ -151,7 +151,7 @@ li {
 
 .list-canceled-title {
 	color: green;
-	padding: 5px;
+	padding: 0.313rem;
 	font-weight: bold;
 }
 

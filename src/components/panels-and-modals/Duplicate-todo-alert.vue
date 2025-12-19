@@ -70,7 +70,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	min-height: 135px;
-	padding: 10px;
+	padding: 0.625rem;
 	box-shadow: 0px 5px 30px 5px;
 	animation: fadeInOpacity 0.8s ease;
 }

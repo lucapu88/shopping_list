@@ -201,7 +201,7 @@ export default {
 	top: -100%;
 	width: 100%;
 	height: 100%;
-	padding: 10px;
+	padding: 0.625rem;
 	background-size: contain;
 	z-index: 500;
 	background-color: #ffffff;
@@ -275,7 +275,7 @@ export default {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: 10px;
+	padding: 0.625rem;
 }
 .close-helper {
 	font-family: Arial, Helvetica, sans-serif;
