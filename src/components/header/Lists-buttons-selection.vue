@@ -136,17 +136,19 @@ export default {
 
 			<!-- PULSANTE CHE ATTIVA/DISATTIVA LA MODALITÀ -->
 			<div class="move-container">
-				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
+				<img v-if="secondTodos.moving && !secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-move.webp" alt="arrow-down" />
+				<img v-if="secondTodos.moving && secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-copy.webp" alt="arrow-down" />
 				<!-- Questi vif sono fatti in questo modo perchè i pulsanti devono esserci entrambi e solo quando copy è true, viene nascosto il primo, mentre se copy è false viene nascosto il secondo, se invece copy è null ci sono entrambi -->
-				<button v-if="secondTodos.copy === null || secondTodos.copy === false" class="move-elements-btn" @click="secondTodos.moveElementMode(false)" :disabled="!todosStore.todos.length">
+				<button v-if="secondTodos.copy === null || secondTodos.copy === false" class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode(false)" :disabled="!todosStore.todos.length">
 					<img class="move-img" src="@/img/icons/move.webp" alt="move" />
 					{{ languages.moveMode.moveElementText }}
 				</button>
-				<button v-if="secondTodos.copy === null || secondTodos.copy === true" class="copy-elements-btn" @click="secondTodos.moveElementMode(true)" :disabled="!todosStore.todos.length">
+				<button v-if="secondTodos.copy === null || secondTodos.copy === true" class="copy-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode(true)" :disabled="!todosStore.todos.length">
 					<img class="copy-img" src="@/img/icons/copy-el.webp" alt="copy" />
 					{{ languages.moveMode.copyElementText }}
 				</button>
-				<img v-if="secondTodos.moving" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow.webp" alt="arrow-down" />
+				<img v-if="secondTodos.moving && !secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-move.webp" alt="arrow-down" />
+				<img v-if="secondTodos.moving && secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-copy.webp" alt="arrow-down" />
 			</div>
 			<p v-if="secondTodos.moved" class="text-success">{{ languages.moveMode.movedText }}</p>
 			<p v-if="secondTodos.copied" class="text-success">{{ languages.moveMode.copiedText }}</p>
@@ -296,11 +298,19 @@ export default {
 .move-elements-btn {
 	cursor: pointer;
 	align-self: center;
-	width: 100px;
+	width: 110px;
+	height: 35px;
+	border: 2px solid;
 	display: flex;
 	gap: 10px;
 	align-items: center;
 	flex-wrap: nowrap;
+}
+
+.is-moving {
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
 }
 
 .copy-elements-btn {

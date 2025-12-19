@@ -268,8 +268,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.showChangeList = !this.showChangeList;
             if (!this.showChangeList) {
                 this.moving = false;
-                this.istruction2Visible = false;
-                this.todosStore.todos.forEach(t => t.isMoving = false);
+                this.hideMovingModeMessages();
             }
         },
         moveElementMode(isCopy) {
