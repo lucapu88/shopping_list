@@ -106,7 +106,7 @@ export default {
 	>
 		<div id="app">
 			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
-				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme }">
+				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 

@@ -35,7 +35,6 @@
 	color: var(--dos-secondary-color) !important;
 	font-weight: bold !important;
 	border: 1px solid var(--dos-primary-color) !important;
-	border-radius: 0 !important;
 }
 .retro-theme-helper {
 	background-color: var(--dos-helper-primary-color) !important;
@@ -86,11 +85,9 @@
 	border: 1px solid var(--white) !important;
 	color: var(--white) !important;
 	background-color: var(--dos-title-background-color) !important;
-	border-radius: 0 !important;
 }
 .retro-theme-back-top {
 	background-color: var(--dos-primary-color) !important;
-	border-radius: 0 !important;
 	color: black !important;
 }
 .retro-category {
@@ -104,7 +101,6 @@
 .retro-btn > button {
 	background-color: var(--dos-secondary-color) !important;
 	border-color: var(--dos-primary-color) !important;
-	border-radius: 0 !important;
 	color: var(--dos-primary-color) !important;
 }
 .retro-helper-btn {
@@ -136,11 +132,9 @@
 .retro-btn-button {
 	background-color: var(--dos-secondary-color) !important;
 	border: 2px solid var(--dos-primary-color) !important;
-	border-radius: 0 !important;
 	color: var(--dos-primary-color) !important;
 }
 .retro-tutorial-btn {
-	border-radius: 0 !important;
 	border-color: #ffffff;
 }
 .retro-selected-btn {

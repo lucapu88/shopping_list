@@ -103,3 +103,9 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.retro-theme-buttons button {
+	/* per tema dos faccio si che qualsiasi bottone abbia questo stile, per ricreare lo stile old */
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
