@@ -40,6 +40,7 @@ describe("test del salvataggio ultime eliminazioni", () => {
             cy.get('.inputText').click({ force: true }).type(phrases.frase6);
             cy.get('.input-btns-container > .btn-info').click({ force: true });
             cy.get('[index="0"] > .button-container > :nth-child(2) > .trash').click({ force: true });
+            cy.closeBlockingElements();
         }
 
         function checkPhrasesDeleted(childNumber,) {
@@ -81,6 +82,7 @@ describe("test del salvataggio ultime eliminazioni", () => {
             cy.get('#trash').click();
             cy.get('.confirm-delete-modal-content > .confirm-buttons-container > #yes-delete-selected').click({ force: true });
             cy.get('[index="1"] > .button-container > :nth-child(2)').click({ force: true });
+            cy.closeBlockingElements();
         }
 
         function checkPhrasesDeleted(childNumber) {
