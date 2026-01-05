@@ -28,19 +28,18 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
         cy.get('.btn-lang-center').click();
         cy.wait(1500);
-        cy.get('.title').should('include.text', 'Lista de la compra');
+        cy.get('.selected-list-name > span').should('include.text', 'Estás escribiendo en la lista: ');
         //Italiano
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
         cy.get('.btn-lang-right').click();
         cy.wait(1500);
-        cy.get('.title').should('include.text', 'Lista Spesa');
-        //Inglese
+        cy.get('.selected-list-name > span').should('include.text', 'Stai scrivendo sulla lista: ');        //Inglese
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
         cy.get('.btn-lang-left').click();
         cy.wait(1500);
-        cy.get('.title').should('include.text', 'Shopping List');
+        cy.get('.selected-list-name > span').should('include.text', 'You are writing on the list: ');
 
         /*Per il momento verifico solo il titolo...Il cazzo con le patate che mi metto a vedere se TUTTE le traduzioni sono corrette!!!
           Scherzo! lo devo fare ma piano piano con calma perchè è tanta roba.*/
@@ -102,7 +101,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('body').click(0, 0); // click fittizio per dare focus
         cy.get('.pushbutton-container > :nth-child(3)').click({ force: true });
         cy.get('.delete-all').click();
-        cy.get('.confirm > .btn-primary').click();
+        cy.get('.confirm > .btn-success').click();
         checkBackupSuccessful();
 
         cy.get('[index="0"] > .button-container > :nth-child(2)').click({ force: true });

@@ -27,7 +27,7 @@ describe("test della modale che appare appena si scarica l'app", () => {
     });
 
     it("verifico se cliccando su si appare il video, e poi se cliccando su no si chiude la modale", () => {
-        cy.get('.btn-primary').click({ force: true });
+        cy.get('.btn-success').click({ force: true });
         cy.get('.video-container').should('exist');
 
         Cypress.on('uncaught:exception', (err) => {

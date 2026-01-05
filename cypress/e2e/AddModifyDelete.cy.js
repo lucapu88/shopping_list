@@ -93,7 +93,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
 
     //eliminazione tutti
     cy.get('.delete-all').click();
-    cy.get('.confirm > .btn-primary').click();
+    cy.get('.confirm > .btn-success').click();
     cy.get('div.empty-logo-container').should('exist');
   });
 
@@ -104,7 +104,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('.input-btns-container > .btn-info').click();
     cy.get('.duplicate-container').should('exist');
     //Clicco su NO
-    cy.get('.btn-no').click();
+    cy.get('.btn-dark').click();
     cy.get('.duplicate-container').should('not.exist');
     cy.get('.inputText').should('have.value', '');
     cy.get('#todo-list').should('have.length', 1);
@@ -118,7 +118,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     todos = [];
     cy.get('.inputText').click({ force: true }).type(parola);
     cy.get('.input-btns-container > .btn-info').click();
-    cy.get('.btn-yes').click();
+    cy.get('.btn-success').click();
     cy.get('.duplicate-container').should('not.exist');
     cy.get('#todo-list').each(($todo) => {
       todos.push($todo.text());
