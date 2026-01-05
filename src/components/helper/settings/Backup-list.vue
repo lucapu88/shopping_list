@@ -91,9 +91,11 @@ export default {
 					<div class="confirm-backup p-1" v-if="showConfirmBackup && !noBackup">
 						<span>{{ languages.backupListText.confirm }}</span>
 						<button id="confirm-backup" style="background-color: lightgreen" @click="importBackup()">
-							{{ languages.langEnglish ? "YES" : "SI" }}
+							<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
 						</button>
-						<button style="background-color: lightcoral" @click="showConfirmBackup = false">NO</button>
+						<button style="background-color: lightcoral" @click="showConfirmBackup = false">
+							<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
+						</button>
 					</div>
 
 					<p v-if="noBackup" class="no-backup">

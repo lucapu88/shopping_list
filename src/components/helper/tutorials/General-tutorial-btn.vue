@@ -32,9 +32,7 @@ export default {
 		:class="{
 			'read-only': readOnly,
 			'ita-right': languages.langIta,
-			'right-10': themes.jeansTheme || languages.langSpanish || languages.langEnglish,
-			'right-0': themes.jeansTheme && languages.langSpanish,
-			'right-5': themes.jeansTheme && languages.langEnglish,
+			'right-10': themes.jeansTheme,
 		}"
 		@click="showGeneralTutorialModal()"
 	>
@@ -46,6 +44,7 @@ export default {
 .btn-container {
 	position: absolute;
 	top: 2%;
+	right: 13%;
 	width: 70px;
 	text-align: center;
 	color: #d20000;
@@ -65,21 +64,7 @@ export default {
 	right: 0 !important;
 }
 
-.ita-right {
-	right: 15%;
-}
-
-.spa-right,
-.eng-right,
 .right-10 {
 	right: 10%;
-}
-
-.right-0 {
-	right: 0;
-}
-
-.right-5 {
-	right: 5%;
 }
 </style>

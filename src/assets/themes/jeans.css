@@ -22,7 +22,8 @@
 	background-color: var(--jeans-label) !important;
 	color: var(--jeans-text-dark-color);
 	border-radius: var(--jeans-radius);
-	padding: 5px 13px;
+	padding: 0.313rem;
+	font-size: 1.563rem;
 	position: relative;
 	left: -300px;
 	animation-timing-function: ease-out;
@@ -152,6 +153,10 @@
 	box-shadow: 0px 0px 11px 0px white;
 	padding: 0.313rem;
 	border-radius: 50%;
+}
+
+.confirm-jeans > .confirm-buttons-container > button > div > span {
+	background-color: transparent !important;
 }
 
 .jeans-helper {

@@ -27,13 +27,6 @@
 	color: var(--lemon-text-color);
 }
 
-.confirm-lemon > .confirm-buttons-container > button {
-	padding: 3px 13px;
-	background-color: var(--lemon-dark-color);
-	border-color: var(--lemon-tertiary-color);
-	color: var(--lemon-text-color);
-}
-
 .lemon-other-btn {
 	background-color: var(--lemon-secondary-color) !important;
 	border: 2px solid var(--lemon-tertiary-color) !important;

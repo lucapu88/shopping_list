@@ -109,3 +109,15 @@
 	border-radius: 0 !important;
 	box-shadow: none !important;
 }
+
+.ok {
+	font-size: 1.25rem;
+	background: #146c20;
+	border-radius: 50%;
+}
+
+.no {
+	font-size: 1.25rem;
+	background: #000000;
+	border-radius: 50%;
+}

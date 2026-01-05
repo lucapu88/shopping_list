@@ -223,7 +223,8 @@ export const useLanguageStore = defineStore('Language', {
       copiedText: 'COPIED successfully',
     },
     selectedListText: 'You are writing on the list: ',
-    welcomeMessage: 'Thank you for downloading Shopping List, and welcome!'
+    welcomeMessage: 'Thank you for downloading Shopping List, and welcome!',
+    totalPriceText: 'Total Price: ',
   }),
   getters: {},
   actions: {
@@ -380,6 +381,7 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.copiedText = 'COPIATO con successo';
       this.selectedListText = 'Stai scrivendo sulla lista: ';
       this.welcomeMessage = "Grazie per aver scaricato Shopping List, e benvenuto!";
+      this.totalPriceText = 'Prezzo Totale: ';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -470,6 +472,7 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.copiedText = 'COPIADO con éxito';
       this.selectedListText = 'Estás escribiendo en la lista: ';
       this.welcomeMessage = 'Gracias por descargar Lista de Compras, ¡y bienvenido!';
+      this.totalPriceText = 'Precio Total: ';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

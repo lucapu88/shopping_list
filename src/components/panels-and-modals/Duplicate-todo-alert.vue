@@ -39,11 +39,14 @@ export default {
 			<p class="title">{{ languages.duplicateText.title }}</p>
 			<div class="body">
 				<p>{{ languages.duplicateText.body }}</p>
-				<button class="btn btn-yes" :class="{ 'pink-theme-btn': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(true)">
-					<span v-if="languages.langIta || languages.langSpanish">SI</span>
-					<span v-if="languages.langEnglish">YES</span>
-				</button>
-				<button class="btn btn-no" :class="{ 'pink-theme-btn-secondary': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(false)">NO</button>
+				<div class="btns-container">
+					<button class="btn btn-success" :class="{ 'pink-theme-btn': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(true)">
+						<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
+					</button>
+					<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(false)">
+						<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -79,18 +82,15 @@ export default {
 	display: flex;
 	align-items: center;
 	gap: 15px;
+	flex-direction: column;
 }
 .body > p {
 	margin: 0;
 	margin-right: 0.9375rem;
 }
 
-.btn-yes {
-	background-color: lightgreen;
-	width: 45px;
-}
-.btn-no {
-	background-color: lightcoral;
-	width: 45px;
+.btns-container {
+	display: flex;
+	gap: 15px;
 }
 </style>

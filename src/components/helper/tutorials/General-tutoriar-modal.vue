@@ -130,11 +130,12 @@ export default {
 				<p class="boldi-cipollino">{{ generalTutorial.title }}</p>
 				<p>{{ generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
 
-				<button class="btn btn-primary me-4" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="playTutorial()">
-					<span v-if="languages.langIta || languages.langSpanish">SI</span>
-					<span v-if="languages.langEnglish">YES</span>
+				<button class="btn btn-success me-4" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="playTutorial()">
+					<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
 				</button>
-				<button class="btn btn-secondary" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="closeTutorial()">NO</button>
+				<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="closeTutorial()">
+					<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -185,9 +186,9 @@ export default {
 	border: none !important;
 }
 
-.btn {
+/* .btn {
 	width: 50px;
-}
+} */
 
 .settings {
 	width: 25px;

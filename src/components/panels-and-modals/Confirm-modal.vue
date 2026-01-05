@@ -75,24 +75,22 @@ export default {
 			</ul>
 
 			<div class="confirm-buttons-container">
-				<button id="yes-delete" :class="{ 'pink-theme-btn': theme.pinkTheme }" v-if="todosStore.confirmRemove" @click="todosStore.confirmedRemoveTodo(todosStore.index)">
+				<button id="yes-delete" class="btn btn-success" v-if="todosStore.confirmRemove" @click="todosStore.confirmedRemoveTodo(todosStore.index)">
 					<div>
 						<!-- questo div è per lo stile bottoni del tema jeans -->
-						<span v-if="languages.langIta || languages.langSpanish">SI</span>
-						<span v-if="languages.langEnglish">YES</span>
+						<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
 					</div>
 				</button>
-				<button id="yes-delete-selected" v-if="todosStore.deleteSelected" @click="todosStore.deleteSelectedTodos()">
+				<button id="yes-delete-selected" class="btn btn-success" v-if="todosStore.deleteSelected" @click="todosStore.deleteSelectedTodos()">
 					<div>
 						<!-- questo div è per lo stile bottoni del tema jeans -->
-						<span v-if="languages.langIta || languages.langSpanish">SI</span>
-						<span v-if="languages.langEnglish">YES</span>
+						<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
 					</div>
 				</button>
-				<button id="no-delete" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.confirmDeleteModal = false">
+				<button id="no-delete" class="btn btn-dark" :class="{ 'btn-elegant': theme.elegantTheme }" @click="todosStore.confirmDeleteModal = false">
 					<div>
 						<!-- questo div è per lo stile bottoni del tema jeans -->
-						NO
+						<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
 					</div>
 				</button>
 			</div>

@@ -62,11 +62,12 @@ export default {
 			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 			{{ languages.deleteAllConfirmText }}
 		</p>
-		<button class="btn btn-primary" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="removeAllTodos()">
-			<span v-if="languages.langIta || languages.langSpanish">SI</span>
-			<span v-if="languages.langEnglish">YES</span>
+		<button class="btn btn-success" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="removeAllTodos()">
+			<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
 		</button>
-		<button class="btn btn-secondary" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.openDeleteAllModal = false">NO</button>
+		<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.openDeleteAllModal = false">
+			<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
+		</button>
 	</div>
 </template>
 
@@ -99,7 +100,6 @@ export default {
 }
 .confirm > button {
 	margin-right: 0.9375rem;
-	width: 2.8125rem;
 }
 
 .confirm-light {

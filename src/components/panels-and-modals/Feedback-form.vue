@@ -22,7 +22,7 @@ export default {
 		};
 	},
 	created() {
-		this.feedbackPlaceholder = `${this.languages.feedback.placeholder}\n${this.languages.feedback.extraText} \n\n\n ${this.isChristmas.christmasTheme ? this.languages.merryChristmasText : ""}`;
+		this.feedbackPlaceholder = `${this.languages.feedback.extraText}\n${this.languages.feedback.placeholder}\n\n\n ${this.isChristmas.christmasTheme ? this.languages.merryChristmasText : ""}`;
 	},
 	methods: {
 		sendEmail() {

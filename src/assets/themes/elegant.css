@@ -146,3 +146,6 @@
 	border-color: var(--elegant-text-color);
 	color: var(--elegant-text-color);
 }
+.btn-elegant {
+	border: 2px solid black !important;
+}

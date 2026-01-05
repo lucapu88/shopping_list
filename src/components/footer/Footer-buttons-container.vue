@@ -73,8 +73,6 @@ export default {
 			<img v-if="!isChristmas.christmasTheme" class="skull" src="@/img/icons/skull.webp" alt="delete_all" />
 			<img v-if="isChristmas.christmasTheme" class="christmas-skull" src="@/img/icons/christmas-skull.webp" alt="delete_all_and_merry_christmas" />
 		</button>
-		<span v-if="todosStore.totalPrice > 0" style="line-height: 2">{{ todosStore.totalPrice }}</span>
-
 		<!-- PULSANTE TORNA IN CIMA -->
 		<button
 			class="btn btn-back-to-top"
@@ -95,6 +93,10 @@ export default {
 			<span> >> </span>
 		</button>
 	</div>
+
+	<!-- MOSTRA TOTALE PREZZO -->
+	<div class="total-price-container" v-if="todosStore.totalPrice > 0" style="line-height: 2">{{ languages.totalPriceText }} {{ todosStore.totalPrice }}</div>
+
 	<div v-if="isChristmas.christmasTheme && todosStore.todos.length">
 		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" @click="ohohoh()" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
@@ -114,6 +116,10 @@ export default {
 	background-color: #000000;
 	color: #ffff;
 	/* min-width: 180px; */
+}
+
+.total-price-container {
+	text-align: center;
 }
 
 .christmas-skull {

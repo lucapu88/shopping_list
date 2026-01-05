@@ -49,13 +49,14 @@ export default {
 			}"
 			@click="openDevPanel()"
 		>
-			<span :class="{ 'jeans-title-border': theme.jeansTheme }">
+			<span :class="{ 'jeans-title-border': theme.jeansTheme, 'light-font-title': theme.lightTheme }">
 				<template v-if="!addTodo.devNotes">
 					<template v-if="festivities.newYear">
 						{{ languages.newYearText }}
 					</template>
 					<template v-else>
-						{{ languages.shoppingListTitle }}
+						<!-- {{ languages.shoppingListTitle }} -->
+						Shopping List
 					</template>
 				</template>
 				<template v-else> Todo List </template>
@@ -113,9 +114,9 @@ export default {
 	z-index: 20;
 }
 
-.title-spanish {
+/* .title-spanish {
 	font-size: 1.4rem;
-}
+} */
 
 .cart {
 	width: 40px;
@@ -155,5 +156,9 @@ export default {
 	100% {
 		transform: translateX(800px);
 	}
+}
+
+.light-font-title {
+	font-family: "Luckiest Guy", cursive;
 }
 </style>
