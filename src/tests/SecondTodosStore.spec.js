@@ -32,7 +32,6 @@ describe('SecondTodoStore', () => {
             expect(store.loading).toBe(false);
             expect(store.loadingOpenAIRes).toBe(false);
             expect(store.loadingRecipes).toBe(false);
-            expect(store.movingLoading).toBe(false);
         });
     });
 

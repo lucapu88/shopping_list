@@ -156,6 +156,7 @@ describe("test dell'helper e delle impostazioni", () => {
         const storeAppLink = 'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List';
 
         cy.get('.settings').click().then(() => {
+            cy.get('#helper-description > :nth-child(11) > .list-title').click();
             cy.get('#share').click();
         });
         cy.window().then((win) => {
@@ -163,5 +164,15 @@ describe("test dell'helper e delle impostazioni", () => {
                 expect(text.trim()).to.eq(storeAppLink);
             });
         });
+    });
+
+    it('visualizza qr code', () => {
+        cy.get('.settings').click().then(() => {
+            cy.get('#helper-description > :nth-child(11) > .list-title').click();
+            cy.get('#qr').click();
+            cy.get('.qr-container').should('exist');
+        });
+        cy.get('body').click(0, 0);
+        cy.get('.qr-container').should('not.exist');
     });
 });

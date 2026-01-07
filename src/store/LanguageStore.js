@@ -25,8 +25,10 @@ export const useLanguageStore = defineStore('Language', {
       visible: false,
     },
     share: {
+      title: 'Share App',
+      info: 'Share the app with whoever you want! By sending the link or having the QR code scanned.',
       text: 'Link copied to clipboard, paste it with whoever you want.',
-      visible: false,
+      qrMessage: "Increase screen brightness for better scanning"
     },
     confirmText: 'Are you sure you want to delete:\n',
     completeConfirmText: '', // Questo testo viene editato nel TodoStore.js
@@ -55,7 +57,6 @@ export const useLanguageStore = defineStore('Language', {
       subtitle: 'Just copy and paste it into the box and click import. N.B.: Separates list items by sending them to a head',
     },
     importText: 'Import',
-    shareText: 'Share App',
     updateText: {
       description: 'If the button is green, click to update the app',
       available: 'Update',
@@ -321,7 +322,9 @@ export const useLanguageStore = defineStore('Language', {
       this.multipleCategoryInsertionText.momentaryAlert = "La funzione già è attiva perchè era già così dall'inizio, ma adesso se vuoi puoi disattivarla.";
       this.pasteListText.title = "Importa una lista da altre app";
       this.pasteListText.subtitle = 'Basterà copiarla e incollarla nel riquadro e cliccare su importa. NB: separa gli elementi della lista mandandoli a capo';
-      this.shareText = 'Condividi App';
+      this.share.title = 'Condividi App';
+      this.share.info = "Condividi l'app con chi vuoi! Inviando il link oppure facendo scannerizzare il QR code.";
+      this.share.qrMessage = "Aumenta la luminisità dello schermo per una migliore scansione";
       this.importText = 'Importa';
       this.updateText.description = "Se il pulsante è verde, clicca per aggiornare";
       this.updateText.available = 'Aggiorna';
@@ -412,7 +415,9 @@ export const useLanguageStore = defineStore('Language', {
       this.multipleCategoryInsertionText.momentaryAlert = 'La función ya está activa porque ya era así desde el principio, pero ahora si quieres puedes desactivarla.';
       this.pasteListText.title = "Importar una lista desde otras aplicaciones";
       this.pasteListText.subtitle = 'Basta con copiarla y pegarla en la casilla y hacer clic en importar. Nota: separe los elementos de la lista enviándolos con un retorno de carro.';
-      this.shareText = 'Compartir App';
+      this.share.title = 'Compartir App';
+      this.share.info = 'Comparte la aplicación con quien quieras! Enviando el enlace o haciendo escanear el código QR.';
+      this.share.qrMessage = "Aumenta el brillo de la pantalla para una mejor exploración";
       this.importText = 'Importar';
       this.updateText.description = "Si el botón está verde, pulse para actualizar";
       this.updateText.available = 'Actualización';

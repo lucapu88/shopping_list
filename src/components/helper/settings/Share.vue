@@ -1,7 +1,9 @@
 <script setup>
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import ShareModal from "../../panels-and-modals/Share-modal.vue";
+import QrCodeModal from "../../panels-and-modals/Qr-code-modal.vue";
 </script>
 
 <script>
@@ -10,9 +12,11 @@ export default {
 		return {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
-			showModal: false,
+			showShareModal: false,
+			showQrModal: false,
 			color: null,
 			colorsNum: 11,
+			share: "share",
 		};
 	},
 	methods: {
@@ -25,14 +29,17 @@ export default {
 				e.preventDefault();
 			});
 			document.execCommand("copy");
-			/*this.languages.share.visible = true;
-      setTimeout(() => (this.languages.share.visible = false), 5000);
-      this.openShareOptions(); */
-			this.showModal = true;
+			this.showShareModal = true;
 			this.color = Math.floor(Math.random() * this.colorsNum);
 		},
-		onCloseModal(value) {
-			this.showModal = value;
+		onCloseShareModal(value) {
+			this.showShareModal = value;
+		},
+		showQrCodeModal() {
+			this.showQrModal = true;
+		},
+		onCloseQrModal(value) {
+			this.showQrModal = value;
 		},
 		async openShareOptions() {
 			/*Purtroppo questa cosa magnifica di visualizzare le opzioni di condivisione funziona per il web ma non per android.
@@ -53,25 +60,39 @@ export default {
 </script>
 
 <template>
-	<div class="share-container share-update helper-settings mb-3">
-		<span class="settings-icon me-1"> &#x2699; </span>
-		<span>
-			{{ languages.shareText }}
-		</span>
-		<span class="hand-pointing galeazzi ms-3"> &#x1F449; </span>
-		<button id="share" class="btn btn-light border-dark share-update-btn ms-3" @click="shareLink()">
-			<img src="@/img/icons/share.webp" alt="share" />
-		</button>
-		<p class="link-copied" v-if="languages.share.visible">
-			{{ languages.share.text }}
-		</p>
+	<div class="helper-settings">
+		<ListIstructionAccordion show-list-instructions-input="share" :istructions-text="languages.share.title" :select-deselect-arrow="settings.share && settings.section === share" :isSettings="true" />
+		<template v-if="settings.share && settings.section === share">
+			<div class="share-container share-update helper-settings mb-3">
+				<li class="ms-3">{{ languages.share.info }}</li>
+				<div class="mt-2">
+					<span>- Link: </span>
+					<span class="hand-pointing galeazzi ms-3"> &#x1F449; </span>
+					<button id="share" class="btn btn-light border-dark share-update-btn ms-3" @click="shareLink()">
+						<img src="@/img/icons/share.webp" alt="share" />
+					</button>
+				</div>
+				<div class="mt-3">
+					<span>- QR code: </span>
+					<span class="hand-pointing galeazzi ms-3"> &#x1F449; </span>
+					<button id="qr" class="btn btn-light border-dark qr-btn ms-3" @click="showQrCodeModal()">
+						{{ String.fromCodePoint(0x1f523) }}
+					</button>
+				</div>
+			</div>
+		</template>
 	</div>
-	<ShareModal :showModal="showModal" :color="color" @closeModal="onCloseModal" />
+
+	<ShareModal :showShareModal="showShareModal" :color="color" @closeShareModal="onCloseShareModal" />
+	<QrCodeModal :showQrModal="showQrModal" @closeQrModal="onCloseQrModal" />
 </template>
 
 <style scoped>
-.share-container > button {
-	padding: 3px 25px;
+.share-update-btn {
+	padding: 4px 25px;
+}
+.qr-btn {
+	padding: 3px 20px;
 }
 
 .link-copied {

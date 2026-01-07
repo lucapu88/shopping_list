@@ -5,10 +5,10 @@ import { useLanguageStore } from "@/store/LanguageStore";
 <script>
 export default {
 	props: {
-		showModal: Boolean,
+		showShareModal: Boolean,
 		color: Number,
 	},
-	emits: ["closeModal"],
+	emits: ["closeShareModal"],
 	data() {
 		return {
 			languages: useLanguageStore(),
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-	<div v-if="showModal" class="modal" @click="$emit('closeModal', false)">
+	<div v-if="showShareModal" class="modal" @click="$emit('closeShareModal', false)">
 		<div
 			class="modal-background"
 			:class="{
@@ -37,7 +37,7 @@ export default {
 		>
 			<div class="confirmed-share-container">
 				<p class="share-text">{{ languages.share.text }}</p>
-				<button class="share-button" @click="$emit('closeModal', false)">
+				<button class="share-button" @click="$emit('closeShareModal', false)">
 					<strong>OK</strong>
 				</button>
 			</div>

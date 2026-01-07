@@ -21,6 +21,7 @@ export const useSettingsStore = defineStore('settings', {
     autoDeleteEmptyCategories: false,
     multipleCategoryInsertion: false,
     safeMode: false,
+    share: false,
     pasteList: false,
     backupList: false,
     addEditDelete: false,
@@ -133,6 +134,7 @@ export const useSettingsStore = defineStore('settings', {
       this.autoDeleteEmptyCategories = false;
       this.multipleCategoryInsertion = false;
       this.safeMode = false;
+      this.share = false;
       this.pasteList = false;
       this.backupList = false;
       //RISOLUZIONE PROBLEMI
@@ -160,6 +162,7 @@ export const useSettingsStore = defineStore('settings', {
         autoDeleteEmptyCategories: 'autoDeleteEmptyCategories',
         multipleCategoryInsertion: 'multipleCategoryInsertion',
         safeMode: 'safeMode',
+        share: 'share',
         pasteList: 'pasteList',
         backupList: 'backupList',
         addEditDelete: 'addEditDelete',
