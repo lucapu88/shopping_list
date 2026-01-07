@@ -121,3 +121,32 @@
 	background: #000000;
 	border-radius: 50%;
 }
+
+/* ------------------------------------------- PULSANTI COPIA E SPOSTA ELEMENTI DALLE LISTE */
+.copy-img {
+	width: 20px;
+}
+.move-img,
+.move-arrow {
+	width: 25px;
+}
+
+.copy-elements-btn,
+.move-elements-btn {
+	cursor: pointer;
+	align-self: center;
+	width: 110px;
+	height: 35px;
+	border: 2px solid;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.copy-elements-btn {
+	color: #00bfff !important;
+}
+.move-elements-btn {
+	color: #ff6600 !important;
+}

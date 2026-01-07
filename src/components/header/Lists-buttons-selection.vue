@@ -272,13 +272,6 @@ export default {
 	gap: 10%;
 }
 
-.copy-img {
-	width: 20px;
-}
-.move-img,
-.move-arrow {
-	width: 25px;
-}
 .zoom-animation {
 	animation: zoominoutSmallX 1s infinite;
 }
@@ -294,30 +287,10 @@ export default {
 	}
 }
 
-.copy-elements-btn,
-.move-elements-btn {
-	cursor: pointer;
-	align-self: center;
-	width: 110px;
-	height: 35px;
-	border: 2px solid;
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	flex-wrap: nowrap;
-}
-
 .is-moving {
 	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
 	-webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
-}
-
-.copy-elements-btn {
-	color: #00bfff !important;
-}
-.move-elements-btn {
-	color: #ff6600 !important;
 }
 
 .apply-moving-wrapper {

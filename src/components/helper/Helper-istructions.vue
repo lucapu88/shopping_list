@@ -12,6 +12,7 @@ import MultipleDelete from "./istructions/MultipleDelete.vue";
 import CopyPasteAndHighlight from "./istructions/CopyPasteAndHighlight.vue";
 import DeleteAll from "./istructions/DeleteAll.vue";
 import Support from "./istructions/Support.vue";
+import ChangeList from "./istructions/ChangeList.vue";
 </script>
 
 <script>
@@ -39,6 +40,9 @@ export default {
 
 		<!-- CATEGORIE -->
 		<Categories />
+
+		<!-- CAMBIO LISTA -->
+		<ChangeList />
 
 		<!-- SUGGERIMENTI -->
 		<Suggestions />

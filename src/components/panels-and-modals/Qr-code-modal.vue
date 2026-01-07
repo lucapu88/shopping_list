@@ -21,7 +21,7 @@ export default {
 		<div class="empty-div" @click="$emit('closeQrModal', false)"></div>
 		<div class="modal-background">
 			<p class="close-qr-modal" @click="$emit('closeQrModal', false)">X</p>
-			<p class="text-center mb-0 p-3 pt-4">{{ languages.share.qrMessage }}</p>
+			<p class="text-dark text-center mb-0 p-3 pt-4">{{ languages.share.qrMessage }}</p>
 			<div class="qr-container">
 				<img src="@/img/qr-code.webp" alt="qr_code" />
 			</div>

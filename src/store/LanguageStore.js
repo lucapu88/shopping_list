@@ -139,7 +139,15 @@ export const useLanguageStore = defineStore('Language', {
       githubText: 'If you are a developer maybe you can give me some advice on how to improve in the code:',
       adviceTitle: 'IMPORTANT: ',
       adviceText: "This is a web app converted to a smartphone app, and is always maintained, so don't pay attention to the date of the last update that appears in the store.",
-      dateLastUpdateText: "The actual date of the last update is: "
+      dateLastUpdateText: "The actual date of the last update is: ",
+      changeList: {
+        changeListTitle: 'Change list',
+        part1: 'To change the list you are working on, just click on',
+        part2: 'and choose the list you want to work on',
+        moveText: "You can move items from one list to another by clicking on",
+        copyText: "You can also copy items from one list to another by clicking on",
+        final: "Both buttons show instructions that will guide you step by step."
+      }
     },
     //--------------------------------------------------------------------- FESTIVITÀ
     cancerDayText: '4 February: World Cancer Day',
@@ -571,6 +579,12 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.adviceTitle = 'IMPORTANTE: ';
       this.helperDescription.adviceText = "Questa è una web app convertita in app per smartphone, ed è sempre manutenuta, quindi non fare caso alla data dell'ultimo aggiornamento che appare nello store.";
       this.helperDescription.dateLastUpdateText = "La data reale dell'ultimo aggiornamento è: ";
+      this.helperDescription.changeList.changeListTitle = 'Cambia lista';
+      this.helperDescription.changeList.part1 = 'Per cambiare la lista su cui stai lavorando, clicca su';
+      this.helperDescription.changeList.part2 = 'e scegli la lista che vuoi utilizzare.';
+      this.helperDescription.changeList.moveText = "Puoi spostare elementi da una lista all'altra cliccando su";
+      this.helperDescription.changeList.copyText = "Puoi anche copiare elementi da una lista all'altra cliccando su";
+      this.helperDescription.changeList.final = "Entrambi i pulsanti mostrano le istruzioni che ti guideranno passo passo.";
     },
     helperSpaTranslations() { // SPAGNOLO
       this.helperDescription.troubleshooting = 'Solución de problemas';
@@ -626,6 +640,12 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.adviceTitle = 'IMPORTANTE: ';
       this.helperDescription.adviceText = "Esta es una aplicación web convertida en aplicación para smartphone, y se mantiene siempre, así que no prestes atención a la fecha de la última actualización que aparece en la tienda.";
       this.helperDescription.dateLastUpdateText = "La fecha real de la última actualización es: ";
+      this.helperDescription.changeList.changeListTitle = 'Cambiar lista';
+      this.helperDescription.changeList.part1 = 'Para cambiar la lista en la que estás trabajando, haz clic en';
+      this.helperDescription.changeList.part2 = 'y elige la lista que quieres usar.';
+      this.helperDescription.changeList.moveText = "Puedes mover elementos de una lista a otra haciendo clic en";
+      this.helperDescription.changeList.copyText = "También puedes copiar elementos de una lista a otra haciendo clic en";
+      this.helperDescription.changeList.final = "Ambos botones muestran las instrucciones que te guiarán paso a paso.";
     }
   }
 });
