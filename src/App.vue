@@ -12,6 +12,7 @@ import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-al
 import LoadingOrUpdating from "./components/Loading-or-updating.vue";
 import ShowHelperButton from "./components/header/Show-helper-button.vue";
 import GeneralTutorialModal from "./components/helper/tutorials/General-tutoriar-modal.vue";
+import LoyaltyCardsContainer from "./components/panels-and-modals/Loyalty-cards-container.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -118,6 +119,7 @@ export default {
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
 						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
 						<GeneralTutorialModal v-if="settings.isTutorialVisible" />
+						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
 					</header>
 					<main>
 						<MainList />

@@ -234,6 +234,10 @@ export const useLanguageStore = defineStore('Language', {
     selectedListText: 'You are writing on the list: ',
     welcomeMessage: 'Thank you for downloading Shopping List, and welcome!',
     totalPriceText: 'Total Price: ',
+    loyalityCards: {
+      title: 'Loyalty Cards',
+      functionText: 'Add a card',
+    }
   }),
   getters: {},
   actions: {
@@ -393,6 +397,8 @@ export const useLanguageStore = defineStore('Language', {
       this.selectedListText = 'Stai scrivendo sulla lista: ';
       this.welcomeMessage = "Grazie per aver scaricato Shopping List, e benvenuto!";
       this.totalPriceText = 'Prezzo Totale: ';
+      this.loyalityCards.title = 'Carte Fedeltà';
+      this.loyalityCards.functionText = 'Aggiungi una carta';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -486,6 +492,8 @@ export const useLanguageStore = defineStore('Language', {
       this.selectedListText = 'Estás escribiendo en la lista: ';
       this.welcomeMessage = 'Gracias por descargar Lista de Compras, ¡y bienvenido!';
       this.totalPriceText = 'Precio Total: ';
+      this.loyalityCards.title = 'Tarjetas de Fidelidad';
+      this.loyalityCards.functionText = 'Añadir una tarjeta';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

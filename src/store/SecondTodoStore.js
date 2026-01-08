@@ -31,6 +31,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         copy: null,
         copied: false,
         moved: false,
+        loyaltyCardsVisible: false,
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
     }),
@@ -361,6 +362,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.hideMovingModeMessages();
                 this.moving = false;
             }, 300);
+        },
+        showLoyaltyCards() {
+            this.loyaltyCardsVisible = true;
         }
     }
 });

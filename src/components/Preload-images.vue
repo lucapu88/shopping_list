@@ -62,6 +62,7 @@ import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
 import dino from "@/img/update-img.webp";
 import listLoading from "@/img/Loading-list.webp";
+import loyaltyCard from "@/img/icons/loy-card.webp";
 </script>
 
 <script>
@@ -152,4 +153,5 @@ export default {
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeOpen" />
 	<link v-if="!languages.updateText.updated" rel="preload" as="image" :href="dino" />
 	<link v-if="secondTodosStore.loading" rel="preload" as="image" :href="listLoading" />
+	<link v-if="settings.isIphone" rel="preload" as="image" :href="loyaltyCard" />
 </template>

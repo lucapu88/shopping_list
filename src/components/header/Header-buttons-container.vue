@@ -157,6 +157,7 @@ export default {
 		</button>
 		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
 		<button
+			v-if="!settings.isIphone"
 			class="btn custom-show-listbtn"
 			:class="{
 				'btn-selected': todosStore.showOnlyImportantTodos,
@@ -186,6 +187,28 @@ export default {
 			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important.webp" alt="important" />
 			<img v-if="theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
 			<img v-if="!theme.elegantTheme && theme.panterTheme" class="important" src="@/img/icons/important-panter.webp" alt="important" />
+		</button>
+
+		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ (PER IL MOMENTO NON IN PRODUZIONE) -->
+		<button
+			v-if="settings.isIphone"
+			class="btn custom-show-listbtn"
+			:class="{
+				'btn-selected': todosStore.showOnlyImportantTodos,
+				'minimal-btn': theme.minimalTheme,
+				'retro-teme-btns': theme.retroTheme,
+				'summer-header-btn': theme.summerTheme,
+				'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
+				'winter-header-btn': theme.winterTheme,
+				'elegant-btn': theme.elegantTheme,
+				'pink-theme-btn': theme.pinkTheme,
+				'panter-other-btn': theme.panterTheme,
+				'lemon-other-btn': theme.lemonTheme,
+				'jeans-other-btn': theme.jeansTheme,
+			}"
+			@click="secondTodos.showLoyaltyCards()"
+		>
+			<img class="loyalty-card-icon" src="@/img/icons/loy-card.webp" alt="loyalty_card_icon" />
 		</button>
 	</div>
 
