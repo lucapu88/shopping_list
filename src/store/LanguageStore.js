@@ -237,6 +237,8 @@ export const useLanguageStore = defineStore('Language', {
     loyalityCards: {
       title: 'Loyalty Cards',
       functionText: 'Add a card',
+      nameInputPlaceholder: 'Card Name',
+      isctructionText: 'Enter a name BEFORE selecting the images'
     }
   }),
   getters: {},
@@ -399,6 +401,8 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Prezzo Totale: ';
       this.loyalityCards.title = 'Carte Fedeltà';
       this.loyalityCards.functionText = 'Aggiungi una carta';
+      this.loyalityCards.nameInputPlaceholder = 'Nome Carta';
+      this.loyalityCards.isctructionText = 'Inserisci un nome PRIMA di selezionare le immagini';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -494,6 +498,8 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Precio Total: ';
       this.loyalityCards.title = 'Tarjetas de Fidelidad';
       this.loyalityCards.functionText = 'Añadir una tarjeta';
+      this.loyalityCards.nameInputPlaceholder = 'Nombre de la Tarjeta';
+      this.loyalityCards.isctructionText = 'Introduce un nombre ANTES de seleccionar las imágenes';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

@@ -3,9 +3,62 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
-
-import { Html5Qrcode } from "html5-qrcode";
 import { dbPromise } from "@/server/db.js";
+import { ref, onMounted, onUnmounted } from "vue";
+
+const theme = useThemeStore();
+const languages = useLanguageStore();
+const secondTodos = useSecondTodoStore();
+const isChristmas = useChristmasStore();
+const imageName = ref("");
+const photos = ref([]);
+const imageUrl = ref(null);
+let objectUrl = null;
+
+onMounted(loadPhotos);
+
+async function savePhotos(event) {
+	const files = Array.from(event.target.files);
+	if (!files.length || !imageName.value) return;
+
+	const db = await dbPromise;
+
+	let index = 1;
+
+	for (const file of files) {
+		await db.put("photos", {
+			id: crypto.randomUUID(),
+			name: files.length > 1 ? `${imageName.value}_${index++}` : imageName.value,
+			blob: file,
+			createdAt: Date.now(),
+		});
+	}
+
+	imageName.value = "";
+	event.target.value = null;
+
+	await loadPhotos();
+}
+
+async function loadPhotos() {
+	const db = await dbPromise;
+	photos.value = await db.getAll("photos");
+}
+
+function showPhoto(photo) {
+	if (objectUrl) {
+		URL.revokeObjectURL(objectUrl);
+	}
+
+	objectUrl = URL.createObjectURL(photo.blob);
+	imageUrl.value = objectUrl;
+}
+
+onUnmounted(() => {
+	if (objectUrl) {
+		URL.revokeObjectURL(objectUrl);
+	}
+});
 </script>
 
 <script>
@@ -22,78 +75,9 @@ export default {
 			objectUrl: null,
 		};
 	},
-	mounted() {
-		this.loadCards();
-	},
+	mounted() {},
 	methods: {
-		startScan() {
-			this.scanner = new Html5Qrcode("reader");
-
-			this.scanner.start(
-				{ facingMode: "environment" },
-				{
-					fps: 10,
-					qrbox: { width: 250, height: 120 },
-				},
-				(decodedText) => {
-					// console.log("Codice letto:", decodedText);
-					this.stopScan();
-					this.saveCard(decodedText);
-				},
-				() => {}
-			);
-		},
-		stopScan() {
-			if (this.scanner) {
-				this.scanner.stop().then(() => this.scanner.clear());
-			}
-		},
-		async saveCard(code) {
-			const db = await dbPromise;
-
-			await db.put("photos", {
-				id: crypto.randomUUID(),
-				code,
-				blob: file,
-				createdAt: Date.now(),
-			});
-			await this.loadCards();
-		},
-		async loadCards() {
-			const db = await dbPromise;
-			this.cards = await db.getAll("photos");
-		},
-		// async savePhotos(event) {
-		// 	const files = Array.from(event.target.files);
-		// 	if (!files.length) return;
-
-		// 	const db = await dbPromise;
-
-		// 	for (const file of files) {
-		// 		await db.put("photos", {
-		// 			id: crypto.randomUUID(),
-		// 			name: file.name,
-		// 			blob: file,
-		// 			createdAt: Date.now(),
-		// 		});
-		// 	}
-
-		// 	await this.loadPhotos();
-		// },
-		// async loadPhotos() {
-		// 	const db = await dbPromise;
-		// 	this.photos = await db.getAll("photos");
-		// },
-		showPhoto(photo) {
-			if (this.objectUrl) {
-				URL.revokeObjectURL(this.objectUrl);
-			}
-
-			this.objectUrl = URL.createObjectURL(photo.blob);
-			imageUrl = this.objectUrl;
-		},
 		close() {
-			this.stopScan();
 			this.secondTodos.loyaltyCardsVisible = false;
 		},
 	},
@@ -125,26 +109,27 @@ export default {
 		>
 			<header>
 				<h3>{{ languages.loyalityCards.title }}</h3>
-				<p class="close-helper" @click="close()">X</p>
+				<p class="close-helper" @click="secondTodos.loyaltyCardsVisible = false">X</p>
 			</header>
 			<main>
-				<button class="btn-add" @click="startScan()">
-					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add"> + </span>
-				</button>
-				<div id="reader" style="width: 100%; max-width: 320px"></div>
-				<div>
-					<!-- Lista immagini -->
-					<ul v-if="photos.length">
-						<li v-for="photo in photos" :key="photo.id">
-							<button @click="showPhoto(photo)">
-								{{ photo.name }}
-							</button>
-						</li>
-					</ul>
+				<small v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 
-					<!-- Preview -->
-					<img v-if="imageUrl" :src="imageUrl" class="preview" />
+				<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
+
+				<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
+					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add"> + </span>
+					<input type="file" accept="image/*" multiple @change="savePhotos" :disabled="!imageName" hidden />
+				</label>
+
+				<div class="cards-container" v-if="photos.length">
+					<button v-for="photo in photos" :key="photo.id" class="card-name" @click="showPhoto(photo)">
+						<span class="card-icon">{{ String.fromCodePoint(0x1f4b3) }}</span>
+
+						<span>{{ photo.name }}</span>
+					</button>
 				</div>
+
+				<img class="preview" v-if="imageUrl" :src="imageUrl" />
 			</main>
 		</div>
 	</div>
@@ -166,6 +151,10 @@ export default {
 	text-align: right;
 }
 
+small {
+	text-align: center;
+}
+
 header {
 	display: flex;
 	justify-content: center;
@@ -177,10 +166,17 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 15px;
+}
+
+.input-name {
+	text-align: center;
 }
 
 .btn-add {
 	width: 230px;
+	border: 1px solid;
+	text-align: center;
 }
 
 .add {
@@ -189,5 +185,27 @@ main {
 	border: 2px solid;
 	border-radius: 50%;
 	padding: 0px 5px;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: 120px 120px 120px;
+	gap: 10px;
+	justify-items: center;
+}
+
+.card-name {
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-icon {
+	font-size: 1.563rem;
+}
+
+.preview {
+	width: 100%;
+	max-height: 300px;
 }
 </style>

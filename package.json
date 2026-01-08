@@ -22,7 +22,6 @@
 		"emailjs-com": "^3.2.0",
 		"express": "^5.1.0",
 		"firebase": "^12.5.0",
-		"html5-qrcode": "^2.3.8",
 		"idb": "^8.0.3",
 		"langchain": "^0.3.32",
 		"pinia": "^2.1.6",
