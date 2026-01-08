@@ -238,7 +238,9 @@ export const useLanguageStore = defineStore('Language', {
       title: 'Loyalty Cards',
       functionText: 'Add a card',
       nameInputPlaceholder: 'Card Name',
-      isctructionText: 'Enter a name BEFORE selecting the images'
+      isctructionText: 'Enter a name to save the image',
+      confirmAlertMessage: 'Are you sure you want to delete the card',
+      alertMessage: 'A card with this name already exists, change it and try again please'
     }
   }),
   getters: {},
@@ -402,7 +404,9 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.title = 'Carte Fedeltà';
       this.loyalityCards.functionText = 'Aggiungi una carta';
       this.loyalityCards.nameInputPlaceholder = 'Nome Carta';
-      this.loyalityCards.isctructionText = 'Inserisci un nome PRIMA di selezionare le immagini';
+      this.loyalityCards.isctructionText = "Inserisci un nome per poter salvare l'immagine";
+      this.loyalityCards.confirmAlertMessage = 'Sei sicuro di voler eliminare la carta';
+      this.loyalityCards.alertMessage = 'Esiste già una carta con questo nome, cambialo e riprova per favore';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -499,7 +503,9 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.title = 'Tarjetas de Fidelidad';
       this.loyalityCards.functionText = 'Añadir una tarjeta';
       this.loyalityCards.nameInputPlaceholder = 'Nombre de la Tarjeta';
-      this.loyalityCards.isctructionText = 'Introduce un nombre ANTES de seleccionar las imágenes';
+      this.loyalityCards.isctructionText = 'Introduzca un nombre para guardar la imagen';
+      this.loyalityCards.confirmAlertMessage = '¿Está seguro de que desea eliminar la tarjeta';
+      this.loyalityCards.alertMessage = 'Ya existe una tarjeta con este nombre, cámbielo y vuelva a intentarlo por favor';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO
