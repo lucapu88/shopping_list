@@ -150,3 +150,10 @@
 .move-elements-btn {
 	color: #ff6600 !important;
 }
+
+/* ------------------------------------------------------------   VARIE */
+
+.btn-font-custom {
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-weight: bold;
+}

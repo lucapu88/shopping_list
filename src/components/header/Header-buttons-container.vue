@@ -266,6 +266,11 @@ p {
 .custom-show-listbtn > img {
 	width: 25px;
 }
+
+.custom-show-listbtn > .loyalty-card-icon {
+	width: 33px;
+}
+
 .drag-n-drop-img {
 	width: 20px !important;
 }

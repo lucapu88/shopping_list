@@ -6,6 +6,7 @@ import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { dbPromise } from "@/server/db.js";
 import { ref, onMounted, onUnmounted } from "vue";
 import SimpleAlert from "@/components/panels-and-modals/Simple-alert.vue";
+import LoadingOrUpdating from "../Loading-or-updating.vue";
 
 const theme = useThemeStore();
 const languages = useLanguageStore();
@@ -20,6 +21,7 @@ const photoName = ref(null);
 const showConfirmAlert = ref(null);
 const saveBtnVisible = ref(false);
 const showAlert = ref(false);
+const loading = ref(false);
 const confirmAlertMessage = ref("");
 let objectUrl = null;
 
@@ -66,11 +68,18 @@ async function saveSelected() {
 }
 
 async function loadPhotos() {
-	const db = await dbPromise;
-	photos.value = await db.getAll("photos");
+	loading.value = true;
+	try {
+		const db = await dbPromise;
+		photos.value = await db.getAll("photos");
+	} finally {
+		loading.value = false;
+	}
 }
 
 function showPhoto(photo) {
+	document.querySelector("main").scrollTo({ top: 0, behavior: "smooth" });
+
 	if (objectUrl) {
 		URL.revokeObjectURL(objectUrl);
 	}
@@ -133,16 +142,19 @@ onUnmounted(() => {
 		>
 			<header>
 				<h3>{{ languages.loyalityCards.title }}</h3>
-				<p class="close-helper" @click="secondTodos.loyaltyCardsVisible = false">X</p>
+				<p class="close-icon btn-font-custom" @click="secondTodos.loyaltyCardsVisible = false">X</p>
 			</header>
 			<main>
+				<LoadingOrUpdating :listChanged="loading" />
+
+				<!-- ISTRUZIONI PER L'UTENTE -->
 				<small v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 
 				<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
 
 				<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
 				<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
-					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add"> + </span>
+					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
 					<input type="file" accept="image/*" @change="onSelect" hidden />
 				</label>
 				<!-- PULSANTE PER SALVARE LA TESSERA -->
@@ -190,7 +202,7 @@ onUnmounted(() => {
 	border-radius: 0%;
 }
 
-.close-helper {
+.close-icon {
 	font-size: 1.875rem;
 	position: absolute;
 	right: 10px;
@@ -212,11 +224,14 @@ header {
 main {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
 	gap: 15px;
 	overflow: auto;
 	margin-bottom: 10px;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 .input-name {
@@ -298,6 +313,11 @@ main {
 	text-align: center;
 	border: 1px solid;
 	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 .preview-container > h3 {
 	text-transform: uppercase;
