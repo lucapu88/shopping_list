@@ -28,6 +28,7 @@ const errorLoading = ref(false);
 const insertNameAlert = ref(false);
 const confirmAlertMessage = ref("");
 let objectUrl = null;
+const limitCards = 20;
 
 onMounted(loadPhotos);
 
@@ -39,6 +40,9 @@ function onSelect(e) {
 }
 
 async function saveSelected() {
+	if (photos.value.length >= limitCards) {
+		return;
+	}
 	if (!selectedFiles.value.length || !imageName.value) {
 		insertNameAlert.value = true;
 		return;
@@ -166,6 +170,7 @@ onUnmounted(() => {
 				<LoadingOrUpdating :listChanged="loading" />
 
 				<template v-if="errorLoading">
+					<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
 					<p class="text-center text-danger bg-light">{{ languages.loyalityCards.errorMessage }}</p>
 					<button class="refresh-btn" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @click="loadPhotos">
 						<span>{{ String.fromCodePoint(0x1f504) }}</span>
@@ -179,8 +184,9 @@ onUnmounted(() => {
 					<small>{{ languages.loyalityCards.infoSubText }}</small>
 				</template>
 
+				<small v-if="photos.length >= limitCards">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
 				<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
-				<button class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': addCard }" @click="showAddCard">
+				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': addCard }" @click="showAddCard">
 					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
 				</button>
 
