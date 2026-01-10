@@ -156,6 +156,8 @@ export default {
 			<strong v-else>-</strong>
 		</button>
 		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
+		<!-- TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte -->
+
 		<!-- <button
 			v-if="!settings.isIphone"
 			class="btn custom-show-listbtn"

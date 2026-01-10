@@ -79,7 +79,8 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
         });
     });
 
-    it('Verifico se funziona la visualizzazione degli elementi importanti', () => {
+    xit('Verifico se funziona la visualizzazione degli elementi importanti', () => {
+        //TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte
         cy.addSomeItemsToList(phrases);
         cy.wait(1000);
 

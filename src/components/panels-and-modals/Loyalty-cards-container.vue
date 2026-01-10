@@ -22,6 +22,10 @@ const showConfirmAlert = ref(null);
 const saveBtnVisible = ref(false);
 const showAlert = ref(false);
 const loading = ref(false);
+const addCard = ref(false);
+const showInfo = ref(false);
+const errorLoading = ref(false);
+const insertNameAlert = ref(false);
 const confirmAlertMessage = ref("");
 let objectUrl = null;
 
@@ -35,7 +39,10 @@ function onSelect(e) {
 }
 
 async function saveSelected() {
-	if (!selectedFiles.value.length || !imageName.value) return;
+	if (!selectedFiles.value.length || !imageName.value) {
+		insertNameAlert.value = true;
+		return;
+	}
 
 	const db = await dbPromise;
 
@@ -63,15 +70,19 @@ async function saveSelected() {
 	confirmAlertMessage.value = "";
 	photoId.value = null;
 	showConfirmAlert.value = false;
+	insertNameAlert.value = false;
 	saveBtnVisible.value = false;
 	await loadPhotos();
 }
 
 async function loadPhotos() {
 	loading.value = true;
+	errorLoading.value = false;
 	try {
 		const db = await dbPromise;
 		photos.value = await db.getAll("photos");
+	} catch (err) {
+		errorLoading.value = true;
 	} finally {
 		loading.value = false;
 	}
@@ -112,6 +123,13 @@ function onCloseAlert(value) {
 	showAlert.value = value;
 }
 
+function showAddCard() {
+	addCard.value = !addCard.value;
+	// selectedFiles.value = []; //TODO: non funziona, capire perche'
+	saveBtnVisible.value = false;
+	insertNameAlert.value = false;
+}
+
 onUnmounted(() => {
 	if (objectUrl) {
 		URL.revokeObjectURL(objectUrl);
@@ -147,18 +165,39 @@ onUnmounted(() => {
 			<main>
 				<LoadingOrUpdating :listChanged="loading" />
 
-				<!-- ISTRUZIONI PER L'UTENTE -->
-				<small v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
+				<template v-if="errorLoading">
+					<p class="text-center text-danger bg-light">{{ languages.loyalityCards.errorMessage }}</p>
+					<button class="refresh-btn" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @click="loadPhotos">
+						<span>{{ String.fromCodePoint(0x1f504) }}</span>
+					</button>
+				</template>
 
-				<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
+				<button class="btn-info" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
+				<!-- ISTRUZIONI PER L'UTENTE -->
+				<template v-if="showInfo">
+					<small>{{ languages.loyalityCards.infoText }}</small>
+					<small>{{ languages.loyalityCards.infoSubText }}</small>
+				</template>
 
 				<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
-				<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
+				<button class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': addCard }" @click="showAddCard">
 					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
-					<input type="file" accept="image/*" @change="onSelect" hidden />
-				</label>
-				<!-- PULSANTE PER SALVARE LA TESSERA -->
-				<button v-if="saveBtnVisible" @click="saveSelected()" :disabled="!imageName">{{ languages.saveText }}</button>
+				</button>
+
+				<template v-if="addCard">
+					<!-- WARNING PER IL NOME DELLA TESSERA -->
+					<small v-if="!imageName" :class="{ 'bg-light text-danger rounded fs-6': insertNameAlert }">{{ languages.loyalityCards.isctructionText }}</small>
+					<!-- INPUT SCELTA NOME TESSERA -->
+					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
+					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
+					<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
+						<span>{{ languages.loyalityCards.selectCardText }}</span>
+						<input type="file" accept="image/*" @change="onSelect" hidden />
+					</label>
+
+					<!-- PULSANTE PER SALVARE LA TESSERA -->
+					<button v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText }}</button>
+				</template>
 
 				<!-- ALERT CHE APPARE PER CONFERMARE LA CANCELLAZIONE DELLA TESSERA -->
 				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-if="showConfirmAlert">
@@ -181,7 +220,7 @@ onUnmounted(() => {
 				</div>
 
 				<!-- CONTENITORE DELLE TESSERE SALVATE -->
-				<div class="cards-container" v-if="photos.length">
+				<div class="cards-container mt-3" v-if="photos.length">
 					<button v-for="photo in photos" :key="photo.id" class="card-name-container" @click="showPhoto(photo)">
 						<span class="delete-card" @click="selectPhotoForDelete(photo.id, photo.name)">X</span>
 
@@ -211,6 +250,11 @@ onUnmounted(() => {
 	text-align: right;
 }
 
+.refresh-btn {
+	font-size: 1.875rem;
+	padding: 0 15px;
+}
+
 small {
 	text-align: center;
 }
@@ -238,11 +282,20 @@ main {
 	text-align: center;
 }
 
-.btn-add {
+.btn-add,
+.btn-info {
 	width: 230px;
 	border: 1px solid;
 	text-align: center;
 	padding: 3px;
+}
+.btn-add-selected {
+	background-color: #0000002d;
+}
+
+.btn-info {
+	width: 110px;
+	padding: 2px;
 }
 
 .add {

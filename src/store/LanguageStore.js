@@ -237,10 +237,14 @@ export const useLanguageStore = defineStore('Language', {
     loyalityCards: {
       title: 'Loyalty Cards',
       functionText: 'Add a card',
+      selectCardText: 'Select card',
       nameInputPlaceholder: 'Card Name',
       isctructionText: 'Enter a name to save the image',
       confirmAlertMessage: 'Are you sure you want to delete the card',
-      alertMessage: 'A card with this name already exists, change it and try again please'
+      alertMessage: 'A card with this name already exists, change it and try again please',
+      infoText: 'Here you can save images of your loyalty cards. Tip: the photo must be clear and sharp to be easily read at the supermarket',
+      infoSubText: 'You can save up to a maximum of 20 cards, if you want more contact me at the email in the support section',
+      errorMessage: 'Error loading image, please try again',
     }
   }),
   getters: {},
@@ -403,10 +407,14 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Prezzo Totale: ';
       this.loyalityCards.title = 'Carte Fedeltà';
       this.loyalityCards.functionText = 'Aggiungi una carta';
+      this.loyalityCards.selectCardText = 'Seleziona carta';
       this.loyalityCards.nameInputPlaceholder = 'Nome Carta';
       this.loyalityCards.isctructionText = "Inserisci un nome per poter salvare l'immagine";
       this.loyalityCards.confirmAlertMessage = 'Sei sicuro di voler eliminare la carta';
       this.loyalityCards.alertMessage = 'Esiste già una carta con questo nome, cambialo e riprova per favore';
+      this.loyalityCards.infoText = 'Qui puoi salvare le immagini delle tue carte fedeltà. Consiglio: la foto deve essere chiara e nitida per poter essere letta facilmente al supermercato';
+      this.loyalityCards.infoSubText = 'Puoi salvare fino ad un massimo di 20 carte, se ne vuoi di più contattami alla mail nella sezione supporto';
+      this.loyalityCards.errorMessage = 'Errore nel caricare l\'immagine, riprova per favore';
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -502,10 +510,14 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Precio Total: ';
       this.loyalityCards.title = 'Tarjetas de Fidelidad';
       this.loyalityCards.functionText = 'Añadir una tarjeta';
+      this.loyalityCards.selectCardText = 'Seleccionar tarjeta';
       this.loyalityCards.nameInputPlaceholder = 'Nombre de la Tarjeta';
       this.loyalityCards.isctructionText = 'Introduzca un nombre para guardar la imagen';
       this.loyalityCards.confirmAlertMessage = '¿Está seguro de que desea eliminar la tarjeta';
       this.loyalityCards.alertMessage = 'Ya existe una tarjeta con este nombre, cámbielo y vuelva a intentarlo por favor';
+      this.loyalityCards.infoText = 'Aquí puedes guardar las imágenes de tus tarjetas de fidelidad. Consejo: la foto debe ser clara y nítida para que pueda leerse fácilmente en el supermercado';
+      this.loyalityCards.infoSubText = 'Puedes guardar hasta un máximo de 20 tarjetas, si quieres más contáctame en el correo electrónico de la sección de soporte';
+      this.loyalityCards.errorMessage = 'Error al cargar la imagen, inténtelo de nuevo por favor';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

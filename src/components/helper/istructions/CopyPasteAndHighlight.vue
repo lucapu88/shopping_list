@@ -51,7 +51,8 @@ export default {
 			<span class="active"> {{ languages.helperDescription.highlightImportant.part2 }}, </span>
 			{{ languages.helperDescription.highlightImportant.part3 }}
 		</li>
-		<li>
+		<!-- TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte -->
+		<!-- <li>
 			{{ languages.importantTodos.text.part1 }}
 			<button
 				class="btn helper-btn-size"
@@ -71,7 +72,7 @@ export default {
 				<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
 			</button>
 			{{ languages.importantTodos.text.part2 }}
-		</li>
+		</li> -->
 
 		<ToggleTutorialButton :features="copyPaste" :margin="true" />
 		<Tutorial v-if="settings.video && settings.feature === copyPaste" :features="copyPaste" />
