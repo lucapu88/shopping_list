@@ -156,7 +156,7 @@ export default {
 			<strong v-else>-</strong>
 		</button>
 		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
-		<button
+		<!-- <button
 			v-if="!settings.isIphone"
 			class="btn custom-show-listbtn"
 			:class="{
@@ -187,11 +187,10 @@ export default {
 			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important.webp" alt="important" />
 			<img v-if="theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
 			<img v-if="!theme.elegantTheme && theme.panterTheme" class="important" src="@/img/icons/important-panter.webp" alt="important" />
-		</button>
+		</button> -->
 
 		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ (PER IL MOMENTO NON IN PRODUZIONE) -->
 		<button
-			v-if="settings.isIphone"
 			class="btn custom-show-listbtn"
 			:class="{
 				'btn-selected': todosStore.showOnlyImportantTodos,
