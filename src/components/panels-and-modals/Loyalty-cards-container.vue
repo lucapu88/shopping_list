@@ -53,6 +53,8 @@ async function onSelect(e) {
 		aspectRatio: NaN, // libero
 		viewMode: 1,
 		autoCropArea: 1,
+		responsive: false,
+		restore: false,
 	});
 }
 
