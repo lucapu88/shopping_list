@@ -245,7 +245,8 @@ export const useLanguageStore = defineStore('Language', {
       infoText: 'Here you can save images of your loyalty cards. Tip: the photo must be clear and sharp to be easily read at the supermarket',
       infoSubText: 'You can save up to a maximum of 20 cards, if you want more contact me at the email in the support section',
       errorMessage: 'Error loading image, please try again',
-      maxNumberCardsMessage: 'You have reached the maximum number of savable cards'
+      maxNumberCardsMessage: 'You have reached the maximum number of savable cards',
+      cropMessage: 'Crop the photo taking only the barcode'
     }
   }),
   getters: {},
@@ -417,6 +418,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.infoSubText = 'Puoi salvare fino ad un massimo di 20 carte, se ne vuoi di più contattami alla mail nella sezione supporto';
       this.loyalityCards.errorMessage = 'Errore nel caricare l\'immagine, riprova per favore';
       this.loyalityCards.maxNumberCardsMessage = 'Hai raggiunto il numero massimo di carte salvabili';
+      this.loyalityCards.cropMessage = "Ritaglia la foto prendendo solo il codice a barre";
     },
     setSpanishTranslations() { // SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -521,6 +523,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.infoSubText = 'Puedes guardar hasta un máximo de 20 tarjetas, si quieres más contáctame en el correo electrónico de la sección de soporte';
       this.loyalityCards.errorMessage = 'Error al cargar la imagen, inténtelo de nuevo por favor';
       this.loyalityCards.maxNumberCardsMessage = 'Has alcanzado el número máximo de tarjetas guardables';
+      this.loyalityCards.cropMessage = "Recortar la foto tomando solo el código de barras";
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO

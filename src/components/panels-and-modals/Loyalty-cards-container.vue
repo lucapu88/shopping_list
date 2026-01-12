@@ -29,6 +29,7 @@ const showInfo = ref(false);
 const errorLoading = ref(false);
 const insertNameAlert = ref(false);
 const showImgPreview = ref(false);
+const showNoNameAlert = ref(false);
 const confirmAlertMessage = ref("");
 const cropperInstance = ref(null);
 const cropImageEl = ref(null);
@@ -41,6 +42,7 @@ async function onSelect(e) {
 	selectedFiles.value = Array.from(e.target.files);
 	saveBtnVisible.value = selectedFiles.value.length > 0;
 	imageUrl.value = URL.createObjectURL(selectedFiles.value[0]);
+	showNoNameAlert.value = false;
 	await nextTick();
 	cropperInstance.value = new Cropper(cropImageEl.value, {
 		aspectRatio: NaN, // libero
@@ -107,6 +109,7 @@ async function saveSelected() {
 		return;
 	}
 	if (!selectedFiles.value.length || !imageName.value) {
+		showNoNameAlert.value = true;
 		insertNameAlert.value = true;
 		return;
 	}
@@ -145,6 +148,10 @@ async function saveSelected() {
 		cropperInstance.value = null;
 	}
 	await loadPhotos();
+}
+
+function onNameChange() {
+	showNoNameAlert.value = !imageName.value;
 }
 
 async function loadPhotos() {
@@ -263,9 +270,9 @@ onUnmounted(() => {
 
 				<template v-if="addCard">
 					<!-- WARNING PER IL NOME DELLA TESSERA -->
-					<small v-if="!imageName" :class="{ 'bg-light text-danger rounded fs-6': insertNameAlert }">{{ languages.loyalityCards.isctructionText }}</small>
+					<small v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 					<!-- INPUT SCELTA NOME TESSERA -->
-					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
+					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @input="onNameChange" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
 					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
 					<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
 						<span>{{ languages.loyalityCards.selectCardText }}</span>
@@ -292,6 +299,8 @@ onUnmounted(() => {
 
 				<!-- ANTEPRIMA DEL RITAGLIO -->
 				<div class="preview-container" v-if="selectedFiles.length">
+					<p>{{ languages.loyalityCards.cropMessage }}</p>
+					<h3 v-if="showNoNameAlert" class="no-name-red-alert bg-light text-danger rounded">{{ languages.loyalityCards.isctructionText }}</h3>
 					<img class="p-3" ref="cropImageEl" :src="imageUrl" style="max-width: 100%" />
 				</div>
 
@@ -468,6 +477,12 @@ main {
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-top: 0.313rem;
+}
+
+.no-name-red-alert {
+	position: absolute;
+	top: 15%;
+	z-index: 20;
 }
 .preview {
 	width: 100%;
