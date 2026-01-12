@@ -47,8 +47,15 @@ async function onSelect(e) {
 		viewMode: 1,
 		autoCropArea: 1,
 	});
+}
+
+function clearSelection() {
+	imageUrl.value = null;
+	selectedFiles.value = [];
 	showConfirmAlert.value = false;
-	// imageUrl.value = null;
+	showImgPreview.value = false;
+	const inputEl = document.querySelector('input[type="file"]');
+	if (inputEl) inputEl.value = null;
 }
 
 async function processImage() {
@@ -192,6 +199,7 @@ function onCloseAlert(value) {
 
 function showAddCard() {
 	addCard.value = !addCard.value;
+	showImgPreview.value = false;
 	// selectedFiles.value = []; //TODO: non funziona, capire perche'
 	saveBtnVisible.value = false;
 	insertNameAlert.value = false;
@@ -261,17 +269,12 @@ onUnmounted(() => {
 					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
 					<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
 						<span>{{ languages.loyalityCards.selectCardText }}</span>
-						<input type="file" accept="image/*" @change="onSelect" hidden />
+						<input type="file" accept="image/*" @click="clearSelection" @change="onSelect" hidden />
 					</label>
 
 					<!-- PULSANTE PER SALVARE LA TESSERA -->
 					<button v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText }}</button>
 				</template>
-
-				<!-- ANTEPRIMA DEL CROP -->
-				<div class="preview-container" v-if="selectedFiles.length">
-					<img ref="cropImageEl" :src="imageUrl" style="max-width: 100%" />
-				</div>
 
 				<!-- ALERT CHE APPARE PER CONFERMARE LA CANCELLAZIONE DELLA TESSERA -->
 				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-if="showConfirmAlert">
@@ -285,6 +288,11 @@ onUnmounted(() => {
 							<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
 						</button>
 					</div>
+				</div>
+
+				<!-- ANTEPRIMA DEL RITAGLIO -->
+				<div class="preview-container" v-if="selectedFiles.length">
+					<img class="p-3" ref="cropImageEl" :src="imageUrl" style="max-width: 100%" />
 				</div>
 
 				<!-- CONTENITORE PREVIEW DELLA TESSERA SELEZIONATA -->
