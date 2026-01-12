@@ -15,6 +15,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Create, edit, and delete shopping lists (local storage only, no DB. No user data collected)
 - Drag & drop to reorder items (with **vue3-smooth-dnd**)
 - Ability to send emails with **EmailJS**
+- Ability to save store loyalty cards with **idb** (No data collection! Everything remains in the local memory)
 - Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
 - Data validation with **Zod** (<u>functionality NOT in production for users but for personal use only</u>)
 - Advanced features with **LangChain** and **OpenAI** (<u>functionality NOT in production for users but for personal use only</u>)
@@ -30,6 +31,8 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Cypress (end-to-end testing)
 - Vitest (unit testing)
 - Kodular (conversion to Android app)
+- cropperjs
+- idb
 
 <br><hr>
 

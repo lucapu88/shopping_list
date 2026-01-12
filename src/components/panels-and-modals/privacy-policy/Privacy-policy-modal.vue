@@ -54,6 +54,8 @@ export default {
 						<p>Various types of Data as specified in the privacy policy of the service</p>
 						<strong>EmailJS</strong>
 						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<strong>idb</strong>
+						<p>No data collection. Everything remains in the local memory.</p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>
