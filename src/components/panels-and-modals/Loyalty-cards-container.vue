@@ -39,6 +39,7 @@ const cropperInstance = ref(null);
 const cropImageEl = ref(null);
 let objectUrl = null;
 const limitCards = 20;
+const maxHeight = 300; //Se la cambi qui, cambiala anche nel css in .crop-container
 
 onMounted(loadPhotos);
 
@@ -66,7 +67,6 @@ function clearSelection() {
 
 async function processImage() {
 	const canvas = cropperInstance.value.getCroppedCanvas();
-	const maxHeight = 300;
 	const scale = maxHeight / canvas.height;
 	const finalWidth = canvas.width * scale;
 	const resizedCanvas = document.createElement("canvas");
@@ -305,7 +305,7 @@ onUnmounted(() => {
 				<div class="preview-container" v-if="selectedFiles.length">
 					<p>{{ languages.loyalityCards.cropMessage }}</p>
 					<h3 v-if="showNoNameAlert" class="no-name-red-alert bg-light text-danger rounded">{{ languages.loyalityCards.isctructionText }}</h3>
-					<img class="p-3" ref="cropImageEl" :src="imageUrl" style="max-width: 100%" />
+					<img class="crop-container p-3" ref="cropImageEl" :src="imageUrl" />
 				</div>
 
 				<!-- CONTENITORE PREVIEW DELLA TESSERA SELEZIONATA -->
@@ -496,5 +496,10 @@ main {
 	width: 100%;
 	max-height: 300px;
 	padding: 15px 0;
+}
+
+.crop-container {
+	max-width: 100%;
+	max-height: 300px;
 }
 </style>
