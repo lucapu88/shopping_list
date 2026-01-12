@@ -10,6 +10,10 @@ import LoadingOrUpdating from "../Loading-or-updating.vue";
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
 
+/*
+	TOFIX: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per sto modtivo.
+	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
+*/
 const theme = useThemeStore();
 const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
@@ -313,15 +317,16 @@ onUnmounted(() => {
 
 				<!-- CONTENITORE DELLE TESSERE SALVATE -->
 				<div class="cards-container mt-3" v-if="photos.length">
-					<button v-for="photo in photos" :key="photo.id" class="card-name-container" @click="showPhoto(photo)">
+					<div v-for="photo in photos" :key="photo.id" class="card-name-container-wrapper">
 						<span class="delete-card" @click="selectPhotoForDelete(photo.id, photo.name)">
 							<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 						</span>
+						<button class="card-name-container" @click="showPhoto(photo)">
+							<span class="card-icon">{{ String.fromCodePoint(0x1f4b3) }}</span>
 
-						<span class="card-icon">{{ String.fromCodePoint(0x1f4b3) }}</span>
-
-						<span class="card-name">{{ photo.name }}</span>
-					</button>
+							<span class="card-name">{{ photo.name }}</span>
+						</button>
+					</div>
 				</div>
 			</main>
 		</div>
@@ -425,8 +430,11 @@ main {
 	justify-items: center;
 }
 
-.card-name-container {
+.card-name-container-wrapper {
 	position: relative;
+}
+
+.card-name-container {
 	width: 145px;
 	display: flex;
 	flex-direction: column;
