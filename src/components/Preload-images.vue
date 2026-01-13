@@ -10,8 +10,11 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import cancellaPreload from "@/img/cancella.webp";
 import marePreload from "@/img/mare.webp";
 import mareTabletPreload from "@/img/mare-tablet.webp";
+import ondeMare from "@/img/onde-mare.webp";
 import montagnePreload from "@/img/montagne.webp";
 import montagneTabletPreload from "@/img/montagne-tablet.webp";
+import snowman from "@/img/snowman.webp";
+import strawberries from "@/img/strawberries.webp";
 import DragDropElegant from "@/img/icons/drag-and-drop-elegant.webp";
 import copyElegant from "@/img/icons/copy-elegant.webp";
 import importantElegant from "@/img/icons/important-elegant.webp";
@@ -20,6 +23,7 @@ import copyPanter from "@/img/icons/copy-panter.webp";
 import importantPanter from "@/img/icons/important-panter.webp";
 import lemon from "@/img/lemon-send.webp";
 import leaves from "@/img/foglie.webp";
+import limoncello from "@/img/limoncello.webp";
 import leotta from "@/img/jeans-zip.webp";
 import levisMio from "@/img/jeans-mio.webp";
 import jeansIle from "@/img/jeans-ile.webp";
@@ -63,6 +67,7 @@ import closeIcon from "@/img/icons/close.webp";
 import dino from "@/img/update-img.webp";
 import listLoading from "@/img/Loading-list.webp";
 import loyaltyCard from "@/img/icons/loy-card.webp";
+import gooniesMap from "@/img/goonies-map.webp";
 </script>
 
 <script>
@@ -84,12 +89,17 @@ export default {
 <template>
 	<!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="cancellaPreload" />
+	<link v-if="theme.lightTheme" rel="preload" as="image" :href="gooniesMap" />
 
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="mareTabletPreload" />
+	<link v-if="theme.summerTheme" rel="preload" as="image" :href="ondeMare" />
 
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="montagnePreload" />
 	<link v-if="theme.winterTheme" rel="preload" as="image" :href="montagneTabletPreload" />
+	<link v-if="theme.winterTheme" rel="preload" as="image" :href="snowman" />
+
+	<link v-if="theme.pinkTheme" rel="preload" as="image" :href="strawberries" />
 
 	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="leotta" />
 	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="levisMio" />
@@ -108,6 +118,7 @@ export default {
 
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="lemon" />
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="leaves" />
+	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="limoncello" />
 
 	<!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
 	<template v-if="isChristmas.christmasTheme">

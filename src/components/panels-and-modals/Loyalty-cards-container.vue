@@ -246,9 +246,24 @@ onUnmounted(() => {
 				jeans: theme.jeansTheme,
 			}"
 		>
-			<header>
-				<h3>{{ languages.loyalityCards.title }}</h3>
-				<p class="close-icon btn-font-custom" @click="secondTodos.loyaltyCardsVisible = false">X</p>
+			<div
+				class="background-head-img"
+				:class="{
+					'add-height': addCard,
+					'willy-lorbo': theme.lightTheme,
+					waves: theme.summerTheme,
+					snow: theme.winterTheme,
+					strawberries: theme.pinkTheme,
+					limonissimo: theme.lemonTheme,
+					'jeans-zip': theme.jeansTheme,
+				}"
+			></div>
+
+			<header :class="{ 'text-dark': theme.winterTheme }">
+				<h3 :class="{ 'bg-light': theme.lemonTheme }">{{ languages.loyalityCards.title }}</h3>
+				<p class="close-icon" @click="secondTodos.loyaltyCardsVisible = false">
+					<span class="btn-font-custom" :class="{ 'bg-light rounded-circle boldi-cipollino p-1': theme.lemonTheme }">X</span>
+				</p>
 			</header>
 			<main>
 				<LoadingOrUpdating :listChanged="loading" />
@@ -264,8 +279,26 @@ onUnmounted(() => {
 				<button class="btn-info" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
 				<!-- ISTRUZIONI PER L'UTENTE -->
 				<template v-if="showInfo">
-					<small>{{ languages.loyalityCards.infoText }}</small>
-					<small>{{ languages.loyalityCards.infoSubText }}</small>
+					<div
+						class="info-container p-3 text-center"
+						:class="{
+							light: theme.lightTheme,
+							dark: theme.darkTheme,
+							minimal: theme.minimalTheme,
+							retro: theme.retroTheme,
+							summer: theme.summerTheme,
+							winter: theme.winterTheme,
+							elegant: theme.elegantTheme,
+							pink: theme.pinkTheme,
+							panter: theme.panterTheme,
+							lemon: theme.lemonTheme,
+							jeans: theme.jeansTheme,
+						}"
+					>
+						<small>{{ languages.loyalityCards.infoText }}</small>
+						<br />
+						<small>{{ languages.loyalityCards.infoSubText }}</small>
+					</div>
 				</template>
 
 				<small v-if="photos.length >= limitCards">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
@@ -276,17 +309,17 @@ onUnmounted(() => {
 
 				<template v-if="addCard">
 					<!-- WARNING PER IL NOME DELLA TESSERA -->
-					<small v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
+					<small :class="{ 'text-dark': theme.winterTheme }" v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 					<!-- INPUT SCELTA NOME TESSERA -->
 					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @input="onNameChange" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
 					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
-					<label class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
+					<label class="btn-add btn btn-warning" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
 						<span>{{ languages.loyalityCards.selectCardText }}</span>
 						<input type="file" accept="image/*" @click="clearSelection" @change="onSelect" hidden />
 					</label>
 
 					<!-- PULSANTE PER SALVARE LA TESSERA -->
-					<button v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText }}</button>
+					<button class="btn btn-success" v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText }}</button>
 				</template>
 
 				<!-- ALERT CHE APPARE PER CONFERMARE LA CANCELLAZIONE DELLA TESSERA -->
@@ -336,6 +369,37 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.background-head-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 155px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.willy-lorbo {
+	background-image: url("@/img/goonies-map.webp");
+}
+.waves {
+	background-image: url("@/img/onde-mare.webp");
+}
+.snow {
+	background-image: url("@/img/snowman.webp");
+}
+.limonissimo {
+	background-image: url("@/img/limoncello.webp");
+}
+.jeans-zip {
+	background-image: url("@/img/jeans-zip.webp");
+}
+.strawberries {
+	background-size: auto;
+	background-image: url("@/img/strawberries.webp");
+}
+.add-height {
+	height: 220px;
+}
 .loy-container {
 	width: 100%;
 	height: 100%;
@@ -364,6 +428,7 @@ header {
 	display: flex;
 	justify-content: center;
 	padding: 0.625rem;
+	z-index: 20;
 }
 
 main {
@@ -391,12 +456,16 @@ main {
 	padding: 3px;
 }
 .btn-add-selected {
-	background-color: #0000002d;
+	background-color: #a2a2a2;
 }
 
 .btn-info {
 	width: 110px;
 	padding: 2px;
+}
+
+.info-container {
+	border: 1px solid;
 }
 
 .add {
