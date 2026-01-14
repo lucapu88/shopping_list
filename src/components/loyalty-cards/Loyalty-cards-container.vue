@@ -65,6 +65,7 @@ function clearSelection() {
 	selectedFiles.value = [];
 	showConfirmAlert.value = false;
 	showImgPreview.value = false;
+	saveBtnVisible.value = false;
 	const inputEl = document.querySelector('input[type="file"]');
 	if (inputEl) inputEl.value = null;
 }
