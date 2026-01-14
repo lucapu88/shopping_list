@@ -5,13 +5,15 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { dbPromise } from "@/server/db.js";
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
-import SimpleAlert from "@/components/panels-and-modals/Simple-alert.vue";
+import SimpleAlert from "@/components/loyalty-cards/Simple-alert.vue";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
-
+import BackgroundImg from "./Background-img.vue";
+import ErrorMessage from "./Error-message.vue";
+import InfoContainer from "./Info-container.vue";
 /*
-	TOFIX: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per sto modtivo.
+	TOFIX: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
 	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
 */
 const theme = useThemeStore();
@@ -110,52 +112,6 @@ function dataUrlToBlob(dataUrl) {
 	return fetch(dataUrl).then((res) => res.blob());
 }
 
-async function saveSelected() {
-	if (photos.value.length >= limitCards) {
-		return;
-	}
-	if (!selectedFiles.value.length || !imageName.value) {
-		showNoNameAlert.value = true;
-		insertNameAlert.value = true;
-		return;
-	}
-
-	const db = await dbPromise;
-
-	const existing = await db.getAll("photos");
-	const exists = existing.some((p) => p.name === imageName.value);
-
-	if (exists) {
-		showAlert.value = true;
-		return;
-	}
-
-	const processedDataUrl = await processImage();
-
-	const blob = await dataUrlToBlob(processedDataUrl);
-
-	await db.put("photos", {
-		id: crypto.randomUUID(),
-		name: imageName.value,
-		blob,
-		createdAt: Date.now(),
-	});
-
-	selectedFiles.value = [];
-	imageName.value = "";
-	confirmAlertMessage.value = "";
-	photoId.value = null;
-	showConfirmAlert.value = false;
-	insertNameAlert.value = false;
-	saveBtnVisible.value = false;
-
-	if (cropperInstance.value) {
-		cropperInstance.value.destroy();
-		cropperInstance.value = null;
-	}
-	await loadPhotos();
-}
-
 function onNameChange() {
 	showNoNameAlert.value = !imageName.value;
 }
@@ -218,6 +174,58 @@ function showAddCard() {
 	insertNameAlert.value = false;
 }
 
+async function saveSelected() {
+	if (photos.value.length >= limitCards) {
+		return;
+	}
+	if (!selectedFiles.value.length || !imageName.value) {
+		showNoNameAlert.value = true;
+		insertNameAlert.value = true;
+		return;
+	}
+
+	const db = await dbPromise;
+
+	const existing = await db.getAll("photos");
+	const exists = existing.some((p) => p.name === imageName.value);
+
+	if (exists) {
+		showAlert.value = true;
+		return;
+	}
+
+	const processedDataUrl = await processImage();
+
+	const blob = await dataUrlToBlob(processedDataUrl);
+
+	await db.put("photos", {
+		id: crypto.randomUUID(),
+		name: imageName.value,
+		blob,
+		createdAt: Date.now(),
+	});
+
+	resetToDefaultValue();
+
+	if (cropperInstance.value) {
+		cropperInstance.value.destroy();
+		cropperInstance.value = null;
+	}
+	await loadPhotos();
+}
+
+function resetToDefaultValue() {
+	selectedFiles.value = [];
+	imageName.value = "";
+	confirmAlertMessage.value = "";
+	photoId.value = null;
+	showConfirmAlert.value = false;
+	insertNameAlert.value = false;
+	saveBtnVisible.value = false;
+	showInfo.value = false;
+	addCard.value = false;
+}
+
 onUnmounted(() => {
 	if (objectUrl) {
 		URL.revokeObjectURL(objectUrl);
@@ -246,18 +254,7 @@ onUnmounted(() => {
 				jeans: theme.jeansTheme,
 			}"
 		>
-			<div
-				class="background-head-img"
-				:class="{
-					'add-height': addCard,
-					'willy-lorbo': theme.lightTheme,
-					waves: theme.summerTheme,
-					snow: theme.winterTheme,
-					strawberries: theme.pinkTheme,
-					limonissimo: theme.lemonTheme,
-					'jeans-zip': theme.jeansTheme,
-				}"
-			></div>
+			<BackgroundImg :addHeight="addCard" />
 
 			<header :class="{ 'text-dark': theme.winterTheme }">
 				<h3 :class="{ 'bg-light': theme.lemonTheme }">{{ languages.loyalityCards.title }}</h3>
@@ -268,45 +265,23 @@ onUnmounted(() => {
 			<main>
 				<LoadingOrUpdating :listChanged="loading" />
 
-				<template v-if="errorLoading">
-					<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
-					<p class="text-center text-danger bg-light">{{ languages.loyalityCards.errorMessage }}</p>
-					<button class="refresh-btn" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @click="loadPhotos">
-						<span>{{ String.fromCodePoint(0x1f504) }}</span>
-					</button>
-				</template>
+				<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
+				<ErrorMessage :errorLoading="errorLoading" @refresh="loadPhotos" />
 
 				<button class="btn-info" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
-				<!-- ISTRUZIONI PER L'UTENTE -->
-				<template v-if="showInfo">
-					<div
-						class="info-container p-3 text-center"
-						:class="{
-							light: theme.lightTheme,
-							dark: theme.darkTheme,
-							minimal: theme.minimalTheme,
-							retro: theme.retroTheme,
-							summer: theme.summerTheme,
-							winter: theme.winterTheme,
-							elegant: theme.elegantTheme,
-							pink: theme.pinkTheme,
-							panter: theme.panterTheme,
-							lemon: theme.lemonTheme,
-							jeans: theme.jeansTheme,
-						}"
-					>
-						<small>{{ languages.loyalityCards.infoText }}</small>
-						<br />
-						<small>{{ languages.loyalityCards.infoSubText }}</small>
-					</div>
-				</template>
 
+				<!-- INFO PER L'UTENTE -->
+				<InfoContainer :show-info="showInfo" />
+
+				<!-- MESSAGGIO CHE TI MOSTRA QUANDO HAI RAGGIUNTO IL LIMITE MASSIMO DI CARTE  -->
 				<small v-if="photos.length >= limitCards">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
+
 				<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
 				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': addCard }" @click="showAddCard">
 					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
 				</button>
 
+				<!-- ISTRUZIONI PER L'UTENTE -->
 				<template v-if="addCard">
 					<!-- WARNING PER IL NOME DELLA TESSERA -->
 					<small :class="{ 'text-dark': theme.winterTheme }" v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
@@ -369,37 +344,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.background-head-img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 155px;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-.willy-lorbo {
-	background-image: url("@/img/goonies-map.webp");
-}
-.waves {
-	background-image: url("@/img/onde-mare.webp");
-}
-.snow {
-	background-image: url("@/img/snowman.webp");
-}
-.limonissimo {
-	background-image: url("@/img/limoncello.webp");
-}
-.jeans-zip {
-	background-image: url("@/img/jeans-zip.webp");
-}
-.strawberries {
-	background-size: auto;
-	background-image: url("@/img/strawberries.webp");
-}
-.add-height {
-	height: 220px;
-}
 .loy-container {
 	width: 100%;
 	height: 100%;
@@ -413,11 +357,6 @@ onUnmounted(() => {
 	top: 0;
 	width: 60px;
 	text-align: right;
-}
-
-.refresh-btn {
-	font-size: 1.875rem;
-	padding: 0 15px;
 }
 
 small {
@@ -462,10 +401,6 @@ main {
 .btn-info {
 	width: 110px;
 	padding: 2px;
-}
-
-.info-container {
-	border: 1px solid;
 }
 
 .add {
