@@ -12,6 +12,7 @@ import "cropperjs/dist/cropper.css";
 import BackgroundImg from "./Background-img.vue";
 import ErrorMessage from "./Error-message.vue";
 import InfoContainer from "./Info-container.vue";
+import OrderCards from "./Order-cards.vue";
 /*
 	TOFIX: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
 	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
@@ -23,6 +24,9 @@ const isChristmas = useChristmasStore();
 const imageName = ref("");
 const photos = ref([]);
 const selectedFiles = ref([]);
+const confirmAlertMessage = ref("");
+const cropperInstance = ref(null);
+const cropImageEl = ref(null);
 const imageUrl = ref(null);
 const photoId = ref(null);
 const photoName = ref(null);
@@ -36,18 +40,17 @@ const errorLoading = ref(false);
 const insertNameAlert = ref(false);
 const showImgPreview = ref(false);
 const showNoNameAlert = ref(false);
-const confirmAlertMessage = ref("");
-const cropperInstance = ref(null);
-const cropImageEl = ref(null);
+const cropPreview = ref(false);
+const az = ref(localStorage.getItem("az-order") === "true");
 let objectUrl = null;
 const limitCards = 20;
 const maxHeight = 300; //Se la cambi qui, cambiala anche nel css in .crop-container
-
 onMounted(loadPhotos);
 
 async function onSelect(e) {
 	selectedFiles.value = Array.from(e.target.files);
 	saveBtnVisible.value = selectedFiles.value.length > 0;
+	cropPreview.value = saveBtnVisible.value;
 	imageUrl.value = URL.createObjectURL(selectedFiles.value[0]);
 	showNoNameAlert.value = false;
 	await nextTick();
@@ -66,6 +69,7 @@ function clearSelection() {
 	showConfirmAlert.value = false;
 	showImgPreview.value = false;
 	saveBtnVisible.value = false;
+	cropPreview.value = false;
 	const inputEl = document.querySelector('input[type="file"]');
 	if (inputEl) inputEl.value = null;
 }
@@ -119,15 +123,26 @@ function onNameChange() {
 
 async function loadPhotos() {
 	loading.value = true;
-	errorLoading.value = false;
 	try {
+		errorLoading.value = false;
 		const db = await dbPromise;
 		photos.value = await db.getAll("photos");
+		orderPhotos(az.value);
 	} catch (err) {
 		errorLoading.value = true;
 	} finally {
 		loading.value = false;
 	}
+}
+
+function orderPhotos(order) {
+	order ? photos.value.sort((a, b) => a.name.localeCompare(b.name)) : photos.value.sort((a, b) => b.name.localeCompare(a.name));
+}
+
+function viewOrderPhotos() {
+	az.value = !az.value;
+	window.localStorage.setItem("az-order", String(az.value));
+	orderPhotos(az.value);
 }
 
 function showPhoto(photo) {
@@ -161,6 +176,7 @@ function selectPhotoForDelete(id, name) {
 	confirmAlertMessage.value = `${languages.loyalityCards.confirmAlertMessage} "${name}"?`;
 	showImgPreview.value = false;
 	showConfirmAlert.value = true;
+	document.querySelector("main").scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function onCloseAlert(value) {
@@ -169,13 +185,18 @@ function onCloseAlert(value) {
 
 function showAddCard() {
 	addCard.value = !addCard.value;
-	showImgPreview.value = false;
-	// selectedFiles.value = []; //TODO: non funziona, capire perche'
-	saveBtnVisible.value = false;
-	insertNameAlert.value = false;
+	if (!addCard.value) {
+		showImgPreview.value = false;
+		saveBtnVisible.value = false;
+		insertNameAlert.value = false;
+		imageName.value = "";
+		cropPreview.value = false;
+	}
 }
 
 async function saveSelected() {
+	imageName.value = imageName.value.trim();
+
 	if (photos.value.length >= limitCards) {
 		return;
 	}
@@ -269,7 +290,7 @@ onUnmounted(() => {
 				<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
 				<ErrorMessage :errorLoading="errorLoading" @refresh="loadPhotos" />
 
-				<button class="btn-info" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
+				<button class="btn-info" :class="{ 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
 
 				<!-- INFO PER L'UTENTE -->
 				<InfoContainer :show-info="showInfo" />
@@ -277,8 +298,8 @@ onUnmounted(() => {
 				<!-- MESSAGGIO CHE TI MOSTRA QUANDO HAI RAGGIUNTO IL LIMITE MASSIMO DI CARTE  -->
 				<small v-if="photos.length >= limitCards">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
 
-				<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
-				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme, 'btn-add-selected': addCard }" @click="showAddCard">
+				<!-- PULSANTE PER APRIRE LA SCHERMATA PER AGGIUNGERE LA TESSERA -->
+				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'btn-add-selected': addCard }" @click="showAddCard">
 					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
 				</button>
 
@@ -313,7 +334,7 @@ onUnmounted(() => {
 				</div>
 
 				<!-- ANTEPRIMA DEL RITAGLIO -->
-				<div class="preview-container" v-if="selectedFiles.length">
+				<div class="preview-container" v-if="selectedFiles.length && cropPreview">
 					<p>{{ languages.loyalityCards.cropMessage }}</p>
 					<h3 v-if="showNoNameAlert" class="no-name-red-alert bg-light text-danger rounded">{{ languages.loyalityCards.isctructionText }}</h3>
 					<img class="crop-container p-3" ref="cropImageEl" :src="imageUrl" />
@@ -325,6 +346,9 @@ onUnmounted(() => {
 					<span class="delete-card hide-card" @click="showImgPreview = false">X</span>
 					<img class="preview" :src="imageUrl" />
 				</div>
+
+				<!-- CONTENITORE ORDINAMENTO CARTE -->
+				<OrderCards :azOrder="az" @changeOrder="viewOrderPhotos" />
 
 				<!-- CONTENITORE DELLE TESSERE SALVATE -->
 				<div class="cards-container mt-3" v-if="photos.length">
