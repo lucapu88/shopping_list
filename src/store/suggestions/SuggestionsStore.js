@@ -4,6 +4,7 @@ import { useTodoStore } from '@/store/TodoStore';
 import { useEnglishSuggStoreStore } from '@/store/suggestions/EnglishSuggStore';
 import { useItalianSuggStoreStore } from '@/store/suggestions/ItalianSuggStore';
 import { useSpanishSuggStoreStore } from '@/store/suggestions/SpanishSuggStore';
+import { useFrenchSuggStoreStore } from '@/store/suggestions/FrenchSuggStore';
 import { useChristmasStore } from '@/store/festivities/ChristmasStore';
 
 export const useSuggestionsStore = defineStore('suggestions', {
@@ -13,6 +14,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
     eng: useEnglishSuggStoreStore(),
     ita: useItalianSuggStoreStore(),
     spa: useSpanishSuggStoreStore(),
+    fra: useFrenchSuggStoreStore(),
     christmas: useChristmasStore(),
     suggestionsModal: false,
     suggestionsList: [],
@@ -112,6 +114,35 @@ export const useSuggestionsStore = defineStore('suggestions', {
         'belleza': this.spa.belleza,
         'otros': this.spa.otros,
         'regalos de navidad': this.spa.regalosDeNavidad,
+
+        // FRANCESE
+        'légumes': this.fra.legumes,
+        'viande': this.fra.viande,
+        'poisson': this.fra.poisson,
+        'fruits': this.fra.fruit,
+        'sucreries': this.fra.sucreries,
+        'produits laitiers': this.fra.produitsLaitiers,
+        'amidon': this.fra.amidon,
+        'boissons': this.fra.boissons,
+        'produits surgelés': this.fra.produitsSurgeles,
+        'épices': this.fra.epices,
+        'hygiène': this.fra.hygiene,
+        'médicaments': this.fra.medicaments,
+        'papeterie': this.fra.papeterie,
+        'bébés': this.fra.bebes,
+        'électronique': this.fra.electronique,
+        'animaux': this.fra.animaux,
+        'outils de travail': this.fra.outilsDeTravail,
+        'vêtements': this.fra.vetements,
+        'jouets': this.fra.jouets,
+        'meubles': this.fra.meubles,
+        'objets domestiques': this.fra.objetsDomestiques,
+        'jardinage': this.fra.jardinage,
+        'achats en ligne': this.fra.achatsEnLigne,
+        'sportive': this.fra.sportive,
+        'beauté': this.fra.beaute,
+        'autre': this.fra.autre,
+        'cadeaux de Noël': this.fra.cadeauxDeNoel,
       };
 
       if (categories[categoryName]) {

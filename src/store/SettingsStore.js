@@ -71,7 +71,10 @@ export const useSettingsStore = defineStore('settings', {
         ? ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"]
         : this.languages.langSpanish
           ? ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-          : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          : this.languages.langFrench
+            ? ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+
+            : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       if (lastMonth && lastYear && monthNow == lastMonth && yearNow == lastYear) {
         this.languages.updateText.updated = true;

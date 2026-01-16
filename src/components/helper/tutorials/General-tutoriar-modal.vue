@@ -28,6 +28,8 @@ export default {
 			this.italian();
 		} else if (this.languages.langSpanish) {
 			this.spanish();
+		} else if (this.languages.langFrench) {
+			this.french();
 		} else {
 			this.english();
 		}
@@ -70,8 +72,18 @@ export default {
 			this.selectedIta = false;
 
 			this.generalTutorial.title = "¿Quieres ver un breve vídeo tutorial?";
-			this.generalTutorial.subtitle = "Siempre puedes revisarlo cuando quieras \n haciendo clic en =>";
+			this.generalTutorial.subtitle = "Siempre puedes revisarlo \n cuando quieras  haciendo clic en =>";
 			this.generalTutorial.istruction = "Para cambiar el idioma de toda la aplicación, haga clic (arriba a la derecha) en >";
+		},
+		french() {
+			this.selectedEng = false;
+			this.selectedSpa = false;
+			this.selectedIta = false;
+			this.selectedFra = true;
+
+			this.generalTutorial.title = "Souhaitez-vous visionner un court tutoriel vidéo?";
+			this.generalTutorial.subtitle = "Vous pouvez le revoir \n à tout moment en cliquant sur =>";
+			this.generalTutorial.istruction = "Pour changer la langue de toute l'application, cliquez (en haut à droite) sur >";
 		},
 	},
 };
@@ -103,7 +115,7 @@ export default {
 				<source src="@/video/general-tutorial.mp4" type="video/mp4" />
 			</video>
 
-			<div v-if="!showVideo" class="confirm-alert">
+			<div v-if="!showVideo" class="confirm-alert p-1">
 				<div class="welcome-container mb-3">
 					<p class="welcome-text text-danger m-1">
 						<small>Thank you for downloading Shopping List, and welcome!</small>
@@ -114,6 +126,9 @@ export default {
 					<p class="welcome-text text-danger m-1">
 						<small>Grazie per aver scaricato Shopping List, e benvenuto!</small>
 					</p>
+					<p class="welcome-text text-danger m-1">
+						<small>Merci d'avoir téléchargé Shopping List, et bienvenue !</small>
+					</p>
 				</div>
 				<div class="languages-selection">
 					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }" src="@/img/flags/inglese.webp" alt="english_flag" /></span>
@@ -121,6 +136,8 @@ export default {
 					<span @click="spanish()"><img class="flag" :class="{ 'selected-flag': selectedSpa }" src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
 
 					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }" src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+
+					<span @click="french()"><img class="flag" :class="{ 'selected-flag': selectedFra }" src="@/img/flags/francese.webp" alt="french_flag" /></span>
 				</div>
 				<div>
 					<p>
@@ -215,7 +232,7 @@ export default {
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	animation: show 9s infinite;
+	animation: show 12s infinite;
 }
 
 .welcome-text:nth-child(1) {
@@ -227,6 +244,9 @@ export default {
 .welcome-text:nth-child(3) {
 	animation-delay: 6s;
 }
+.welcome-text:nth-child(4) {
+	animation-delay: 9s;
+}
 
 @keyframes show {
 	0% {
@@ -235,10 +255,10 @@ export default {
 	5% {
 		opacity: 1;
 	}
-	33% {
+	25% {
 		opacity: 1;
 	}
-	38% {
+	30% {
 		opacity: 0;
 	}
 	100% {

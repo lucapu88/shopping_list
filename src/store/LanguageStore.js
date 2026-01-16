@@ -10,10 +10,12 @@ export const useLanguageStore = defineStore('Language', {
       english: 'English',
       spanish: 'Spanish',
       italian: 'Italian',
+      french: 'French',
     },
     langIta: false,
     langSpanish: false,
     langEnglish: false,
+    langFrench: false,
     shoppingListTitle: 'Shopping List',
     choseCategoryText: 'Choose a category among these:',
     changeLanguage: 'Change language',
@@ -250,6 +252,7 @@ export const useLanguageStore = defineStore('Language', {
       orderText: 'Alphabetical order'
     },
     refreshText: 'Refresh',
+    comingSoon: 'French language coming soon!',
   }),
   getters: {},
   actions: {
@@ -260,8 +263,10 @@ export const useLanguageStore = defineStore('Language', {
       this.langSpanish = langSpanish === 'true';
       const langEnglish = window.localStorage.getItem('langEnglish');
       this.langEnglish = langEnglish === 'true';
+      const langFrench = window.localStorage.getItem('langFrench');
+      this.langFrench = langFrench === 'true';
 
-      if (!this.langIta && !this.langEnglish && !this.langSpanish) {
+      if (!this.langIta && !this.langEnglish && !this.langSpanish && !this.langFrench) {
         //se non c'è nessuna lingua impostata, imposto di default quella in inglese
         this.englishDefaultSetting();
       }
@@ -269,6 +274,8 @@ export const useLanguageStore = defineStore('Language', {
         this.setItalianTranslations();
       } else if (this.langSpanish) {
         this.setSpanishTranslations();
+      } else if (this.langFrench) {
+        this.setFrenchTranslations();
       } else {
         this.categoriesStore.categories = this.categoriesStore.engCategories;
       }
@@ -281,6 +288,7 @@ export const useLanguageStore = defineStore('Language', {
     setEnglishLanguage() {
       this.langIta = false;
       this.langSpanish = false;
+      this.langFrench = false;
       this.langEnglish = true;
       this.placeholder = 'Write what to buy';
       this.defaultPlaceholderText = 'Write what to buy';
@@ -289,11 +297,13 @@ export const useLanguageStore = defineStore('Language', {
       this.share.text = 'Link copied to clipboard, paste it with whoever you want.';
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langSpanish', false);
+      window.localStorage.setItem('langFrench', false);
       window.localStorage.setItem('langEnglish', true);
     },
     setItalianoLanguage() {
       this.langSpanish = false;
       this.langEnglish = false;
+      this.langFrench = false;
       this.langIta = true;
       this.placeholder = 'Scrivi qui cosa comprare';
       this.defaultPlaceholderText = 'Scrivi qui cosa comprare';
@@ -302,11 +312,13 @@ export const useLanguageStore = defineStore('Language', {
       this.share.text = 'Link copiato negli appunti, incollalo con chi vuoi.';
       window.localStorage.setItem('langSpanish', false);
       window.localStorage.setItem('langEnglish', false);
+      window.localStorage.setItem('langFrench', false);
       window.localStorage.setItem('langIta', true);
     },
     setSpanishLanguage() {
       this.langEnglish = false;
       this.langIta = false;
+      this.langFrench = false;
       this.langSpanish = true;
       this.placeholder = 'Escriba aquí qué comprar';
       this.defaultPlaceholderText = 'Escriba aquí qué comprar';
@@ -315,7 +327,23 @@ export const useLanguageStore = defineStore('Language', {
       this.share.text = 'Copia el enlace en el portapapeles y pégalo con quien quieras.';
       window.localStorage.setItem('langIta', false);
       window.localStorage.setItem('langEnglish', false);
+      window.localStorage.setItem('langFrench', false);
       window.localStorage.setItem('langSpanish', true);
+    },
+    setFrenchLanguage() {
+      this.langEnglish = false;
+      this.langIta = false;
+      this.langSpanish = false;
+      this.langFrench = true;
+      this.placeholder = 'Écrivez ici quoi acheter';
+      this.defaultPlaceholderText = 'Écrivez ici quoi acheter';
+      this.categoriesStore.categories = this.categoriesStore.fraCategories;
+      this.copyList.text = 'Liste copiée dans le presse-papiers';
+      this.share.text = 'Lien copié dans le presse-papiers, collez-le avec qui vous voulez.';
+      window.localStorage.setItem('langIta', false);
+      window.localStorage.setItem('langEnglish', false);
+      window.localStorage.setItem('langSpanish', false);
+      window.localStorage.setItem('langFrench', true);
     },
     setItalianTranslations() { //------------------------------------------  ITA
       this.placeholder = 'Scrivi qui cosa comprare';
@@ -332,6 +360,7 @@ export const useLanguageStore = defineStore('Language', {
       this.languagesBtns.english = 'Inglese';
       this.languagesBtns.spanish = 'Spagnolo';
       this.languagesBtns.italian = 'Italiano';
+      this.languagesBtns.french = 'Francese';
       this.safeModeText.title = 'Modalità eliminazione sicura';
       this.safeModeText.description = 'ti chiederà conferma di eliminazione per ogni singolo prodotto della lista';
       this.safeModeText.function = 'Clicca per attivare/disattivare';
@@ -411,6 +440,7 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Prezzo Totale: ';
       this.loyalityCardsITA();
       this.refreshText = 'Ricarica';
+      this.comingSoon = "Prossimamente in arrivo la lingua in francese!";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -427,6 +457,7 @@ export const useLanguageStore = defineStore('Language', {
       this.languagesBtns.english = 'Inglés';
       this.languagesBtns.spanish = 'Español';
       this.languagesBtns.italian = 'Italiano';
+      this.languagesBtns.french = 'Francés';
       this.safeModeText.title = 'Modo de borrado seguro';
       this.safeModeText.description = 'le pedirá que confirme la eliminación de cada producto de la lista.';
       this.safeModeText.function = 'Pulse para activar/desactivar';
@@ -506,6 +537,104 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Precio Total: ';
       this.loyalityCardsSPA();
       this.refreshText = 'Recargar';
+      this.comingSoon = "¡Próximamente llegará el idioma francés!";
+    },
+    setFrenchTranslations() { // ---------------------------------- FRA
+      this.placeholder = 'Écrivez ici quoi acheter';
+      this.defaultPlaceholderText = 'Écrivez ici quoi acheter';
+      this.categoriesStore.categories = this.categoriesStore.fraCategories;
+      this.copyList.text = 'Liste copiée dans le presse-papiers';
+      this.share.text = 'Lien copié dans le presse-papiers, collez-le avec qui vous voulez.';
+      this.confirmText = 'Êtes-vous sûr de vouloir supprimer :\n';
+      this.selectedTodosConfirmText = 'Vous allez supprimer ces éléments';
+      this.settingsTextTitle = 'Paramètres';
+      this.shoppingListTitle = 'Liste de courses';
+      this.choseCategoryText = 'Choisissez une catégorie parmi celles-ci :';
+      this.changeLanguage = 'Changer de langue';
+      this.languagesBtns.english = 'Anglais';
+      this.languagesBtns.spanish = 'Espagnol';
+      this.languagesBtns.italian = 'Italien';
+      this.languagesBtns.french = 'Français';
+      this.safeModeText.title = 'Mode de suppression sécurisé';
+      this.safeModeText.description = 'vous demandera confirmation de suppression pour chaque produit de la liste';
+      this.safeModeText.function = 'Cliquez pour activer/désactiver';
+      this.chosenThemeText = 'Thème choisi';
+      this.changeThemeText = 'Changer de thème';
+      this.autoDeleteEmptyCategoriesText.title = 'Suppression automatique des catégories vides';
+      this.autoDeleteEmptyCategoriesText.description = 'Choisissez de supprimer manuellement les catégories laissées vides, ou de les supprimer automatiquement.';
+      this.autoDeleteEmptyCategoriesText.function = 'Cliquez pour activer/désactiver';
+      this.multipleCategoryInsertionText.title = "Insertion multiple dans la catégorie";
+      this.multipleCategoryInsertionText.description = "Vous permet d'insérer plusieurs éléments lors de la sélection d'une catégorie.";
+      this.multipleCategoryInsertionText.function = 'Cliquez pour activer/désactiver';
+      this.multipleCategoryInsertionText.momentaryAlert = "La fonction est déjà active car elle l'était depuis le début, mais maintenant si vous voulez vous pouvez la désactiver.";
+      this.pasteListText.title = "Importer une liste depuis d'autres applications";
+      this.pasteListText.subtitle = 'Il suffit de la copier et de la coller dans la case et de cliquer sur importer. N.B. : Séparez les éléments de la liste en les envoyant à la ligne';
+      this.share.title = 'Partager l\'application';
+      this.share.info = "Partagez l'application avec qui vous voulez ! En envoyant le lien ou en faisant scanner le code QR.";
+      this.share.qrMessage = "Augmentez la luminosité de l'écran pour une meilleure numérisation";
+      this.importText = 'Importer';
+      this.updateText.description = "Si le bouton est vert, cliquez pour mettre à jour";
+      this.updateText.available = 'Mettre à jour';
+      this.updateText.unavailable = 'Aucune mise à jour';
+      this.insertAll = 'Insérer toutes';
+      this.removeEmpty = 'Supprimer les vides';
+      this.deleteAll = 'Vider';
+      this.deleteAllConfirmText = 'Êtes-vous sûr de vouloir supprimer \n toute la liste ?';
+      this.renameListText.title = 'Renommer les listes';
+      this.renameListText.description = "Ici vous pouvez donner un nom à vos listes, il suffit de l'entrer dans le champ et de cliquer sur 'enregistrer'.";
+      this.helperFraTranslations();
+      this.festivitiesFRATranslations();
+      this.backupListText.title = 'Importer la dernière sauvegarde';
+      this.backupListText.preDescriprion = "Chaque fois que vous supprimez quelque chose, ET SEULEMENT SI VOUS LE SUPPRIMEZ, une sauvegarde automatique de LA DERNIÈRE suppression est enregistrée.";
+      this.backupListText.description = "Si vous avez supprimé quelque chose ou toute la liste par erreur, vous pouvez récupérer toute la liste depuis LA DERNIÈRE suppression.";
+      this.backupListText.confirm = "Êtes-vous sûr ?";
+      this.backupListText.noBackupText = 'Il n\'y a pas de sauvegardes enregistrées';
+      this.infoCategoriesAlert = 'Si vous ne trouvez pas les catégories, assurez-vous que la langue est correcte. Les catégories sont importées correctement si elles sont écrites dans la langue sélectionnée.';
+      this.priceText = 'Si vous tapez un nombre avec la devise € ou £ ou $, il calculera automatiquement le total de tous les prix écrits dans la liste, mais attention, cela ne fonctionne que si vous tapez la devise, par exemple : pain 2,99€.';
+      this.deselectAllText = 'Tout désélectionner';
+      this.importantTodos.alert = "Il n'y a pas d'éléments sélectionnés comme importants";
+      this.importantTodos.text.part1 = "En cliquant sur";
+      this.importantTodos.text.part2 = "vous pourrez afficher uniquement les éléments importants que vous avez sélectionnés. Actuellement, c'est uniquement en mode affichage.";
+      this.importantTodos.addedImportantText = "Marqué comme important";
+      this.showOnlyLatestDeletedText.title = "Afficher les derniers supprimés";
+      this.showOnlyLatestDeletedText.description = "Ici vous ne trouverez que votre dernière suppression unique ou multiple, juste comme résumé";
+      this.showOnlyLatestDeletedText.singleTodoText = "Dernière suppression unique";
+      this.showOnlyLatestDeletedText.multipleTodosText = "Dernière suppression multiple";
+      this.showOnlyLatestDeletedText.emptyListText = "Aucune suppression effectuée encore";
+      this.suggestions.tipsBtnText = 'Afficher les suggestions';
+      this.suggestions.headerInfo = 'Cliquez sur l\'un de ces éléments pour l\'ajouter à la liste';
+      this.categoryTipText = 'Si vous cliquez sur la catégorie, vous pouvez ajouter des produits à l\'intérieur';
+      this.reloadAppText = "Recharger l'application :";
+      this.duplicateText.title = "Produit déjà présent dans la liste";
+      this.duplicateText.body = "L'insérer quand même ?";
+      this.alertMomentaneo = "Maintenant vous pouvez créer plusieurs listes ! N'est-ce pas merveilleux ? Si vous faites vos courses dans différents supermarchés ou si vous voulez avoir des listes différentes selon vos besoins, vous avez 4 nouvelles listes à votre disposition ! Amusez-vous bien !";
+      this.alertMomentaneoTitolo = "Nouvelle fonctionnalité : ";
+      this.saveText = "Enregistrer";
+      this.feedback.title = "Envoyez-nous des rapports sur tout problème, ou simplement un retour, ou une suggestion";
+      this.feedback.placeholder = "Laissez vos commentaires ou observations ici pour nous dire ce qui ne va pas. ATTENTION : Les messages contenant des gros mots seront automatiquement rejetés après l'envoi. ✌️";
+      this.feedback.extraText = "Si vous souhaitez que nous vous contactions, veuillez inclure votre adresse e-mail dans votre message.";
+      this.feedback.successMessage = "Message envoyé avec succès, merci ! 🤗";
+      this.feedback.errorMessage = "❌ Erreur lors de l'envoi du message. Veuillez réessayer. Si le service ne fonctionne pas, contactez-nous directement à : ";
+      this.feedback.statusText = "Veuillez entrer un message avant d'envoyer.";
+      this.send = "Envoyer";
+      this.listSelection.title = 'Choisissez la liste que vous voulez';
+      this.listSelection.alert = 'Vous êtes déjà sur cette liste';
+      this.archive = 'Archiver';
+      this.moveMode.moveOrCopyTitle = 'Déplacer ou Copier des éléments des listes';
+      this.moveMode.moveElementText = 'Déplacer';
+      this.moveMode.copyElementText = 'Copier';
+      this.moveMode.istruction1 = 'Sélectionnez les éléments à déplacer de la liste';
+      this.moveMode.copyIstruction1 = 'Sélectionnez les éléments à copier de la liste';
+      this.moveMode.istruction2 = 'Sélectionnez la liste de destination';
+      this.moveMode.istructionAlert = "L'élément est déjà dans cette liste. Veuillez en sélectionner une autre";
+      this.moveMode.movedText = 'DÉPLACÉ avec succès';
+      this.moveMode.copiedText = 'COPIÉ avec succès';
+      this.selectedListText = 'Vous écrivez sur la liste : ';
+      this.welcomeMessage = "Merci d'avoir téléchargé Shopping List, et bienvenue !";
+      this.totalPriceText = 'Prix Total : ';
+      this.loyalityCardsFRA();
+      this.refreshText = 'Actualiser';
+      this.comingSoon = "La langue française arrive bientôt !";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
@@ -537,6 +666,21 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.maxNumberCardsMessage = 'Has alcanzado el número máximo de tarjetas guardables';
       this.loyalityCards.cropMessage = "Recortar la foto tomando solo el código de barras";
       this.loyalityCards.orderText = 'Orden alfabético';
+    },
+    loyalityCardsFRA() {
+      this.loyalityCards.title = 'Cartes de fidélité';
+      this.loyalityCards.functionText = 'Ajouter une carte';
+      this.loyalityCards.selectCardText = 'Sélectionner la carte';
+      this.loyalityCards.nameInputPlaceholder = 'Nom de la carte';
+      this.loyalityCards.isctructionText = "Entrez un nom pour pouvoir enregistrer l'image";
+      this.loyalityCards.confirmAlertMessage = 'Êtes-vous sûr de vouloir supprimer la carte';
+      this.loyalityCards.alertMessage = 'Une carte avec ce nom existe déjà, changez-le et réessayez s\'il vous plaît';
+      this.loyalityCards.infoText = 'Ici vous pouvez enregistrer les images de vos cartes de fidélité. Conseil : la photo doit être claire et nette pour pouvoir être lue facilement au supermarché';
+      this.loyalityCards.infoSubText = 'Vous pouvez enregistrer jusqu\'à un maximum de 20 cartes, si vous en voulez plus contactez-moi à l\'e-mail dans la section support';
+      this.loyalityCards.errorMessage = 'Erreur lors du chargement de l\'image, réessayez s\'il vous plaît';
+      this.loyalityCards.maxNumberCardsMessage = 'Vous avez atteint le nombre maximum de cartes enregistrables';
+      this.loyalityCards.cropMessage = "Recadrez la photo en prenant uniquement le code-barres";
+      this.loyalityCards.orderText = 'Ordre alphabétique';
     },
     //-------------------------------------------------------------------------------------  FESTIVITÀ
     festivitiesITATranslations() { // ITALIANO
@@ -574,6 +718,24 @@ export const useLanguageStore = defineStore('Language', {
       this.starWarsDay = '25 de mayo de 1977: Star Wars se estrena en los cines';
       this.newYearText = "¡Feliz Año Nuevo!";
       this.merryChristmasText = '¡Feliz Navidad y Felices Fiestas! 🎄';
+    },
+    festivitiesFRATranslations() { // FRANÇAIS
+      this.cancerDayText = '4 février : Journée mondiale contre le cancer';
+      this.peaceDayText = '1er janvier : Journée mondiale de la paix';
+      this.womensDayText = 'Meilleurs vœux à toutes les femmes';
+      this.shoahText = '27 janvier : Journée de la mémoire de l\'Holocauste';
+      this.earthDayText = '22 avril : Journée de la Terre';
+      this.beerDayText = 'Bonne journée de la bière';
+      this.parentsDayText = '1er juin : Meilleurs vœux à tous les parents';
+      this.toiletDayText = '19 novembre : Journée mondiale des toilettes 🤣';
+      this.worldWideWebText = 'Le 6 août 1991, le World Wide Web est né';
+      this.worldPizzaDayText = '17 janvier : Journée mondiale de la pizza 🤌🏻';
+      this.valentinesDayText = 'Joyeuse Saint-Valentin ❤️';
+      this.worldEnvironmentDayText = '5 juin : Journée mondiale de l\'environnement';
+      this.humanRightsDayText = '10 décembre : Journée mondiale des droits de l\'homme';
+      this.starWarsDay = '25 mai 1977 : Star Wars sort au cinéma';
+      this.newYearText = "Bonne année !";
+      this.merryChristmasText = 'Joyeux Noël et bonnes fêtes ! 🎄';
     },
     //------------------------------------------------------------------------------------- HELPER
     helperItaTranslations() { // ITALIANO
@@ -697,7 +859,68 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Puedes mover elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.copyText = "También puedes copiar elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.final = "Ambos botones muestran las instrucciones que te guiarán paso a paso.";
-    }
+    },
+    helperFraTranslations() { // FRANÇAIS
+      this.helperDescription.troubleshooting = 'Dépannage';
+      this.helperDescription.troubleshootingText.part1 = " Si tu constates une lenteur ou des blocages lors du chargement des images, vérifie ta connexion. Si tout est OK, essaie de redémarrer l’application. Si le problème persiste, signale-le à l’e-mail dans la section contact ci-dessus.";
+      this.helperDescription.troubleshootingText.part2 = "Nous ne sauvegardons aucune donnée, aucun de tes renseignements personnels, ni ta localisation, ni tes listes de courses. Les données sont sauvegardées uniquement en local sur ton appareil. Donc, si tu perds la liste en la supprimant par erreur, la seule façon de la récupérer est de cliquer sur le bouton dans la section « importer la dernière sauvegarde » plus haut.";
+      this.helperDescription.troubleshootingText.part3 = "Mais attention ! Cela importe uniquement la dernière suppression effectuée !";
+      this.helperDescription.troubleshootingText.part4 = "Si tu trouves ta liste vidée sans l’avoir réellement fait, il est très probable que ton smartphone ait un espace de stockage faible.";
+      this.helperDescription.troubleshootingText.part5 = "Si au contraire tu affirmes avoir de la mémoire et que les données s’effacent quand même, signale-le à l’e-mail dans la section contact ci-dessus.";
+      this.helperDescription.instructionsTitle = 'Instructions';
+      this.helperDescription.addEditDelete = 'Ajouter, Modifier, Supprimer';
+      this.helperDescription.add = 'sert à ajouter dans la liste des choses à acheter.';
+      this.helperDescription.edit = 'sert à modifier un nom et enregistrer les modifications en cliquant sur';
+      this.helperDescription.delete = 'sert à supprimer des éléments de la liste.';
+      this.helperDescription.backToTop = 'sert à revenir en haut de la liste. Utile lorsque la liste est très longue.';
+      this.helperDescription.categories = 'Catégories';
+      this.helperDescription.addCategory.part1 = 'Pour ajouter une catégorie, il suffit de l’écrire puis de cliquer sur';
+      this.helperDescription.addCategory.part2 = 'ou de la choisir dans le cadre en cliquant sur';
+      this.helperDescription.addCategory.part3 = 'Il apparaîtra';
+      this.helperDescription.addCategory.part4 = 'Comme ceci';
+      this.helperDescription.addCategory.part5 = 'et en cliquant sur le nom, il sera';
+      this.helperDescription.addCategory.part6 = 'mis en surbrillance';
+      this.helperDescription.addCategory.part7 = ' pour que tu puisses y ajouter des éléments. Une fois terminé, clique à nouveau sur le nom ou sur n’importe quel autre nom de catégorie.';
+      this.helperDescription.addAllCat = 'Tu peux ajouter toutes les catégories en cliquant sur';
+      this.helperDescription.removeEmptyCat = 'Tu peux supprimer uniquement les catégories laissées vides en cliquant sur';
+      this.helperDescription.suggestionsTitle = 'Suggestions';
+      this.helperDescription.suggestions.part1 = 'Lorsque tu cliques sur une catégorie pour ajouter des éléments, ce bouton apparaît';
+      this.helperDescription.suggestions.part2 = "et au clic il affiche une série de produits suggérés liés à la catégorie sélectionnée. Clique simplement sur l’élément qui t’intéresse et tu le trouveras ajouté dans la liste dans la catégorie appropriée.";
+      this.helperDescription.dragNdropTitle = 'Glisser-déposer les éléments';
+      this.helperDescription.dragNdropText.part1 = 'Si tu maintiens le nom du produit pendant 3 secondes ou si tu cliques sur';
+      this.helperDescription.dragNdropText.part2 = 'tu peux faire glisser les éléments et, en maintenant appuyé, les déplacer où tu veux.';
+      this.helperDescription.dragNdropText.dragginText = 'Glisse les éléments de la liste où tu veux';
+      this.helperDescription.multipleDeleteTitle = 'Sélectionner et supprimer plusieurs éléments';
+      this.helperDescription.multipleDeleteText.part1 = 'Tu peux supprimer plusieurs produits ensemble en cliquant sur';
+      this.helperDescription.multipleDeleteText.part2 = 'Ainsi tu les décoches puis, en fin de courses, en cliquant sur';
+      this.helperDescription.multipleDeleteText.part3 = 'en bas, seuls ceux décochés seront supprimés.';
+      this.helperDescription.multipleDeleteText.deselectAllText = 'Tu peux tous les désélectionner en cliquant sur';
+      this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'puis confirmer (ou annuler) en cliquant sur';
+      this.helperDescription.multipleDeleteText.hideText = 'Tu peux choisir de masquer les éléments sélectionnés en cliquant sur';
+      this.helperDescription.multipleDeleteText.showText = 'Ou de les afficher en cliquant sur';
+      this.helperDescription.copyListTitle = 'Copier la liste, Mettre en évidence';
+      this.helperDescription.copyListText = 'sert à copier la liste et la coller où tu veux.';
+      this.helperDescription.highlightImportant.part1 = 'Tu peux rendre un produit « important » en cliquant sur son nom, il sera alors';
+      this.helperDescription.highlightImportant.part2 = 'mis en évidence';
+      this.helperDescription.highlightImportant.part3 = 'et ne pourra pas être supprimé ou modifié.';
+      this.helperDescription.deleteAllTitle = 'Tout supprimer';
+      this.helperDescription.deleteAllText.part1 = 'Si tu cliques sur';
+      this.helperDescription.deleteAllText.part2 = 'un cadre de confirmation s’affichera pour supprimer TOUTE la liste.';
+      this.helperDescription.videoAlert = 'Ton appareil ne supporte pas la balise vidéo. Contacte le support.';
+      this.helperDescription.support = 'Contacts';
+      this.helperDescription.supportText = 'Pour tout signalement, tu peux me contacter :';
+      this.helperDescription.socialText = 'Suis les pages sociales du développeur, tu peux aussi me contacter ici :';
+      this.helperDescription.githubText = 'Si tu es développeur, tu peux peut-être me donner quelques conseils pour améliorer le code :';
+      this.helperDescription.adviceTitle = 'IMPORTANT : ';
+      this.helperDescription.adviceText = "C’est une web-app convertie en app smartphone et elle est constamment maintenue, donc ne fais pas attention à la date de la dernière mise à jour affichée sur le store.";
+      this.helperDescription.dateLastUpdateText = "La vraie date de la dernière mise à jour est : ";
+      this.helperDescription.changeList.changeListTitle = 'Changer de liste';
+      this.helperDescription.changeList.part1 = 'Pour changer la liste sur laquelle tu travailles, clique sur';
+      this.helperDescription.changeList.part2 = 'et choisis la liste que tu veux utiliser.';
+      this.helperDescription.changeList.moveText = "Tu peux déplacer des éléments d’une liste à l’autre en cliquant sur";
+      this.helperDescription.changeList.copyText = "Tu peux aussi copier des éléments d’une liste à l’autre en cliquant sur";
+      this.helperDescription.changeList.final = "Les deux boutons affichent les instructions pour te guider étape par étape.";
+    },
   }
 });
 

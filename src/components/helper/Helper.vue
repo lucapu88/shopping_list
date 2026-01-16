@@ -13,8 +13,9 @@ import UpdateImg from "@/img/update-img.webp";
 import BackupImg from "@/img/icons/cloud.webp";
 import LoadImg from "@/img/LOAD.webp";
 import IngFlag from "@/img/flags/inglese.webp";
-import ItaFlag from "@/img/flags/spagnolo.webp";
-import SpaFlag from "@/img/flags/italiano.webp";
+import SpaFlag from "@/img/flags/spagnolo.webp";
+import ItaFlag from "@/img/flags/italiano.webp";
+import FraFlag from "@/img/flags/francese.webp";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
 import ChangeLanguages from "./settings/Change-languages.vue";
 import ChangeThemes from "./settings/Change-themes.vue";
@@ -98,6 +99,7 @@ export default {
 	<link v-if="languageChanged" rel="preload" as="image" :href="IngFlag" />
 	<link v-if="languageChanged" rel="preload" as="image" :href="ItaFlag" />
 	<link v-if="languageChanged" rel="preload" as="image" :href="SpaFlag" />
+	<link v-if="languageChanged" rel="preload" as="image" :href="FraFlag" />
 	<div>
 		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImportedOrDeleted="listImported" />
 		<div

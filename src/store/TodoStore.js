@@ -322,7 +322,7 @@ export const useTodoStore = defineStore('todoStore', {
       //solo se è nella lista categorie faccio tutto
       this.addingToCategoryInProgress = true;
       if (todo.category) {
-        const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories];
+        const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories, ...this.categoriesStore.fraCategories];
         this.todos.map((t) => (t.isSelected = false)); //azzero tutto
 
         allCategories.forEach((category) => {
@@ -334,9 +334,11 @@ export const useTodoStore = defineStore('todoStore', {
             if (this.addTodoInCategory.condition) {
               //se clicco su una categoria ed è evidenziata il focus va sull'input
               this.focusIn = true;
-              this.languages.placeholder = (this.languages.langIta ? 'Aggiungi in '
-                : this.languages.langSpanish ? 'Añadir en '
-                  : 'Add in ') + todo.emojy + todo.name.toUpperCase();
+              this.languages.placeholder = (
+                this.languages.langIta ? 'Aggiungi in '
+                  : this.languages.langSpanish ? 'Añadir en '
+                    : this.languages.langFrench ? 'Ajouter dans '
+                      : 'Add in ') + todo.emojy + todo.name.toUpperCase();
 
               this.inModification = true;
               this.categoryName = todo.name.toUpperCase();

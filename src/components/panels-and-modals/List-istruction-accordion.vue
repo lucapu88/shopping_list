@@ -63,6 +63,8 @@ export default {
 			<span class="flag"><img src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
 
 			<span class="flag"><img src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+
+			<span class="flag"><img src="@/img/flags/francese.webp" alt="french_flag" /></span>
 		</div>
 
 		<span
@@ -196,7 +198,7 @@ export default {
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	animation: show 3s infinite;
+	animation: show 4s infinite;
 }
 
 .flag > img {
@@ -212,6 +214,9 @@ export default {
 .flag:nth-child(3) {
 	animation-delay: 2s;
 }
+.flag:nth-child(4) {
+	animation-delay: 3s;
+}
 
 @keyframes show {
 	0% {
@@ -220,10 +225,10 @@ export default {
 	10% {
 		opacity: 1;
 	}
-	33% {
+	25% {
 		opacity: 1;
 	}
-	43% {
+	35% {
 		opacity: 0;
 	}
 	100% {

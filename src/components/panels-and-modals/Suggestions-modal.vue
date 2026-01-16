@@ -139,13 +139,16 @@ export default {
 }
 .close-sugg-modal {
 	position: absolute;
-	top: 0%;
-	right: 0%;
-	width: 40px;
-	height: 40px;
+	top: -20px;
+	right: -10px;
+	width: 35px;
+	height: 36px;
 	text-align: center;
 	font-weight: bold;
 	padding-top: 5px;
+	background-color: white;
+	border-radius: 50%;
+	border: 1px solid;
 }
 .ghirlanda-tonda {
 	position: absolute;

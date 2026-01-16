@@ -38,6 +38,14 @@ export default {
 							<span style="--i: 4">i</span>
 							<span style="--i: 5">z</span>
 						</template>
+						<template v-if="languages.langFrench">
+							<span style="--i: 1">J</span>
+							<span style="--i: 2">o</span>
+							<span style="--i: 3">y</span>
+							<span style="--i: 4">e</span>
+							<span style="--i: 5">u</span>
+							<span style="--i: 6">x</span>
+						</template>
 						<template v-if="languages.langIta">
 							<span style="--i: 1">B</span>
 							<span style="--i: 2">u</span>
@@ -59,6 +67,13 @@ export default {
 							<span style="--i: 2">o</span>
 							<span style="--i: 3">l</span>
 							<span style="--i: 4">a</span>
+						</template>
+						<template v-if="languages.langFrench">
+							<span style="--i: 1">S</span>
+							<span style="--i: 2">a</span>
+							<span style="--i: 3">l</span>
+							<span style="--i: 4">u</span>
+							<span style="--i: 5">t</span>
 						</template>
 						<template v-if="languages.langIta">
 							<span style="--i: 1">C</span>
@@ -90,6 +105,12 @@ export default {
 						<span style="--i: 10">a</span>
 						<span style="--i: 11">d</span>
 					</template>
+					<template v-if="languages.langFrench">
+						<span style="--i: 5">N</span>
+						<span style="--i: 6">o</span>
+						<span style="--i: 7">ë</span>
+						<span style="--i: 8">l</span>
+					</template>
 					<template v-if="languages.langIta">
 						<span style="--i: 5">N</span>
 						<span style="--i: 6">a</span>
@@ -107,6 +128,11 @@ export default {
 					<template v-if="languages.langSpanish">
 						<span style="--i: 5">d</span>
 						<span style="--i: 6">e</span>
+					</template>
+					<template v-if="languages.langFrench">
+						<span style="--i: 5">p</span>
+						<span style="--i: 6">a</span>
+						<span style="--i: 7">r</span>
 					</template>
 					<template v-if="languages.langIta">
 						<span style="--i: 5">d</span>

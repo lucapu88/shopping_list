@@ -30,6 +30,8 @@ export default {
 <template>
 	<div class="helper-settings">
 		<ListIstructionAccordion show-list-instructions-input="changeLanguage" :istructions-text="languages.changeLanguage" :select-deselect-arrow="settings.changeLanguage && settings.section === changeLanguage" :isSettings="true" :language-flags="true" />
+		<!-- TODO: da eliminare quando hai finito di testare la lingua francese -->
+		<p v-if="settings.changeLanguage && settings.section === changeLanguage" style="text-align: center; color: red">{{ languages.comingSoon }}</p>
 		<div class="languages-btns-container mb-3" v-if="settings.changeLanguage && settings.section === changeLanguage">
 			<div
 				class="btns-language-container"
@@ -68,6 +70,25 @@ export default {
 					"
 				>
 					{{ languages.languagesBtns.spanish }}
+				</button>
+
+				<!-- TODO: togli disabled e classe disabled-btn quando l'hai finito di testare -->
+				<button
+					class="btn-lang-center"
+					:class="{
+						'disabled-btn': !settings.isIphone,
+						'language-selected': languages.langFrench && !theme.retroTheme,
+						'retro-helper-btn-selected': languages.langFrench && theme.retroTheme,
+						'retro-helper-btn': theme.retroTheme,
+						'pink-theme-btn': theme.pinkTheme,
+					}"
+					:disabled="!settings.isIphone"
+					@click="
+						languages.setFrenchLanguage();
+						onChageLanguageEmit('french');
+					"
+				>
+					{{ languages.languagesBtns.french }}
 				</button>
 				<button
 					class="btn-lang-right"
@@ -121,5 +142,12 @@ export default {
 .language-selected {
 	background-color: rgb(0, 172, 252);
 	color: rgb(255, 255, 255) !important;
+}
+
+.disabled-btn {
+	opacity: 0.5;
+	color: black;
+	border-color: black;
+	pointer-events: none;
 }
 </style>

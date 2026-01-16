@@ -65,6 +65,7 @@ export default {
 			<img v-if="languageChanged === 'english'" class="language-spinner" src="@/img/flags/inglese.webp" alt="english_flag" />
 			<img v-if="languageChanged === 'spanish'" class="language-spinner" src="@/img/flags/spagnolo.webp" alt="spanish_flag" />
 			<img v-if="languageChanged === 'italian'" class="language-spinner" src="@/img/flags/italiano.webp" alt="italian_flag" />
+			<img v-if="languageChanged === 'french'" class="language-spinner" src="@/img/flags/francese.webp" alt="italian_flag" />
 		</div>
 	</div>
 

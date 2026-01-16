@@ -50,6 +50,13 @@ const CATEGORIES_NAMES = {
         'congelados', 'especias', 'higiene', 'medicamentos', 'papelería', 'niños', 'electrónica',
         'animales', 'herramientas', 'ropa', 'juguetes', 'mobiliario', 'objetos domésticos', 'jardinería',
         'comprar en intenet', 'deporte', 'belleza', 'otros', 'regalos de navidad'
+    ],
+    fra: [
+        'légumes', 'viande', 'poisson', 'fruits', 'sucreries', 'produits laitiers', 'amidon',
+        'boissons', 'produits surgelés', 'épices', 'hygiène', 'médicaments', 'papeterie',
+        'bébés', 'électronique', 'animaux', 'outils de travail', 'vêtements', 'jouets',
+        'meubles', 'objets domestiques', 'jardinage', 'achats en ligne', 'sportive',
+        'beauté', 'autre', 'cadeaux de Noël'
     ]
 };
 
@@ -61,6 +68,7 @@ export const useCategoriesStore = defineStore('Categories', {
         engCategories: [],
         itaCategories: [],
         spanCategories: [],
+        fraCategories: []
     }),
 
     actions: {
@@ -69,6 +77,7 @@ export const useCategoriesStore = defineStore('Categories', {
                 this.engCategories = this.buildCategoriesForLanguage('eng');
                 this.itaCategories = this.buildCategoriesForLanguage('ita');
                 this.spanCategories = this.buildCategoriesForLanguage('span');
+                this.fraCategories = this.buildCategoriesForLanguage('fra');
             }
         },
         buildCategoriesForLanguage(language) {
@@ -85,6 +94,8 @@ export const useCategoriesStore = defineStore('Categories', {
                 return this.itaCategories;
             } else if (this.languages.langSpanish) {
                 return this.spanCategories;
+            } else if (this.languages.langFrench) {
+                return this.fraCategories;
             } else {
                 return this.engCategories;
             }

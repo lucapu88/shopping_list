@@ -97,7 +97,7 @@ export default {
 				'jeans-other-btn': theme.jeansTheme,
 				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.isDraggable,
 			}"
-			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length"
+			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.moving"
 			@click="todosStore.toggleDragDrop()"
 		>
 			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop.webp" alt="move" />
@@ -118,7 +118,7 @@ export default {
 				'lemon-other-btn': theme.lemonTheme,
 				'jeans-other-btn': theme.jeansTheme,
 			}"
-			:disabled="!todosStore.todos.length"
+			:disabled="!todosStore.todos.length || secondTodos.moving"
 			@click="copy()"
 		>
 			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
@@ -149,7 +149,7 @@ export default {
 				'jeans-other-btn': theme.jeansTheme,
 				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.categoryList,
 			}"
-			:disabled="todosStore.showOnlyImportantTodos"
+			:disabled="todosStore.showOnlyImportantTodos || secondTodos.moving"
 			@click="todosStore.showCategoryList()"
 		>
 			<strong v-if="!todosStore.categoryList">+</strong>
