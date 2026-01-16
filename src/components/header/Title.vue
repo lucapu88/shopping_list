@@ -45,7 +45,7 @@ export default {
 				'retro-theme-title': theme.retroTheme,
 				'elegant-theme-title': theme.elegantTheme,
 				'jeans-theme-title': theme.jeansTheme,
-				'title-spanish': languages.langSpanish,
+				// 'title-spanish': languages.langSpanish,
 			}"
 			@click="openDevPanel()"
 		>

@@ -288,7 +288,7 @@ onUnmounted(() => {
 				<LoadingOrUpdating :listChanged="loading" />
 
 				<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
-				<ErrorMessage :errorLoading="errorLoading" @refresh="loadPhotos" />
+				<ErrorMessage :errorLoading="errorLoading" />
 
 				<button class="btn-info" :class="{ 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
 

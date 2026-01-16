@@ -248,7 +248,8 @@ export const useLanguageStore = defineStore('Language', {
       maxNumberCardsMessage: 'You have reached the maximum number of savable cards',
       cropMessage: 'Crop the photo taking only the barcode',
       orderText: 'Alphabetical order'
-    }
+    },
+    refreshText: 'Refresh',
   }),
   getters: {},
   actions: {
@@ -409,6 +410,7 @@ export const useLanguageStore = defineStore('Language', {
       this.welcomeMessage = "Grazie per aver scaricato Shopping List, e benvenuto!";
       this.totalPriceText = 'Prezzo Totale: ';
       this.loyalityCardsITA();
+      this.refreshText = 'Ricarica';
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -503,6 +505,7 @@ export const useLanguageStore = defineStore('Language', {
       this.welcomeMessage = 'Gracias por descargar Lista de Compras, ¡y bienvenido!';
       this.totalPriceText = 'Precio Total: ';
       this.loyalityCardsSPA();
+      this.refreshText = 'Recargar';
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

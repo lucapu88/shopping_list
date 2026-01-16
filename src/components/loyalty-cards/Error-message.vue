@@ -7,10 +7,9 @@ const languages = useLanguageStore();
 const props = defineProps({
 	errorLoading: Boolean,
 });
-const emit = defineEmits(["refresh"]);
 
 function refresh() {
-	emit("refresh");
+	window.location.reload();
 }
 </script>
 
@@ -18,7 +17,8 @@ function refresh() {
 	<template v-if="errorLoading">
 		<p class="text-center text-danger bg-light">{{ languages.loyalityCards.errorMessage }}</p>
 		<button class="refresh-btn" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @click="refresh">
-			<span>{{ String.fromCodePoint(0x1f504) }}</span>
+			<!-- <span>{{ String.fromCodePoint(0x1f504) }}</span> -->
+			{{ languages.refreshText }}
 		</button>
 	</template>
 </template>
