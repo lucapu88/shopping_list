@@ -14,6 +14,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 
 - Create, edit, and delete shopping lists (local storage only, no DB. No user data collected)
 - Drag & drop to reorder items (with **vue3-smooth-dnd**)
+- Enter and manage your loyalty cards (with **cropperjs** and **idb**)
 - Ability to send emails with **EmailJS**
 - Ability to save store loyalty cards with **idb** (No data collection! Everything remains in the local memory)
 - Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
@@ -61,6 +62,15 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 </div>
 <p>
   Para cualquier consejo sobre mejoras en el código, póngase en contacto conmigo en la dirección de correo electrónico que figura más abajo.
+</p>
+
+<div>
+  <a href="readme-traslations/Francais.md" target="_blank" rel="noopener noreferrer">
+    <span style="margin-right: 10px"><img src="src/img/readme/FRA.png" alt="fra"/></span> 
+  </a>
+</div>
+<p>
+ Pour tout conseil concernant l'amélioration du code, veuillez me contacter à l'adresse électronique ci-dessous.
 </p>
 <br><br>
 
