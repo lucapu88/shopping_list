@@ -26,20 +26,27 @@ describe("test dell'helper e delle impostazioni", () => {
         //Spagnolo
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
-        cy.get('.btn-lang-center').click();
+        cy.get('#spanish').click();
         cy.wait(1500);
         cy.get('.selected-list-name > span').should('include.text', 'Estás escribiendo en la lista: ');
         //Italiano
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
-        cy.get('.btn-lang-right').click();
+        cy.get('#italian').click();
         cy.wait(1500);
-        cy.get('.selected-list-name > span').should('include.text', 'Stai scrivendo sulla lista: ');        //Inglese
+        cy.get('.selected-list-name > span').should('include.text', 'Stai scrivendo sulla lista: ');
+        //Inglese
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
-        cy.get('.btn-lang-left').click();
+        cy.get('#english').click();
         cy.wait(1500);
         cy.get('.selected-list-name > span').should('include.text', 'You are writing on the list: ');
+        //Francese
+        cy.get('.settings').click();
+        cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
+        cy.get('#french').click();
+        cy.wait(1500);
+        cy.get('.selected-list-name > span').should('include.text', 'Vous écrivez sur la liste :');
 
         /*Per il momento verifico solo il titolo...Il cazzo con le patate che mi metto a vedere se TUTTE le traduzioni sono corrette!!!
           Scherzo! lo devo fare ma piano piano con calma perchè è tanta roba.*/

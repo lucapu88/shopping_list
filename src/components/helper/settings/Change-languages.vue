@@ -30,8 +30,7 @@ export default {
 <template>
 	<div class="helper-settings">
 		<ListIstructionAccordion show-list-instructions-input="changeLanguage" :istructions-text="languages.changeLanguage" :select-deselect-arrow="settings.changeLanguage && settings.section === changeLanguage" :isSettings="true" :language-flags="true" />
-		<!-- TODO: da eliminare quando hai finito di testare la lingua francese -->
-		<p v-if="settings.changeLanguage && settings.section === changeLanguage" style="text-align: center; color: red">{{ languages.comingSoon }}</p>
+
 		<div class="languages-btns-container mb-3" v-if="settings.changeLanguage && settings.section === changeLanguage">
 			<div
 				class="btns-language-container"
@@ -43,6 +42,7 @@ export default {
 			>
 				<button
 					class="btn-lang-left"
+					id="english"
 					:class="{
 						'language-selected': languages.langEnglish && !theme.retroTheme,
 						'retro-helper-btn-selected': languages.langEnglish && theme.retroTheme,
@@ -58,6 +58,7 @@ export default {
 				</button>
 				<button
 					class="btn-lang-center"
+					id="spanish"
 					:class="{
 						'language-selected': languages.langSpanish && !theme.retroTheme,
 						'retro-helper-btn-selected': languages.langSpanish && theme.retroTheme,
@@ -72,17 +73,15 @@ export default {
 					{{ languages.languagesBtns.spanish }}
 				</button>
 
-				<!-- TODO: togli disabled e classe disabled-btn quando l'hai finito di testare -->
 				<button
 					class="btn-lang-center"
+					id="french"
 					:class="{
-						'disabled-btn': !settings.isIphone,
 						'language-selected': languages.langFrench && !theme.retroTheme,
 						'retro-helper-btn-selected': languages.langFrench && theme.retroTheme,
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
 					}"
-					:disabled="!settings.isIphone"
 					@click="
 						languages.setFrenchLanguage();
 						onChageLanguageEmit('french');
@@ -92,6 +91,7 @@ export default {
 				</button>
 				<button
 					class="btn-lang-right"
+					id="italian"
 					:class="{
 						'language-selected': languages.langIta && !theme.retroTheme,
 						'retro-helper-btn-selected': languages.langIta && theme.retroTheme,
@@ -144,10 +144,4 @@ export default {
 	color: rgb(255, 255, 255) !important;
 }
 
-.disabled-btn {
-	opacity: 0.5;
-	color: black;
-	border-color: black;
-	pointer-events: none;
-}
 </style>
