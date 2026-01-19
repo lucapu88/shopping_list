@@ -97,7 +97,7 @@ export default {
 				'jeans-other-btn': theme.jeansTheme,
 				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.isDraggable,
 			}"
-			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.moving"
+			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.showChangeList"
 			@click="todosStore.toggleDragDrop()"
 		>
 			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop.webp" alt="move" />

@@ -266,6 +266,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         toggleChangeList() {
             this.todosStore.categoryList = false;
+            this.todosStore.isDraggable = false;
             this.showChangeList = !this.showChangeList;
             if (!this.showChangeList) {
                 this.moving = false;
