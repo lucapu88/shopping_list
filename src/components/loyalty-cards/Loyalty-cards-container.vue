@@ -43,7 +43,7 @@ const showNoNameAlert = ref(false);
 const cropPreview = ref(false);
 const az = ref(localStorage.getItem("az-order") === "true");
 let objectUrl = null;
-const limitCards = 20;
+const limitCards = 25; //Se lo cambi qui, cambialo anche nel testo in loyalityCards.infoSubText  in languageStore.js
 const maxHeight = 300; //Se la cambi qui, cambiala anche nel css in .crop-container
 onMounted(loadPhotos);
 
@@ -511,6 +511,8 @@ main {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	color: #000000;
+	background-color: #ffffff;
 }
 .preview-container > h3 {
 	text-transform: uppercase;

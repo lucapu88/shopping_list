@@ -245,7 +245,7 @@ export const useLanguageStore = defineStore('Language', {
       confirmAlertMessage: 'Are you sure you want to delete the card',
       alertMessage: 'A card with this name already exists, change it and try again please',
       infoText: 'Here you can save images of your loyalty cards. Tip: the photo must be clear and sharp to be easily read at the supermarket',
-      infoSubText: 'You can save up to a maximum of 20 cards, if you want more contact me at the email in the support section',
+      infoSubText: 'You can save up to a maximum of 25 cards, if you want more contact me at the email in the support section',
       errorMessage: 'Error loading image, please try again',
       maxNumberCardsMessage: 'You have reached the maximum number of savable cards',
       cropMessage: 'Crop the photo taking only the barcode',
@@ -646,7 +646,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.confirmAlertMessage = 'Sei sicuro di voler eliminare la carta';
       this.loyalityCards.alertMessage = 'Esiste già una carta con questo nome, cambialo e riprova per favore';
       this.loyalityCards.infoText = 'Qui puoi salvare le immagini delle tue carte fedeltà. Consiglio: la foto deve essere chiara e nitida per poter essere letta facilmente al supermercato';
-      this.loyalityCards.infoSubText = 'Puoi salvare fino ad un massimo di 20 carte, se ne vuoi di più contattami alla mail nella sezione supporto';
+      this.loyalityCards.infoSubText = 'Puoi salvare fino ad un massimo di 25 carte, se ne vuoi di più contattami alla mail nella sezione supporto';
       this.loyalityCards.errorMessage = 'Errore nel caricare l\'immagine, riprova per favore';
       this.loyalityCards.maxNumberCardsMessage = 'Hai raggiunto il numero massimo di carte salvabili';
       this.loyalityCards.cropMessage = "Ritaglia la foto prendendo solo il codice a barre";
@@ -661,7 +661,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.confirmAlertMessage = '¿Está seguro de que desea eliminar la tarjeta';
       this.loyalityCards.alertMessage = 'Ya existe una tarjeta con este nombre, cámbielo y vuelva a intentarlo por favor';
       this.loyalityCards.infoText = 'Aquí puedes guardar las imágenes de tus tarjetas de fidelidad. Consejo: la foto debe ser clara y nítida para que pueda leerse fácilmente en el supermercado';
-      this.loyalityCards.infoSubText = 'Puedes guardar hasta un máximo de 20 tarjetas, si quieres más contáctame en el correo electrónico de la sección de soporte';
+      this.loyalityCards.infoSubText = 'Puedes guardar hasta un máximo de 25 tarjetas, si quieres más contáctame en el correo electrónico de la sección de soporte';
       this.loyalityCards.errorMessage = 'Error al cargar la imagen, inténtelo de nuevo por favor';
       this.loyalityCards.maxNumberCardsMessage = 'Has alcanzado el número máximo de tarjetas guardables';
       this.loyalityCards.cropMessage = "Recortar la foto tomando solo el código de barras";
@@ -676,7 +676,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loyalityCards.confirmAlertMessage = 'Êtes-vous sûr de vouloir supprimer la carte';
       this.loyalityCards.alertMessage = 'Une carte avec ce nom existe déjà, changez-le et réessayez s\'il vous plaît';
       this.loyalityCards.infoText = 'Ici vous pouvez enregistrer les images de vos cartes de fidélité. Conseil : la photo doit être claire et nette pour pouvoir être lue facilement au supermarché';
-      this.loyalityCards.infoSubText = 'Vous pouvez enregistrer jusqu\'à un maximum de 20 cartes, si vous en voulez plus contactez-moi à l\'e-mail dans la section support';
+      this.loyalityCards.infoSubText = 'Vous pouvez enregistrer jusqu\'à un maximum de 25 cartes, si vous en voulez plus contactez-moi à l\'e-mail dans la section support';
       this.loyalityCards.errorMessage = 'Erreur lors du chargement de l\'image, réessayez s\'il vous plaît';
       this.loyalityCards.maxNumberCardsMessage = 'Vous avez atteint le nombre maximum de cartes enregistrables';
       this.loyalityCards.cropMessage = "Recadrez la photo en prenant uniquement le code-barres";

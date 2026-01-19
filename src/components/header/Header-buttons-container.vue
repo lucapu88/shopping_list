@@ -152,8 +152,8 @@ export default {
 			:disabled="todosStore.showOnlyImportantTodos || secondTodos.moving"
 			@click="todosStore.showCategoryList()"
 		>
-			<strong v-if="!todosStore.categoryList">+</strong>
-			<strong v-else>-</strong>
+			<strong class="toggle-category-icon" v-if="!todosStore.categoryList">+</strong>
+			<strong class="toggle-category-icon" v-else>-</strong>
 		</button>
 		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
 		<!-- TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte -->
@@ -249,7 +249,7 @@ p {
 
 .pushbutton-container {
 	display: flex;
-	gap: 25px;
+	gap: 20px;
 	height: 30px;
 	align-items: center;
 	margin: 0.9375rem;
@@ -262,26 +262,29 @@ p {
 	border-radius: 10%;
 	padding: 2px;
 	min-width: 30px;
-	width: 60px;
+	/* width: 60px; */
+	height: 40px;
 }
 .custom-show-listbtn > img {
 	width: 25px;
 }
 
 .custom-show-listbtn > .loyalty-card-icon {
-	width: 33px;
+	width: 40px;
 }
 
 .drag-n-drop-img {
-	width: 20px !important;
+	width: 22px !important;
 }
 .show-lists-img {
-	width: 30px !important;
+	width: 35px !important;
 }
 .alerts-container {
 	min-height: 21px;
 }
-
+.toggle-category-icon {
+	font-size: 1.375rem;
+}
 .list-copied {
 	font-size: 0.875rem;
 	color: #28a745;

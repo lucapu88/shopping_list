@@ -21,6 +21,7 @@ export default {
 			selectedEng: false,
 			selectedSpa: false,
 			selectedIta: false,
+			selectedFra: false,
 		};
 	},
 	created() {
@@ -52,6 +53,7 @@ export default {
 			this.selectedEng = true;
 			this.selectedSpa = false;
 			this.selectedIta = false;
+			this.selectedFra = false;
 
 			this.generalTutorial.title = "Do you want to see a short video tutorial?";
 			this.generalTutorial.subtitle = "You can always review it \n whenever you want by clicking on =>";
@@ -61,6 +63,7 @@ export default {
 			this.selectedEng = false;
 			this.selectedSpa = false;
 			this.selectedIta = true;
+			this.selectedFra = false;
 
 			this.generalTutorial.title = "vuoi vedere un breve video tutorial?";
 			this.generalTutorial.subtitle = "puoi sempre rivederlo \n quando vuoi cliccando su =>";
@@ -70,6 +73,7 @@ export default {
 			this.selectedEng = false;
 			this.selectedSpa = true;
 			this.selectedIta = false;
+			this.selectedFra = false;
 
 			this.generalTutorial.title = "¿Quieres ver un breve vídeo tutorial?";
 			this.generalTutorial.subtitle = "Siempre puedes revisarlo \n cuando quieras  haciendo clic en =>";
