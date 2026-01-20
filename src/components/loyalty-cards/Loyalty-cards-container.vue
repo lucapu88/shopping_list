@@ -456,7 +456,7 @@ main {
 
 .cards-container {
 	display: grid;
-	grid-template-columns: 150px 150px;
+	grid-template-columns: 160px 160px;
 	gap: 18px;
 	justify-items: center;
 }
@@ -466,7 +466,7 @@ main {
 }
 
 .card-name-container {
-	width: 145px;
+	width: 155px;
 	display: flex;
 	flex-direction: column;
 	border: 2px solid;
@@ -534,5 +534,15 @@ main {
 .crop-container {
 	max-width: 100%;
 	max-height: 300px;
+}
+
+@media (max-width: 350px) {
+	.cards-container {
+		grid-template-columns: 150px 150px;
+	}
+
+	.card-name-container {
+		width: 145px;
+	}
 }
 </style>
