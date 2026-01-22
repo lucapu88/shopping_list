@@ -28,7 +28,7 @@ export default {
 
 <template>
 	<div
-		class="btn-container"
+		class="gt-btn-container"
 		:class="{
 			'read-only': readOnly,
 			'ita-right': languages.langIta,
@@ -41,19 +41,20 @@ export default {
 </template>
 
 <style scoped>
-.btn-container {
+.gt-btn-container {
 	position: absolute;
-	top: 2%;
+	top: 2px;
 	right: 13%;
 	width: 70px;
 	text-align: center;
 	color: #d20000;
 }
 
-.btn-container > span {
+.gt-btn-container > span {
 	border: 2px solid;
 	border-radius: 50%;
 	padding: 0px 5px;
+	font-family: "Arial Black";
 	font-weight: bold;
 }
 

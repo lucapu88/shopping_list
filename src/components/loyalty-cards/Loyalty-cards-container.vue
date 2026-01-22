@@ -14,7 +14,7 @@ import ErrorMessage from "./Error-message.vue";
 import InfoContainer from "./Info-container.vue";
 import OrderCards from "./Order-cards.vue";
 /*
-	TOFIX: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
+	TODO: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
 	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
 */
 const theme = useThemeStore();
