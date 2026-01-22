@@ -3,6 +3,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import GeneralTutorialBtn from "./General-tutorial-btn.vue";
+import ConfirmButtonsContainer from "../../common/Confirm-buttons-container.vue";
 </script>
 
 <script>
@@ -151,12 +152,7 @@ export default {
 				<p class="boldi-cipollino">{{ generalTutorial.title }}</p>
 				<p>{{ generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
 
-				<button class="btn btn-success me-4" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="playTutorial()">
-					<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
-				</button>
-				<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="closeTutorial()">
-					<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
-				</button>
+				<ConfirmButtonsContainer @yesSelected="playTutorial()" @noSelected="closeTutorial()" />
 			</div>
 		</div>
 	</div>

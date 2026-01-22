@@ -110,6 +110,7 @@
 	box-shadow: none !important;
 }
 
+/* queste 2 categorie dovrebbero essere in Confirm-buttons-container ma le lascio qui perchè le uso anche in Confirm-modal */
 .ok {
 	font-size: 1.25rem;
 	background: #146c20;

@@ -26,7 +26,7 @@ describe("test della modale che appare appena si scarica l'app", () => {
         cy.get('.boldi-cipollino').should('include.text', "vuoi vedere un breve video tutorial?");
     });
 
-    it("verifico se cliccando su si appare il video, e poi se cliccando su no si chiude la modale", () => {
+    it("verifico se cliccando su 'si' appare il video, e poi se cliccando su 'no' si chiude la modale", () => {
         cy.get('.btn-success').click({ force: true });
         cy.get('.video-container').should('exist');
 
@@ -38,7 +38,7 @@ describe("test della modale che appare appena si scarica l'app", () => {
         });
         cy.get('.close-tutorial').click();
 
-        cy.get('.btn-container > span').contains('?').click({ force: true });
+        cy.get('.gt-btn-container > span').contains('?').click({ force: true });
         cy.get('.modal-content').should('exist');
         cy.get('.empty-div').click({ force: true });
 

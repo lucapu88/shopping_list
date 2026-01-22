@@ -5,6 +5,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
+import ConfirmButtonsContainer from "../../common/Confirm-buttons-container.vue";
 </script>
 
 <script>
@@ -90,12 +91,7 @@ export default {
 				<div class="confirm-backup-container">
 					<div class="confirm-backup p-1" v-if="showConfirmBackup && !noBackup">
 						<span>{{ languages.backupListText.confirm }}</span>
-						<button id="confirm-backup" style="background-color: lightgreen" @click="importBackup()">
-							<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
-						</button>
-						<button style="background-color: lightcoral" @click="showConfirmBackup = false">
-							<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
-						</button>
+						<ConfirmButtonsContainer @yesSelected="importBackup()" @noSelected="showConfirmBackup = false" />
 					</div>
 
 					<p v-if="noBackup" class="no-backup">
@@ -128,12 +124,9 @@ export default {
 	justify-content: center;
 }
 .confirm-backup {
-	max-width: 250px;
+	/* max-width: 250px; */
 	border: 2px solid #ff0000;
 	border-radius: 5px;
-}
-.confirm-backup-container > div > button {
-	margin-left: 0.625rem;
 }
 
 .no-backup {

@@ -8,6 +8,7 @@ import LoadingOrUpdating from "../Loading-or-updating.vue";
 import crumpPaper from "@/img/carta-stropicciata.webp";
 import wave from "@/img/onda.webp";
 import cincia from "@/img/cincia.webp";
+import ConfirmButtonsContainer from "../common/Confirm-buttons-container.vue";
 </script>
 
 <script>
@@ -62,12 +63,7 @@ export default {
 			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 			{{ languages.deleteAllConfirmText }}
 		</p>
-		<button class="btn btn-success" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="removeAllTodos()">
-			<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
-		</button>
-		<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="todosStore.openDeleteAllModal = false">
-			<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
-		</button>
+		<ConfirmButtonsContainer @yesSelected="removeAllTodos()" @noSelected="todosStore.openDeleteAllModal = false" />
 	</div>
 </template>
 

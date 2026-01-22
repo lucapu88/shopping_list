@@ -13,6 +13,7 @@ import BackgroundImg from "./Background-img.vue";
 import ErrorMessage from "./Error-message.vue";
 import InfoContainer from "./Info-container.vue";
 import OrderCards from "./Order-cards.vue";
+import ConfirmButtonsContainer from "../common/Confirm-buttons-container.vue";
 /*
 	TODO: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
 	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
@@ -145,8 +146,12 @@ function viewOrderPhotos() {
 	orderPhotos(az.value);
 }
 
-function showPhoto(photo) {
+function scrollTop() {
 	document.querySelector("main").scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showPhoto(photo) {
+	scrollTop();
 
 	if (objectUrl) {
 		URL.revokeObjectURL(objectUrl);
@@ -156,6 +161,7 @@ function showPhoto(photo) {
 	imageUrl.value = objectUrl;
 	photoName.value = photo.name;
 	showImgPreview.value = true;
+	showConfirmAlert.value = false;
 }
 
 async function deletePhoto() {
@@ -172,6 +178,8 @@ async function deletePhoto() {
 }
 
 function selectPhotoForDelete(id, name) {
+	scrollTop();
+
 	photoId.value = id;
 	confirmAlertMessage.value = `${languages.loyalityCards.confirmAlertMessage} "${name}"?`;
 	showImgPreview.value = false;
@@ -320,16 +328,11 @@ onUnmounted(() => {
 				</template>
 
 				<!-- ALERT CHE APPARE PER CONFERMARE LA CANCELLAZIONE DELLA TESSERA -->
-				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-if="showConfirmAlert">
+				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-if="showConfirmAlert && !showImgPreview">
 					<p>{{ confirmAlertMessage }}</p>
 
 					<div class="btns-container mb-4">
-						<button class="btn btn-success" :class="{ 'pink-theme-btn': theme.pinkTheme }" @click="deletePhoto">
-							<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
-						</button>
-						<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': theme.pinkTheme }" @click="showConfirmAlert = false">
-							<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
-						</button>
+						<ConfirmButtonsContainer @yesSelected="deletePhoto" @noSelected="showConfirmAlert = false" />
 					</div>
 				</div>
 

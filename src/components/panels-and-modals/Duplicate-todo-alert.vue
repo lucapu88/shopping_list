@@ -3,6 +3,7 @@ import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import ConfirmButtonsContainer from "../common/Confirm-buttons-container.vue";
 </script>
 
 <script>
@@ -40,12 +41,7 @@ export default {
 			<div class="body">
 				<p>{{ languages.duplicateText.body }}</p>
 				<div class="btns-container">
-					<button class="btn btn-success" :class="{ 'pink-theme-btn': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(true)">
-						<span class="ok">{{ String.fromCodePoint(0x1f44d) }}</span>
-					</button>
-					<button class="btn btn-dark" :class="{ 'pink-theme-btn-secondary': themes.pinkTheme }" @click="todosStore.addTodoAfterDuplicateCheck(false)">
-						<span class="no">{{ String.fromCodePoint(0x274c) }}</span>
-					</button>
+					<ConfirmButtonsContainer @yesSelected="todosStore.addTodoAfterDuplicateCheck(true)" @noSelected="todosStore.addTodoAfterDuplicateCheck(false)" />
 				</div>
 			</div>
 		</div>
