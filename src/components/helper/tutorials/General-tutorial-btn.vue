@@ -11,7 +11,7 @@ export default {
 	},
 	data() {
 		return {
-			themes: useThemeStore(),
+			theme: useThemeStore(),
 			settings: useSettingsStore(),
 			languages: useLanguageStore(),
 		};
@@ -32,11 +32,24 @@ export default {
 		:class="{
 			'read-only': readOnly,
 			'ita-right': languages.langIta,
-			'right-10': themes.jeansTheme,
+			'right-10': theme.jeansTheme,
 		}"
 		@click="showGeneralTutorialModal()"
 	>
-		<span>?</span>
+		<span
+			:class="{
+				light: theme.lightTheme,
+				dark: theme.darkTheme,
+				minimal: theme.minimalTheme,
+				retro: theme.retroTheme,
+				elegant: theme.elegantTheme,
+				pink: theme.pinkTheme,
+				panter: theme.panterTheme,
+				lemon: theme.lemonTheme,
+				jeans: theme.jeansTheme,
+			}"
+			>?</span
+		>
 	</div>
 </template>
 
@@ -53,9 +66,10 @@ export default {
 .gt-btn-container > span {
 	border: 2px solid;
 	border-radius: 50%;
-	padding: 0px 5px;
-	font-family: "Arial Black";
+	padding: 3px 5px 1px;
+	font-family: "Lucida Console", "Courier New", monospace;
 	font-weight: bold;
+	font-size: 1.125rem;
 }
 
 .read-only {
