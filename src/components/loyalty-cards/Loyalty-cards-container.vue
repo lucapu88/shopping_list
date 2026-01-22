@@ -279,9 +279,9 @@ onUnmounted(() => {
 			<BackgroundImg :addHeight="addCard" />
 
 			<header :class="{ 'text-dark': theme.winterTheme }">
-				<h3 :class="{ 'bg-light': theme.lemonTheme }">{{ languages.loyalityCards.title }}</h3>
+				<h3 :class="{ 'bg-light': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">{{ languages.loyalityCards.title }}</h3>
 				<p class="close-icon" @click="secondTodos.loyaltyCardsVisible = false">
-					<span class="btn-font-custom" :class="{ 'bg-light rounded-circle boldi-cipollino p-1': theme.lemonTheme }">X</span>
+					<span class="btn-font-custom" :class="{ 'bg-light rounded-circle boldi-cipollino p-1': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">X</span>
 				</p>
 			</header>
 			<main>
@@ -296,7 +296,7 @@ onUnmounted(() => {
 				<InfoContainer :show-info="showInfo" />
 
 				<!-- MESSAGGIO CHE TI MOSTRA QUANDO HAI RAGGIUNTO IL LIMITE MASSIMO DI CARTE  -->
-				<small v-if="photos.length >= limitCards">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
+				<small v-if="photos.length >= limitCards" :class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
 
 				<!-- PULSANTE PER APRIRE LA SCHERMATA PER AGGIUNGERE LA TESSERA -->
 				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'btn-add-selected': addCard }" @click="showAddCard">
@@ -306,7 +306,7 @@ onUnmounted(() => {
 				<!-- ISTRUZIONI PER L'UTENTE -->
 				<template v-if="addCard">
 					<!-- WARNING PER IL NOME DELLA TESSERA -->
-					<small :class="{ 'text-dark': theme.winterTheme }" v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
+					<small :class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }" v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 					<!-- INPUT SCELTA NOME TESSERA -->
 					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @input="onNameChange" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
 					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
@@ -373,6 +373,16 @@ onUnmounted(() => {
 	width: 100%;
 	height: 100%;
 	border-radius: 0%;
+}
+
+.christmas-color {
+	color: #ffffff;
+	background-color: transparent !important; /* per sovrascrivere il tema lemon */
+}
+
+.christmas-bg {
+	background-color: #8b0000;
+	color: #ffffff !important;
 }
 
 .close-icon {

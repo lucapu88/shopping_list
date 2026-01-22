@@ -1,7 +1,9 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 
 const theme = useThemeStore();
+const isChristmas = useChristmasStore();
 const props = defineProps({
 	addHeight: Boolean,
 });
@@ -18,6 +20,7 @@ const props = defineProps({
 			strawberries: theme.pinkTheme,
 			limonissimo: theme.lemonTheme,
 			'jeans-zip': theme.jeansTheme,
+			'santa-claus': isChristmas.christmasTheme,
 		}"
 	></div>
 </template>
@@ -51,6 +54,11 @@ const props = defineProps({
 	background-size: auto;
 	background-image: url("@/img/strawberries.webp");
 }
+
+.santa-claus {
+	background-image: url("@/img/festivities/santa-claus.webp");
+}
+
 .add-height {
 	height: 220px;
 }
