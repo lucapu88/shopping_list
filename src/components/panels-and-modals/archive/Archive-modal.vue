@@ -93,8 +93,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .slide-enter-active {
@@ -137,12 +136,13 @@ export default {
 .title {
 	margin-bottom: 0.625rem;
 	z-index: 600;
+	height: 15px;
 }
 .x {
-	position: absolute;
-	right: -20px;
+	position: fixed;
+	right: -30px;
 	top: 5px;
-	width: 90px;
+	width: 100px;
 	height: 35px;
 	z-index: 600;
 }

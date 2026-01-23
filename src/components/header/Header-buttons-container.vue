@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container" v-if="!todosStore.devNotes">
+	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme }" v-if="!todosStore.devNotes">
 		<!-- TOGGLE CAMBIO LISTE -->
 		<button
 			class="btn custom-show-listbtn"
@@ -192,23 +192,7 @@ export default {
 		</button> -->
 
 		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ (PER IL MOMENTO NON IN PRODUZIONE) -->
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': todosStore.showOnlyImportantTodos,
-				'minimal-btn': theme.minimalTheme,
-				'retro-teme-btns': theme.retroTheme,
-				'summer-header-btn': theme.summerTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
-				'winter-header-btn': theme.winterTheme,
-				'elegant-btn': theme.elegantTheme,
-				'pink-theme-btn': theme.pinkTheme,
-				'panter-other-btn': theme.panterTheme,
-				'lemon-other-btn': theme.lemonTheme,
-				'jeans-other-btn': theme.jeansTheme,
-			}"
-			@click="secondTodos.showLoyaltyCards()"
-		>
+		<button class="btn loyalty-cards-btn p-0" @click="secondTodos.showLoyaltyCards()">
 			<img class="loyalty-card-icon" src="@/img/icons/loy-card.webp" alt="loyalty_card_icon" />
 		</button>
 	</div>
@@ -256,21 +240,22 @@ p {
 	justify-content: center;
 }
 
+.custom-show-listbtn,
+.loyalty-cards-btn {
+	min-width: 30px;
+	height: 40px;
+	max-width: 65px;
+}
+
 .custom-show-listbtn {
 	background-color: rgba(192, 224, 133, 0.883);
 	border: 2px solid rgb(180, 230, 89);
 	border-radius: 10%;
 	padding: 2px;
-	min-width: 30px;
-	/* width: 60px; */
-	height: 40px;
-}
-.custom-show-listbtn > img {
-	width: 25px;
 }
 
-.custom-show-listbtn > .loyalty-card-icon {
-	width: 40px;
+.custom-show-listbtn > img {
+	width: 25px;
 }
 
 .drag-n-drop-img {
@@ -295,6 +280,20 @@ p {
 .btn-important-selected {
 	animation: zoominout 1.5s infinite;
 }
+
+.loyalty-cards-btn {
+	border: 2px solid #000000;
+	animation: zoominout 1.5s ease-in-out;
+	background-color: #ffffff;
+}
+
+.loyalty-card-icon {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 5px;
+}
+
 @keyframes zoominout {
 	0% {
 		transform: scale(1, 1);

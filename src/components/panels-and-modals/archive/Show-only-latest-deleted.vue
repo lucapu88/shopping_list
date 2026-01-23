@@ -35,7 +35,7 @@ export default {
 					<!-- TODO SINGOLO -->
 					<span class="show-last-deleted-title" :class="{ 'animate-charcter': !theme.retroTheme }"> {{ languages.showOnlyLatestDeletedText.singleTodoText }}: </span>
 					<div v-if="todosStore.deletedSingleTodo && todosStore.deletedSingleTodo.length" class="todo-deleted-container" :class="{ 'retro-terminal-border': theme.retroTheme }">
-						<section class="top">
+						<section class="section-container">
 							<div v-for="(inner, i) in todosStore.deletedSingleTodo" :key="i">
 								<ul>
 									<div class="list-canceled-title">{{ secondTodosStore.listButtons[i].name }}</div>
@@ -54,7 +54,7 @@ export default {
 					<!-- TODO MULTIPLI -->
 					<span class="show-last-deleted-title" :class="{ 'animate-charcter': !theme.retroTheme }"> {{ languages.showOnlyLatestDeletedText.multipleTodosText }}: </span>
 					<div class="multiple-deleted-container" :class="{ 'retro-terminal-border': theme.retroTheme }">
-						<section class="top">
+						<section class="section-container">
 							<div v-for="(inner, i) in todosStore.deletedTodos" :key="i">
 								<ul>
 									<div class="list-canceled-title">{{ secondTodosStore.listButtons[i].name }}</div>
@@ -78,7 +78,20 @@ export default {
 
 <style scoped>
 .latest-deleted-container {
+	width: 100%;
+	box-sizing: border-box;
 	overflow: auto;
+}
+
+ul {
+	padding: 0.313rem;
+	padding-left: 10px;
+	overflow: auto;
+}
+
+li {
+	text-align: left;
+	display: block;
 }
 
 .show-hide-btn {
@@ -110,6 +123,7 @@ export default {
 }
 .title-info {
 	font-size: 0.9375rem;
+	text-align: center;
 }
 .show-hide-deleted-container {
 	display: flex;
@@ -134,19 +148,10 @@ export default {
 	border-radius: 10px;
 }
 
-ul {
-	padding: 0.313rem;
-	padding-left: 10px;
-}
-
-li {
-	display: block;
-}
-
-.top,
+.section-container,
 .bottom {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 50% 50%;
 }
 
 .list-canceled-title {

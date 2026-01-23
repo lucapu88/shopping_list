@@ -56,7 +56,7 @@ export default {
 <style scoped>
 .gt-btn-container {
 	position: absolute;
-	top: 2px;
+	top: 3px;
 	right: 13%;
 	width: 70px;
 	text-align: center;

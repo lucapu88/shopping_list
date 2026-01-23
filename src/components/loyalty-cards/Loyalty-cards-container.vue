@@ -344,7 +344,7 @@ onUnmounted(() => {
 				</div>
 
 				<!-- CONTENITORE PREVIEW DELLA TESSERA SELEZIONATA -->
-				<div class="preview-container" v-if="showImgPreview && !showConfirmAlert">
+				<div class="preview-container mt-3" v-if="showImgPreview && !showConfirmAlert">
 					<h3>{{ photoName }}</h3>
 					<span class="delete-card hide-card" @click="showImgPreview = false">X</span>
 					<img class="preview" :src="imageUrl" />

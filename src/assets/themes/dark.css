@@ -23,7 +23,7 @@
 	background-image: none;
 	background-color: var(--dark-primary-color) !important;
 	border: 10px solid var(--dark-secondary-color);
-	/* width: calc(100% - 10px); */
+	padding: 0.313rem !important;
 }
 .helper-btn-dark {
 	position: absolute;
@@ -73,4 +73,10 @@
 	background-color: var(--dark-background-color);
 	color: #ffff;
 	border: 2px solid #ffff;
+}
+
+.dark-style-pushbutton-container {
+	margin-left: 0px !important;
+	padding: 0 10px !important;
+	gap: 15px !important;
 }

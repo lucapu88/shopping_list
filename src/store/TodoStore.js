@@ -500,12 +500,12 @@ export const useTodoStore = defineStore('todoStore', {
       switch (index) {
         case 'multipleDelete':
           //Salvo I todo selezionati da eliminare
-          todosToDelete = this.todos.filter(todo => todo.multipleDelete).map(t => t.name);
+          todosToDelete = this.todos.filter(todo => todo.multipleDelete).map(t => `> ${t.name}`);
           storageKey = 'deletedTodos';
           break;
         case 'deleteAll':
           //Salvo TUTTI i todo da eliminare
-          todosToDelete = this.todos.filter(todo => !todo.category).map(t => t.name);
+          todosToDelete = this.todos.filter(todo => !todo.category).map(t => `> ${t.name}`);
           storageKey = 'deletedTodos';
           break;
         default:

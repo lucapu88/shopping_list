@@ -69,9 +69,7 @@ export default {
 			</p>
 			<span style="display: none">{{ todosStore.index }} </span>
 			<ul v-if="todosStore.deleteSelected">
-				<li v-for="(todo, n) in multipleTodos" :key="n">
-					{{ todo }}
-				</li>
+				<li v-for="(todo, n) in multipleTodos" :key="n">- {{ todo }}</li>
 			</ul>
 
 			<div class="confirm-buttons-container">

@@ -17,6 +17,7 @@ const props = defineProps({
 			'willy-lorbo': theme.lightTheme,
 			waves: theme.summerTheme,
 			snow: theme.winterTheme,
+			panther: theme.panterTheme,
 			strawberries: theme.pinkTheme,
 			limonissimo: theme.lemonTheme,
 			'jeans-zip': theme.jeansTheme,
@@ -36,30 +37,34 @@ const props = defineProps({
 	background-size: cover;
 }
 .willy-lorbo {
-	background-image: url("@/img/goonies-map.webp");
+	background-image: url("@/img/loyalty-cards/goonies-map.webp");
 }
 .waves {
-	background-image: url("@/img/onde-mare.webp");
+	background-image: url("@/img/loyalty-cards/onde-mare.webp");
 }
 .snow {
-	background-image: url("@/img/snowman.webp");
+	background-image: url("@/img/loyalty-cards/snowman.webp");
 }
 .limonissimo {
-	background-image: url("@/img/limoncello.webp");
+	background-image: url("@/img/loyalty-cards/limoncello.webp");
 }
 .jeans-zip {
 	background-image: url("@/img/jeans-zip.webp");
 }
 .strawberries {
 	background-size: auto;
-	background-image: url("@/img/strawberries.webp");
+	background-image: url("@/img/loyalty-cards/strawberries.webp");
 }
 
-.santa-claus {
-	background-image: url("@/img/festivities/santa-claus.webp");
+.panther {
+	background-image: url("@/img/loyalty-cards/panther-eyes.webp");
 }
 
 .add-height {
 	height: 220px;
+}
+
+.santa-claus {
+	background-image: url("@/img/festivities/santa-claus.webp");
 }
 </style>

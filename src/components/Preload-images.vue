@@ -10,20 +10,21 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import cancellaPreload from "@/img/cancella.webp";
 import marePreload from "@/img/mare.webp";
 import mareTabletPreload from "@/img/mare-tablet.webp";
-import ondeMare from "@/img/onde-mare.webp";
+import ondeMare from "@/img/loyalty-cards/onde-mare.webp";
 import montagnePreload from "@/img/montagne.webp";
 import montagneTabletPreload from "@/img/montagne-tablet.webp";
-import snowman from "@/img/snowman.webp";
-import strawberries from "@/img/strawberries.webp";
+import snowman from "@/img/loyalty-cards/snowman.webp";
+import strawberries from "@/img/loyalty-cards/strawberries.webp";
 import DragDropElegant from "@/img/icons/drag-and-drop-elegant.webp";
 import copyElegant from "@/img/icons/copy-elegant.webp";
 import importantElegant from "@/img/icons/important-elegant.webp";
 import DragDropPanter from "@/img/icons/drag-and-drop-panter.webp";
 import copyPanter from "@/img/icons/copy-panter.webp";
 import importantPanter from "@/img/icons/important-panter.webp";
+import pantherEyes from "@/img/loyalty-cards/panther-eyes.webp";
 import lemon from "@/img/lemon-send.webp";
 import leaves from "@/img/foglie.webp";
-import limoncello from "@/img/limoncello.webp";
+import limoncello from "@/img/loyalty-cards/limoncello.webp";
 import leotta from "@/img/jeans-zip.webp";
 import levisMio from "@/img/jeans-mio.webp";
 import jeansIle from "@/img/jeans-ile.webp";
@@ -67,7 +68,7 @@ import closeIcon from "@/img/icons/close.webp";
 import dino from "@/img/update-img.webp";
 import listLoading from "@/img/Loading-list.webp";
 import loyaltyCard from "@/img/icons/loy-card.webp";
-import gooniesMap from "@/img/goonies-map.webp";
+import gooniesMap from "@/img/loyalty-cards/goonies-map.webp";
 </script>
 
 <script>
@@ -115,6 +116,7 @@ export default {
 	<link v-if="theme.panterTheme" rel="preload" as="image" :href="DragDropPanter" />
 	<link v-if="theme.panterTheme" rel="preload" as="image" :href="copyPanter" />
 	<link v-if="theme.panterTheme" rel="preload" as="image" :href="importantPanter" />
+	<link v-if="theme.panterTheme" rel="preload" as="image" :href="pantherEyes" />
 
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="lemon" />
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="leaves" />
