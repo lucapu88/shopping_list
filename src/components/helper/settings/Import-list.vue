@@ -44,6 +44,8 @@ export default {
 			if (!this.listPasted) {
 				return;
 			}
+			this.listPasted = this.cleanText(this.listPasted);
+
 			const listPastedToArray = this.listPasted
 				.split("\n")
 				.filter((el) => el !== "")
@@ -58,6 +60,10 @@ export default {
 			setTimeout(() => {
 				location.reload();
 			}, 1500);
+		},
+		cleanText(testo) {
+			// Rimuove i : dai titoli delle sezioni (es. "VERDURA:" => "VERDURA")
+			return testo.replace(/(^[A-ZÀÈÉÌÒÙ\s]+):(?=\r?\n)/gm, "$1");
 		},
 	},
 };

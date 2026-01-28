@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { useTodoStore } from '@/store/TodoStore';
 import { useLanguageStore } from '@/store/LanguageStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
+import { useSettingsStore } from '@/store/SettingsStore';
 
 export const useSecondTodoStore = defineStore('secondTodoStore', {
     // Store per cose varie che non riguardano direttamente le todo, ma cose generali dell'app
@@ -9,6 +10,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         todosStore: useTodoStore(),
         languages: useLanguageStore(),
         categoriesStore: useCategoriesStore(),
+        settings: useSettingsStore(),
         secondList: false,
         thirdList: false,
         fourthList: false,
@@ -360,6 +362,11 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             if (!this.copy) {
                 this.todosStore.todos = this.todosStore.todos.filter(t => !t.isMoving);
             }
+            if (this.settings.canDeleteEmptyCategories) {
+                // se ho impostato l'eliminazione automatica categorie vuote
+                this.todosStore.removeOnlyEmpty();
+            }
+
             this.todosStore.saveTodos();
             this.copy ? this.copied = true : this.moved = true;
 
