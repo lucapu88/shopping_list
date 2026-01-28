@@ -32,6 +32,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         copied: false,
         moved: false,
         loyaltyCardsVisible: false,
+        listSelected: '',
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
     }),
@@ -267,7 +268,11 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         toggleChangeList() {
             this.todosStore.categoryList = false;
             this.todosStore.isDraggable = false;
+            this.copied = false;
+            this.moved = false;
+            this.listSelected = "";
             this.showChangeList = !this.showChangeList;
+
             if (!this.showChangeList) {
                 this.moving = false;
                 this.hideMovingModeMessages();
@@ -275,6 +280,8 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         moveElementMode(isCopy) {
             if (!this.showChangeList) { return; }
+            this.copied = false;
+            this.moved = false;
             this.copy = isCopy;
             this.moving = !this.moving;
             this.todosStore.isDraggable = false;
@@ -295,10 +302,11 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.istruction2Visible = this.todosStore.todos.some((t) => t.isMoving);
             }
         },
-        applyMoving(n) {
+        applyMoving(n, btnName) {
             //in questo caso la modalità di spostamento è attiva, ma non è stato selezionato nessun elemento da spostare quindi non faccio nulla
             if (!this.istruction2Visible) { return; }
 
+            this.listSelected = btnName;
             this.moveSameList = false;
             const todosIsMovingFiltered = this.todosStore.todos.filter(t => t.isMoving);
 
@@ -354,10 +362,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             }
             this.todosStore.saveTodos();
             this.copy ? this.copied = true : this.moved = true;
-            setTimeout(() => {
-                this.copied = false;
-                this.moved = false;
-            }, 3000);
+
             setTimeout(() => {
                 //brutto brutto lo so va sistemato. Lo faccio per evitare che in list-buttons-selection.vue venga triggerato selectList()
                 this.hideMovingModeMessages();

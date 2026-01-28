@@ -118,7 +118,7 @@ export default {
 					:disabled="secondTodos.moving && !secondTodos.istruction2Visible"
 					@click="selectList(btn)"
 				>
-					<div class="apply-moving-wrapper" @click="secondTodos.applyMoving(n)">
+					<div class="apply-moving-wrapper" @click="secondTodos.applyMoving(n, btn.name)">
 						<span class="btn-name">{{ btn.name }}</span>
 					</div>
 				</button>
@@ -150,8 +150,8 @@ export default {
 				<img v-if="secondTodos.moving && !secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-move.webp" alt="arrow-down" />
 				<img v-if="secondTodos.moving && secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-copy.webp" alt="arrow-down" />
 			</div>
-			<p v-if="secondTodos.moved" class="text-success">{{ languages.moveMode.movedText }}</p>
-			<p v-if="secondTodos.copied" class="text-success">{{ languages.moveMode.copiedText }}</p>
+			<p v-if="secondTodos.moved" class="text-success mt-3">{{ languages.moveMode.movedText }}: {{ secondTodos.listSelected }}</p>
+			<p v-if="secondTodos.copied" class="text-success mt-3">{{ languages.moveMode.copiedText }}: {{ secondTodos.listSelected }}</p>
 		</div>
 	</div>
 </template>

@@ -230,8 +230,8 @@ export const useLanguageStore = defineStore('Language', {
       copyIstruction1: 'Select the items to copy from the list',
       istruction2: 'Select the destination list',
       istructionAlert: 'The item is already in this list. Please select another',
-      movedText: 'MOVED successfully',
-      copiedText: 'COPIED successfully',
+      movedText: 'MOVED successfully in list',
+      copiedText: 'COPIED successfully in list',
     },
     selectedListText: 'You are writing on the list: ',
     welcomeMessage: 'Thank you for downloading Shopping List, and welcome!',
@@ -433,8 +433,8 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.copyIstruction1 = 'Seleziona dalla lista gli elementi da copiare';
       this.moveMode.istruction2 = 'Seleziona la lista di destinazione';
       this.moveMode.istructionAlert = "L'elemento è già in questa lista. Selezionane un'altra";
-      this.moveMode.movedText = 'SPOSTATO con successo';
-      this.moveMode.copiedText = 'COPIATO con successo';
+      this.moveMode.movedText = 'SPOSTATO con successo in lista';
+      this.moveMode.copiedText = 'COPIATO con successo in lista';
       this.selectedListText = 'Stai scrivendo sulla lista: ';
       this.welcomeMessage = "Grazie per aver scaricato Shopping List, e benvenuto!";
       this.totalPriceText = 'Prezzo Totale: ';
@@ -530,8 +530,8 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.copyIstruction1 = 'Seleccione los elementos que desea copiar de la lista';
       this.moveMode.istruction2 = 'Seleccione la lista de destino';
       this.moveMode.istructionAlert = "El artículo ya está en esta lista. Seleccione otro";
-      this.moveMode.movedText = 'MOVIDO con éxito';
-      this.moveMode.copiedText = 'COPIADO con éxito';
+      this.moveMode.movedText = 'MOVIDO con éxito a la lista';
+      this.moveMode.copiedText = 'COPIADO con éxito a la lista';
       this.selectedListText = 'Estás escribiendo en la lista: ';
       this.welcomeMessage = 'Gracias por descargar Lista de Compras, ¡y bienvenido!';
       this.totalPriceText = 'Precio Total: ';
@@ -627,8 +627,8 @@ export const useLanguageStore = defineStore('Language', {
       this.moveMode.copyIstruction1 = 'Sélectionnez les éléments à copier de la liste';
       this.moveMode.istruction2 = 'Sélectionnez la liste de destination';
       this.moveMode.istructionAlert = "L'élément est déjà dans cette liste. Veuillez en sélectionner une autre";
-      this.moveMode.movedText = 'DÉPLACÉ avec succès';
-      this.moveMode.copiedText = 'COPIÉ avec succès';
+      this.moveMode.movedText = 'DÉPLACÉ avec succès dans la liste';
+      this.moveMode.copiedText = 'COPIÉ avec succès dans la liste';
       this.selectedListText = 'Vous écrivez sur la liste : ';
       this.welcomeMessage = "Merci d'avoir téléchargé Shopping List, et bienvenue !";
       this.totalPriceText = 'Prix Total : ';
