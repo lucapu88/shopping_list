@@ -83,10 +83,10 @@ export default {
 				<div class="add-list-copied">
 					<div class="increase-decrease-container">
 						<button :class="{ 'retro-btn-border': theme.retroTheme }" @click="startDecreasing()" touch-action="none">
-							<img class="increase-decrease" src="@/img/icons/decrease.webp" alt="decrease" />
+							<span class="arrow"> ^ </span>
 						</button>
 						<button :class="{ 'retro-btn-border': theme.retroTheme }" @click="startIncreasing()" touch-action="none">
-							<img class="increase-decrease" src="@/img/icons/increase.webp" alt="increase" />
+							<span class="arrow reverse"> ^ </span>
 						</button>
 					</div>
 					<textarea id="text-area" :class="{ 'add-list-textarea': !theme.retroTheme }" rows="2" v-model="listPasted"> </textarea>
@@ -143,5 +143,14 @@ textarea {
 }
 .add-list-copied-btn {
 	max-height: 55px;
+}
+.arrow {
+	font-family: Sans-serif;
+	font-weight: bold;
+}
+.reverse {
+	display: inline-block;
+	-webkit-transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 </style>
