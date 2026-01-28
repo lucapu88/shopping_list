@@ -18,11 +18,13 @@ export default {
 			secondTodos: useSecondTodoStore(),
 			settings: useSettingsStore(),
 			timer: false,
+			lastTap: 0,
 		};
 	},
 	methods: {
 		setDraggable(isDraggable) {
-			if (isDraggable) {
+			// TODO: disabilitato per il momento perchè crea conflitto con il doppio click
+			/*if (isDraggable) {
 				this.timer = setTimeout(() => {
 					this.todosStore.isDraggable = isDraggable;
 				}, 2000);
@@ -32,7 +34,19 @@ export default {
 
 			if (navigator.vibrate) {
 				navigator.vibrate(500);
+			}*/
+		},
+		setTodoFunctionality(index, todo) {
+			if (todo.category) {
+				this.todosStore.selectCategoryToAddItem(index, todo);
+				return;
 			}
+
+			const now = Date.now();
+			const delta = now - this.lastTap;
+			this.lastTap = now;
+
+			delta < 250 ? this.todosStore.setAsImportant(index) : this.todosStore.selectTodoForDelete(index);
 		},
 	},
 };
@@ -76,10 +90,7 @@ export default {
 		id="todo"
 		@touchstart="setDraggable(true)"
 		@touchend="setDraggable(false)"
-		@click="
-			todosStore.setAsImportant(index);
-			todosStore.selectCategoryToAddItem(index, todo);
-		"
+		@click="setTodoFunctionality(index, todo)"
 		:class="{
 			active: todo.isActive,
 			selected: todo.isSelected && !theme.elegantTheme,

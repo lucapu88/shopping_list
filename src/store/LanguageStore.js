@@ -108,7 +108,7 @@ export const useLanguageStore = defineStore('Language', {
       },
       dragNdropTitle: 'Drag and Drop',
       dragNdropText: {
-        part1: 'If you hold down on the product name for 3 seconds or if you click on',
+        part1: 'If you click on',
         part2: 'you can drag elements and, by holding them down, move them wherever you want.',
         dragginText: 'Drag the elements of the list where you want'
       },
@@ -125,7 +125,7 @@ export const useLanguageStore = defineStore('Language', {
       copyListTitle: 'Copy list, Highlight items',
       copyListText: 'is used to copy the list and paste it wherever you want.',
       highlightImportant: {
-        part1: 'You can make a product "important" by clicking on the name and it will be ',
+        part1: 'You can make a product "important" by DOUBLE clicking on the name and it will be ',
         part2: 'highlighted',
         part3: 'so it cannot be deleted or edited.'
       },
@@ -252,7 +252,8 @@ export const useLanguageStore = defineStore('Language', {
       orderText: 'Alphabetical order'
     },
     refreshText: 'Refresh',
-    comingSoon: 'French language coming soon!',
+    alertMessageTitle: "NEW IMPORTANT CHANGES",
+    understandText: "I understand",
   }),
   getters: {},
   actions: {
@@ -440,7 +441,8 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Prezzo Totale: ';
       this.loyalityCardsITA();
       this.refreshText = 'Ricarica';
-      this.comingSoon = "Prossimamente in arrivo la lingua in francese!";
+      this.alertMessageTitle = "NUOVI CAMBIAMENTI IMPORTANTI";
+      this.understandText = "Ho capito";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -537,7 +539,8 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Precio Total: ';
       this.loyalityCardsSPA();
       this.refreshText = 'Recargar';
-      this.comingSoon = "¡Próximamente llegará el idioma francés!";
+      this.alertMessageTitle = "CAMBIOS IMPORTANTES NUEVOS";
+      this.understandText = "Entiendo";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -634,7 +637,8 @@ export const useLanguageStore = defineStore('Language', {
       this.totalPriceText = 'Prix Total : ';
       this.loyalityCardsFRA();
       this.refreshText = 'Actualiser';
-      this.comingSoon = "La langue française arrive bientôt !";
+      this.alertMessageTitle = "NOUVEAUX CHANGEMENTS IMPORTANTS";
+      this.understandText = "Je comprends";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
@@ -765,7 +769,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.suggestions.part1 = 'Quando clicchi su una categoria per aggiungere elementi, compare questo pulsante';
       this.helperDescription.suggestions.part2 = "che al click ti mostra una serie di suggerimenti di prodotti inerenti alla categoria selezionata. Basta cliccare su l'elemento che ti interessa e lo troverai inserito in lista nella categoria apposita.";
       this.helperDescription.dragNdropTitle = 'Trascina e sposta elementi';
-      this.helperDescription.dragNdropText.part1 = 'Se tieni premuto sul nome del prodotto per 3 secondi oppure se clicchi su';
+      this.helperDescription.dragNdropText.part1 = 'Se clicchi su';
       this.helperDescription.dragNdropText.part2 = 'potrai trascinare gli elementi e, tenendo premuto, spostarli dove vuoi.';
       this.helperDescription.dragNdropText.dragginText = 'Trascina gli elementi della lista dove vuoi';
       this.helperDescription.multipleDeleteTitle = 'Seleziona ed elimina più elementi';
@@ -778,9 +782,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.showText = 'Oppure di mostrarli cliccando su';
       this.helperDescription.copyListTitle = 'Copia lista, Evidenzia elementi';
       this.helperDescription.copyListText = 'serve per copiare la lista e incollarla dove vuoi.';
-      this.helperDescription.highlightImportant.part1 = 'Puoi rendere "importante" un prodotto cliccando sul nome e verrà';
+      this.helperDescription.highlightImportant.part1 = 'Puoi rendere "importante" un prodotto facendo DOPPIO click sul nome e verrà';
       this.helperDescription.highlightImportant.part2 = 'evidenziato';
-      this.helperDescription.highlightImportant.part3 = 'così non potrà essere eliminato o modificato.';
+      this.helperDescription.highlightImportant.part3 = 'così NON potrà essere eliminato o modificato.';
       this.helperDescription.deleteAllTitle = 'Elimina tutto';
       this.helperDescription.deleteAllText.part1 = 'Se clicchi su';
       this.helperDescription.deleteAllText.part2 = "ti apparirà un riquadro di conferma per l'eliminazione di TUTTA la lista.";
@@ -826,7 +830,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.suggestions.part1 = 'Al hacer clic en una categoría para añadir artículos, aparece este botón';
       this.helperDescription.suggestions.part2 = "que al pulsarlo le muestra una serie de sugerencias de productos relacionados con la categoría seleccionada. Simplemente haga clic en el artículo que le interese y lo encontrará listado en la categoría correspondiente.";
       this.helperDescription.dragNdropTitle = 'Arrastre y suelte elementos';
-      this.helperDescription.dragNdropText.part1 = 'Si mantiene pulsado el nombre del producto durante 3 segundos o si hace clic en';
+      this.helperDescription.dragNdropText.part1 = 'Si hace clic en';
       this.helperDescription.dragNdropText.part2 = 'puedes arrastrar elementos y, manteniéndolos pulsados, moverlos donde quieras.';
       this.helperDescription.dragNdropText.dragginText = 'Arrastre los elementos de la lista hasta donde desee';
       this.helperDescription.multipleDeleteTitle = 'Seleccionar y eliminar varios elementos';
@@ -839,7 +843,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.showText = 'O muéstrelas haciendo clic en';
       this.helperDescription.copyListTitle = 'Copiar lista, Resaltar elementos';
       this.helperDescription.copyListText = 'sirve para copiar la lista y pegarla donde quieras.';
-      this.helperDescription.highlightImportant.part1 = 'Puede hacer que un producto sea "importante" haciendo clic en el nombre y será';
+      this.helperDescription.highlightImportant.part1 = 'Puedes hacer que un producto sea "importante" haciendo DOBLE clic en el nombre y así será ';
       this.helperDescription.highlightImportant.part2 = 'destacado';
       this.helperDescription.highlightImportant.part3 = 'para que no pueda borrarse ni modificarse.';
       this.helperDescription.deleteAllTitle = 'Borra todo';
@@ -887,7 +891,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.suggestions.part1 = 'Lorsque tu cliques sur une catégorie pour ajouter des éléments, ce bouton apparaît';
       this.helperDescription.suggestions.part2 = "et au clic il affiche une série de produits suggérés liés à la catégorie sélectionnée. Clique simplement sur l’élément qui t’intéresse et tu le trouveras ajouté dans la liste dans la catégorie appropriée.";
       this.helperDescription.dragNdropTitle = 'Glisser-déposer les éléments';
-      this.helperDescription.dragNdropText.part1 = 'Si tu maintiens le nom du produit pendant 3 secondes ou si tu cliques sur';
+      this.helperDescription.dragNdropText.part1 = 'Si tu cliques sur';
       this.helperDescription.dragNdropText.part2 = 'tu peux faire glisser les éléments et, en maintenant appuyé, les déplacer où tu veux.';
       this.helperDescription.dragNdropText.dragginText = 'Glisse les éléments de la liste où tu veux';
       this.helperDescription.multipleDeleteTitle = 'Sélectionner et supprimer plusieurs éléments';
@@ -900,7 +904,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.showText = 'Ou de les afficher en cliquant sur';
       this.helperDescription.copyListTitle = 'Copier la liste, Mettre en évidence';
       this.helperDescription.copyListText = 'sert à copier la liste et la coller où tu veux.';
-      this.helperDescription.highlightImportant.part1 = 'Tu peux rendre un produit « important » en cliquant sur son nom, il sera alors';
+      this.helperDescription.highlightImportant.part1 = 'Vous pouvez rendre un produit « important » en DOUBLE-cliquant sur son nom et il le sera ';
       this.helperDescription.highlightImportant.part2 = 'mis en évidence';
       this.helperDescription.highlightImportant.part3 = 'et ne pourra pas être supprimé ou modifié.';
       this.helperDescription.deleteAllTitle = 'Tout supprimer';

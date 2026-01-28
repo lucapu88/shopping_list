@@ -234,6 +234,13 @@ export const useSettingsStore = defineStore('settings', {
       } else {
         console.log(`%cMemoria LocalStorage: ${totalByte} byte (${totalKB} KB)`, "color: green;font-size: 16px; font-weight: bold;");
       }
-    }
+    },
+    readNewUpdates() {
+      /*  👇👇👇👇👇👇👇 IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: 👇👇👇👇👇👇👇👇
+        Quando cambi la chiave nel localStorage, ricordati di cambiarla anche nel file App.vue (newUpdatesRead). 
+        E ricordati di effettuare un removeItem della chiave vecchia: window.localStorage.removeItem(chiave-vecchia);
+     */
+      window.localStorage.setItem("newMarkAndSelectMode", "true");
+    },
   }
 });

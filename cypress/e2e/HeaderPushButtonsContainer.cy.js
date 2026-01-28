@@ -7,6 +7,7 @@ describe('test della pulsantiera di aggiunta categorie, copia e incolla lista e 
     beforeEach(() => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.closeBlockingElements();
+        cy.hideUpdatesAlertsModal();
     });
 
     it("verifico la visualizzazione del pannello cambio liste", () => {

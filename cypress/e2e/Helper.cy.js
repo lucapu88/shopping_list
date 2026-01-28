@@ -7,6 +7,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
         cy.closeBlockingElements();
+        cy.hideUpdatesAlertsModal();
     });
 
     it("l'helper appare e scompare", () => {

@@ -10,4 +10,5 @@ FILE CHE VENGONO IMPATTATI QUANDO SI CAMBIA LINGUA:
 - Cartella suggestions: aggiungi tutte le stesse ed identiche cose per la lingua nuova
 - Aggiungi la lingua nel componente Loading-or-updating
 - Cercare ovunque nel codice le icone che ci sono nella cartella flags ed aggiungere anche quella in francese
+- Aggiungi anche il testo della nuova lingua nell'html del componente Updates-alerts-modal
 - Sistema il README.md con la rispettiva lingua

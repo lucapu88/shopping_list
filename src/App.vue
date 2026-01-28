@@ -13,6 +13,7 @@ import LoadingOrUpdating from "./components/Loading-or-updating.vue";
 import ShowHelperButton from "./components/header/Show-helper-button.vue";
 import GeneralTutorialModal from "./components/helper/tutorials/General-tutoriar-modal.vue";
 import LoyaltyCardsContainer from "./components/loyalty-cards/Loyalty-cards-container.vue";
+import UpdatesAlertsModal from "./components/panels-and-modals/Updates-alerts-modal.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -38,6 +39,7 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
+			newUpdatesRead: window.localStorage.getItem("newMarkAndSelectMode"),
 		};
 	},
 	created() {
@@ -50,7 +52,6 @@ export default {
 		this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
 		this.theme.setThemeOnLoad(); //imposto il tema in base a quello scelto dall'utente
 		this.secondTodosStore.createListsButtons();
-
 		// Controllo se sono in locale o in produzione perché alcune funzionalità non devono essere disponibili in locale
 		this.secondTodosStore.isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 		this.settings.enableAI = !this.secondTodosStore.isLocal;
@@ -85,6 +86,9 @@ export default {
 		setVisibilityOnScroll(e) {
 			this.settings.isVisibleOnScroll = e.target.scrollTop < 50;
 		},
+		understandFunction(event) {
+			this.newUpdatesRead = event;
+		},
 	},
 };
 </script>
@@ -118,8 +122,10 @@ export default {
 						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
 						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
 						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
-						<GeneralTutorialModal v-if="settings.isTutorialVisible" />
+						<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
+						<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
 						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
+						<UpdatesAlertsModal v-if="!newUpdatesRead" @understand="understandFunction($event)" />
 					</header>
 					<main>
 						<MainList />

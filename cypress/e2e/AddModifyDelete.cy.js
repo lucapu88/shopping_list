@@ -10,6 +10,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
   beforeEach(() => {
     cy.visit(shoppingListLocalOrGlobal);
     cy.closeBlockingElements();
+    cy.hideUpdatesAlertsModal();
   });
 
   it('inserisco qualcosa nella lista, poi la modifico e la elimino.', () => {

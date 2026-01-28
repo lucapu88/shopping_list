@@ -69,6 +69,10 @@ Cypress.Commands.add('closeBlockingElements', () => {
   });
 });
 
+Cypress.Commands.add('hideUpdatesAlertsModal', () => {
+  cy.get('#understand').click({ force: true });
+});
+
 Cypress.Commands.add('addCategoryAndTodo', () => {
   cy.get('.pushbutton-container > :nth-child(4)').click({ force: true });
   cy.get('.categories > :nth-child(18) > span').click({ force: true });

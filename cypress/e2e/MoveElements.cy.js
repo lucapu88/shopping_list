@@ -7,6 +7,7 @@ describe("test dello spostamento elementi da una lista ad un'altra", () => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
         cy.closeBlockingElements();
+        cy.hideUpdatesAlertsModal();
     });
 
     it("verifico se la modalità spostamento funziona", () => {

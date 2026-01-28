@@ -11,6 +11,7 @@ describe("test del salvataggio ultime eliminazioni", () => {
         cy.visit(shoppingListLocalOrGlobal);
         cy.wait(1100);
         cy.closeBlockingElements();
+        cy.hideUpdatesAlertsModal();
     });
 
     it('mostra ultime eliminazioni singole', () => {
@@ -45,8 +46,8 @@ describe("test del salvataggio ultime eliminazioni", () => {
 
         function checkPhrasesDeleted(childNumber,) {
             cy.get('.archive-btn').click({ force: true });
-            cy.get(`.todo-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(2)`).should('include.text', phrases.frase6);
-            cy.get(`.todo-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(3)`).should('include.text', setDate());
+            cy.get(`.todo-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(2)`).should('include.text', phrases.frase6);
+            cy.get(`.todo-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(3)`).should('include.text', setDate());
             cy.get('.title > .x').click();
         }
     });
@@ -87,10 +88,10 @@ describe("test del salvataggio ultime eliminazioni", () => {
 
         function checkPhrasesDeleted(childNumber) {
             cy.get('.archive-btn').click({ force: true });
-            cy.get(`.multiple-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(2)`).should('include.text', phrases.frase1);
-            cy.get(`.multiple-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(3)`).should('include.text', phrases.frase2);
-            cy.get(`.multiple-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(4)`).should('include.text', phrases.frase5);
-            cy.get(`.multiple-deleted-container > .top > :nth-child(${childNumber}) > ul > :nth-child(5)`).should('include.text', setDate());
+            cy.get(`.multiple-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(2)`).should('include.text', phrases.frase1);
+            cy.get(`.multiple-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(3)`).should('include.text', phrases.frase2);
+            cy.get(`.multiple-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(4)`).should('include.text', phrases.frase5);
+            cy.get(`.multiple-deleted-container > .section-container > :nth-child(${childNumber}) > ul > :nth-child(5)`).should('include.text', setDate());
             cy.get('.title > .x').click();
         }
     });

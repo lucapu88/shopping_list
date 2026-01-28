@@ -8,6 +8,7 @@ import ConfirmButtonsContainer from "../../common/Confirm-buttons-container.vue"
 
 <script>
 export default {
+	emits: ["understand"],
 	data() {
 		return {
 			theme: useThemeStore(),
@@ -49,6 +50,9 @@ export default {
 		closeTutorial() {
 			this.settings.isTutorialVisible = false;
 			window.localStorage.setItem("tutorialWatched", true);
+			// Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione.
+			this.settings.readNewUpdates();
+			this.$emit("understand", true);
 		},
 		english() {
 			this.selectedEng = true;

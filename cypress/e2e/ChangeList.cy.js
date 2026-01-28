@@ -7,6 +7,7 @@ describe("test delle liste multiple", () => {
         cy.keyboardEventCheck();
         cy.visit(shoppingListLocalOrGlobal);
         cy.closeBlockingElements();
+        cy.hideUpdatesAlertsModal();
     });
 
     it('inserisco qualcosa nella lista, poi cambio lista e provo le altre', () => {
@@ -24,6 +25,8 @@ describe("test delle liste multiple", () => {
 
         cy.get('.buttons-container > :nth-child(5)').click();
         cy.wait(1000);
+
+        cy.hideUpdatesAlertsModal();
         cy.closeBlockingElements();
 
         cy.get('.empty-logo-container').should('exist');
