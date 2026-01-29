@@ -3,6 +3,7 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import CurtainAnimation from "./Curtain-animation.vue";
 </script>
 
 <script>
@@ -36,7 +37,6 @@ export default {
 </script>
 
 <template>
-	<!-- CONTENITORE DELL'ANIMAZIONE -->
 	<div
 		v-if="secondTodos.showChangeList"
 		class="container"
@@ -55,45 +55,13 @@ export default {
 			'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
 		}"
 	>
-		<div
-			class="left"
-			:class="{
-				'container-light': theme.lightTheme,
-				'container-dark': theme.darkTheme,
-				'container-minimal': theme.minimalTheme,
-				'container-retro': theme.retroTheme,
-				'container-summer': theme.summerTheme,
-				'container-winter': theme.winterTheme,
-				'container-elegant': theme.elegantTheme,
-				'confirm-pink': theme.pinkTheme,
-				'container-panter': theme.panterTheme,
-				'container-lemon': theme.lemonTheme,
-				'container-jeans': theme.jeansTheme,
-				'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
-			}"
-		></div>
-		<div
-			class="right"
-			:class="{
-				'container-light': theme.lightTheme,
-				'container-dark': theme.darkTheme,
-				'container-minimal': theme.minimalTheme,
-				'container-retro': theme.retroTheme,
-				'container-summer': theme.summerTheme,
-				'container-winter': theme.winterTheme,
-				'container-elegant': theme.elegantTheme,
-				'confirm-pink': theme.pinkTheme,
-				'container-panter': theme.panterTheme,
-				'container-lemon': theme.lemonTheme,
-				'container-jeans': theme.jeansTheme,
-				'border-radius-nooo-hai-rotto-il-cazzo': theme.retroTheme,
-			}"
-		></div>
+		<!-- CONTENITORE DELL'ANIMAZIONE A SIPARIO -->
+		<CurtainAnimation />
 
 		<div class="title-container">
 			<h4 class="title">{{ languages.listSelection.title }}</h4>
 		</div>
-		<!-- CONTENITORE DEI BOTTONI -->
+		<!-- CONTENITORE DEI PULSANTI -->
 		<div class="buttons-container">
 			<template v-for="(btn, n) in secondTodos.listButtons" :key="n">
 				<button
@@ -124,6 +92,7 @@ export default {
 				</button>
 			</template>
 		</div>
+
 		<div class="bottom">
 			<p class="border-t">{{ languages.moveMode.moveOrCopyTitle }}</p>
 			<!-- MESSAGGI CHE SPIEGANO COSA FARE ALL'UTENTE -->
@@ -183,49 +152,6 @@ export default {
 	z-index: 10;
 	text-align: center;
 	width: 100%;
-}
-
-.left {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 100%;
-	border: none;
-	border-radius: 10px 0 0 10px;
-	border-right: 1px solid;
-	animation: slideLeft 1.5s ease-out forwards;
-	z-index: 20;
-}
-@keyframes slideLeft {
-	from {
-		transform: translateX(0%);
-	}
-	to {
-		transform: translateX(-100%);
-		border-radius: 5px;
-	}
-}
-.right {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	border: none;
-	border-radius: 0 10px 10px 0;
-	border-left: 1px solid;
-	animation: slideRight 1.5s ease-out forwards;
-	z-index: 20;
-}
-@keyframes slideRight {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(100%);
-		border-radius: 5px;
-	}
 }
 
 .buttons-container > button {

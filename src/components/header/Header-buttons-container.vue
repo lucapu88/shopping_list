@@ -5,7 +5,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
-import ListsButtonsSelection from "./Lists-buttons-selection.vue";
+import ListsButtonsSelection from "./change-list/Lists-buttons-selection.vue";
 </script>
 
 <script>
