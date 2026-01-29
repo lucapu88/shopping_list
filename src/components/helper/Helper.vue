@@ -122,9 +122,11 @@ export default {
 				'jeans-helper': theme.jeansTheme,
 			}"
 		>
+			<!-- PULSANTE DI CHIUSURA -->
 			<div class="close-helper-container" @click="closeHelper()">
 				<p class="close-helper" :class="{ 'close-retro-theme-helper': theme.retroTheme }">X</p>
 			</div>
+
 			<img v-if="festivities.halloweenTheme" class="halloween-pumpkin" src="@/img/festivities/zucca.webp" alt="halloween" />
 			<img v-if="isChristmas.christmasTheme" class="left-christmas-info" src="@/img/festivities/gingerman-icon.webp" alt="Buon Natale!" />
 			<p
@@ -278,14 +280,18 @@ export default {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: 0.625rem;
+	padding: 0.313rem;
 }
 .close-helper {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	float: right;
 	width: 30px;
-	padding-left: 10px;
+	padding-left: 8px;
+	color: #000000;
+	background-color: #d3d3d3;
+	border: 2px solid;
+	border-radius: 50%;
 }
 
 .helper-footer {

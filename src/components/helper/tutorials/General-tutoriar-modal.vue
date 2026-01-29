@@ -153,7 +153,7 @@ export default {
 						{{ generalTutorial.istruction }} <span><img class="settings" src="@/img/icons/settings.webp" alt="settings" /></span>
 					</p>
 				</div>
-				<p class="boldi-cipollino">{{ generalTutorial.title }}</p>
+				<h3 class="boldi-cipollino">{{ generalTutorial.title }}</h3>
 				<p>{{ generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
 
 				<ConfirmButtonsContainer @yesSelected="playTutorial()" @noSelected="closeTutorial()" />
