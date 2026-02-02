@@ -28,7 +28,7 @@ export default {
 		<div id="privacy-policy-modal" class="modal">
 			<div class="privacy-modal-content" id="privacy-modal-content">
 				<span class="close" @click="settings.closePrivacyPolicy()">&times;</span>
-				<template v-if="!completePrivacyPolicy">
+				<div v-if="!completePrivacyPolicy">
 					<div id="pp" style="color: black"></div>
 					<div class="privacy-modal-header">
 						<h2 class="text-center">Privacy Policy of Shopping List</h2>
@@ -66,7 +66,7 @@ export default {
 					<div class="privacy-modal-footer">
 						<p style="color: #12a1df; text-decoration-line: underline; cursor: pointer" @click="showCompletePrivacyPolicy()">Show the complete Privacy Policy</p>
 					</div>
-				</template>
+				</div>
 				<PrivacyPolicyComplete v-if="completePrivacyPolicy" />
 			</div>
 		</div>
@@ -89,6 +89,7 @@ export default {
 	background-color: transparent;
 }
 .privacy-modal-content {
+	position: relative;
 	background-color: #efefef;
 	margin: auto;
 	padding: 1.563rem;
@@ -98,6 +99,17 @@ export default {
 	overflow: auto;
 	text-align: left;
 	font-family: sans-serif;
+	overflow: hidden;
+}
+
+.privacy-modal-content > .close {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.privacy-modal-content > div {
+	overflow-y: auto;
+	height: 100%;
 }
 
 .privacy-modal-header,
