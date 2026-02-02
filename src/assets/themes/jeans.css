@@ -12,6 +12,12 @@
 	--jeans-helper-background: #29354f;
 }
 
+.jeans-body {
+	background-color: var(--jeans-primary-color);
+	color: var(--jeans-text-light-color);
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+
 .jeans-theme-btn {
 	background-color: var(--jeans-primary-color);
 	color: var(--jeans-text-light-color);

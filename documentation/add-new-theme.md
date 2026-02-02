@@ -2,16 +2,16 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 
 - Vai nel file ThemeStore.js ed aggiungi in THEMES_CONFIG un nuovo nodo con il nome del tema e le sue rispettive proprietà, esattamente come gli altri.
 
-- Crea una variabile con il nome del tema setttandola a false. Se il tema ha proprietà particolari o diverse da quelle standart (come ad esempio il tema dark o elegant) puoi aggiungerle nel metodo applySpecialStyles.
+- Crea una variabile con il nome del tema setttandola a false.
 
 - Nel file Change-themes.vue inserisci l'elemento button html e poi aggiungi il relativo codice nella funzione changeTheme. Copia gli altri e cambia nome con il nuovo tema.
 
-- Crea un file .css nella cartella assets/themes ed aggiungi il rispettivo tag <link ecc ecc... /> nell'head del file index.html.
+- Crea un file .css nella cartella assets/themes e ricordati che la cosa principale è il settaggio del body.
 
 - Nel nuovo file includi tutte le variabili e le classi riguardanti il tema. Dopo di che devi aggiungerle nei vari componenti prendendo spunto dagli altri temi già esistenti.
 
 - In fine aggiorna il test nel file Helper.cy.js. Purtroppo in cypress si rompono i test se inserisci il formato esadecimale del colore, quindi per farlo funzionare devi inserire il formato rgb.
 
-- Se aggiungi immagini assicurati che vengano caricate nel componente Preload-images.vue
+- Se aggiungi immagini assicurati che vengano caricate nel componente Preload-images.vue o inserendo il lazy loading se non sono visibili subito.
 
 - Assicurati che cambi anche lo stile all'interno delle varie sezioni dell'helper

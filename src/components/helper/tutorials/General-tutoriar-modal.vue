@@ -118,7 +118,7 @@ export default {
 				video: showVideo,
 			}"
 		>
-			<h2 v-if="showVideo" class="close-tutorial" @click="settings.isTutorialVisible = false">X</h2>
+			<h2 v-if="showVideo" class="close-tutorial" @click="closeTutorial()">X</h2>
 
 			<video v-if="showVideo" ref="videoRef" class="video-container" poster="@/img/favicon.png" controls>
 				<source src="@/video/general-tutorial.mp4" type="video/mp4" />

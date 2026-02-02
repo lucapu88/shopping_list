@@ -87,21 +87,22 @@ describe('ThemeStore', () => {
     });
 
     describe('applyTheme', () => {
-        it('should apply light theme styles', () => {
+        it('should apply light theme class', () => {
             const store = useThemeStore();
+
             store.applyTheme('light');
 
             expect(store.themeName).toBe('light');
-            expect(document.body.style.backgroundColor).toBe('rgb(255, 255, 255)');
+            expect(document.body.className).toBe('light-body');
         });
 
-        it('should apply dark theme with special styles', () => {
+        it('should apply dark theme class', () => {
             const store = useThemeStore();
+
             store.applyTheme('dark');
 
             expect(store.themeName).toBe('dark');
-            expect(document.body.style.height).toBe('100vh');
-            expect(document.body.style.border).toContain('10px solid');
+            expect(document.body.className).toBe('dark-body');
         });
 
         it('should not apply unknown themes', () => {

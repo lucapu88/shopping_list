@@ -6,6 +6,12 @@
 	--lemon-dark-color: #fddc04;
 }
 
+.lemon-body {
+	background-color: var(--lemon-primary-color);
+	color: var(--lemon-text-color);
+	font-family: "Creepster", serif;
+}
+
 .lemon-theme-btn {
 	background-color: var(--lemon-primary-color);
 	color: var(--lemon-text-color);

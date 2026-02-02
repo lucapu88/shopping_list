@@ -7,6 +7,12 @@
 	--minimal-helper-secondary-color: #645767;
 }
 
+.minimal-body {
+	background-color: var(--minimal-primary-color);
+	color: var(--minimal-secondary-color);
+	font-family: "Cabin", sans-serif;
+}
+
 .minimal-theme-title {
 	background: -webkit-radial-gradient(circle, var(--minimal-tertiary-color) 0%, var(--minimal-tertiary-color) 95%);
 	-webkit-background-clip: text;

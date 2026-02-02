@@ -8,6 +8,14 @@
 	--helper-color-2: #04291b;
 }
 
+.elegant-body {
+	background-color: var(--elegant-primary-color-dark);
+	color: var(--elegant-text-color);
+	font-family: "Tauri", sans-serif;
+	background: linear-gradient(90deg, rgba(7, 60, 92, 1) 30%, rgba(29, 39, 49, 1) 55%);
+	font-weight: bold;
+}
+
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 .elegant-theme-title {
 	background: linear-gradient(to right, #ffd95c, #6b3e00) !important;

@@ -6,6 +6,12 @@
 	--panter-light-color: #888888;
 	--panter-text-color: #c9c9c9;
 }
+
+.panter-body {
+	background-color: var(--panter-primary-color);
+	color: var(--panter-tertiary-color);
+	font-family: "Audiowide", serif;
+}
 /* 	Lo so, che sono un coglione e panter non si scrive così, lo soooooo!!! 
 	purtroppo ho sbagliato all'inizio e col cazzo che cambio ovunque il termine per una sola h!!! :P */
 .panter-theme-btn,

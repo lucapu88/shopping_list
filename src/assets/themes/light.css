@@ -1,5 +1,12 @@
 :root {
 	--light-background-color: #ffffff;
+	--light-text-color: #000000;
+}
+
+.light-body {
+	background-color: var(--light-background-color);
+	color: var(--light-text-color);
+	font-family: "Permanent Marker", cursive;
 }
 
 .light-btn {

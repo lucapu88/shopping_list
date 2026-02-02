@@ -8,6 +8,12 @@
 	--winter-text-color: #ffffff;
 }
 
+.winter-body {
+	background-color: var(--winter-background-color);
+	color: var(--winter-text-color);
+	font-family: "Permanent Marker", cursive;
+}
+
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 .winter-theme {
 	background-color: var(--winter-primary-color) !important;

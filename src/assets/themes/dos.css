@@ -12,6 +12,12 @@
 /* Che poi in principio l'avevo chiamato retro, poi ho cambiato in dos, ma mi gira il cazzo cambiare nome ovunque :P */
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 
+.retro-body {
+	background-color: var(--dos-secondary-color);
+	color: var(--dos-text-color);
+	font-family: "DotGothic16", sans-serif;
+}
+
 .retro-theme-title {
 	background: -webkit-radial-gradient(circle, var(--dos-primary-color) 0%, var(--dos-primary-color) 95%) !important;
 	-webkit-background-clip: text !important;

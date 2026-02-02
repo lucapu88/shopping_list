@@ -3,6 +3,15 @@
 	--dark-secondary-color: #d17e47;
 	--dark-background-color: #333333;
 	--dark-white: #ffffffb2;
+	--dark-text-color: #ffffff;
+}
+
+.dark-body {
+	background-color: var(--dark-background-color);
+	color: var(--dark-text-color);
+	font-family: "Permanent Marker", cursive;
+	height: 100vh;
+	border: 10px solid var(--dark-secondary-color);
 }
 
 .dark-theme-title {

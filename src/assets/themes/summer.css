@@ -10,6 +10,12 @@
 	--summer-text-color: #000000;
 }
 
+.summer-body {
+	background-color: var(--summer-primary-color);
+	color: var(--summer-text-color);
+	font-family: "Permanent Marker", cursive;
+}
+
 /* Gli important sono brutti, lo so che sono una brutta persona e cercherò di toglierli, per il momento fatti i cazzi tuoi :P */
 .summer-theme {
 	background-color: var(--summer-secondary-color) !important;

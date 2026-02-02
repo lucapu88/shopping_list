@@ -1,17 +1,19 @@
 import { defineStore } from 'pinia';
 
+const defaultFontUrl = "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap";
+
 const THEMES_CONFIG = {
-    light: { name: 'light', backgroundColor: '#ffffff', color: '#000000', fontFamily: "'Permanent Marker', cursive" },
-    dark: { name: 'dark', backgroundColor: '#333333', color: '#FFFFFF', fontFamily: "'Permanent Marker', cursive", hasCustomStyles: true },
-    minimal: { name: 'minimal', backgroundColor: '#A5BECC', color: '#7C3E66', fontFamily: '"Cabin", sans-serif' },
-    retro: { name: 'retro', backgroundColor: '#000000', color: '#FFFFFF', fontFamily: '"DotGothic16", sans-serif' },
-    summer: { name: 'summer', backgroundColor: '#EFCB8F', color: '#000000', fontFamily: "'Permanent Marker', cursive" },
-    winter: { name: 'winter', backgroundColor: '#232F34', color: '#FFFFFF', fontFamily: "'Permanent Marker', cursive" },
-    elegant: { name: 'elegant', backgroundColor: 'rgb(7,60,92)', color: '#D98410', fontFamily: '"Tauri", sans-serif', hasCustomStyles: true },
-    pink: { name: 'pink', backgroundColor: '#E8ACD0', color: '#930036', fontFamily: '"Protest Riot", sans-serif' },
-    panter: { name: 'panter', backgroundColor: '#000018', color: '#656565', fontFamily: '"Audiowide", serif' }, // Mantiene il nome originale "panter" anche se sbagliato per compatibilità con le vecchie versioni
-    lemon: { name: 'lemon', backgroundColor: '#fded04', color: '#8256a9', fontFamily: '"Creepster", serif' },
-    jeans: { name: 'jeans', backgroundColor: '#3C628D', color: '#DAC29E', fontFamily: '"Lucida Console", "Courier New", monospace' }
+    light: { name: 'light', className: 'light-body', fontUrl: defaultFontUrl },
+    dark: { name: 'dark', className: 'dark-body', fontUrl: defaultFontUrl },
+    minimal: { name: 'minimal', className: 'minimal-body', fontUrl: "https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" },
+    retro: { name: 'retro', className: 'retro-body', fontUrl: "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" },
+    summer: { name: 'summer', className: 'summer-body', fontUrl: defaultFontUrl },
+    winter: { name: 'winter', className: 'winter-body', fontUrl: defaultFontUrl },
+    elegant: { name: 'elegant', className: 'elegant-body', fontUrl: "https://fonts.googleapis.com/css2?family=Tauri&display=swap" },
+    pink: { name: 'pink', className: 'pink-body', fontUrl: "https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" },
+    panter: { name: 'panter', className: 'panter-body', fontUrl: "https://fonts.googleapis.com/css2?family=Audiowide&display=swap" }, // Mantiene il nome originale "panter" anche se sbagliato per compatibilità con le vecchie versioni
+    lemon: { name: 'lemon', className: 'lemon-body', fontUrl: "https://fonts.googleapis.com/css2?family=Creepster&display=swap" },
+    jeans: { name: 'jeans', className: 'jeans-body' }
 };
 
 export const useThemeStore = defineStore('theme', {
@@ -44,6 +46,13 @@ export const useThemeStore = defineStore('theme', {
                 if (isActive) {
                     this.applyTheme(themeKey);
                     hasActiveTheme = true;
+
+                    const fontUrl = THEMES_CONFIG[themeKey].fontUrl;
+                    if (fontUrl) {
+                        requestAnimationFrame(() => {
+                            this.loadFontOnce(fontUrl);
+                        });
+                    }
                 }
             }
             // Se nessun tema è impostato, usa il light di default
@@ -54,14 +63,6 @@ export const useThemeStore = defineStore('theme', {
         async lightThemeDefaultSetting() {
             window.localStorage.setItem('lightTheme', true);
             this.lightTheme = await window.localStorage.getItem('lightTheme');
-        },
-        changeThemeStyle(themeName, backgroundColor, color, fontFamily) {
-            this.themeName = themeName;
-            document.body.style.backgroundColor = backgroundColor;
-            if (color) { document.body.style.color = color; }
-            if (fontFamily) { document.body.style.fontFamily = fontFamily; }
-
-            this.applySpecialStyles(themeName);
         },
         resetAllThemes() {
             const themes = this.getThemesName();
@@ -74,20 +75,8 @@ export const useThemeStore = defineStore('theme', {
         applyTheme(themeKey) {
             const config = THEMES_CONFIG[themeKey];
             if (!config) return;
-
-            this.changeThemeStyle(config.name, config.backgroundColor, config.color, config.fontFamily);
-        },
-        applySpecialStyles(themeName) {
-            switch (themeName) {
-                case 'dark':
-                    document.body.style.height = '100vh';
-                    document.body.style.border = '10px solid #d17e47';
-                    break;
-                case 'elegant':
-                    document.body.style.background = "linear-gradient(90deg,rgba(7, 60, 92, 1) 30%, rgba(29, 39, 49, 1) 55%)";
-                    document.body.style.fontWeight = 'bold';
-                    break;
-            }
+            this.themeName = config.name;
+            document.body.className = config.className;
         },
         setLightTheme() {
             // Metodi di convenienza per impostare temi specifici (opzionali, per uso futuro).
@@ -97,5 +86,14 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('lightTheme', true);
             this.applyTheme('light');
         },
+        loadFontOnce(href) {
+            if (document.querySelector(`link[href="${href}"]`)) return;
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.media = 'print';      // non blocca il render
+            link.onload = () => { link.media = 'all'; }; // applica dopo il download
+            document.head.appendChild(link);
+        }
     },
 });

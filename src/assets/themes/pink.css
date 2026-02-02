@@ -11,6 +11,12 @@
 	--margot-robbie-feet-color-two: #9d5040;
 }
 
+.pink-body {
+	background-color: var(--pink-background-color);
+	color: var(--pink-text-color);
+	font-family: "Protest Riot", sans-serif;
+}
+
 .pink-theme-btn {
 	background-color: var(--pink-primary-color) !important;
 	color: var(--pink-text-color) !important;
