@@ -147,6 +147,7 @@ export default {
 	font-weight: bold;
 	padding-top: 5px;
 	background-color: white;
+	color: black;
 	border-radius: 50%;
 	border: 1px solid;
 }
