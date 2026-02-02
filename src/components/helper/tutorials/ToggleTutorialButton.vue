@@ -56,6 +56,8 @@ export default {
 }
 .tutorial-btn > img {
 	width: 25px;
+	height: 26px;
+	margin-left: 0.3125rem;
 }
 
 .tutorial-selected {

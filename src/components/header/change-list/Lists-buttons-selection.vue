@@ -105,8 +105,8 @@ export default {
 
 			<!-- PULSANTE CHE ATTIVA/DISATTIVA LA MODALITÀ -->
 			<div class="move-container">
-				<img v-if="secondTodos.moving && !secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-move.webp" alt="arrow-down" />
-				<img v-if="secondTodos.moving && secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-copy.webp" alt="arrow-down" />
+				<img v-if="secondTodos.moving && !secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-move.webp" loading="lazy" alt="arrow-down" />
+				<img v-if="secondTodos.moving && secondTodos.copy" class="move-arrow" :class="{ 'zoom-animation': !secondTodos.istruction2Visible, rotate: secondTodos.istruction2Visible }" src="@/img/icons/arrow-copy.webp" loading="lazy" alt="arrow-down" />
 				<!-- Questi vif sono fatti in questo modo perchè i pulsanti devono esserci entrambi e solo quando copy è true, viene nascosto il primo, mentre se copy è false viene nascosto il secondo, se invece copy è null ci sono entrambi -->
 				<button v-if="secondTodos.copy === null || secondTodos.copy === false" class="move-elements-btn" :class="{ 'is-moving': secondTodos.moving }" @click="secondTodos.moveElementMode(false)" :disabled="!todosStore.todos.length">
 					<img class="move-img" src="@/img/icons/move.webp" alt="move" />

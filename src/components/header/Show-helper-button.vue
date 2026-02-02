@@ -102,6 +102,7 @@ export default {
 
 .settings {
 	width: 33px;
+	height: 32px;
 	z-index: 300;
 }
 </style>

@@ -7,15 +7,6 @@ import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivities
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
-import LoadingImg from "@/img/Loading.webp";
-import Logo from "@/img/favicon.webp";
-import UpdateImg from "@/img/update-img.webp";
-import BackupImg from "@/img/icons/cloud.webp";
-import LoadImg from "@/img/LOAD.webp";
-import IngFlag from "@/img/flags/inglese.webp";
-import SpaFlag from "@/img/flags/spagnolo.webp";
-import ItaFlag from "@/img/flags/italiano.webp";
-import FraFlag from "@/img/flags/francese.webp";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
 import ChangeLanguages from "./settings/Change-languages.vue";
 import ChangeThemes from "./settings/Change-themes.vue";
@@ -90,16 +81,6 @@ export default {
 </script>
 
 <template>
-	<!-- effettuo un preload dell'immagine da visualizzare in base a cosa deve caricare -->
-	<link v-if="themeLoading" rel="preload" as="image" :href="LoadingImg" />
-	<link v-if="themeLoading" rel="preload" as="image" :href="Logo" />
-	<link v-if="updating" rel="preload" as="image" :href="UpdateImg" />
-	<link v-if="backup" rel="preload" as="image" :href="BackupImg" />
-	<link v-if="listImported" rel="preload" as="image" :href="LoadImg" />
-	<link v-if="languageChanged" rel="preload" as="image" :href="IngFlag" />
-	<link v-if="languageChanged" rel="preload" as="image" :href="ItaFlag" />
-	<link v-if="languageChanged" rel="preload" as="image" :href="SpaFlag" />
-	<link v-if="languageChanged" rel="preload" as="image" :href="FraFlag" />
 	<div>
 		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImportedOrDeleted="listImported" />
 		<div
@@ -128,7 +109,7 @@ export default {
 			</div>
 
 			<img v-if="festivities.halloweenTheme" class="halloween-pumpkin" src="@/img/festivities/zucca.webp" alt="halloween" />
-			<img v-if="isChristmas.christmasTheme" class="left-christmas-info" src="@/img/festivities/gingerman-icon.webp" alt="Buon Natale!" />
+			<img v-if="isChristmas.christmasTheme" class="left-christmas-info" src="@/img/festivities/gingerman-icon.webp" loading="lazy" alt="Buon Natale!" />
 			<p
 				class="helper-settings-title"
 				:class="{
@@ -138,7 +119,7 @@ export default {
 			>
 				{{ languages.settingsTextTitle }}
 			</p>
-			<img v-if="isChristmas.christmasTheme" class="right-christmas-info" src="@/img/festivities/balls.webp" alt="E felice anno nuovo!" />
+			<img v-if="isChristmas.christmasTheme" class="right-christmas-info" src="@/img/festivities/balls.webp" loading="lazy" alt="E felice anno nuovo!" />
 			<img v-if="festivities.halloweenTheme" class="halloween-cobweb" src="@/img/festivities/ragnatele.webp" alt="halloween" />
 
 			<div id="helper-description">
@@ -184,13 +165,14 @@ export default {
 <style scoped>
 .halloween-pumpkin {
 	width: 75px;
+	height: 50px;
 	position: absolute;
 	top: 3px;
 	left: 10px;
-	height: 50px;
 }
 .halloween-cobweb {
 	width: 60px;
+	height: 60px;
 	position: absolute;
 	top: 0;
 	right: 50px;
@@ -309,12 +291,14 @@ export default {
 	top: 5px;
 	left: 5px;
 	width: 50px;
+	height: 50px;
 }
 .right-christmas-info {
 	position: absolute;
 	top: 5px;
 	right: 10%;
 	width: 50px;
+	height: 50px;
 }
 
 .copyright {

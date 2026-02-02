@@ -15,13 +15,14 @@ describe("test della modale che appare appena si scarica l'app", () => {
         cy.get('.modal-content').should('exist');
 
         cy.get('.boldi-cipollino').should('include.text', "Do you want to see a short video tutorial?");
-        cy.get(':nth-child(1) > .flag').should('have.attr', 'src').and('include', 'inglese.webp');
+        cy.get(':nth-child(1) > .flag').should('have.attr', 'src').and('include', 'inglese-mini.webp');
 
-        cy.get(':nth-child(2) > .flag').should('have.attr', 'src').and('include', 'spagnolo.webp');
+        cy.get(':nth-child(2) > .flag').should('have.attr', 'src').and('include', 'spagnolo-mini.webp');
         cy.get(':nth-child(2) > .flag').click({ force: true });
         cy.get('.boldi-cipollino').should('include.text', "¿Quieres ver un breve vídeo tutorial?");
 
-        cy.get(':nth-child(3) > .flag').should('have.attr', 'src').and('include', 'italiano.webp');
+        cy.get(':nth-child(3) > .flag').should('have.attr', 'src').and('include', 'italiano-mini.webp');
+        cy.get(':nth-child(4) > .flag').should('have.attr', 'src').and('include', 'francese-mini.webp');
         cy.get(':nth-child(3) > .flag').click({ force: true });
         cy.get('.boldi-cipollino').should('include.text', "vuoi vedere un breve video tutorial?");
     });

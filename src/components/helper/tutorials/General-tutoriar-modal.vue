@@ -140,17 +140,17 @@ export default {
 					</p>
 				</div>
 				<div class="languages-selection">
-					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }" src="@/img/flags/inglese.webp" alt="english_flag" /></span>
+					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }" src="@/img/flags/mini/inglese-mini.webp" loading="lazy" alt="english_flag" /></span>
 
-					<span @click="spanish()"><img class="flag" :class="{ 'selected-flag': selectedSpa }" src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
+					<span @click="spanish()"><img class="flag flag-spa" :class="{ 'selected-flag': selectedSpa }" src="@/img/flags/mini/spagnolo-mini.webp" loading="lazy" alt="spanish_flag" /></span>
 
-					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }" src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }" src="@/img/flags/mini/italiano-mini.webp" loading="lazy" alt="italian_flag" /></span>
 
-					<span @click="french()"><img class="flag" :class="{ 'selected-flag': selectedFra }" src="@/img/flags/francese.webp" alt="french_flag" /></span>
+					<span @click="french()"><img class="flag" :class="{ 'selected-flag': selectedFra }" src="@/img/flags/mini/francese-mini.webp" loading="lazy" alt="french_flag" /></span>
 				</div>
 				<div>
 					<p>
-						{{ generalTutorial.istruction }} <span><img class="settings" src="@/img/icons/settings.webp" alt="settings" /></span>
+						{{ generalTutorial.istruction }} <span><img class="settings" src="@/img/icons/mini/settings-mini.webp" alt="settings" /></span>
 					</p>
 				</div>
 				<h3 class="boldi-cipollino">{{ generalTutorial.title }}</h3>
@@ -221,7 +221,13 @@ export default {
 }
 .flag {
 	width: 40px;
+	height: 40px;
 	margin-right: 0.9375rem;
+}
+
+.flag-spa {
+	width: 43px;
+	height: 43px;
 }
 
 .bb {

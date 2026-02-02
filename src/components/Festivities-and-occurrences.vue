@@ -53,72 +53,72 @@ export default {
 <template>
 	<div class="fest-occur-container" @click="showDescription()">
 		<!-- ---------------------------------------------------------------------GIORNATA MONDIALE CANCRO -->
-		<img v-if="festivitiesOrOccurrences.worldCancerDay && !description" class="cancer-day" src="@/img/festivities/cancer-logo.webp" alt="cancer_day" />
+		<img v-if="festivitiesOrOccurrences.worldCancerDay && !description" class="cancer-day" src="@/img/festivities/cancer-logo.webp" loading="lazy" alt="cancer_day" />
 		<p v-if="festivitiesOrOccurrences.worldCancerDay && description" class="description">
 			{{ languages.cancerDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNATA MONDIALE PACE -->
-		<img v-if="festivitiesOrOccurrences.worldPeaceDay && !description" class="peace-day" src="@/img/festivities/pace.webp" alt="peace_day" />
+		<img v-if="festivitiesOrOccurrences.worldPeaceDay && !description" class="peace-day" src="@/img/festivities/pace.webp" loading="lazy" alt="peace_day" />
 		<p class="description peace-day-text" v-if="festivitiesOrOccurrences.worldPeaceDay && description">
 			{{ languages.peaceDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------FESTA DELLA DONNA -->
-		<img v-if="festivitiesOrOccurrences.womensDay && !description" class="womens-day" src="@/img/festivities/mimose.webp" alt="womens_day" />
+		<img v-if="festivitiesOrOccurrences.womensDay && !description" class="womens-day" src="@/img/festivities/mimose.webp" loading="lazy" alt="womens_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.womensDay && description">
 			{{ languages.womensDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNO DELLA MEMORIA -->
-		<img v-if="festivitiesOrOccurrences.HolocaustMemorialDay && !description" class="shoah-day" src="@/img/festivities/shoah.webp" alt="holocaust_day" />
+		<img v-if="festivitiesOrOccurrences.HolocaustMemorialDay && !description" class="shoah-day" src="@/img/festivities/shoah.webp" loading="lazy" alt="holocaust_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.HolocaustMemorialDay && description">
 			{{ languages.shoahText }}
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNATA DELLA TERRA -->
-		<img v-if="festivitiesOrOccurrences.earthDay && !description" class="earth-day" src="@/img/festivities/eart.webp" alt="earth_day" />
+		<img v-if="festivitiesOrOccurrences.earthDay && !description" class="earth-day" src="@/img/festivities/eart.webp" loading="lazy" alt="earth_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.earthDay && description">
 			{{ languages.earthDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------GIORNATA DELLA BIRRA -->
-		<img v-if="festivitiesOrOccurrences.beerDay && !description" class="beer-day" src="@/img/festivities/beer.webp" alt="beer_day" @click="audioPlay()" />
+		<img v-if="festivitiesOrOccurrences.beerDay && !description" class="beer-day" src="@/img/festivities/beer.webp" loading="lazy" alt="beer_day" @click="audioPlay()" />
 		<p class="description" v-if="festivitiesOrOccurrences.beerDay && description">
 			{{ languages.beerDayText }}
 		</p>
 		<!-- ---------------------------------------------------------------------FESTA DEI GENITORI -->
-		<img v-if="festivitiesOrOccurrences.parentsDay && !description" class="parents-day" src="@/img/festivities/genitori.webp" alt="parents_day" />
+		<img v-if="festivitiesOrOccurrences.parentsDay && !description" class="parents-day" src="@/img/festivities/genitori.webp" loading="lazy" alt="parents_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.parentsDay && description">
 			{{ languages.parentsDayText }}
 		</p>
 		<!-- --------------------------------------------------FESTA DEL GABINETTO (Scusate ma è divertente e assurda come festa)-->
-		<img v-if="festivitiesOrOccurrences.toiletDay && !description" class="toilet-day" src="@/img/festivities/cesso.webp" alt="toilet_day" @click="audioPlay()" />
+		<img v-if="festivitiesOrOccurrences.toiletDay && !description" class="toilet-day" src="@/img/festivities/cesso.webp" loading="lazy" alt="toilet_day" @click="audioPlay()" />
 		<p class="description" v-if="festivitiesOrOccurrences.toiletDay && description">
 			{{ languages.toiletDayText }}
 		</p>
 		<!-- ---------------------------------------------------------- NASCITA DI INTERNET-->
-		<img v-if="festivitiesOrOccurrences.internetDay && !description" class="internet-day" src="@/img/festivities/computer.webp" alt="internet_day" />
+		<img v-if="festivitiesOrOccurrences.internetDay && !description" class="internet-day" src="@/img/festivities/computer.webp" loading="lazy" alt="internet_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.internetDay && description">
 			{{ languages.worldWideWebText }}
 		</p>
 		<!-- ---------------------------------------------------------- GIORNATA DELLA PIZZAAAAAA-->
-		<img v-if="festivitiesOrOccurrences.worldPizzaDay && !description" class="pizza-day" src="@/img/festivities/pizza.webp" alt="pizza_day" />
+		<img v-if="festivitiesOrOccurrences.worldPizzaDay && !description" class="pizza-day" src="@/img/festivities/pizza.webp" loading="lazy" alt="pizza_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.worldPizzaDay && description">
 			{{ languages.worldPizzaDayText }}
 		</p>
 		<!-- ---------------------------------------------------------- SAN VALENTINO-->
-		<img v-if="festivitiesOrOccurrences.valentinesDay && !description" class="valentines-day" src="@/img/festivities/cupido.webp" alt="valentine'valentines_day" />
+		<img v-if="festivitiesOrOccurrences.valentinesDay && !description" class="valentines-day" src="@/img/festivities/cupido.webp" loading="lazy" alt="valentine'valentines_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.valentinesDay && description">
 			{{ languages.valentinesDayText }}
 		</p>
 		<!-- ---------------------------------------------------------- GIORNATA DELL'AMBIENTE-->
-		<img v-if="festivitiesOrOccurrences.worldEnvironmentDay && !description" class="environment-day" src="@/img/festivities/plant.webp" alt="environment_day" />
+		<img v-if="festivitiesOrOccurrences.worldEnvironmentDay && !description" class="environment-day" src="@/img/festivities/plant.webp" loading="lazy" alt="environment_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.worldEnvironmentDay && description">
 			{{ languages.worldEnvironmentDayText }}
 		</p>
 		<!-- ---------------------------------------------------------- GIORNATA DEI DIRITTI UMANI-->
-		<img v-if="festivitiesOrOccurrences.humanRightsDayText && !description" class="humans-rights-day" src="@/img/festivities/humans-rights.webp" alt="humans-rights_day" />
+		<img v-if="festivitiesOrOccurrences.humanRightsDayText && !description" class="humans-rights-day" src="@/img/festivities/humans-rights.webp" loading="lazy" alt="humans-rights_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.humanRightsDayText && description">
 			{{ languages.humanRightsDayText }}
 		</p>
 		<!-- ---------------------------------------------------------- NASCITA DI STAR WARS -->
-		<img v-if="festivitiesOrOccurrences.starWarsDay && !description" class="star-wars-day" src="@/img/festivities/millenium-falcon.webp" alt="star-wars_day" />
+		<img v-if="festivitiesOrOccurrences.starWarsDay && !description" class="star-wars-day" src="@/img/festivities/millenium-falcon.webp" loading="lazy" alt="star-wars_day" />
 		<p class="description" v-if="festivitiesOrOccurrences.starWarsDay && description">
 			{{ languages.starWarsDay }}
 		</p>

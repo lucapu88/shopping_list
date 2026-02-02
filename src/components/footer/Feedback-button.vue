@@ -37,5 +37,6 @@ button {
 }
 .feedback-icon {
 	width: 45px;
+	height: 47px;
 }
 </style>

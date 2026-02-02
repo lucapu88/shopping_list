@@ -357,7 +357,7 @@ onUnmounted(() => {
 				<div class="cards-container mt-3" v-if="photos.length">
 					<div v-for="photo in photos" :key="photo.id" class="card-name-container-wrapper">
 						<span class="delete-card" @click="selectPhotoForDelete(photo.id, photo.name)">
-							<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
+							<img class="trash" src="@/img/icons/trash-red.webp" loading="lazy" alt="delete" />
 						</span>
 						<button class="card-name-container" @click="showPhoto(photo)">
 							<span class="card-icon">{{ String.fromCodePoint(0x1f4b3) }}</span>

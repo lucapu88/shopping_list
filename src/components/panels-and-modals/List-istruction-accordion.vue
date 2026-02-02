@@ -58,13 +58,13 @@ export default {
 		<span :class="{ 'custom-font-size': customFontSize }"> {{ istructionsText }} <span v-if="isNew" class="new">NEW</span> </span>
 
 		<div v-if="languageFlags" class="languages-selection">
-			<span class="flag"><img src="@/img/flags/inglese.webp" alt="english_flag" /></span>
+			<span class="flag"><img src="@/img/flags/mini/inglese-mini.webp" loading="lazy" alt="english_flag" /></span>
 
-			<span class="flag"><img src="@/img/flags/spagnolo.webp" alt="spanish_flag" /></span>
+			<span class="flag"><img src="@/img/flags/mini/spagnolo-mini.webp" loading="lazy" alt="spanish_flag" /></span>
 
-			<span class="flag"><img src="@/img/flags/italiano.webp" alt="italian_flag" /></span>
+			<span class="flag"><img src="@/img/flags/mini/italiano-mini.webp" loading="lazy" alt="italian_flag" /></span>
 
-			<span class="flag"><img src="@/img/flags/francese.webp" alt="french_flag" /></span>
+			<span class="flag"><img src="@/img/flags/mini/francese-mini.webp" loading="lazy" alt="french_flag" /></span>
 		</div>
 
 		<span
@@ -203,6 +203,7 @@ export default {
 
 .flag > img {
 	width: 25px;
+	height: 24px;
 }
 
 .flag:nth-child(1) {

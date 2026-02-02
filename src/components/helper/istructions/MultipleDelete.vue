@@ -47,7 +47,7 @@ export default {
 			</div>
 			{{ languages.helperDescription.multipleDeleteText.part2 }}
 			<button class="text-danger border-danger rounded" :class="{ 'elegant-btn': theme.elegantTheme }">
-				<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
+				<img class="trash" src="@/img/icons/trash-red.webp" loading="lazy" alt="delete" />
 			</button>
 			{{ languages.helperDescription.multipleDeleteText.part3 }}
 		</li>

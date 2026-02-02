@@ -98,7 +98,7 @@ export default {
 	<div class="total-price-container" v-if="todosStore.totalPrice > 0" style="line-height: 2">{{ languages.totalPriceText }} {{ todosStore.totalPrice }}</div>
 
 	<div v-if="isChristmas.christmasTheme && todosStore.todos.length">
-		<img class="christmas-footer" src="@/img/festivities/christmas.webp" alt=" Merry Christmas" @click="ohohoh()" />
+		<img class="christmas-footer" src="@/img/festivities/christmas.webp" loading="lazy" alt=" Merry Christmas" @click="ohohoh()" />
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
 		<audio ref="audioPlayer" :src="hohoho" preload="auto"></audio>
 	</div>

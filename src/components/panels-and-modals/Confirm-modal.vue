@@ -57,7 +57,7 @@ export default {
 				'confirm-jeans': theme.jeansTheme,
 			}"
 		>
-			<img v-if="isChristmas.christmasTheme" class="christmas-bells" src="@/img/festivities/christmas-bells.webp" alt="christmas_bells" />
+			<img v-if="isChristmas.christmasTheme" class="christmas-bells" src="@/img/festivities/christmas-bells.webp" loading="lazy" alt="christmas_bells" />
 			<p
 				class="mt-4 mb-1"
 				:class="{

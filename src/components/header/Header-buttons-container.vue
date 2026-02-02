@@ -260,9 +260,11 @@ p {
 
 .drag-n-drop-img {
 	width: 22px !important;
+	height: 22px !important;
 }
 .show-lists-img {
 	width: 35px !important;
+	height: 26px !important;
 }
 .alerts-container {
 	min-height: 21px;

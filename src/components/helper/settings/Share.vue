@@ -69,7 +69,7 @@ export default {
 					<span>- Link: </span>
 					<span class="hand-pointing galeazzi ms-3"> &#x1F449; </span>
 					<button id="share" class="btn btn-light border-dark share-update-btn ms-3" @click="shareLink()">
-						<img src="@/img/icons/share.webp" alt="share" />
+						<img src="@/img/icons/share.webp" loading="lazy" alt="share" />
 					</button>
 				</div>
 				<div class="mt-3">

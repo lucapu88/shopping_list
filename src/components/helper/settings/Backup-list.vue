@@ -84,7 +84,7 @@ export default {
 				</li>
 				<div v-if="!showConfirmBackup" class="backup-btn-container">
 					<button id="backup-button" @click="showConfirmBackup = true">
-						<img class="cloud" src="@/img/icons/cloud.webp" alt="backup" />
+						<img class="cloud" src="@/img/icons/cloud.webp" loading="lazy" alt="backup" />
 					</button>
 				</div>
 

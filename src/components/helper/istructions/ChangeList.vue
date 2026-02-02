@@ -52,13 +52,13 @@ export default {
 		<li>
 			{{ languages.helperDescription.changeList.moveText }}:
 			<button class="move-elements-btn">
-				<img class="move-img" src="@/img/icons/move.webp" alt="move" />
+				<img class="move-img" src="@/img/icons/move.webp" loading="lazy" alt="move" />
 				{{ languages.moveMode.moveElementText }}
 			</button>
 
 			{{ languages.helperDescription.changeList.copyText }}:
 			<button class="copy-elements-btn">
-				<img class="copy-img" src="@/img/icons/copy-el.webp" alt="copy" />
+				<img class="copy-img" src="@/img/icons/copy-el.webp" loading="lazy" alt="copy" />
 				{{ languages.moveMode.copyElementText }}
 			</button>
 			<br />
@@ -79,12 +79,14 @@ export default {
 	min-width: 30px;
 	width: 40px;
 }
-.custom-show-listbtn > img {
+.show-lists-img {
 	width: 25px;
+	height: 18px;
 }
 
 .img-list {
 	width: 90%;
+	height: 75px;
 	display: block;
 }
 </style>

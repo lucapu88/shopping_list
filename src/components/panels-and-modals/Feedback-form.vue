@@ -57,7 +57,7 @@ export default {
 					setTimeout(() => {
 						this.status = "";
 					}, 6000);
-				}
+				},
 			);
 		},
 	},
@@ -84,7 +84,7 @@ export default {
 			}"
 		>
 			<div class="christmas-decorations-container" v-if="isChristmas.christmasTheme">
-				<img class="christmas-decorations" src="@/img/festivities/christmas-decorations.webp" alt="christmas_decorations" />
+				<img class="christmas-decorations" src="@/img/festivities/christmas-decorations.webp" loading="lazy" alt="christmas_decorations" />
 			</div>
 
 			<span class="close-feedback-modal" @click="secondTodosStore.showFeedbackForm = false">X</span>
@@ -100,7 +100,7 @@ export default {
 					{{ languages.send }}
 				</button>
 
-				<img v-if="isChristmas.christmasTheme" class="christmas-tree" src="@/img/festivities/christmas-tree.webp" alt="christmas_tree" />
+				<img v-if="isChristmas.christmasTheme" class="christmas-tree" src="@/img/festivities/christmas-tree.webp" loading="lazy" alt="christmas_tree" />
 			</form>
 		</div>
 	</div>
@@ -199,6 +199,7 @@ textarea {
 
 .christmas-tree {
 	width: 100px;
+	height: 114px;
 	position: absolute;
 	bottom: 0px;
 	left: 0;

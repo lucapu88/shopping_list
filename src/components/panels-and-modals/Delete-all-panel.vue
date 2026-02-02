@@ -60,7 +60,7 @@ export default {
 		v-if="todosStore.openDeleteAllModal"
 	>
 		<p class="confirm-delete-all-text">
-			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
+			<img class="trash" src="@/img/icons/trash-red.webp" loading="lazy" alt="delete" />
 			{{ languages.deleteAllConfirmText }}
 		</p>
 		<ConfirmButtonsContainer @yesSelected="removeAllTodos()" @noSelected="todosStore.openDeleteAllModal = false" />

@@ -23,7 +23,7 @@ export default {
 			<p class="close-qr-modal" @click="$emit('closeQrModal', false)">X</p>
 			<p class="text-dark text-center mb-0 p-3 pt-4">{{ languages.share.qrMessage }}</p>
 			<div class="qr-container">
-				<img src="@/img/qr-code.webp" alt="qr_code" />
+				<img src="@/img/qr-code.webp" loading="lazy" alt="qr_code" />
 			</div>
 		</div>
 	</div>

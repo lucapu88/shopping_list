@@ -48,7 +48,7 @@ export default {
 			}"
 		>
 			<header>
-				<img v-if="isChristmas.christmasTheme" class="santa-claus" src="@/img/festivities/babbo-natale.webp" alt="OH-OH-OOOOH-Merry-Christmas" />
+				<img v-if="isChristmas.christmasTheme" class="santa-claus" src="@/img/festivities/babbo-natale.webp" loading="lazy" alt="OH-OH-OOOOH-Merry-Christmas" />
 				<div class="title-close-container">
 					<h4>
 						{{ todosStore.categoryName }}
@@ -58,7 +58,7 @@ export default {
 					</h4>
 					<span class="close-sugg-modal" @click="suggestionsStore.toggleSuggestionsModal()">
 						X
-						<img v-if="isChristmas.christmasTheme" class="ghirlanda-tonda" src="@/img/festivities/ghirlanda-tonda.webp" alt="merry-christmas" />
+						<img v-if="isChristmas.christmasTheme" class="ghirlanda-tonda" src="@/img/festivities/ghirlanda-tonda.webp" loading="lazy" alt="merry-christmas" />
 					</span>
 				</div>
 				<div class="header-info">
@@ -83,8 +83,8 @@ export default {
 				</p>
 			</main>
 			<footer v-if="isChristmas.christmasTheme">
-				<img :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }" class="decorations" src="@/img/festivities/christmas-decorations-sinistra.webp" alt="Merry-Christmas" />
-				<img :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }" class="decorations" src="@/img/festivities/christmas-decorations-destra.webp" alt="Merry-Christmas" />
+				<img :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }" class="decorations" src="@/img/festivities/christmas-decorations-sinistra.webp" loading="lazy" alt="Merry-Christmas" />
+				<img :class="{ 'arrotonda-sto-bordo': !themes.retroTheme }" class="decorations" src="@/img/festivities/christmas-decorations-destra.webp" loading="lazy" alt="Merry-Christmas" />
 			</footer>
 		</div>
 	</div>
@@ -153,8 +153,9 @@ export default {
 .ghirlanda-tonda {
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: -1px;
 	width: 35px;
+	height: 40px;
 }
 .tip {
 	margin-bottom: 0.313rem;
@@ -169,6 +170,7 @@ export default {
 }
 .decorations {
 	width: 100px;
+	height: 108px;
 }
 .christmas-subtitle {
 	background-color: #dfbf5d;

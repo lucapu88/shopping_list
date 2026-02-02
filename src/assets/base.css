@@ -124,6 +124,7 @@ button {
 }
 .share-update-btn > img {
 	width: 20px;
+	height: 20px;
 }
 
 .pencil,
@@ -343,7 +344,9 @@ button {
 }
 
 .undo {
-	width: 15px; /*+ 18 quanto fa?! COGLIONEEEEE!!!*/
+	/*+ 18 quanto fa?! COGLIONEEEEE!!!*/
+	width: 15px;
+	height: 15px;
 }
 .line-through {
 	text-decoration: line-through;
@@ -458,6 +461,7 @@ button {
 }
 .christmas-footer {
 	width: 300px;
+	height: 150px;
 	display: table;
 	margin: 0 auto;
 }

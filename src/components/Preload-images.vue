@@ -33,40 +33,13 @@ import jeansTasca from "@/img/jeans-tasca-culo.webp";
 import merryChristmas from "@/img/festivities/christmas.webp";
 import christmasSkull from "@/img/icons/christmas-skull.webp";
 import garland from "@/img/festivities/ghirlanda.webp";
-import biscotto from "@/img/festivities/gingerman-icon.webp";
-import christmasBalls from "@/img/festivities/balls.webp";
-import bells from "@/img/festivities/christmas-bells.webp";
-import babboNatale from "@/img/festivities/babbo-natale.webp";
-import garlandCircle from "@/img/festivities/ghirlanda-tonda.webp";
-import christmasDecorationsRight from "@/img/festivities/christmas-decorations-destra.webp";
-import christmasDecorationsLeft from "@/img/festivities/christmas-decorations-sinistra.webp";
-import fireworks from "@/img/festivities/buon-anno.gif";
-import christmasTree from "@/img/festivities/christmas-tree.webp";
-import christmasDecoration from "@/img/festivities/christmas-decorations.webp";
 
-import cancerLogo from "@/img/festivities/cancer-logo.webp";
-import paceLogo from "@/img/festivities/pace.webp";
-import womensLogo from "@/img/festivities/mimose.webp";
-import shoahLogo from "@/img/festivities/shoah.webp";
-import heartLogo from "@/img/festivities/eart.webp";
-import beerLogo from "@/img/festivities/beer.webp";
-import parentLogo from "@/img/festivities/genitori.webp";
-import toiletLogo from "@/img/festivities/cesso.webp";
-import computerLogo from "@/img/festivities/computer.webp";
-import halloweenPumpkin from "@/img/festivities/zucca.webp";
-import halloweenCobwebs from "@/img/festivities/ragnatele.webp";
-import shareLogo from "@/img/icons/share.webp";
 import shareBackgr from "@/img/shared.webp";
-import cloud from "@/img/icons/cloud.webp";
-import tutorial from "@/img/icons/video-logo.webp";
-import qrCode from "@/img/qr-code.webp";
 import eyeClosed from "@/img/icons/eye-close.webp";
 import eyeOpen from "@/img/icons/eye-open.webp";
 
 import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
-import dino from "@/img/update-img.webp";
-import listLoading from "@/img/Loading-list.webp";
 import loyaltyCard from "@/img/icons/loy-card.webp";
 import gooniesMap from "@/img/loyalty-cards/goonies-map.webp";
 </script>
@@ -127,44 +100,15 @@ export default {
 		<link rel="preload" as="image" :href="merryChristmas" />
 		<link rel="preload" as="image" :href="christmasSkull" />
 		<link rel="preload" as="image" :href="garland" />
-		<link rel="preload" as="image" :href="biscotto" />
-		<link rel="preload" as="image" :href="christmasBalls" />
-		<link rel="preload" as="image" :href="bells" />
-		<link rel="preload" as="image" :href="babboNatale" />
-		<link rel="preload" as="image" :href="garlandCircle" />
-		<link rel="preload" as="image" :href="christmasDecorationsRight" />
-		<link rel="preload" as="image" :href="christmasDecorationsLeft" />
-		<link rel="preload" as="image" :href="christmasTree" />
-		<link rel="preload" as="image" :href="christmasDecoration" />
 	</template>
 
-	<link v-if="festivitiesOrOccurrences.worldCancerDay" rel="preload" as="image" :href="cancerLogo" />
-	<link v-if="festivitiesOrOccurrences.worldPeaceDay" rel="preload" as="image" :href="paceLogo" />
-	<link v-if="festivitiesOrOccurrences.womensDay" rel="preload" as="image" :href="womensLogo" />
-	<link v-if="festivitiesOrOccurrences.HolocaustMemorialDay" rel="preload" as="image" :href="shoahLogo" />
-	<link v-if="festivitiesOrOccurrences.earthDay" rel="preload" as="image" :href="heartLogo" />
-	<link v-if="festivitiesOrOccurrences.beerDay" rel="preload" as="image" :href="beerLogo" />
-	<link v-if="festivitiesOrOccurrences.parentsDay" rel="preload" as="image" :href="parentLogo" />
-	<link v-if="festivitiesOrOccurrences.toiletDay" rel="preload" as="image" :href="toiletLogo" />
-	<link v-if="festivitiesOrOccurrences.internetDay" rel="preload" as="image" :href="computerLogo" />
-
-	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenPumpkin" />
-	<link v-if="festivitiesOrOccurrences.halloweenTheme" rel="preload" as="image" :href="halloweenCobwebs" />
-	<link v-if="festivitiesOrOccurrences.newYear" rel="preload" as="image" :href="fireworks" />
-
 	<!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
-	<link rel="preload" as="image" :href="shareLogo" />
 	<link v-if="settings.helper" rel="preload" as="image" :href="shareBackgr" />
-	<link v-if="settings.helper" rel="preload" as="image" :href="cloud" />
-	<link v-if="settings.helper" rel="preload" as="image" :href="tutorial" />
-	<link v-if="settings.helper" rel="preload" as="image" :href="qrCode" />
 
 	<!-- -----------------------------------------------------------altri preload---------------------------- -->
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="okIcon" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="closeIcon" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeClosed" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeOpen" />
-	<link v-if="!languages.updateText.updated" rel="preload" as="image" :href="dino" />
-	<link v-if="secondTodosStore.loading" rel="preload" as="image" :href="listLoading" />
 	<link v-if="settings.isIphone" rel="preload" as="image" :href="loyaltyCard" />
 </template>

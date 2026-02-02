@@ -126,10 +126,15 @@
 /* ------------------------------------------- PULSANTI COPIA E SPOSTA ELEMENTI DALLE LISTE */
 .copy-img {
 	width: 20px;
+	height: 20px;
 }
-.move-img,
+.move-img {
+	width: 25px;
+	height: 25px;
+}
 .move-arrow {
 	width: 25px;
+	height: 38px;
 }
 
 .copy-elements-btn,

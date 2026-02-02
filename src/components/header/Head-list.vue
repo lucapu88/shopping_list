@@ -175,12 +175,14 @@ export default {
 
 .halloween-witch-hat {
 	width: 60px;
+	height: 55px;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 .halloween-bat {
 	width: 30px;
+	height: 15px;
 	position: absolute;
 	opacity: 0;
 	animation: batAppear 3s infinite;
@@ -189,20 +191,20 @@ export default {
 	z-index: 5;
 }
 .bat-1 {
-	top: -10px;
-	left: 12%;
+	top: 0px;
+	left: 20%;
 	animation-delay: 4s;
 	z-index: 5;
 }
 .bat-2 {
-	top: 8%;
-	left: 15%;
+	top: 18%;
+	left: 17%;
 	animation-delay: 6.5s;
 	z-index: 5;
 }
 .bat-3 {
 	top: 0;
-	left: 23%;
+	left: 30%;
 	animation-delay: 8s;
 	z-index: 5;
 }
