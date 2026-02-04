@@ -29,8 +29,6 @@ export default {
 	},
 	methods: {
 		showDescription() {
-			this.christmas.merryChristmasTheme(); //TOFIX: da rimuovere se non serve più
-			this.festivitiesOrOccurrences.checkFestivities(); //TOFIX: da rimuovere se non serve più
 			this.description = true;
 			setTimeout(() => {
 				this.description = false;

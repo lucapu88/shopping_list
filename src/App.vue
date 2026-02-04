@@ -45,8 +45,6 @@ export default {
 	created() {
 		this.settings.checkingUpdates(); //controllo "aggiornamenti"
 		this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
-		this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
-		this.otherFestivities.checkFestivities(); //controllo se ci sono altre festività
 		this.categoriesStore.initializeCategories(); //setto le categorie in base alla lingua
 		this.todosStore.createTodosList(); //creo la lista se ci sono elementi
 		this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale
@@ -66,6 +64,14 @@ export default {
 			}
 		}
 		this.todosStore.toggleButtonDeleteSelectedTodo();
+
+		this.checks();
+		document.addEventListener("visibilitychange", () => {
+			//Ascolta quando la pagina cambia stato di visibilità. Succede quando l’utente minimizza l’app, passa a un’altra app, spegne/riaccende lo schermo, cambia tab o torna nell’app
+			if (!document.hidden) {
+				this.checks();
+			}
+		});
 	},
 	methods: {
 		scrollTop() {
@@ -89,6 +95,10 @@ export default {
 		understandFunction(event) {
 			this.newUpdatesRead = event;
 		},
+		checks() {
+			this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
+			this.otherFestivities.checkFestivities(); //controllo se ci sono altre festività
+		},
 	},
 };
 </script>
@@ -109,7 +119,7 @@ export default {
 	>
 		<div id="app">
 			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
-				<div class="mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
+				<div class="max-width mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
 
@@ -151,6 +161,11 @@ export default {
 		overflow-x: hidden;
 	}
 }
+
+.max-width {
+	max-width: 950px;
+}
+
 .light-container {
 	/* repeating-linear-gradient:
 			#575757a6 0 2px → Disegna una riga orizzontale colorata di 2px di altezza.

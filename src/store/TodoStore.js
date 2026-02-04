@@ -65,10 +65,6 @@ export const useTodoStore = defineStore('todoStore', {
   }),
   actions: {
     addTodo(tip) {
-      this.settings.checkingUpdates();
-      this.christmas.merryChristmasTheme();
-      this.festivities.checkFestivities();
-
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 

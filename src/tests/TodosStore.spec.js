@@ -1,5 +1,5 @@
 // tests/unit/stores/TodoStore.spec.js
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useTodoStore } from '@/store/TodoStore';
 import { useSettingsStore } from '@/store/SettingsStore';
@@ -238,19 +238,24 @@ describe('TodoStore', () => {
             expect(todoStore.todos.length).toBe(0);
         });
 
-        it('should show confirmation modal if canDelete is true', () => {
-            const settingsStore = useSettingsStore();
-            settingsStore.canDelete = true;
+        it('should show confirmation modal if canDelete is true', async () => {
+            vi.useFakeTimers();
 
             const store = useTodoStore();
+            store.settings.canDelete = true;
+            vi.spyOn(store.preloads, 'loadConfirmBackgoundImg').mockResolvedValue();
+
             store.todos = [
                 { name: 'milk', category: false }
             ];
 
             store.removeTodo(0, { name: 'milk' });
+            await vi.runAllTimersAsync();
 
             expect(store.confirmDeleteModal).toBe(true);
             expect(store.index).toBe(0);
+
+            vi.useRealTimers();
         });
     });
 
