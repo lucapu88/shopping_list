@@ -42,6 +42,7 @@ export default {
 </script>
 
 <template>
+	<!-- TOFIX: Creare un componente unico per questi button uguali -->
 	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme }" v-if="!todosStore.devNotes">
 		<!-- TOGGLE CAMBIO LISTE -->
 		<button
@@ -69,9 +70,30 @@ export default {
 			}"
 			@click="secondTodos.toggleChangeList()"
 		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists.webp" alt="show_lists" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-elegant.webp" alt="show_lists" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-panter.webp" alt="show_lists" />
+			<img
+				v-if="!theme.elegantTheme && !theme.panterTheme"
+				class="show-lists-img"
+				src="@/img/icons/show-lists.webp"
+				alt="show_lists"
+				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="theme.elegantTheme && !theme.panterTheme"
+				class="show-lists-img"
+				src="@/img/icons/show-lists-elegant.webp"
+				alt="show_lists"
+				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="!theme.elegantTheme && theme.panterTheme"
+				class="show-lists-img"
+				src="@/img/icons/show-lists-panter.webp"
+				alt="show_lists"
+				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
+			/>
 		</button>
 		<!-- DRAG N DROP -->
 		<button
@@ -100,9 +122,30 @@ export default {
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.showChangeList"
 			@click="todosStore.toggleDragDrop()"
 		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop.webp" alt="move" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" class="drag-n-drop-img" src="@/img/icons/drag-and-drop-panter.webp" alt="move" />
+			<img
+				v-if="!theme.elegantTheme && !theme.panterTheme"
+				class="drag-n-drop-img"
+				src="@/img/icons/drag-and-drop.webp"
+				alt="move"
+				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="theme.elegantTheme && !theme.panterTheme"
+				class="drag-n-drop-img"
+				src="@/img/icons/drag-and-drop-elegant.webp"
+				alt="move"
+				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="!theme.elegantTheme && theme.panterTheme"
+				class="drag-n-drop-img"
+				src="@/img/icons/drag-and-drop-panter.webp"
+				alt="move"
+				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
+			/>
 		</button>
 		<!--PULSANTE COPIA LISTA-->
 		<button
@@ -121,9 +164,30 @@ export default {
 			:disabled="!todosStore.todos.length || secondTodos.moving"
 			@click="copy()"
 		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" class="copy" src="@/img/icons/copy-panter.webp" alt="copy" />
+			<img
+				v-if="!theme.elegantTheme && !theme.panterTheme"
+				class="copy"
+				src="@/img/icons/copy.webp"
+				alt="copy"
+				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="theme.elegantTheme && !theme.panterTheme"
+				class="copy"
+				src="@/img/icons/copy-elegant.webp"
+				alt="copy"
+				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
+				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
+			/>
+			<img
+				v-if="!theme.elegantTheme && theme.panterTheme"
+				class="copy"
+				src="@/img/icons/copy-panter.webp"
+				alt="copy"
+				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
+				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
+			/>
 		</button>
 		<!--PULSANTE MOSTRA CATEGORIE -->
 		<button
@@ -193,7 +257,7 @@ export default {
 
 		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ (PER IL MOMENTO NON IN PRODUZIONE) -->
 		<button class="btn loyalty-cards-btn p-0" @click="secondTodos.showLoyaltyCards()">
-			<img class="loyalty-card-icon" src="@/img/icons/loy-card.webp" alt="loyalty_card_icon" />
+			<img class="loyalty-card-icon" src="@/img/icons/loy-card.webp" alt="loyalty_card_icon" fetchpriority="high" loading="eager" />
 		</button>
 	</div>
 

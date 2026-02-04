@@ -157,3 +157,17 @@
 .btn-elegant {
 	border: 2px solid black !important;
 }
+
+.confirm-elegant {
+	background-color: #1d2731;
+	border: 1px solid #d98410;
+	color: #d98410;
+}
+.confirm-elegant > p {
+	font-weight: bold;
+}
+.confirm-elegant > button {
+	background-color: #045687;
+	border-color: #d98410;
+	color: #d98410;
+}

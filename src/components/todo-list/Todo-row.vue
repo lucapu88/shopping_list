@@ -104,7 +104,8 @@ export default {
 		}"
 	>
 		{{ todo.name }}
-		<img v-if="todo.multipleDelete && theme.lightTheme" class="scrawl" src="@/img/cancella.webp" alt="line-through" />
+
+		<img v-if="todo.multipleDelete && theme.lightTheme" class="scrawl" src="@/img/cancella.webp" alt="line-through" fetchpriority="high" loading="eager" />
 	</li>
 
 	<!--CONTENITORE PULSANTI (edit, delete, modify)-->
@@ -135,7 +136,7 @@ export default {
 			}"
 			:disabled="!!todo.isDisabled || todo.multipleDelete"
 		>
-			<img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
+			<img class="pencil" src="@/img/icons/pencil.webp" alt="modify" fetchpriority="high" loading="eager" />
 		</button>
 
 		<!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
@@ -152,7 +153,7 @@ export default {
 			}"
 			:disabled="!!todo.isDisabled"
 		>
-			<img class="trash" src="@/img/icons/trash.webp" alt="delete" />
+			<img class="trash" src="@/img/icons/trash.webp" alt="delete" fetchpriority="high" loading="eager" />
 		</button>
 		<!-- INPUT MODIFICA -->
 		<!--Qui mi sengala un errore del compilatore perchè non posso modificare proprietà che mi arrivano in input. 

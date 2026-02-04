@@ -38,7 +38,7 @@ export default {
 		}"
 		@click="showHelper()"
 	>
-		<img class="settings" src="@/img/icons/settings.webp" alt="settings" />
+		<img class="settings" src="@/img/icons/settings.webp" alt="settings" fetchpriority="high" loading="eager" />
 	</span>
 </template>
 

@@ -3,9 +3,6 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
-import postit from "@/img/postit.webp";
-import maldive from "@/img/maldive.webp";
-import forest from "@/img/winter-forest.webp";
 </script>
 
 <script>
@@ -29,10 +26,6 @@ export default {
 </script>
 
 <template>
-	<link v-if="theme.lightTheme" rel="preload" as="image" :href="postit" />
-	<link v-if="theme.summerTheme" rel="preload" as="image" :href="maldive" />
-	<link v-if="theme.winterTheme" rel="preload" as="image" :href="forest" />
-
 	<div
 		class="modal"
 		:class="{
@@ -63,13 +56,14 @@ export default {
 				:class="{
 					'delete-selected': todosStore.deleteSelected && !theme.pinkTheme && !todosStore.saveOnFirebase,
 					'confirm-selected': todosStore.deleteSelected && !theme.pinkTheme && todosStore.saveOnFirebase,
+					'color-black': theme.summerTheme || theme.winterTheme,
 				}"
 			>
 				{{ languages.completeConfirmText }}
 			</p>
 			<span style="display: none">{{ todosStore.index }} </span>
 			<ul v-if="todosStore.deleteSelected">
-				<li v-for="(todo, n) in multipleTodos" :key="n">- {{ todo }}</li>
+				<li :class="{ 'color-black': theme.summerTheme || theme.winterTheme }" v-for="(todo, n) in multipleTodos" :key="n">- {{ todo }}</li>
 			</ul>
 
 			<div class="confirm-buttons-container">
@@ -172,53 +166,6 @@ export default {
 	border: 5px solid #008000;
 }
 
-.confirm-light {
-	background-color: #ffffff;
-	background-image: url("@/img/postit.webp");
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-.confirm-light > p {
-	max-width: 24ch;
-}
-
-.confirm-dark,
-.confirm-dark > button {
-	background-color: #333333;
-	color: #ffff;
-	border: 2px solid #ffff;
-}
-
-.confirm-minimal,
-.confirm-minimal > button {
-	background-color: #a5becc;
-	color: #7c3e66;
-}
-
-.confirm-retro,
-.confirm-retro > button {
-	background-color: #000000;
-	color: #35c50d;
-	border: 1px solid #35c50d;
-	border-radius: 0 !important;
-}
-
-.confirm-summer {
-	background-color: #12a1df;
-	border: 2px solid #12a1df;
-	background-image: url("@/img/maldive.webp");
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: #ffffff;
-}
-
-.confirm-winter {
-	background-color: #ffff;
-	border: 2px solid #ffff;
-	background-image: url("@/img/winter-forest.webp");
-	background-size: cover;
-	background-repeat: no-repeat;
-}
 .confirm-winter > p,
 .confirm-winter > ul,
 .confirm-summer > p,
@@ -227,19 +174,10 @@ export default {
 	border-radius: 5px;
 }
 
-.confirm-elegant {
-	background-color: #1d2731;
-	border: 1px solid #d98410;
-	color: #d98410;
+.color-black {
+	color: #000000;
 }
-.confirm-elegant > p {
-	font-weight: bold;
-}
-.confirm-elegant > button {
-	background-color: #045687;
-	border-color: #d98410;
-	color: #d98410;
-}
+
 .confirm-buttons-container {
 	display: flex;
 	gap: 20px;
@@ -258,5 +196,11 @@ ul {
 li {
 	display: block;
 	font-size: 1.25rem;
+}
+
+p,
+li {
+	width: 100%;
+	overflow: auto;
 }
 </style>

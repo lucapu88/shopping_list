@@ -104,7 +104,7 @@ export default {
 <template>
 	<!-- TOFIX non so se è una cosa brutta da fare ma per il momento è l'unica soluzione trovata. Avendo il componente Todo-list che al click su una categoria aziona un metodo nello store, questo metodo dovrebbe scatenare il focus in in questo componente nell'input. -->
 	{{ addTodo.focusIn ? focusOnInput() : null }}
-	<img v-if="isChristmas.christmasTheme && !isChristmas.hideElementForTest" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" />
+	<img v-if="isChristmas.christmasTheme && !isChristmas.hideElementForTest" class="christmas-garland" src="@/img/festivities/ghirlanda.webp" alt="merry-christmas" fetchpriority="high" loading="eager" />
 	<div class="header-container" :class="{ christmas: isChristmas.christmasTheme }">
 		<!-- DECORAZIONI HALLOWEEN -->
 		<template v-if="settings.isVisibleOnScroll">

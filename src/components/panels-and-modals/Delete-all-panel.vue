@@ -5,9 +5,6 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import LoadingOrUpdating from "../Loading-or-updating.vue";
-import crumpPaper from "@/img/carta-stropicciata.webp";
-import wave from "@/img/onda.webp";
-import cincia from "@/img/cincia.webp";
 import ConfirmButtonsContainer from "../common/Confirm-buttons-container.vue";
 </script>
 
@@ -36,16 +33,13 @@ export default {
 </script>
 
 <template>
-	<link v-if="theme.lightTheme" rel="preload" as="image" :href="crumpPaper" />
-	<link v-if="theme.summerTheme" rel="preload" as="image" :href="wave" />
-	<link v-if="theme.winterTheme" rel="preload" as="image" :href="cincia" />
 	<LoadingOrUpdating :listImportedOrDeleted="deleted" />
 
 	<div
 		class="confirm col-10 mx-auto rounded text-center mb-3"
 		:class="{
 			christmas: isChristmas.christmasTheme,
-			'confirm-light': theme.lightTheme,
+			'confirm-delete-all-light': theme.lightTheme,
 			'dark-theme-confirm': theme.darkTheme,
 			'minimal-theme-confirm': theme.minimalTheme,
 			'retro-theme-confirm-delete': theme.retroTheme,
@@ -96,11 +90,5 @@ export default {
 }
 .confirm > button {
 	margin-right: 0.9375rem;
-}
-
-.confirm-light {
-	background-image: url("@/img/carta-stropicciata.webp") !important;
-	background-size: contain;
-	border: 2px solid rgb(0, 172, 252);
 }
 </style>

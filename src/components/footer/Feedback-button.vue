@@ -22,7 +22,7 @@ export default {
 
 <template>
 	<button @click="secondTodosStore.showFeedbackForm = true">
-		<img class="feedback-icon" src="@/img/icons/feedback.webp" alt="feedback" />
+		<img class="feedback-icon" src="@/img/icons/feedback.webp" alt="feedback" fetchpriority="high" loading="eager" />
 	</button>
 
 	<FeedbackForm v-if="secondTodosStore.showFeedbackForm" />

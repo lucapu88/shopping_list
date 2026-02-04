@@ -112,3 +112,9 @@
 	color: var(--minimal-secondary-color);
 	border: 1px solid var(--minimal-secondary-color);
 }
+
+.confirm-minimal,
+.confirm-minimal > button {
+	background-color: #a5becc;
+	color: #7c3e66;
+}

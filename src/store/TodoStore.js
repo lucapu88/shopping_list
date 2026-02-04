@@ -7,6 +7,7 @@ import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
 import { useCategoriesStore } from '@/store/CategoriesStore';
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useFirebaseStore } from '@/server/FirebaseStore';
+import { usePreloadStore } from '@/store/PreloadStore';
 
 
 export const useTodoStore = defineStore('todoStore', {
@@ -21,6 +22,7 @@ export const useTodoStore = defineStore('todoStore', {
     categoriesStore: useCategoriesStore(),
     secondTodosStore: useSecondTodoStore(),
     firebaseStore: useFirebaseStore(),
+    preloads: usePreloadStore(),
     todos: [], //conterrà gli elementi che noi digitiamo
     newTodo: null, //elemento che scriviamo noi e andrà a riempire l'array
     copiedTodo: null,
@@ -160,7 +162,7 @@ export const useTodoStore = defineStore('todoStore', {
       //se ho impostato la conferma all'eliminazione apro una modale prima di eliminare altrimenti elimino direttamente
       if (this.settings.canDelete) {
         this.languages.completeConfirmText = `${this.languages.confirmText} ${todo.name.toUpperCase()}?`;
-        this.confirmDeleteModal = true;
+        this.openConfirmDeleteModal();
         this.confirmRemove = true;
         this.deleteSelected = false;
         this.index = x;
@@ -169,6 +171,10 @@ export const useTodoStore = defineStore('todoStore', {
       }
       this.settings.resetHelperSettingsAndIstructions();
       this.toggleButtonDeleteSelectedTodo();
+    },
+    async openConfirmDeleteModal() {
+      await this.preloads.loadConfirmBackgoundImg('confirm-modal');
+      this.confirmDeleteModal = true;
     },
     confirmedRemoveTodo(x) {
       this.backupList();
@@ -416,7 +422,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     openModalForDeleteSelectedTodos(multiple, saveOnFirebase) {
       this.multiple = !!multiple;
-      this.confirmDeleteModal = true;
+      this.openConfirmDeleteModal();
       this.confirmRemove = false;
       this.deleteSelected = true;
       this.saveOnFirebase = saveOnFirebase;

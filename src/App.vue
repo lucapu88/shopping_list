@@ -1,4 +1,5 @@
 <script setup>
+import PreloadImg from "./components/PreloadImg.vue";
 import FestivitiesAndOccurrences from "./components/Festivities-and-occurrences.vue";
 import HeadList from "./components/header/Head-list.vue";
 import ConfirmModal from "./components/panels-and-modals/Confirm-modal.vue";
@@ -6,7 +7,6 @@ import Helper from "./components/helper/Helper.vue";
 import MainList from "./components/Main-list.vue";
 import DeleteAllPanel from "./components/panels-and-modals/Delete-all-panel.vue";
 import FooterButtonsContainer from "./components/footer/Footer-buttons-container.vue";
-import PreloadImages from "./components/Preload-images.vue";
 import SuggestionsModal from "./components/panels-and-modals/Suggestions-modal.vue";
 import DuplicateTodoAlert from "./components/panels-and-modals/Duplicate-todo-alert.vue";
 import LoadingOrUpdating from "./components/Loading-or-updating.vue";
@@ -94,9 +94,7 @@ export default {
 </script>
 
 <template>
-	<!-- ------------------------------------- Preload di immagini e font  -->
-	<PreloadImages />
-
+	<PreloadImg />
 	<div
 		class="app-container"
 		:class="{

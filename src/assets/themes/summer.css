@@ -94,3 +94,12 @@
 	background-repeat: no-repeat;
 	color: #ffffff;
 }
+
+.confirm-summer {
+	background-color: #12a1df;
+	border: 2px solid #12a1df;
+	background-image: url("@/img/maldive.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #ffffff;
+}

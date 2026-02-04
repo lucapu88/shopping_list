@@ -7,7 +7,6 @@ import { useTodoStore } from "@/store/TodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 
-import cancellaPreload from "@/img/cancella.webp";
 import marePreload from "@/img/mare.webp";
 import mareTabletPreload from "@/img/mare-tablet.webp";
 import ondeMare from "@/img/loyalty-cards/onde-mare.webp";
@@ -15,12 +14,6 @@ import montagnePreload from "@/img/montagne.webp";
 import montagneTabletPreload from "@/img/montagne-tablet.webp";
 import snowman from "@/img/loyalty-cards/snowman.webp";
 import strawberries from "@/img/loyalty-cards/strawberries.webp";
-import DragDropElegant from "@/img/icons/drag-and-drop-elegant.webp";
-import copyElegant from "@/img/icons/copy-elegant.webp";
-import importantElegant from "@/img/icons/important-elegant.webp";
-import DragDropPanter from "@/img/icons/drag-and-drop-panter.webp";
-import copyPanter from "@/img/icons/copy-panter.webp";
-import importantPanter from "@/img/icons/important-panter.webp";
 import pantherEyes from "@/img/loyalty-cards/panther-eyes.webp";
 import lemon from "@/img/lemon-send.webp";
 import leaves from "@/img/foglie.webp";
@@ -40,7 +33,6 @@ import eyeOpen from "@/img/icons/eye-open.webp";
 
 import okIcon from "@/img/icons/ok.webp";
 import closeIcon from "@/img/icons/close.webp";
-import loyaltyCard from "@/img/icons/loy-card.webp";
 import gooniesMap from "@/img/loyalty-cards/goonies-map.webp";
 </script>
 
@@ -62,7 +54,6 @@ export default {
 <!--  -------------------------------I PRELOAD PRINCIPALI SONO NELL'HEAD DELL'INDEX.HTML ------------------------------------- -->
 <template>
 	<!-- --------------------------------preload delle immagini in base ai temi------------------------- -->
-	<link v-if="theme.lightTheme" rel="preload" as="image" :href="cancellaPreload" />
 	<link v-if="theme.lightTheme" rel="preload" as="image" :href="gooniesMap" />
 
 	<link v-if="theme.summerTheme" rel="preload" as="image" :href="marePreload" />
@@ -80,15 +71,6 @@ export default {
 	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansIle" />
 	<link v-if="theme.jeansTheme" rel="preload" as="image" :href="jeansTasca" />
 
-	<!-- --------------------------------preload delle icone in base ai temi------------------------- -->
-
-	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="DragDropElegant" />
-	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="copyElegant" />
-	<link v-if="theme.elegantTheme" rel="preload" as="image" :href="importantElegant" />
-
-	<link v-if="theme.panterTheme" rel="preload" as="image" :href="DragDropPanter" />
-	<link v-if="theme.panterTheme" rel="preload" as="image" :href="copyPanter" />
-	<link v-if="theme.panterTheme" rel="preload" as="image" :href="importantPanter" />
 	<link v-if="theme.panterTheme" rel="preload" as="image" :href="pantherEyes" />
 
 	<link v-if="theme.lemonTheme" rel="preload" as="image" :href="lemon" />
@@ -97,9 +79,9 @@ export default {
 
 	<!-- --------------------------------preload di altre immagini/icone in base alle festività--------------------- -->
 	<template v-if="isChristmas.christmasTheme">
-		<link rel="preload" as="image" :href="merryChristmas" />
+		<!-- <link rel="preload" as="image" :href="merryChristmas" /> -->
 		<link rel="preload" as="image" :href="christmasSkull" />
-		<link rel="preload" as="image" :href="garland" />
+		<!-- <link rel="preload" as="image" :href="garland" /> -->
 	</template>
 
 	<!-- -----------------------------------------------------------preload dell'helper---------------------------- -->
@@ -110,5 +92,4 @@ export default {
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="closeIcon" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeClosed" />
 	<link v-if="todosStore.canDeleteMultipleTodo" rel="preload" as="image" :href="eyeOpen" />
-	<link v-if="settings.isIphone" rel="preload" as="image" :href="loyaltyCard" />
 </template>

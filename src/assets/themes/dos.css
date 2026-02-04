@@ -194,3 +194,11 @@
 	border: 1px solid var(--dos-primary-color);
 	border-radius: 0 !important;
 }
+
+.confirm-retro,
+.confirm-retro > button {
+	background-color: #000000;
+	color: #35c50d;
+	border: 1px solid #35c50d;
+	border-radius: 0 !important;
+}

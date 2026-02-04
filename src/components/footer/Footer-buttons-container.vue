@@ -4,6 +4,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { usePreloadStore } from "@/store/PreloadStore";
 import hohoho from "@/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3";
 import MultipleSelection from "./Multiple-selection.vue";
 import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
@@ -20,6 +21,7 @@ export default {
 			isChristmas: useChristmasStore(),
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
+			preloads: usePreloadStore(),
 			todosStore: useTodoStore(),
 		};
 	},
@@ -30,7 +32,8 @@ export default {
 		emitScrollTop() {
 			this.$emit("scrollToTop", true);
 		},
-		openDeleteAllModal() {
+		async openDeleteAllModal() {
+			this.preloads.loadConfirmBackgoundImg("delete-all-panel");
 			this.todosStore.openDeleteAllModal = true;
 			this.$emit("scrollToBottom", true);
 		},

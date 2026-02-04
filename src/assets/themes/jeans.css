@@ -120,7 +120,7 @@
 .jeans-confirm-delete-all {
 	/*Vi do una chicca per voi depravati: questa foto è dei jeans di Diletta Leotta! per la precisione della parte pucchiacca...*/
 	background-image: url("@/img/jeans-zip.webp");
-	background-size: auto;
+	background-size: cover;
 	background-repeat: no-repeat;
 }
 

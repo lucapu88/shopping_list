@@ -54,3 +54,18 @@
 .container-light > p {
 	max-width: 24ch;
 }
+
+.confirm-light {
+	background-color: #ffffff;
+	background-image: url("@/img/postit.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.confirm-light > p {
+	max-width: 24ch;
+}
+.confirm-delete-all-light {
+	background-image: url("@/img/carta-stropicciata.webp") !important;
+	background-size: contain;
+	border: 2px solid rgb(0, 172, 252);
+}

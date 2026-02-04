@@ -89,3 +89,10 @@
 	padding: 0 10px !important;
 	gap: 15px !important;
 }
+
+.confirm-dark,
+.confirm-dark > button {
+	background-color: #333333;
+	color: #ffff;
+	border: 2px solid #ffff;
+}

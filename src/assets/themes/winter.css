@@ -92,3 +92,11 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+.confirm-winter {
+	background-color: #ffff;
+	border: 2px solid #ffff;
+	background-image: url("@/img/winter-forest.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+}

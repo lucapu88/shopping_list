@@ -12,6 +12,6 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 
 - In fine aggiorna il test nel file Helper.cy.js. Purtroppo in cypress si rompono i test se inserisci il formato esadecimale del colore, quindi per farlo funzionare devi inserire il formato rgb.
 
-- Se aggiungi immagini assicurati che vengano caricate nel componente Preload-images.vue o inserendo il lazy loading se non sono visibili subito.
+- Per le immagini di background settate nel css, assicurati che vengano caricate correttamente nel PreloadStore.js
 
 - Assicurati che cambi anche lo stile all'interno delle varie sezioni dell'helper
