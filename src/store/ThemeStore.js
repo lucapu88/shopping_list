@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { usePreloadStore } from './PreloadStore';
 
 const defaultFontUrl = "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap";
 
@@ -18,6 +19,7 @@ const THEMES_CONFIG = {
 
 export const useThemeStore = defineStore('theme', {
     state: () => ({
+        preloadStore: usePreloadStore(),
         lightTheme: true,
         darkTheme: false,
         minimalTheme: false,
@@ -50,7 +52,7 @@ export const useThemeStore = defineStore('theme', {
                     const fontUrl = THEMES_CONFIG[themeKey].fontUrl;
                     if (fontUrl) {
                         requestAnimationFrame(() => {
-                            this.loadFontOnce(fontUrl);
+                            this.preloadStore.loadFontOnce(fontUrl);
                         });
                     }
                 }
@@ -86,14 +88,6 @@ export const useThemeStore = defineStore('theme', {
             window.localStorage.setItem('lightTheme', true);
             this.applyTheme('light');
         },
-        loadFontOnce(href) {
-            if (document.querySelector(`link[href="${href}"]`)) return;
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            link.media = 'print';      // non blocca il render
-            link.onload = () => { link.media = 'all'; }; // applica dopo il download
-            document.head.appendChild(link);
-        }
+
     },
 });

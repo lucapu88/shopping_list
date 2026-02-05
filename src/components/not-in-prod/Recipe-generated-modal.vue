@@ -34,7 +34,7 @@ const secondTodosStore = useSecondTodoStore();
 
 <style scoped>
 .modal {
-	padding-top: 20%;
+	padding-top: 10%;
 }
 .recipe-container {
 	position: relative;

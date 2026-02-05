@@ -63,6 +63,15 @@ export const usePreloadStore = defineStore('preload', {
                 img.onload = resolve;
                 img.src = this.src;
             });
+        },
+        loadFontOnce(href) {
+            if (document.querySelector(`link[href="${href}"]`)) return;
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.media = 'print';      // non blocca il render
+            link.onload = () => { link.media = 'all'; }; // applica dopo il download
+            document.head.appendChild(link);
         }
     }
 });
