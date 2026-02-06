@@ -35,6 +35,7 @@ const showConfirmAlert = ref(null);
 const saveBtnVisible = ref(false);
 const showAlert = ref(false);
 const loading = ref(false);
+const saving = ref(false);
 const addCard = ref(false);
 const showInfo = ref(false);
 const errorLoading = ref(false);
@@ -214,6 +215,8 @@ async function saveSelected() {
 		return;
 	}
 
+	saving.value = true;
+
 	const db = await dbPromise;
 
 	const existing = await db.getAll("photos");
@@ -241,6 +244,7 @@ async function saveSelected() {
 		cropperInstance.value.destroy();
 		cropperInstance.value = null;
 	}
+	saving.value = false;
 	await loadPhotos();
 }
 
@@ -293,7 +297,7 @@ onUnmounted(() => {
 				</p>
 			</header>
 			<main>
-				<LoadingOrUpdating :listChanged="loading" />
+				<LoadingOrUpdating :listChanged="loading || saving" />
 
 				<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
 				<ErrorMessage :errorLoading="errorLoading" />
