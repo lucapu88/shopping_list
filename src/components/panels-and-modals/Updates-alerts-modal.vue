@@ -13,6 +13,7 @@ const settings = useSettingsStore();
 const emit = defineEmits(["understand"]);
 
 function understandSelected() {
+	// 👇👇👇👇👇👇👇 OCCHIO EH! 👇👇👇👇👇👇👇👇
 	// Quando cambi tipologia di aggiornamento modifica la chiave dentro readNewUpdates() nel SettingsStore.js
 	settings.readNewUpdates();
 	emit("understand", true);
@@ -41,24 +42,23 @@ function understandSelected() {
 
 			<!-- Non ho inserito le traduzioni nel file LanguageStore.js perchè queste sono temporanee e poi verranno rimosse una volta che ne usciranno di nuove. -->
 			<template v-if="languages.langIta">
-				<p>Da adesso in poi, se clicchi sul nome del prodotto in lista <span class="line-through">lo smarcherai</span></p>
-				<p>Mentre se vuoi selezionarlo come <span class="active px-1">importante</span> dovrai fare un doppio click sul nome</p>
+				<p>Da adesso in poi, se vuoi selezionare un prodotto come <span class="active px-1">importante</span> dovrai fare uno scorrimento verso sinistra sul nome (swipe-left).</p>
 			</template>
 
 			<template v-if="languages.langSpanish">
-				<p>De ahora en adelante, si haces clic en el nombre del producto en la lista <span class="line-through">lo desmarcarás</span></p>
-				<p>Mientras que si quieres seleccionarlo como <span class="active px-1">importante</span> tendrás que hacer doble clic en el nombre</p>
+				<p>A partir de ahora, si deseas seleccionar un producto como <span class="active px-1">importante</span> tendrás que deslizar el dedo hacia la derecha sobre el nombre (swipe-left).</p>
 			</template>
 
 			<template v-if="languages.langFrench">
-				<p>Désormais, si vous cliquez sur le nom du produit dans la liste vous <span class="line-through">le désélectionnerez</span></p>
-				<p>Tandis que si vous souhaitez le sélectionner comme <span class="active px-1">important</span>, vous devrez double-cliquer sur le nom</p>
+				<p>Désormais, si vous souhaitez sélectionner un produit comme <span class="active px-1">important</span>, vous devrez glisser vers la droite sur le nom (swipe-left).</p>
 			</template>
 
 			<template v-if="languages.langEnglish">
-				<p>From now on, if you click on the product name in the list you will <span class="line-through">uncheck it</span></p>
-				<p>while if you want to select it as <span class="active px-1">important</span> you will have to double click on the name</p>
+				<p>From now on, if you want to select a product as <span class="active px-1">important</span> you will have to swipe left on the name.</p>
 			</template>
+
+			<!-- QUANDO LA CANCELLI, ELIMINALA ANCHE DALLA CARTELLA IMG -->
+			<img style="width: 95%; margin-bottom: 20px" src="@/img/markTutorial.gif" alt="mark-as-important-gif-tutorial" />
 
 			<button id="understand" @click="understandSelected">
 				{{ languages.understandText }}

@@ -39,10 +39,11 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
-			newUpdatesRead: window.localStorage.getItem("newMarkAndSelectMode"),
+			newUpdatesRead: window.localStorage.getItem("newMarkMode2"),
 		};
 	},
 	created() {
+		this.settings.removeUnusedLocalStorageItems();
 		this.settings.checkingUpdates(); //controllo "aggiornamenti"
 		this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
 		this.categoriesStore.initializeCategories(); //setto le categorie in base alla lingua

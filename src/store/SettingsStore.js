@@ -238,9 +238,14 @@ export const useSettingsStore = defineStore('settings', {
     readNewUpdates() {
       /*  👇👇👇👇👇👇👇 IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: 👇👇👇👇👇👇👇👇
         Quando cambi la chiave nel localStorage, ricordati di cambiarla anche nel file App.vue (newUpdatesRead). 
-        E ricordati di effettuare un removeItem della chiave vecchia: window.localStorage.removeItem(chiave-vecchia);
+        E ricordati di effettuare un removeItem della chiave vecchia in removeUnusedLocalStorageItems (proprio qui sotto).
      */
-      window.localStorage.setItem("newMarkAndSelectMode", "true");
+      window.localStorage.setItem("newMarkMode2", "true");
     },
+    removeUnusedLocalStorageItems() {
+      // Qui pian piano andranno tutte le vecchie chiavi da rimuovere... TODO: pensa cosa fare quando diventaranno troppe!
+      window.localStorage.removeItem("newMarkAndSelectMode");
+      window.localStorage.removeItem("newMarkMode");
+    }
   }
 });

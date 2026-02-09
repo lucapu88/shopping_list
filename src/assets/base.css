@@ -226,7 +226,7 @@ button {
 	font-size: 1.25rem;
 	width: 65%;
 	line-height: 1;
-	overflow-x: auto;
+	overflow-x: hidden;
 	overflow-y: hidden;
 	min-height: 25px;
 }
