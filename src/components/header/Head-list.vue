@@ -1,6 +1,6 @@
 <script setup>
 import Title from "./Title.vue";
-import HeaderButtonsContainer from "./Header-buttons-container.vue";
+import HeaderButtonsContainer from "./push-button-panel/Header-buttons-container.vue";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
 import { useLanguageStore } from "@/store/LanguageStore";
@@ -162,8 +162,6 @@ export default {
 
 <style scoped>
 .header-container {
-	width: 100vw;
-	min-width: 345px;
 	max-width: 600px;
 	position: relative;
 	margin: 0 auto;

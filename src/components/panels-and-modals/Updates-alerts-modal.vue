@@ -23,7 +23,7 @@ function understandSelected() {
 <template>
 	<div class="modal">
 		<div
-			class="modal-container text-center p-3"
+			class="modal-container text-center p-3 mx-auto"
 			:class="{
 				light: theme.lightTheme,
 				dark: theme.darkTheme,
@@ -42,19 +42,19 @@ function understandSelected() {
 
 			<!-- Non ho inserito le traduzioni nel file LanguageStore.js perchè queste sono temporanee e poi verranno rimosse una volta che ne usciranno di nuove. -->
 			<template v-if="languages.langIta">
-				<p>Da adesso in poi, se vuoi selezionare un prodotto come <span class="active px-1">importante</span> dovrai fare uno scorrimento verso sinistra sul nome (swipe-left).</p>
+				<p>Da adesso in poi, se vuoi selezionare un prodotto come <span class="active px-1">importante</span> dovrai effettuare un doppio click/tap sul nome dell'elemento.</p>
 			</template>
 
 			<template v-if="languages.langSpanish">
-				<p>A partir de ahora, si deseas seleccionar un producto como <span class="active px-1">importante</span> tendrás que deslizar el dedo hacia la derecha sobre el nombre (swipe-left).</p>
+				<p>A partir de ahora, si deseas seleccionar un producto como <span class="active px-1">importante</span> Necesitará hacer doble clic o tocar el nombre del elemento.</p>
 			</template>
 
 			<template v-if="languages.langFrench">
-				<p>Désormais, si vous souhaitez sélectionner un produit comme <span class="active px-1">important</span>, vous devrez glisser vers la droite sur le nom (swipe-left).</p>
+				<p>Désormais, si vous souhaitez sélectionner un produit comme <span class="active px-1">important</span>, Vous devrez double-cliquer/appuyer sur le nom de l'article.</p>
 			</template>
 
 			<template v-if="languages.langEnglish">
-				<p>From now on, if you want to select a product as <span class="active px-1">important</span> you will have to swipe left on the name.</p>
+				<p>From now on, if you want to select a product as <span class="active px-1">important</span> you will need to double click/tap on the item name.</p>
 			</template>
 
 			<!-- QUANDO LA CANCELLI, ELIMINALA ANCHE DALLA CARTELLA IMG -->
@@ -70,11 +70,11 @@ function understandSelected() {
 <style scoped>
 .modal {
 	z-index: 800;
+	padding-top: 25%;
 }
 
 .modal-container {
-	position: absolute;
-	width: 96%;
-	left: 2%;
+	width: 90%;
+	max-width: 600px;
 }
 </style>

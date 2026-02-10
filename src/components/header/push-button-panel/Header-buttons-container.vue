@@ -1,11 +1,12 @@
 <script setup>
-import CategoriesPanel from "../panels-and-modals/Categories-panel.vue";
+import CategoriesPanel from "../../panels-and-modals/Categories-panel.vue";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
-import ListsButtonsSelection from "./change-list/Lists-buttons-selection.vue";
+import ListsButtonsSelection from "../change-list/Lists-buttons-selection.vue";
+import PopUpPanel from "./Pop-up-panel.vue";
 </script>
 
 <script>
@@ -17,25 +18,14 @@ export default {
 			todosStore: useTodoStore(),
 			settings: useSettingsStore(),
 			secondTodos: useSecondTodoStore(),
+			isPopUpPanelVisible: false,
 		};
 	},
 	methods: {
-		copy() {
-			const myList = this.todosStore.todos.map((todo) => (todo.category ? `${todo.name.toUpperCase()}:\n` : ` ${todo.name}\n`));
-			const arrayNoCommas = myList.join(" ");
-
-			this.todosStore.categoryList = false;
-			navigator.clipboard.writeText(arrayNoCommas); //copio negli appunti una lista della spesa per poterla condividere
-			document.addEventListener("copy", function (e) {
-				//copio negli appunti anche qui per sistemare su android (quello di sopra non funziona)
-				e.clipboardData.setData("text/plain", arrayNoCommas);
-				e.preventDefault();
-			});
-			document.execCommand("copy"); //riprovo/ricopio negli appunti anche qui per sistemare su android (per essere sicuri)
-			this.languages.copyList.visible = true;
-			this.todosStore.removeSelectedCategoryToAddItem();
-			setTimeout(() => (this.languages.copyList.visible = false), 3000); //cambio il testo del pulsante copia
-			// navigator.vibrate(400); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
+		togglePopUpPanel() {
+			this.isPopUpPanelVisible = !this.isPopUpPanelVisible;
+			this.todosStore.showOnlyImportantTodos = false;
+			this.todosStore.setOrResetImportantTodos();
 		},
 	},
 };
@@ -68,7 +58,10 @@ export default {
 				'jeans-other-btn': theme.jeansTheme,
 				'jeans-theme-selected-btn': theme.jeansTheme && secondTodos.showChangeList,
 			}"
-			@click="secondTodos.toggleChangeList()"
+			@click="
+				secondTodos.toggleChangeList();
+				isPopUpPanelVisible = false;
+			"
 		>
 			<img
 				v-if="!theme.elegantTheme && !theme.panterTheme"
@@ -120,7 +113,10 @@ export default {
 				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.isDraggable,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.showChangeList"
-			@click="todosStore.toggleDragDrop()"
+			@click="
+				todosStore.toggleDragDrop();
+				isPopUpPanelVisible = false;
+			"
 		>
 			<img
 				v-if="!theme.elegantTheme && !theme.panterTheme"
@@ -147,10 +143,11 @@ export default {
 				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
 			/>
 		</button>
-		<!--PULSANTE COPIA LISTA-->
+		<!-- PULSANTE MOSTRA PULSANTIERA SECONDARIA -->
 		<button
-			class="btn custom-show-listbtn"
+			class="btn custom-show-listbtn show-pop-up-panel-btn"
 			:class="{
+				'btn-selected': isPopUpPanelVisible,
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
 				'summer-header-btn': theme.summerTheme,
@@ -160,34 +157,28 @@ export default {
 				'panter-other-btn': theme.panterTheme,
 				'lemon-other-btn': theme.lemonTheme,
 				'jeans-other-btn': theme.jeansTheme,
+				'minimal-selected-btn': theme.minimalTheme && isPopUpPanelVisible,
+				'retro-selected-btn': theme.retroTheme && isPopUpPanelVisible,
+				'summer-header-btn-selected': theme.summerTheme && isPopUpPanelVisible,
+				'winter-header-selected-btn': theme.winterTheme && isPopUpPanelVisible,
+				'elegant-selected-btn': theme.elegantTheme && isPopUpPanelVisible,
+				'pink-theme-selected-btn': theme.pinkTheme && isPopUpPanelVisible,
+				'panter-theme-selected-btn': theme.panterTheme && isPopUpPanelVisible,
+				'lemon-theme-selected-btn': theme.lemonTheme && isPopUpPanelVisible,
+				'jeans-theme-selected-btn': theme.jeansTheme && isPopUpPanelVisible,
 			}"
-			:disabled="!todosStore.todos.length || secondTodos.moving"
-			@click="copy()"
+			:disabled="!todosStore.todos.length"
+			@click="togglePopUpPanel()"
 		>
-			<img
-				v-if="!theme.elegantTheme && !theme.panterTheme"
-				class="copy"
-				src="@/img/icons/copy.webp"
-				alt="copy"
-				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="theme.elegantTheme && !theme.panterTheme"
-				class="copy"
-				src="@/img/icons/copy-elegant.webp"
-				alt="copy"
-				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="!theme.elegantTheme && theme.panterTheme"
-				class="copy"
-				src="@/img/icons/copy-panter.webp"
-				alt="copy"
-				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
-			/>
+			<span
+				class="arrow"
+				:class="{
+					'arrow-selected': isPopUpPanelVisible,
+					'arrow-deselected': !isPopUpPanelVisible,
+				}"
+			>
+				^
+			</span>
 		</button>
 		<!--PULSANTE MOSTRA CATEGORIE -->
 		<button
@@ -214,52 +205,23 @@ export default {
 				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.categoryList,
 			}"
 			:disabled="todosStore.showOnlyImportantTodos || secondTodos.moving"
-			@click="todosStore.showCategoryList()"
+			@click="
+				todosStore.showCategoryList();
+				isPopUpPanelVisible = false;
+			"
 		>
 			<strong class="toggle-category-icon" v-if="!todosStore.categoryList">+</strong>
 			<strong class="toggle-category-icon" v-else>-</strong>
 		</button>
-		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
-		<!-- TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte -->
 
-		<!-- <button
-			v-if="!settings.isIphone"
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': todosStore.showOnlyImportantTodos,
-				'btn-important-temporary': todosStore.addedImportant,
-				'btn-important-selected': todosStore.showOnlyImportantTodos && !theme.retroTheme,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && todosStore.showOnlyImportantTodos,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && todosStore.showOnlyImportantTodos,
-				'summer-header-btn-selected': theme.summerTheme && todosStore.showOnlyImportantTodos,
-				'summer-header-btn': theme.summerTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
-				'winter-header-btn': theme.winterTheme,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && todosStore.showOnlyImportantTodos,
-				'panter-other-btn': theme.panterTheme,
-				'panter-theme-selected-btn': theme.panterTheme && todosStore.showOnlyImportantTodos,
-				'lemon-other-btn': theme.lemonTheme,
-				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.showOnlyImportantTodos,
-				'jeans-other-btn': theme.jeansTheme,
-				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.showOnlyImportantTodos,
-			}"
-			@click="todosStore.showOnlyImportant()"
-		>
-			<img v-if="!theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important.webp" alt="important" />
-			<img v-if="theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
-			<img v-if="!theme.elegantTheme && theme.panterTheme" class="important" src="@/img/icons/important-panter.webp" alt="important" />
-		</button> -->
-
-		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ (PER IL MOMENTO NON IN PRODUZIONE) -->
+		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ -->
 		<button class="btn loyalty-cards-btn p-0" @click="secondTodos.showLoyaltyCards()">
 			<img class="loyalty-card-icon" src="@/img/icons/loy-card.webp" alt="loyalty_card_icon" fetchpriority="high" loading="eager" />
 		</button>
 	</div>
+
+	<!-- SECONDA PULSANTIERA -->
+	<PopUpPanel v-if="isPopUpPanelVisible" />
 
 	<template v-if="!todosStore.devNotes">
 		<div class="alerts-container" v-if="todosStore.isDraggable || languages.copyList.visible || languages.importantTodos.visible || todosStore.addedImportant || todosStore.categoryAdded">
@@ -284,8 +246,8 @@ export default {
 		</div>
 	</template>
 
+	<!-- PULSANTIERA CATEGORIE -->
 	<CategoriesPanel />
-
 	<!-- SELEZIONE LISTE -->
 	<ListsButtonsSelection v-if="!todosStore.devNotes" />
 </template>
@@ -385,21 +347,48 @@ p {
 	margin-bottom: 0;
 }
 
-.btn-important-temporary {
-	animation: mark 3s;
+.show-pop-up-panel-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-@keyframes mark {
-	0% {
-		transform: scale(1, 1);
-		background-color: #6da505e1;
-	}
-	50% {
-		transform: scale(1.2, 1.2);
-		background-color: #6da505e1;
-	}
+.arrow {
+	width: 1.688rem;
+	height: 1.688rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-weight: bold;
+	font-size: 1.563rem;
+	padding-top: 0.625rem;
+}
+.arrow-selected {
+	-webkit-animation: spin 0.5s linear;
+	-moz-animation: spin 0.5s linear;
+	animation: spin 0.5s linear;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes spin {
 	100% {
-		transform: scale(1, 1);
-		background-color: #6da505e1;
+		-webkit-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+}
+.arrow-deselected {
+	-webkit-animation: reverseSpin 0.5s linear;
+	-moz-animation: reverseSpin 0.5s linear;
+	animation: reverseSpin 0.5s linear;
+}
+@keyframes reverseSpin {
+	from {
+		-webkit-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
 	}
 }
 </style>

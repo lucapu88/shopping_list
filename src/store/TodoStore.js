@@ -466,7 +466,9 @@ export const useTodoStore = defineStore('todoStore', {
         return;
       }
       this.showOnlyImportantTodos = !this.showOnlyImportantTodos;
-
+      this.setOrResetImportantTodos();
+    },
+    setOrResetImportantTodos() {
       if (this.showOnlyImportantTodos) {
         this.confirmDeselectAll = false;
         this.isDraggable = false;

@@ -254,6 +254,8 @@ export const useLanguageStore = defineStore('Language', {
     refreshText: 'Refresh',
     alertMessageTitle: "NEW IMPORTANT CHANGES",
     understandText: "I understand",
+    importantBtnText: "Important",
+    copyListBtnText: 'Copy list',
   }),
   getters: {},
   actions: {
@@ -443,6 +445,8 @@ export const useLanguageStore = defineStore('Language', {
       this.refreshText = 'Ricarica';
       this.alertMessageTitle = "NUOVI CAMBIAMENTI IMPORTANTI";
       this.understandText = "Ho capito";
+      this.copyListBtnText = "Copia lista";
+      this.importantBtnText = "Importanti";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -541,6 +545,8 @@ export const useLanguageStore = defineStore('Language', {
       this.refreshText = 'Recargar';
       this.alertMessageTitle = "CAMBIOS IMPORTANTES NUEVOS";
       this.understandText = "Entiendo";
+      this.copyListBtnText = "Copiar lista";
+      this.importantBtnText = "Importante";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -639,6 +645,8 @@ export const useLanguageStore = defineStore('Language', {
       this.refreshText = 'Actualiser';
       this.alertMessageTitle = "NOUVEAUX CHANGEMENTS IMPORTANTS";
       this.understandText = "Je comprends";
+      this.copyListBtnText = "Copier la liste";
+      this.importantBtnText = "Important";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

@@ -17,10 +17,6 @@ export default {
 			todosStore: useTodoStore(),
 			secondTodos: useSecondTodoStore(),
 			settings: useSettingsStore(),
-			startX: 0,
-			startY: 0,
-			isSwiping: false,
-			threshold: 50,
 			timer: false,
 			lastTap: 0,
 		};
@@ -45,40 +41,10 @@ export default {
 				this.todosStore.selectCategoryToAddItem(index, todo);
 				return;
 			}
-			// SE VUOI AGGIUNGERE QUALCOSA AL DOPPIO CLICK, É GIÀ TUTTO FATTO, BASTA SOLO AGGIUNGERE LA FUNZIONE QUI SOTTO
 			const now = Date.now();
 			const delta = now - this.lastTap;
 			this.lastTap = now;
-			// delta < 250 ? "funzionalità da aggiungere al doppio click" :
-			this.todosStore.selectTodoForDelete(index);
-		},
-		onPointerDown(e) {
-			if (this.todosStore.isDraggable) {
-				return;
-			}
-			this.isSwiping = false;
-			this.startX = e.clientX;
-			this.startY = e.clientY;
-		},
-		onPointerMove(e) {
-			if (this.todosStore.isDraggable) {
-				return;
-			}
-			const diffX = this.startX - e.clientX;
-			const diffY = this.startY - e.clientY;
-
-			if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > this.threshold) {
-				this.isSwiping = true;
-			}
-		},
-		onPointerUp(event, index) {
-			if (!this.isSwiping || this.todosStore.isDraggable) return;
-
-			const diff = this.startX - event.clientX;
-
-			if (diff > this.threshold) {
-				this.todosStore.setAsImportant(index);
-			}
+			delta < 250 ? this.todosStore.setAsImportant(index) : this.todosStore.selectTodoForDelete(index);
 		},
 	},
 };
@@ -120,10 +86,6 @@ export default {
 		v-if="!todo.modify"
 		class="todo"
 		id="todo"
-		ref="box"
-		@pointerdown="onPointerDown($event)"
-		@pointermove="onPointerMove($event)"
-		@pointerup="onPointerUp($event, index)"
 		@touchstart="setDraggable(true)"
 		@touchend="setDraggable(false)"
 		@click="setTodoFunctionality(index, todo)"
@@ -254,10 +216,5 @@ export default {
 .is-coping {
 	border: 2px dashed #00eaff !important;
 	background-color: #80f3fd67 !important;
-}
-
-.overflow-auto {
-	overflow-x: auto !important;
-	overflow-y: hidden !important;
 }
 </style>
