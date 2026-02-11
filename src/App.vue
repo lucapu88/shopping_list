@@ -39,7 +39,7 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
-			newUpdatesRead: window.localStorage.getItem("newMarkAndCopyMode"),
+			newUpdatesRead: window.localStorage.getItem("newMarkAndCopyMode2"),
 		};
 	},
 	created() {

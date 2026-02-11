@@ -200,7 +200,7 @@ export const useLanguageStore = defineStore('Language', {
       headerInfo: 'Click on one of these items to add it to the list',
     },
     categoryTipText: 'If you click on the category you can add products to it',
-    reloadAppText: 'Reload app:',
+    reloadAppText: 'Reload',
     duplicateText: {
       title: 'Product already listed',
       body: 'Insert it anyway?'
@@ -255,6 +255,7 @@ export const useLanguageStore = defineStore('Language', {
     alertMessageTitle: "NEW IMPORTANT CHANGES",
     understandText: "I understand",
     importantBtnText: "Important",
+    importantInfoText: "In this section you will find, in view mode, only the items you have marked as important",
     copyListBtnText: 'Copy list',
   }),
   getters: {},
@@ -413,7 +414,7 @@ export const useLanguageStore = defineStore('Language', {
       this.suggestions.tipsBtnText = 'Mostra suggerimenti';
       this.suggestions.headerInfo = 'Clicca su uno di questi elementi per aggiungerlo alla lista';
       this.categoryTipText = 'Se clicchi sulla categoria potrai aggiungere prodotti al suo interno';
-      this.reloadAppText = "Ricarica l'app:";
+      this.reloadAppText = "Ricarica";
       this.duplicateText.title = "Prodotto già presente in lista";
       this.duplicateText.body = "Inserirlo comunque?";
       this.alertMomentaneo = "Ora puoi creare più liste! Non è meraviglioso? Nel caso fai spesa in supermercati diversi oppure vuoi avere liste diverse in base alle tue esigenze, insomma hai a disposizione 4 liste tutte nuove! Buon divertimento ";
@@ -447,6 +448,7 @@ export const useLanguageStore = defineStore('Language', {
       this.understandText = "Ho capito";
       this.copyListBtnText = "Copia lista";
       this.importantBtnText = "Importanti";
+      this.importantInfoText = "In questa sezione troverai, in modalità visualizzazione, solo gli elementi che hai segnato come importante";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -513,7 +515,7 @@ export const useLanguageStore = defineStore('Language', {
       this.suggestions.tipsBtnText = 'Mostrar consejos';
       this.suggestions.headerInfo = 'Haga clic en uno de estos elementos para añadirlo a la lista';
       this.categoryTipText = 'Si hace clic en la categoría puede añadir productos a la misma';
-      this.reloadAppText = "Recargar aplicación:";
+      this.reloadAppText = "Recargar";
       this.duplicateText.title = "Producto ya listado";
       this.duplicateText.body = "¿Insertarlo de todos modos?";
       this.alertMomentaneo = "¡ahora puedes crear múltiples listas! ¿No es maravilloso? Si compras en diferentes supermercados o quieres tener listas diferentes en función de tus necesidades, ¡tienes 4 listas completamente nuevas a tu disposición! Divertirse";
@@ -547,6 +549,7 @@ export const useLanguageStore = defineStore('Language', {
       this.understandText = "Entiendo";
       this.copyListBtnText = "Copiar lista";
       this.importantBtnText = "Importante";
+      this.importantInfoText = "En esta sección encontrarás, en modo visualización, solo los elementos que has marcado como importantes";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -613,7 +616,7 @@ export const useLanguageStore = defineStore('Language', {
       this.suggestions.tipsBtnText = 'Afficher les suggestions';
       this.suggestions.headerInfo = 'Cliquez sur l\'un de ces éléments pour l\'ajouter à la liste';
       this.categoryTipText = 'Si vous cliquez sur la catégorie, vous pouvez ajouter des produits à l\'intérieur';
-      this.reloadAppText = "Recharger l'application :";
+      this.reloadAppText = "Recharger";
       this.duplicateText.title = "Produit déjà présent dans la liste";
       this.duplicateText.body = "L'insérer quand même ?";
       this.alertMomentaneo = "Maintenant vous pouvez créer plusieurs listes ! N'est-ce pas merveilleux ? Si vous faites vos courses dans différents supermarchés ou si vous voulez avoir des listes différentes selon vos besoins, vous avez 4 nouvelles listes à votre disposition ! Amusez-vous bien !";
@@ -647,6 +650,7 @@ export const useLanguageStore = defineStore('Language', {
       this.understandText = "Je comprends";
       this.copyListBtnText = "Copier la liste";
       this.importantBtnText = "Important";
+      this.importantInfoText = "Dans cette section, en mode d'affichage, vous trouverez uniquement les éléments que vous avez marqués comme importants.";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

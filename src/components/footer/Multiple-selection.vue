@@ -40,7 +40,7 @@ export default {
 			}"
 			@click="todosStore.openModalForDeleteSelectedTodos('multiple')"
 		>
-			<img class="trash" src="@/img/icons/trash-red.webp" loading="lazy" alt="delete" />
+			<img class="trash" src="@/img/icons/trash-red.webp" alt="delete" />
 		</button>
 
 		<!-- PULSANTE DESELEZIONA TUTTI GLI ELEMENTI SELEZIONATI -->

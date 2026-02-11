@@ -17,7 +17,6 @@ import BackupList from "./settings/Backup-list.vue";
 import ImportList from "./settings/Import-list.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
-import ReloadApp from "./settings/Reload-app.vue";
 import RenameList from "./settings/Rename-list.vue";
 </script>
 
@@ -122,8 +121,6 @@ export default {
 
 			<div id="helper-description">
 				<UpdateApp @updatingAppEmit="updatingAppEmited" />
-
-				<ReloadApp />
 
 				<ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />
 

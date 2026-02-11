@@ -42,19 +42,27 @@ function understandSelected() {
 
 			<!-- Non ho inserito le traduzioni nel file LanguageStore.js perchè queste sono temporanee e poi verranno rimosse una volta che ne usciranno di nuove. -->
 			<template v-if="languages.langIta">
-				<p>Da adesso in poi, se vuoi selezionare un prodotto come <span class="active px-1">importante</span> dovrai effettuare un doppio click/tap sul nome dell'elemento.</p>
+				<small>- Da adesso in poi, se vuoi selezionare un prodotto come <span class="active px-1">importante</span> dovrai effettuare un doppio click/tap sul nome dell'elemento.</small>
+				<br />
+				<small>- E il pulsante di ricarica dell'app è stato spostato dalle impostazioni nella pulsantiera principale.</small>
 			</template>
 
 			<template v-if="languages.langSpanish">
-				<p>A partir de ahora, si deseas seleccionar un producto como <span class="active px-1">importante</span> Necesitará hacer doble clic o tocar el nombre del elemento.</p>
+				<small>- A partir de ahora, si deseas seleccionar un producto como <span class="active px-1">importante</span> Necesitará hacer doble clic o tocar el nombre del elemento.</small>
+				<br />
+				<small>- Y el botón de recarga de la aplicación se ha movido de la configuración al panel de botones principal.</small>
 			</template>
 
 			<template v-if="languages.langFrench">
-				<p>Désormais, si vous souhaitez sélectionner un produit comme <span class="active px-1">important</span>, Vous devrez double-cliquer/appuyer sur le nom de l'article.</p>
+				<small>- Désormais, si vous souhaitez sélectionner un produit comme <span class="active px-1">important</span>, Vous devrez double-cliquer/appuyer sur le nom de l'article.</small>
+				<br />
+				<small>- Le bouton de rechargement de l'application a été déplacé des paramètres vers le panneau de boutons principal.</small>
 			</template>
 
 			<template v-if="languages.langEnglish">
-				<p>From now on, if you want to select a product as <span class="active px-1">important</span> you will need to double click/tap on the item name.</p>
+				<small>- From now on, if you want to select a product as <span class="active px-1">important</span> you will need to double click/tap on the item name.</small>
+				<br />
+				<small>- And the app reload button has been moved from the settings to the main button panel.</small>
 			</template>
 
 			<!-- QUANDO LA CANCELLI, ELIMINALA ANCHE DALLA CARTELLA IMG -->

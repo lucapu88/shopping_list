@@ -56,7 +56,7 @@ describe("test delle liste multiple", () => {
     });
 
     it('verifico se il cambio nome delle liste funziona', () => {
-        const child = 4;
+        const child = 3;
 
         cy.get('.settings').click({ force: true });
         cy.get(`#helper-description > :nth-child(${child}) > .list-title`).click();

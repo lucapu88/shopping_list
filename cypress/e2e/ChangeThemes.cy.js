@@ -13,7 +13,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it("cambio temi", () => {
         // TOFIX verificare anche le immagini 
-        const childNumber = 5;
+        const childNumber = 4;
         // light
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();

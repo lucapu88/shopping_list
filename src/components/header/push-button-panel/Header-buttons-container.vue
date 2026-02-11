@@ -154,7 +154,7 @@ export default {
 				'winter-header-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
-				'panter-other-btn': theme.panterTheme,
+				'panter-btn': theme.panterTheme,
 				'lemon-other-btn': theme.lemonTheme,
 				'jeans-other-btn': theme.jeansTheme,
 				'minimal-selected-btn': theme.minimalTheme && isPopUpPanelVisible,

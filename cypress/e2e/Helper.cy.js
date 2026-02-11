@@ -23,7 +23,7 @@ describe("test dell'helper e delle impostazioni", () => {
     // });
 
     it("cambio lingue", () => {
-        const childNumber = 3;
+        const childNumber = 2;
         //Spagnolo
         cy.get('.settings').click();
         cy.get(`#helper-description > :nth-child(${childNumber}) > .list-title`).click();
@@ -59,7 +59,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.category > .button-container > .btn').click({ force: true });
 
         cy.get('.settings').click().then(() => {
-            cy.get('#helper-description > :nth-child(7) > .list-title').click();
+            cy.get('#helper-description > :nth-child(6) > .list-title').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'OFF');
             cy.get('#auto-delete > u').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'ON');
@@ -83,7 +83,7 @@ describe("test dell'helper e delle impostazioni", () => {
         });
         categoryCheck();
         cy.get('.settings').click({ force: true });
-        cy.get('#helper-description > :nth-child(8) > .list-title').click();
+        cy.get('#helper-description > :nth-child(7) > .list-title').click();
         cy.get('.text-primary').should('include.text', 'ON');
         cy.get('#auto-delete > .hand-pointing').click();
         cy.get('.text-primary').should('include.text', 'OFF');
@@ -122,7 +122,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
         function checkBackupSuccessful() {
             cy.get('.settings').click();
-            cy.get('#helper-description > :nth-child(9) > .list-title').click();
+            cy.get('#helper-description > :nth-child(8) > .list-title').click();
             cy.get('#backup-button').click();
             cy.get('#confirm-backup').click();
             cy.get('[index="0"] > #todo').should('have.text', `${phrases.frase1} `);
@@ -148,7 +148,7 @@ describe("test dell'helper e delle impostazioni", () => {
             cy.get('div.empty-logo-container').should('exist');
         });
         cy.get('.settings').click({ force: true });
-        cy.get('#helper-description > :nth-child(10) > .list-title').click({ force: true });
+        cy.get('#helper-description > :nth-child(9) > .list-title').click({ force: true });
         cy.get('#text-area').click({ force: true });
         //Cypress non supporta nativamente execCommand('paste') e dato che non è lo scopo del test, lo vado a simulare inserendo un testo standard.
         cy.keyboardEventCheck();
@@ -164,7 +164,7 @@ describe("test dell'helper e delle impostazioni", () => {
         const storeAppLink = 'https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List';
 
         cy.get('.settings').click().then(() => {
-            cy.get('#helper-description > :nth-child(11) > .list-title').click();
+            cy.get('#helper-description > :nth-child(10) > .list-title').click();
             cy.get('#share').click();
         });
         cy.window().then((win) => {
@@ -176,7 +176,7 @@ describe("test dell'helper e delle impostazioni", () => {
 
     it('visualizza qr code', () => {
         cy.get('.settings').click().then(() => {
-            cy.get('#helper-description > :nth-child(11) > .list-title').click();
+            cy.get('#helper-description > :nth-child(10) > .list-title').click();
             cy.get('#qr').click();
             cy.get('.qr-container').should('exist');
         });

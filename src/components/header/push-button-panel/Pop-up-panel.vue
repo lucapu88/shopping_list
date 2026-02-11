@@ -2,6 +2,7 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 </script>
 
 <script>
@@ -11,6 +12,8 @@ export default {
 			theme: useThemeStore(),
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
+			secondTodos: useSecondTodoStore(),
+			loading: false,
 		};
 	},
 	methods: {
@@ -31,15 +34,22 @@ export default {
 			setTimeout(() => (this.languages.copyList.visible = false), 3000); //cambio il testo del pulsante copia
 			// navigator.vibrate(400); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
 		},
+		reloadApp() {
+			this.loading = true;
+			setTimeout(() => {
+				location.reload();
+			}, 800);
+		},
 	},
 };
 </script>
 
 <template>
 	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme }" v-if="!todosStore.devNotes">
+		<div v-if="loading" class="empty-full-screen-panel"></div>
 		<!--PULSANTE COPIA LISTA-->
 		<button
-			class="btn pup-up-btn"
+			class="btn pop-up-btn"
 			:class="{
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
@@ -47,7 +57,7 @@ export default {
 				'winter-header-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
-				'panter-other-btn': theme.panterTheme,
+				'panter-btn': theme.panterTheme,
 				'lemon-other-btn': theme.lemonTheme,
 				'jeans-other-btn': theme.jeansTheme,
 			}"
@@ -60,9 +70,10 @@ export default {
 
 			<span>{{ languages.copyListBtnText }}</span>
 		</button>
+
 		<!-- PULSANTE MOSTRA SOLO GLI ELEMENTI EVIDENZIATI COME IMPORTANTI -->
 		<button
-			class="btn pup-up-btn"
+			class="btn pop-up-btn"
 			:class="{
 				'btn-selected': todosStore.showOnlyImportantTodos,
 				'btn-important-temporary': todosStore.addedImportant,
@@ -79,7 +90,7 @@ export default {
 				'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
 				'pink-theme-btn': theme.pinkTheme,
 				'pink-theme-selected-btn': theme.pinkTheme && todosStore.showOnlyImportantTodos,
-				'panter-other-btn': theme.panterTheme,
+				'panter-btn': theme.panterTheme,
 				'panter-theme-selected-btn': theme.panterTheme && todosStore.showOnlyImportantTodos,
 				'lemon-other-btn': theme.lemonTheme,
 				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.showOnlyImportantTodos,
@@ -94,10 +105,43 @@ export default {
 
 			<span>{{ languages.importantBtnText }}</span>
 		</button>
+
+		<!-- PULSANTE RICARICA APP -->
+		<button
+			class="btn pop-up-btn"
+			:class="{
+				'btn-selected': loading,
+				'minimal-btn': theme.minimalTheme,
+				'retro-teme-btns': theme.retroTheme,
+				'summer-header-btn': theme.summerTheme,
+				'winter-header-btn': theme.winterTheme,
+				'elegant-btn': theme.elegantTheme,
+				'pink-theme-btn': theme.pinkTheme,
+				'panter-btn': theme.panterTheme,
+				'lemon-other-btn': theme.lemonTheme,
+				'jeans-other-btn': theme.jeansTheme,
+			}"
+			@click="reloadApp()"
+		>
+			<img v-if="!theme.elegantTheme && !theme.panterTheme" :class="{ loading: loading }" class="reload" src="@/img/icons/reload-icon.webp" alt="reload" />
+			<img v-if="theme.elegantTheme && !theme.panterTheme" :class="{ loading: loading }" class="reload" src="@/img/icons/reload-icon-elegant.webp" alt="reload" />
+			<img v-if="!theme.elegantTheme && theme.panterTheme" :class="{ loading: loading }" class="reload" src="@/img/icons/reload-icon-panter.webp" alt="reload" />
+			<span> {{ loading ? "LOADING" : languages.reloadAppText }} </span>
+		</button>
 	</div>
 </template>
 
 <style scoped>
+.empty-full-screen-panel {
+	width: 100%;
+	height: 100%;
+	z-index: 450;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #adadad56;
+}
+
 .pushbutton-container {
 	margin-top: 0.938rem !important;
 	margin-bottom: 0.625rem !important;
@@ -112,24 +156,28 @@ export default {
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.7);
 }
 
-.pup-up-btn {
+.pop-up-btn {
 	height: 35px;
 	display: flex;
 	align-items: center;
 	gap: 5px;
 }
 
-.pup-up-btn {
+.pop-up-btn {
 	background-color: rgba(192, 224, 133, 0.883);
 	border: 2px solid rgb(180, 230, 89);
 	border-radius: 8px;
-	padding: 0 10px;
-	font-size: 0.813rem;
+	padding: 0 5px;
+	font-size: 0.75rem;
 }
 
-.pup-up-btn > img {
-	width: 20px;
-	height: 20px;
+.pop-up-btn > span {
+	font-weight: bold;
+}
+
+.pop-up-btn > img {
+	width: 17px;
+	height: 17px;
 }
 
 .btn-important-selected {
@@ -152,6 +200,16 @@ export default {
 	100% {
 		transform: scale(1, 1);
 		background-color: #6da505e1;
+	}
+}
+
+.loading {
+	animation: spin 1s infinite;
+}
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
 }
 </style>

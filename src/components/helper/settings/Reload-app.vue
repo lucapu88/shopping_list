@@ -4,6 +4,7 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 </script>
 
 <script>
+// TODO: componente inutilizzato! Valutare se tenerlo o meno
 export default {
 	data() {
 		return {

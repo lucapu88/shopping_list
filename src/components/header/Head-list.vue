@@ -157,6 +157,10 @@ export default {
 
 		<!-- PULSANTIERA -->
 		<HeaderButtonsContainer />
+
+		<p class="text-center mt-2 p-1 pb-0 mb-0" v-if="addTodo.showOnlyImportantTodos">
+			<span class="important-info-text">{{ languages.importantInfoText }}</span>
+		</p>
 	</div>
 </template>
 
@@ -251,5 +255,9 @@ export default {
 	flex-direction: column;
 	gap: 10px;
 	padding: 0.625rem;
+}
+
+.important-info-text {
+	font-size: 0.813rem;
 }
 </style>

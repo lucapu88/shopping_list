@@ -44,34 +44,34 @@ export default {
 		}"
 	>
 		<!-- Scritta di caricamento di qualsiasi cosa tranne per le liste importate, cancellate o cambio lista -->
-		<img v-if="!listImportedOrDeleted && !listChanged" src="@/img/Loading.webp" loading="lazy" alt="loading" />
+		<img v-if="!listImportedOrDeleted && !listChanged" src="@/img/Loading.webp" alt="loading" />
 
 		<!-- Caricamento classico -->
-		<img v-if="!languageChanged && !backup && !listImportedOrDeleted && !listChanged" src="@/img/favicon.webp" loading="lazy" alt="loading" />
+		<img v-if="!languageChanged && !backup && !listImportedOrDeleted && !listChanged" src="@/img/favicon.webp" alt="loading" />
 
 		<!-- Caricamento in caso di lista cancellata o importata -->
-		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup && !listChanged" src="@/img/LOAD.webp" loading="lazy" alt="loading" />
+		<img style="margin-top: 25%" v-if="listImportedOrDeleted && !languageChanged && !backup && !listChanged" src="@/img/LOAD.webp" alt="loading" />
 
 		<!-- Caricamento al cambio lista -->
-		<img style="margin-top: 30%" v-if="listChanged && !listImportedOrDeleted && !languageChanged && !backup" src="@/img/Loading-list.webp" loading="lazy" alt="loading_list" />
+		<img style="margin-top: 30%" v-if="listChanged && !listImportedOrDeleted && !languageChanged && !backup" src="@/img/Loading-list.webp" alt="loading_list" />
 
 		<!-- Caricamento quando si effettua un backup -->
 		<div v-if="backup && !listImportedOrDeleted && !listChanged" class="backup-container gelatine">
-			<img src="@/img/icons/cloud.webp" loading="lazy" alt="backup_loading" />
+			<img src="@/img/icons/cloud.webp" alt="backup_loading" />
 		</div>
 
 		<!-- Caricamento al cambio lingua -->
 		<div v-if="languageChanged" class="flags-container">
-			<img v-if="languageChanged === 'english'" class="language-spinner" src="@/img/flags/inglese.webp" loading="lazy" alt="english_flag" />
-			<img v-if="languageChanged === 'spanish'" class="language-spinner" src="@/img/flags/spagnolo.webp" loading="lazy" alt="spanish_flag" />
-			<img v-if="languageChanged === 'italian'" class="language-spinner" src="@/img/flags/italiano.webp" loading="lazy" alt="italian_flag" />
-			<img v-if="languageChanged === 'french'" class="language-spinner" src="@/img/flags/francese.webp" loading="lazy" alt="italian_flag" />
+			<img v-if="languageChanged === 'english'" class="language-spinner" src="@/img/flags/inglese.webp" alt="english_flag" />
+			<img v-if="languageChanged === 'spanish'" class="language-spinner" src="@/img/flags/spagnolo.webp" alt="spanish_flag" />
+			<img v-if="languageChanged === 'italian'" class="language-spinner" src="@/img/flags/italiano.webp" alt="italian_flag" />
+			<img v-if="languageChanged === 'french'" class="language-spinner" src="@/img/flags/francese.webp" alt="italian_flag" />
 		</div>
 	</div>
 
 	<!-- CONTAINER LOADING UPDATE APP -->
 	<div v-if="updating" id="updating-container">
-		<img src="@/img/update-img.webp" loading="lazy" alt="loading" />
+		<img src="@/img/update-img.webp" alt="loading" />
 		<h2 class="category-emoji-selected updating-text">..DOWNLOAD..</h2>
 	</div>
 </template>

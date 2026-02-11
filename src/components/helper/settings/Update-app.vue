@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-	<div class="share-update helper-settings">
+	<div class="share-update helper-settings mb-2">
 		<span class="settings-icon me-1"> &#x2699; </span>
 		<span :class="{ 'english-size': languages.langEnglish }"> {{ languages.updateText.description }}: </span>
 		<div class="update-container">

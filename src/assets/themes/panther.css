@@ -64,6 +64,11 @@
 	border: 2px solid var(--panter-light-color) !important;
 }
 
+.panter-btn {
+	background-color: var(--panter-secondary-color) !important;
+	color: var(--panter-light-color) !important;
+	border: 2px solid var(--panter-dark-color) !important;
+}
 .panter-btns-container {
 	border-color: var(--panter-light-color) !important;
 	background-color: var(--panter-secondary-color) !important;
