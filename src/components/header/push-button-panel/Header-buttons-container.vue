@@ -7,6 +7,14 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import ListsButtonsSelection from "../change-list/Lists-buttons-selection.vue";
 import PopUpPanel from "./Pop-up-panel.vue";
+import CustomButton from "../../common/Custom-button.vue";
+
+import showListImg from "@/img/icons/show-lists.webp";
+import showListImgElegant from "@/img/icons/show-lists-elegant.webp";
+import showListImgPanter from "@/img/icons/show-lists-panter.webp";
+import dragDropImg from "@/img/icons/drag-and-drop.webp";
+import dragDropImgElegant from "@/img/icons/drag-and-drop-elegant.webp";
+import dragDropImgPanter from "@/img/icons/drag-and-drop-panter.webp";
 </script>
 
 <script>
@@ -19,12 +27,19 @@ export default {
 			settings: useSettingsStore(),
 			secondTodos: useSecondTodoStore(),
 			isPopUpPanelVisible: false,
+			showListsSrc: showListImg,
+			dragDropSrc: dragDropImg,
 		};
+	},
+	created() {
+		this.showListsSrc = this.theme.elegantTheme ? showListImgElegant : this.theme.panterTheme ? showListImgPanter : showListImg;
+		this.dragDropSrc = this.theme.elegantTheme ? dragDropImgElegant : this.theme.panterTheme ? dragDropImgPanter : dragDropImg;
 	},
 	methods: {
 		togglePopUpPanel() {
 			this.isPopUpPanelVisible = !this.isPopUpPanelVisible;
 			this.todosStore.showOnlyImportantTodos = false;
+			this.todosStore.categoryList = false;
 			this.todosStore.setOrResetImportantTodos();
 		},
 	},
@@ -32,144 +47,32 @@ export default {
 </script>
 
 <template>
-	<!-- TOFIX: Creare un componente unico per questi button uguali -->
 	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme }" v-if="!todosStore.devNotes">
 		<!-- TOGGLE CAMBIO LISTE -->
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': secondTodos.showChangeList,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && secondTodos.showChangeList,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && secondTodos.showChangeList,
-				'summer-header-btn': theme.summerTheme,
-				'summer-header-btn-selected': theme.summerTheme && secondTodos.showChangeList,
-				'winter-header-btn': theme.winterTheme,
-				'winter-header-selected-btn': theme.winterTheme && secondTodos.showChangeList,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && secondTodos.showChangeList,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && secondTodos.showChangeList,
-				'panter-other-btn': theme.panterTheme,
-				'panter-theme-selected-btn': theme.panterTheme && secondTodos.showChangeList,
-				'lemon-other-btn': theme.lemonTheme,
-				'lemon-theme-selected-btn': theme.lemonTheme && secondTodos.showChangeList,
-				'jeans-other-btn': theme.jeansTheme,
-				'jeans-theme-selected-btn': theme.jeansTheme && secondTodos.showChangeList,
-			}"
+		<CustomButton
+			:selected="secondTodos.showChangeList"
 			@click="
 				secondTodos.toggleChangeList();
 				isPopUpPanelVisible = false;
 			"
 		>
-			<img
-				v-if="!theme.elegantTheme && !theme.panterTheme"
-				class="show-lists-img"
-				src="@/img/icons/show-lists.webp"
-				alt="show_lists"
-				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="theme.elegantTheme && !theme.panterTheme"
-				class="show-lists-img"
-				src="@/img/icons/show-lists-elegant.webp"
-				alt="show_lists"
-				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="!theme.elegantTheme && theme.panterTheme"
-				class="show-lists-img"
-				src="@/img/icons/show-lists-panter.webp"
-				alt="show_lists"
-				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-		</button>
+			<img class="show-lists-img" :src="showListsSrc" alt="show_lists" fetchpriority="high" loading="eager" />
+		</CustomButton>
+
 		<!-- DRAG N DROP -->
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': todosStore.isDraggable,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && todosStore.isDraggable,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && todosStore.isDraggable,
-				'summer-header-btn': theme.summerTheme,
-				'summer-header-btn-selected': theme.summerTheme && todosStore.isDraggable,
-				'winter-header-btn': theme.winterTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.isDraggable,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && todosStore.isDraggable,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && todosStore.isDraggable,
-				'panter-other-btn': theme.panterTheme,
-				'panter-theme-selected-btn': theme.panterTheme && todosStore.isDraggable,
-				'lemon-other-btn': theme.lemonTheme,
-				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.isDraggable,
-				'jeans-other-btn': theme.jeansTheme,
-				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.isDraggable,
-			}"
+		<CustomButton
+			:selected="todosStore.isDraggable"
 			:disabled="todosStore.showOnlyImportantTodos || !todosStore.todos.length || secondTodos.showChangeList"
 			@click="
 				todosStore.toggleDragDrop();
 				isPopUpPanelVisible = false;
 			"
 		>
-			<img
-				v-if="!theme.elegantTheme && !theme.panterTheme"
-				class="drag-n-drop-img"
-				src="@/img/icons/drag-and-drop.webp"
-				alt="move"
-				:fetchpriority="!theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="theme.elegantTheme && !theme.panterTheme"
-				class="drag-n-drop-img"
-				src="@/img/icons/drag-and-drop-elegant.webp"
-				alt="move"
-				:fetchpriority="theme.elegantTheme && !theme.panterTheme ? 'high' : 'auto'"
-				:loading="theme.elegantTheme && !theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-			<img
-				v-if="!theme.elegantTheme && theme.panterTheme"
-				class="drag-n-drop-img"
-				src="@/img/icons/drag-and-drop-panter.webp"
-				alt="move"
-				:fetchpriority="!theme.elegantTheme && theme.panterTheme ? 'high' : 'auto'"
-				:loading="!theme.elegantTheme && theme.panterTheme ? 'eager' : 'lazy'"
-			/>
-		</button>
-		<!-- PULSANTE MOSTRA PULSANTIERA SECONDARIA -->
-		<button
-			class="btn custom-show-listbtn show-pop-up-panel-btn"
-			:class="{
-				'btn-selected': isPopUpPanelVisible,
-				'minimal-btn': theme.minimalTheme,
-				'retro-teme-btns': theme.retroTheme,
-				'summer-header-btn': theme.summerTheme,
-				'winter-header-btn': theme.winterTheme,
-				'elegant-btn': theme.elegantTheme,
-				'pink-theme-btn': theme.pinkTheme,
-				'panter-btn': theme.panterTheme,
-				'lemon-other-btn': theme.lemonTheme,
-				'jeans-other-btn': theme.jeansTheme,
-				'minimal-selected-btn': theme.minimalTheme && isPopUpPanelVisible,
-				'retro-selected-btn': theme.retroTheme && isPopUpPanelVisible,
-				'summer-header-btn-selected': theme.summerTheme && isPopUpPanelVisible,
-				'winter-header-selected-btn': theme.winterTheme && isPopUpPanelVisible,
-				'elegant-selected-btn': theme.elegantTheme && isPopUpPanelVisible,
-				'pink-theme-selected-btn': theme.pinkTheme && isPopUpPanelVisible,
-				'panter-theme-selected-btn': theme.panterTheme && isPopUpPanelVisible,
-				'lemon-theme-selected-btn': theme.lemonTheme && isPopUpPanelVisible,
-				'jeans-theme-selected-btn': theme.jeansTheme && isPopUpPanelVisible,
-			}"
-			:disabled="!todosStore.todos.length"
-			@click="togglePopUpPanel()"
-		>
+			<img class="drag-n-drop-img" :src="dragDropSrc" alt="drag_drop" fetchpriority="high" loading="eager" />
+		</CustomButton>
+
+		<!-- MOSTRA PULSANTIERA SECONDARIA -->
+		<CustomButton :selected="isPopUpPanelVisible" :disabled="!todosStore.todos.length" extra-classes="show-pop-up-panel-btn" @click="togglePopUpPanel()">
 			<span
 				class="arrow"
 				:class="{
@@ -179,40 +82,21 @@ export default {
 			>
 				^
 			</span>
-		</button>
+		</CustomButton>
+
 		<!--PULSANTE MOSTRA CATEGORIE -->
-		<button
-			class="btn custom-show-listbtn"
-			:class="{
-				'btn-selected': todosStore.categoryList,
-				'minimal-btn': theme.minimalTheme,
-				'minimal-selected-btn': theme.minimalTheme && todosStore.categoryList,
-				'retro-teme-btns': theme.retroTheme,
-				'retro-selected-btn': theme.retroTheme && todosStore.categoryList,
-				'summer-header-btn': theme.summerTheme,
-				'summer-header-btn-selected': theme.summerTheme && todosStore.categoryList,
-				'winter-header-btn': theme.winterTheme,
-				'winter-header-selected-btn': theme.winterTheme && todosStore.categoryList,
-				'elegant-btn': theme.elegantTheme,
-				'elegant-selected-btn': theme.elegantTheme && todosStore.categoryList,
-				'pink-theme-btn': theme.pinkTheme,
-				'pink-theme-selected-btn': theme.pinkTheme && todosStore.categoryList,
-				'panter-category-btn': theme.panterTheme,
-				'panter-theme-selected-btn': theme.panterTheme && todosStore.categoryList,
-				'lemon-other-btn': theme.lemonTheme,
-				'lemon-theme-selected-btn': theme.lemonTheme && todosStore.categoryList,
-				'jeans-other-btn': theme.jeansTheme,
-				'jeans-theme-selected-btn': theme.jeansTheme && todosStore.categoryList,
-			}"
+		<CustomButton
+			:selected="todosStore.categoryList"
 			:disabled="todosStore.showOnlyImportantTodos || secondTodos.moving"
 			@click="
 				todosStore.showCategoryList();
 				isPopUpPanelVisible = false;
 			"
 		>
-			<strong class="toggle-category-icon" v-if="!todosStore.categoryList">+</strong>
-			<strong class="toggle-category-icon" v-else>-</strong>
-		</button>
+			<strong class="toggle-category-icon">
+				{{ todosStore.categoryList ? "-" : "+" }}
+			</strong>
+		</CustomButton>
 
 		<!-- PULSANTE CHE MOSTRA LA SCHERMATA DELLE CARTE FEDELTÀ -->
 		<button class="btn loyalty-cards-btn p-0" @click="secondTodos.showLoyaltyCards()">
@@ -266,22 +150,10 @@ p {
 	justify-content: center;
 }
 
-.custom-show-listbtn,
 .loyalty-cards-btn {
 	min-width: 30px;
 	height: 40px;
 	max-width: 65px;
-}
-
-.custom-show-listbtn {
-	background-color: rgba(192, 224, 133, 0.883);
-	border: 2px solid rgb(180, 230, 89);
-	border-radius: 10%;
-	padding: 2px;
-}
-
-.custom-show-listbtn > img {
-	width: 25px;
 }
 
 .drag-n-drop-img {

@@ -6,6 +6,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
+import CustomButton from "../../common/Custom-button.vue";
 </script>
 
 <script>
@@ -27,24 +28,11 @@ export default {
 	<ul class="helper-list" v-if="settings.changeList && settings.section === changeList">
 		<li>
 			{{ languages.helperDescription.changeList.part1 }}:
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'minimal-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'summer-header-btn': theme.summerTheme,
-					'winter-header-btn': theme.winterTheme,
-					'elegant-btn': theme.elegantTheme,
-					'pink-theme-btn': theme.pinkTheme,
-					'panter-other-btn': theme.panterTheme,
-					'lemon-other-btn': theme.lemonTheme,
-					'jeans-other-btn': theme.jeansTheme,
-				}"
-			>
+			<CustomButton>
 				<img v-if="!theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists.webp" alt="show_lists" />
 				<img v-if="theme.elegantTheme && !theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-elegant.webp" alt="show_lists" />
 				<img v-if="!theme.elegantTheme && theme.panterTheme" class="show-lists-img" src="@/img/icons/show-lists-panter.webp" alt="show_lists" />
-			</button>
+			</CustomButton>
 			<br />
 			{{ languages.helperDescription.changeList.part2 }}:
 			<img class="img-list" src="@/img/lists-container.webp" alt="lists_container" />

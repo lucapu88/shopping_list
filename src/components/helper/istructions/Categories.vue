@@ -39,7 +39,7 @@ export default {
 					'elegant-helper-btn': theme.elegantTheme,
 					'pink-theme-btn': theme.pinkTheme,
 					'summer-header-btn': theme.summerTheme,
-					'winter-header-btn': theme.winterTheme,
+					'winter-btn': theme.winterTheme,
 					'panter-category-btn': theme.panterTheme,
 					'lemon-other-btn': theme.lemonTheme,
 				}"

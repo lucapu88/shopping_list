@@ -39,6 +39,12 @@
 	color: var(--lemon-tertiary-color) !important;
 }
 
+.lemon-btn {
+	background-color: var(--lemon-secondary-color) !important;
+	border: 2px solid var(--lemon-tertiary-color) !important;
+	color: #000000 !important;
+}
+
 .lemon-theme-selected-btn {
 	background-color: var(--lemon-dark-color) !important;
 	border-color: var(--lemon-text-color) !important;

@@ -6,6 +6,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
+import CustomButton from "../../common/Custom-button.vue";
 </script>
 
 <script>
@@ -27,23 +28,11 @@ export default {
 	<ul class="helper-list" v-if="settings.dragNdrop && settings.section === dragNdrop">
 		<li>
 			{{ languages.helperDescription.dragNdropText.part1 }}
-			<button
-				class="btn custom-show-listbtn"
-				:class="{
-					'minimal-helper-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'elegant-helper-btn': theme.elegantTheme,
-					'pink-theme-btn': theme.pinkTheme,
-					'summer-header-btn': theme.summerTheme,
-					'winter-header-btn': theme.winterTheme,
-					'panter-other-btn': theme.panterTheme,
-					'lemon-other-btn': theme.lemonTheme,
-				}"
-			>
+			<CustomButton>
 				<img v-if="!theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop.webp" alt="move" />
 				<img v-if="theme.elegantTheme && !theme.panterTheme" src="@/img/icons/drag-and-drop-elegant.webp" alt="move" />
 				<img v-if="!theme.elegantTheme && theme.panterTheme" src="@/img/icons/drag-and-drop-panter.webp" alt="move" />
-			</button>
+			</CustomButton>
 			{{ languages.helperDescription.dragNdropText.part2 }} <br />
 		</li>
 

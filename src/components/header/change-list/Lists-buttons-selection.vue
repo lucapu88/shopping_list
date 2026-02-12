@@ -75,7 +75,7 @@ export default {
 						'minimal-btn': theme.minimalTheme,
 						'retro-teme-btns': theme.retroTheme,
 						'summer-header-btn': theme.summerTheme,
-						'winter-header-btn': theme.winterTheme,
+						'winter-btn': theme.winterTheme,
 						'elegant-btn': theme.elegantTheme,
 						'pink-theme-btn': theme.pinkTheme,
 						'panter-other-btn': theme.panterTheme,

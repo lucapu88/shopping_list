@@ -54,7 +54,7 @@ export default {
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
 				'summer-header-btn': theme.summerTheme,
-				'winter-header-btn': theme.winterTheme,
+				'winter-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
 				'panter-btn': theme.panterTheme,
@@ -85,7 +85,7 @@ export default {
 				'summer-header-btn-selected': theme.summerTheme && todosStore.showOnlyImportantTodos,
 				'summer-header-btn': theme.summerTheme,
 				'winter-header-selected-btn': theme.winterTheme && todosStore.showOnlyImportantTodos,
-				'winter-header-btn': theme.winterTheme,
+				'winter-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'elegant-selected-btn': theme.elegantTheme && todosStore.showOnlyImportantTodos,
 				'pink-theme-btn': theme.pinkTheme,
@@ -114,7 +114,7 @@ export default {
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
 				'summer-header-btn': theme.summerTheme,
-				'winter-header-btn': theme.winterTheme,
+				'winter-btn': theme.winterTheme,
 				'elegant-btn': theme.elegantTheme,
 				'pink-theme-btn': theme.pinkTheme,
 				'panter-btn': theme.panterTheme,
@@ -172,7 +172,7 @@ export default {
 }
 
 .pop-up-btn > span {
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 .pop-up-btn > img {

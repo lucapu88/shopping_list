@@ -49,7 +49,7 @@
 	color: var(--white) !important;
 }
 .minimal-btn {
-	background-color: transparent !important;
+	background-color: var(--minimal-primary-color) !important;
 	border-color: var(--minimal-secondary-color) !important;
 	color: var(--minimal-secondary-color) !important;
 	border-radius: 5px !important;

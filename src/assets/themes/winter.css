@@ -22,11 +22,7 @@
 .winter-todo {
 	color: var(--black);
 }
-.winter-btn {
-	background-color: #c0e085e1;
-	border: 2px solid var(--winter-tertiary-color);
-	border-radius: var(--default-radius);
-}
+
 .category-winter-container {
 	background-color: var(--winter-selected-color);
 }
@@ -34,7 +30,7 @@
 	background-color: var(--winter-category-color);
 	box-shadow: inset 0px 0px 40px 0px var(--white);
 }
-.winter-header-btn {
+.winter-btn {
 	background-color: var(--winter-category-color) !important;
 	box-shadow: inset 0px 0px 40px 0px var(--white) !important;
 	border: none !important;
