@@ -243,7 +243,7 @@ export const useSettingsStore = defineStore('settings', {
       window.localStorage.setItem("newMarkAndCopyMode2", "true");
     },
     removeUnusedLocalStorageItems() {
-      // Qui pian piano andranno tutte le vecchie chiavi da rimuovere... TODO: pensa cosa fare quando diventaranno troppe!
+      // Qui pian piano andranno tutte le vecchie chiavi da rimuovere.
       window.localStorage.removeItem("newMarkAndSelectMode");
       window.localStorage.removeItem("newMarkMode");
       window.localStorage.removeItem("newMarkMode2");

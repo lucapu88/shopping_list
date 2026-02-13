@@ -1,12 +1,50 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { usePreloadStore } from "@/store/PreloadStore";
+import { ref } from "vue";
+import gooniesMap from "@/img/loyalty-cards/goonies-map.webp";
+import ondeMare from "@/img/loyalty-cards/onde-mare.webp";
+import snowman from "@/img/loyalty-cards/snowman.webp";
+import limoncello from "@/img/loyalty-cards/limoncello.webp";
+import strawberries from "@/img/loyalty-cards/strawberries.webp";
+import pantherEyes from "@/img/loyalty-cards/panther-eyes.webp";
+import santaClaus from "@/img/festivities/santa-claus.webp";
 
+const preload = usePreloadStore();
 const theme = useThemeStore();
 const isChristmas = useChristmasStore();
+const srcImg = ref(null);
+const themeMap = {
+	lightTheme: gooniesMap,
+	summerTheme: ondeMare,
+	winterTheme: snowman,
+	lemonTheme: limoncello,
+	pinkTheme: strawberries,
+	panterTheme: pantherEyes,
+};
+
+setImgSrc();
+if (srcImg.value) {
+	preload.preloadImage(srcImg.value);
+}
+
 const props = defineProps({
 	addHeight: Boolean,
 });
+
+function setImgSrc() {
+	if (isChristmas.christmasTheme) {
+		srcImg.value = santaClaus;
+		return;
+	}
+
+	const activeThemeKey = Object.keys(themeMap).find((key) => theme[key]);
+
+	if (themeMap[activeThemeKey]) {
+		srcImg.value = themeMap[activeThemeKey];
+	}
+}
 </script>
 
 <template>

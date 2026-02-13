@@ -12,6 +12,10 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 
 - In fine aggiorna il test nel file Helper.cy.js. Purtroppo in cypress si rompono i test se inserisci il formato esadecimale del colore, quindi per farlo funzionare devi inserire il formato rgb.
 
-- Per le immagini di background settate nel css, assicurati che vengano caricate correttamente nel PreloadStore.js
+- Per le immagini di sfondo del tema (se ci sono), assicurati che vengano caricate in preloadThemeImg().
 
-- Assicurati che cambi anche lo stile all'interno delle varie sezioni dell'helper
+- Per le immagini di background delle modali settate nel css, assicurati che vengano caricate correttamente nel PreloadStore.js in loadConfirmBackgoundImg().
+
+- Se usi un font di google-font arricurati che venga precaricato nel PreloadStore.js in loadFontOnce().
+
+- Assicurati che cambi anche lo stile all'interno delle varie sezioni dell'helper.

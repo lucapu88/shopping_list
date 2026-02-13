@@ -1,5 +1,12 @@
 import { defineStore } from 'pinia';
 import { usePreloadStore } from './PreloadStore';
+import marePreload from "@/img/mare.webp";
+import mareTabletPreload from "@/img/mare-tablet.webp";
+import montagnePreload from "@/img/montagne.webp";
+import montagneTabletPreload from "@/img/montagne-tablet.webp";
+import jeansIle from "@/img/jeans-ile.webp";
+import jeansTasca from "@/img/jeans-tasca-culo.webp";
+import lemon from "@/img/lemon-send.webp";
 
 const defaultFontUrl = "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap";
 
@@ -79,6 +86,26 @@ export const useThemeStore = defineStore('theme', {
             if (!config) return;
             this.themeName = config.name;
             document.body.className = config.className;
+            this.preloadThemeImg(this.themeName);
+        },
+        preloadThemeImg(theme) {
+            switch (theme) {
+                case 'summer':
+                    this.preloadStore.preloadImage(marePreload);
+                    this.preloadStore.preloadImage(mareTabletPreload);
+                    break;
+                case 'winter':
+                    this.preloadStore.preloadImage(montagnePreload);
+                    this.preloadStore.preloadImage(montagneTabletPreload);
+                    break;
+                case 'jeans':
+                    this.preloadStore.preloadImage(jeansIle);
+                    this.preloadStore.preloadImage(jeansTasca);
+                    break;
+                case 'lemon':
+                    this.preloadStore.preloadImage(lemon);
+                    break;
+            }
         },
         setLightTheme() {
             // Metodi di convenienza per impostare temi specifici (opzionali, per uso futuro).
