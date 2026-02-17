@@ -258,6 +258,9 @@ export const useLanguageStore = defineStore('Language', {
     importantInfoText: "In this section you will find, in view mode, only the items you have marked as important",
     selectCategoryText: "Choose the category you want to list the product in",
     copyListBtnText: 'Copy list',
+    importListExampleText: 'Example of how it should be written',
+    show: 'show',
+    close: 'close',
   }),
   getters: {},
   actions: {
@@ -451,6 +454,9 @@ export const useLanguageStore = defineStore('Language', {
       this.importantBtnText = "Importanti";
       this.importantInfoText = "In questa sezione troverai, in modalità visualizzazione, solo gli elementi che hai segnato come importante";
       this.selectCategoryText = "Scegli in che categoria vuoi inserire il prodotto";
+      this.importListExampleText = "Esempio di come va scritta";
+      this.show = "mostra";
+      this.close = "chiudi";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -553,6 +559,9 @@ export const useLanguageStore = defineStore('Language', {
       this.importantBtnText = "Importante";
       this.importantInfoText = "En esta sección encontrarás, en modo visualización, solo los elementos que has marcado como importantes";
       this.selectCategoryText = "Elija la categoría en la que desea incluir el producto";
+      this.importListExampleText = "Ejemplo de cómo debe escribirse";
+      this.show = "mostrar";
+      this.close = "cerrar";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -655,6 +664,9 @@ export const useLanguageStore = defineStore('Language', {
       this.importantBtnText = "Important";
       this.importantInfoText = "Dans cette section, en mode d'affichage, vous trouverez uniquement les éléments que vous avez marqués comme importants.";
       this.selectCategoryText = "Choisissez la catégorie dans laquelle vous souhaitez lister le produit";
+      this.importListExampleText = "Exemple de la manière dont cela devrait être écrit";
+      this.show = "show";
+      this.close = "fermer";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

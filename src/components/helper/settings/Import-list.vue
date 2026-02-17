@@ -22,6 +22,7 @@ export default {
 			listPasted: null,
 			exportList: "exportList",
 			pasteList: "pasteList",
+			isExampleImgVisible: false,
 		};
 	},
 	methods: {
@@ -78,6 +79,12 @@ export default {
 				<li class="ms-3">
 					<small>{{ languages.pasteListText.subtitle }}. </small>
 					<small>{{ languages.infoCategoriesAlert }}</small>
+					<div class="show-example">
+						<p>{{ languages.importListExampleText }}:</p>
+						<button class="show-btn" @click="isExampleImgVisible = true">
+							{{ languages.show }}
+						</button>
+					</div>
 					<ToggleTutorialButton :features="exportList" />
 				</li>
 
@@ -106,6 +113,18 @@ export default {
 				<Tutorial v-if="settings.video && settings.feature === exportList" :features="exportList" />
 			</div>
 		</template>
+
+		<div class="modal" v-if="isExampleImgVisible">
+			<div class="modal-cont">
+				<button class="text-danger" @click="isExampleImgVisible = false">
+					{{ languages.close }}
+				</button>
+				<img v-if="languages.langEnglish" src="@/img/languages/es-ing.webp" alt="" />
+				<img v-if="languages.langIta" src="@/img/languages/es-ita.webp" alt="" />
+				<img v-if="languages.langSpanish" src="@/img/languages/es-spa.webp" alt="" />
+				<img v-if="languages.langFrench" src="@/img/languages/es-fra.webp" alt="" />
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -153,5 +172,26 @@ textarea {
 	display: inline-block;
 	-webkit-transform: rotate(-180deg);
 	transform: rotate(-180deg);
+}
+.show-example {
+	display: grid;
+	grid-template-columns: 75% 25%;
+	gap: 5px;
+	align-items: center;
+	border: 1px solid;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.show-btn {
+	height: 30px;
+}
+
+.modal-cont {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	width: 95%;
+	margin: 0 auto;
 }
 </style>

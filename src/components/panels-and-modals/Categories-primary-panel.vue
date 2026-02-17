@@ -107,7 +107,7 @@ export default {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	overflow: auto;
-	max-height: 200px;
+	max-height: 250px;
 }
 
 .category {
@@ -122,7 +122,7 @@ export default {
 	border: 1px solid;
 	border-radius: 5px;
 	margin: 0.3125rem;
-	font-size: 0.813rem;
+	font-size: 0.875rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -144,12 +144,6 @@ export default {
 @media (min-width: 350px) {
 	.category-list-container.waterfall-descent {
 		margin: 0 5px 35px;
-	}
-}
-
-@media (max-width: 364px) {
-	.category-list {
-		font-size: 0.75rem;
 	}
 }
 </style>
