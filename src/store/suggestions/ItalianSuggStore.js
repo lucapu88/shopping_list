@@ -43,11 +43,11 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         arredamento: ["Divano", "Tavolo", "Tavolino", "Tappeto", "Sedia", "Lampada da terra", "Lampada da tavolo", "Scaffale", "Comodino", "Letto", "Scrivania", "Scaffali a muro", "Specchio", "Appendiabiti", "Mobile TV", "Armadio", "Pouf", "Vaso", "Cornice per foto", "Portaombrelli", "Cuscini decorativi", "Orologio da parete", "Quadro", "Zerbino"],
 
-        oggettiDomestici: ["Posate", "Forchette", "Coltelli", "Cucchiai", "Piatti", "Bicchieri", "Tazze", "Pentole", "Padelle", "Teglie da forno", "Mestoli", "Apriscatole", "Tagliere", "Contenitori per alimenti", "Scopa", "Specchio", "Asciugamano"],
+        casalinghi: ["Posate", "Forchette", "Coltelli", "Cucchiai", "Piatti", "Bicchieri", "Tazze", "Pentole", "Padelle", "Teglie da forno", "Mestoli", "Apriscatole", "Tagliere", "Contenitori per alimenti", "Scopa", "Specchio", "Asciugamano"],
 
         giardinaggio: ["Guanti da giardinaggio", "Zappetta", "Forbici da potatura", "Annaffiatoi", "Tubi da giardino", "Rastrello", "Paletti per le piante", "Vaso", "Sottovaso", "Concime", "Sementi", "Terreno per piante", "Secchio", "Spruzzatore", "Picconi da giardino"],
 
-        acquistiOnline: ["Online puoi comprare di tutto, quindi ci verrebbe difficile dare suggerimenti poichè qualsiasi cosa che c'è nelle altre categorie è comprabile online."],
+        web: ["Online puoi comprare di tutto, quindi ci verrebbe difficile dare suggerimenti poichè qualsiasi cosa che c'è nelle altre categorie è comprabile online."],
 
         sport: ["Scarpe da running", "Tapis roulant", "Pallone da calcio", "Pallone da basket", "Pallone da palla a volo", "Pallone da rugby", "Palle da tennis", "Palle da golf", "Palle da ping pong", "Racchetta da tennis", "Racchetta da ping pong", "Mazze da golf", "Guantoni da boxe", "Sacco da boxe", "Bicicletta da corsa", "Tuta da ginnastica", "Pesi manubri", "Casco da ciclismo", "Occhialini da nuoto", "Step per aerobica", "Corda per saltare", "Parastinchi per calcio", "Mazza da baseball"],
 

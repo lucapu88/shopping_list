@@ -12,13 +12,13 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         sweets: ["Sugar", "Icing sugar", "Baking powder", "Chocolate", "Vanilla", "Fresh fruit", "Whipped cream", "Gelatin", "Cocoa powder", "Cornstarch", "Corn syrup", "Yogurt", "Jam", "Glaze", "Tiramisu", "Millefeuille", "Cheesecake", "Nutella", "Honey"],
 
-        dairyProducts: ["Mozzarella", "Milk", "Butter", "Cheddar cheese", "Yogurt", "Cream", "Ricotta cheese", "Parmesan cheese", "Parmesan cheese", "Gorgonzola cheese", "Cream cheese", "Swiss cheese", "Goat cheese", "Brie cheese", "Taleggio cheese", "Pecorino cheese"],
+        dairy: ["Mozzarella", "Milk", "Butter", "Cheddar cheese", "Yogurt", "Cream", "Ricotta cheese", "Parmesan cheese", "Parmesan cheese", "Gorgonzola cheese", "Cream cheese", "Swiss cheese", "Goat cheese", "Brie cheese", "Taleggio cheese", "Pecorino cheese"],
 
         starchy: ["Wheat flour", "Corn flour", "Rye flour", "Pasta", "Spaghetti", "Penne", "Fusilli", "Rigatoni", "Linguine", "Farfalle", "Bucatini", "Rice", "Bread", "Whole wheat bread", "Multigrain bread", "Rolls", "Biscuits", "Crackers", "Corn tortillas", "Cereals", "Oat flour", "Gnocchi", "Risotto", "Polenta", "Couscous"],
 
         drinks: ["Still water", "Sparkling water", "Fruit juice", "Coca cola", "Pepsi", "Orangeade", "Iced tea", "Bottled coffee", "Fruit juice", "Beer", "Red wine", "White wine", "Rosé wine", "Sparkling wine", "Prosecco", "Bitter", "Limoncello", "Vodka", "Gin", "Rum", "Whisky", "Tequila", "Aperol", "Spritz", "Campari"],
 
-        frozenFoods: ["Pizza", "Minestrone soup", "French fries", "Oven chips", "Nuggets", "Chicken croquettes", "Potato croquettes", "Mini calzones", "Ascolana olives", "Mozzarella croquettes", "Frozen fish", "Fillet", "Ice cream", "Ice pops", "Sorbet", "Croissant", "Fish sticks", "Sfogliatelle", "Burritos", "Frozen cake", "Legume soup"],
+        frozen: ["Pizza", "Minestrone soup", "French fries", "Oven chips", "Nuggets", "Chicken croquettes", "Potato croquettes", "Mini calzones", "Ascolana olives", "Mozzarella croquettes", "Frozen fish", "Fillet", "Ice cream", "Ice pops", "Sorbet", "Croissant", "Fish sticks", "Sfogliatelle", "Burritos", "Frozen cake", "Legume soup"],
 
         spices: ["Black pepper", "Chili powder", "Garlic powder", "Parsley flakes", "Cumin", "Turmeric", "Paprika", "Oregano", "Cinnamon", "Nutmeg", "Ground ginger", "Cloves"],
 
@@ -34,7 +34,7 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         pets: ["Dry food for cats/dogs", "Kibbles", "Wet food cans for cats/dogs", "Cat litter", "Snacks for cats/dogs", "Dog leash", "Muzzle", "Collar for dogs/cats", "Rubber toys", "Pet carriers", "Food and water bowls", "Combs and brushes for grooming", "Parasite control products", "Flea collar", "Tick repellent", "Pet bed", "Shampoo", "Conditioner", "Cat litter sanitizers", "Chew toys", "Hamster litter boxes", "Feeders", "Waterers", "Bird food", "Cages", "Fish snacks", "Turtle food", "Sunflower seeds"],
 
-        workTools: ["Flathead screwdriver", "Phillips screwdriver", "Hammer", "Adjustable wrench", "Pliers", "Scissors", "Saw", "Spirit level", "Chisel", "Utility knife", "Shears", "Measuring tape", "Meter", "Adhesive tape", "Insulating tape", "Cable ties", "Nails", "Screws", "Bolts", "Trowel", "Paintbrush", "Spatula", "Hex key"],
+        tools: ["Flathead screwdriver", "Phillips screwdriver", "Hammer", "Adjustable wrench", "Pliers", "Scissors", "Saw", "Spirit level", "Chisel", "Utility knife", "Shears", "Measuring tape", "Meter", "Adhesive tape", "Insulating tape", "Cable ties", "Nails", "Screws", "Bolts", "Trowel", "Paintbrush", "Spatula", "Hex key"],
 
         clothes: ["T-shirt", "Shirt", "Tank top", "Polo shirt", "Underwear", "Shirt", "Sweater", "Sweatshirt", "Jacket", "Coat", "Trousers", "Jeans", "Shorts", "Skirts", "Dress", "Work suit", "Pajamas", "Underwear", "Socks", "Thermal shirt", "Hat", "Gloves", "Shoes", "Sneakers", "Lingerie", "Garter belt", "Fishnet stockings", "Bra", "Thong"],
 
@@ -42,11 +42,11 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         furniture: ["Sofa", "Table", "Coffee table", "Carpet", "Chair", "Floor lamp", "Table lamp", "Shelf", "Bedside table", "Bed", "Desk", "Wall shelves", "Mirror", "Coat rack", "TV stand", "Wardrobe", "Ottoman", "Vase", "Picture frame", "Umbrella stand", "Decorative cushions", "Wall clock", "Painting", "Doormat"],
 
-        householdObjects: ["Cutlery", "Forks", "Knives", "Spoons", "Plates", "Glasses", "Cups", "Pots", "Pans", "Baking trays", "Kitchen utensils", "Can opener", "Cutting board", "Food containers", "Broom", "Mirror", "Towel"],
+        household: ["Cutlery", "Forks", "Knives", "Spoons", "Plates", "Glasses", "Cups", "Pots", "Pans", "Baking trays", "Kitchen utensils", "Can opener", "Cutting board", "Food containers", "Broom", "Mirror", "Towel"],
 
         gardening: ["Gardening gloves", "Trowel", "Pruning shears", "Watering cans", "Garden hoses", "Rake", "Plant stakes", "Pot", "Saucer", "Fertilizer", "Seeds", "Plant soil", "Bucket", "Sprayer", "Garden pickaxes"],
 
-        onlineShopping: ["Online you can buy anything, so we would find it difficult to make suggestions as anything in the other categories can be bought online."],
+        online: ["Online you can buy anything, so we would find it difficult to make suggestions as anything in the other categories can be bought online."],
 
         sports: ["Running shoes", "Treadmill", "Soccer ball", "Basketball", "Volleyball", "Rugby ball", "Tennis balls", "Golf balls", "Ping pong balls", "Tennis racket", "Ping pong racket", "Golf clubs", "Boxing gloves", "Punching bag", "Road bike", "Tracksuit", "Dumbbells", "Cycling helmet", "Swimming goggles", "Aerobic step", "Jump rope", "Soccer shin guards", "Baseball bat"],
 

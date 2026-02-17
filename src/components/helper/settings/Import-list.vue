@@ -53,6 +53,7 @@ export default {
 			// .map((todo) => todo.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '').trim());
 			listPastedToArray.forEach((td) => {
 				this.addNewTodo.newTodo = td;
+				this.addNewTodo.createCategory();
 				this.addNewTodo.addTodo();
 			});
 			this.addNewTodo.duplicateFound = false; //Così non mostra la modale dei duplicati nel caso ci sono. Tanto dopo fa il reload

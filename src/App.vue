@@ -119,7 +119,11 @@ export default {
 		}"
 	>
 		<div id="app">
-			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
+			<!-- PERCHÉ C'É QUESTO OVERFLOW PORCA MISERIA??? stai calmo che te lo spiego:
+			  Il contenitore delle categorie che appare quando stai scrivendo (Categories-primary-panel) ha uno scroll verticale, e su mobile se si scrolla per vedere altre categorie, c'è il rischio che si scrolla anche tutto il contenitore.
+			  E io non voglio che accada, perchè si sfancula tutto e l'utente deve esser concentrato sull'inserimento. Perciò quando si sta inserendo un elemento, blocco lo scroll di tutto per permettere lo scroll solo al contenitore delle categorie.
+			  Tanto comunque sia se su mobile stai scrivendo, ti appare la tastiera, quindi non ha senso che scrolli tutto. Se poi non stai scrivendo, la tastiera scompare, il focus va via, il contenitore delle categorie scompare, e tutto torna com'era. -->
+			<div id="container-list" class="row" :style="`overflow: ${todosStore.showCategoriesPrimaryPanel ? 'hidden' : 'auto'}`" @scroll="setVisibilityOnScroll">
 				<div class="max-width mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
 					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
@@ -134,7 +138,7 @@ export default {
 						<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
 						<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
 						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
-						<UpdatesAlertsModal v-if="!newUpdatesRead" @understand="understandFunction($event)" />
+						<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
 					</header>
 					<main>
 						<MainList />

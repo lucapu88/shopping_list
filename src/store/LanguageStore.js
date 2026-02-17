@@ -256,6 +256,7 @@ export const useLanguageStore = defineStore('Language', {
     understandText: "I understand",
     importantBtnText: "Important",
     importantInfoText: "In this section you will find, in view mode, only the items you have marked as important",
+    selectCategoryText: "Choose the category you want to list the product in",
     copyListBtnText: 'Copy list',
   }),
   getters: {},
@@ -449,6 +450,7 @@ export const useLanguageStore = defineStore('Language', {
       this.copyListBtnText = "Copia lista";
       this.importantBtnText = "Importanti";
       this.importantInfoText = "In questa sezione troverai, in modalità visualizzazione, solo gli elementi che hai segnato come importante";
+      this.selectCategoryText = "Scegli in che categoria vuoi inserire il prodotto";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -550,6 +552,7 @@ export const useLanguageStore = defineStore('Language', {
       this.copyListBtnText = "Copiar lista";
       this.importantBtnText = "Importante";
       this.importantInfoText = "En esta sección encontrarás, en modo visualización, solo los elementos que has marcado como importantes";
+      this.selectCategoryText = "Elija la categoría en la que desea incluir el producto";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -651,6 +654,7 @@ export const useLanguageStore = defineStore('Language', {
       this.copyListBtnText = "Copier la liste";
       this.importantBtnText = "Important";
       this.importantInfoText = "Dans cette section, en mode d'affichage, vous trouverez uniquement les éléments que vous avez marqués comme importants.";
+      this.selectCategoryText = "Choisissez la catégorie dans laquelle vous souhaitez lister le produit";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

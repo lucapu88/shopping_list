@@ -11,6 +11,7 @@ import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
 import GeneralTutorialBtn from "../helper/tutorials/General-tutorial-btn.vue";
+import CategoriesPrimaryPanel from "../panels-and-modals/Categories-primary-panel.vue";
 </script>
 
 <script>
@@ -58,6 +59,7 @@ export default {
 			if (this.settings.isIphone && (!firebase || firebase === null)) {
 				this.showFirebasePrompt = true;
 			}
+			this.focusOnInput();
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
@@ -97,6 +99,10 @@ export default {
 				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},
+		toggleCategoriesPrimaryPanel(event) {
+			if (this.addTodo.inModification) return;
+			this.addTodo.showCategoriesPrimaryPanel = event;
+		},
 	},
 };
 </script>
@@ -135,6 +141,8 @@ export default {
 					'boldi-cipollino': theme.jeansTheme,
 				}"
 				ref="myInput"
+				@focus="toggleCategoriesPrimaryPanel(true)"
+				@blur="toggleCategoriesPrimaryPanel(false)"
 				v-model="addTodo.newTodo"
 				:disabled="secondTodos.loadingOpenAIRes"
 				@keypress.enter="addNewTodo()"
@@ -151,6 +159,9 @@ export default {
 			<!-- QUESTO INPUT MI SERVE SOLO PER INSERIRE LA API KEY PER FIREBASE -->
 			<input v-if="showFirebasePrompt" placeholder="fireBase" v-model="firebaseUrl" @keypress.enter="saveFirebaseUrl()" />
 		</div>
+
+		<!-- PANNELLO DELLE CATEGORIE QUANDO SI STA INSERENDO UN PRODOTTO -->
+		<CategoriesPrimaryPanel v-if="addTodo.showCategoriesPrimaryPanel" />
 
 		<!-- PULSANTE MOSTRA SUGGERIMENTI -->
 		<SuggestionsButton />

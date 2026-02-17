@@ -62,13 +62,13 @@ export const useTodoStore = defineStore('todoStore', {
     skipCheck: false,
     isVisible: false,
     saveOnFirebase: false,
+    showCategoriesPrimaryPanel: false,
+    temporaryCategorySelected: null,
   }),
   actions: {
     addTodo(tip) {
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
-
-      this.createCategory();
 
       const todoObject = {
         name: this.newTodo.trim(),
@@ -88,10 +88,26 @@ export const useTodoStore = defineStore('todoStore', {
 
       if (this.duplicateFound && !this.insertDuplicate) { return; }
 
-      !this.addTodoInCategory.condition
-        ? this.todos.push(todoObject)
-        : this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
-
+      if (!this.addTodoInCategory.condition) {
+        if (this.temporaryCategorySelected) {
+          this.isCategory = true;
+          this.categoryEmoji = this.temporaryCategorySelected.emojy;
+          const cat = {
+            name: this.temporaryCategorySelected.name,
+            isActive: false,
+            isSelected: false,
+            category: this.isCategory,
+            emojy: this.categoryEmoji,
+            multipleDelete: false,
+            modify: false,
+            todoAdded: true,
+          };
+          this.todos.push(cat);
+        }
+        this.todos.push(todoObject);
+      } else {
+        this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
+      }
       setTimeout(() => {
         //faccio questo per crearmi un'animazione visibile per un lasso di tempo appena si aggiunge un todo
         this.changeTodoAdded(this.todos);
@@ -107,11 +123,33 @@ export const useTodoStore = defineStore('todoStore', {
       this.toggleButtonDeleteSelectedTodo();
       this.resetModify();
     },
+    selectCategoryForInsertion(cat) {
+      this.categoriesStore.resetSpecificSelectedCat(cat);
+      cat.selectedCat = !cat.selectedCat;
+      this.settings.enableAI = !cat.selectedCat;
+      if (!this.todos.length) {
+        this.addTodoInCategory.condition = false;
+        this.temporaryCategorySelected = cat;
+      }
+      for (let index = 0; index < this.todos.length; index++) {
+        const element = this.todos[index];
+        if (element.category && element.name.toLowerCase() === cat.name.toLowerCase()) {
+          this.temporaryCategorySelected = null;
+          // se c'è già in lista la categoria selezionata, allora faccio si che l'elemento si aggiunge in quella categoria
+          this.addTodoInCategory.id = index;
+          this.addTodoInCategory.condition = true;
+          break;
+        } else {
+          this.addTodoInCategory.condition = false;
+          // altrimenti creo una variabile temporanea che servirà a creare la categoria quando si aggiunge l'elemento in addTodo()
+          this.temporaryCategorySelected = cat;
+        }
+      }
+    },
     checkDuplicates(todo) {
-      this.focusIn = false;
-
       this.todos.forEach(t => {
         if (t.name.toLowerCase() === todo.name.toLowerCase()) {
+          this.focusIn = false;
           this.duplicateFound = true;
         }
       });
@@ -145,7 +183,13 @@ export const useTodoStore = defineStore('todoStore', {
       this.categoryEmoji = '';
       this.categoryList = false;
       this.isDraggable = false;
-      this.skipCheck = false; //non fa parte del todo, per il momento lo metto qui, cambia poco dove va messo.
+      // non fanno parte del todo, per il momento li lascio qui, tanto cambia poco.
+      this.skipCheck = false;
+      this.categoriesStore.resetSelectedCat();
+      this.temporaryCategorySelected = null;
+      if (!this.addingToCategoryInProgress) {
+        this.addTodoInCategory.condition = false;
+      }
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);
@@ -289,6 +333,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     selectCategoryName(selectedCategoryName) {
       this.newTodo = selectedCategoryName;
+      this.createCategory();
       this.addTodo();
       this.categoryAdded = true;
       setTimeout(() => {

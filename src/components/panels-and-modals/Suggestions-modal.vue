@@ -22,7 +22,7 @@ export default {
 	},
 	created() {
 		const christmasEmojy = this.categoriesStore.engCategories.find((cat) => cat.name === "christmas gifts").emojy;
-		const onlineEmojy = this.categoriesStore.engCategories.find((cat) => cat.name === "online shopping").emojy;
+		const onlineEmojy = this.categoriesStore.engCategories.find((cat) => cat.name === "online").emojy;
 		//se l'emoticon della categoria scelta è uguale ad una delle emoticon per le quali NON ci sono suggerimenti
 		this.noSuggestions = this.todosStore.categoryEmo == christmasEmojy || this.todosStore.categoryEmo == onlineEmojy;
 	},

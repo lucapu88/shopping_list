@@ -29,3 +29,6 @@ coverage
 
 #android
 .android-keystore
+
+#other
+API-TEST.tx

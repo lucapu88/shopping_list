@@ -259,43 +259,7 @@ export default {
 	font-size: 0.938rem;
 	margin: 0;
 }
-.selected {
-	text-align: center;
-	background-color: #0169d9;
-	color: #ffffff;
-	border-radius: 5px;
-	padding-left: 3px;
-	animation: underline 0.8s ease-out;
-}
-@keyframes underline {
-	0% {
-		width: 0;
-	}
-	100% {
-		width: 200px;
-	}
-}
 
-.categoryActive {
-	padding-right: 0.625rem !important;
-	margin: 0.3125rem !important;
-	background-color: transparent !important;
-	border: none !important;
-	padding-top: 0 !important;
-	padding-bottom: 0 !important;
-}
-
-.custom-show-listbtn {
-	background-color: rgba(192, 224, 133, 0.883);
-	border: 2px solid rgb(180, 230, 89);
-	border-radius: 10%;
-	padding: 2px;
-	min-width: 30px;
-	width: 60px;
-}
-.custom-show-listbtn > img {
-	width: 20px;
-}
 .insert-all-btn {
 	margin: 15px 10px;
 	font-size: 1.125rem;

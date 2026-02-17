@@ -12,13 +12,13 @@ export const useFrenchSuggStoreStore = defineStore('french', {
 
         sucreries: ["Sucre", "Sucre glace", "Levure chimique", "Chocolat", "Vanille", "Fruits frais", "Crème chantilly", "Gélatine", "Cacao en poudre", "Fécule de maïs", "Sirop de maïs", "Yaourt", "Confiture", "Glaçage", "Tiramisu", "Millefeuille", "Cheesecake", "Nutella", "Miel"],
 
-        produitsLaitiers: ["Mozzarella", "Lait", "Beurre", "Fromage cheddar", "Yaourt", "Crème", "Ricotta", "Parmesan", "Gorgonzola", "Fromage frais", "Fromage suisse", "Fromage de chèvre", "Brie", "Taleggio", "Pecorino"],
+        laitages: ["Mozzarella", "Lait", "Beurre", "Fromage cheddar", "Yaourt", "Crème", "Ricotta", "Parmesan", "Gorgonzola", "Fromage frais", "Fromage suisse", "Fromage de chèvre", "Brie", "Taleggio", "Pecorino"],
 
         amidon: ["Farine de blé", "Farine de maïs", "Farine de seigle", "Pâtes", "Spaghetti", "Penne", "Fusilli", "Rigatoni", "Linguine", "Farfalle", "Bucatini", "Riz", "Pain", "Pain complet", "Pain multigrains", "Petits pains", "Biscuits", "Crackers", "Tortillas de maïs", "Céréales", "Farine d’avoine", "Gnocchis", "Risotto", "Polenta", "Couscous"],
 
         boissons: ["Eau plate", "Eau gazeuse", "Jus de fruits", "Coca cola", "Pepsi", "Orangeade", "Thé glacé", "Café en bouteille", "Bière", "Vin rouge", "Vin blanc", "Vin rosé", "Vin pétillant", "Prosecco", "Bitter", "Limoncello", "Vodka", "Gin", "Rhum", "Whisky", "Tequila", "Aperol", "Spritz", "Campari"],
 
-        produitsSurgeles: ["Pizza", "Soupe minestrone", "Frites", "Pommes de terre au four", "Nuggets", "Croquettes de poulet", "Croquettes de pommes de terre", "Mini calzones", "Olives ascolane", "Croquettes de mozzarella", "Poisson surgelé", "Filet", "Glace", "Glaces à l’eau", "Sorbet", "Croissant", "Bâtonnets de poisson", "Sfogliatelle", "Burritos", "Gâteau surgelé", "Soupe de légumineuses"],
+        surgeles: ["Pizza", "Soupe minestrone", "Frites", "Pommes de terre au four", "Nuggets", "Croquettes de poulet", "Croquettes de pommes de terre", "Mini calzones", "Olives ascolane", "Croquettes de mozzarella", "Poisson surgelé", "Filet", "Glace", "Glaces à l’eau", "Sorbet", "Croissant", "Bâtonnets de poisson", "Sfogliatelle", "Burritos", "Gâteau surgelé", "Soupe de légumineuses"],
 
         epices: ["Poivre noir", "Piment en poudre", "Ail en poudre", "Persil séché", "Cumin", "Curcuma", "Paprika", "Origan", "Cannelle", "Muscade", "Gingembre moulu", "Clous de girofle"],
 
@@ -34,7 +34,7 @@ export const useFrenchSuggStoreStore = defineStore('french', {
 
         animaux: ["Croquettes", "Croquettes", "Boîtes pour chats/chiens", "Litière pour chat", "Snacks pour chats/chiens", "Laisse", "Muselière", "Collier", "Jouets en caoutchouc", "Caisses de transport", "Gamelles", "Peignes et brosses", "Anti-parasites", "Collier anti-puces", "Anti-tiques", "Panier", "Shampooing", "Après-shampooing", "Désodorisant litière", "Jouets à mâcher", "Bac à litière hamster", "Distributeurs", "Abreuvoirs", "Nourriture oiseaux", "Cages", "Snacks poissons", "Nourriture tortues", "Graines de tournesol"],
 
-        outilsDeTravail: ["Tournevis plat", "Tournevis cruciforme", "Marteau", "Clé réglable", "Pince", "Ciseaux", "Scie", "Niveau", "Ciseau", "Cutter", "Sécateur", "Mètre ruban", "Mètre", "Ruban adhésif", "Ruban isolant", "Colsons", "Clous", "Vis", "Boulons", "Truelle", "Pinceau", "Spatule", "Clé hexagonale"],
+        materiel: ["Tournevis plat", "Tournevis cruciforme", "Marteau", "Clé réglable", "Pince", "Ciseaux", "Scie", "Niveau", "Ciseau", "Cutter", "Sécateur", "Mètre ruban", "Mètre", "Ruban adhésif", "Ruban isolant", "Colsons", "Clous", "Vis", "Boulons", "Truelle", "Pinceau", "Spatule", "Clé hexagonale"],
 
         vetements: ["T-shirt", "Chemise", "Débardeur", "Polo", "Sous-vêtements", "Chemise", "Pull", "Sweat-shirt", "Veste", "Manteau", "Pantalon", "Jeans", "Short", "Jupe", "Robe", "Combinaison de travail", "Pyjama", "Sous-vêtements", "Chaussettes", "T-shirt thermique", "Chapeau", "Gants", "Chaussures", "Baskets", "Lingerie", "Porte-jarretelles", "Bas résille", "Soutien-gorge", "String"],
 
@@ -42,11 +42,11 @@ export const useFrenchSuggStoreStore = defineStore('french', {
 
         meubles: ["Canapé", "Table", "Table basse", "Tapis", "Chaise", "Lampe sur pied", "Lampe de table", "Étagère", "Table de chevet", "Lit", "Bureau", "Étagères murales", "Miroir", "Portemanteau", "Meuble TV", "Armoire", "Pouf", "Vase", "Cadre", "Porte-parapluie", "Coussins décoratifs", "Horloge murale", "Tableau", "Paillasson"],
 
-        objetsDomestiques: ["Couverts", "Fourchettes", "Couteaux", "Cuillères", "Assiettes", "Verres", "Tasses", "Casseroles", "Poêles", "Plaques de cuisson", "Ustensiles de cuisine", "Ouvre-boîtes", "Planche à découper", "Boîtes alimentaires", "Balai", "Miroir", "Serviette"],
+        maison: ["Couverts", "Fourchettes", "Couteaux", "Cuillères", "Assiettes", "Verres", "Tasses", "Casseroles", "Poêles", "Plaques de cuisson", "Ustensiles de cuisine", "Ouvre-boîtes", "Planche à découper", "Boîtes alimentaires", "Balai", "Miroir", "Serviette"],
 
         jardinage: ["Gants de jardinage", "Truelle", "Sécateur", "Arrosoirs", "Tuyaux d’arrosage", "Râteau", "Tuteurs", "Pot", "Soucoupe", "Engrais", "Graines", "Terreau", "Seau", "Pulvérisateur", "Pioche de jardin"],
 
-        achatsEnLigne: ["En ligne, on peut acheter de tout, donc il serait difficile de faire des suggestions spécifiques car tout peut être acheté dans les autres catégories."],
+        enLigne: ["En ligne, on peut acheter de tout, donc il serait difficile de faire des suggestions spécifiques car tout peut être acheté dans les autres catégories."],
 
         sportive: ["Chaussures de course", "Tapis de course", "Ballon de football", "Ballon de basket", "Ballon de volley", "Ballon de rugby", "Balles de tennis", "Balles de golf", "Balles de ping-pong", "Raquette de tennis", "Raquette de ping-pong", "Clubs de golf", "Gants de boxe", "Sacs de frappe", "Vélo de route", "Survêtement", "Haltères", "Casque de vélo", "Lunettes de natation", "Step", "Corde à sauter", "Protège-tibias football", "Batte de baseball"],
 

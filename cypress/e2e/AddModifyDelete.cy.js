@@ -6,6 +6,7 @@ import { phrases, shoppingListLocalOrGlobal } from '../support/commands.js';
 describe("test dell'input di inserimento todo, della modifica di un todo e dell'eliminazione", () => {
   const parola = 'vedo la gente scema!';
   const altraParola = 'tu sei il sesto!';
+  const altraParolaAncora = '15 + 18 quanto fa?!';
 
   beforeEach(() => {
     cy.visit(shoppingListLocalOrGlobal);
@@ -26,6 +27,26 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     // cancella elemento
     cy.get('.trash').click();
     cy.get('#draggable-children').should('not.exist');
+  });
+
+  it('inserisco qualcosa nella lista MA in una categoria specifica.', () => {
+    cy.get('.inputText').click({ force: true });
+    cy.get('#category-list-container').should('exist');
+    cy.get('.input-btns-container').click({ force: true });
+    cy.get('#category-list-container').should('not.exist');
+    // inserisco nuovo elemento
+    cy.get('.inputText').click({ force: true }).type(parola);
+    cy.get('.categories > :nth-child(1)').click();
+    cy.get('.input-btns-container > .btn-info').click({ force: true });
+    cy.get('#draggable-children').should('exist').should('have.class', 'category').should('include.text', '👶babies ');
+    // verifico se funziona su elemento esistente
+    cy.get('.inputText').click({ force: true }).type(altraParola);
+    cy.get('.categories > :nth-child(2)').click();
+    cy.get('.input-btns-container > .btn-info').click({ force: true });
+    cy.get('.inputText').click({ force: true }).type(altraParolaAncora);
+    cy.get('.categories > :nth-child(1)').click();
+    cy.get('.input-btns-container > .btn-info').click({ force: true });
+    cy.contains('👶babies ').should('have.length', 1);
   });
 
   it('verifico se funzionano i suggerimenti nelle categorie', () => {

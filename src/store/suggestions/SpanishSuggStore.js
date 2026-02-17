@@ -42,11 +42,11 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         mobiliario: ["Sofá", "Mesa", "Mesa de centro", "Tapete", "Silla", "Lámpara de pie", "Lámpara de mesa", "Estantería", "Mesita de noche", "Cama", "Escritorio", "Estanterías de pared", "Espejo", "Perchero", "Mueble de televisión", "Armario", "Puf", "Jarrón", "Marco de fotos", "Paragüero", "Cojines decorativos", "Reloj de pared", "Cuadro", "Felpudo"],
 
-        objetosDomesticos: ["Cubertería", "Tenedores", "Cuchillos", "Cucharas", "Platos", "Vasos", "Tazas", "Ollas", "Sartenes", "Bandejas para hornear", "Utensilios de cocina", "Abre latas", "Tabla de cortar", "Recipientes para alimentos", "Escoba", "Espejo", "Toalla"],
+        hogar: ["Cubertería", "Tenedores", "Cuchillos", "Cucharas", "Platos", "Vasos", "Tazas", "Ollas", "Sartenes", "Bandejas para hornear", "Utensilios de cocina", "Abre latas", "Tabla de cortar", "Recipientes para alimentos", "Escoba", "Espejo", "Toalla"],
 
         jardineria: ["Guantes de jardinería", "Azada", "Tijeras de podar", "Regaderas", "Mangueras de jardín", "Rastrillo", "Estacas para plantas", "Maceta", "Plato para maceta", "Fertilizante", "Semillas", "Tierra para plantas", "Cubo", "Pulverizador", "Picos de jardín"],
 
-        comprarEnIntenet: ["En línea se puede comprar de todo, por lo que nos resultaría difícil hacer sugerencias, ya que cualquier cosa de las otras categorías se puede comprar en línea."],
+        internet: ["En línea se puede comprar de todo, por lo que nos resultaría difícil hacer sugerencias, ya que cualquier cosa de las otras categorías se puede comprar en línea."],
 
         deporte: ["Zapatillas para correr", "Cinta de correr", "Balón de fútbol", "Balón de baloncesto", "Balón de voleibol", "Balón de rugby", "Pelotas de tenis", "Pelotas de golf", "Pelotas de ping pong", "Raqueta de tenis", "Raqueta de ping pong", "Palos de golf", "Guantes de boxeo", "Saco de boxeo", "Bicicleta de carretera", "Chándal", "Mancuernas", "Casco de ciclismo", "Gafas de natación", "Step aeróbico", "Cuerda para saltar", "Espinilleras de fútbol", "Bate de béisbol"],
 
