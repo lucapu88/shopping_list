@@ -219,6 +219,46 @@ button {
 	bottom: 2%;
 }
 
+.arrow {
+	width: 1.688rem;
+	height: 1.688rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: "Lucida Console", "Courier New", monospace;
+	font-weight: bold;
+	font-size: 1.563rem;
+	padding-top: 0.625rem;
+}
+.arrow-selected {
+	-webkit-animation: spin 0.5s linear;
+	-moz-animation: spin 0.5s linear;
+	animation: spin 0.5s linear;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+}
+.arrow-deselected {
+	-webkit-animation: reverseSpin 0.5s linear;
+	-moz-animation: reverseSpin 0.5s linear;
+	animation: reverseSpin 0.5s linear;
+}
+@keyframes reverseSpin {
+	from {
+		-webkit-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+}
+
 /* ----------------------------------------  TODO LIST ------------------------------------ */
 
 .todo {

@@ -103,6 +103,17 @@ export default {
 			if (this.addTodo.inModification) return;
 			this.addTodo.showCategoriesPrimaryPanel = event;
 		},
+		closeElement() {
+			if (this.addTodo.inModification) {
+				this.addTodo.removeSelectedCategoryToAddItem();
+			}
+
+			if (this.addTodo.showCategoriesPrimaryPanel) {
+				this.$nextTick(function () {
+					this.$refs.myInput.blur();
+				});
+			}
+		},
 	},
 };
 </script>
@@ -132,7 +143,8 @@ export default {
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
-			<span v-if="addTodo.inModification" class="remove-selected-cat" @click="addTodo.removeSelectedCategoryToAddItem()"> X </span>
+			<span v-if="addTodo.inModification || addTodo.showCategoriesPrimaryPanel" class="remove-selected-cat" @click="closeElement()"> X </span>
+
 			<input
 				class="inputText border border-primary rounded"
 				:class="{

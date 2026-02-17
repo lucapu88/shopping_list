@@ -13,10 +13,24 @@ export default {
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
 			categoriesStore: useCategoriesStore(),
+			hasVerticalScroll: false,
+			scrollBottom: false,
 		};
 	},
 	mounted() {
 		this.categoriesStore.resetSelectedCat();
+		this.checkScroll();
+	},
+	methods: {
+		checkScroll() {
+			const el = this.$refs.box;
+			this.hasVerticalScroll = el.scrollHeight > el.clientHeight;
+		},
+		scroll() {
+			const box = this.$refs.box;
+			this.scrollBottom = !this.scrollBottom;
+			!this.scrollBottom ? document.getElementById("categories").scrollTo({ top: 0, left: 0, behavior: "smooth" }) : document.getElementById("categories").scrollTo({ top: box.scrollHeight, left: 0, behavior: "smooth" });
+		},
 	},
 };
 </script>
@@ -50,7 +64,7 @@ export default {
 				{{ languages.selectCategoryText }}
 			</small>
 		</p>
-		<div class="categories">
+		<div class="categories" id="categories" ref="box">
 			<template v-for="(category, i) in categoriesStore.categories" :key="i">
 				<p
 					v-if="category.active"
@@ -85,6 +99,19 @@ export default {
 					</span>
 				</p>
 			</template>
+		</div>
+		<div class="category-footer">
+			<button class="scroll-button" v-if="hasVerticalScroll" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
+				<span
+					class="arrow"
+					:class="{
+						'arrow-selected': !scrollBottom,
+						'arrow-deselected': scrollBottom,
+					}"
+				>
+					^
+				</span>
+			</button>
 		</div>
 	</div>
 </template>
@@ -141,9 +168,15 @@ export default {
 	box-shadow: 0px 0px 10px 0px #ff0000;
 }
 
-@media (min-width: 350px) {
-	.category-list-container.waterfall-descent {
-		margin: 0 5px 35px;
+.category-footer {
+	display: flex;
+	justify-content: flex-end;
+	padding: 5px;
+}
+
+@media (max-width: 364px) {
+	.category-list {
+		font-size: 0.813rem;
 	}
 }
 </style>
