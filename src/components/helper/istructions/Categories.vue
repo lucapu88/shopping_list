@@ -6,6 +6,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
+import CustomButton from "../../common/Custom-button.vue";
 </script>
 
 <script>
@@ -30,23 +31,11 @@ export default {
 			{{ languages.helperDescription.addCategory.part1 }}
 			<img class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 			{{ languages.helperDescription.addCategory.part2 }}
-			<span
-				style="border: none"
-				class="custom-show-listbtn helper-icon ps-3 pe-3"
-				:class="{
-					'minimal-helper-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'elegant-helper-btn': theme.elegantTheme,
-					'pink-theme-btn': theme.pinkTheme,
-					'summer-header-btn': theme.summerTheme,
-					'winter-btn': theme.winterTheme,
-					'panter-category-btn': theme.panterTheme,
-					'lemon-other-btn': theme.lemonTheme,
-				}"
-			>
-				+
-			</span>
-			. {{ languages.helperDescription.addCategory.part3 }}
+			<CustomButton>
+				<span>+</span>
+			</CustomButton>
+			.<br />
+			{{ languages.helperDescription.addCategory.part3 }}
 			<span
 				class="p-1"
 				:class="{

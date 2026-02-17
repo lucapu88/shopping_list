@@ -24,6 +24,9 @@
 	width: 93%;
 	background-color: var(--dark-primary-color);
 }
+.category-dark-bg {
+	background-color: var(--dark-primary-color);
+}
 .category-dark {
 	background-color: var(--dark-white);
 	color: var(--dark-background-color);

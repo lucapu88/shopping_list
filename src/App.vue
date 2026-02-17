@@ -58,8 +58,8 @@ export default {
 	mounted() {
 		for (let i = 0; i < localStorage.length; i++) {
 			//const key = localStorage.key(i);
-			if (localStorage.length === 2) {
-				// In questo caso l'app l'hai apena scaricata, poichè ci sono solo 2 chiavi salvate, e ciò accade solo appena scaricata.
+			if (localStorage.length === 3 || localStorage.length === 2) {
+				// In questo caso l'app l'hai apena scaricata, poichè ci sono solo 2 o 3 chiavi salvate, e ciò accade solo appena scaricata.
 				// Già se setti una lingua o un tema o aggiorni o setti una qualsiasi impostazione, aggiungi altre chiavi al localstorage.
 				this.settings.isTutorialVisible = true;
 			}

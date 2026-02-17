@@ -6,6 +6,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import Tutorial from "../tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../tutorials/ToggleTutorialButton.vue";
+import CustomButton from "../../common/Custom-button.vue";
 </script>
 
 <script>
@@ -27,23 +28,10 @@ export default {
 	<ListIstructionAccordion show-list-instructions-input="copyHighlights" :istructions-text="languages.helperDescription.copyListTitle" :select-deselect-arrow="settings.copyHighlights && settings.section === copyHighlights" />
 	<ul class="helper-list" v-if="settings.copyHighlights && settings.section === copyHighlights">
 		<li>
-			<span
-				class="btn helper-btn-size"
-				:class="{
-					'custom-show-listbtn': theme.lightTheme || theme.darkTheme,
-					'minimal-helper-btn': theme.minimalTheme,
-					'retro-teme-btns': theme.retroTheme,
-					'elegant-helper-btn': theme.elegantTheme,
-					'category-summer': theme.summerTheme,
-					'category-winter': theme.winterTheme,
-					'category-pink': theme.pinkTheme,
-					'panter-other-btn': theme.panterTheme,
-					'lemon-other-btn': theme.lemonTheme,
-				}"
-			>
+			<CustomButton>
 				<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
 				<img v-if="theme.elegantTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
-			</span>
+			</CustomButton>
 			{{ languages.helperDescription.copyListText }}
 		</li>
 		<li>

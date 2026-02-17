@@ -106,6 +106,7 @@ export const useCategoriesStore = defineStore('Categories', {
             currentCategories.filter(cat => cat.active).forEach((category) => {
                 this.todosStore.newTodo = category.name;
                 this.todosStore.skipCheck = true;
+                this.todosStore.createCategory();
                 this.todosStore.addTodo();
             });
         },

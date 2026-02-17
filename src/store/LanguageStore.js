@@ -91,9 +91,9 @@ export const useLanguageStore = defineStore('Language', {
       backToTop: 'is used to returns at the top of the list. It works when the list it is very long.',
       categories: 'Categories',
       addCategory: {
-        part1: 'To add a category just type it in and click',
-        part2: 'or choose it in the box by clicking',
-        part3: 'It will appear',
+        part1: 'To add a category, click on',
+        part2: 'and select it from the box by clicking',
+        part3: 'It will appear in the highlighted list',
         part4: 'to you like',
         part5: 'and clicking on the name will',
         part6: 'highlight it',
@@ -772,9 +772,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.delete = 'serve per modificare eliminare roba dalla lista.';
       this.helperDescription.backToTop = 'serve per tornare in cima alla lista. Funziona quando la lista è molto lunga.';
       this.helperDescription.categories = 'Categorie';
-      this.helperDescription.addCategory.part1 = 'Per aggiungere una categoria basta scriverla e cliccare su';
-      this.helperDescription.addCategory.part2 = 'oppure sceglierla nel riquadro cliccando';
-      this.helperDescription.addCategory.part3 = 'Ti apparirà';
+      this.helperDescription.addCategory.part1 = 'Per aggiungere una categoria bisogna cliccare su';
+      this.helperDescription.addCategory.part2 = 'e sceglierla nel riquadro cliccando';
+      this.helperDescription.addCategory.part3 = 'Ti apparirà in lista evidenziata';
       this.helperDescription.addCategory.part4 = 'Così';
       this.helperDescription.addCategory.part5 = 'e cliccando sul nome si';
       this.helperDescription.addCategory.part6 = 'evidenzierà';
@@ -833,9 +833,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.delete = 'se utiliza para editar borrar cosas de la lista.';
       this.helperDescription.backToTop = 'se utiliza para volver al principio de la lista. Funciona cuando la lista es muy larga.';
       this.helperDescription.categories = 'Categorías';
-      this.helperDescription.addCategory.part1 = 'Para añadir una categoría, basta con escribirla y hacer clic en';
-      this.helperDescription.addCategory.part2 = 'o elíjalo en el recuadro haciendo clic en';
-      this.helperDescription.addCategory.part3 = 'Te parecerá';
+      this.helperDescription.addCategory.part1 = 'Para agregar una categoría, haga clic en';
+      this.helperDescription.addCategory.part2 = 'y selecciónela del cuadro haciendo clic';
+      this.helperDescription.addCategory.part3 = 'Aparecerá en la lista resaltada';
       this.helperDescription.addCategory.part4 = 'Así';
       this.helperDescription.addCategory.part5 = 'y haciendo clic en el nombre sí';
       this.helperDescription.addCategory.part6 = 'destacará';
@@ -894,9 +894,9 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.delete = 'sert à supprimer des éléments de la liste.';
       this.helperDescription.backToTop = 'sert à revenir en haut de la liste. Utile lorsque la liste est très longue.';
       this.helperDescription.categories = 'Catégories';
-      this.helperDescription.addCategory.part1 = 'Pour ajouter une catégorie, il suffit de l’écrire puis de cliquer sur';
-      this.helperDescription.addCategory.part2 = 'ou de la choisir dans le cadre en cliquant sur';
-      this.helperDescription.addCategory.part3 = 'Il apparaîtra';
+      this.helperDescription.addCategory.part1 = 'Pour ajouter une catégorie, cliquez sur';
+      this.helperDescription.addCategory.part2 = 'et sélectionnez-la dans la liste en cliquant';
+      this.helperDescription.addCategory.part3 = 'Il apparaîtra dans la liste mise en évidence';
       this.helperDescription.addCategory.part4 = 'Comme ceci';
       this.helperDescription.addCategory.part5 = 'et en cliquant sur le nom, il sera';
       this.helperDescription.addCategory.part6 = 'mis en surbrillance';

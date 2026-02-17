@@ -28,7 +28,7 @@ export default {
 		:class="{
 			'retro-theme-confirm': theme.retroTheme,
 			'light-theme-confirm': theme.lightTheme,
-			'category-dark-container': theme.darkTheme,
+			'category-dark-bg': theme.darkTheme,
 			'category-summer-container': theme.summerTheme,
 			'category-winter-container': theme.winterTheme,
 			'category-elegant-container': theme.elegantTheme,
@@ -81,7 +81,7 @@ export default {
 							'boldi-cipollino': theme.jeansTheme,
 						}"
 					>
-						{{ theme.minimalTheme || theme.retroTheme ? category.name : category.emojy + " " + category.name }}
+						{{ category.emojy + " " + category.name }}
 					</span>
 				</p>
 			</template>
