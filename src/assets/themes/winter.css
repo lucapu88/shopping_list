@@ -35,6 +35,11 @@
 	box-shadow: inset 0px 0px 40px 0px var(--white) !important;
 	border: none !important;
 }
+.winter-selected-button {
+	background-color: var(--winter-selected-color) !important;
+	box-shadow: inset 0px 0px 20px 0px var(--white) !important;
+	border: none !important;
+}
 .winter-header-selected-btn {
 	background-color: var(--winter-selected-color) !important;
 }

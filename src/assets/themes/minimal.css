@@ -44,6 +44,10 @@
 	background-image: none;
 	color: #f2ebe9;
 }
+.minimal-selected-btn {
+	background-color: var(--minimal-helper-secondary-color) !important;
+	color: var(--white) !important;
+}
 .pushbutton-container > .minimal-selected-btn {
 	background-color: var(--minimal-helper-secondary-color) !important;
 	color: var(--white) !important;

@@ -74,11 +74,13 @@ export const useTodoStore = defineStore('todoStore', {
   }),
   actions: {
     addTodo(tip) {
+      this.newTodo = this.newTodo.trim();
+
       if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
       if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
 
       const todoObject = {
-        name: this.newTodo.trim(),
+        name: this.newTodo,
         isActive: false,
         isSelected: false,
         category: this.isCategory,

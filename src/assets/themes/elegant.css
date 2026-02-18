@@ -56,6 +56,10 @@
 	font-weight: bold;
 	border: 1px solid var(--elegant-text-color);
 }
+.elegant-selected-button {
+	background-color: var(--elegant-primary-color-dark) !important;
+	color: var(--elegant-text-color) !important;
+}
 .pushbutton-container > .elegant-selected-btn {
 	background-color: var(--elegant-secondary-color) !important;
 	color: var(--elegant-text-color) !important;

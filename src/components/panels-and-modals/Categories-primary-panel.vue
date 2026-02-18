@@ -16,9 +16,11 @@ export default {
 			categoriesStore: useCategoriesStore(),
 			hasVerticalScroll: false,
 			scrollBottom: false,
+			whiteText: false,
 		};
 	},
 	mounted() {
+		this.whiteText = this.theme.darkTheme || this.theme.retroTheme || this.theme.winterTheme || this.theme.elegantTheme || this.theme.panterTheme;
 		this.todosStore.defaultOptionsForCategorizing();
 		this.checkScroll();
 	},
@@ -57,9 +59,10 @@ export default {
 		}"
 	>
 		<p
-			class="category-list-description"
+			class="category-list-description p-1"
 			:class="{
-				'blue-text': !theme.retroTheme && !theme.minimalTheme,
+				'white-text': whiteText,
+				'black-text': !whiteText,
 				'retro-helper-settings-title': theme.retroTheme,
 				'jeans-category-modal-title': theme.jeansTheme,
 			}"
@@ -68,7 +71,7 @@ export default {
 				{{ languages.selectCategoryText }}
 			</small>
 		</p>
-		<div class="categories" id="categories" ref="box">
+		<div class="categories mt-2 mb-2" id="categories" ref="box">
 			<template v-for="(category, i) in categoriesStore.categories" :key="i">
 				<p
 					v-if="category.active"
@@ -81,12 +84,12 @@ export default {
 						'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 						'btn-selected': category.selectedCat,
 						'minimal-selected-btn': theme.minimalTheme && category.selectedCat,
-						'retro-selected-btn': theme.retroTheme && category.selectedCat,
+						'retro-selected-button': theme.retroTheme && category.selectedCat,
 						'summer-header-btn-selected': theme.summerTheme && category.selectedCat,
-						'winter-header-selected-btn': theme.winterTheme && category.selectedCat,
-						'elegant-selected-btn': theme.elegantTheme && category.selectedCat,
+						'winter-selected-button': theme.winterTheme && category.selectedCat,
+						'elegant-selected-button': theme.elegantTheme && category.selectedCat,
 						'pink-theme-selected-btn': theme.pinkTheme && category.selectedCat,
-						'panter-theme-selected-btn': theme.panterTheme && category.selectedCat,
+						'panter-theme-selected-button': theme.panterTheme && category.selectedCat,
 						'lemon-theme-selected-btn': theme.lemonTheme && category.selectedCat,
 						'jeans-theme-selected-btn': theme.jeansTheme && category.selectedCat,
 					}"
@@ -138,7 +141,7 @@ export default {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	overflow: auto;
-	max-height: 250px;
+	max-height: 220px;
 }
 
 .category {
@@ -165,6 +168,7 @@ export default {
 .category-list-description {
 	font-size: 0.938rem;
 	margin: 0;
+	border-bottom: 1px solid;
 }
 
 .christmas-category {
@@ -180,11 +184,15 @@ export default {
 }
 
 .scroll-button {
-	width: 40px;
+	width: 50px;
 	height: 35px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.arrow {
+	font-size: 1.125rem;
 }
 
 @media (max-width: 364px) {

@@ -102,6 +102,11 @@ export default {
 			if (this.addTodo.inModification) return;
 			this.addTodo.showCategoriesPrimaryPanel = event;
 		},
+		handleBlur() {
+			setTimeout(() => {
+				this.toggleCategoriesPrimaryPanel(false);
+			}, 150);
+		},
 		closeElement() {
 			if (this.addTodo.inModification) {
 				this.addTodo.removeSelectedCategoryToAddItem();
@@ -153,13 +158,13 @@ export default {
 				}"
 				ref="myInput"
 				@focus="toggleCategoriesPrimaryPanel(true)"
-				@blur="toggleCategoriesPrimaryPanel(false)"
+				@blur="handleBlur()"
 				v-model="addTodo.newTodo"
 				:disabled="secondTodos.loadingOpenAIRes"
 				@keypress.enter="addNewTodo()"
 				:placeholder="languages.placeholder"
 			/>
-			<button class="btn btn-info" :disabled="addTodo.newTodo && !addTodo.newTodo.trim()" :class="{ 'elegant-btn': theme.elegantTheme }" @touchstart.prevent="addNewTodo()" @mousedown.prevent="addNewTodo()">
+			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme }" @pointerdown.prevent @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
