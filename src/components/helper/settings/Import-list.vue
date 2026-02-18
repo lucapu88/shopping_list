@@ -91,15 +91,15 @@ export default {
 				<div class="add-list-copied">
 					<div class="increase-decrease-container">
 						<button :class="{ 'retro-btn-border': theme.retroTheme }" @click="startDecreasing()" touch-action="none">
-							<span class="arrow"> ^ </span>
+							<span class="import-arrow"> ^ </span>
 						</button>
 						<button :class="{ 'retro-btn-border': theme.retroTheme }" @click="startIncreasing()" touch-action="none">
-							<span class="arrow reverse"> ^ </span>
+							<span class="import-arrow reverse"> ^ </span>
 						</button>
 					</div>
 					<textarea id="text-area" :class="{ 'add-list-textarea': !theme.retroTheme }" rows="2" v-model="listPasted"> </textarea>
 					<button
-						class="btn btn-light share-update-btn add-list-copied-btn"
+						class="btn btn-light add-list-copied-btn p-0"
 						:class="{
 							'retro-btn-border': theme.retroTheme,
 							'border-dark': !theme.retroTheme,
@@ -164,7 +164,7 @@ textarea {
 .add-list-copied-btn {
 	max-height: 55px;
 }
-.arrow {
+.import-arrow {
 	font-family: Sans-serif;
 	font-weight: bold;
 }
