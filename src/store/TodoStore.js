@@ -127,6 +127,10 @@ export const useTodoStore = defineStore('todoStore', {
       this.categoriesStore.resetSpecificSelectedCat(cat);
       cat.selectedCat = !cat.selectedCat;
       this.settings.enableAI = !cat.selectedCat;
+      if (!cat.selectedCat) {
+        this.defaultOptionsForCategorizing();
+        return;
+      }
       if (!this.todos.length) {
         this.addTodoInCategory.condition = false;
         this.temporaryCategorySelected = cat;
@@ -140,11 +144,18 @@ export const useTodoStore = defineStore('todoStore', {
           this.addTodoInCategory.condition = true;
           break;
         } else {
+          this.addTodoInCategory.id = null;
           this.addTodoInCategory.condition = false;
           // altrimenti creo una variabile temporanea che servirà a creare la categoria quando si aggiunge l'elemento in addTodo()
           this.temporaryCategorySelected = cat;
         }
       }
+    },
+    defaultOptionsForCategorizing() {
+      this.categoriesStore.resetSelectedCat();
+      this.addTodoInCategory.condition = false;
+      this.addTodoInCategory.id = null;
+      this.temporaryCategorySelected = null;
     },
     checkDuplicates(todo) {
       this.todos.forEach(t => {
@@ -185,11 +196,6 @@ export const useTodoStore = defineStore('todoStore', {
       this.isDraggable = false;
       // non fanno parte del todo, per il momento li lascio qui, tanto cambia poco.
       this.skipCheck = false;
-      this.categoriesStore.resetSelectedCat();
-      this.temporaryCategorySelected = null;
-      if (!this.addingToCategoryInProgress) {
-        this.addTodoInCategory.condition = false;
-      }
     },
     modifyTodo(n) {
       this.resetModify(this.copiedTodo);

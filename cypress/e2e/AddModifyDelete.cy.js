@@ -47,6 +47,19 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('.categories > :nth-child(1)').click();
     cy.get('.input-btns-container > .btn-info').click({ force: true });
     cy.contains('👶babies ').should('have.length', 1);
+    cy.get('.remove-selected-cat').click({ force: true });
+    //verifico se togliendo il focus dall'input e poi rientro nell'input, azzera le categorie selezionate
+    cy.get('.inputText').click({ force: true });
+    cy.get('.categories > :nth-child(1)').click();
+    cy.get('.categories > :nth-child(1)').should('have.class', 'btn-selected');
+    cy.get('.remove-selected-cat').click({ force: true });
+    cy.get('#category-list-container').should('not.exist');
+    cy.get('.inputText').click({ force: true });
+    cy.get('#category-list-container').should('exist');
+    cy.get('.categories > :nth-child(1)').should('not.have.class', 'btn-selected');
+    cy.get('.inputText').click({ force: true }).type("la bambaaaaaaaaaaaa");
+    cy.get('.input-btns-container > .btn-info').click({ force: true });
+    cy.get('#todo-list').children().last().should('contain.text', 'la bambaaaaaaaaaaaa');
   });
 
   it('verifico se funzionano i suggerimenti nelle categorie', () => {

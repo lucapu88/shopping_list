@@ -59,7 +59,6 @@ export default {
 			if (this.settings.isIphone && (!firebase || firebase === null)) {
 				this.showFirebasePrompt = true;
 			}
-			this.focusOnInput();
 		},
 		saveApiKey() {
 			//serve solo per salvare la API key in locale
@@ -160,7 +159,7 @@ export default {
 				@keypress.enter="addNewTodo()"
 				:placeholder="languages.placeholder"
 			/>
-			<button class="btn btn-info" :disabled="addTodo.newTodo && !addTodo.newTodo.trim()" :class="{ 'elegant-btn': theme.elegantTheme }" @click="addNewTodo()">
+			<button class="btn btn-info" :disabled="addTodo.newTodo && !addTodo.newTodo.trim()" :class="{ 'elegant-btn': theme.elegantTheme }" @touchstart.prevent="addNewTodo()" @mousedown.prevent="addNewTodo()">
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>

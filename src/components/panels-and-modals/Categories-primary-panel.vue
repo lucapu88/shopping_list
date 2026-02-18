@@ -3,6 +3,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useCategoriesStore } from "@/store/CategoriesStore";
+import CustomButton from "../common/Custom-button.vue";
 </script>
 
 <script>
@@ -18,8 +19,11 @@ export default {
 		};
 	},
 	mounted() {
-		this.categoriesStore.resetSelectedCat();
+		this.todosStore.defaultOptionsForCategorizing();
 		this.checkScroll();
+	},
+	unmounted() {
+		this.todosStore.defaultOptionsForCategorizing();
 	},
 	methods: {
 		checkScroll() {
@@ -101,7 +105,7 @@ export default {
 			</template>
 		</div>
 		<div class="category-footer">
-			<button class="scroll-button" v-if="hasVerticalScroll" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
+			<CustomButton v-if="hasVerticalScroll" extra-classes="scroll-button" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
 				<span
 					class="arrow"
 					:class="{
@@ -111,7 +115,7 @@ export default {
 				>
 					^
 				</span>
-			</button>
+			</CustomButton>
 		</div>
 	</div>
 </template>
@@ -172,6 +176,15 @@ export default {
 	display: flex;
 	justify-content: flex-end;
 	padding: 5px;
+	border-top: 1px solid;
+}
+
+.scroll-button {
+	width: 40px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media (max-width: 364px) {
