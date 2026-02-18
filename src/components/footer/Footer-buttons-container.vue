@@ -33,7 +33,7 @@ export default {
 			this.$emit("scrollToTop", true);
 		},
 		async openDeleteAllModal() {
-			this.preloads.loadConfirmBackgoundImg("delete-all-panel");
+			this.preloads.loadConfirmBackgroundImg("delete-all-panel");
 			this.todosStore.openDeleteAllModal = true;
 			this.$emit("scrollToBottom", true);
 		},

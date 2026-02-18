@@ -53,7 +53,7 @@ export const usePreloadStore = defineStore('preload', {
                 return leottaJeans;
             }
         },
-        loadConfirmBackgoundImg(component) {
+        loadConfirmBackgroundImg(component) {
             this.src = component === 'confirm-modal' ? this.setConfirmSrc() : component === 'delete-all-panel' ? this.setDeleteAllSrc() : null;
 
             if (!this.src) return;

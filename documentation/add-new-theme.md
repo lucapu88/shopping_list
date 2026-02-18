@@ -14,7 +14,7 @@ PROCEDURA PER AGGIUNGERE UN TEMA:
 
 - Per le immagini di sfondo del tema (se ci sono), assicurati che vengano caricate in preloadThemeImg().
 
-- Per le immagini di background delle modali settate nel css, assicurati che vengano caricate correttamente nel PreloadStore.js in loadConfirmBackgoundImg().
+- Per le immagini di background delle modali settate nel css, assicurati che vengano caricate correttamente nel PreloadStore.js in loadConfirmBackgroundImg().
 
 - Se usi un font di google-font arricurati che venga precaricato nel PreloadStore.js in loadFontOnce().
 

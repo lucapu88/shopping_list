@@ -9,10 +9,17 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useFirebaseStore } from '@/server/FirebaseStore';
 import { usePreloadStore } from '@/store/PreloadStore';
 
+const listMap = [
+  { check: 'secondList', todoKey: 'todos2', backupKey: 'todosBackup2' },
+  { check: 'thirdList', todoKey: 'todos3', backupKey: 'todosBackup3' },
+  { check: 'fourthList', todoKey: 'todos4', backupKey: 'todosBackup4' },
+  { check: 'fifthList', todoKey: 'todos5', backupKey: 'todosBackup5' },
+  { check: 'sixthList', todoKey: 'todos6', backupKey: 'todosBackup6' },
+  { check: 'seventhList', todoKey: 'todos7', backupKey: 'todosBackup7' },
+  { check: 'eighthList', todoKey: 'todos8', backupKey: 'todosBackup8' },
+];
 
 export const useTodoStore = defineStore('todoStore', {
-  /*TOFIX: Questo store è una vera Merda lo so, sono sviluppi molto datati, quando ero agli inizi e scrivevo tanta cacca, non che ora scrivo fiorellini ma comunque sia le cose so farle meglio.
-    Appena ho un po di pazienza e tempo faccio un bel refactor come ho fatto ad esempio con categoriesStore e ThemeStore.*/
   state: () => ({
     languages: useLanguageStore(),
     settings: useSettingsStore(),
@@ -135,6 +142,7 @@ export const useTodoStore = defineStore('todoStore', {
         this.addTodoInCategory.condition = false;
         this.temporaryCategorySelected = cat;
       }
+      // Uso il for perchè mi serve il break e l'index 
       for (let index = 0; index < this.todos.length; index++) {
         const element = this.todos[index];
         if (element.category && element.name.toLowerCase() === cat.name.toLowerCase()) {
@@ -219,7 +227,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.toggleButtonDeleteSelectedTodo();
     },
     async openConfirmDeleteModal() {
-      await this.preloads.loadConfirmBackgoundImg('confirm-modal');
+      await this.preloads.loadConfirmBackgroundImg('confirm-modal');
       this.confirmDeleteModal = true;
     },
     confirmedRemoveTodo(x) {
@@ -235,37 +243,17 @@ export const useTodoStore = defineStore('todoStore', {
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-      const checks = [
-        { check: 'secondList', set: 'todos2' },
-        { check: 'thirdList', set: 'todos3' },
-        { check: 'fourthList', set: 'todos4' },
-        { check: 'fifthList', set: 'todos5' },
-        { check: 'sixthList', set: 'todos6' },
-        { check: 'seventhList', set: 'todos7' },
-        { check: 'eighthList', set: 'todos8' },
-      ];
+      const checks = listMap.map((l) => ({ check: l.check, set: l.todoKey }));
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todos');
       this.priceCalculator();
     },
     createTodosList() {
-      if (window.localStorage.getItem('secondList')) {
-        this.getCorrectTodoList('todos2');
-      } else if (window.localStorage.getItem('thirdList')) {
-        this.getCorrectTodoList('todos3');
-      } else if (window.localStorage.getItem('fourthList')) {
-        this.getCorrectTodoList('todos4');
-      } else if (window.localStorage.getItem('fifthList')) {
-        this.getCorrectTodoList('todos5');
-      } else if (window.localStorage.getItem('sixthList')) {
-        this.getCorrectTodoList('todos6');
-      } else if (window.localStorage.getItem('seventhList')) {
-        this.getCorrectTodoList('todos7');
-      } else if (window.localStorage.getItem('eighthList')) {
-        this.getCorrectTodoList('todos8');
-      } else {
-        this.getCorrectTodoList('todos');
+      const activeList = listMap.find((el) => window.localStorage.getItem(el.check));
+      this.getCorrectTodoList(activeList ? activeList.todoKey : 'todos');
+
+      if (!this.addTodoInCategory.condition) {
+        this.todos.forEach((t) => (t.isSelected = false));
       }
-      if (!this.addTodoInCategory.condition) { this.todos.map((t) => (t.isSelected = false)); }
       this.secondTodosStore.setSelectedLists();
     },
     getCorrectTodoList(todos) {
@@ -313,7 +301,7 @@ export const useTodoStore = defineStore('todoStore', {
     },
     removeSelectedCategoryToAddItem() {
       //serve per togliere la selezione di una categoria aggiunta (quando clicchi su un nome di una categoria e diventa blu)
-      this.todos.map((t) => (t.isSelected = false));
+      this.todos.forEach((t) => (t.isSelected = false));
       this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.addTodoInCategory.condition = false;
       this.focusIn = false;
@@ -376,7 +364,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.addingToCategoryInProgress = true;
       if (todo.category) {
         const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories, ...this.categoriesStore.fraCategories];
-        this.todos.map((t) => (t.isSelected = false)); //azzero tutto
+        this.todos.forEach((t) => (t.isSelected = false)); //azzero tutto
 
         allCategories.forEach((category) => {
           if (todo.name.toLowerCase() === category.name) {
@@ -489,25 +477,17 @@ export const useTodoStore = defineStore('todoStore', {
       this.inModification = false;
       this.languages.placeholder = this.languages.defaultPlaceholderText;
       this.saveTodos();
-      this.languages.placeholderplaceholder = this.languages.placeholderdefaultPlaceholderText;
       //navigator.vibrate(1000); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
-      const range = Math.floor(Math.random() * (1500 - 600 + 1)) + 600;
+      // const range = Math.floor(Math.random() * (1500 - 600 + 1)) + 600;
       setTimeout(() => {
         location.reload();
-      }, range);
+      }, 1000);
     },
     backupList() {
       const newTodoList = [...this.todos];
       const parsedTodos = JSON.stringify(newTodoList);
-      const checks = [
-        { check: 'secondList', set: 'todosBackup2' },
-        { check: 'thirdList', set: 'todosBackup3' },
-        { check: 'fourthList', set: 'todosBackup4' },
-        { check: 'fifthList', set: 'todosBackup5' },
-        { check: 'sixthList', set: 'todosBackup6' },
-        { check: 'seventhList', set: 'todosBackup7' },
-        { check: 'eighthList', set: 'todosBackup8' },
-      ];
+      const checks = listMap.map((l) => ({ check: l.check, set: l.todoKey }));
+
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todosBackup');
     },
     showOnlyImportant() {
@@ -590,7 +570,6 @@ export const useTodoStore = defineStore('todoStore', {
         const getDeletedTodos = window.localStorage.getItem(el);
         if (getDeletedTodos) return getDeletedTodos.split(",");
       });
-      console.log(this.deletedTodos);
     },
     toggleSelectedTodosForDelete() {
       this.isVisible = !this.isVisible;

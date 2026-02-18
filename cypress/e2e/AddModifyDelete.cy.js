@@ -80,6 +80,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
   it('verifico se funziona la modalità eliminazione sicura', () => {
     cy.get('.inputText').click({ force: true }).type(parola);
     cy.get('.input-btns-container > .btn-info').click({ force: true });
+    cy.get('.remove-selected-cat').click({ force: true });
 
     cy.get('.settings').click();
     cy.wait(1500);
