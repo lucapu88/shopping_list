@@ -40,6 +40,7 @@ export default {
 			this.isPopUpPanelVisible = !this.isPopUpPanelVisible;
 			this.todosStore.showOnlyImportantTodos = false;
 			this.todosStore.categoryList = false;
+			this.secondTodos.showChangeList = false;
 			this.todosStore.setOrResetImportantTodos();
 		},
 	},

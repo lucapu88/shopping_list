@@ -288,6 +288,9 @@ onUnmounted(() => {
 				jeans: theme.jeansTheme,
 			}"
 		>
+			<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
+			<ErrorMessage v-if="errorLoading" :errorLoading="errorLoading" />
+
 			<BackgroundImg :addHeight="addCard" />
 
 			<header :class="{ 'text-dark': theme.winterTheme }">
@@ -298,9 +301,6 @@ onUnmounted(() => {
 			</header>
 			<main>
 				<LoadingOrUpdating :listChanged="loading || saving" />
-
-				<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
-				<ErrorMessage :errorLoading="errorLoading" />
 
 				<button class="btn-info" :class="{ 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
 
