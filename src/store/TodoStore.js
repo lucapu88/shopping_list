@@ -182,7 +182,6 @@ export const useTodoStore = defineStore('todoStore', {
         this.duplicateFound = false;
         this.insertDuplicate = false;
       } else {
-        this.newTodo = null;
         this.duplicateFound = false;
         this.insertDuplicate = false;
       }

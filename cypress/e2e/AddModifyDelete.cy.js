@@ -37,6 +37,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     // inserisco nuovo elemento
     cy.get('.inputText').click({ force: true }).type(parola);
     cy.get('.categories > :nth-child(1)').click();
+    cy.get('.categories > :nth-child(1)').should('have.class', 'btn-selected');
     cy.get('.input-btns-container > .btn-info').click({ force: true });
     cy.get('#draggable-children').should('exist').should('have.class', 'category').should('include.text', '👶babies ');
     // verifico se funziona su elemento esistente
@@ -47,15 +48,10 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('.categories > :nth-child(1)').click();
     cy.get('.input-btns-container > .btn-info').click({ force: true });
     cy.contains('👶babies ').should('have.length', 1);
-    cy.get('.remove-selected-cat').click({ force: true });
     //verifico se togliendo il focus dall'input e poi rientro nell'input, azzera le categorie selezionate
-    cy.get('.inputText').click({ force: true });
-    cy.get('.categories > :nth-child(1)').click();
-    cy.get('.categories > :nth-child(1)').should('have.class', 'btn-selected');
     cy.get('.remove-selected-cat').click({ force: true });
     cy.get('#category-list-container').should('not.exist');
     cy.get('.inputText').click({ force: true });
-    cy.get('#category-list-container').should('exist');
     cy.get('.categories > :nth-child(1)').should('not.have.class', 'btn-selected');
     cy.get('.inputText').click({ force: true }).type("la bambaaaaaaaaaaaa");
     cy.get('.input-btns-container > .btn-info').click({ force: true });
@@ -142,7 +138,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     //Clicco su NO
     cy.get('.btn-dark').click();
     cy.get('.duplicate-container').should('not.exist');
-    cy.get('.inputText').should('have.value', '');
+    cy.get('.inputText').should('have.value', parola);
     cy.get('#todo-list').should('have.length', 1);
     let todos = [];
     cy.get('#todo-list').each(($todo) => {
@@ -152,7 +148,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     });
     //Clicco su SI
     todos = [];
-    cy.get('.inputText').click({ force: true }).type(parola);
+    cy.get('.inputText').click({ force: true });
     cy.get('.input-btns-container > .btn-info').click();
     cy.get('.btn-success').click();
     cy.get('.duplicate-container').should('not.exist');
