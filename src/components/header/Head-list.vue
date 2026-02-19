@@ -53,6 +53,7 @@ export default {
 				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
 			} else {
 				this.addTodo.addTodo();
+				this.focusOnInput();
 			}
 			// Stessa cosa per firebase, è solo roba mia personale per salvare le MIE spese nel cloud
 			const firebase = window.localStorage.getItem("firebase");
@@ -103,6 +104,15 @@ export default {
 			this.addTodo.showCategoriesPrimaryPanel = event;
 		},
 		handleBlur() {
+			const next = event.relatedTarget;
+
+			// Se il focus va dentro il container non chiudere.
+			/* 	Bastava un @pointerdown.prevent sul button che inserisce il todo, ma purtroppo android merda e chrome non lo supportano, 
+				quindi devo fare questo cinema del cazzo inserendo anche tabindex="0" sul button e il focusOnInput dopo l'addTodo() */
+			if (next && this.$refs.inputContainer.contains(next)) {
+				return;
+			}
+
 			setTimeout(() => {
 				this.toggleCategoriesPrimaryPanel(false);
 			}, 150);
@@ -145,7 +155,7 @@ export default {
 			</span>
 		</div>
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
-		<div class="input-btns-container" v-if="!addTodo.devNotes">
+		<div class="input-btns-container" ref="inputContainer" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
 			<span v-if="addTodo.inModification || addTodo.showCategoriesPrimaryPanel" class="remove-selected-cat" @click="closeElement()"> X </span>
 
@@ -164,7 +174,7 @@ export default {
 				@keypress.enter="addNewTodo()"
 				:placeholder="languages.placeholder"
 			/>
-			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme }" @pointerdown.prevent @click="addNewTodo()">
+			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme }" tabindex="0" @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
