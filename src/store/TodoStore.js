@@ -71,66 +71,92 @@ export const useTodoStore = defineStore('todoStore', {
     saveOnFirebase: false,
     showCategoriesPrimaryPanel: false,
     temporaryCategorySelected: null,
+    addingTodo: false,
   }),
   actions: {
     addTodo(tip) {
-      this.newTodo = this.newTodo.trim();
+      /* Questo mi serve per evitare che con i click compulsivi mi vengano create più categorie con lo stesso nome. 
+         In questo modo, se è già in corso l'aggiunta di un todo, non ne viene aggiunto un altro finché non termina il processo di aggiunta del primo. */
+      if (this.addingTodo) return;
+      this.addingTodo = true;
 
-      if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
-      if (!this.newTodo) { return; } //solo se scrivo qualcosa lo aggiunge
+      try {
+        this.newTodo = this.newTodo.trim();
 
-      const todoObject = {
-        name: this.newTodo,
+        if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
+        if (!this.newTodo) { return; }
+
+        const todoObject = this.createTodoBase({
+          name: this.newTodo,
+          category: this.isCategory,
+          emojy: this.categoryEmoji,
+        });
+
+        if (!this.skipCheck) {
+          this.checkDuplicates(todoObject);
+        }
+
+        if (this.duplicateFound && !this.insertDuplicate) return;
+
+        // categoria già esistente selezionata
+        if (this.addTodoInCategory.condition && this.addTodoInCategory.id !== null) {
+          this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
+        } else if (this.temporaryCategorySelected) {
+          // categoria nuova da creare
+          const existingIndex = this.todos.findIndex(
+            t =>
+              t.category &&
+              t.name.toLowerCase() ===
+              this.temporaryCategorySelected.name.toLowerCase()
+          );
+          if (existingIndex !== -1) {
+            // nel dubbio già esiste, quindi inserisco lì dentro
+            this.todos.splice(existingIndex + 1, 0, todoObject);
+          } else {
+            const cat = this.createTodoBase({
+              name: this.temporaryCategorySelected.name,
+              category: true,
+              emojy: this.temporaryCategorySelected.emojy,
+            });
+            this.todos.push(cat);
+            this.todos.push(todoObject);
+          }
+        } else {
+          // inserimento normale
+          this.todos.push(todoObject);
+        }
+
+        setTimeout(() => {
+          //faccio questo per crearmi un'animazione visibile per un lasso di tempo appena si aggiunge un todo
+          this.changeTodoAdded(this.todos);
+        }, 2000);
+
+        if (this.settings.canMultipleCategoryInsertion) {
+          //Se ho tolto l'inserimento di più elementi nella categoria, ad ogni singolo todo aggiunto in categoria, vado a togliere "l'evidenziazione" della categoria
+          this.removeSelectedCategoryToAddItem();
+        }
+
+        this.resetTodoProperty();
+        this.settings.resetHelperSettingsAndIstructions();
+        this.saveTodos();
+        this.toggleButtonDeleteSelectedTodo();
+        this.resetModify();
+      } finally {
+        this.addingTodo = false;
+      }
+    },
+    createTodoBase(overrides = {}) {
+      return {
+        name: "",
         isActive: false,
         isSelected: false,
-        category: this.isCategory,
-        emojy: this.categoryEmoji,
+        category: false,
+        emojy: null,
         multipleDelete: false,
         modify: false,
         todoAdded: true,
+        ...overrides,
       };
-
-      if (!this.skipCheck) {
-        //skipCheck è inserito quando si inseriscono tutte le categorie dall'apposito pulsante. Le deve inserire comunque. 
-        this.checkDuplicates(todoObject);
-      }
-
-      if (this.duplicateFound && !this.insertDuplicate) { return; }
-
-      if (!this.addTodoInCategory.condition) {
-        if (this.temporaryCategorySelected) {
-          this.isCategory = true;
-          this.categoryEmoji = this.temporaryCategorySelected.emojy;
-          const cat = {
-            name: this.temporaryCategorySelected.name,
-            isActive: false,
-            isSelected: false,
-            category: this.isCategory,
-            emojy: this.categoryEmoji,
-            multipleDelete: false,
-            modify: false,
-            todoAdded: true,
-          };
-          this.todos.push(cat);
-        }
-        this.todos.push(todoObject);
-      } else {
-        this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
-      }
-      setTimeout(() => {
-        //faccio questo per crearmi un'animazione visibile per un lasso di tempo appena si aggiunge un todo
-        this.changeTodoAdded(this.todos);
-      }, 2000);
-
-      if (this.settings.canMultipleCategoryInsertion) {
-        //Se ho tolto l'inserimento di più elementi nella categoria, ad ogni singolo todo aggiunto in categoria, vado a togliere "l'evidenziazione" della categoria
-        this.removeSelectedCategoryToAddItem();
-      }
-      this.resetTodoProperty();
-      this.settings.resetHelperSettingsAndIstructions();
-      this.saveTodos();
-      this.toggleButtonDeleteSelectedTodo();
-      this.resetModify();
     },
     selectCategoryForInsertion(cat) {
       this.categoriesStore.resetSpecificSelectedCat(cat);
