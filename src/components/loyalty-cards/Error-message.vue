@@ -48,12 +48,13 @@ function refresh() {
 	justify-content: center;
 	align-items: center;
 	z-index: 100;
-	height: 100vh;
 	position: absolute;
 	top: 0;
 	left: 0;
 	background-repeat: no-repeat;
 	background-size: contain;
+	height: 100%;
+	width: 100%;
 }
 .refresh-btn {
 	font-size: 1.875rem;
