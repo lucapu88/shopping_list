@@ -48,7 +48,7 @@ const themeClasses = computed(() => ({
 </script>
 
 <template>
-	<button class="btn custom-show-listbtn" :class="[themeClasses, extraClasses]" :disabled="disabled" @click="emit('click')">
+	<button class="btn custom-show-listbtn" :class="[themeClasses, extraClasses]" :style="`max-width: ${!extraClasses ? '65px' : null}`" :disabled="disabled" @click="emit('click')">
 		<slot />
 	</button>
 </template>
@@ -57,7 +57,6 @@ const themeClasses = computed(() => ({
 .custom-show-listbtn {
 	min-width: 30px;
 	height: 40px;
-	max-width: 65px;
 }
 
 .custom-show-listbtn {

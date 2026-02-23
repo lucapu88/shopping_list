@@ -14,6 +14,8 @@ import ShowHelperButton from "./components/header/Show-helper-button.vue";
 import GeneralTutorialModal from "./components/helper/tutorials/General-tutoriar-modal.vue";
 import LoyaltyCardsContainer from "./components/loyalty-cards/Loyalty-cards-container.vue";
 import UpdatesAlertsModal from "./components/panels-and-modals/Updates-alerts-modal.vue";
+import PeriodicListAddedAlert from "./components/periodic-list/Periodic-list-added-alert.vue";
+import PeriodicListContainer from "./components/periodic-list/Periodic-list-container.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -139,6 +141,8 @@ export default {
 						<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
 						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
 						<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
+						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
+						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
 					</header>
 					<main>
 						<MainList />

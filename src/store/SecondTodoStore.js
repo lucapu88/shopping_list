@@ -37,6 +37,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         listSelected: '',
         checkedIcon: String.fromCodePoint(0x2705),
         refreshIcon: String.fromCodePoint(0x1F504),
+        periodicList: JSON.parse(window.localStorage.getItem("periodicList") || "[]"),
+        addedToPeriodicList: false,
+        periodicListContainerVisible: false,
     }),
     actions: {
         resetAllLists() {
@@ -378,6 +381,38 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         showLoyaltyCards() {
             this.loyaltyCardsVisible = true;
+        },
+        addTodoInPeriodicList(todo) {
+            this.periodicList.push(todo);
+            const listStringified = JSON.stringify(this.periodicList);
+            window.localStorage.setItem('periodicList', listStringified);
+            this.addedToPeriodicList = true;
+            setTimeout(() => {
+                this.addedToPeriodicList = false;
+            }, 2000);
+        },
+        removeTodoFromPeriodicList(index) {
+            this.periodicList.splice(index, 1);
+            const listStringified = JSON.stringify(this.periodicList);
+            window.localStorage.setItem('periodicList', listStringified);
+        },
+        selectTodoFromPeriodicList(todo) {
+            todo.periodicSelected = !todo.periodicSelected;
+        },
+        insertSelectedTodoFromPeriodicList() {
+            const selectedTodos = this.periodicList.filter(t => t.periodicSelected);
+            selectedTodos.forEach(t => {
+                this.todosStore.skipCheck = true;
+                t.periodicSelected = false;
+                this.todosStore.newTodo = t.name;
+                this.todosStore.addTodo();
+            });
+            this.setDefaultOptions();
+        },
+        setDefaultOptions() {
+            this.periodicList.forEach(t => t.periodicSelected = false);
+            this.todosStore.skipCheck = false;
+            this.categoriesStore.resetSelectedCat();
         }
     }
 });

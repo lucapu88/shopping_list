@@ -81,10 +81,10 @@ export const useTodoStore = defineStore('todoStore', {
       this.addingTodo = true;
 
       try {
-        this.newTodo = this.newTodo.trim();
-
         if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
         if (!this.newTodo) { return; }
+
+        this.newTodo = this.newTodo.trim();
 
         const todoObject = this.createTodoBase({
           name: this.newTodo,
@@ -188,7 +188,6 @@ export const useTodoStore = defineStore('todoStore', {
       }
     },
     defaultOptionsForCategorizing() {
-      this.categoriesStore.resetSelectedCat();
       this.addTodoInCategory.condition = false;
       this.addTodoInCategory.id = null;
       this.temporaryCategorySelected = null;

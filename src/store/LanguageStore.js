@@ -261,6 +261,16 @@ export const useLanguageStore = defineStore('Language', {
     importListExampleText: 'Example of how it should be written',
     show: 'show',
     close: 'close',
+    periodicList: {
+      periodicListAddedText: 'Added to periodic list',
+      periodicListTitle: 'Periodic List',
+      info: {
+        part1: 'Here there are products that you buy more often, so you can insert them faster into the list.',
+        part2: 'To add a product to your main list, just click on the product, then on the category (or vice versa) and then on the "send" button.',
+        part3: 'You can also not select any category and insert the product directly by selecting only it.'
+      },
+      periodicListButtonText: 'Periodic List',
+    }
   }),
   getters: {},
   actions: {
@@ -457,6 +467,12 @@ export const useLanguageStore = defineStore('Language', {
       this.importListExampleText = "Esempio di come va scritta";
       this.show = "mostra";
       this.close = "chiudi";
+      this.periodicList.periodicListAddedText = "Aggiunto alla lista periodica";
+      this.periodicList.periodicListTitle = "Lista Periodica";
+      this.periodicList.info.part1 = "Qui ci sono prodotti che acquisti più spesso, così da poterli inserire più velocemente nella lista.";
+      this.periodicList.info.part2 = "Per aggiungere un prodotto alla tua lista principale, basta cliccare sul prodotto, poi sulla categoria (o viceversa) e poi sul  pulsante 'invia'.";
+      this.periodicList.info.part3 = "Puoi anche non selezionare nessuna categoria ed inserire direttamente il prodotto selezionando solo lui.";
+      this.periodicList.periodicListButtonText = "Lista Periodica";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -562,6 +578,12 @@ export const useLanguageStore = defineStore('Language', {
       this.importListExampleText = "Ejemplo de cómo debe escribirse";
       this.show = "mostrar";
       this.close = "cerrar";
+      this.periodicList.periodicListAddedText = "Añadido a la lista periódica";
+      this.periodicList.periodicListTitle = "Lista Periódica";
+      this.periodicList.info.part1 = "Aquí hay productos que compras más a menudo, para que puedas insertarlos más rápido en la lista.";
+      this.periodicList.info.part2 = "Para añadir un producto a tu lista principal, basta con hacer clic en el producto, luego en la categoría (o viceversa) y luego en el botón 'Enviar'.";
+      this.periodicList.info.part3 = "También puedes no seleccionar ninguna categoría e insertar directamente el producto seleccionándolo solo a él.";
+      this.periodicList.periodicListButtonText = "Lista Periódica";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -667,6 +689,12 @@ export const useLanguageStore = defineStore('Language', {
       this.importListExampleText = "Exemple de la manière dont cela devrait être écrit";
       this.show = "show";
       this.close = "fermer";
+      this.periodicList.periodicListAddedText = "Ajouté à la liste périodique";
+      this.periodicList.periodicListTitle = "Liste périodique";
+      this.periodicList.info.part1 = "Ici, il y a des produits que vous achetez plus souvent, afin que vous puissiez les insérer plus rapidement dans la liste.";
+      this.periodicList.info.part2 = "Pour ajouter un produit à votre liste principale, il suffit de cliquer sur le produit, puis sur la catégorie (ou vice versa) et ensuite sur le bouton 'Envoyer'.";
+      this.periodicList.info.part3 = "Vous pouvez également ne sélectionner aucune catégorie et insérer directement le produit en le sélectionnant uniquement lui.";
+      this.periodicList.periodicListButtonText = "Liste périodique";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

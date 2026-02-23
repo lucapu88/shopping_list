@@ -210,3 +210,23 @@
 		transform: rotate(0deg);
 	}
 }
+
+.close-x-container {
+	width: 65px;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.313rem;
+}
+.close-x-btn {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	float: right;
+	width: 30px;
+	padding-left: 8px;
+	color: #000000;
+	background-color: #d3d3d3;
+	border: 2px solid;
+	border-radius: 50%;
+}

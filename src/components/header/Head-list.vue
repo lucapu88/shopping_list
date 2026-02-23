@@ -11,7 +11,7 @@ import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
 import GeneralTutorialBtn from "../helper/tutorials/General-tutorial-btn.vue";
-import CategoriesPrimaryPanel from "../panels-and-modals/Categories-primary-panel.vue";
+import CategoriesPrimaryPanel from "../panels-and-modals/categories-primary-panel/Categories-primary-panel.vue";
 </script>
 
 <script>

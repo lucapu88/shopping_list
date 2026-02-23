@@ -3,7 +3,10 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useCategoriesStore } from "@/store/CategoriesStore";
-import CustomButton from "../common/Custom-button.vue";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
+import CustomButton from "../../common/Custom-button.vue";
+import CategoriesContainer from "./Categories-container.vue";
 </script>
 
 <script>
@@ -13,6 +16,8 @@ export default {
 			theme: useThemeStore(),
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
+			settings: useSettingsStore(),
+			secondTodos: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
 			hasVerticalScroll: false,
 			scrollBottom: false,
@@ -22,6 +27,7 @@ export default {
 	mounted() {
 		this.whiteText = this.theme.darkTheme || this.theme.retroTheme || this.theme.winterTheme || this.theme.elegantTheme || this.theme.panterTheme;
 		this.todosStore.defaultOptionsForCategorizing();
+		this.categoriesStore.resetSelectedCat();
 		this.checkScroll();
 	},
 	unmounted() {
@@ -29,11 +35,11 @@ export default {
 	},
 	methods: {
 		checkScroll() {
-			const el = this.$refs.box;
+			const el = this.$refs.boxRef.$refs.box;
 			this.hasVerticalScroll = el.scrollHeight > el.clientHeight;
 		},
 		scroll() {
-			const box = this.$refs.box;
+			const box = this.$refs.boxRef.$refs.box;
 			this.scrollBottom = !this.scrollBottom;
 			!this.scrollBottom ? document.getElementById("categories").scrollTo({ top: 0, left: 0, behavior: "smooth" }) : document.getElementById("categories").scrollTo({ top: box.scrollHeight, left: 0, behavior: "smooth" });
 		},
@@ -71,43 +77,14 @@ export default {
 				{{ languages.selectCategoryText }}
 			</small>
 		</p>
-		<div class="categories mt-2 mb-2" id="categories" ref="box">
-			<template v-for="(category, i) in categoriesStore.categories" :key="i">
-				<p
-					v-if="category.active"
-					class="category-list"
-					:class="{
-						'retro-category-list': theme.retroTheme,
-						'category-pink-btn': theme.pinkTheme,
-						'category-padding-btn': theme.elegantTheme || theme.panterTheme || theme.jeansTheme,
-						'jeans-theme-btn': theme.jeansTheme,
-						'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
-						'btn-selected': category.selectedCat,
-						'minimal-selected-btn': theme.minimalTheme && category.selectedCat,
-						'retro-selected-button': theme.retroTheme && category.selectedCat,
-						'summer-header-btn-selected': theme.summerTheme && category.selectedCat,
-						'winter-selected-button': theme.winterTheme && category.selectedCat,
-						'elegant-selected-button': theme.elegantTheme && category.selectedCat,
-						'pink-theme-selected-btn': theme.pinkTheme && category.selectedCat,
-						'panter-theme-selected-button': theme.panterTheme && category.selectedCat,
-						'lemon-theme-selected-btn': theme.lemonTheme && category.selectedCat,
-						'jeans-theme-selected-btn': theme.jeansTheme && category.selectedCat,
-					}"
-					@touchstart.prevent="todosStore.selectCategoryForInsertion(category)"
-					@mousedown.prevent="todosStore.selectCategoryForInsertion(category)"
-				>
-					<span
-						:class="{
-							'winter-category-list': theme.winterTheme,
-							'boldi-cipollino': theme.jeansTheme,
-						}"
-					>
-						{{ category.emojy + " " + category.name }}
-					</span>
-				</p>
-			</template>
-		</div>
+
+		<CategoriesContainer ref="boxRef" />
+
 		<div class="category-footer">
+			<CustomButton v-if="settings.isIphone" extra-classes="show-periodic-list-button" @click="secondTodos.periodicListContainerVisible = true">
+				<span> {{ languages.periodicList.periodicListButtonText }} </span>
+			</CustomButton>
+
 			<CustomButton v-if="hasVerticalScroll" extra-classes="scroll-button" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
 				<span
 					class="arrow"
@@ -136,44 +113,15 @@ export default {
 	animation-duration: 0.3s;
 }
 
-.categories {
-	opacity: 1;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	overflow: auto;
-	max-height: 220px;
-}
-
 .category {
 	background: rgba(192, 224, 133, 0.75);
 	border-radius: 15px;
 }
 
-.category-list {
-	display: inline-block;
-	font-weight: bold;
-	text-transform: capitalize;
-	border: 1px solid;
-	border-radius: 5px;
-	margin: 0.3125rem;
-	font-size: 0.875rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.category-list:hover {
-	cursor: pointer;
-}
 .category-list-description {
 	font-size: 0.938rem;
 	margin: 0;
 	border-bottom: 1px solid;
-}
-
-.christmas-category {
-	border: 2px solid red;
-	box-shadow: 0px 0px 10px 0px #ff0000;
 }
 
 .category-footer {
@@ -183,7 +131,8 @@ export default {
 	border-top: 1px solid;
 }
 
-.scroll-button {
+.scroll-button,
+.show-periodic-list-button {
 	width: 50px;
 	height: 35px;
 	display: flex;
@@ -191,13 +140,13 @@ export default {
 	align-items: center;
 }
 
-.arrow {
-	font-size: 1.125rem;
+.show-periodic-list-button {
+	margin-right: 30%;
+	width: 150px;
+	border-radius: 5px;
 }
 
-@media (max-width: 364px) {
-	.category-list {
-		font-size: 0.813rem;
-	}
+.arrow {
+	font-size: 1.125rem;
 }
 </style>

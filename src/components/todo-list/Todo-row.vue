@@ -3,6 +3,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import AddPeriodicListButton from "../periodic-list/add-periodic-list-button.vue";
 </script>
 
 <script>
@@ -106,6 +107,9 @@ export default {
 		<img v-if="todo.multipleDelete && theme.lightTheme" class="scrawl" src="@/img/cancella.webp" alt="line-through" fetchpriority="high" loading="eager" />
 	</li>
 
+	<!-- PULSANTE AGGIUNGI A LISTA PERIODICA-->
+	<AddPeriodicListButton v-if="!todo.modify && !todo.category && settings.isIphone" @click="secondTodos.addTodoInPeriodicList(todo)" />
+
 	<!--CONTENITORE PULSANTI (edit, delete, modify)-->
 	<li
 		class="button-container bg-light"
@@ -122,6 +126,7 @@ export default {
 	>
 		<!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
 		<h1 class="x-modify" v-if="!!todo.isDisabled || todo.multipleDelete">X</h1>
+
 		<!-- PULSANTE MODIFICA-->
 		<button
 			class="btn btn-primary rounded-circle btn-sm"

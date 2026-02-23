@@ -69,3 +69,7 @@
 	background-size: contain;
 	border: 2px solid rgb(0, 172, 252);
 }
+
+.light-periodic-todo {
+	background-color: var(--light-background-color);
+}

@@ -101,8 +101,8 @@ export default {
 			}"
 		>
 			<!-- PULSANTE DI CHIUSURA -->
-			<div class="close-helper-container" @click="closeHelper()">
-				<p class="close-helper" :class="{ 'close-retro-theme-helper': theme.retroTheme }">X</p>
+			<div class="close-x-container" @click="closeHelper()">
+				<p class="close-x-btn" :class="{ 'close-retro-theme-helper': theme.retroTheme }">X</p>
 			</div>
 
 			<img v-if="festivities.halloweenTheme" class="halloween-pumpkin" src="@/img/festivities/zucca.webp" alt="halloween" />
@@ -184,7 +184,7 @@ export default {
 	height: 100%;
 	padding: 0.625rem;
 	background-size: contain;
-	z-index: 500;
+	z-index: 10000;
 	background-color: #ffffff;
 }
 
@@ -249,26 +249,6 @@ export default {
 .helper-settings-title {
 	margin-bottom: 0.9375rem;
 	text-align: center;
-}
-
-.close-helper-container {
-	width: 65px;
-	height: 60px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 0.313rem;
-}
-.close-helper {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	float: right;
-	width: 30px;
-	padding-left: 8px;
-	color: #000000;
-	background-color: #d3d3d3;
-	border: 2px solid;
-	border-radius: 50%;
 }
 
 .helper-footer {
