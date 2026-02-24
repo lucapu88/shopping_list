@@ -101,3 +101,11 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+.winter-periodic-list-btn {
+	background-color: #005a84af !important;
+}
+
+.winter-background {
+	background-image: url("@/img/paesaggio-innevato.webp");
+}

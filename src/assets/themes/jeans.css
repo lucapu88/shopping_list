@@ -186,3 +186,15 @@
 .container-jeans {
 	background-color: var(--jeans-secondary-color);
 }
+
+.jeans-background {
+	background-image: url("@/img/jeans-periodic-background.webp");
+}
+
+.jeans-font-size {
+	font-size: 0.875rem;
+}
+
+.jeans-font-size-small {
+	font-size: 0.75rem !important;
+}

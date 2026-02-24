@@ -163,15 +163,19 @@
 }
 
 .confirm-elegant {
-	background-color: #1d2731;
-	border: 1px solid #d98410;
-	color: #d98410;
+	background-color: var(--elegant-secondary-color);
+	border: 1px solid var(--elegant-text-color);
+	color: var(--elegant-text-color);
 }
 .confirm-elegant > p {
 	font-weight: bold;
 }
 .confirm-elegant > button {
-	background-color: #045687;
-	border-color: #d98410;
-	color: #d98410;
+	background-color: var(--elegant-primary-color-light);
+	border-color: var(--elegant-text-color);
+	color: var(--elegant-text-color);
+}
+
+.elegant-periodic-selected {
+	background-color: var(--elegant-secondary-color) !important;
 }

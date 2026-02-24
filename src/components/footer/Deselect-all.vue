@@ -49,6 +49,7 @@ export default {
 			active: importantTodo && !theme.elegantTheme,
 			christmas: isChristmas.christmasTheme,
 			'elegant-btn': theme.elegantTheme,
+			'jeans-font-size': theme.jeansTheme,
 		}"
 		@click="todosStore.confirmDeselectAll = true"
 	>

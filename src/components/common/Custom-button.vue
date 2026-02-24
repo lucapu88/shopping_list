@@ -7,6 +7,10 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	otherBtnStyle: {
+		type: Boolean,
+		default: false,
+	},
 	disabled: {
 		type: Boolean,
 		default: false,
@@ -24,14 +28,15 @@ const theme = useThemeStore();
 const themeClasses = computed(() => ({
 	// classi dei temi
 	"minimal-btn": theme.minimalTheme,
-	"retro-teme-btns": theme.retroTheme,
+	"retro-teme-btns": theme.retroTheme && !props.otherBtnStyle,
 	"summer-header-btn": theme.summerTheme,
 	"winter-btn": theme.winterTheme,
 	"elegant-btn": theme.elegantTheme,
 	"pink-theme-btn": theme.pinkTheme,
 	"panter-btn": theme.panterTheme,
 	"lemon-btn": theme.lemonTheme,
-	"jeans-other-btn": theme.jeansTheme,
+	"jeans-other-btn jeans-font-size": theme.jeansTheme,
+	"retro-other-btn": theme.retroTheme && props.otherBtnStyle,
 
 	// classi per selected
 	"btn-selected": props.selected,

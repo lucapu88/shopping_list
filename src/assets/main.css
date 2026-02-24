@@ -230,3 +230,7 @@
 	border: 2px solid;
 	border-radius: 50%;
 }
+
+.black-background {
+	background-color: #000000 !important;
+}

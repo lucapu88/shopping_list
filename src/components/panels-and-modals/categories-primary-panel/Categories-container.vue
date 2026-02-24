@@ -6,6 +6,7 @@ import { ref, defineExpose } from "vue";
 
 const props = defineProps({
 	extraClass: Boolean,
+	customBtn: Boolean,
 });
 
 const box = ref(null);
@@ -24,21 +25,26 @@ defineExpose({
 				v-if="category.active"
 				class="category-list"
 				:class="{
-					'custom-font-size': extraClass,
-					'retro-category-list': theme.retroTheme,
+					'custom-font-size': extraClass && !theme.jeansTheme,
+					'retro-category-list': theme.retroTheme && !customBtn,
+					'retro-btn': theme.retroTheme && customBtn,
 					'category-pink-btn': theme.pinkTheme,
 					'category-padding-btn': theme.elegantTheme || theme.panterTheme || theme.jeansTheme,
-					'jeans-theme-btn': theme.jeansTheme,
+					'jeans-theme-btn jeans-font-size-small': theme.jeansTheme,
 					'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 					'btn-selected': category.selectedCat,
 					'minimal-selected-btn': theme.minimalTheme && category.selectedCat,
-					'retro-selected-button': theme.retroTheme && category.selectedCat,
+					'retro-selected-button': theme.retroTheme && category.selectedCat && !customBtn,
+					'retro-other-selected-btn': theme.retroTheme && category.selectedCat && customBtn,
 					'summer-header-btn-selected': theme.summerTheme && category.selectedCat,
 					'winter-selected-button': theme.winterTheme && category.selectedCat,
-					'elegant-selected-button': theme.elegantTheme && category.selectedCat,
-					'pink-theme-selected-btn': theme.pinkTheme && category.selectedCat,
+					'elegant-selected-button': theme.elegantTheme && category.selectedCat && !customBtn,
+					'elegant-periodic-selected': theme.elegantTheme && category.selectedCat && customBtn,
+					'pink-theme-selected-btn': theme.pinkTheme && category.selectedCat && !customBtn,
+					'pink-other-selected': theme.pinkTheme && category.selectedCat && customBtn,
 					'panter-theme-selected-button': theme.panterTheme && category.selectedCat,
-					'lemon-theme-selected-btn': theme.lemonTheme && category.selectedCat,
+					'lemon-theme-selected-btn': theme.lemonTheme && category.selectedCat && !customBtn,
+					'lemon-periodic-selected': theme.lemonTheme && category.selectedCat && customBtn,
 					'jeans-theme-selected-btn': theme.jeansTheme && category.selectedCat,
 				}"
 				@touchstart.prevent="todosStore.selectCategoryForInsertion(category)"

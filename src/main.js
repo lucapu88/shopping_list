@@ -17,7 +17,7 @@ window.__appTestAPI = {
         christmas.hideElementForTest = true;
         settings.isTutorialVisible = false;
     },
-    cshowHelperBtn() {
+    showHelperBtn() {
         const settings = useSettingsStore();
         settings.isVisibleOnScroll = true;
     }

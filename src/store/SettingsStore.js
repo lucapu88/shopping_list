@@ -44,6 +44,7 @@ export const useSettingsStore = defineStore('settings', {
     enableAI: true,
     isVisibleOnScroll: true,
     isTutorialVisible: false,
+    periodicList: false,
   }),
   getters: {},
   actions: {
@@ -154,6 +155,8 @@ export const useSettingsStore = defineStore('settings', {
       this.deleteAllInfo = false;
       this.tutorial = false;
       this.support = false;
+      //ALTRO
+      this.periodicList = false;
     },
     showListInstructions(section) {
       // Per gli accordion nell'helper
@@ -181,6 +184,7 @@ export const useSettingsStore = defineStore('settings', {
         tutorial: 'tutorial',
         support: 'support',
         troubleshooting: 'troubleshooting',
+        periodicList: 'periodicList',
       };
 
       if (sectionMap[section]) {

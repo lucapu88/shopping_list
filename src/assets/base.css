@@ -230,11 +230,17 @@ button {
 	overflow-y: hidden;
 	min-height: 25px;
 }
-@media (max-width: 380px) {
+@media (max-width: 395px) {
 	.todo {
 		width: 190px;
 	}
 }
+@media (max-width: 350px) {
+	.todo {
+		max-width: 165px;
+	}
+}
+
 .todo-n {
 	display: flex;
 	align-items: center;

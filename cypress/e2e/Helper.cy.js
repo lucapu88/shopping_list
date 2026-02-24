@@ -13,7 +13,7 @@ describe("test dell'helper e delle impostazioni", () => {
     it("l'helper appare e scompare", () => {
         cy.get('.settings').click();
         cy.get('#helper-description-container').should('exist');
-        cy.get('.close-helper').click();
+        cy.get('.close-x-container').click();
         cy.get('#helper-description-container').should('not.exist');
     });
 
@@ -60,14 +60,14 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.window().then(win => {
             // Cypress fa schifo e si blocca perchè scompare il pulsante, ho provato più volte a capire il perchè ma mi sembra magia nera! 
             // Uso questa scappatoia per farlo apparire
-            win.__appTestAPI.cshowHelperBtn();
+            win.__appTestAPI.showHelperBtn();
         });
         cy.get('.settings').click().then(() => {
             cy.get('#helper-description > :nth-child(6) > .list-title').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'OFF');
             cy.get('#auto-delete > u').click();
             cy.get('#auto-delete > .text-primary').should('include.text', 'ON');
-            cy.get('.close-helper-container > .close-helper').click();
+            cy.get('.close-x-container').click();
         });
 
         cy.addCategoryAndTodo();
@@ -83,7 +83,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.window().then(win => {
             // Cypress fa schifo e si blocca perchè scompare il pulsante, ho provato più volte a capire il perchè ma mi sembra magia nera! 
             // Uso questa scappatoia per farlo apparire
-            win.__appTestAPI.cshowHelperBtn();
+            win.__appTestAPI.showHelperBtn();
         });
         categoryCheck();
         cy.get('.settings').click({ force: true });
@@ -91,7 +91,7 @@ describe("test dell'helper e delle impostazioni", () => {
         cy.get('.text-primary').should('include.text', 'ON');
         cy.get('#auto-delete > .hand-pointing').click();
         cy.get('.text-primary').should('include.text', 'OFF');
-        cy.get('.close-helper').click();
+        cy.get('.close-x-container').click();
 
         cy.get('.inputText').type('Ile :-)');
         cy.get('.plane').click();

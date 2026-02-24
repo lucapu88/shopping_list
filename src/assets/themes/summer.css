@@ -96,10 +96,19 @@
 }
 
 .confirm-summer {
-	background-color: #12a1df;
-	border: 2px solid #12a1df;
+	background-color: var(--summer-secondary-color);
+	border: 2px solid var(--summer-secondary-color);
 	background-image: url("@/img/maldive.webp");
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: #ffffff;
+}
+
+.summer-periodic-list-element {
+	background-color: #12a2dfb4;
+	color: #ffffff;
+	border: 1px solid var(--summer-primary-color);
+}
+.summer-background {
+	background-image: url("@/img/manfredonia.webp");
 }

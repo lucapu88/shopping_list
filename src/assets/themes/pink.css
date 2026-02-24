@@ -86,3 +86,17 @@
 	background-color: var(--pink-modal-color);
 	color: var(--pink-primary-color);
 }
+
+.pink-background {
+	background-image: url("@/img/mr-pink.webp");
+	background-size: contain !important;
+}
+
+.pink-periodic {
+	background-color: #f8c1d7be !important;
+}
+
+.pink-other-selected {
+	background-color: var(--pink-secondary-color) !important;
+	color: var(--margot-robbie-feet-color-two) !important;
+}

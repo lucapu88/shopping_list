@@ -2,18 +2,23 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 import { ref, onMounted } from "vue";
 import CategoriesContainer from "../panels-and-modals/categories-primary-panel/Categories-container.vue";
 import CustomButton from "../common/Custom-button.vue";
 import ConfirmPanel from "../common/Confirm-panel.vue";
+import Tutorial from "../helper/tutorials/Tutorial.vue";
+import ToggleTutorialButton from "../helper/tutorials/ToggleTutorialButton.vue";
 
 const theme = useThemeStore();
 const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
+const settings = useSettingsStore();
 const showInfo = ref(false);
 const indexToDelete = ref(null);
 const confirmPanelVisible = ref(false);
 const confirmText = ref("Do you confirm the removal?");
+const periodicList = ref("periodicList");
 
 function showConfirmPanel(index) {
 	confirmPanelVisible.value = !confirmPanelVisible.value;
@@ -23,6 +28,16 @@ function showConfirmPanel(index) {
 function confirmRemoveTodoFromPeriodicList() {
 	secondTodos.removeTodoFromPeriodicList(indexToDelete.value);
 	confirmPanelVisible.value = false;
+}
+
+function toggleInfo() {
+	showInfo.value = !showInfo.value;
+	settings.video = false;
+}
+
+function close() {
+	secondTodos.periodicListContainerVisible = false;
+	settings.video = false;
 }
 
 confirmText.value = languages.langIta ? "Confermi la rimozione?" : languages.langSpanish ? "¿Confirma la eliminación?" : languages.langFrench ? "Confirmez-vous la suppression?" : "Do you confirm the removal?";
@@ -51,8 +66,10 @@ onMounted(() => {
 	>
 		<div class="title">
 			<div>
-				<p>{{ languages.periodicList.periodicListTitle }} <span class="info-btn" @click="showInfo = !showInfo"> i </span></p>
+				<p>{{ languages.periodicList.periodicListTitle }} <span class="info-btn" @click="toggleInfo()"> i </span></p>
 			</div>
+
+			<ToggleTutorialButton :features="periodicList" @click="showInfo = false" />
 
 			<button
 				:class="{
@@ -66,20 +83,24 @@ onMounted(() => {
 					'lemon-btn': theme.lemonTheme,
 					'jeans-other-btn': theme.jeansTheme,
 				}"
-				@click="secondTodos.periodicListContainerVisible = false"
+				@click="close()"
 			>
 				{{ languages.close }}
 			</button>
 		</div>
 
+		<Tutorial v-if="settings.video && settings.feature === periodicList" :features="periodicList" />
+
+		<!-- INFO -->
 		<div class="info-container mb-2" v-if="showInfo">
 			<small>&#9679; {{ languages.periodicList.info.part1 }}</small>
 			<small>&#9679; {{ languages.periodicList.info.part2 }}</small>
 			<small>&#9679; {{ languages.periodicList.info.part3 }}</small>
 		</div>
 
-		<CategoriesContainer :extra-class="true" />
-
+		<!-- CATEGORIE -->
+		<CategoriesContainer :extra-class="true" :custom-btn="true" />
+		<!-- CONFERMA ELIMINAZIONE O INVIA ELEMENTO -->
 		<div class="confirm-container">
 			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
 				<span> {{ languages.send }}</span>
@@ -89,24 +110,44 @@ onMounted(() => {
 
 			<ConfirmPanel extra-classes="custom-class" v-if="confirmPanelVisible" @ok="confirmRemoveTodoFromPeriodicList()" @no="confirmPanelVisible = false" />
 		</div>
-
-		<div class="periodic-list-todo-container">
+		<!-- LISTA DEI TODO PERIODICI -->
+		<div
+			class="periodic-list-todo-container"
+			:class="{
+				'light-background': theme.lightTheme,
+				'retro-background': theme.retroTheme,
+				'summer-background': theme.summerTheme,
+				'winter-background': theme.winterTheme,
+				'elegant-background': theme.elegantTheme,
+				'pink-background': theme.pinkTheme,
+				'panter-background': theme.panterTheme,
+				'lemon-background': theme.lemonTheme,
+				'jeans-background': theme.jeansTheme,
+			}"
+		>
 			<ul>
 				<li
 					v-for="(todo, index) in secondTodos.periodicList"
 					:key="index"
-					class="periodic-list-todo mt-2"
+					class="periodic-list-todo mt-2 p-1"
 					:class="{
 						'light-periodic-todo': theme.lightTheme,
-						'btn-selected': todo.periodicSelected,
+						'black-background': theme.retroTheme,
+						'summer-periodic-list-element': theme.summerTheme,
+						'winter-periodic-list-btn': theme.winterTheme,
+						'pink-periodic': theme.pinkTheme,
+						'panter-periodic': theme.panterTheme,
+						'lemon-periodic': theme.lemonTheme,
+						'jeans-other-btn': theme.jeansTheme,
+						'btn-selected': todo.periodicSelected && (theme.lightTheme || theme.darkTheme),
 						'minimal-selected-btn': theme.minimalTheme && todo.periodicSelected,
-						'retro-selected-button': theme.retroTheme && todo.periodicSelected,
+						'retro-other-selected-btn': theme.retroTheme && todo.periodicSelected,
 						'summer-header-btn-selected': theme.summerTheme && todo.periodicSelected,
 						'winter-selected-button': theme.winterTheme && todo.periodicSelected,
-						'elegant-selected-button': theme.elegantTheme && todo.periodicSelected,
-						'pink-theme-selected-btn': theme.pinkTheme && category.selectedCat,
+						'elegant-periodic-selected': theme.elegantTheme && todo.periodicSelected,
+						'pink-other-selected': theme.pinkTheme && todo.periodicSelected,
 						'panter-theme-selected-button': theme.panterTheme && todo.periodicSelected,
-						'lemon-theme-selected-btn': theme.lemonTheme && todo.periodicSelected,
+						'lemon-periodic-selected': theme.lemonTheme && todo.periodicSelected,
 						'jeans-theme-selected-btn': theme.jeansTheme && todo.periodicSelected,
 					}"
 				>
@@ -161,7 +202,6 @@ onMounted(() => {
 .periodic-list-todo-container {
 	height: 100%;
 	overflow-y: auto;
-	background-image: url("@/img/io-e-ile.webp");
 	background-size: cover;
 	max-height: 420px;
 	background-repeat: no-repeat;
@@ -178,6 +218,7 @@ ul {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	overflow-x: auto;
 }
 
 .btn-remove-periodic-list {

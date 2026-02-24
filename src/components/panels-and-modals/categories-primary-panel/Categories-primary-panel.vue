@@ -81,11 +81,11 @@ export default {
 		<CategoriesContainer ref="boxRef" />
 
 		<div class="category-footer">
-			<CustomButton v-if="settings.isIphone" extra-classes="show-periodic-list-button" @click="secondTodos.periodicListContainerVisible = true">
+			<CustomButton v-if="settings.isIphone" extra-classes="show-periodic-list-button" :otherBtnStyle="true" @click="secondTodos.periodicListContainerVisible = true">
 				<span> {{ languages.periodicList.periodicListButtonText }} </span>
 			</CustomButton>
 
-			<CustomButton v-if="hasVerticalScroll" extra-classes="scroll-button" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
+			<CustomButton v-if="hasVerticalScroll" extra-classes="scroll-button" :otherBtnStyle="true" @touchstart.prevent="scroll()" @mousedown.prevent="scroll()">
 				<span
 					class="arrow"
 					:class="{

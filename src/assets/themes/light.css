@@ -73,3 +73,8 @@
 .light-periodic-todo {
 	background-color: var(--light-background-color);
 }
+
+.light-background {
+	/* Questo è il primo disegno delle nostre manine che abbiamo fatto insieme io e mia figlia <3 */
+	background-image: url("@/img/io-e-ile.webp");
+}

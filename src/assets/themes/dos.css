@@ -77,6 +77,12 @@
 	border: 2px outset !important;
 	background-color: var(--dos-button-color) !important;
 }
+.retro-other-btn {
+	border-radius: 0px !important;
+	border: 2px outset !important;
+	border-color: var(--dos-helper-primary-color) !important;
+	background-color: var(--dos-button-color) !important;
+}
 .retro-multiple-delete {
 	color: #d70a0a;
 }
@@ -205,4 +211,16 @@
 	color: #35c50d;
 	border: 1px solid #35c50d;
 	border-radius: 0 !important;
+}
+
+.retro-other-selected-btn {
+	background-color: var(--dos-primary-color) !important;
+	color: var(--dos-secondary-color) !important;
+	font-weight: bold !important;
+	border: 1px solid var(--dos-primary-color) !important;
+	border-radius: 0 !important;
+}
+
+.retro-background {
+	background-image: url("@/img/matrix-code.webp");
 }

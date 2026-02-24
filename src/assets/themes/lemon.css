@@ -78,3 +78,16 @@
 .container-lemon {
 	background-color: var(--lemon-primary-color) !important;
 }
+
+.lemon-background {
+	background-image: url("@/img/lemon-tree.webp");
+}
+
+.lemon-periodic {
+	background-color: #6c9940a7 !important;
+	color: var(--lemon-dark-color) !important;
+}
+.lemon-periodic-selected {
+	background-color: var(--lemon-text-color) !important;
+	color: var(--lemon-dark-color) !important;
+}

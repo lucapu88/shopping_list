@@ -123,3 +123,12 @@
 	background-color: var(--panter-primary-color) !important;
 	border: 1px solid var(--panter-text-color) !important;
 }
+
+.panter-background {
+	/* 2pac miglior rapper di sempre e chi dice il contrario MENTE! Ora direte: si ma cazzo c'entra con panther? beh la madre è stata attivista nel black panther party, quindi: RESPECT! */
+	background-image: url("@/img/tupac.webp");
+}
+
+.panter-periodic {
+	background-color: #000018b4 !important;
+}
