@@ -5,11 +5,27 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { ref, onMounted } from "vue";
 import CategoriesContainer from "../panels-and-modals/categories-primary-panel/Categories-container.vue";
 import CustomButton from "../common/Custom-button.vue";
+import ConfirmPanel from "../common/Confirm-panel.vue";
 
 const theme = useThemeStore();
 const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
 const showInfo = ref(false);
+const indexToDelete = ref(null);
+const confirmPanelVisible = ref(false);
+const confirmText = ref("Do you confirm the removal?");
+
+function showConfirmPanel(index) {
+	confirmPanelVisible.value = !confirmPanelVisible.value;
+	indexToDelete.value = index;
+}
+
+function confirmRemoveTodoFromPeriodicList() {
+	secondTodos.removeTodoFromPeriodicList(indexToDelete.value);
+	confirmPanelVisible.value = false;
+}
+
+confirmText.value = languages.langIta ? "Confermi la rimozione?" : languages.langSpanish ? "¿Confirma la eliminación?" : languages.langFrench ? "Confirmez-vous la suppression?" : "Do you confirm the removal?";
 
 onMounted(() => {
 	secondTodos.setDefaultOptions();
@@ -65,9 +81,13 @@ onMounted(() => {
 		<CategoriesContainer :extra-class="true" />
 
 		<div class="confirm-container">
-			<CustomButton extra-classes="confirm-selected-periodic-element" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
+			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
 				<span> {{ languages.send }}</span>
 			</CustomButton>
+
+			<span v-if="confirmPanelVisible">{{ confirmText }}</span>
+
+			<ConfirmPanel extra-classes="custom-class" v-if="confirmPanelVisible" @ok="confirmRemoveTodoFromPeriodicList()" @no="confirmPanelVisible = false" />
 		</div>
 
 		<div class="periodic-list-todo-container">
@@ -91,7 +111,7 @@ onMounted(() => {
 					}"
 				>
 					<span class="periodic-todo-name" @click="secondTodos.selectTodoFromPeriodicList(todo)">&gt; {{ todo.name }}</span>
-					<button class="btn btn-outline-danger bg-light rounded-circle btn-sm btn-remove-periodic-list" @click="secondTodos.removeTodoFromPeriodicList(index)">
+					<button class="btn btn-outline-danger bg-light rounded-circle btn-sm btn-remove-periodic-list" @click="showConfirmPanel(index)">
 						<span>-</span>
 					</button>
 				</li>
@@ -142,7 +162,8 @@ onMounted(() => {
 	height: 100%;
 	overflow-y: auto;
 	background-image: url("@/img/io-e-ile.webp");
-	background-size: contain;
+	background-size: cover;
+	max-height: 420px;
 	background-repeat: no-repeat;
 	background-position: top;
 }
@@ -173,5 +194,10 @@ ul {
 
 .periodic-todo-name {
 	width: 95%;
+}
+
+.custom-class {
+	gap: 10px;
+	margin-left: 0.5rem;
 }
 </style>

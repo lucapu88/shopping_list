@@ -8,22 +8,7 @@ const secondTodos = useSecondTodoStore();
 </script>
 
 <template>
-	<div
-		class="alert-container"
-		:class="{
-			light: theme.lightTheme,
-			dark: theme.darkTheme,
-			minimal: theme.minimalTheme,
-			retro: theme.retroTheme,
-			summer: theme.summerTheme,
-			winter: theme.winterTheme,
-			elegant: theme.elegantTheme,
-			pink: theme.pinkTheme,
-			panter: theme.panterTheme,
-			lemon: theme.lemonTheme,
-			jeans: theme.jeansTheme,
-		}"
-	>
+	<div class="alert-container">
 		<div class="close-x-container" @click="secondTodos.addedToPeriodicList = false">
 			<p class="close-x-btn" :class="{ 'close-retro-theme-helper': theme.retroTheme }">X</p>
 		</div>
@@ -44,6 +29,11 @@ const secondTodos = useSecondTodoStore();
 	z-index: 200;
 	border: 2px solid;
 	border-radius: 10px;
+	box-shadow: 1px 1px 29px 5px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 1px 1px 29px 5px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 1px 1px 29px 5px rgba(0, 0, 0, 0.75);
+	background-color: #e1e1e1;
+	color: #e70000;
 }
 
 .close-x-container {

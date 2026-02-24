@@ -4,6 +4,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
+import ConfirmPanel from "../common/Confirm-panel.vue";
 </script>
 
 <script>
@@ -54,33 +55,13 @@ export default {
 		{{ languages.deselectAllText }}
 	</button>
 	<!-- CONTENITORE CONFERMA DESELEZIONA TUTTI -->
-	<div
+	<ConfirmPanel
 		v-if="(multipleDelete && todosStore.canDeleteMultipleTodo && todosStore.confirmDeselectAll) || (importantTodo && todosStore.showOnlyImportantTodos && todosStore.confirmDeselectAll)"
-		class="confirm-deselect-all-container deselect-all p-2"
-		:class="{
-			'multiple-delete': multipleDelete,
-			'left-25': !settings.isIphone,
-			'left-35': settings.isIphone,
-			light: theme.lightTheme,
-			dark: theme.darkTheme,
-			minimal: theme.minimalTheme,
-			retro: theme.retroTheme,
-			summer: theme.summerTheme,
-			winter: theme.winterTheme,
-			elegant: theme.elegantTheme,
-			pink: theme.pinkTheme,
-			panter: theme.panterTheme,
-			lemon: theme.lemonTheme,
-		}"
-	>
-		<button class="btn btn-success rounded btn-sm confirm-undo-button" @click="deselectAll()">
-			<img class="confirm-deselect-all" src="@/img/icons/ok.webp" alt="ok" />
-		</button>
-
-		<button class="btn btn-danger rounded btn-sm confirm-undo-button" @click="todosStore.confirmDeselectAll = false">
-			<img class="undo" src="@/img/icons/close.webp" alt="X" />
-		</button>
-	</div>
+		extra-classes="deselect-all"
+		:multipleDelete="multipleDelete"
+		@ok="deselectAll()"
+		@no="todosStore.confirmDeselectAll = false"
+	/>
 </template>
 
 <style scoped>
@@ -100,8 +81,5 @@ export default {
 	min-width: 160px;
 	height: 45px;
 	z-index: 150;
-}
-.confirm-deselect-all-container > button {
-	width: 45px;
 }
 </style>
