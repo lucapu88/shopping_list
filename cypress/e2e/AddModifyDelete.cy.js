@@ -84,7 +84,7 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('#safe-delete > .text-primary').should('include.text', 'OFF');
     cy.get('#safe-delete > .hand-pointing').click({ multiple: true });
     cy.get('#safe-delete > .text-primary').should('include.text', 'ON');
-    cy.get('.close-helper-container > .close-helper').click();
+    cy.get('.close-x-container').click();
 
     cy.get('.trash').click();
     cy.get('.confirm-delete-modal-content').should('exist');

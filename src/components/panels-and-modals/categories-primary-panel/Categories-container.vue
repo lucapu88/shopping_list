@@ -2,6 +2,7 @@
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useCategoriesStore } from "@/store/CategoriesStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { ref, defineExpose } from "vue";
 
 const props = defineProps({
@@ -11,6 +12,7 @@ const props = defineProps({
 
 const box = ref(null);
 const theme = useThemeStore();
+const christmas = useChristmasStore();
 const todosStore = useTodoStore();
 const categoriesStore = useCategoriesStore();
 defineExpose({
@@ -26,6 +28,7 @@ defineExpose({
 				class="category-list"
 				:class="{
 					'custom-font-size': extraClass && !theme.jeansTheme,
+					'christmas-bg': extraClass && christmas.christmasTheme,
 					'retro-category-list': theme.retroTheme && !customBtn,
 					'retro-btn': theme.retroTheme && customBtn,
 					'category-pink-btn': theme.pinkTheme,
@@ -33,6 +36,7 @@ defineExpose({
 					'jeans-theme-btn jeans-font-size-small': theme.jeansTheme,
 					'christmas-category': category.name === 'regalos de navidad' || category.name === 'regali di natale' || category.name === 'christmas gifts',
 					'btn-selected': category.selectedCat,
+					'christmas-bg-selected': extraClass && christmas.christmasTheme && category.selectedCat,
 					'minimal-selected-btn': theme.minimalTheme && category.selectedCat,
 					'retro-selected-button': theme.retroTheme && category.selectedCat && !customBtn,
 					'retro-other-selected-btn': theme.retroTheme && category.selectedCat && customBtn,
@@ -92,6 +96,16 @@ defineExpose({
 .christmas-category {
 	border: 2px solid red;
 	box-shadow: 0px 0px 10px 0px #ff0000;
+}
+
+.christmas-bg {
+	background-color: #ffffff !important;
+	color: #ff0000 !important;
+}
+
+.christmas-bg-selected {
+	background-color: #ff0000 !important;
+	color: #ffd000 !important;
 }
 
 .custom-font-size {

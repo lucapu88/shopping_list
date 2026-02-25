@@ -1,10 +1,7 @@
 <script setup>
-import { useLanguageStore } from "@/store/LanguageStore";
-import { useThemeStore } from "@/store/ThemeStore";
-import { useSecondTodoStore } from "@/store/SecondTodoStore";
-const theme = useThemeStore();
-const languages = useLanguageStore();
-const secondTodos = useSecondTodoStore();
+/* Questo file si dovrebbe chiamare Add-periodic-list-button.vue ma purtroppo se lo importo ovunque con la A maiuscola funziona, 
+   mentre in Todo-row.vue invece si rompe perchè è scemo e per qualche motivo non riesce a importare un componente con la A maiuscola, 
+   quindi per ora lo lascio così, ma se qualcuno sa come risolvere il problema è ben accetto */
 </script>
 
 <template>

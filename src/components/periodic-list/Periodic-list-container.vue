@@ -3,16 +3,19 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { ref, onMounted } from "vue";
 import CategoriesContainer from "../panels-and-modals/categories-primary-panel/Categories-container.vue";
 import CustomButton from "../common/Custom-button.vue";
 import ConfirmPanel from "../common/Confirm-panel.vue";
 import Tutorial from "../helper/tutorials/Tutorial.vue";
 import ToggleTutorialButton from "../helper/tutorials/ToggleTutorialButton.vue";
+import AddPeriodicListButton from "./add-periodic-list-button.vue";
 
 const theme = useThemeStore();
 const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
+const christmas = useChristmasStore();
 const settings = useSettingsStore();
 const showInfo = ref(false);
 const indexToDelete = ref(null);
@@ -62,11 +65,12 @@ onMounted(() => {
 			panter: theme.panterTheme,
 			lemon: theme.lemonTheme,
 			jeans: theme.jeansTheme,
+			christmas: christmas.christmasTheme,
 		}"
 	>
 		<div class="title">
-			<div>
-				<p>{{ languages.periodicList.periodicListTitle }} <span class="info-btn" @click="toggleInfo()"> i </span></p>
+			<div @click="toggleInfo()">
+				<p :class="{ 'jeans-font-size': theme.jeansTheme }">{{ languages.periodicList.periodicListTitle }} <span class="info-btn"> i </span></p>
 			</div>
 
 			<ToggleTutorialButton :features="periodicList" @click="showInfo = false" />
@@ -94,12 +98,14 @@ onMounted(() => {
 		<!-- INFO -->
 		<div class="info-container mb-2" v-if="showInfo">
 			<small>&#9679; {{ languages.periodicList.info.part1 }}</small>
-			<small>&#9679; {{ languages.periodicList.info.part2 }}</small>
+			<small>&#9679; {{ languages.periodicList.info.part2 }} <AddPeriodicListButton /></small>
 			<small>&#9679; {{ languages.periodicList.info.part3 }}</small>
+			<small>&#9679; {{ languages.periodicList.info.part4 }}</small>
 		</div>
 
 		<!-- CATEGORIE -->
 		<CategoriesContainer :extra-class="true" :custom-btn="true" />
+
 		<!-- CONFERMA ELIMINAZIONE O INVIA ELEMENTO -->
 		<div class="confirm-container">
 			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
@@ -114,15 +120,16 @@ onMounted(() => {
 		<div
 			class="periodic-list-todo-container"
 			:class="{
-				'light-background': theme.lightTheme,
-				'retro-background': theme.retroTheme,
-				'summer-background': theme.summerTheme,
-				'winter-background': theme.winterTheme,
-				'elegant-background': theme.elegantTheme,
-				'pink-background': theme.pinkTheme,
-				'panter-background': theme.panterTheme,
-				'lemon-background': theme.lemonTheme,
-				'jeans-background': theme.jeansTheme,
+				'light-background': theme.lightTheme && !christmas.christmasTheme,
+				'retro-background': theme.retroTheme && !christmas.christmasTheme,
+				'summer-background': theme.summerTheme && !christmas.christmasTheme,
+				'winter-background': theme.winterTheme && !christmas.christmasTheme,
+				'elegant-background': theme.elegantTheme && !christmas.christmasTheme,
+				'pink-background': theme.pinkTheme && !christmas.christmasTheme,
+				'panter-background': theme.panterTheme && !christmas.christmasTheme,
+				'lemon-background': theme.lemonTheme && !christmas.christmasTheme,
+				'jeans-background': theme.jeansTheme && !christmas.christmasTheme,
+				'christmas-background': christmas.christmasTheme,
 			}"
 		>
 			<ul>
@@ -139,6 +146,8 @@ onMounted(() => {
 						'panter-periodic': theme.panterTheme,
 						'lemon-periodic': theme.lemonTheme,
 						'jeans-other-btn': theme.jeansTheme,
+						'christmas-periodic': christmas.christmasTheme,
+						'christmas-periodic-selected': christmas.christmasTheme && todo.periodicSelected,
 						'btn-selected': todo.periodicSelected && (theme.lightTheme || theme.darkTheme),
 						'minimal-selected-btn': theme.minimalTheme && todo.periodicSelected,
 						'retro-other-selected-btn': theme.retroTheme && todo.periodicSelected,
@@ -203,7 +212,7 @@ onMounted(() => {
 	height: 100%;
 	overflow-y: auto;
 	background-size: cover;
-	max-height: 420px;
+	max-height: 460px;
 	background-repeat: no-repeat;
 	background-position: top;
 }
@@ -240,5 +249,22 @@ ul {
 .custom-class {
 	gap: 10px;
 	margin-left: 0.5rem;
+}
+
+.christmas-background {
+	background-image: url("@/img/festivities/christmas-tree2.webp");
+}
+
+.christmas {
+	top: -20px;
+	background-color: #ce0000 !important;
+	color: #000000 !important;
+}
+.christmas-periodic {
+	background-color: #e9b200b1 !important;
+}
+.christmas-periodic-selected {
+	background-color: #e90000 !important;
+	color: #ffffff !important;
 }
 </style>
