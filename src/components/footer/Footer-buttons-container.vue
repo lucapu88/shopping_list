@@ -28,6 +28,13 @@ export default {
 	created() {
 		this.todosStore.priceCalculator();
 	},
+	mounted() {
+		try {
+			(window.adsbygoogle = window.adsbygoogle || []).push({});
+		} catch (e) {
+			console.log(e);
+		}
+	},
 	methods: {
 		emitScrollTop() {
 			this.$emit("scrollToTop", true);
@@ -105,6 +112,8 @@ export default {
 		<small class="created-by-luca-caputo">By Luca Caputo</small>
 		<audio ref="audioPlayer" :src="hohoho" preload="auto"></audio>
 	</div>
+
+	<ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-2187618791990334" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"> </ins>
 	<!-- SOLO PER ME E NON IN PROD -->
 	<GenerateRecipes v-if="settings.isIphone" />
 </template>
