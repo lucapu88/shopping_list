@@ -161,7 +161,6 @@ export const useTodoStore = defineStore('todoStore', {
     selectCategoryForInsertion(cat) {
       this.categoriesStore.resetSpecificSelectedCat(cat);
       cat.selectedCat = !cat.selectedCat;
-      this.settings.enableAI = !cat.selectedCat;
       if (!cat.selectedCat) {
         this.defaultOptionsForCategorizing();
         return;
@@ -253,7 +252,7 @@ export const useTodoStore = defineStore('todoStore', {
       this.toggleButtonDeleteSelectedTodo();
     },
     async openConfirmDeleteModal() {
-      await this.preloads.loadConfirmBackgroundImg('confirm-modal');
+      await this.preloads.loadBackgroundImg('confirm-modal');
       this.confirmDeleteModal = true;
     },
     confirmedRemoveTodo(x) {

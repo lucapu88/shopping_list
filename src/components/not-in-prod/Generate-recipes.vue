@@ -1,7 +1,7 @@
 <script setup>
 // QUESTO COMPONENTE NON VA IN PRODUZIONE, SERVE SOLO PER ESERCITARSI CON LANGCHAIN E LO USO SOLO IO SUL MIO IPHONE
 // Sto usando anche le Composition API perchè ormai il futuro è quello, anche se a me piace com'era con Options API, ma amen pian piano porterò tutto il codice al nuovo stato
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useTodoStore } from "@/store/TodoStore";
 import { storeToRefs } from "pinia";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
@@ -23,6 +23,12 @@ const errorRecipe = ref(false);
 const todoStore = useTodoStore();
 const productionUrl = "https://shopping-list-backend-uxr0.onrender.com";
 const localUrl = "http://localhost:3000";
+
+const enableAI = ref(JSON.parse(localStorage.getItem("enableAI")) ?? false);
+
+watch(enableAI, (val) => {
+	localStorage.setItem("enableAI", JSON.stringify(val));
+});
 
 async function generateRecipe() {
 	const { todos } = storeToRefs(todoStore);
@@ -75,7 +81,7 @@ function ifError() {
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
 		<div class="form-check form-switch">
 			<label>AI</label>
-			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="settings.enableAI" />
+			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
 		</div>
 		<!-- PULSANBTE GENERA RICETTA -->
 		<button :class="{ error: errorRecipe, disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes }" :disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes" @click="generateRecipe">

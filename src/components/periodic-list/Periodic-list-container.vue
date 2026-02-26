@@ -4,6 +4,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { usePreloadStore } from "@/store/PreloadStore";
 import { ref, onMounted } from "vue";
 import CategoriesContainer from "../panels-and-modals/categories-primary-panel/Categories-container.vue";
 import CustomButton from "../common/Custom-button.vue";
@@ -17,11 +18,14 @@ const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
 const christmas = useChristmasStore();
 const settings = useSettingsStore();
+const preloads = usePreloadStore();
 const showInfo = ref(false);
 const indexToDelete = ref(null);
 const confirmPanelVisible = ref(false);
 const confirmText = ref("Do you confirm the removal?");
 const periodicList = ref("periodicList");
+
+preloads.loadBackgroundImg("periodic-list");
 
 function showConfirmPanel(index) {
 	confirmPanelVisible.value = !confirmPanelVisible.value;

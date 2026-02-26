@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useThemeStore } from './ThemeStore';
+import { useChristmasStore } from './festivities/ChristmasStore';
 
 import postit from "@/img/postit.webp";
 import maldive from "@/img/maldive.webp";
@@ -12,9 +13,20 @@ import wave from "@/img/onda.webp";
 import cincia from "@/img/cincia.webp";
 import leottaJeans from "@/img/jeans-zip.webp";
 
+import matrix from "@/img/matrix-code.webp";
+import periodicBgJeans from "@/img/jeans-periodic-background.webp";
+import lemonTree from "@/img/lemon-tree.webp";
+import ioIle from "@/img/io-e-ile.webp";
+import tupac from "@/img/tupac.webp";
+import mrPink from "@/img/mr-pink.webp";
+import manfre from "@/img/manfredonia.webp";
+import snow from "@/img/paesaggio-innevato.webp";
+import christmasTree from "@/img/festivities/christmas-tree2.webp";
+
 export const usePreloadStore = defineStore('preload', {
     state: () => ({
         theme: useThemeStore(),
+        christmas: useChristmasStore(),
         src: null,
     }),
     getters: {},
@@ -29,32 +41,50 @@ export const usePreloadStore = defineStore('preload', {
 
             document.head.appendChild(link);
         },
-        setConfirmSrc() {
-            if (this.theme.lightTheme) {
-                return postit;
-            } else if (this.theme.summerTheme) {
-                return maldive;
-            } else if (this.theme.winterTheme) {
-                return forest;
-            } else if (this.theme.lemonTheme) {
-                return foglie;
-            } else if (this.theme.jeansTheme) {
-                return jeans;
-            }
+        setImagesSrc(themeMap) {
+            const activeTheme =
+                Object.keys(themeMap).find(key =>
+                    this.theme?.[key] || this.christmas?.[key]
+                );
+            return activeTheme ? themeMap[activeTheme] : null;
         },
-        setDeleteAllSrc() {
-            if (this.theme.lightTheme) {
-                return crumpPaper;
-            } else if (this.theme.summerTheme) {
-                return wave;
-            } else if (this.theme.winterTheme) {
-                return cincia;
-            } else if (this.theme.jeansTheme) {
-                return leottaJeans;
+        loadBackgroundImg(component) {
+            const deleteAll = {
+                lightTheme: crumpPaper,
+                summerTheme: wave,
+                winterTheme: cincia,
+                jeansTheme: leottaJeans,
+            };
+            const periodicList = {
+                lightTheme: ioIle,
+                retroTheme: matrix,
+                summerTheme: manfre,
+                winterTheme: snow,
+                jeansTheme: periodicBgJeans,
+                lemonTheme: lemonTree,
+                panterTheme: tupac,
+                pinkTheme: mrPink,
+                christmasTheme: christmasTree,
+            };
+            const confirm = {
+                lightTheme: postit,
+                summerTheme: maldive,
+                winterTheme: forest,
+                lemonTheme: foglie,
+                jeansTheme: jeans,
+            };
+            const srcMap = {
+                'confirm-modal': () => this.setImagesSrc(confirm),
+                'delete-all-panel': () => this.setImagesSrc(deleteAll),
+                'periodic-list': () => this.setImagesSrc(periodicList),
+            };
+
+            if (!srcMap[component]) {
+                alert(`Nome errato in PreloadStore > loadBackgroundImg. Hai scritto: "${component}"`);
+                return;
             }
-        },
-        loadConfirmBackgroundImg(component) {
-            this.src = component === 'confirm-modal' ? this.setConfirmSrc() : component === 'delete-all-panel' ? this.setDeleteAllSrc() : null;
+
+            this.src = srcMap[component]?.call(this) ?? null;
 
             if (!this.src) return;
 

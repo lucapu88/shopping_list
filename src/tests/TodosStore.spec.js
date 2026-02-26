@@ -243,7 +243,7 @@ describe('TodoStore', () => {
 
             const store = useTodoStore();
             store.settings.canDelete = true;
-            vi.spyOn(store.preloads, 'loadConfirmBackgroundImg').mockResolvedValue();
+            vi.spyOn(store.preloads, 'loadBackgroundImg').mockResolvedValue();
 
             store.todos = [
                 { name: 'milk', category: false }
