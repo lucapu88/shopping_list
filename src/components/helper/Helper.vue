@@ -140,12 +140,15 @@ export default {
 
 				<Share />
 
+				<!-- GOOGLE ADSENSE PUBBLICITÀ -->
+				<ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-2187618791990334" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"> </ins>
+
 				<div id="helper-istructions">
 					<HelperIstructions />
 				</div>
 
 				<!-- Questo serve solo a me per capire se ho l'ultima versione quando non riesco a verificarla direttamente su github -->
-				<p class="mt-2" style="font-size: 8px" v-if="settings.isIphone">Last commit: Added christmas style in periodic-list</p>
+				<p class="mt-2" style="font-size: 8px" v-if="settings.isIphone">Last commit: Fixed google asdense</p>
 
 				<button id="privacy-policy-btn" class="privacy-policy-btn" @click="settings.showPrivacyPolicy()">
 					<small>Privacy policy</small>
