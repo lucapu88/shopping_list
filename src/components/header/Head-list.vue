@@ -45,11 +45,12 @@ export default {
 			}
 			//Se è un iphone (quindi solo il mio smartphone) utilizzo il sistema di classificazione dei prodotti altrimenti il sistema normale
 			//Dovrei implementare un sistema sicuro per non pubblicare la mia API key, ma dato che questa funzionalità è per uso personale e non la metterò mai al servizio del cliente, per il momento lascio così, ovvero con un prompt salvo la chiave in locale.
+			const enableAI = JSON.parse(window.localStorage.getItem("enableAI"));
 			const openAIKey = window.localStorage.getItem("apikey");
 			if (this.settings.isIphone && (!openAIKey || openAIKey === null)) {
 				this.showPrompt = true;
 			}
-			if (this.settings.isIphone && !this.addTodo.addingToCategoryInProgress && this.settings.enableAI) {
+			if (this.settings.isIphone && !this.addTodo.addingToCategoryInProgress && enableAI) {
 				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
 			} else {
 				this.addTodo.addTodo();

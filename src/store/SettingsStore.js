@@ -41,7 +41,6 @@ export const useSettingsStore = defineStore('settings', {
     info: true,
     isAndroid: false,
     isIphone: false,
-    enableAI: false,
     isVisibleOnScroll: true,
     isTutorialVisible: false,
     periodicList: false,

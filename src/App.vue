@@ -55,7 +55,6 @@ export default {
 		this.secondTodosStore.createListsButtons();
 		// Controllo se sono in locale o in produzione perché alcune funzionalità non devono essere disponibili in locale
 		this.secondTodosStore.isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-		this.settings.enableAI = !this.secondTodosStore.isLocal;
 	},
 	mounted() {
 		for (let i = 0; i < localStorage.length; i++) {

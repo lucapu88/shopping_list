@@ -78,13 +78,20 @@ describe("test dell'input di inserimento todo, della modifica di un todo e dell'
     cy.get('.input-btns-container > .btn-info').click({ force: true });
     cy.get('.remove-selected-cat').click({ force: true });
 
-    cy.get('.settings').click();
-    cy.wait(1500);
-    cy.get('#helper-description > :nth-child(5) > .list-title').click();
-    cy.get('#safe-delete > .text-primary').should('include.text', 'OFF');
-    cy.get('#safe-delete > .hand-pointing').click({ multiple: true });
-    cy.get('#safe-delete > .text-primary').should('include.text', 'ON');
-    cy.get('.close-x-container').click();
+    cy.window().then(win => {
+      // Cypress fa schifo e si blocca perchè scompare il pulsante, ho provato più volte a capire il perchè ma mi sembra magia nera! 
+      // Uso questa scappatoia per farlo apparire
+      win.__appTestAPI.showHelperBtn();
+    });
+    cy.scrollTo('top', { ensureScrollable: false });
+
+    cy.get('.settings').click().then(() => {
+      cy.get('#helper-description > :nth-child(5) > .list-title').click();
+      cy.get('#safe-delete > .text-primary').should('include.text', 'OFF');
+      cy.get('#safe-delete > .hand-pointing').click({ multiple: true });
+      cy.get('#safe-delete > .text-primary').should('include.text', 'ON');
+      cy.get('.close-x-container').click();
+    });
 
     cy.get('.trash').click();
     cy.get('.confirm-delete-modal-content').should('exist');

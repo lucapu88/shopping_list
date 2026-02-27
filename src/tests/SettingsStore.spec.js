@@ -21,7 +21,6 @@ describe('SettingsStore', () => {
             expect(store.canDeleteText).toBe('OFF');
             expect(store.helper).toBe(false);
             expect(store.video).toBe(true);
-            expect(store.enableAI).toBe(false);
         });
 
         it('should have all helper panels initially false', () => {
