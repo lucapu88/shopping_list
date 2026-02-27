@@ -81,7 +81,7 @@ export default {
 		<CategoriesContainer ref="boxRef" />
 
 		<div class="category-footer">
-			<CustomButton v-if="settings.isIphone" extra-classes="show-periodic-list-button" :otherBtnStyle="true" @click="secondTodos.periodicListContainerVisible = true">
+			<CustomButton extra-classes="show-periodic-list-button" :otherBtnStyle="true" @click="secondTodos.periodicListContainerVisible = true">
 				<span> {{ languages.periodicList.periodicListButtonText }} </span>
 			</CustomButton>
 

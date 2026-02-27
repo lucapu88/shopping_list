@@ -48,6 +48,12 @@ export default {
 	},
 	mounted() {
 		document.getElementById("helper-description").scrollTo(0, 0);
+		//Google adsense
+		try {
+			(window.adsbygoogle = window.adsbygoogle || []).push({});
+		} catch (e) {
+			console.log(e);
+		}
 	},
 	methods: {
 		themeLoadingEmitted(value) {

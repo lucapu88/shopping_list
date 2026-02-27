@@ -108,7 +108,7 @@ export default {
 	</li>
 
 	<!-- PULSANTE AGGIUNGI A LISTA PERIODICA-->
-	<AddPeriodicListButton v-if="!todo.modify && !todo.category && settings.isIphone" @click="secondTodos.addTodoInPeriodicList(todo)" />
+	<AddPeriodicListButton v-if="!todo.modify && !todo.category" @click="secondTodos.addTodoInPeriodicList(todo)" />
 
 	<!--CONTENITORE PULSANTI (edit, delete, modify)-->
 	<li

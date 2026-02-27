@@ -80,6 +80,7 @@ onMounted(() => {
 			<ToggleTutorialButton :features="periodicList" @click="showInfo = false" />
 
 			<button
+				class="close-periodic-panel"
 				:class="{
 					'minimal-btn': theme.minimalTheme,
 					'retro-teme-btns': theme.retroTheme,
