@@ -121,7 +121,10 @@ export default {
 			<h2 v-if="showVideo" class="close-tutorial" @click="closeTutorial()">X</h2>
 
 			<video v-if="showVideo" ref="videoRef" class="video-container" poster="@/img/favicon.png" controls>
-				<source src="@/video/general-tutorial.mp4" type="video/mp4" />
+				<source v-if="selectedIta" src="@/video/general-tutorial/general-tutorial-ITA.mp4" type="video/mp4" />
+				<source v-if="selectedSpa" src="@/video/general-tutorial/general-tutorial-SPA.mp4" type="video/mp4" />
+				<source v-if="selectedFra" src="@/video/general-tutorial/general-tutorial-FRA.mp4" type="video/mp4" />
+				<source v-if="selectedEng" src="@/video/general-tutorial/general-tutorial-ENG.mp4" type="video/mp4" />
 			</video>
 
 			<div v-if="!showVideo" class="confirm-alert p-1">
