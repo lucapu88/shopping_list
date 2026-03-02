@@ -85,7 +85,7 @@ export default {
 	<!-- CONTENITORE DEL TODO -->
 	<li
 		v-if="!todo.modify"
-		class="todo"
+		class="todo ms-1"
 		id="todo"
 		@touchstart="setDraggable(true)"
 		@touchend="setDraggable(false)"

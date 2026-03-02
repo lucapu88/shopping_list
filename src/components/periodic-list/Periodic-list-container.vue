@@ -19,9 +19,12 @@ const secondTodos = useSecondTodoStore();
 const christmas = useChristmasStore();
 const settings = useSettingsStore();
 const preloads = usePreloadStore();
-const showInfo = ref(false);
 const indexToDelete = ref(null);
+const boxRef = ref(null);
+const showInfo = ref(false);
 const confirmPanelVisible = ref(false);
+const scrollBottom = ref(false);
+
 const confirmText = ref("Do you confirm the removal?");
 const periodicList = ref("periodicList");
 
@@ -45,6 +48,13 @@ function toggleInfo() {
 function close() {
 	secondTodos.periodicListContainerVisible = false;
 	settings.video = false;
+}
+
+function scroll() {
+	const categoriesContainer = document.getElementById("categories");
+
+	scrollBottom.value = !scrollBottom.value;
+	!scrollBottom.value ? categoriesContainer.scrollTo({ top: 0, left: 0, behavior: "smooth" }) : categoriesContainer.scrollTo({ top: boxRef.value.box.scrollHeight, left: 0, behavior: "smooth" });
 }
 
 confirmText.value = languages.langIta ? "Confermi la rimozione?" : languages.langSpanish ? "¿Confirma la eliminación?" : languages.langFrench ? "Confirmez-vous la suppression?" : "Do you confirm the removal?";
@@ -109,7 +119,22 @@ onMounted(() => {
 		</div>
 
 		<!-- CATEGORIE -->
-		<CategoriesContainer :extra-class="true" :custom-btn="true" />
+		<div class="cat-head-container">
+			<CategoriesContainer :extra-class="true" :custom-btn="true" ref="boxRef" />
+			<div class="scroll-btn-container">
+				<CustomButton extra-classes="scroll-button" :otherBtnStyle="true" @click="scroll()">
+					<span
+						class="arrow"
+						:class="{
+							'arrow-selected': !scrollBottom,
+							'arrow-deselected': scrollBottom,
+						}"
+					>
+						^
+					</span>
+				</CustomButton>
+			</div>
+		</div>
 
 		<!-- CONFERMA ELIMINAZIONE O INVIA ELEMENTO -->
 		<div class="confirm-container">
@@ -271,5 +296,24 @@ ul {
 .christmas-periodic-selected {
 	background-color: #e90000 !important;
 	color: #ffffff !important;
+}
+
+.cat-head-container {
+	position: relative;
+}
+.scroll-btn-container {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+.scroll-button {
+	width: 35px;
+	height: 30px;
+	margin-right: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #dddddd !important;
+	border: 2px solid #8b8b8b !important;
 }
 </style>
