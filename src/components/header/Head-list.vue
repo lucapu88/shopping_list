@@ -26,54 +26,44 @@ export default {
 			addTodo: useTodoStore(),
 			suggestionsStore: useSuggestionsStore(),
 			secondTodos: useSecondTodoStore(),
-			apikey: null,
-			firebaseUrl: null,
-			showPrompt: false,
-			showFirebasePrompt: false,
 			selectedList: null,
 		};
 	},
 	created() {
 		this.addTodo.changeTodoAdded(this.addTodo.todos);
-		this.settings.checkDevice();
+		this.settings.checkMyPersonalConf();
 		this.selectedList = this.secondTodos.listButtons.find((b) => b.selectedCondition()).name;
 	},
 	methods: {
 		addNewTodo() {
+			this.setMyPersonalConfiguration();
 			if (this.addTodo.showOnlyImportantTodos) {
 				this.addTodo.showOnlyImportant();
 			}
-			//Se è un iphone (quindi solo il mio smartphone) utilizzo il sistema di classificazione dei prodotti altrimenti il sistema normale
-			//Dovrei implementare un sistema sicuro per non pubblicare la mia API key, ma dato che questa funzionalità è per uso personale e non la metterò mai al servizio del cliente, per il momento lascio così, ovvero con un prompt salvo la chiave in locale.
+
 			const enableAI = JSON.parse(window.localStorage.getItem("enableAI"));
-			const openAIKey = window.localStorage.getItem("apikey");
-			if (this.settings.isIphone && (!openAIKey || openAIKey === null)) {
-				this.showPrompt = true;
-			}
-			if (this.settings.isIphone && !this.addTodo.addingToCategoryInProgress && enableAI) {
+			if (this.settings.customSettings && !this.addTodo.addingToCategoryInProgress && enableAI) {
 				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
 			} else {
 				this.addTodo.addTodo();
 				this.focusOnInput();
 			}
-			// Stessa cosa per firebase, è solo roba mia personale per salvare le MIE spese nel cloud
-			const firebase = window.localStorage.getItem("firebase");
-			if (this.settings.isIphone && (!firebase || firebase === null)) {
-				this.showFirebasePrompt = true;
-			}
 		},
-		saveApiKey() {
-			//serve solo per salvare la API key in locale
-			if (this.apikey !== null) {
-				window.localStorage.setItem("apikey", this.apikey);
-				this.showPrompt = false;
+		setMyPersonalConfiguration() {
+			const todo = this.addTodo.newTodo;
+			/* Cosa cazzo sto facendo? Allora, stiamo calmi: mi serve salvare l'Api key di openAi, dovrei sviluppare tutto un sistema di backend a parte, lo so ma non mi va per questa stronzata quindi faccio questa cosa:
+			   Se inserisco l'apikey nell'input lo salvo, e in questo modo sono sicurissimo al 100% che nessuno potrà replicarlo per sbaglio, 
+			   perchè l'utente dovrebbe inserire una stringa che inizia in un determinato modo e che sia lunga 164 o 75 caratteri. */
+			const apikey = window.localStorage.getItem("apikey");
+			if (todo.length === 164 && todo.startsWith("sk-proj-") && apikey === null) {
+				window.localStorage.setItem("apikey", todo);
+				this.addTodo.newTodo = "";
 			}
-		},
-		saveFirebaseUrl() {
-			//serve solo per salvare la API key di firebase in locale
-			if (this.firebaseUrl !== null) {
-				window.localStorage.setItem("firebase", this.firebaseUrl);
-				this.showFirebasePrompt = false;
+
+			const url = window.localStorage.getItem("firebase");
+			if (todo.length === 75 && todo.startsWith("https://shopping") && url === null) {
+				window.localStorage.setItem("firebase", todo);
+				this.addTodo.newTodo = "";
 			}
 		},
 		scrollToBottom() {
@@ -96,7 +86,7 @@ export default {
 			if (this.settings.isAndroid) {
 				return;
 			}
-			if (this.settings.isIphone && !this.settings.isAndroid) {
+			if (this.settings.customSettings && !this.settings.isAndroid) {
 				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},
@@ -172,19 +162,16 @@ export default {
 				@blur="handleBlur()"
 				v-model="addTodo.newTodo"
 				:disabled="secondTodos.loadingOpenAIRes"
-				@keypress.enter="addNewTodo()"
+				@keypress.enter="
+					addNewTodo();
+					setMyPersonalConfiguration();
+				"
 				:placeholder="languages.placeholder"
 			/>
 			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme }" tabindex="0" @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
-		</div>
-		<div class="inputs" v-if="showPrompt || showFirebasePrompt">
-			<!-- QUESTO INPUT MI SERVE SOLO PER INSERIRE LA API KEY PER L'INTELLIGENZA ARTIFICIALE -->
-			<input v-if="showPrompt" placeholder="chatGPT" v-model="apikey" @keypress.enter="saveApiKey()" />
-			<!-- QUESTO INPUT MI SERVE SOLO PER INSERIRE LA API KEY PER FIREBASE -->
-			<input v-if="showFirebasePrompt" placeholder="fireBase" v-model="firebaseUrl" @keypress.enter="saveFirebaseUrl()" />
 		</div>
 
 		<!-- PANNELLO DELLE CATEGORIE QUANDO SI STA INSERENDO UN PRODOTTO -->

@@ -24,7 +24,7 @@ export default {
 			if (this.settings.isAndroid) {
 				return;
 			}
-			if (this.settings.isIphone && !this.settings.isAndroid) {
+			if (this.settings.customSettings && !this.settings.isAndroid) {
 				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},

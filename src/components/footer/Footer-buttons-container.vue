@@ -107,7 +107,7 @@ export default {
 	</div>
 
 	<!-- SOLO PER ME E NON IN PROD -->
-	<GenerateRecipes v-if="settings.isIphone" />
+	<GenerateRecipes v-if="settings.customSettings" />
 </template>
 
 <style scoped>

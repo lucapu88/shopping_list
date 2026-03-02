@@ -26,15 +26,15 @@ export default {
 <template>
 	<div>
 		<!-- PULSANTE CONFERMA ACQUISTO -->
-		<ConfirmPurchaseBtn v-if="settings.isIphone" />
+		<ConfirmPurchaseBtn v-if="settings.customSettings" />
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
 			id="trash"
 			class="opacity-90 text-danger border-danger rounded multiple-delete p-2"
 			:class="{
-				'left-3': !settings.isIphone,
-				'left-18': settings.isIphone,
+				'left-3': !settings.customSettings,
+				'left-18': settings.customSettings,
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
 			}"

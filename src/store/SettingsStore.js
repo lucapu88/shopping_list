@@ -44,6 +44,7 @@ export const useSettingsStore = defineStore('settings', {
     isVisibleOnScroll: true,
     isTutorialVisible: false,
     periodicList: false,
+    customSettings: false,
   }),
   getters: {},
   actions: {
@@ -208,6 +209,15 @@ export const useSettingsStore = defineStore('settings', {
       if (/android/i.test(userAgent)) {
         this.isIphone = false;
         this.isAndroid = true;
+      }
+    },
+    checkMyPersonalConf() {
+      this.checkDevice();
+      const openAiKey = window.localStorage.getItem("apikey");
+      const firebaseUrl = window.localStorage.getItem("firebase");
+
+      if (openAiKey !== null && firebaseUrl !== null && this.isIphone) {
+        this.customSettings = true;
       }
     },
     setDate() {

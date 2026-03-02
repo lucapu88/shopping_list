@@ -55,19 +55,19 @@ export default {
 				}"
 			>
 				<div class="title">
-					<span v-if="settings.isIphone && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations me-2">🎄</span>
-					<span v-if="settings.isIphone && !showLatestDeleted">ELENCO SPESE</span>
-					<span v-if="settings.isIphone && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations ms-2">🎅 </span>
+					<span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations me-2">🎄</span>
+					<span v-if="settings.customSettings && !showLatestDeleted">ELENCO SPESE</span>
+					<span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations ms-2">🎅 </span>
 					<span class="x" @click="close()">X</span>
 				</div>
 				<!-- SOLO PER ME, NON IN PRODUZIONE -->
-				<button v-if="settings.isIphone" @click="showLatestDeleted = !showLatestDeleted">
+				<button v-if="settings.customSettings" @click="showLatestDeleted = !showLatestDeleted">
 					{{ showLatestDeleted ? "Elenca le spese" : "Elenca le eliminazioni" }}
 				</button>
-				<ShoppingsDB v-if="settings.isIphone && !showLatestDeleted" />
+				<ShoppingsDB v-if="settings.customSettings && !showLatestDeleted" />
 
 				<!-- PER GLI ALTRI UTENTI MOSTRA SOLO GLI ULTIMI ELIMINATI CHE NON SONO SALVATI IN DB MA SOLO NEL LORO LOCALE -->
-				<ShowOnlyLatestDeleted v-if="!settings.isIphone || showLatestDeleted" />
+				<ShowOnlyLatestDeleted v-if="!settings.customSettings || showLatestDeleted" />
 			</div>
 		</transition>
 	</div>

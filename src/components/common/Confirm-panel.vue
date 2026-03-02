@@ -19,8 +19,8 @@ const settings = useSettingsStore();
 
 const classes = computed(() => ({
 	"multiple-delete": props.multipleDelete,
-	"left-25": !settings.isIphone,
-	"left-35": settings.isIphone,
+	"left-25": !settings.customSettings,
+	"left-35": settings.customSettings,
 	light: theme.lightTheme,
 	dark: theme.darkTheme,
 	minimal: theme.minimalTheme,

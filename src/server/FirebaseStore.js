@@ -44,9 +44,9 @@ export const useFirebaseStore = defineStore('firebase', {
       }
     },
     init() {
-      if (!this.settings.isIphone) {
-        // CONTROLLO SE SONO SU IPHONE, SE NON LO SONO NON INIZIALIZZO FIREBASE E NON PRENDO NESSUN DATO.
-        // Essendo l'app usata solo su android, questo fa si che firebase non venga usato sugli utenti, quindi NON PRENDO NESSUN DATO.
+      if (!this.settings.customSettings) {
+        // CONTROLLO SE HO SETTATO LE MIE IMPOSTAZIONI, ALTRIMENTI NON INIZIALIZZO FIREBASE E NON PRENDO NESSUN DATO.
+        // Questo fa si che firebase non venga usato sugli utenti, quindi NON PRENDO NESSUN DATO.
         // É solo una cosa mia personale perchè io voglio usare firebase solo per me su iphone e per le MIE spese.
         // ma in ogni caso l'utente non ha l'url del db, quindi non può usare firebase neanche per sbaglio, perciò ribadisco: NON PRENDO NESSUN DATO!!!
         return;
