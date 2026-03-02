@@ -1,12 +1,18 @@
 <script setup>
 import { useThemeStore } from "@/store/ThemeStore";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { usePreloadStore } from "@/store/PreloadStore";
+import errorImg from "@/img/loyalty-cards/oh-no.webp";
 
 const theme = useThemeStore();
 const languages = useLanguageStore();
+const preload = usePreloadStore();
+
 const props = defineProps({
 	errorLoading: Boolean,
 });
+
+preload.preloadImage(errorImg);
 
 function refresh() {
 	window.location.reload();
