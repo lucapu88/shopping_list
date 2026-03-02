@@ -76,6 +76,11 @@ export default {
 			}
 		});
 	},
+	watch: {
+		"todosStore.showCategoriesPrimaryPanel"() {
+			this.todosStore.showCategoriesPrimaryPanel ? this.scrollDown() : this.scrollTop();
+		},
+	},
 	methods: {
 		scrollTop() {
 			document.getElementById("container-list").scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -101,6 +106,12 @@ export default {
 		checks() {
 			this.checkChristmas.merryChristmasTheme(); //controllo se è natale imposto gli addobbi
 			this.otherFestivities.checkFestivities(); //controllo se ci sono altre festività
+		},
+		scrollDown() {
+			document.getElementById("container-list").scrollBy({
+				top: 50,
+				behavior: "smooth",
+			});
 		},
 	},
 };
