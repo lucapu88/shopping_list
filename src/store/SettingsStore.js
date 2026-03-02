@@ -45,6 +45,7 @@ export const useSettingsStore = defineStore('settings', {
     isTutorialVisible: false,
     periodicList: false,
     customSettings: false,
+    isAndroidBrowser: false,
   }),
   getters: {},
   actions: {
@@ -209,6 +210,19 @@ export const useSettingsStore = defineStore('settings', {
       if (/android/i.test(userAgent)) {
         this.isIphone = false;
         this.isAndroid = true;
+        this.checkAndroidBrowser();
+      }
+    },
+    checkAndroidBrowser() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isAndroid = /Android/i.test(ua);
+
+      // Rileva WebView Android (tipico delle app come Kodular)
+      const isWebView = /wv/.test(ua) ||
+        (/Android/i.test(ua) && !/Chrome/i.test(ua));
+
+      if (isAndroid && !isWebView) {
+        this.isAndroidBrowser = true;
       }
     },
     checkMyPersonalConf() {

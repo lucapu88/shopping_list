@@ -16,6 +16,7 @@ import LoyaltyCardsContainer from "./components/loyalty-cards/Loyalty-cards-cont
 import UpdatesAlertsModal from "./components/panels-and-modals/Updates-alerts-modal.vue";
 import PeriodicListAddedAlert from "./components/periodic-list/Periodic-list-added-alert.vue";
 import PeriodicListContainer from "./components/periodic-list/Periodic-list-container.vue";
+import DownloadAppAlert from "./components/panels-and-modals/Download-app-alert.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -134,10 +135,12 @@ export default {
 						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
 						<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
 						<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
+
 						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
 						<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
 						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
+						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
 					</header>
 					<main>
 						<MainList />

@@ -145,14 +145,6 @@ export default {
 					<span style="--i: 9">c</span>
 					<span style="--i: 10">a</span>
 				</p>
-				<p class="flip">
-					<span style="--i: 11">C</span>
-					<span style="--i: 12">a</span>
-					<span style="--i: 13">p</span>
-					<span style="--i: 14">u</span>
-					<span style="--i: 15">t</span>
-					<span style="--i: 16">o</span>
-				</p>
 			</div>
 		</div>
 	</div>
