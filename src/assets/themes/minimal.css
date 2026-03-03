@@ -58,7 +58,14 @@
 	color: var(--minimal-secondary-color) !important;
 	border-radius: 5px !important;
 }
-.minimal-btn > button {
+.minimal-class-btn {
+	background-color: transparent !important;
+	border-color: var(--minimal-secondary-color) !important;
+	color: var(--minimal-secondary-color) !important;
+	border-radius: 5px !important;
+}
+.minimal-btn > button,
+.minimal-class-btn > button {
 	background-color: var(--minimal-primary-color-dark) !important;
 	border-color: var(--minimal-secondary-color) !important;
 	color: var(--minimal-secondary-color) !important;

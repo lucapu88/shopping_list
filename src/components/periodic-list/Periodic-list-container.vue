@@ -90,7 +90,7 @@ onMounted(() => {
 			<ToggleTutorialButton :features="periodicList" @click="showInfo = false" />
 
 			<button
-				class="close-periodic-panel"
+				class="close-periodic-panel btn-default-style"
 				:class="{
 					'minimal-btn': theme.minimalTheme,
 					'retro-teme-btns': theme.retroTheme,
@@ -122,7 +122,7 @@ onMounted(() => {
 		<div class="cat-head-container">
 			<CategoriesContainer :extra-class="true" :custom-btn="true" ref="boxRef" />
 			<div class="scroll-btn-container">
-				<CustomButton extra-classes="scroll-button" :otherBtnStyle="true" @click="scroll()">
+				<CustomButton extra-classes="scroll-button btn-default-style" :otherBtnStyle="true" @click="scroll()">
 					<span
 						class="arrow"
 						:class="{
@@ -138,7 +138,7 @@ onMounted(() => {
 
 		<!-- CONFERMA ELIMINAZIONE O INVIA ELEMENTO -->
 		<div class="confirm-container">
-			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
+			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element btn-default-style" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
 				<span> {{ languages.send }}</span>
 			</CustomButton>
 
@@ -313,7 +313,13 @@ ul {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.btn-default-style {
 	background-color: #dddddd !important;
 	border: 2px solid #8b8b8b !important;
+	color: #000000 !important;
+}
+.arrow {
+	color: #000000 !important;
 }
 </style>

@@ -219,6 +219,10 @@ button {
 	bottom: 2%;
 }
 
+.mantello-dell-invisibilità {
+	background-color: transparent !important;
+}
+
 /* ----------------------------------------  TODO LIST ------------------------------------ */
 
 .todo {
