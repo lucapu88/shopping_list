@@ -18,7 +18,7 @@ export default {
 			status: "",
 			recipient: "shoppinglist.service@outlook.com",
 			feedbackPlaceholder: null,
-			disableTextarea: false,
+			disable: false,
 		};
 	},
 	created() {
@@ -26,6 +26,9 @@ export default {
 	},
 	methods: {
 		sendEmail() {
+			if (this.disable) {
+				return;
+			}
 			if (!this.message) {
 				this.status = this.languages.feedback.statusText;
 				setTimeout(() => {
@@ -33,7 +36,7 @@ export default {
 				}, 3000);
 				return;
 			}
-			this.disableTextarea = true;
+			this.disable = true;
 
 			const templateParams = {
 				message: this.message,
@@ -48,11 +51,11 @@ export default {
 					}, 5000);
 					this.status = this.languages.feedback.successMessage;
 					this.message = "";
-					this.disableTextarea = false;
+					this.disable = false;
 				},
 				(error) => {
 					console.error(error);
-					this.disableTextarea = false;
+					this.disable = false;
 					this.status = `${this.languages.feedback.errorMessage} ${this.recipient}`;
 					setTimeout(() => {
 						this.status = "";
@@ -94,9 +97,9 @@ export default {
 
 				<p v-if="status" class="text-danger text-sm mt-2">{{ status }}</p>
 
-				<textarea :disabled="disableTextarea" v-model="message" class="content" rows="5" :placeholder="feedbackPlaceholder"></textarea>
+				<textarea :disabled="disable" v-model="message" class="content" rows="5" :placeholder="feedbackPlaceholder"></textarea>
 
-				<button type="submit" class="btn btn-success send-message-button mt-3">
+				<button :disabled="disable" type="submit" class="btn btn-success send-message-button mt-3">
 					{{ languages.send }}
 				</button>
 
@@ -145,8 +148,8 @@ export default {
 
 .close-feedback-modal {
 	position: absolute;
-	top: 5px;
-	right: -25px;
+	top: 0;
+	right: -35px;
 	font-size: 1.25rem;
 	font-weight: bold;
 	cursor: pointer;

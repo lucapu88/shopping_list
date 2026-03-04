@@ -110,7 +110,7 @@ export default {
 
 		<!-- PULSANTE RICARICA APP (non visibile su iphone perchè si sta usando da browser ed hanno già il pulsante di ricarica integrato)-->
 		<button
-			v-if="!settings.isIphone"
+			v-if="!settings.isIphone || settings.customSettings"
 			class="btn pop-up-btn"
 			:class="{
 				'btn-selected': loading,
