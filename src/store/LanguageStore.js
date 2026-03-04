@@ -271,6 +271,8 @@ export const useLanguageStore = defineStore('Language', {
         part4: 'You can also not select any category and insert the product directly by selecting only it.'
       },
       periodicListButtonText: 'Periodic List',
+      confirmText: "Do you confirm the removal?",
+      confirmSendText: "Successfully added to the list"
     },
     downloadAppText: "You are on the desktop version: we recommend downloading the app for better usability"
   }),
@@ -476,6 +478,8 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.info.part3 = "Per aggiungere un prodotto alla tua lista principale, basta cliccare sul prodotto, poi sulla categoria (o viceversa) e poi sul  pulsante 'invia'.";
       this.periodicList.info.part4 = "Puoi anche non selezionare nessuna categoria ed inserire direttamente il prodotto selezionando solo lui.";
       this.periodicList.periodicListButtonText = "Lista Periodica";
+      this.periodicList.confirmText = "Confermi la rimozione?";
+      this.periodicList.confirmSendText = "Inserito con successo in lista";
       this.downloadAppText = "Sei su versione desktop: ti consigliamo di scaricare l'app per una migliore usabilità";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
@@ -589,6 +593,8 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.info.part3 = "Para añadir un producto a tu lista principal, basta con hacer clic en el producto, luego en la categoría (o viceversa) y luego en el botón 'Enviar'.";
       this.periodicList.info.part4 = "También puedes no seleccionar ninguna categoría e insertar directamente el producto seleccionándolo solo a él.";
       this.periodicList.periodicListButtonText = "Lista Periódica";
+      this.periodicList.confirmText = "¿Confirma la eliminación?";
+      this.periodicList.confirmSendText = "Añadido exitosamente a la lista";
       this.downloadAppText = "Estás en la versión de escritorio: recomendamos descargar la aplicación para una mejor usabilidad";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
@@ -702,6 +708,8 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.info.part3 = "Pour ajouter un produit à votre liste principale, il suffit de cliquer sur le produit, puis sur la catégorie (ou vice versa) et ensuite sur le bouton 'Envoyer'.";
       this.periodicList.info.part4 = "Vous pouvez également ne sélectionner aucune catégorie et insérer directement le produit en le sélectionnant uniquement lui.";
       this.periodicList.periodicListButtonText = "Liste périodique";
+      this.periodicList.confirmText = "Confirmez-vous la suppression?";
+      this.periodicList.confirmSendText = "Ajouté avec succès à la liste";
       this.downloadAppText = "Vous êtes sur la version de bureau : nous vous recommandons de télécharger l'application pour une meilleure expérience utilisateur";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ

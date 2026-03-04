@@ -22,22 +22,35 @@ const preloads = usePreloadStore();
 const indexToDelete = ref(null);
 const boxRef = ref(null);
 const showInfo = ref(false);
+const successfullyAdded = ref(false);
 const confirmPanelVisible = ref(false);
 const scrollBottom = ref(false);
-
-const confirmText = ref("Do you confirm the removal?");
 const periodicList = ref("periodicList");
 
 preloads.loadBackgroundImg("periodic-list");
+resetSelectionForDelete();
 
-function showConfirmPanel(index) {
-	confirmPanelVisible.value = !confirmPanelVisible.value;
+function showConfirmPanel(index, todo) {
+	confirmPanelVisible.value = true;
 	indexToDelete.value = index;
+	todo.selectedForDelete = true;
+	todo.periodicSelected = false;
+	successfullyAdded.value = false;
+}
+
+function closeConfirmPanel() {
+	confirmPanelVisible.value = false;
+	resetSelectionForDelete();
 }
 
 function confirmRemoveTodoFromPeriodicList() {
 	secondTodos.removeTodoFromPeriodicList(indexToDelete.value);
 	confirmPanelVisible.value = false;
+	resetSelectionForDelete();
+}
+
+function resetSelectionForDelete() {
+	secondTodos.periodicList.filter((t) => t.selectedForDelete).forEach((el) => (el.selectedForDelete = false));
 }
 
 function toggleInfo() {
@@ -57,7 +70,13 @@ function scroll() {
 	!scrollBottom.value ? categoriesContainer.scrollTo({ top: 0, left: 0, behavior: "smooth" }) : categoriesContainer.scrollTo({ top: boxRef.value.box.scrollHeight, left: 0, behavior: "smooth" });
 }
 
-confirmText.value = languages.langIta ? "Confermi la rimozione?" : languages.langSpanish ? "¿Confirma la eliminación?" : languages.langFrench ? "Confirmez-vous la suppression?" : "Do you confirm the removal?";
+function insertSelectedTodoFromPeriodicList() {
+	secondTodos.insertSelectedTodoFromPeriodicList();
+	successfullyAdded.value = true;
+	setTimeout(() => {
+		successfullyAdded.value = false;
+	}, 5000);
+}
 
 onMounted(() => {
 	secondTodos.setDefaultOptions();
@@ -136,15 +155,17 @@ onMounted(() => {
 			</div>
 		</div>
 
-		<!-- CONFERMA ELIMINAZIONE O INVIA ELEMENTO -->
+		<!-- CONFERMA INVIA O ELIMINA ELEMENTO-->
 		<div class="confirm-container">
-			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element btn-default-style" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="secondTodos.insertSelectedTodoFromPeriodicList()">
+			<CustomButton v-if="!confirmPanelVisible" extra-classes="confirm-selected-periodic-element btn-default-style" :disabled="secondTodos.periodicList.every((todo) => !todo.periodicSelected)" @click="insertSelectedTodoFromPeriodicList()">
 				<span> {{ languages.send }}</span>
 			</CustomButton>
 
-			<span v-if="confirmPanelVisible">{{ confirmText }}</span>
+			<small v-if="successfullyAdded" class="text-success ms-2 bg-light ps-2 pe-2">{{ languages.periodicList.confirmSendText }}</small>
 
-			<ConfirmPanel extra-classes="custom-class" v-if="confirmPanelVisible" @ok="confirmRemoveTodoFromPeriodicList()" @no="confirmPanelVisible = false" />
+			<small v-if="confirmPanelVisible" class="text-danger bg-light ps-2 pe-2">{{ languages.periodicList.confirmText }}</small>
+
+			<ConfirmPanel extra-classes="custom-class" v-if="confirmPanelVisible" @ok="confirmRemoveTodoFromPeriodicList()" @no="closeConfirmPanel()" />
 		</div>
 		<!-- LISTA DEI TODO PERIODICI -->
 		<div
@@ -176,6 +197,7 @@ onMounted(() => {
 						'panter-periodic': theme.panterTheme,
 						'lemon-periodic': theme.lemonTheme,
 						'jeans-other-btn': theme.jeansTheme,
+						'selected-for-delete': todo.selectedForDelete,
 						'christmas-periodic': christmas.christmasTheme,
 						'christmas-periodic-selected': christmas.christmasTheme && todo.periodicSelected,
 						'btn-selected': todo.periodicSelected && (theme.lightTheme || theme.darkTheme),
@@ -191,7 +213,7 @@ onMounted(() => {
 					}"
 				>
 					<span class="periodic-todo-name" @click="secondTodos.selectTodoFromPeriodicList(todo)">&gt; {{ todo.name }}</span>
-					<button class="btn btn-outline-danger bg-light rounded-circle btn-sm btn-remove-periodic-list" @click="showConfirmPanel(index)">
+					<button class="btn btn-outline-danger bg-light rounded-circle btn-sm btn-remove-periodic-list" @click="showConfirmPanel(index, todo)">
 						<span>-</span>
 					</button>
 				</li>
@@ -260,6 +282,10 @@ ul {
 	overflow-x: auto;
 }
 
+.confirm-selected-periodic-element {
+	width: 65px;
+}
+
 .btn-remove-periodic-list {
 	width: 20px;
 	height: 20px;
@@ -319,7 +345,13 @@ ul {
 	border: 2px solid #8b8b8b !important;
 	color: #000000 !important;
 }
+
 .arrow {
 	color: #000000 !important;
+}
+
+.selected-for-delete {
+	background-color: #ce0000 !important;
+	color: #ffffff !important;
 }
 </style>

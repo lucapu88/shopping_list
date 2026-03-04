@@ -3,6 +3,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "../../../store/SettingsStore";
 </script>
 
 <script>
@@ -13,6 +14,7 @@ export default {
 			languages: useLanguageStore(),
 			todosStore: useTodoStore(),
 			secondTodos: useSecondTodoStore(),
+			settings: useSettingsStore(),
 			loading: false,
 		};
 	},
@@ -106,8 +108,9 @@ export default {
 			<span>{{ languages.importantBtnText }}</span>
 		</button>
 
-		<!-- PULSANTE RICARICA APP -->
+		<!-- PULSANTE RICARICA APP (non visibile su iphone perchè si sta usando da browser ed hanno già il pulsante di ricarica integrato)-->
 		<button
+			v-if="!settings.isIphone"
 			class="btn pop-up-btn"
 			:class="{
 				'btn-selected': loading,
