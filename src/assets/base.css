@@ -249,9 +249,10 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	margin-bottom: 0.3125rem;
 	position: relative;
+	gap: 5px;
 }
 .todo-modify {
 	justify-content: flex-end;
