@@ -49,6 +49,7 @@ export default {
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
 					}"
+					:disabled="languages.langEnglish"
 					@click="
 						languages.setEnglishLanguage();
 						onChageLanguageEmit('english');
@@ -65,6 +66,7 @@ export default {
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
 					}"
+					:disabled="languages.langSpanish"
 					@click="
 						languages.setSpanishLanguage();
 						onChageLanguageEmit('spanish');
@@ -82,6 +84,7 @@ export default {
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
 					}"
+					:disabled="languages.langFrench"
 					@click="
 						languages.setFrenchLanguage();
 						onChageLanguageEmit('french');
@@ -98,6 +101,7 @@ export default {
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
 					}"
+					:disabled="languages.langIta"
 					@click="
 						languages.setItalianoLanguage();
 						onChageLanguageEmit('italian');
@@ -143,5 +147,4 @@ export default {
 	background-color: rgb(0, 172, 252);
 	color: rgb(255, 255, 255) !important;
 }
-
 </style>

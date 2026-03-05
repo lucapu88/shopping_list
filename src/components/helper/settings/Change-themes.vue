@@ -17,6 +17,10 @@ export default {
 	},
 	methods: {
 		changeTheme(theme) {
+			if (theme == this.theme.themeName) {
+				// se clicco sullo stesso tema già applicato, non faccio nulla
+				return;
+			}
 			this.theme.resetAllThemes();
 			this.$emit("themeLoadingEmit", true);
 			switch (theme) {
