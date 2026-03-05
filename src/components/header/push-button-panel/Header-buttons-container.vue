@@ -219,10 +219,4 @@ p {
 	text-align: center;
 	margin-bottom: 0;
 }
-
-.show-pop-up-panel-btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 </style>

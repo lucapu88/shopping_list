@@ -159,30 +159,6 @@ export default {
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.7);
 }
 
-.pop-up-btn {
-	height: 35px;
-	display: flex;
-	align-items: center;
-	gap: 5px;
-}
-
-.pop-up-btn {
-	background-color: rgba(192, 224, 133, 0.883);
-	border: 2px solid rgb(180, 230, 89);
-	border-radius: 8px;
-	padding: 0 5px;
-	font-size: 0.75rem;
-}
-
-.pop-up-btn > span {
-	/* font-weight: bold; */
-}
-
-.pop-up-btn > img {
-	width: 17px;
-	height: 17px;
-}
-
 .btn-important-selected {
 	/* animation: zoominout 1.5s infinite; */
 	background-color: #6da505e1;

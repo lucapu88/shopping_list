@@ -122,6 +122,7 @@ export const useLanguageStore = defineStore('Language', {
         hideText: 'You can choose to hide selected items by clicking on',
         showText: 'Or show them by clicking on'
       },
+      openSecondPanelText: "This is used to display a secondary panel that will give you other options, such as those listed below",
       copyListTitle: 'Copy list, Highlight items',
       copyListText: 'is used to copy the list and paste it wherever you want.',
       highlightImportant: {
@@ -852,6 +853,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'e poi confermando (o annullando) cliccando su';
       this.helperDescription.multipleDeleteText.hideText = 'Puoi scegliere di nascondere gli elementi selezionati cliccando su';
       this.helperDescription.multipleDeleteText.showText = 'Oppure di mostrarli cliccando su';
+      this.helperDescription.openSecondPanelText = 'serve per mostrare un pannello secondario che ti darà altre opzioni, come quelle sotto elencate';
       this.helperDescription.copyListTitle = 'Copia lista, Evidenzia elementi';
       this.helperDescription.copyListText = 'serve per copiare la lista e incollarla dove vuoi.';
       this.helperDescription.highlightImportant.part1 = 'Puoi rendere "importante" un prodotto facendo DOPPIO click sul nome e verrà';
@@ -913,6 +915,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'y luego confirmar (o cancelar) pulsando en';
       this.helperDescription.multipleDeleteText.hideText = 'Puede optar por ocultar los elementos seleccionados haciendo clic en';
       this.helperDescription.multipleDeleteText.showText = 'O muéstrelas haciendo clic en';
+      this.helperDescription.openSecondPanelText = 'Esto se utiliza para mostrar un panel secundario que le brindará otras opciones, como las que se enumeran a continuación';
       this.helperDescription.copyListTitle = 'Copiar lista, Resaltar elementos';
       this.helperDescription.copyListText = 'sirve para copiar la lista y pegarla donde quieras.';
       this.helperDescription.highlightImportant.part1 = 'Puedes hacer que un producto sea "importante" haciendo DOBLE clic en el nombre y así será ';
@@ -974,6 +977,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.multipleDeleteText.confirmDeselectAllText = 'puis confirmer (ou annuler) en cliquant sur';
       this.helperDescription.multipleDeleteText.hideText = 'Tu peux choisir de masquer les éléments sélectionnés en cliquant sur';
       this.helperDescription.multipleDeleteText.showText = 'Ou de les afficher en cliquant sur';
+      this.helperDescription.openSecondPanelText = "Ceci permet d'afficher un panneau secondaire qui vous proposera d'autres options, telles que celles énumérées ci-dessous";
       this.helperDescription.copyListTitle = 'Copier la liste, Mettre en évidence';
       this.helperDescription.copyListText = 'sert à copier la liste et la coller où tu veux.';
       this.helperDescription.highlightImportant.part1 = 'Vous pouvez rendre un produit « important » en DOUBLE-cliquant sur son nom et il le sera ';

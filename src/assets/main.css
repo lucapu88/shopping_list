@@ -234,3 +234,29 @@
 .black-background {
 	background-color: #000000 !important;
 }
+
+.show-pop-up-panel-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pop-up-btn {
+	height: 35px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.pop-up-btn {
+	background-color: rgba(192, 224, 133, 0.883);
+	border: 2px solid rgb(180, 230, 89);
+	border-radius: 8px;
+	padding: 0 5px;
+	font-size: 0.75rem;
+}
+
+.pop-up-btn > img {
+	width: 17px;
+	height: 17px;
+}

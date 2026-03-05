@@ -28,10 +28,32 @@ export default {
 	<ListIstructionAccordion show-list-instructions-input="copyHighlights" :istructions-text="languages.helperDescription.copyListTitle" :select-deselect-arrow="settings.copyHighlights && settings.section === copyHighlights" />
 	<ul class="helper-list" v-if="settings.copyHighlights && settings.section === copyHighlights">
 		<li>
-			<CustomButton>
-				<img v-if="!theme.elegantTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
-				<img v-if="theme.elegantTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
+			<CustomButton extra-classes="show-pop-up-panel-btn">
+				<span class="arrow"> ^ </span>
 			</CustomButton>
+			{{ languages.helperDescription.openSecondPanelText }}
+		</li>
+		<li>
+			<button
+				class="btn pop-up-btn"
+				:class="{
+					'minimal-btn': theme.minimalTheme,
+					'retro-teme-btns': theme.retroTheme,
+					'summer-header-btn': theme.summerTheme,
+					'winter-btn': theme.winterTheme,
+					'elegant-btn': theme.elegantTheme,
+					'pink-theme-btn': theme.pinkTheme,
+					'panter-btn': theme.panterTheme,
+					'lemon-other-btn': theme.lemonTheme,
+					'jeans-other-btn': theme.jeansTheme,
+				}"
+			>
+				<img v-if="!theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy.webp" alt="copy" />
+				<img v-if="theme.elegantTheme && !theme.panterTheme" class="copy" src="@/img/icons/copy-elegant.webp" alt="copy" />
+				<img v-if="!theme.elegantTheme && theme.panterTheme" class="copy" src="@/img/icons/copy-panter.webp" alt="copy" />
+
+				<span>{{ languages.copyListBtnText }}</span>
+			</button>
 			{{ languages.helperDescription.copyListText }}
 		</li>
 		<li>
@@ -39,28 +61,30 @@ export default {
 			<span class="active"> {{ languages.helperDescription.highlightImportant.part2 }}, </span>
 			{{ languages.helperDescription.highlightImportant.part3 }}
 		</li>
-		<!-- TODO: ho tolto il pulsante per inserire quello dell'aggiunta carte fedeltà. Il pulsante forse in futuro lo inserirò da qualch altra parte -->
-		<!-- <li>
-			{{ languages.importantTodos.text.part1 }}
+		<li>
+			{{ languages.importantTodos.text.part1 }}:
 			<button
-				class="btn helper-btn-size"
+				class="btn pop-up-btn"
 				:class="{
-					'custom-show-listbtn': theme.lightTheme || theme.darkTheme,
-					'minimal-helper-btn': theme.minimalTheme,
+					'minimal-btn': theme.minimalTheme,
 					'retro-teme-btns': theme.retroTheme,
-					'elegant-helper-btn': theme.elegantTheme,
-					'category-summer': theme.summerTheme,
-					'category-winter': theme.winterTheme,
-					'category-pink': theme.pinkTheme,
-					'panter-other-btn': theme.panterTheme,
+					'summer-header-btn': theme.summerTheme,
+					'winter-btn': theme.winterTheme,
+					'elegant-btn': theme.elegantTheme,
+					'pink-theme-btn': theme.pinkTheme,
+					'panter-btn': theme.panterTheme,
 					'lemon-other-btn': theme.lemonTheme,
+					'jeans-other-btn': theme.jeansTheme,
 				}"
 			>
-				<img v-if="!theme.elegantTheme" class="important" src="@/img/icons/important.webp" alt="important" />
-				<img v-if="theme.elegantTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
+				<img v-if="!theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important.webp" alt="important" />
+				<img v-if="theme.elegantTheme && !theme.panterTheme" class="important" src="@/img/icons/important-elegant.webp" alt="important" />
+				<img v-if="!theme.elegantTheme && theme.panterTheme" class="important" src="@/img/icons/important-panter.webp" alt="important" />
+
+				<span>{{ languages.importantBtnText }}</span>
 			</button>
 			{{ languages.importantTodos.text.part2 }}
-		</li> -->
+		</li>
 
 		<ToggleTutorialButton :features="copyPaste" :margin="true" />
 		<Tutorial v-if="settings.video && settings.feature === copyPaste" :features="copyPaste" />
