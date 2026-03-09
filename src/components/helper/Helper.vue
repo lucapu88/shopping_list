@@ -48,12 +48,6 @@ export default {
 	},
 	mounted() {
 		document.getElementById("helper-description").scrollTo(0, 0);
-		//Google adsense
-		try {
-			(window.adsbygoogle = window.adsbygoogle || []).push({});
-		} catch (e) {
-			console.log(e);
-		}
 	},
 	methods: {
 		themeLoadingEmitted(value) {
@@ -145,9 +139,6 @@ export default {
 				<ImportList @importListEmitted="importListEmitted" />
 
 				<Share />
-
-				<!-- GOOGLE ADSENSE PUBBLICITÀ -->
-				<ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-2187618791990334" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"> </ins>
 
 				<div id="helper-istructions">
 					<HelperIstructions />
