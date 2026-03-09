@@ -46,6 +46,7 @@ export const useSettingsStore = defineStore('settings', {
     periodicList: false,
     customSettings: false,
     isAndroidBrowser: false,
+    showPaymentModal: false,
   }),
   getters: {},
   actions: {

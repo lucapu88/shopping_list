@@ -32,3 +32,5 @@ coverage
 
 #other
 API-TEST.tx
+ricette.db
+.env

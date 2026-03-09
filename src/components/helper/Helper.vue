@@ -145,7 +145,7 @@ export default {
 				</div>
 
 				<!-- Questo serve solo a me per capire se ho l'ultima versione quando non riesco a verificarla direttamente su github -->
-				<p class="mt-2" style="font-size: 8px" v-if="settings.customSettings">Last commit: Fixed google asdense</p>
+				<p class="mt-2" style="font-size: 8px" v-if="settings.customSettings">Last commit: Added recipe generator in production (paid)</p>
 
 				<button id="privacy-policy-btn" class="privacy-policy-btn" @click="settings.showPrivacyPolicy()">
 					<small>Privacy policy</small>

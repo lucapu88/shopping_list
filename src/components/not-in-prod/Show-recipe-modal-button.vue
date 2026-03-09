@@ -1,5 +1,4 @@
 <script setup>
-// QUESTO COMPONENTE NON VA IN PRODUZIONE, SERVE SOLO PER ESERCITARSI CON LANGCHAIN E LO USO SOLO IO SUL MIO IPHONE
 import RecipeGeneratedModal from "./Recipe-generated-modal.vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 

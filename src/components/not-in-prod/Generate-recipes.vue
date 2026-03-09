@@ -1,36 +1,44 @@
 <script setup>
-// QUESTO COMPONENTE NON VA IN PRODUZIONE, SERVE SOLO PER ESERCITARSI CON LANGCHAIN E LO USO SOLO IO SUL MIO IPHONE
-// Sto usando anche le Composition API perchè ormai il futuro è quello, anche se a me piace com'era con Options API, ma amen pian piano porterò tutto il codice al nuovo stato
-import { ref, watch } from "vue";
-import { useTodoStore } from "@/store/TodoStore";
+import { ref, watch, onMounted } from "vue";
 import { storeToRefs } from "pinia";
+import { useTodoStore } from "@/store/TodoStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import { useLanguageStore } from "@/store/LanguageStore";
 import ShowRecipeModalButton from "./Show-recipe-modal-button.vue";
+import { useGenerazioni } from "@/server/composables/useGenerazioni";
 
-/* openaiApiKey: Non va fatto assolutamente così, ho implementato nell'altro progetto backend a parte la soluzione con la chiave presa dal file .env
-	Il progetto backend è deployato su Render.com e li ho impostato la variabile d'ambiente con la mia API key di OpenAI.
-	Ma non voglio che qualsiasi persona che scopre il progetto possa poi utilizzarlo per fare richieste a OpenAI a mie spese. Perciò uso questa soluzione solo per esercitarmi io sul mio iPhone.
-*/
-const openaiApiKey = window.localStorage.getItem("apikey");
+const { generazioni, fetchGenerazioni, consumaGenerazione } = useGenerazioni();
 
 const secondTodosStore = useSecondTodoStore();
 const settings = useSettingsStore();
-
-const readyRecipe = ref(false);
-const errorRecipe = ref(false);
-
+const languages = useLanguageStore();
 const todoStore = useTodoStore();
 const productionUrl = "https://shopping-list-backend-uxr0.onrender.com";
 const localUrl = "http://localhost:3000";
-
+const errorRecipe = ref(false);
 const enableAI = ref(JSON.parse(localStorage.getItem("enableAI")) ?? false);
 
 watch(enableAI, (val) => {
 	localStorage.setItem("enableAI", JSON.stringify(val));
 });
 
+onMounted(() => {
+	fetchGenerazioni();
+	const ricettaGenerata = window.localStorage.getItem("ricetta-generata");
+	const ricettaGenerataParsed = JSON.parse(ricettaGenerata);
+	secondTodosStore.recipe = ricettaGenerataParsed;
+});
+
 async function generateRecipe() {
+	const ok = await consumaGenerazione("Ricetta da lista spesa");
+	console.log("aaa", secondTodosStore.totalRecipes);
+	console.log("aaa", ok);
+	if (!ok || !secondTodosStore.totalRecipes || secondTodosStore.totalRecipes == 0) {
+		settings.showPaymentModal = true;
+		return;
+	}
+
 	const { todos } = storeToRefs(todoStore);
 	if (!todos.value.length) {
 		return;
@@ -49,7 +57,6 @@ async function generateRecipe() {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
 				ingredients: ingredients,
-				apiKey: openaiApiKey,
 			}),
 		});
 		if (!response.ok) {
@@ -60,8 +67,9 @@ async function generateRecipe() {
 		}
 		const data = await response.json();
 		console.log("Ricetta generata:", data);
+
+		window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
 		secondTodosStore.recipe = data;
-		readyRecipe.value = true;
 		secondTodosStore.loadingRecipes = false;
 	} catch (error) {
 		ifError();
@@ -70,25 +78,28 @@ async function generateRecipe() {
 }
 
 function ifError() {
-	readyRecipe.value = false;
 	secondTodosStore.loadingRecipes = false;
 	errorRecipe.value = true;
 }
 </script>
 
 <template>
+	<div class="text-center">
+		<p v-if="secondTodosStore.totalRecipes && secondTodosStore.totalRecipes > 0">{{ languages.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
+		<p v-if="secondTodosStore.loadingRecipes">{{ languages.alertRecepiesText }}</p>
+	</div>
 	<div class="recipe-generator">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
-		<div class="form-check form-switch">
+		<!-- <div class="form-check form-switch">
 			<label>AI</label>
 			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
-		</div>
+		</div> -->
 		<!-- PULSANBTE GENERA RICETTA -->
 		<button :class="{ error: errorRecipe, disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes }" :disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes" @click="generateRecipe">
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
-		<ShowRecipeModalButton v-if="readyRecipe && !secondTodosStore.loadingRecipes" />
+		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes && secondTodosStore.recipe" />
 	</div>
 </template>
 

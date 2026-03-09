@@ -18,8 +18,10 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Ability to send emails with **EmailJS**
 - Ability to save store loyalty cards with **idb** (No data collection! Everything remains in the local memory)
 - Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
-- Data validation with **Zod** (<u>functionality NOT in production for users but for personal use only</u>)
-- Advanced features with **LangChain** and **OpenAI** (<u>functionality NOT in production for users but for personal use only</u>)
+- Data validation with **Zod**
+- Advanced recipe generation features with **LangChain** and **OpenAI**
+- Payment processing and secure transactions integrated with **Stripe**
+- Backend services, authentication, and real-time database with **Supabase**
 
 ## Technologies
 
@@ -34,6 +36,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Kodular (conversion to Android app)
 - cropperjs
 - idb
+- Stripe
 
 <br><hr>
 

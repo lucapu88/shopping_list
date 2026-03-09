@@ -40,6 +40,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         periodicList: JSON.parse(window.localStorage.getItem("periodicList") || "[]"),
         addedToPeriodicList: false,
         periodicListContainerVisible: false,
+        totalRecipes: window.localStorage.getItem("generazioni"),
     }),
     actions: {
         resetAllLists() {

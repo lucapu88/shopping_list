@@ -47,15 +47,17 @@ export default {
 							<strong>Hosting and backend infrastructure</strong>
 						</p>
 						<strong>GitHub Pages</strong>
-						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>Netlify</strong>
-						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>Kodular</strong>
-						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>EmailJS</strong>
-						<p>Various types of Data as specified in the privacy policy of the service</p>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>idb</strong>
 						<p>No data collection. Everything remains in the local memory.</p>
+						<strong>Stripe</strong>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>

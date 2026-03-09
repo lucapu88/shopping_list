@@ -275,7 +275,11 @@ export const useLanguageStore = defineStore('Language', {
       confirmText: "Do you confirm the removal?",
       confirmSendText: "Successfully added to the list"
     },
-    downloadAppText: "You are on the desktop version: we recommend downloading the app for better usability"
+    downloadAppText: "You are on the desktop version: we recommend downloading the app for better usability",
+    recipesDisclaimer: "WARNING: AI can make mistakes! Automatically generated recipes may contain errors. ALWAYS check the ingredients!",
+    recipesSubDisclaimer: "The app and its developers assume no responsibility for any damages or problems arising from the use of the recipes or the user's failure to check the ingredients.",
+    totalRecipesText: "Generations left:",
+    alertRecepiesText: "It may take 30 to 60 seconds...It depends on the chef's stress level 😜",
   }),
   getters: {},
   actions: {
@@ -482,6 +486,10 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.confirmText = "Confermi la rimozione?";
       this.periodicList.confirmSendText = "Inserito con successo in lista";
       this.downloadAppText = "Sei su versione desktop: ti consigliamo di scaricare l'app per una migliore usabilità";
+      this.recipesDisclaimer = "FAI ATTENZIONE: L'AI può sbagliare! Le ricette generate automaticamente possono contenere errori. Verificare SEMPRE gli ingredienti!";
+      this.recipesSubDisclaimer = "L’app e i suoi sviluppatori non si assumono alcuna responsabilità per eventuali danni o problemi derivanti dall’utilizzo delle ricette o dal mancato controllo degli ingredienti da parte dell’utente.";
+      this.totalRecipesText = "Generazioni rimaste:";
+      this.alertRecepiesText = "Potrebbero volerci dai 30 ai 60 secondi...Dipende dallo stress dello chef 😜";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -597,6 +605,10 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.confirmText = "¿Confirma la eliminación?";
       this.periodicList.confirmSendText = "Añadido exitosamente a la lista";
       this.downloadAppText = "Estás en la versión de escritorio: recomendamos descargar la aplicación para una mejor usabilidad";
+      this.recipesDisclaimer = "ADVERTENCIA: ¡La IA puede cometer errores! Las recetas generadas automáticamente pueden contener errores. ¡SIEMPRE revise los ingredientes!";
+      this.recipesSubDisclaimer = "La aplicación y sus desarrolladores no asumen ninguna responsabilidad por daños o problemas que surjan del uso de las recetas o de la falta de verificación de los ingredientes por parte del usuario.";
+      this.totalRecipesText = "Generaciones restantes:";
+      this.alertRecepiesText = "Puede tomar entre 30 y 60 segundos...Depende del nivel de estrés del chef. 😜";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -711,7 +723,11 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.periodicListButtonText = "Liste périodique";
       this.periodicList.confirmText = "Confirmez-vous la suppression?";
       this.periodicList.confirmSendText = "Ajouté avec succès à la liste";
-      this.downloadAppText = "Vous êtes sur la version de bureau : nous vous recommandons de télécharger l'application pour une meilleure expérience utilisateur";
+      this.downloadAppText = "Vous êtes sur la version de bureau : nous vous recommandons de télécharger l'application pour une meilleure expérience utilisateur";
+      this.recipesDisclaimer = "ATTENTION : L'IA peut faire des erreurs ! Les recettes générées automatiquement peuvent contenir des erreurs. Vérifiez TOUJOURS les ingrédients !";
+      this.recipesSubDisclaimer = "L'application et ses développeurs déclinent toute responsabilité en cas de dommages ou de problèmes résultant de l'utilisation des recettes ou du défaut de vérification des ingrédients par l'utilisateur.";
+      this.totalRecipesText = "Générations restantes :";
+      this.alertRecepiesText = "Cela peut prendre de 30 à 60 secondes... Cela dépend du niveau de stress du chef. 😜";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
