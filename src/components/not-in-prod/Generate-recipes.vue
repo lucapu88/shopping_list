@@ -18,6 +18,7 @@ const productionUrl = "https://shopping-list-backend-uxr0.onrender.com";
 const localUrl = "http://localhost:3000";
 const errorRecipe = ref(false);
 const enableAI = ref(JSON.parse(localStorage.getItem("enableAI")) ?? false);
+const isGenerating = ref(false);
 
 watch(enableAI, (val) => {
 	localStorage.setItem("enableAI", JSON.stringify(val));
@@ -31,49 +32,55 @@ onMounted(() => {
 });
 
 async function generateRecipe() {
-	const ok = await consumaGenerazione("Ricetta da lista spesa");
-	console.log("aaa", secondTodosStore.totalRecipes);
-	console.log("aaa", ok);
-	if (!ok || !secondTodosStore.totalRecipes || secondTodosStore.totalRecipes == 0) {
-		settings.showPaymentModal = true;
-		return;
-	}
-
-	const { todos } = storeToRefs(todoStore);
-	if (!todos.value.length) {
-		return;
-	}
-	errorRecipe.value = false;
-	secondTodosStore.loadingRecipes = true;
-
-	const ingredients = todos.value
-		.filter((el) => !el.category)
-		.map((item) => item.name)
-		.join(", ");
+	if (isGenerating.value) return; //blocca click multipli
+	isGenerating.value = true;
 
 	try {
-		const response = await fetch(`${productionUrl}/generate-recipe `, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				ingredients: ingredients,
-			}),
-		});
-		if (!response.ok) {
-			ifError();
-			const text = await response.text();
-			console.error("Errore server:", text);
-			throw new Error(`Server error: ${response.status} - ${text}`);
-		}
-		const data = await response.json();
-		console.log("Ricetta generata:", data);
+		const ok = await consumaGenerazione("Ricetta da lista spesa");
 
-		window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
-		secondTodosStore.recipe = data;
-		secondTodosStore.loadingRecipes = false;
-	} catch (error) {
-		ifError();
-		console.error("Si è verificato un errore durante la richiesta:", error);
+		if (!ok || !secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0) {
+			settings.showPaymentModal = true;
+			return;
+		}
+
+		const { todos } = storeToRefs(todoStore);
+		if (!todos.value.length) {
+			return;
+		}
+		errorRecipe.value = false;
+		secondTodosStore.loadingRecipes = true;
+
+		const ingredients = todos.value
+			.filter((el) => !el.category)
+			.map((item) => item.name)
+			.join(", ");
+
+		try {
+			const response = await fetch(`${productionUrl}/generate-recipe `, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					ingredients: ingredients,
+				}),
+			});
+			if (!response.ok) {
+				ifError();
+				const text = await response.text();
+				console.error("Errore server:", text);
+				throw new Error(`Server error: ${response.status} - ${text}`);
+			}
+			const data = await response.json();
+			console.log("Ricetta generata:", data);
+
+			window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
+			secondTodosStore.recipe = data;
+			secondTodosStore.loadingRecipes = false;
+		} catch (error) {
+			ifError();
+			console.error("Si è verificato un errore durante la richiesta:", error);
+		}
+	} finally {
+		isGenerating.value = false;
 	}
 }
 
@@ -85,7 +92,7 @@ function ifError() {
 
 <template>
 	<div class="text-center">
-		<p v-if="secondTodosStore.totalRecipes && secondTodosStore.totalRecipes > 0">{{ languages.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
+		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
 		<p v-if="secondTodosStore.loadingRecipes">{{ languages.alertRecepiesText }}</p>
 	</div>
 	<div class="recipe-generator">
@@ -95,7 +102,16 @@ function ifError() {
 			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
 		</div> -->
 		<!-- PULSANBTE GENERA RICETTA -->
-		<button :class="{ error: errorRecipe, disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes }" :disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes" @click="generateRecipe">
+		<button
+			:class="{
+				'btn btn-warning': !secondTodosStore.totalRecipes,
+				'btn btn-success': secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0,
+				error: errorRecipe,
+				disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes,
+			}"
+			:disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes"
+			@click="generateRecipe"
+		>
 			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
 		</button>
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
@@ -111,18 +127,12 @@ function ifError() {
 }
 
 button {
-	width: 160px;
 	padding: 10px 20px;
-	background-color: #4caf50;
-	color: #ffffff;
 	border: none;
 	border-radius: 6px;
 	cursor: pointer;
 }
 
-button:hover {
-	background-color: #45a049;
-}
 .error {
 	background-color: #ff0000;
 }

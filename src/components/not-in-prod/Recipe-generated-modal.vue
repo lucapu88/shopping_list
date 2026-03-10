@@ -28,24 +28,24 @@ const theme = useThemeStore();
 		>
 			<button class="close-modal" @click="secondTodosStore.showRecipeModal = false">X</button>
 			<div class="pt-2 pb-2">
-				<h2 class="text-danger text-center">{{ secondTodosStore.recipe.titolo }}</h2>
+				<h2 :class="{ 'text-danger text-center': !theme.pinkTheme }">{{ secondTodosStore.recipe.titolo }}</h2>
 				<p class="m-0 f-size text-center">{{ languages.recipesDisclaimer }}</p>
 				<p class="f-size text-center">{{ languages.recipesSubDisclaimer }}</p>
 
 				<p v-if="secondTodosStore.recipe.ingredienti && secondTodosStore.recipe.ingredienti.length">
-					<span style="color: red">Ingredienti:</span>
+					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">Ingredienti:</span>
 					{{ secondTodosStore.recipe.ingredienti.join(", ") }}
 				</p>
 				<p v-if="secondTodosStore.recipe.preparazione">
-					<span style="color: red">Preparazione:</span>
+					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">Preparazione:</span>
 					{{ secondTodosStore.recipe.preparazione }}
 				</p>
 				<p v-if="secondTodosStore.recipe.tempo">
-					<span style="color: red">Tempo:</span>
+					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">Tempo:</span>
 					{{ secondTodosStore.recipe.tempo }}
 				</p>
 				<p v-if="secondTodosStore.recipe.difficolta">
-					<span style="color: red">Difficoltà:</span>
+					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">Difficoltà:</span>
 					{{ secondTodosStore.recipe.difficolta }}
 				</p>
 			</div>
@@ -59,7 +59,6 @@ const theme = useThemeStore();
 }
 .recipe-container {
 	position: relative;
-	background-color: white;
 	margin: 0 20px;
 	padding: 0.625rem;
 	max-height: 95vh;

@@ -192,7 +192,6 @@ export default {
 	box-shadow:
 		0 32px 80px rgba(0, 0, 0, 0.18),
 		0 0 0 1px rgba(0, 0, 0, 0.06);
-	font-family: "Permanent Marker", cursive;
 }
 
 .close-btn {
@@ -234,7 +233,6 @@ export default {
 	box-shadow: 0 4px 16px rgba(255, 180, 50, 0.25);
 }
 .card-header h1 {
-	font-family: "Permanent Marker", cursive;
 	font-size: 26px;
 	font-weight: 600;
 	color: #1a1208;
@@ -323,7 +321,6 @@ export default {
 	margin-top: 4px;
 }
 .amount {
-	font-family: "Permanent Marker", cursive;
 	font-size: 32px;
 	font-weight: 700;
 	color: #1a1208;
@@ -374,7 +371,6 @@ export default {
 	border: 1px solid #e8d9bf;
 }
 .summary-price {
-	font-family: "Permanent Marker", cursive;
 	font-size: 18px;
 	font-weight: 600;
 	color: #1a1208;
@@ -388,7 +384,6 @@ export default {
 	color: #fdfaf4;
 	border: none;
 	border-radius: 14px;
-	font-family: "Permanent Marker", cursive;
 	font-size: 15px;
 	font-weight: 500;
 	cursor: pointer;
