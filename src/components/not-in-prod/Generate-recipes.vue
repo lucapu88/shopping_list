@@ -94,8 +94,8 @@ function ifError() {
 
 <template>
 	<div class="text-center">
-		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
-		<p v-if="secondTodosStore.loadingRecipes">{{ languages.alertRecepiesText }}</p>
+		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.recipes.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
+		<p v-if="secondTodosStore.loadingRecipes">{{ languages.recipes.alertRecepiesText }}</p>
 	</div>
 	<div class="recipe-generator">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
@@ -109,12 +109,12 @@ function ifError() {
 				'btn btn-warning': !secondTodosStore.totalRecipes,
 				'btn btn-success': secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0,
 				error: errorRecipe,
-				disabled: !todoStore.todos.length || secondTodosStore.loadingRecipes,
+				disabled: !todoStore.todos.length || isGenerating,
 			}"
-			:disabled="!todoStore.todos.length || secondTodosStore.loadingRecipes"
+			:disabled="!todoStore.todos.length || isGenerating"
 			@click="generateRecipe"
 		>
-			{{ secondTodosStore.loadingRecipes ? "Loading..." : "Genera Ricetta" }}
+			{{ secondTodosStore.loadingRecipes ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
 		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes && secondTodosStore.recipe" />

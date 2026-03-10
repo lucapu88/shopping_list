@@ -2,6 +2,7 @@
 // QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI
 
 import { useSettingsStore } from "../../store/SettingsStore";
+import { useLanguageStore } from "@/store/LanguageStore";
 
 export default {
 	name: "PaymentModal",
@@ -16,6 +17,7 @@ export default {
 	data() {
 		return {
 			settings: useSettingsStore(),
+			languages: useLanguageStore(),
 			selectedPlan: null,
 			loading: false,
 			errorMessage: "",
@@ -105,14 +107,15 @@ export default {
 			<button class="close-btn" @click="close()">✕</button>
 			<div class="card-header">
 				<div class="icon-ring">🍳</div>
-				<h1>Sblocca le Ricette AI</h1>
-				<p>Trasforma la tua lista della spesa in piatti deliziosi con l'intelligenza artificiale</p>
+				<h1>{{ languages.paymentModal.title }}</h1>
+				<p class="card-header-p">{{ languages.paymentModal.description }}</p>
+				<p class="sub-description">{{ languages.paymentModal.subdescription }}</p>
 			</div>
 
 			<!-- Plans -->
 			<div class="plans-grid">
 				<div v-for="plan in plans" :key="plan.id" class="plan-card" :class="{ selected: selectedPlan?.id === plan.id, featured: plan.featured }" @click="selectPlan(plan)">
-					<div class="plan-badge" v-if="plan.featured">Più popolare</div>
+					<div class="plan-badge" v-if="plan.featured">{{ languages.paymentModal.popularText }}</div>
 					<div class="plan-top">
 						<span class="plan-emoji">{{ plan.emoji }}</span>
 						<div class="plan-price">
@@ -121,9 +124,9 @@ export default {
 						</div>
 					</div>
 					<div class="plan-gen">
-						<strong>{{ plan.generations }}</strong> generazioni
+						<strong>{{ plan.generations }}</strong> {{ languages.paymentModal.generationsText }}
 					</div>
-					<div class="plan-note">{{ plan.note }}</div>
+					<!-- <div class="plan-note">{{ plan.note }}</div> -->
 					<div class="plan-check" v-if="selectedPlan?.id === plan.id">✓</div>
 				</div>
 			</div>
@@ -131,7 +134,7 @@ export default {
 			<!-- Selected summary -->
 			<transition name="fade">
 				<div class="summary" v-if="selectedPlan">
-					<span>{{ selectedPlan.generations }} ricette AI</span>
+					<span>{{ selectedPlan.generations }} {{ languages.paymentModal.generationsText }}</span>
 					<span class="summary-price">€{{ selectedPlan.price }}</span>
 				</div>
 			</transition>
@@ -140,7 +143,7 @@ export default {
 			<button class="pay-btn" :disabled="!selectedPlan || loading" @click="handleCheckout">
 				<span v-if="loading" class="spinner"></span>
 				<span v-else>
-					Paga con Stripe
+					{{ languages.paymentModal.payBtnText }}
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
 						<path d="M5 12h14M12 5l7 7-7 7" />
 					</svg>
@@ -157,7 +160,7 @@ export default {
 				<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
 					<path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" />
 				</svg>
-				Pagamento sicuro e criptato con Stripe
+				{{ languages.paymentModal.stripeFooterInfo }}
 			</div>
 		</div>
 	</div>
@@ -220,8 +223,13 @@ export default {
 	text-align: center;
 	margin-bottom: 32px;
 }
+.sub-description {
+	font-size: 0.625rem;
+	border-top: 1px solid #808080;
+}
+
 .icon-ring {
-	font-size: 36px;
+	font-size: 30px;
 	width: 72px;
 	height: 72px;
 	background: linear-gradient(135deg, #fff3dc, #ffe5b4);
@@ -233,19 +241,21 @@ export default {
 	box-shadow: 0 4px 16px rgba(255, 180, 50, 0.25);
 }
 .card-header h1 {
-	font-size: 26px;
+	font-size: 25px;
 	font-weight: 600;
 	color: #1a1208;
 	letter-spacing: -0.5px;
 	margin-bottom: 8px;
 }
-.card-header p {
+.card-header-p {
 	font-size: 14px;
+}
+.card-header-p,
+.sub-description {
 	color: #7a6e5e;
 	line-height: 1.5;
 	font-weight: 300;
 }
-
 /* Plans */
 .plans-grid {
 	display: grid;

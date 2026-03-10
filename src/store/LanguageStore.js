@@ -150,6 +150,10 @@ export const useLanguageStore = defineStore('Language', {
         moveText: "You can move items from one list to another by clicking on",
         copyText: "You can also copy items from one list to another by clicking on",
         final: "Both buttons show instructions that will guide you step by step."
+      },
+      tokenText: {
+        description: "This is your unique identifier, it is used in case you have paid for the recipe generation feature.",
+        description2: "ATTENTION: It was saved in your locale, if the data was canceled from the browser, I lost it in the next generation. Quindi keep it with care!"
       }
     },
     //--------------------------------------------------------------------- FESTIVITÀ
@@ -276,10 +280,26 @@ export const useLanguageStore = defineStore('Language', {
       confirmSendText: "Successfully added to the list"
     },
     downloadAppText: "You are on the desktop version: we recommend downloading the app for better usability",
-    recipesDisclaimer: "WARNING: AI can make mistakes! Automatically generated recipes may contain errors. ALWAYS check the ingredients!",
-    recipesSubDisclaimer: "The app and its developers assume no responsibility for any damages or problems arising from the use of the recipes or the user's failure to check the ingredients.",
-    totalRecipesText: "Generations left:",
-    alertRecepiesText: "It may take 30 to 60 seconds...It depends on the chef's stress level 😜",
+    recipes: {
+      recipesDisclaimer: "WARNING: AI can make mistakes! Automatically generated recipes may contain errors. ALWAYS check the ingredients!",
+      recipesSubDisclaimer: "The app and its developers assume no responsibility for any damages or problems arising from the use of the recipes or the user's failure to check the ingredients.",
+      totalRecipesText: "Generations left:",
+      alertRecepiesText: "It may take 30 to 60 seconds...It depends on the chef's stress level 😜",
+      recipesBtnText: "Generate recipe",
+      ingredients: "Ingredients",
+      preparation: "Preparation",
+      time: "Time",
+      difficulty: "Difficulty"
+    },
+    paymentModal: {
+      title: "Unlock AI Recipes",
+      description: "Transform your shopping list into delicious dishes with artificial intelligence",
+      subdescription: "The AI ​​will read your list discarding inedible products and create a recipe for you based on what you entered",
+      popularText: 'Most popular',
+      generationsText: "generations",
+      payBtnText: "Pay with Stripe",
+      stripeFooterInfo: "Secure and encrypted payment with Stripe"
+    }
   }),
   getters: {},
   actions: {
@@ -486,10 +506,22 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.confirmText = "Confermi la rimozione?";
       this.periodicList.confirmSendText = "Inserito con successo in lista";
       this.downloadAppText = "Sei su versione desktop: ti consigliamo di scaricare l'app per una migliore usabilità";
-      this.recipesDisclaimer = "FAI ATTENZIONE: L'AI può sbagliare! Le ricette generate automaticamente possono contenere errori. Verificare SEMPRE gli ingredienti!";
-      this.recipesSubDisclaimer = "L’app e i suoi sviluppatori non si assumono alcuna responsabilità per eventuali danni o problemi derivanti dall’utilizzo delle ricette o dal mancato controllo degli ingredienti da parte dell’utente.";
-      this.totalRecipesText = "Generazioni rimaste:";
-      this.alertRecepiesText = "Potrebbero volerci dai 30 ai 60 secondi...Dipende dallo stress dello chef 😜";
+      this.recipes.recipesDisclaimer = "FAI ATTENZIONE: L'AI può sbagliare! Le ricette generate automaticamente possono contenere errori. Verificare SEMPRE gli ingredienti!";
+      this.recipes.recipesSubDisclaimer = "L’app e i suoi sviluppatori non si assumono alcuna responsabilità per eventuali danni o problemi derivanti dall’utilizzo delle ricette o dal mancato controllo degli ingredienti da parte dell’utente.";
+      this.recipes.totalRecipesText = "Generazioni rimaste:";
+      this.recipes.alertRecepiesText = "Potrebbero volerci dai 30 ai 60 secondi...Dipende dallo stress dello chef 😜";
+      this.recipes.recipesBtnText = "Genera ricetta";
+      this.recipes.ingredients = "Ingredienti";
+      this.recipes.preparation = "Preparazione";
+      this.recipes.time = "Tempo";
+      this.recipes.difficulty = "Difficoltà";
+      this.paymentModal.title = "Sblocca le Ricette AI";
+      this.paymentModal.description = "Trasforma la tua lista della spesa in piatti deliziosi con l'intelligenza artificiale";
+      this.paymentModal.subdescription = "L'intelligenza artificiale leggerà la tua lista scartando i prodotti non commestibili e creerà una ricetta per te in base a ciò che hai inserito";
+      this.paymentModal.generationsText = "generazioni";
+      this.paymentModal.payBtnText = "Paga con Stripe";
+      this.paymentModal.stripeFooterInfo = "Pagamento sicuro e criptato con Stripe";
+      this.paymentModal.popularText = "Più popolare";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -605,10 +637,22 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.confirmText = "¿Confirma la eliminación?";
       this.periodicList.confirmSendText = "Añadido exitosamente a la lista";
       this.downloadAppText = "Estás en la versión de escritorio: recomendamos descargar la aplicación para una mejor usabilidad";
-      this.recipesDisclaimer = "ADVERTENCIA: ¡La IA puede cometer errores! Las recetas generadas automáticamente pueden contener errores. ¡SIEMPRE revise los ingredientes!";
-      this.recipesSubDisclaimer = "La aplicación y sus desarrolladores no asumen ninguna responsabilidad por daños o problemas que surjan del uso de las recetas o de la falta de verificación de los ingredientes por parte del usuario.";
-      this.totalRecipesText = "Generaciones restantes:";
-      this.alertRecepiesText = "Puede tomar entre 30 y 60 segundos...Depende del nivel de estrés del chef. 😜";
+      this.recipes.recipesDisclaimer = "ADVERTENCIA: ¡La IA puede cometer errores! Las recetas generadas automáticamente pueden contener errores. ¡SIEMPRE revise los ingredientes!";
+      this.recipes.recipesSubDisclaimer = "La aplicación y sus desarrolladores no asumen ninguna responsabilidad por daños o problemas que surjan del uso de las recetas o de la falta de verificación de los ingredientes por parte del usuario.";
+      this.recipes.totalRecipesText = "Generaciones restantes:";
+      this.recipes.alertRecepiesText = "Puede tomar entre 30 y 60 segundos...Depende del nivel de estrés del chef. 😜";
+      this.recipes.recipesBtnText = "Generar receta";
+      this.recipes.ingredients = "Ingredientes";
+      this.recipes.preparation = "Preparación";
+      this.recipes.time = "Tiempo";
+      this.recipes.difficulty = "Dificultad";
+      this.paymentModal.title = "Desbloquear recetas de IA";
+      this.paymentModal.description = "Transforma tu lista de compras en deliciosos platos con inteligencia artificial";
+      this.paymentModal.subdescription = "La IA leerá tu lista descartando productos no comestibles y creará una receta para ti basada en lo que ingresaste.";
+      this.paymentModal.generationsText = "generaciones";
+      this.paymentModal.payBtnText = "Paga con Stripe";
+      this.paymentModal.stripeFooterInfo = "Pago seguro y cifrado con Stripe";
+      this.paymentModal.popularText = "mas popular";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -724,10 +768,22 @@ export const useLanguageStore = defineStore('Language', {
       this.periodicList.confirmText = "Confirmez-vous la suppression?";
       this.periodicList.confirmSendText = "Ajouté avec succès à la liste";
       this.downloadAppText = "Vous êtes sur la version de bureau : nous vous recommandons de télécharger l'application pour une meilleure expérience utilisateur";
-      this.recipesDisclaimer = "ATTENTION : L'IA peut faire des erreurs ! Les recettes générées automatiquement peuvent contenir des erreurs. Vérifiez TOUJOURS les ingrédients !";
-      this.recipesSubDisclaimer = "L'application et ses développeurs déclinent toute responsabilité en cas de dommages ou de problèmes résultant de l'utilisation des recettes ou du défaut de vérification des ingrédients par l'utilisateur.";
-      this.totalRecipesText = "Générations restantes :";
-      this.alertRecepiesText = "Cela peut prendre de 30 à 60 secondes... Cela dépend du niveau de stress du chef. 😜";
+      this.recipes.recipesDisclaimer = "ATTENTION : L'IA peut faire des erreurs ! Les recettes générées automatiquement peuvent contenir des erreurs. Vérifiez TOUJOURS les ingrédients !";
+      this.recipes.recipesSubDisclaimer = "L'application et ses développeurs déclinent toute responsabilité en cas de dommages ou de problèmes résultant de l'utilisation des recettes ou du défaut de vérification des ingrédients par l'utilisateur.";
+      this.recipes.totalRecipesText = "Générations restantes :";
+      this.recipes.alertRecepiesText = "Cela peut prendre de 30 à 60 secondes... Cela dépend du niveau de stress du chef. 😜";
+      this.recipes.recipesBtnText = "Générer une recette";
+      this.recipes.ingredients = "Ingrédients";
+      this.recipes.preparation = "Préparation";
+      this.recipes.time = "Temps";
+      this.recipes.difficulty = "Difficulté";
+      this.paymentModal.title = "Débloquez des recettes IA";
+      this.paymentModal.description = "Transformez votre liste de courses en plats délicieux grâce à l'intelligence artificielle";
+      this.paymentModal.subdescription = "L'IA lira votre liste en rejetant les produits non comestibles et créera pour vous une recette basée sur ce que vous avez saisi.";
+      this.paymentModal.generationsText = "générations";
+      this.paymentModal.payBtnText = "Payer avec Stripe";
+      this.paymentModal.stripeFooterInfo = "Paiement sécurisé et crypté avec Stripe";
+      this.paymentModal.popularText = "Plus populaire";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
@@ -892,6 +948,8 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Puoi spostare elementi da una lista all'altra cliccando su";
       this.helperDescription.changeList.copyText = "Puoi anche copiare elementi da una lista all'altra cliccando su";
       this.helperDescription.changeList.final = "Entrambi i pulsanti mostrano le istruzioni che ti guideranno passo passo.";
+      this.helperDescription.tokenText.description = "Questo è il tuo identificativo univoco, serve nel caso hai pagato la funzionalità genera ricette.";
+      this.helperDescription.tokenText.description2 = "ATTENZIONE: É salvato nel tuo locale, quindi se cancelli i dati del browser, lo perdi insieme alle generazioni ricette. Quindi conservalo con cura!";
     },
     helperSpaTranslations() { // SPAGNOLO
       this.helperDescription.troubleshooting = 'Solución de problemas';
@@ -954,6 +1012,8 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Puedes mover elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.copyText = "También puedes copiar elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.final = "Ambos botones muestran las instrucciones que te guiarán paso a paso.";
+      this.helperDescription.tokenText.description = "Este es su identificador único, se utiliza en caso de que haya pagado por la función de generación de recetas.";
+      this.helperDescription.tokenText.description2 = "ADVERTENCIA: Se guarda en tu área local, así que si borras los datos de tu navegador, los perderás junto con las recetas generadas. ¡Así que guárdalos!";
     },
     helperFraTranslations() { // FRANÇAIS
       this.helperDescription.troubleshooting = 'Dépannage';
@@ -1016,6 +1076,7 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Tu peux déplacer des éléments d’une liste à l’autre en cliquant sur";
       this.helperDescription.changeList.copyText = "Tu peux aussi copier des éléments d’une liste à l’autre en cliquant sur";
       this.helperDescription.changeList.final = "Les deux boutons affichent les instructions pour te guider étape par étape.";
+      this.helperDescription.tokenText.description = "ATTENTION : Ces données sont enregistrées localement. Si vous supprimez les données de votre navigateur, vous les perdrez ainsi que les recettes générées. Conservez-les précieusement !";
     },
   }
 });
