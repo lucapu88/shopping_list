@@ -231,6 +231,7 @@ onMounted(() => {
 	top: 0;
 	left: 0;
 	z-index: 400;
+	overflow: auto;
 }
 
 .title {
