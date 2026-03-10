@@ -153,7 +153,7 @@ export default {
 						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
 						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
-						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || secondTodosStore.totalRecipes == 0)" />
+						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
 					</header>
 					<main>
 						<MainList />

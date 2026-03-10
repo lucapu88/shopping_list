@@ -56,11 +56,13 @@ async function generateRecipe() {
 			.join(", ");
 
 		try {
+			const language = languages.langIta ? "italiano" : languages.langSpanish ? "spagnolo" : languages.langFrench ? "francese" : "inglese";
 			const response = await fetch(`${productionUrl}/generate-recipe `, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
 					ingredients: ingredients,
+					language: language,
 				}),
 			});
 			if (!response.ok) {
