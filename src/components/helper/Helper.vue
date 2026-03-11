@@ -18,6 +18,7 @@ import ImportList from "./settings/Import-list.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
 import RenameList from "./settings/Rename-list.vue";
+import YourToken from "./settings/Your-token.vue";
 </script>
 
 <script>
@@ -137,6 +138,8 @@ export default {
 				<BackupList @backupLoadingEmit="backupLoadingEmitted" />
 
 				<ImportList @importListEmitted="importListEmitted" />
+
+				<YourToken v-if="settings.yourToken" />
 
 				<Share />
 

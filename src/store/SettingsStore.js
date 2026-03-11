@@ -47,6 +47,8 @@ export const useSettingsStore = defineStore('settings', {
     customSettings: false,
     isAndroidBrowser: false,
     showPaymentModal: false,
+    token: false,
+    yourToken: '',
   }),
   getters: {},
   actions: {
@@ -144,6 +146,7 @@ export const useSettingsStore = defineStore('settings', {
       this.share = false;
       this.pasteList = false;
       this.backupList = false;
+      this.token = false;
       //RISOLUZIONE PROBLEMI
       this.troubleshooting = false;
       //ISTRUZIONI
@@ -175,6 +178,7 @@ export const useSettingsStore = defineStore('settings', {
         share: 'share',
         pasteList: 'pasteList',
         backupList: 'backupList',
+        token: 'token',
         addEditDelete: 'addEditDelete',
         categoriesInfo: 'categoriesInfo',
         suggestions: 'suggestions',
