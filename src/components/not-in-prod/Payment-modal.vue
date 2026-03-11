@@ -25,9 +25,9 @@ export default {
 				{
 					id: "starter",
 					price: 1,
-					generations: 100,
+					generations: 60,
 					emoji: "🌱",
-					note: "€0.01 per ricetta",
+					note: "0.016 per ricetta",
 					priceId: import.meta.env.VITE_STRIPE_PRICE_100,
 					featured: false,
 				},
@@ -106,7 +106,10 @@ export default {
 			<!-- Header -->
 			<button class="close-btn" @click="close()">✕</button>
 			<div class="card-header">
-				<div class="icon-ring">🍳</div>
+				<div class="icon-ring">
+					<!-- 🍳 -->
+					<img class="chef" src="@/img/recipes/chef-giorgio.webp" alt="chef" />
+				</div>
 				<h1>{{ languages.paymentModal.title }}</h1>
 				<p class="card-header-p">{{ languages.paymentModal.description }}</p>
 				<p class="sub-description">{{ languages.paymentModal.subdescription }}</p>
@@ -195,6 +198,11 @@ export default {
 	box-shadow:
 		0 32px 80px rgba(0, 0, 0, 0.18),
 		0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.chef {
+	width: 100px;
+	height: 120px;
 }
 
 .close-btn {

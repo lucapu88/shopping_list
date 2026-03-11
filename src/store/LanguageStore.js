@@ -299,7 +299,24 @@ export const useLanguageStore = defineStore('Language', {
       generationsText: "generations",
       payBtnText: "Pay with Stripe",
       stripeFooterInfo: "Secure and encrypted payment with Stripe"
-    }
+    },
+    randomPhrases: [
+      `...Lighting the coals...`,
+      `...Heating up the stove...`,
+      `...I can't find the pot, damn it!`,
+      `...Give me a ladle!`,
+      `...Preparing the ingredients...`,
+      `...Slicing the salami...`,
+      `...Checking the fridge...`,
+      `...Drinking a beer...`,
+      `...Getting mad at the waiter...`,
+      `...Breaking the blender...`,
+      `...I can't find the ingredient...`,
+      `...Ingredient found...`,
+      `...The water is boiling...`,
+      `...Is the order right?`,
+      `UÉ UÉÉÉÉÉÉÉÉÉÉÉÉÉÉ!!!`,
+    ]
   }),
   getters: {},
   actions: {
@@ -522,6 +539,23 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.payBtnText = "Paga con Stripe";
       this.paymentModal.stripeFooterInfo = "Pagamento sicuro e criptato con Stripe";
       this.paymentModal.popularText = "Più popolare";
+      this.randomPhrases = [
+        `...Accendo la brace...`,
+        `...Scaldo i fornelli...`,
+        `...Non trovo la pentola dannazione!`,
+        `...Datemi un mestolo!`,
+        `...Preparo gli ingredienti...`,
+        `...Affetto il salame...`,
+        `...Controllo il frigorifero...`,
+        `...Bevo una birra...`,
+        `...Mi arrabbio con il cameriere...`,
+        `...Spacco il frullatore...`,
+        `...Non trovo l'ingrediente...`,
+        `...Ingrediente trovato...`,
+        `...L'acqua bolle...`,
+        `...La comanda è giusta?`,
+        `UÉ UÉÉÉÉÉÉÉÉÉÉÉÉÉÉ!!!`,
+      ];
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -653,6 +687,22 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.payBtnText = "Paga con Stripe";
       this.paymentModal.stripeFooterInfo = "Pago seguro y cifrado con Stripe";
       this.paymentModal.popularText = "mas popular";
+      this.randomPhrases = [
+        `...Enciendo las brasas...`,
+        `...Caliento los fogones...`,
+        `...¡No encuentro la olla, maldición!`,
+        `...¡Dadme un cucharón!`,
+        `...Preparo los ingredientes...`,
+        `...Corto el salchichón...`,
+        `...Reviso la nevera...`,
+        `...Bebo una cerveza...`,
+        `...Me enfado con el camarero...`,
+        `...Rompo la batidora...`,
+        `...No encuentro el ingrediente...`,
+        `...Ingrediente encontrado...`,
+        `...El agua está hirviendo...`,
+        `...¿La comanda es correcta?`,
+      ];
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -784,6 +834,22 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.payBtnText = "Payer avec Stripe";
       this.paymentModal.stripeFooterInfo = "Paiement sécurisé et crypté avec Stripe";
       this.paymentModal.popularText = "Plus populaire";
+      this.randomPhrases = [
+        `...J'allume la braise...`,
+        `...Je chauffe les fourneaux...`,
+        `...Je non trouve pas la casserole, mince !`,
+        `...Donnez-moi una louche !`,
+        `...Je prépare les ingrédients...`,
+        `...Je tranche le salami...`,
+        `...Je vérifie le frigo...`,
+        `...Je bois une bière...`,
+        `...Je m'énerve contre le serveur...`,
+        `...Je casse le mixeur...`,
+        `...Je ne trouve pas l'ingrédient...`,
+        `...Ingrédient trouvé...`,
+        `...L'eau bout...`,
+        `...La commande est-elle correcte ?`,
+      ];
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

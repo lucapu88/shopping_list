@@ -19,6 +19,8 @@ const localUrl = "http://localhost:3000";
 const errorRecipe = ref(false);
 const enableAI = ref(JSON.parse(localStorage.getItem("enableAI")) ?? false);
 const isGenerating = ref(false);
+const recipesReady = ref(false);
+const waitingPhrase = ref("");
 
 watch(enableAI, (val) => {
 	localStorage.setItem("enableAI", JSON.stringify(val));
@@ -35,13 +37,16 @@ async function generateRecipe() {
 	if (isGenerating.value) return; //blocca click multipli
 	isGenerating.value = true;
 
-	try {
-		const ok = await consumaGenerazione("Ricetta da lista spesa");
+	if (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0) {
+		settings.showPaymentModal = true;
+		isGenerating.value = false;
+		return;
+	}
 
-		if (!ok || !secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0) {
-			settings.showPaymentModal = true;
-			return;
-		}
+	const myInterval = setInterval(showRandomSentences, 5000);
+
+	try {
+		await consumaGenerazione("Ricetta da lista spesa");
 
 		const { todos } = storeToRefs(todoStore);
 		if (!todos.value.length) {
@@ -77,15 +82,32 @@ async function generateRecipe() {
 			window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
 			secondTodosStore.recipe = data;
 			secondTodosStore.loadingRecipes = false;
+			// faccio vedere uno chef che indica il pulsante stile khaby lame XD
+			recipesReady.value = true;
+			setTimeout(() => {
+				recipesReady.value = false;
+			}, 5000);
+
+			stopRandomPhrases(myInterval);
 		} catch (error) {
 			ifError();
 			console.error("Si è verificato un errore durante la richiesta:", error);
+			stopRandomPhrases(myInterval);
 		}
 	} finally {
 		isGenerating.value = false;
 	}
 }
+function showRandomSentences() {
+	const phrases = languages.randomPhrases;
+	const randomIndex = Math.floor(Math.random() * phrases.length);
 
+	waitingPhrase.value = phrases[randomIndex];
+}
+function stopRandomPhrases(myInterval) {
+	clearInterval(myInterval);
+	waitingPhrase.value = "";
+}
 function ifError() {
 	secondTodosStore.loadingRecipes = false;
 	errorRecipe.value = true;
@@ -95,7 +117,8 @@ function ifError() {
 <template>
 	<div class="text-center">
 		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.recipes.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
-		<p v-if="secondTodosStore.loadingRecipes">{{ languages.recipes.alertRecepiesText }}</p>
+		<p v-if="isGenerating">{{ languages.recipes.alertRecepiesText }}</p>
+		<p>{{ waitingPhrase }}</p>
 	</div>
 	<div class="recipe-generator">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
@@ -114,9 +137,11 @@ function ifError() {
 			:disabled="!todoStore.todos.length || isGenerating"
 			@click="generateRecipe"
 		>
-			{{ secondTodosStore.loadingRecipes ? "Loading..." : languages.recipes.recipesBtnText }}
+			{{ isGenerating ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
+		<img v-if="recipesReady" class="chef" src="@/img/recipes/chef-khaby.webp" alt="chef" />
+
 		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes && secondTodosStore.recipe" />
 	</div>
 </template>
@@ -126,6 +151,7 @@ function ifError() {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	position: relative;
 }
 
 button {
@@ -150,5 +176,13 @@ button {
 .form-check-input {
 	width: 3em;
 	height: 1.5em;
+}
+.chef {
+	width: 130px;
+	height: 120px;
+	position: absolute;
+	right: 10px;
+	bottom: 65px;
+	z-index: 500;
 }
 </style>

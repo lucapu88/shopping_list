@@ -2,16 +2,18 @@
 
 import { ref } from 'vue';
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-
 function getToken() {
+  const settings = useSettingsStore();
   let token = localStorage.getItem('ricette_token');
   if (!token) {
     token = crypto.randomUUID();
     localStorage.setItem('ricette_token', token);
   }
+  settings.yourToken = token;
   return token;
 }
 

@@ -18,6 +18,7 @@ import PeriodicListAddedAlert from "./components/periodic-list/Periodic-list-add
 import PeriodicListContainer from "./components/periodic-list/Periodic-list-container.vue";
 import DownloadAppAlert from "./components/panels-and-modals/Download-app-alert.vue";
 import PaymentModal from "./components/not-in-prod/Payment-modal.vue";
+import RecipeGeneratedModal from "./components/not-in-prod/Recipe-generated-modal.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -154,6 +155,7 @@ export default {
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
 						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
 						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
+						<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
 					</header>
 					<main>
 						<MainList />
