@@ -27,7 +27,7 @@ export default {
 					price: 1,
 					generations: 60,
 					emoji: "🌱",
-					note: "0.016 per ricetta",
+					note: "0.016 ",
 					priceId: import.meta.env.VITE_STRIPE_PRICE_100,
 					featured: false,
 				},
@@ -36,7 +36,7 @@ export default {
 					price: 2,
 					generations: 200,
 					emoji: "👨‍🍳",
-					note: "€0.01 per ricetta",
+					note: "€0.01 ",
 					priceId: import.meta.env.VITE_STRIPE_PRICE_200,
 					featured: true,
 				},
@@ -45,7 +45,7 @@ export default {
 					price: 5,
 					generations: 600,
 					emoji: "⭐",
-					note: "€0.008 per ricetta",
+					note: "€0.008 ",
 					priceId: import.meta.env.VITE_STRIPE_PRICE_600,
 					featured: false,
 				},
@@ -103,7 +103,6 @@ export default {
 <template>
 	<div class="payment-overlay" @click.self="close()">
 		<div class="payment-card">
-			<!-- Header -->
 			<button class="close-btn" @click="close()">✕</button>
 			<div class="card-header">
 				<div class="icon-ring">
@@ -115,7 +114,6 @@ export default {
 				<p class="sub-description">{{ languages.paymentModal.subdescription }}</p>
 			</div>
 
-			<!-- Plans -->
 			<div class="plans-grid">
 				<div v-for="plan in plans" :key="plan.id" class="plan-card" :class="{ selected: selectedPlan?.id === plan.id, featured: plan.featured }" @click="selectPlan(plan)">
 					<div class="plan-badge" v-if="plan.featured">{{ languages.paymentModal.popularText }}</div>
@@ -129,12 +127,11 @@ export default {
 					<div class="plan-gen">
 						<strong>{{ plan.generations }}</strong> {{ languages.paymentModal.generationsText }}
 					</div>
-					<!-- <div class="plan-note">{{ plan.note }}</div> -->
+					<div class="plan-note">{{ plan.note }} {{ languages.paymentModal.byRecipePrice }}</div>
 					<div class="plan-check" v-if="selectedPlan?.id === plan.id">✓</div>
 				</div>
 			</div>
 
-			<!-- Selected summary -->
 			<transition name="fade">
 				<div class="summary" v-if="selectedPlan">
 					<span>{{ selectedPlan.generations }} {{ languages.paymentModal.generationsText }}</span>
@@ -142,7 +139,6 @@ export default {
 				</div>
 			</transition>
 
-			<!-- Pay button -->
 			<button class="pay-btn" :disabled="!selectedPlan || loading" @click="handleCheckout">
 				<span v-if="loading" class="spinner"></span>
 				<span v-else>
@@ -153,12 +149,10 @@ export default {
 				</span>
 			</button>
 
-			<!-- Error -->
 			<transition name="fade">
 				<div class="error-msg" v-if="errorMessage">⚠ {{ errorMessage }}</div>
 			</transition>
 
-			<!-- Security note -->
 			<div class="security">
 				<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
 					<path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" />

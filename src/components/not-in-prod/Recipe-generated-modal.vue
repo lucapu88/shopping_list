@@ -1,11 +1,24 @@
 <script setup>
+import { ref } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "../../store/LanguageStore";
 import { useThemeStore } from "../../store/ThemeStore";
+import chef1 from "@/img/recipes/chef-ma-che-vuo.webp";
+import chef2 from "@/img/recipes/chef-ma-che-vuo2.webp";
+import chef3 from "@/img/recipes/chef-ma-che-vuo3.webp";
 
 const secondTodosStore = useSecondTodoStore();
 const languages = useLanguageStore();
 const theme = useThemeStore();
+const urls = [chef1, chef2, chef3];
+const imageSrc = ref(urls[0]);
+
+changeImage();
+
+function changeImage() {
+	const randomIndex = Math.floor(Math.random() * urls.length);
+	imageSrc.value = urls[randomIndex];
+}
 </script>
 
 <template>
@@ -47,6 +60,7 @@ const theme = useThemeStore();
 				<p v-if="secondTodosStore.recipe.difficolta">
 					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.difficulty }}:</span>
 					{{ secondTodosStore.recipe.difficolta }}
+					<img class="ma-che-vu" :src="imageSrc" alt="cheffone" />
 				</p>
 			</div>
 		</div>
@@ -75,6 +89,12 @@ const theme = useThemeStore();
 	font-size: 20px;
 	cursor: pointer;
 	padding: 0 10px;
+}
+
+.ma-che-vu {
+	width: 100px;
+	height: 115px;
+	float: right;
 }
 
 .f-size {
