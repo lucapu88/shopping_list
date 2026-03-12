@@ -3,21 +3,20 @@ import { ref } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "../../store/LanguageStore";
 import { useThemeStore } from "../../store/ThemeStore";
-import chef1 from "@/img/recipes/chef-ma-che-vuo.webp";
-import chef2 from "@/img/recipes/chef-ma-che-vuo2.webp";
-import chef3 from "@/img/recipes/chef-ma-che-vuo3.webp";
+import { usePreloadStore } from "../../store/PreloadStore";
 
 const secondTodosStore = useSecondTodoStore();
 const languages = useLanguageStore();
 const theme = useThemeStore();
-const urls = [chef1, chef2, chef3];
-const imageSrc = ref(urls[0]);
+const preload = usePreloadStore();
+
+const imageSrc = ref(preload.urls[0]);
 
 changeImage();
 
 function changeImage() {
-	const randomIndex = Math.floor(Math.random() * urls.length);
-	imageSrc.value = urls[randomIndex];
+	const randomIndex = Math.floor(Math.random() * preload.urls.length);
+	imageSrc.value = preload.urls[randomIndex];
 }
 </script>
 

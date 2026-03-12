@@ -23,11 +23,16 @@ import manfre from "@/img/manfredonia.webp";
 import snow from "@/img/paesaggio-innevato.webp";
 import christmasTree from "@/img/festivities/christmas-tree2.webp";
 
+import chef1 from "@/img/recipes/chef-ma-che-vuo.webp";
+import chef2 from "@/img/recipes/chef-ma-che-vuo2.webp";
+import chef3 from "@/img/recipes/chef-ma-che-vuo3.webp";
+
 export const usePreloadStore = defineStore('preload', {
     state: () => ({
         theme: useThemeStore(),
         christmas: useChristmasStore(),
         src: null,
+        urls: [chef1, chef2, chef3]
     }),
     getters: {},
     actions: {
