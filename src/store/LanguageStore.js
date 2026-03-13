@@ -214,8 +214,9 @@ export const useLanguageStore = defineStore('Language', {
     alertMomentaneoTitolo: "New Feature: ",
     saveText: "Save",
     feedback: {
-      title: "Send us reports of any problems, or simply a feedback, or a suggestion",
-      placeholder: "Leave your comments or comments here to tell us what's wrong. ATTENTION: Messages containing swear words will be automatically discarded after sending. ✌️",
+      title: "Your opinion matters to us as we grow! Send us your opinion or suggestion",
+      subtitle: "To report bugs or errors, you can write to: shoppinglist.service@outlook.com or include your email below, so I can contact you to understand the problem.",
+      placeholder: "Leave your comments. ATTENTION: Messages containing swear words will be automatically discarded after sending. ✌️",
       extraText: "If you'd like us to contact you, please include your email address in your message.",
       successMessage: "Message sent successfully, thank you! 🤗",
       errorMessage: "❌ Error sending message. Please try again. If the service doesn't work, please contact us directly at: ",
@@ -482,8 +483,9 @@ export const useLanguageStore = defineStore('Language', {
       this.alertMomentaneo = "Ora puoi creare più liste! Non è meraviglioso? Nel caso fai spesa in supermercati diversi oppure vuoi avere liste diverse in base alle tue esigenze, insomma hai a disposizione 4 liste tutte nuove! Buon divertimento ";
       this.alertMomentaneoTitolo = "Nuova Funzionalità: ";
       this.saveText = "Salva";
-      this.feedback.title = "Inviaci segnalazioni su eventuali problemi, oppure un semplice parere, o un suggerimento";
-      this.feedback.placeholder = "Scrivi qui le tue osservazioni oppure cosa c'è che non funziona. ATTENZIONE: i messaggi con parolacce verranno automaticamente scartati dopo l'invio. ✌️";
+      this.feedback.title = "Il tuo parere conta per farci crescere! Inviaci la tua opinione o un suggerimento";
+      this.feedback.subtitle = "Per segnalazioni di bug o errori puoi scrivere a: shoppinglist.service@outlook.com oppure includi la tua mail qui sotto, così posso contattarti per comprendere il problema";
+      this.feedback.placeholder = "Scrivi qui le tue osservazioni. ATTENZIONE: i messaggi con parolacce verranno automaticamente scartati dopo l'invio. ✌️";
       this.feedback.extraText = "Se desideri essere ricontattato, includi nel tuo messaggio il tuo indirizzo e-mail.";
       this.feedback.successMessage = "Messaggio inviato con successo, grazie! 🤗";
       this.feedback.errorMessage = "❌ Errore nell'invio del messaggio. Riprova. Se il servizio non funziona, contattaci direttamente a: ";
@@ -632,8 +634,9 @@ export const useLanguageStore = defineStore('Language', {
       this.alertMomentaneo = "¡ahora puedes crear múltiples listas! ¿No es maravilloso? Si compras en diferentes supermercados o quieres tener listas diferentes en función de tus necesidades, ¡tienes 4 listas completamente nuevas a tu disposición! Divertirse";
       this.alertMomentaneoTitolo = "Nueva característica: ";
       this.saveText = "Guardar";
-      this.feedback.title = "Envíanos informes de cualquier problema o simplemente tus comentarios, o una sugerencia";
-      this.feedback.placeholder = "Deja tus comentarios o comentarios aquí para contarnos qué está mal. ATENCIÓN: Los mensajes que contengan palabrotas serán automáticamente descartados después de enviarlos. ✌️";
+      this.feedback.title = "¡Tu opinión nos importa a medida que crecemos! Envíanos tu opinión o sugerencia";
+      this.feedback.subtitle = "Para informar de errores o fallos, puede escribir a shoppinglist.service@outlook.com o incluir su correo electrónico a continuación para que pueda ponerme en contacto con usted y comprender el problema.";
+      this.feedback.placeholder = "Deja tus comentarios. ATENCIÓN: Los mensajes que contengan palabrotas serán automáticamente descartados después de enviarlos. ✌️";
       this.feedback.extraText = "Si desea que nos pongamos en contacto con usted, incluya su dirección de correo electrónico en su mensaje.";
       this.feedback.successMessage = "Mensaje enviado con éxito, ¡gracias! 🤗";
       this.feedback.errorMessage = "❌ Error al enviar el mensaje. Por favor, inténtelo de nuevo. Si el servicio no funciona, contáctenos directamente en: ";
@@ -781,8 +784,9 @@ export const useLanguageStore = defineStore('Language', {
       this.alertMomentaneo = "Maintenant vous pouvez créer plusieurs listes ! N'est-ce pas merveilleux ? Si vous faites vos courses dans différents supermarchés ou si vous voulez avoir des listes différentes selon vos besoins, vous avez 4 nouvelles listes à votre disposition ! Amusez-vous bien !";
       this.alertMomentaneoTitolo = "Nouvelle fonctionnalité : ";
       this.saveText = "Enregistrer";
-      this.feedback.title = "Envoyez-nous des rapports sur tout problème, ou simplement un retour, ou une suggestion";
-      this.feedback.placeholder = "Laissez vos commentaires ou observations ici pour nous dire ce qui ne va pas. ATTENTION : Les messages contenant des gros mots seront automatiquement rejetés après l'envoi. ✌️";
+      this.feedback.title = "Votre opinion compte pour nous dans notre développement ! Envoyez-nous votre avis ou suggestion";
+      this.feedback.subtitle = "Pour signaler des bugs ou des erreurs, vous pouvez écrire à : shoppinglist.service@outlook.com ou indiquer votre adresse e-mail ci-dessous afin que je puisse vous contacter pour comprendre le problème.";
+      this.feedback.placeholder = "Laissez vos commentaires. ATTENTION : Les messages contenant des gros mots seront automatiquement rejetés après l'envoi. ✌️";
       this.feedback.extraText = "Si vous souhaitez que nous vous contactions, veuillez inclure votre adresse e-mail dans votre message.";
       this.feedback.successMessage = "Message envoyé avec succès, merci ! 🤗";
       this.feedback.errorMessage = "❌ Erreur lors de l'envoi du message. Veuillez réessayer. Si le service ne fonctionne pas, contactez-nous directement à : ";

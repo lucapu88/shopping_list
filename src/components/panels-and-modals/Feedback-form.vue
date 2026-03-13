@@ -95,6 +95,8 @@ export default {
 			<form @submit.prevent="sendEmail">
 				<label class="title" :class="{ 'margin-30': isChristmas.christmasTheme }">{{ languages.feedback.title }}</label>
 
+				<p class="feedback-sub">{{ languages.feedback.subtitle }}</p>
+
 				<p v-if="status" class="text-danger text-sm mt-2">{{ status }}</p>
 
 				<textarea :disabled="disable" v-model="message" class="content" rows="5" :placeholder="feedbackPlaceholder"></textarea>
@@ -164,12 +166,16 @@ export default {
 	margin-bottom: 0.625rem;
 }
 
+.feedback-sub {
+	font-size: small;
+}
+
 .margin-30 {
-	margin-top: 1.875rem;
+	/* margin-top: 0.875rem; */
 }
 
 textarea {
-	height: 70vh;
+	height: 50vh;
 	width: 100%;
 	text-align: center;
 	padding: 0.625rem;
@@ -177,7 +183,7 @@ textarea {
 
 .christmas-decorations-container {
 	width: 230px;
-	height: 50px;
+	height: 80px;
 	position: relative;
 }
 
