@@ -26,13 +26,15 @@ import christmasTree from "@/img/festivities/christmas-tree2.webp";
 import chef1 from "@/img/recipes/chef-ma-che-vuo.webp";
 import chef2 from "@/img/recipes/chef-ma-che-vuo2.webp";
 import chef3 from "@/img/recipes/chef-ma-che-vuo3.webp";
+import chef4 from "@/img/recipes/chef-ma-che-vuo4.webp";
+import chef5 from "@/img/recipes/chef-ma-che-vuo5.webp";
 
 export const usePreloadStore = defineStore('preload', {
     state: () => ({
         theme: useThemeStore(),
         christmas: useChristmasStore(),
         src: null,
-        urls: [chef1, chef2, chef3]
+        urls: [chef1, chef2, chef3, chef4, chef5]
     }),
     getters: {},
     actions: {

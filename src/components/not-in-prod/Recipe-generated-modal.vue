@@ -25,6 +25,7 @@ function changeImage() {
 		<div
 			class="recipe-container"
 			:class="{
+				'arrotonda-sto-bordo': !theme.retroTheme,
 				'container-light': theme.lightTheme,
 				'container-dark': theme.darkTheme,
 				'container-minimal': theme.minimalTheme,
@@ -91,8 +92,8 @@ function changeImage() {
 }
 
 .ma-che-vu {
-	width: 100px;
-	height: 115px;
+	width: 105px; /* one nation one station */
+	height: 120px;
 	float: right;
 }
 

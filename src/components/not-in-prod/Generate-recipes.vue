@@ -181,7 +181,7 @@ button {
 	width: 130px;
 	height: 120px;
 	position: absolute;
-	right: 10px;
+	right: 15px;
 	bottom: 65px;
 	z-index: 500;
 }
