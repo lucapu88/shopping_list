@@ -42,6 +42,8 @@ export default {
 						</p>
 						<strong>Google Fonts</strong>
 						<p>Personal Data: Trackers; Usage Data</p>
+						<strong>Stripe</strong>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<hr />
 						<p class="text-center">
 							<strong>Hosting and backend infrastructure</strong>
@@ -53,11 +55,14 @@ export default {
 						<strong>Kodular</strong>
 						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>EmailJS</strong>
-						<p>Various types of Data as specified in the privacy policy of the service.</p>
+						<p>Various types of Data as specified in the privacy policy of the service. <strong>Shopping-list does NOT collect users' emails.</strong></p>
 						<strong>idb</strong>
-						<p>No data collection. Everything remains in the local memory.</p>
-						<strong>Stripe</strong>
-						<p>Various types of Data as specified in the privacy policy of the service.</p>
+						<p>No data collection. Everything remains in the user local memory.</p>
+						<strong>Supabase</strong>
+						<p>
+							Various types of Data as specified in the privacy policy of the service. <br />
+							<strong>Shopping-list does NOT collect user data but creates a unique token for the paying user, in order to track only the number of generations paid.</strong>
+						</p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>

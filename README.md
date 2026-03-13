@@ -20,8 +20,8 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
 - Data validation with **Zod**
 - Advanced recipe generation features with **LangChain** and **OpenAI**
-- Payment processing and secure transactions integrated with **Stripe**
-- Backend services, authentication, and real-time database with **Supabase**
+- Payment processing and secure transactions for AI recipes generation, integrated with **Stripe**
+- Backend services, and real-time database with **Supabase** (I do not collect user data but only generate a unique token for your recipe counter)
 
 ## Technologies
 
@@ -37,6 +37,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - cropperjs
 - idb
 - Stripe
+- Supabase
 
 <br><hr>
 
