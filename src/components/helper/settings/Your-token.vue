@@ -2,6 +2,7 @@
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 </script>
 
@@ -11,6 +12,7 @@ export default {
 		return {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
+			secondTodosStore: useSecondTodoStore(),
 			theme: useThemeStore(),
 			token: "token",
 		};
@@ -30,7 +32,7 @@ export default {
 
 <template>
 	<div class="helper-settings">
-		<ListIstructionAccordion show-list-instructions-input="token" :istructions-text="'Token'" :select-deselect-arrow="settings.token && settings.section === token" :isSettings="true" />
+		<ListIstructionAccordion show-list-instructions-input="token" :istructions-text="languages.helperDescription.tokenText.title" :select-deselect-arrow="settings.token && settings.section === token" :isSettings="true" />
 		<template v-if="settings.token && settings.section === token">
 			<div class="auto-delete-container mb-3">
 				<li class="ms-3">
@@ -42,10 +44,14 @@ export default {
 					<span class="font-small text-primary ms-2">
 						{{ settings.yourToken }}
 					</span>
-					<button class="ms-2" @click="copyToken()">
+					<button class="ms-2 btn btn btn-outline-success" @click="copyToken()">
 						<img class="copy-token" src="@/img/icons/copy.webp" alt="copy" />
 						<span class="font-small ms-1">{{ languages.moveMode.copyElementText }}</span>
 					</button>
+				</li>
+				<li class="toggle-delete-confirm-container" id="auto-delete">
+					<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.recipes.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
+					<p v-else class="text-danger">{{ languages.recipes.generationsEndedText }}</p>
 				</li>
 			</div>
 		</template>
