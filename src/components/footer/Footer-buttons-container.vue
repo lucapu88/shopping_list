@@ -106,8 +106,7 @@ export default {
 		<audio ref="audioPlayer" :src="hohoho" preload="auto"></audio>
 	</div>
 
-	<!-- SOLO PER ME E NON IN PROD -->
-	<GenerateRecipes v-if="settings.customSettings" />
+	<GenerateRecipes />
 </template>
 
 <style scoped>
