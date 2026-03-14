@@ -8,7 +8,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import ShowRecipeModalButton from "./Show-recipe-modal-button.vue";
 import { useGenerazioni } from "@/server/composables/useGenerazioni";
 
-const { generazioni, fetchGenerazioni, consumaGenerazione } = useGenerazioni();
+const { generazioni, fetchGenerazioni } = useGenerazioni();
 
 const secondTodosStore = useSecondTodoStore();
 const settings = useSettingsStore();
@@ -46,8 +46,6 @@ async function generateRecipe() {
 	const myInterval = setInterval(showRandomSentences, 5000);
 
 	try {
-		await consumaGenerazione("Ricetta da lista spesa");
-
 		const { todos } = storeToRefs(todoStore);
 		if (!todos.value.length) {
 			return;
@@ -68,8 +66,14 @@ async function generateRecipe() {
 				body: JSON.stringify({
 					ingredients: ingredients,
 					language: language,
+					token: useGenerazioni().token,
 				}),
 			});
+			if (response.status === 403) {
+				settings.showPaymentModal = true;
+				isGenerating.value = false;
+				return;
+			}
 			if (!response.ok) {
 				ifError();
 				const text = await response.text();
@@ -82,6 +86,9 @@ async function generateRecipe() {
 			window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
 			secondTodosStore.recipe = data;
 			secondTodosStore.loadingRecipes = false;
+			const { fetchGenerazioni } = useGenerazioni();
+			await fetchGenerazioni();
+			secondTodosStore.totalRecipes = localStorage.getItem("generazioni");
 			// faccio vedere uno chef che indica il pulsante stile khaby lame XD
 			recipesReady.value = true;
 			setTimeout(() => {
