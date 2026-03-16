@@ -303,7 +303,8 @@ export const useLanguageStore = defineStore('Language', {
       generationsText: "generations",
       payBtnText: "Pay with Stripe",
       stripeFooterInfo: "Secure and encrypted payment with Stripe",
-      byRecipePrice: 'By generation'
+      byRecipePrice: 'By generation',
+      selectPlanAlertText: "Choose the plan you want"
     },
     randomPhrases: [
       `...Lighting the coals...`,
@@ -548,6 +549,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.stripeFooterInfo = "Pagamento sicuro e criptato con Stripe";
       this.paymentModal.popularText = "Più popolare";
       this.paymentModal.byRecipePrice = "Per generazione";
+      this.paymentModal.selectPlanAlertText = "Seleziona il piano che desideri";
       this.randomPhrases = [
         `...Accendo la brace...`,
         `...Scaldo i fornelli...`,
@@ -700,6 +702,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.stripeFooterInfo = "Pago seguro y cifrado con Stripe";
       this.paymentModal.popularText = "mas popular";
       this.paymentModal.byRecipePrice = "Por generación";
+      this.paymentModal.selectPlanAlertText = "Elige el plan que quieras";
       this.randomPhrases = [
         `...Enciendo las brasas...`,
         `...Caliento los fogones...`,
@@ -851,6 +854,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.stripeFooterInfo = "Paiement sécurisé et crypté avec Stripe";
       this.paymentModal.popularText = "Plus populaire";
       this.paymentModal.byRecipePrice = "Par génération";
+      this.paymentModal.selectPlanAlertText = "Choisissez le forfait que vous souhaitez";
       this.randomPhrases = [
         `...J'allume la braise...`,
         `...Je chauffe les fourneaux...`,

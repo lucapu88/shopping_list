@@ -21,6 +21,7 @@ export default {
 			selectedPlan: null,
 			loading: false,
 			errorMessage: "",
+			planNotSelected: false,
 			plans: [
 				{
 					id: "starter",
@@ -56,6 +57,7 @@ export default {
 		selectPlan(plan) {
 			this.selectedPlan = plan;
 			this.errorMessage = "";
+			this.planNotSelected = false;
 		},
 		getOrCreateToken() {
 			let token = localStorage.getItem("ricette_token");
@@ -66,7 +68,11 @@ export default {
 			return token;
 		},
 		async handleCheckout() {
-			if (!this.selectedPlan) return;
+			this.planNotSelected = false;
+			if (!this.selectedPlan) {
+				this.planNotSelected = true;
+				return;
+			}
 			this.loading = true;
 			this.errorMessage = "";
 
@@ -139,7 +145,8 @@ export default {
 				</div>
 			</transition>
 
-			<button class="pay-btn" :disabled="!selectedPlan || loading" @click="handleCheckout">
+			<p class="plan-not-selected text-danger text-center mb-3" v-if="planNotSelected">☝ {{ languages.paymentModal.selectPlanAlertText }} ☝</p>
+			<button class="pay-btn" :disabled="loading" @click="handleCheckout">
 				<span v-if="loading" class="spinner"></span>
 				<span v-else>
 					{{ languages.paymentModal.payBtnText }}
@@ -476,6 +483,21 @@ export default {
 	}
 	.amount {
 		font-size: 26px;
+	}
+}
+
+.plan-not-selected {
+	animation: zoominoutnew 1.5s infinite;
+}
+@keyframes zoominoutnew {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.2, 1.2);
+	}
+	100% {
+		transform: scale(1, 1);
 	}
 }
 </style>
