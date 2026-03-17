@@ -45,5 +45,24 @@ export function useGenerazioni() {
     return auth.currentUser?.uid ?? null;
   }
 
-  return { generazioni, loading, fetchGenerazioni, getToken };
+  const waitingForPayment = ref(false);
+
+  async function waitForGenerazioni(maxTentativi = 10, intervallo = 3000) {
+    const secondTodosStore = useSecondTodoStore();
+    waitingForPayment.value = true;
+
+    for (let i = 0; i < maxTentativi; i++) {
+      await fetchGenerazioni();
+      if (secondTodosStore.totalRecipes > 0) {
+        waitingForPayment.value = false;
+        return true;
+      }
+      await new Promise(resolve => setTimeout(resolve, intervallo));
+    }
+    waitingForPayment.value = false;
+    return false;
+  }
+
+
+  return { generazioni, loading, fetchGenerazioni, getToken, waitForGenerazioni };
 }

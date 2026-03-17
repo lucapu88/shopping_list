@@ -2,6 +2,7 @@
 // QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI
 import { loginGoogle, loginEmail, registerEmail } from "@/firebase.js";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { useSettingsStore } from "@/store/SettingsStore";
 
 export default {
 	name: "LoginModal",
@@ -12,6 +13,7 @@ export default {
 	data() {
 		return {
 			languages: useLanguageStore(),
+			settings: useSettingsStore(),
 			loading: false,
 			showEmailForm: false,
 			isRegistering: false,
@@ -75,7 +77,7 @@ export default {
 
 			<!-- Pulsanti principali -->
 			<div v-else class="buttons">
-				<button class="btn-google" @click="handleGoogle" :disabled="loading">
+				<button v-if="settings.isAndroidBrowser || settings.isIphone || !settings.isAndroid" class="btn-google" @click="handleGoogle" :disabled="loading">
 					<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" />
 					{{ languages.login.google }}
 				</button>

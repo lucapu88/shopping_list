@@ -19,6 +19,7 @@ import PeriodicListContainer from "./components/periodic-list/Periodic-list-cont
 import DownloadAppAlert from "./components/panels-and-modals/Download-app-alert.vue";
 import PaymentModal from "./components/ai-recipes-generator/Payment-modal.vue";
 import RecipeGeneratedModal from "./components/ai-recipes-generator/Recipe-generated-modal.vue";
+import PaymentWaiting from "./components/ai-recipes-generator/Payment-waiting.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -29,10 +30,13 @@ import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useCategoriesStore } from "@/store/CategoriesStore";
+import { useGenerazioni } from "@/server/composables/useGenerazioni";
+import { auth } from "@/firebase.js";
 </script>
 
 <script>
 export default {
+	components: { PaymentWaiting },
 	data() {
 		return {
 			checkChristmas: useChristmasStore(),
@@ -44,6 +48,9 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
+			waitForGenerazioni: useGenerazioni(),
+			waitForGenerazioni: useGenerazioni(),
+			waitingForPayment: false,
 			newUpdatesRead: window.localStorage.getItem("newMarkAndCopyMode2"),
 		};
 	},
@@ -59,7 +66,7 @@ export default {
 		// Controllo se sono in locale o in produzione perché alcune funzionalità non devono essere disponibili in locale
 		this.secondTodosStore.isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 	},
-	mounted() {
+	async mounted() {
 		for (let i = 0; i < localStorage.length; i++) {
 			//const key = localStorage.key(i);
 			if (localStorage.length === 3 || localStorage.length === 2) {
@@ -77,6 +84,24 @@ export default {
 				this.checks();
 			}
 		});
+
+		const fromPayment = sessionStorage.getItem("from_payment");
+		const { fetchGenerazioni } = useGenerazioni();
+		auth.onAuthStateChanged(async (user) => {
+			if (user) {
+				await fetchGenerazioni();
+			}
+		});
+		if (fromPayment) {
+			sessionStorage.removeItem("from_payment");
+			const { waitForGenerazioni, waitingForPayment } = useGenerazioni();
+			// Sincronizza il ref locale con quello del composable
+			const stop = watch(waitingForPayment, (val) => {
+				this.waitingForPayment = val;
+			});
+			await waitForGenerazioni();
+			stop();
+		}
 	},
 	watch: {
 		"todosStore.showCategoriesPrimaryPanel"() {
@@ -156,6 +181,7 @@ export default {
 						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
 						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
 						<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
+						<PaymentWaiting :is-visible="waitingForPayment" />
 					</header>
 					<main>
 						<MainList />

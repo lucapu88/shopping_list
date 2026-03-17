@@ -3,8 +3,9 @@
 
 import { useSettingsStore } from "../../store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
-import { auth, onAuthStateChanged } from "@/firebase.js";
+import { auth, onAuthStateChanged, logout } from "@/firebase.js";
 import { useGenerazioni } from "@/server/composables/useGenerazioni";
+import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import LoginModal from "./Login-modal.vue";
 
 export default {
@@ -21,6 +22,7 @@ export default {
 		return {
 			settings: useSettingsStore(),
 			languages: useLanguageStore(),
+			secondTodosStore: useSecondTodoStore(),
 			selectedPlan: null,
 			loading: false,
 			errorMessage: "",
@@ -78,13 +80,9 @@ export default {
 			this.errorMessage = "";
 			this.planNotSelected = false;
 		},
-		getOrCreateToken() {
-			let token = localStorage.getItem("ricette_token");
-			if (!token) {
-				token = crypto.randomUUID();
-				localStorage.setItem("ricette_token", token);
-			}
-			return token;
+		async handleLogout() {
+			await logout();
+			secondTodosStore.totalRecipes = 0;
 		},
 		async handleCheckout() {
 			this.planNotSelected = false;
@@ -96,7 +94,7 @@ export default {
 			this.errorMessage = "";
 
 			try {
-				const token = this.getOrCreateToken();
+				const token = auth.currentUser.uid;
 
 				const response = await fetch(`${import.meta.env.VITE_API_URL}/create-checkout-session`, {
 					method: "POST",
@@ -110,6 +108,7 @@ export default {
 
 				if (!response.ok) throw new Error("Errore nella creazione della sessione");
 				const { url } = await response.json();
+				sessionStorage.setItem("from_payment", "true");
 				window.location.href = url;
 			} catch (err) {
 				this.errorMessage = err.message || "Si è verificato un errore. Riprova.";
@@ -175,6 +174,11 @@ export default {
 
 			<!-- Se loggato mostra email -->
 			<p v-if="isLoggedIn" class="logged-as">✅ {{ languages.paymentModal.loggetText }}: {{ userEmail }}</p>
+			<div v-if="isLoggedIn" class="logout-btn mb-3">
+				<button class="btn btn-outline-success ps-1 pe-1" @click="handleLogout">
+					<small> Logout </small>
+				</button>
+			</div>
 
 			<button class="pay-btn" :disabled="loading || !isLoggedIn" @click="handleCheckout">
 				<span v-if="loading" class="spinner"></span>
@@ -553,5 +557,13 @@ export default {
 	padding: 8px;
 	background: #f0faf0;
 	border-radius: 8px;
+}
+
+.logout-btn {
+	display: flex;
+	justify-content: center;
+}
+.logout-btn > button {
+	font-size: 13px;
 }
 </style>
