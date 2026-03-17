@@ -3,10 +3,13 @@
 
 import { useSettingsStore } from "../../store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { auth, onAuthStateChanged } from "@/firebase.js";
+import { useGenerazioni } from "@/server/composables/useGenerazioni";
+import LoginModal from "./Login-modal.vue";
 
 export default {
 	name: "PaymentModal",
-
+	components: { LoginModal },
 	props: {
 		isOpen: {
 			type: Boolean,
@@ -22,6 +25,9 @@ export default {
 			loading: false,
 			errorMessage: "",
 			planNotSelected: false,
+			isLoggedIn: !!auth.currentUser,
+			userEmail: auth.currentUser?.email ?? null,
+			showLoginModal: false,
 			plans: [
 				{
 					id: "starter",
@@ -52,6 +58,19 @@ export default {
 				},
 			],
 		};
+	},
+	mounted() {
+		onAuthStateChanged(auth, async (user) => {
+			this.isLoggedIn = !!user;
+			this.userEmail = user?.email ?? null;
+			if (user) {
+				const { fetchGenerazioni, generazioni } = useGenerazioni();
+				await fetchGenerazioni();
+				if (generazioni.value > 0) {
+					this.close();
+				}
+			}
+		});
 	},
 	methods: {
 		selectPlan(plan) {
@@ -109,6 +128,8 @@ export default {
 <template>
 	<div class="payment-overlay" @click.self="close()">
 		<div class="payment-card">
+			<LoginModal :is-open="showLoginModal" @close="showLoginModal = false" @skip="showLoginModal = false" />
+
 			<button class="close-btn" @click="close()">✕</button>
 			<div class="card-header">
 				<div class="icon-ring">
@@ -146,7 +167,16 @@ export default {
 			</transition>
 
 			<p class="plan-not-selected text-danger text-center mb-3" v-if="planNotSelected">☝ {{ languages.paymentModal.selectPlanAlertText }} ☝</p>
-			<button class="pay-btn" :disabled="loading" @click="handleCheckout">
+
+			<!-- Pulsante login — visibile solo se non loggato -->
+			<div v-if="!isLoggedIn" class="login-section">
+				<button class="login-btn" @click="showLoginModal = true">👤 {{ languages.paymentModal.loginFirstText }}</button>
+			</div>
+
+			<!-- Se loggato mostra email -->
+			<p v-if="isLoggedIn" class="logged-as">✅ {{ languages.paymentModal.loggetText }}: {{ userEmail }}</p>
+
+			<button class="pay-btn" :disabled="loading || !isLoggedIn" @click="handleCheckout">
 				<span v-if="loading" class="spinner"></span>
 				<span v-else>
 					{{ languages.paymentModal.payBtnText }}
@@ -499,5 +529,29 @@ export default {
 	100% {
 		transform: scale(1, 1);
 	}
+}
+
+.login-btn {
+	width: 100%;
+	padding: 14px;
+	background: white;
+	border: 1.5px solid #e8e0d0;
+	border-radius: 14px;
+	font-size: 14px;
+	cursor: pointer;
+	margin-bottom: 10px;
+	transition: all 0.2s;
+}
+.login-btn:hover {
+	border-color: #c8a96e;
+}
+.logged-as {
+	font-size: 13px;
+	color: #4a7c4a;
+	text-align: center;
+	margin-bottom: 12px;
+	padding: 8px;
+	background: #f0faf0;
+	border-radius: 8px;
 }
 </style>

@@ -4,6 +4,7 @@ import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "../../store/LanguageStore";
 import { useThemeStore } from "../../store/ThemeStore";
 import { usePreloadStore } from "../../store/PreloadStore";
+import { auth, logout, onAuthStateChanged } from "@/firebase.js";
 
 const secondTodosStore = useSecondTodoStore();
 const languages = useLanguageStore();
@@ -13,6 +14,19 @@ const preload = usePreloadStore();
 const imageSrc = ref(preload.urls[0]);
 
 changeImage();
+
+const userEmail = ref(auth.currentUser?.email ?? null);
+const isLoggedIn = ref(!!auth.currentUser);
+
+onAuthStateChanged(auth, (user) => {
+	userEmail.value = user?.email ?? null;
+	isLoggedIn.value = !!user;
+});
+
+async function handleLogout() {
+	await logout();
+	secondTodosStore.totalRecipes = 0;
+}
 
 function changeImage() {
 	const randomIndex = Math.floor(Math.random() * preload.urls.length);
@@ -41,6 +55,11 @@ function changeImage() {
 		>
 			<button class="close-modal" @click="secondTodosStore.showRecipeModal = false">X</button>
 			<div class="pt-2 pb-2">
+				<div class="user-info mb-3" v-if="isLoggedIn">
+					<p class="logged-info m-0">✅ {{ userEmail }}</p>
+					<button class="btn btn-outline-success" @click="handleLogout">Logout</button>
+				</div>
+
 				<h2 :class="{ 'text-danger text-center': !theme.pinkTheme }">{{ secondTodosStore.recipe.titolo }}</h2>
 				<p class="m-0 f-size text-center">{{ languages.recipes.recipesDisclaimer }}</p>
 				<p class="f-size text-center">{{ languages.recipes.recipesSubDisclaimer }}</p>
@@ -89,6 +108,21 @@ function changeImage() {
 	font-size: 20px;
 	cursor: pointer;
 	padding: 0 10px;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.logout-btn {
+	font-size: 11px;
+	padding: 2px 8px;
+	border-radius: 20px;
+	border: 1px solid #9b6a2f;
+	background: white;
+	color: #9b6a2f;
+	cursor: pointer;
 }
 
 .ma-che-vu {

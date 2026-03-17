@@ -7,6 +7,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import ShowRecipeModalButton from "./Show-recipe-modal-button.vue";
 import { useGenerazioni } from "@/server/composables/useGenerazioni";
+import { auth } from "@/firebase.js";
 
 const { generazioni, fetchGenerazioni } = useGenerazioni();
 
@@ -66,7 +67,7 @@ async function generateRecipe() {
 				body: JSON.stringify({
 					ingredients: ingredients,
 					language: language,
-					token: useGenerazioni().token,
+					token: auth.currentUser?.uid,
 				}),
 			});
 			if (response.status === 403) {
@@ -88,7 +89,6 @@ async function generateRecipe() {
 			secondTodosStore.loadingRecipes = false;
 			const { fetchGenerazioni } = useGenerazioni();
 			await fetchGenerazioni();
-			secondTodosStore.totalRecipes = localStorage.getItem("generazioni");
 			// faccio vedere uno chef che indica il pulsante stile khaby lame XD
 			recipesReady.value = true;
 			setTimeout(() => {

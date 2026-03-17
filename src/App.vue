@@ -17,8 +17,8 @@ import UpdatesAlertsModal from "./components/panels-and-modals/Updates-alerts-mo
 import PeriodicListAddedAlert from "./components/periodic-list/Periodic-list-added-alert.vue";
 import PeriodicListContainer from "./components/periodic-list/Periodic-list-container.vue";
 import DownloadAppAlert from "./components/panels-and-modals/Download-app-alert.vue";
-import PaymentModal from "./components/not-in-prod/Payment-modal.vue";
-import RecipeGeneratedModal from "./components/not-in-prod/Recipe-generated-modal.vue";
+import PaymentModal from "./components/ai-recipes-generator/Payment-modal.vue";
+import RecipeGeneratedModal from "./components/ai-recipes-generator/Recipe-generated-modal.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";

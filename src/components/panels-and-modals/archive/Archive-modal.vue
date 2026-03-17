@@ -4,7 +4,7 @@ import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import ShowOnlyLatestDeleted from "./Show-only-latest-deleted.vue";
-import ShoppingsDB from "../../not-in-prod/Shoppings-db.vue";
+import ShoppingsDB from "../../ai-recipes-generator/Shoppings-db.vue";
 </script>
 
 <script>

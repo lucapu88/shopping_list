@@ -17,7 +17,7 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Enter and manage your loyalty cards (with **cropperjs** and **idb**)
 - Ability to send emails with **EmailJS**
 - Ability to save store loyalty cards with **idb** (No data collection! Everything remains in the local memory)
-- Integration with **Firebase** for data storage (<u>functionality NOT in production for users but for personal use only</u>)
+- Integration with **Firebase** for user authentication
 - Data validation with **Zod**
 - Advanced recipe generation features with **LangChain** and **OpenAI**
 - Payment processing and secure transactions for AI recipes generation, integrated with **Stripe**
@@ -29,8 +29,8 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 - Pinia
 - Bootstrap 5
 - Vite
-- Firebase (personal use)
-- LangChain, OpenAI (personal use)
+- Firebase
+- LangChain, OpenAI
 - Cypress (end-to-end testing)
 - Vitest (unit testing)
 - Kodular (conversion to Android app)

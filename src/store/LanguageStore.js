@@ -151,11 +151,6 @@ export const useLanguageStore = defineStore('Language', {
         copyText: "You can also copy items from one list to another by clicking on",
         final: "Both buttons show instructions that will guide you step by step."
       },
-      tokenText: {
-        title: "Tokens and generations",
-        description: "This is your unique identifier, it is used in case you have paid for the recipe generation feature.",
-        description2: "ATTENTION: It was saved in your locale, if the data was canceled from the browser, I lost it in the next generation. Quindi keep it with care!"
-      }
     },
     //--------------------------------------------------------------------- FESTIVITÀ
     cancerDayText: '4 February: World Cancer Day',
@@ -304,7 +299,19 @@ export const useLanguageStore = defineStore('Language', {
       payBtnText: "Pay with Stripe",
       stripeFooterInfo: "Secure and encrypted payment with Stripe",
       byRecipePrice: 'By generation',
-      selectPlanAlertText: "Choose the plan you want"
+      selectPlanAlertText: "Choose the plan you want",
+      loggetText: "Logged in as",
+      loginFirstText: "Log in before paying",
+    },
+    login: {
+      title: "Save your recipes",
+      subtitle: "Sign in to avoid losing your generations if you change devices.",
+      google: "Continue with Google",
+      otherEmail: "Continue with Email",
+      register: "Register",
+      singIn: "Sign in",
+      accountOk: 'Already have an account? Log in',
+      accountNo: "Don't have an account? Register"
     },
     randomPhrases: [
       `...Lighting the coals...`,
@@ -550,6 +557,16 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.popularText = "Più popolare";
       this.paymentModal.byRecipePrice = "Per generazione";
       this.paymentModal.selectPlanAlertText = "Seleziona il piano che desideri";
+      this.paymentModal.loggetText = "Loggato come";
+      this.paymentModal.loginFirstText = "Accedi prima di pagare";
+      this.login.title = "Salva le tue ricette";
+      this.login.subtitle = "Accedi per non perdere le tue generazioni se cambi dispositivo";
+      this.login.google = "Continua con google";
+      this.login.otherEmail = "Continua con Email";
+      this.login.register = "Registrati";
+      this.login.singIn = "Accedi";
+      this.login.accountOk = "Hai già un account? Accedi";
+      this.login.accountNo = "Non hai un account? Registrati";
       this.randomPhrases = [
         `...Accendo la brace...`,
         `...Scaldo i fornelli...`,
@@ -703,6 +720,16 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.popularText = "mas popular";
       this.paymentModal.byRecipePrice = "Por generación";
       this.paymentModal.selectPlanAlertText = "Elige el plan que quieras";
+      this.paymentModal.loggetText = "Sesión iniciada como";
+      this.paymentModal.loginFirstText = "Inicia sesión antes de pagar";
+      this.login.title = "Guarda tus recetas";
+      this.login.subtitle = "Inicia sesión para no perder tus generaciones si cambias de dispositivo";
+      this.login.google = "Continuar con Google";
+      this.login.otherEmail = "Continuar con el correo electrónico";
+      this.login.register = "Registrarse";
+      this.login.singIn = "Iniciar sesión";
+      this.login.accountOk = "¿Ya tienes una cuenta? Inicia sesión";
+      this.login.accountNo = "¿No tienes una cuenta? Regístrate";
       this.randomPhrases = [
         `...Enciendo las brasas...`,
         `...Caliento los fogones...`,
@@ -855,6 +882,16 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.popularText = "Plus populaire";
       this.paymentModal.byRecipePrice = "Par génération";
       this.paymentModal.selectPlanAlertText = "Choisissez le forfait que vous souhaitez";
+      this.paymentModal.loggetText = "Connecté en tant que";
+      this.paymentModal.loginFirstText = "Connectez-vous avant de payer";
+      this.login.title = "Enregistrez vos recettes";
+      this.login.subtitle = "Connectez-vous pour ne pas perdre vos générations si vous changez d'appareil";
+      this.login.google = "Continuer avec Google";
+      this.login.otherEmail = "Continuer avec l'e-mail";
+      this.login.register = "S'inscrire";
+      this.login.singIn = "Connexion";
+      this.login.accountOk = "Vous avez déjà un compte ? Connectez-vous";
+      this.login.accountNo = "Vous n'avez pas de compte ? Inscrivez-vous";
       this.randomPhrases = [
         `...J'allume la braise...`,
         `...Je chauffe les fourneaux...`,
@@ -1035,9 +1072,6 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Puoi spostare elementi da una lista all'altra cliccando su";
       this.helperDescription.changeList.copyText = "Puoi anche copiare elementi da una lista all'altra cliccando su";
       this.helperDescription.changeList.final = "Entrambi i pulsanti mostrano le istruzioni che ti guideranno passo passo.";
-      this.helperDescription.tokenText.description = "Questo è il tuo identificativo univoco, serve nel caso hai pagato la funzionalità genera ricette.";
-      this.helperDescription.tokenText.description2 = "ATTENZIONE: É salvato nel tuo locale, quindi se cancelli i dati del browser, lo perdi insieme alle generazioni ricette. Quindi conservalo con cura!";
-      this.helperDescription.tokenText.title = "Token e generazioni";
     },
     helperSpaTranslations() { // SPAGNOLO
       this.helperDescription.troubleshooting = 'Solución de problemas';
@@ -1100,9 +1134,6 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Puedes mover elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.copyText = "También puedes copiar elementos de una lista a otra haciendo clic en";
       this.helperDescription.changeList.final = "Ambos botones muestran las instrucciones que te guiarán paso a paso.";
-      this.helperDescription.tokenText.description = "Este es su identificador único, se utiliza en caso de que haya pagado por la función de generación de recetas.";
-      this.helperDescription.tokenText.description2 = "ADVERTENCIA: Se guarda en tu área local, así que si borras los datos de tu navegador, los perderás junto con las recetas generadas. ¡Así que guárdalos!";
-      this.helperDescription.tokenText.title = "Token y generaciones";
     },
     helperFraTranslations() { // FRANÇAIS
       this.helperDescription.troubleshooting = 'Dépannage';
@@ -1165,8 +1196,6 @@ export const useLanguageStore = defineStore('Language', {
       this.helperDescription.changeList.moveText = "Tu peux déplacer des éléments d’une liste à l’autre en cliquant sur";
       this.helperDescription.changeList.copyText = "Tu peux aussi copier des éléments d’une liste à l’autre en cliquant sur";
       this.helperDescription.changeList.final = "Les deux boutons affichent les instructions pour te guider étape par étape.";
-      this.helperDescription.tokenText.description = "ATTENTION : Ces données sont enregistrées localement. Si vous supprimez les données de votre navigateur, vous les perdrez ainsi que les recettes générées. Conservez-les précieusement !";
-      this.helperDescription.tokenText.title = "Jetons et générations";
     },
   }
 });

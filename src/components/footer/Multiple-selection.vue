@@ -5,7 +5,7 @@ import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import DeselectAll from "./Deselect-all.vue";
-import ConfirmPurchaseBtn from "../not-in-prod/Confirm-purchase-btn.vue";
+import ConfirmPurchaseBtn from "../ai-recipes-generator/Confirm-purchase-btn.vue";
 </script>
 
 <script>

@@ -7,7 +7,7 @@ import { useTodoStore } from "@/store/TodoStore";
 import { usePreloadStore } from "@/store/PreloadStore";
 import hohoho from "@/sounds/ho-ho-ho-merry-christmas-santa-claus.mp3";
 import MultipleSelection from "./Multiple-selection.vue";
-import GenerateRecipes from "../not-in-prod/Generate-recipes.vue";
+import GenerateRecipes from "../ai-recipes-generator/Generate-recipes.vue";
 import ShowAllShoppingDoneBtn from "./Show-all-shopping-done-btn.vue";
 import FeedbackButton from "./Feedback-button.vue";
 </script>

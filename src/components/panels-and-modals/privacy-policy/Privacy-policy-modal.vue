@@ -52,6 +52,8 @@ export default {
 						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>Netlify</strong>
 						<p>Various types of Data as specified in the privacy policy of the service.</p>
+						<strong>Firebase</strong>
+						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>Kodular</strong>
 						<p>Various types of Data as specified in the privacy policy of the service.</p>
 						<strong>EmailJS</strong>
@@ -59,10 +61,7 @@ export default {
 						<strong>idb</strong>
 						<p>No data collection. Everything remains in the user local memory.</p>
 						<strong>Supabase</strong>
-						<p>
-							Various types of Data as specified in the privacy policy of the service. <br />
-							<strong>Shopping-list does NOT collect user data but creates a unique token for the paying user, in order to track only the number of generations paid.</strong>
-						</p>
+						<p>Various types of Data as specified in the privacy policy of the service. <br /></p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>
