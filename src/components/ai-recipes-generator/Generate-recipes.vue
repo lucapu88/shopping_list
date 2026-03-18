@@ -146,9 +146,9 @@ function ifError() {
 		>
 			{{ isGenerating ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
-		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
-		<img v-if="recipesReady" class="chef" src="@/img/recipes/chef-khaby.webp" alt="chef" />
 
+		<img v-if="recipesReady" class="chef" src="@/img/recipes/chef-khaby2.webp" alt="chef" />
+		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
 		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes && secondTodosStore.recipe" />
 	</div>
 </template>
@@ -185,11 +185,11 @@ button {
 	height: 1.5em;
 }
 .chef {
-	width: 130px;
-	height: 120px;
+	width: 125px;
+	height: 150px;
 	position: absolute;
-	right: 15px;
-	bottom: 65px;
+	right: 20px;
+	bottom: 55px;
 	z-index: 500;
 }
 </style>
