@@ -48,20 +48,15 @@ export default {
 						<p class="text-center">
 							<strong>Hosting and backend infrastructure</strong>
 						</p>
-						<strong>GitHub Pages</strong>
+						<strong>GitHub Pages, </strong>
+						<strong>Netlify, </strong>
+						<strong>Firebase, </strong>
+						<strong>Kodular, </strong>
+						<strong>EmailJS, </strong>
+						<strong>Supabase: </strong>
 						<p>Various types of Data as specified in the privacy policy of the service.</p>
-						<strong>Netlify</strong>
-						<p>Various types of Data as specified in the privacy policy of the service.</p>
-						<strong>Firebase</strong>
-						<p>Various types of Data as specified in the privacy policy of the service.</p>
-						<strong>Kodular</strong>
-						<p>Various types of Data as specified in the privacy policy of the service.</p>
-						<strong>EmailJS</strong>
-						<p>Various types of Data as specified in the privacy policy of the service. <strong>Shopping-list does NOT collect users' emails.</strong></p>
 						<strong>idb</strong>
 						<p>No data collection. Everything remains in the user local memory.</p>
-						<strong>Supabase</strong>
-						<p>Various types of Data as specified in the privacy policy of the service. <br /></p>
 						<hr />
 						<p class="text-center">
 							<strong>Contact information</strong>
