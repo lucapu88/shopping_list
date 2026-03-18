@@ -90,7 +90,9 @@ export default {
 		const fromPayment = sessionStorage.getItem("from_payment");
 		const { fetchGenerazioni } = useGenerazioni();
 		auth.onAuthStateChanged(async (user) => {
+			this.settings.isAuthLoading = true;
 			await fetchGenerazioni();
+			this.settings.isAuthLoading = false;
 		});
 		if (fromPayment) {
 			sessionStorage.removeItem("from_payment");

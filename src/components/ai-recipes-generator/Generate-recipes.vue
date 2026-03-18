@@ -133,6 +133,7 @@ function ifError() {
 			<label>AI</label>
 			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
 		</div> -->
+
 		<!-- PULSANBTE GENERA RICETTA -->
 		<button
 			:class="{
@@ -141,10 +142,10 @@ function ifError() {
 				error: errorRecipe,
 				disabled: !todoStore.todos.length || isGenerating,
 			}"
-			:disabled="!todoStore.todos.length || isGenerating"
+			:disabled="settings.isAuthLoading || !todoStore.todos.length || isGenerating"
 			@click="generateRecipe"
 		>
-			{{ isGenerating ? "Loading..." : languages.recipes.recipesBtnText }}
+			{{ isGenerating || settings.isAuthLoading ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
 
 		<img v-if="recipesReady" class="chef" src="@/img/recipes/chef-khaby2.webp" alt="chef" />

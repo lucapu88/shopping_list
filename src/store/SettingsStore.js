@@ -47,7 +47,8 @@ export const useSettingsStore = defineStore('settings', {
     customSettings: false,
     isAndroidBrowser: false,
     showPaymentModal: false,
-    yourToken: ''
+    yourToken: '',
+    isAuthLoading: true
   }),
   getters: {},
   actions: {
