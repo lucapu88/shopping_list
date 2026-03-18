@@ -57,7 +57,9 @@ export default {
 			<button class="close-btn" @click="$emit('skip')">✕</button>
 
 			<div class="card-header">
-				<div class="icon-ring">👤</div>
+				<div class="icon-ring">
+					<img src="@/img/recipes/chef-giorgio-login.webp" alt="chef_login" />
+				</div>
 				<h1>{{ languages.login.title }}</h1>
 				<p>{{ languages.login.subtitle }}</p>
 			</div>
@@ -148,7 +150,11 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 0 auto 14px;
+	margin: 0 auto 40px;
+}
+.icon-ring > img {
+	width: 130px;
+	height: 130px;
 }
 .card-header h1 {
 	font-size: 22px;

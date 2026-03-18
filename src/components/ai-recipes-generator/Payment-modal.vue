@@ -6,6 +6,8 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { auth, onAuthStateChanged, logout } from "@/firebase.js";
 import { useGenerazioni } from "@/server/composables/useGenerazioni";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { usePreloadStore } from "../../store/PreloadStore";
+import chefLogin from "../../img/recipes/chef-giorgio-login.webp";
 import LoginModal from "./Login-modal.vue";
 
 export default {
@@ -23,6 +25,7 @@ export default {
 			settings: useSettingsStore(),
 			languages: useLanguageStore(),
 			secondTodosStore: useSecondTodoStore(),
+			preload: usePreloadStore(),
 			selectedPlan: null,
 			loading: false,
 			errorMessage: "",
@@ -62,6 +65,7 @@ export default {
 		};
 	},
 	mounted() {
+		this.preload.preloadImage(chefLogin);
 		onAuthStateChanged(auth, async (user) => {
 			this.isLoggedIn = !!user;
 			this.userEmail = user?.email ?? null;
