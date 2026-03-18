@@ -82,15 +82,15 @@ export default {
 			//Ascolta quando la pagina cambia stato di visibilità. Succede quando l’utente minimizza l’app, passa a un’altra app, spegne/riaccende lo schermo, cambia tab o torna nell’app
 			if (!document.hidden) {
 				this.checks();
+				const { fetchGenerazioni } = useGenerazioni();
+				fetchGenerazioni();
 			}
 		});
 
 		const fromPayment = sessionStorage.getItem("from_payment");
 		const { fetchGenerazioni } = useGenerazioni();
 		auth.onAuthStateChanged(async (user) => {
-			if (user) {
-				await fetchGenerazioni();
-			}
+			await fetchGenerazioni();
 		});
 		if (fromPayment) {
 			sessionStorage.removeItem("from_payment");
