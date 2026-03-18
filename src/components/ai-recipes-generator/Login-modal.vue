@@ -1,6 +1,6 @@
 <script>
 // QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI
-import { loginGoogle, loginEmail, registerEmail } from "@/firebase.js";
+import { loginGoogle, loginEmail, registerEmail, resetPassword } from "@/firebase.js";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 
@@ -20,6 +20,9 @@ export default {
 			email: "",
 			password: "",
 			errorMessage: "",
+			showResetForm: false,
+			resetEmail: "",
+			resetSent: false,
 		};
 	},
 	methods: {
@@ -47,6 +50,26 @@ export default {
 				this.loading = false;
 			}
 		},
+		async handleResetPassword() {
+			this.loading = true;
+			this.errorMessage = "";
+			try {
+				await resetPassword(this.resetEmail);
+				this.resetSent = true;
+				setTimeout(() => {
+					this.showResetForm = false;
+					this.resetSent = false;
+				}, 2500);
+			} catch (err) {
+				if (err.code === "auth/user-not-found") {
+					this.errorMessage = "Nessun account trovato con questa email";
+				} else {
+					this.errorMessage = err.message;
+				}
+			} finally {
+				this.loading = false;
+			}
+		},
 	},
 };
 </script>
@@ -63,6 +86,14 @@ export default {
 				<h1>{{ languages.login.title }}</h1>
 				<p>{{ languages.login.subtitle }}</p>
 			</div>
+			<!-- Form reset password -->
+			<div v-if="showResetForm">
+				<p style="font-size: 13px; color: #7a6e5e; margin-bottom: 10px">{{ languages.login.emailTitle }}</p>
+				<input v-model="resetEmail" type="email" placeholder="Email" class="input" />
+				<button class="btn-email mt-2 mb-2" @click="handleResetPassword" :disabled="loading">{{ languages.login.recLink }}</button>
+				<p v-if="resetSent" style="color: green; font-size: 13px; text-align: center">✅ {{ languages.login.emailSentText }}</p>
+				<button class="btn-back ms-3" @click="showResetForm = false">✕</button>
+			</div>
 
 			<!-- Se sta registrando con email -->
 			<div v-if="showEmailForm" class="email-form">
@@ -74,6 +105,9 @@ export default {
 				<p class="toggle-auth" @click="isRegistering = !isRegistering">
 					{{ isRegistering ? languages.login.accountOk : languages.login.accountNo }}
 				</p>
+				<!-- Link recupero password — visibile solo in modalità login -->
+				<p v-if="!isRegistering" class="toggle-auth" @click="showResetForm = true">{{ languages.login.resetPassword }}</p>
+
 				<button class="btn-back" @click="showEmailForm = false">←</button>
 			</div>
 

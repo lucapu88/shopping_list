@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA8TnpTl9FeXxNRsmG8VMUUZnmealhhtck",
@@ -28,6 +28,10 @@ export async function registerEmail(email, password) {
 
 export async function logout() {
     return signOut(auth);
+}
+
+export async function resetPassword(email) {
+    return sendPasswordResetEmail(auth, email);
 }
 
 export { onAuthStateChanged };

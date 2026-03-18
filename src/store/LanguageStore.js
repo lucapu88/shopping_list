@@ -311,7 +311,11 @@ export const useLanguageStore = defineStore('Language', {
       register: "Register",
       singIn: "Sign in",
       accountOk: 'Already have an account? Log in',
-      accountNo: "Don't have an account? Register"
+      accountNo: "Don't have an account? Register",
+      resetPassword: 'Forgot your password?',
+      emailSentText: "Email sent! Check your inbox.",
+      recLink: "Send recovery link",
+      emailTitle: "Enter your email to receive the recovery link"
     },
     randomPhrases: [
       `...Lighting the coals...`,
@@ -567,6 +571,10 @@ export const useLanguageStore = defineStore('Language', {
       this.login.singIn = "Accedi";
       this.login.accountOk = "Hai già un account? Accedi";
       this.login.accountNo = "Non hai un account? Registrati";
+      this.login.resetPassword = "Hai dimenticato la password?";
+      this.login.emailSentText = "Email inviata! Controlla la tua casella.";
+      this.login.recLink = "Invia link di recupero";
+      this.login.emailTitle = "Inserisci la tua email per ricevere il link di recupero";
       this.randomPhrases = [
         `...Accendo la brace...`,
         `...Scaldo i fornelli...`,
@@ -730,6 +738,10 @@ export const useLanguageStore = defineStore('Language', {
       this.login.singIn = "Iniciar sesión";
       this.login.accountOk = "¿Ya tienes una cuenta? Inicia sesión";
       this.login.accountNo = "¿No tienes una cuenta? Regístrate";
+      this.login.resetPassword = "¿Olvidaste tu contraseña?";
+      this.login.emailSentText = "¡Correo electrónico enviado! Por favor, revise su bandeja de entrada.";
+      this.login.recLink = "Enviar enlace de recuperación";
+      this.login.emailTitle = "Ingrese su correo electrónico para recibir el enlace de recuperación";
       this.randomPhrases = [
         `...Enciendo las brasas...`,
         `...Caliento los fogones...`,
@@ -892,6 +904,10 @@ export const useLanguageStore = defineStore('Language', {
       this.login.singIn = "Connexion";
       this.login.accountOk = "Vous avez déjà un compte ? Connectez-vous";
       this.login.accountNo = "Vous n'avez pas de compte ? Inscrivez-vous";
+      this.login.resetPassword = "Mot de passe oublié ?";
+      this.login.emailSentText = "Courriel envoyé ! Veuillez consulter votre boîte de réception.";
+      this.login.recLink = "Envoyer le lien de récupération";
+      this.login.emailTitle = "Saisissez votre adresse e-mail pour recevoir le lien de récupération";
       this.randomPhrases = [
         `...J'allume la braise...`,
         `...Je chauffe les fourneaux...`,
