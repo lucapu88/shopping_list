@@ -55,19 +55,22 @@ export default {
 				}"
 			>
 				<div class="title">
-					<span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations me-2">🎄</span>
+					<!-- TODO: se riattivi il pulsante sotto allora decommenta questo -->
+					<!-- <span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations me-2">🎄</span>
 					<span v-if="settings.customSettings && !showLatestDeleted">ELENCO SPESE</span>
-					<span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations ms-2">🎅 </span>
+					<span v-if="settings.customSettings && isChristmas.christmasTheme && !showLatestDeleted" class="christmas-decorations ms-2">🎅 </span> -->
 					<span class="x" @click="close()">X</span>
 				</div>
 				<!-- SOLO PER ME, NON IN PRODUZIONE -->
-				<button v-if="settings.customSettings" @click="showLatestDeleted = !showLatestDeleted">
+				<!-- TODO: l'ho tolto per ora perchè non funziona firebase e non ho tempo di guardarci ma non è importante e non mi serve al momento -->
+				<!-- <button v-if="settings.customSettings" @click="showLatestDeleted = !showLatestDeleted">
 					{{ showLatestDeleted ? "Elenca le spese" : "Elenca le eliminazioni" }}
 				</button>
-				<ShoppingsDB v-if="settings.customSettings && !showLatestDeleted" />
+				<ShoppingsDB v-if="settings.customSettings && !showLatestDeleted" /> -->
 
 				<!-- PER GLI ALTRI UTENTI MOSTRA SOLO GLI ULTIMI ELIMINATI CHE NON SONO SALVATI IN DB MA SOLO NEL LORO LOCALE -->
-				<ShowOnlyLatestDeleted v-if="!settings.customSettings || showLatestDeleted" />
+				<!-- TODO: se riattivi anche il pulsante di sopra, allora inserisci questo =>  v-if="!settings.customSettings || showLatestDeleted"   -->
+				<ShowOnlyLatestDeleted />
 			</div>
 		</transition>
 	</div>

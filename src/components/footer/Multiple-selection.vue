@@ -26,15 +26,19 @@ export default {
 <template>
 	<div>
 		<!-- PULSANTE CONFERMA ACQUISTO -->
-		<ConfirmPurchaseBtn v-if="settings.customSettings" />
+		<!-- TODO: l'ho tolto per ora perchè non funziona firebasee non ho tempo di guardarci ma non è importante e non mi serve al momento.
+		 	 Se lo riabiliti poi riabilita anche le varie classi commentate: left-3, left-18, left-35, left-25.
+			 Se hai dubbi vedi il commit "Temporarily hidden/disabled my personal shoppings done" commit id: a2664f28694d3e07627420376e5fc880ce47a215-->
+		<!-- <ConfirmPurchaseBtn v-if="settings.customSettings" /> -->
+
 		<!-- PULSANTE ELIMINA SOLO I SELEZIONATI -->
 		<button
 			v-if="todosStore.canDeleteMultipleTodo"
 			id="trash"
-			class="opacity-90 text-danger border-danger rounded multiple-delete p-2"
+			class="opacity-90 text-danger border-danger rounded multiple-delete p-2 left-3"
 			:class="{
-				'left-3': !settings.customSettings,
-				'left-18': settings.customSettings,
+				// 'left-3': !settings.customSettings,
+				// 'left-18': settings.customSettings,
 				christmas: isChristmas.christmasTheme,
 				'elegant-btn': theme.elegantTheme,
 			}"

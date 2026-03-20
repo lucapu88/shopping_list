@@ -43,9 +43,9 @@ export default {
 		v-if="(multipleDelete && todosStore.canDeleteMultipleTodo && !todosStore.confirmDeselectAll) || (importantTodo && todosStore.showOnlyImportantTodos && !todosStore.confirmDeselectAll)"
 		class="border-danger deselect-all p-2"
 		:class="{
-			'text-danger multiple-delete opacity-75': multipleDelete,
-			'left-25': !settings.customSettings,
-			'left-35': settings.customSettings,
+			'text-danger multiple-delete opacity-75 left-25': multipleDelete,
+			// 'left-25': !settings.customSettings,
+			// 'left-35': settings.customSettings,
 			active: importantTodo && !theme.elegantTheme,
 			christmas: isChristmas.christmasTheme,
 			'elegant-btn': theme.elegantTheme,

@@ -19,8 +19,8 @@ const settings = useSettingsStore();
 
 const classes = computed(() => ({
 	"multiple-delete": props.multipleDelete,
-	"left-25": !settings.customSettings,
-	"left-35": settings.customSettings,
+	// "left-25": !settings.customSettings,
+	// "left-35": settings.customSettings,
 	light: theme.lightTheme,
 	dark: theme.darkTheme,
 	minimal: theme.minimalTheme,
@@ -35,7 +35,7 @@ const classes = computed(() => ({
 </script>
 
 <template>
-	<div class="confirm-deselect-all-container deselect-all p-2" :class="[classes, extraClasses]">
+	<div class="confirm-deselect-all-container deselect-all p-2 left-25" :class="[classes, extraClasses]">
 		<button class="btn btn-success rounded btn-sm confirm-undo-button" @click="emit('ok')">
 			<img class="confirm-deselect-all" src="@/img/icons/ok.webp" alt="ok" />
 		</button>
