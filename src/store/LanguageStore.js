@@ -262,6 +262,7 @@ export const useLanguageStore = defineStore('Language', {
     copyListBtnText: 'Copy list',
     importListExampleText: 'Example of how it should be written',
     show: 'show',
+    hide: 'hide',
     close: 'close',
     periodicList: {
       periodicListAddedText: 'Added to periodic list',
@@ -288,7 +289,8 @@ export const useLanguageStore = defineStore('Language', {
       preparation: "Preparation",
       time: "Time",
       difficulty: "Difficulty",
-      recipeGeneratedText: "Ready recipe"
+      recipeGeneratedText: "Ready recipe",
+      latestText: "latest recipes"
     },
     paymentModal: {
       title: "Unlock AI Recipes",
@@ -530,6 +532,7 @@ export const useLanguageStore = defineStore('Language', {
       this.selectCategoryText = "Scegli in che categoria vuoi inserire il prodotto";
       this.importListExampleText = "Esempio di come va scritta";
       this.show = "mostra";
+      this.hide = 'nascondi';
       this.close = "chiudi";
       this.periodicList.periodicListAddedText = "Aggiunto alla lista periodica";
       this.periodicList.periodicListTitle = "Lista Periodica";
@@ -552,6 +555,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.time = "Tempo";
       this.recipes.difficulty = "Difficoltà";
       this.recipes.recipeGeneratedText = "Ricetta pronta";
+      this.recipes.latestText = "ultime ricette";
       this.paymentModal.title = "Sblocca le Ricette AI";
       this.paymentModal.description = "Trasforma la tua lista della spesa in piatti deliziosi con l'intelligenza artificiale";
       this.paymentModal.subdescription = "L'intelligenza artificiale leggerà la tua lista scartando i prodotti non commestibili e creerà una ricetta per te in base a ciò che hai inserito";
@@ -697,6 +701,7 @@ export const useLanguageStore = defineStore('Language', {
       this.selectCategoryText = "Elija la categoría en la que desea incluir el producto";
       this.importListExampleText = "Ejemplo de cómo debe escribirse";
       this.show = "mostrar";
+      this.hide = 'ocultar';
       this.close = "cerrar";
       this.periodicList.periodicListAddedText = "Añadido a la lista periódica";
       this.periodicList.periodicListTitle = "Lista Periódica";
@@ -719,6 +724,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.time = "Tiempo";
       this.recipes.difficulty = "Dificultad";
       this.recipes.recipeGeneratedText = "Receta lista";
+      this.recipes.latestText = "últimas recetas";
       this.paymentModal.title = "Desbloquear recetas de IA";
       this.paymentModal.description = "Transforma tu lista de compras en deliciosos platos con inteligencia artificial";
       this.paymentModal.subdescription = "La IA leerá tu lista descartando productos no comestibles y creará una receta para ti basada en lo que ingresaste.";
@@ -863,6 +869,7 @@ export const useLanguageStore = defineStore('Language', {
       this.selectCategoryText = "Choisissez la catégorie dans laquelle vous souhaitez lister le produit";
       this.importListExampleText = "Exemple de la manière dont cela devrait être écrit";
       this.show = "show";
+      this.hide = 'cacher';
       this.close = "fermer";
       this.periodicList.periodicListAddedText = "Ajouté à la liste périodique";
       this.periodicList.periodicListTitle = "Liste périodique";
@@ -885,6 +892,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.time = "Temps";
       this.recipes.difficulty = "Difficulté";
       this.recipes.recipeGeneratedText = "Recette prête";
+      this.recipes.latestText = "dernières recettes";
       this.paymentModal.title = "Débloquez des recettes IA";
       this.paymentModal.description = "Transformez votre liste de courses en plats délicieux grâce à l'intelligence artificielle";
       this.paymentModal.subdescription = "L'IA lira votre liste en rejetant les produits non comestibles et créera pour vous une recette basée sur ce que vous avez saisi.";

@@ -5,9 +5,11 @@ import { useTodoStore } from "@/store/TodoStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";
+import { usePreloadStore } from "../../store/PreloadStore";
 import ShowRecipeModalButton from "./Show-recipe-modal-button.vue";
 import { useGenerazioni } from "@/server/composables/useGenerazioni";
 import { auth } from "@/firebase.js";
+import chefKhaby from "@/img/recipes/chef-khaby2.webp";
 
 const { generazioni, fetchGenerazioni } = useGenerazioni();
 
@@ -15,6 +17,7 @@ const secondTodosStore = useSecondTodoStore();
 const settings = useSettingsStore();
 const languages = useLanguageStore();
 const todoStore = useTodoStore();
+const preload = usePreloadStore();
 const productionUrl = "https://shopping-list-backend-uxr0.onrender.com";
 const localUrl = "http://localhost:3000";
 const errorRecipe = ref(false);
@@ -43,6 +46,8 @@ async function generateRecipe() {
 		isGenerating.value = false;
 		return;
 	}
+
+	preload.preloadImage(chefKhaby);
 
 	const myInterval = setInterval(showRandomSentences, 5000);
 
@@ -82,8 +87,18 @@ async function generateRecipe() {
 				throw new Error(`Server error: ${response.status} - ${text}`);
 			}
 			const data = await response.json();
-			console.log("Ricetta generata:", data);
-
+			// console.log("Ricetta generata:", data);
+			// Salvo la ricetta
+			if (auth.currentUser) {
+				fetch(`${productionUrl}/salva-ricetta`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						token: auth.currentUser.uid,
+						ricetta: data,
+					}),
+				}).catch((err) => console.error("Errore salvataggio ricetta:", err));
+			}
 			window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
 			secondTodosStore.recipe = data;
 			secondTodosStore.loadingRecipes = false;
@@ -148,9 +163,9 @@ function ifError() {
 			{{ isGenerating || settings.isAuthLoading ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
 
-		<img v-if="recipesReady" class="chef" src="@/img/recipes/chef-khaby2.webp" alt="chef" />
+		<img v-if="recipesReady" class="chef" :src="chefKhaby" alt="chef" />
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
-		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes && secondTodosStore.recipe" />
+		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes" />
 	</div>
 </template>
 

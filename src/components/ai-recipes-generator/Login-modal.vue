@@ -260,6 +260,7 @@ export default {
 
 .input {
 	padding: 12px 14px;
+	font-family: Arial, Helvetica, sans-serif;
 	border: 1.5px solid #e8e0d0;
 	border-radius: 12px;
 	font-size: 14px;

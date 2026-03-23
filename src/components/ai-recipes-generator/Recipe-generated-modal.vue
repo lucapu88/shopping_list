@@ -5,11 +5,13 @@ import { useLanguageStore } from "../../store/LanguageStore";
 import { useThemeStore } from "../../store/ThemeStore";
 import { usePreloadStore } from "../../store/PreloadStore";
 import { auth, logout, onAuthStateChanged } from "@/firebase.js";
+import LatestRecipes from "./Latest-recipes.vue";
 
 const secondTodosStore = useSecondTodoStore();
 const languages = useLanguageStore();
 const theme = useThemeStore();
 const preload = usePreloadStore();
+const showLatestRecipes = ref(false);
 
 const imageSrc = ref(preload.urls[0]);
 
@@ -26,6 +28,7 @@ onAuthStateChanged(auth, (user) => {
 async function handleLogout() {
 	await logout();
 	secondTodosStore.totalRecipes = 0;
+	secondTodosStore.showRecipeModal = false;
 }
 
 function changeImage() {
@@ -60,27 +63,31 @@ function changeImage() {
 					<button class="btn btn-outline-success" @click="handleLogout">Logout</button>
 				</div>
 
-				<h2 :class="{ 'text-danger text-center': !theme.pinkTheme }">{{ secondTodosStore.recipe.titolo }}</h2>
-				<p class="m-0 f-size text-center">{{ languages.recipes.recipesDisclaimer }}</p>
-				<p class="f-size text-center">{{ languages.recipes.recipesSubDisclaimer }}</p>
+				<LatestRecipes v-if="showLatestRecipes && isLoggedIn" />
+				<template v-if="!showLatestRecipes">
+					<h2 :class="{ 'text-danger text-center': !theme.pinkTheme }">{{ secondTodosStore.recipe.titolo }}</h2>
+					<p class="m-0 f-size text-center">{{ languages.recipes.recipesDisclaimer }}</p>
+					<p class="f-size text-center">{{ languages.recipes.recipesSubDisclaimer }}</p>
 
-				<p v-if="secondTodosStore.recipe.ingredienti && secondTodosStore.recipe.ingredienti.length">
-					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.ingredients }}:</span>
-					{{ secondTodosStore.recipe.ingredienti.join(", ") }}
-				</p>
-				<p v-if="secondTodosStore.recipe.preparazione">
-					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.preparation }}:</span>
-					{{ secondTodosStore.recipe.preparazione }}
-				</p>
-				<p v-if="secondTodosStore.recipe.tempo">
-					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.time }}:</span>
-					{{ secondTodosStore.recipe.tempo }}
-				</p>
-				<p v-if="secondTodosStore.recipe.difficolta">
-					<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.difficulty }}:</span>
-					{{ secondTodosStore.recipe.difficolta }}
-					<img class="ma-che-vu" :src="imageSrc" alt="cheffone" />
-				</p>
+					<p v-if="secondTodosStore.recipe.ingredienti && secondTodosStore.recipe.ingredienti.length">
+						<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.ingredients }}:</span>
+						{{ secondTodosStore.recipe.ingredienti.join(", ") }}
+					</p>
+					<p v-if="secondTodosStore.recipe.preparazione">
+						<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.preparation }}:</span>
+						{{ secondTodosStore.recipe.preparazione }}
+					</p>
+					<p v-if="secondTodosStore.recipe.tempo">
+						<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.time }}:</span>
+						{{ secondTodosStore.recipe.tempo }}
+					</p>
+					<p v-if="secondTodosStore.recipe.difficolta">
+						<span class="under-pressure" :class="{ 'text-danger': !theme.pinkTheme }">{{ languages.recipes.difficulty }}:</span>
+						{{ secondTodosStore.recipe.difficolta }}
+						<img class="ma-che-vu" :src="imageSrc" alt="cheffone" />
+					</p>
+				</template>
+				<button v-if="isLoggedIn" class="text-success toggle-latest-recipes-btn mt-4" @click="showLatestRecipes = !showLatestRecipes">{{ !showLatestRecipes ? languages.show : languages.hide }} {{ languages.recipes.latestText }}</button>
 			</div>
 		</div>
 	</div>
@@ -133,5 +140,10 @@ function changeImage() {
 
 .f-size {
 	font-size: 0.813rem;
+}
+
+.toggle-latest-recipes-btn {
+	background: transparent;
+	border: 1px solid;
 }
 </style>
