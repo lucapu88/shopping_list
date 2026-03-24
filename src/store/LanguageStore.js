@@ -304,6 +304,7 @@ export const useLanguageStore = defineStore('Language', {
       selectPlanAlertText: "Choose the plan you want",
       loggetText: "Logged in as",
       loginFirstText: "Log in before paying",
+      noSubscriptionText: "One-time purchase, NO subscription required"
     },
     login: {
       title: "Save your recipes",
@@ -567,6 +568,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.selectPlanAlertText = "Seleziona il piano che desideri";
       this.paymentModal.loggetText = "Loggato come";
       this.paymentModal.loginFirstText = "Accedi prima di pagare";
+      this.paymentModal.noSubscriptionText = "Aquisto una tantum, NON sottoscrivi nessun abbonamento";
       this.login.title = "Salva le tue ricette";
       this.login.subtitle = "Accedi per non perdere le tue generazioni se cambi dispositivo";
       this.login.google = "Continua con google";
@@ -736,6 +738,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.selectPlanAlertText = "Elige el plan que quieras";
       this.paymentModal.loggetText = "Sesión iniciada como";
       this.paymentModal.loginFirstText = "Inicia sesión antes de pagar";
+      this.paymentModal.noSubscriptionText = "Compra única, no se requiere suscripción";
       this.login.title = "Guarda tus recetas";
       this.login.subtitle = "Inicia sesión para no perder tus generaciones si cambias de dispositivo";
       this.login.google = "Continuar con Google";
@@ -904,6 +907,7 @@ export const useLanguageStore = defineStore('Language', {
       this.paymentModal.selectPlanAlertText = "Choisissez le forfait que vous souhaitez";
       this.paymentModal.loggetText = "Connecté en tant que";
       this.paymentModal.loginFirstText = "Connectez-vous avant de payer";
+      this.paymentModal.noSubscriptionText = "Achat unique, aucun abonnement requis";
       this.login.title = "Enregistrez vos recettes";
       this.login.subtitle = "Connectez-vous pour ne pas perdre vos générations si vous changez d'appareil";
       this.login.google = "Continuer avec Google";

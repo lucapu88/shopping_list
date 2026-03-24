@@ -136,7 +136,6 @@ export default {
 			<button class="close-btn" @click="close()">✕</button>
 			<div class="card-header">
 				<div class="icon-ring">
-					<!-- 🍳 -->
 					<img class="chef" src="@/img/recipes/chef-giorgio.webp" alt="chef" />
 				</div>
 				<h1>{{ languages.paymentModal.title }}</h1>
@@ -144,6 +143,7 @@ export default {
 				<p class="sub-description">{{ languages.paymentModal.subdescription }}</p>
 			</div>
 
+			<!-- sezione piani -->
 			<div class="plans-grid">
 				<div v-for="plan in plans" :key="plan.id" class="plan-card" :class="{ selected: selectedPlan?.id === plan.id, featured: plan.featured }" @click="selectPlan(plan)">
 					<div class="plan-badge" v-if="plan.featured">{{ languages.paymentModal.popularText }}</div>
@@ -161,6 +161,7 @@ export default {
 					<div class="plan-check" v-if="selectedPlan?.id === plan.id">✓</div>
 				</div>
 			</div>
+			<p class="unatantum mb-2">{{ languages.paymentModal.noSubscriptionText }}</p>
 
 			<transition name="fade">
 				<div class="summary" v-if="selectedPlan">
@@ -370,6 +371,12 @@ export default {
 	align-items: flex-start;
 	justify-content: center;
 	line-height: 1;
+}
+
+.unatantum {
+	font-size: 0.813rem;
+	text-decoration: underline;
+	text-align: center;
 }
 .currency {
 	font-size: 14px;
