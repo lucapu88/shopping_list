@@ -94,12 +94,9 @@ function changeImage() {
 </template>
 
 <style scoped>
-.modal {
-	padding-top: 10%;
-}
 .recipe-container {
 	position: relative;
-	margin: 0 20px;
+	margin: 0 auto;
 	padding: 0.625rem;
 	max-height: 95vh;
 }
@@ -145,5 +142,14 @@ function changeImage() {
 .toggle-latest-recipes-btn {
 	background: transparent;
 	border: 1px solid;
+}
+
+@media (max-width: 650px) {
+	.modal {
+		padding-top: 10%;
+	}
+	.recipe-container {
+		margin: 0 20px;
+	}
 }
 </style>

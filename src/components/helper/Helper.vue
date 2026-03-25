@@ -248,6 +248,8 @@ export default {
 	overflow: auto;
 	padding-bottom: 30%;
 	overflow-x: hidden;
+	max-width: 600px;
+	margin: 0 auto;
 }
 .helper-settings-title {
 	margin-bottom: 0.9375rem;

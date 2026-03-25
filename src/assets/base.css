@@ -214,11 +214,6 @@ button {
 	height: 30px;
 }
 
-.multiple-delete {
-	position: fixed;
-	bottom: 2%;
-}
-
 .mantello-dell-invisibilità {
 	background-color: transparent !important;
 }

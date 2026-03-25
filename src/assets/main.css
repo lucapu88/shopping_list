@@ -83,6 +83,10 @@
 	}
 }
 
+.modal > div {
+	max-width: 650px;
+}
+
 .close {
 	color: #aaaaaa;
 	float: right;

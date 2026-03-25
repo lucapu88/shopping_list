@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-	<div>
+	<div class="multiple-selection">
 		<!-- PULSANTE CONFERMA ACQUISTO -->
 		<!-- TODO: l'ho tolto per ora perchè non funziona firebasee non ho tempo di guardarci ma non è importante e non mi serve al momento.
 		 	 Se lo riabiliti poi riabilita anche le varie classi commentate: left-3, left-18, left-35, left-25.
@@ -70,6 +70,14 @@ export default {
 </template>
 
 <style scoped>
+.multiple-selection {
+	position: fixed;
+	bottom: 2%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 25px;
+}
 .multiple-delete {
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);

@@ -285,4 +285,10 @@ export default {
 	-webkit-box-shadow: 1px 1px 7px 8px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 1px 1px 7px 8px rgba(0, 0, 0, 0.75);
 }
+
+@media (min-width: 600px) {
+	.modal-content {
+		left: 35%;
+	}
+}
 </style>
