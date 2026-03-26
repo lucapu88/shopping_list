@@ -3,6 +3,7 @@
 <p align="center"><img src="src/img/readme/README-IMG.png" alt="preview" /></p>
 
 <a href="https://play.google.com/store/apps/details?id=io.kodular.caputoluca88.Shopping_List" target="_blank">DOWNLOAD FOR ANDROID.</a><br><br>
+<a href="https://shopping-list-lc.netlify.app" target="_blank">Desktop version.</a><br><br>
 
 <p>Copyright© - Caputo Luca - All right reserved.</p>
 
