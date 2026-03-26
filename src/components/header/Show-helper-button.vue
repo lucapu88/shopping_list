@@ -32,13 +32,14 @@ export default {
 	<span
 		class="helper"
 		:class="{
-			'helper-selected': settings.helper,
-			'helper-deselected': settings.helperInClosing,
+			'helper-selected': settings.helper && !theme.minimalTheme,
+			'helper-deselected': settings.helperInClosing && !theme.minimalTheme,
 			'helper-btn-dark': theme.darkTheme,
 		}"
 		@click="showHelper()"
 	>
-		<img class="settings" src="@/img/icons/settings.webp" alt="settings" fetchpriority="high" loading="eager" />
+		<img v-if="theme.minimalTheme" class="settings" src="@/img/icons/settings-minimal.webp" alt="settings" fetchpriority="high" loading="eager" />
+		<img v-else class="settings" src="@/img/icons/settings.webp" alt="settings" fetchpriority="high" loading="eager" />
 	</span>
 </template>
 

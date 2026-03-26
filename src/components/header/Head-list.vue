@@ -51,6 +51,9 @@ export default {
 		},
 		setMyPersonalConfiguration() {
 			const todo = this.addTodo.newTodo;
+			if (!todo) {
+				return;
+			}
 			/* Cosa cazzo sto facendo? Allora, stiamo calmi: mi serve salvare l'Api key di openAi, dovrei sviluppare tutto un sistema di backend a parte, lo so ma non mi va per questa stronzata quindi faccio questa cosa:
 			   Se inserisco l'apikey nell'input lo salvo, e in questo modo sono sicurissimo al 100% che nessuno potrà replicarlo per sbaglio, 
 			   perchè l'utente dovrebbe inserire una stringa che inizia in un determinato modo e che sia lunga 164 o 75 caratteri. */
@@ -153,6 +156,7 @@ export default {
 			<input
 				class="inputText border border-primary rounded"
 				:class="{
+					'minimal-input': theme.minimalTheme,
 					'placeholder-selected': languages.placeholder != languages.defaultPlaceholderText && !theme.elegantTheme,
 					'elegant-placeholder': theme.elegantTheme,
 					'boldi-cipollino': theme.jeansTheme,
@@ -168,8 +172,9 @@ export default {
 				"
 				:placeholder="languages.placeholder"
 			/>
-			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme }" tabindex="0" @click="addNewTodo()">
-				<img v-if="!theme.lemonTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
+			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme, 'minimal-send-btn': theme.minimalTheme }" tabindex="0" @click="addNewTodo()">
+				<img v-if="!theme.lemonTheme && !theme.minimalTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
+				<img v-if="theme.minimalTheme" class="plane" src="@/img/icons/paper-plane-minimal.webp" alt="paper-plane" />
 				<img v-if="theme.lemonTheme" id="lemon-img" class="plane" src="@/img/lemon-send.webp" alt="lemon" />
 			</button>
 		</div>

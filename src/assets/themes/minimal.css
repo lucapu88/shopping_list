@@ -18,7 +18,6 @@
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	font-family: "Helvetica, sans-serif";
 	font-weight: bold;
 }
 .minimal-theme-title2 {
@@ -58,6 +57,11 @@
 	color: var(--minimal-secondary-color) !important;
 	border-radius: 5px !important;
 }
+.minimal-send-btn {
+	background-color: var(--minimal-primary-color) !important;
+	border: none !important;
+	border-radius: 5px !important;
+}
 .minimal-class-btn {
 	background-color: transparent !important;
 	border-color: var(--minimal-secondary-color) !important;
@@ -83,6 +87,7 @@
 	border: 1px solid var(--minimal-secondary-color) !important;
 	background-color: var(--minimal-primary-color-dark) !important;
 	border-radius: 7px;
+	height: 40px;
 }
 .category-emoji-minimal {
 	font-size: 1.875rem;
@@ -93,14 +98,13 @@
 .minimal-theme-back-top {
 	color: var(--minimal-secondary-color) !important;
 	border-color: var(--minimal-secondary-color) !important;
-	background-color: var(--minimal-primary-color-dark) !important;
+	background-color: var(--minimal-primary-color) !important;
 	padding: 5px 10px !important;
 }
 .tips-btn-minimal {
-	background-color: var(--minimal-primary-color-dark);
-	border-left: 2px solid var(--minimal-secondary-color);
-	border-right: 2px solid var(--minimal-secondary-color);
-	border-bottom: 2px solid var(--minimal-secondary-color);
+	background-color: var(--minimal-primary-color);
+	border: none !important;
+	border-bottom: 2px solid var(--minimal-secondary-color) !important;
 	border-radius: 0 0 5px 5px;
 	color: var(--minimal-secondary-color);
 }
@@ -128,4 +132,10 @@
 .confirm-minimal > button {
 	background-color: #a5becc;
 	color: #7c3e66;
+}
+
+.minimal-input {
+	background-color: transparent;
+	border: none !important;
+	border-bottom: 2px solid var(--minimal-secondary-color) !important;
 }

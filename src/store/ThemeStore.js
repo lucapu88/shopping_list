@@ -13,7 +13,7 @@ const defaultFontUrl = "https://fonts.googleapis.com/css2?family=Permanent+Marke
 const THEMES_CONFIG = {
     light: { name: 'light', className: 'light-body', fontUrl: defaultFontUrl },
     dark: { name: 'dark', className: 'dark-body', fontUrl: defaultFontUrl },
-    minimal: { name: 'minimal', className: 'minimal-body', fontUrl: "https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" },
+    minimal: { name: 'minimal', className: 'minimal-body', fontUrl: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap" },
     retro: { name: 'retro', className: 'retro-body', fontUrl: "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" },
     summer: { name: 'summer', className: 'summer-body', fontUrl: defaultFontUrl },
     winter: { name: 'winter', className: 'winter-body', fontUrl: defaultFontUrl },

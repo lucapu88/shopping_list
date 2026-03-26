@@ -114,7 +114,7 @@ export default {
 	<li
 		class="button-container bg-light"
 		:class="{
-			'minimal-btn': theme.minimalTheme && !todo.category,
+			'minimal-btn border-none': theme.minimalTheme && !todo.category,
 			'minimal-class-btn': theme.minimalTheme && todo.category,
 			'retro-btn': theme.retroTheme,
 			'elegant-btn': theme.elegantTheme,

@@ -25,6 +25,7 @@ export default {
 			class="archive-btn btn btn-secondary"
 			:class="{
 				christmas: isChristmas.christmasTheme,
+				'minimal-btn': theme.minimalTheme,
 				'delete-all-retro': theme.retroTheme,
 				'elegant-delete-all-btn': theme.elegantTheme,
 				'panter-border': theme.panterTheme,

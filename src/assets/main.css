@@ -264,3 +264,7 @@
 	width: 17px;
 	height: 17px;
 }
+
+.border-none {
+	border: none !important;
+}

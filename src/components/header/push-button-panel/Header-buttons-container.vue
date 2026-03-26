@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme }" v-if="!todosStore.devNotes">
+	<div class="pushbutton-container" :class="{ 'dark-style-pushbutton-container': theme.darkTheme, 'mt-4': theme.minimalTheme }" v-if="!todosStore.devNotes">
 		<!-- TOGGLE CAMBIO LISTE -->
 		<CustomButton
 			:selected="secondTodos.showChangeList"

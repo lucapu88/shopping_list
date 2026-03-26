@@ -66,13 +66,15 @@ export default {
 			class="delete-all btn dark-button"
 			:class="{
 				christmas: isChristmas.christmasTheme,
+				'minimal-btn': !todosStore.openDeleteAllModal && theme.minimalTheme,
+				'minimal-selected-btn': todosStore.openDeleteAllModal && theme.minimalTheme,
 				'delete-all-retro': theme.retroTheme,
 				'elegant-delete-all-btn': theme.elegantTheme,
 				'panter-border': theme.panterTheme,
 			}"
 			@click="openDeleteAllModal()"
 		>
-			<span>{{ languages.deleteAll }}</span>
+			<span :class="{ 'me-1': theme.minimalTheme }">{{ languages.deleteAll }}</span>
 			<img v-if="!isChristmas.christmasTheme" class="skull" src="@/img/icons/skull.webp" alt="delete_all" />
 			<img v-if="isChristmas.christmasTheme" class="christmas-skull" src="@/img/icons/christmas-skull.webp" alt="delete_all_and_merry_christmas" />
 		</button>
