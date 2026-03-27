@@ -13,6 +13,8 @@ const defaultFontUrl = "https://fonts.googleapis.com/css2?family=Permanent+Marke
 const THEMES_CONFIG = {
     light: { name: 'light', className: 'light-body', fontUrl: defaultFontUrl },
     dark: { name: 'dark', className: 'dark-body', fontUrl: defaultFontUrl },
+    /* TOFIX: ho cambiato questo font del minimal ma mi sono dimenticato di cambiarlo nel css, ottenendo però un font che mi piace di più. 
+    Capire come sistemare perchè se tengo quello vecchio non mi piace, ma se applico totalmente questo, nenache mi piace molto. */
     minimal: { name: 'minimal', className: 'minimal-body', fontUrl: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap" },
     retro: { name: 'retro', className: 'retro-body', fontUrl: "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" },
     summer: { name: 'summer', className: 'summer-body', fontUrl: defaultFontUrl },

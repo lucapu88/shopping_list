@@ -140,7 +140,8 @@ export default {
 			}"
 			:disabled="!!todo.isDisabled || todo.multipleDelete"
 		>
-			<img class="pencil" src="@/img/icons/pencil.webp" alt="modify" fetchpriority="high" loading="eager" />
+			<img v-if="theme.minimalTheme" class="pencil" src="@/img/icons/pencil-minimal.webp" alt="modify" fetchpriority="high" loading="eager" />
+			<img v-else class="pencil" src="@/img/icons/pencil.webp" alt="modify" fetchpriority="high" loading="eager" />
 		</button>
 
 		<!-- Questa è una semplice "X" che segnala all'utente che non si può cliccare sul pulsante quando è disabilitato (per gli scemi) -->
@@ -152,12 +153,14 @@ export default {
 			@click="todosStore.removeTodo(index, todo)"
 			:class="{
 				disabled: todo.isDisabled,
+				'border-none': theme.minimalTheme && todo.category,
 				'pink-theme-btn-secondary': theme.pinkTheme,
 				'panter-btn-dark': theme.panterTheme,
 			}"
 			:disabled="!!todo.isDisabled"
 		>
-			<img class="trash" src="@/img/icons/trash.webp" alt="delete" fetchpriority="high" loading="eager" />
+			<img v-if="theme.minimalTheme" class="trash" src="@/img/icons/trash-minimal.webp" alt="delete" fetchpriority="high" loading="eager" />
+			<img v-else class="trash" src="@/img/icons/trash.webp" alt="delete" fetchpriority="high" loading="eager" />
 		</button>
 		<!-- INPUT MODIFICA -->
 		<!--Qui mi sengala un errore del compilatore perchè non posso modificare proprietà che mi arrivano in input. 
@@ -166,11 +169,13 @@ export default {
 		<input class="modify-input border border-primary rounded" v-if="todo.modify" v-model.trim="todo.name" @keypress.enter="todosStore.saveModifiedTodo(index, todo, todo.name)" />
 		<!--PULSANTE SALVA MODIFICHE -->
 		<button class="btn btn-success rounded-circle btn-sm" v-if="todo.modify" :disabled="todo.name.length === 0" @click="todosStore.saveModifiedTodo(index, todo, todo.name)">
-			<img class="floppy" src="@/img/icons/floppy.webp" alt="save" />
+			<img v-if="theme.minimalTheme" class="floppy" src="@/img/icons/floppy-minimal.webp" alt="save" />
+			<img v-else class="floppy" src="@/img/icons/floppy.webp" alt="save" />
 		</button>
 		<!--PULSANTE ANNULLA MODIFICHE -->
 		<button class="btn btn-danger rounded-circle btn-sm" v-if="todo.modify" @click="todosStore.undoChanges(index)">
-			<img class="undo" src="@/img/icons/close.webp" alt="close" />
+			<img v-if="theme.minimalTheme" class="undo" src="@/img/icons/close-minimal.webp" alt="close" />
+			<img v-else class="undo" src="@/img/icons/close.webp" alt="close" />
 		</button>
 	</li>
 </template>

@@ -34,3 +34,4 @@ coverage
 API-TEST.tx
 ricette.db
 .env
+CONTEXT.md

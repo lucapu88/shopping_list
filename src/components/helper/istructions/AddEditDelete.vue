@@ -51,7 +51,8 @@ export default {
 						'panter-border': theme.panterTheme,
 					}"
 				>
-					<img class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
+					<img v-if="theme.minimalTheme" class="pencil" src="@/img/icons/pencil-minimal.webp" alt="modify" />
+					<img v-else class="pencil" src="@/img/icons/pencil.webp" alt="modify" />
 				</button>
 			</div>
 			{{ languages.helperDescription.edit }}

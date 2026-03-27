@@ -40,8 +40,8 @@ describe("test dell'helper e delle impostazioni", () => {
         // minimal
         cy.get('.one > .minimal-theme').click().then(() => {
             cy.closeBlockingElements();
-            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(165, 190, 204)');
-            cy.get('body').should('have.css', 'color').and('include', 'rgb(124, 62, 102)');
+            cy.get('body').should('have.css', 'background-color').and('include', 'rgb(249, 247, 240)');
+            cy.get('body').should('have.css', 'color').and('include', 'rgb(45, 52, 54)');
             cy.get('body').should('have.css', 'font-family').and('include', 'Cabin, sans-serif');
         });
         cy.get('.settings').click();

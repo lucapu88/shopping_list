@@ -1,10 +1,11 @@
 :root {
-	--minimal-primary-color: #a5becc;
-	--minimal-primary-color-dark: #8aa5b4;
-	--minimal-secondary-color: #7c3e66;
-	--minimal-tertiary-color: #243a73;
+	--minimal-primary-color: #f9f7f0;
+	--minimal-primary-color-dark: #f1ede2;
+	--minimal-secondary-color: #2d3436;
+	--minimal-tertiary-color: #a5becc;
 	--minimal-helper-primary-color: #d3ebcd;
-	--minimal-helper-secondary-color: #645767;
+	--minimal-helper-secondary-color: #f4b159;
+	--minimal-helper-text-color: #645767;
 }
 
 .minimal-body {
@@ -18,6 +19,9 @@
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+}
+.minimal-theme-title > span {
 	font-weight: bold;
 }
 .minimal-theme-title2 {
@@ -36,7 +40,7 @@
 .minimal-theme-helper {
 	background-image: none;
 	background-color: var(--minimal-helper-primary-color) !important;
-	color: var(--minimal-helper-secondary-color);
+	color: var(--minimal-helper-text-color);
 }
 .minimal-theme-confirm {
 	background-color: var(--minimal-tertiary-color);
