@@ -1,5 +1,5 @@
 <script>
-// QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI
+// QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI / CLAUDE CODE
 
 import { useSettingsStore } from "../../store/SettingsStore";
 import { useLanguageStore } from "@/store/LanguageStore";

@@ -36,7 +36,6 @@ export default {
 				class="btns-language-container"
 				:class="{
 					christmas: theme.christmasTheme,
-					'minimal-btn': theme.minimalTheme,
 					'elegant-btn': theme.elegantTheme,
 				}"
 			>
@@ -44,7 +43,9 @@ export default {
 					class="btn-lang-left"
 					id="english"
 					:class="{
-						'language-selected': languages.langEnglish && !theme.retroTheme,
+						'minimal-language-btn': theme.minimalTheme,
+						'language-selected': languages.langEnglish && !theme.retroTheme && !theme.minimalTheme,
+						'minimal-selected-btn': languages.langEnglish && theme.minimalTheme,
 						'retro-helper-btn-selected': languages.langEnglish && theme.retroTheme,
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
@@ -61,7 +62,9 @@ export default {
 					class="btn-lang-center"
 					id="spanish"
 					:class="{
-						'language-selected': languages.langSpanish && !theme.retroTheme,
+						'minimal-language-btn': theme.minimalTheme,
+						'language-selected': languages.langSpanish && !theme.retroTheme && !theme.minimalTheme,
+						'minimal-selected-btn': languages.langSpanish && theme.minimalTheme,
 						'retro-helper-btn-selected': languages.langSpanish && theme.retroTheme,
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
@@ -79,7 +82,9 @@ export default {
 					class="btn-lang-center"
 					id="french"
 					:class="{
-						'language-selected': languages.langFrench && !theme.retroTheme,
+						'minimal-language-btn': theme.minimalTheme,
+						'language-selected': languages.langFrench && !theme.retroTheme && !theme.minimalTheme,
+						'minimal-selected-btn': languages.langFrench && theme.minimalTheme,
 						'retro-helper-btn-selected': languages.langFrench && theme.retroTheme,
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,
@@ -96,7 +101,9 @@ export default {
 					class="btn-lang-right"
 					id="italian"
 					:class="{
-						'language-selected': languages.langIta && !theme.retroTheme,
+						'minimal-language-btn': theme.minimalTheme,
+						'language-selected': languages.langIta && !theme.retroTheme && !theme.minimalTheme,
+						'minimal-selected-btn': languages.langIta && theme.minimalTheme,
 						'retro-helper-btn-selected': languages.langIta && theme.retroTheme,
 						'retro-helper-btn': theme.retroTheme,
 						'pink-theme-btn': theme.pinkTheme,

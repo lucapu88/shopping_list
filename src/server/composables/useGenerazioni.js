@@ -2,6 +2,7 @@ import { ref } from 'vue';
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { auth } from "@/firebase.js";
+// QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI / CLAUDE CODE
 
 const API_URL = import.meta.env.VITE_API_URL;
 

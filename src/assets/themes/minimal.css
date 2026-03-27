@@ -47,10 +47,7 @@
 	background-image: none;
 	color: #f2ebe9;
 }
-.minimal-selected-btn {
-	background-color: var(--minimal-helper-secondary-color) !important;
-	color: var(--white) !important;
-}
+
 .pushbutton-container > .minimal-selected-btn {
 	background-color: var(--minimal-helper-secondary-color) !important;
 	color: var(--white) !important;
@@ -77,6 +74,16 @@
 	background-color: var(--minimal-primary-color-dark) !important;
 	border-color: var(--minimal-secondary-color) !important;
 	color: var(--minimal-secondary-color) !important;
+}
+
+.minimal-language-btn {
+	background-color: var(--minimal-primary-color-dark) !important;
+	border-color: var(--minimal-secondary-color) !important;
+	color: var(--minimal-secondary-color) !important;
+}
+.minimal-selected-btn {
+	background-color: var(--minimal-helper-secondary-color) !important;
+	color: var(--white) !important;
 }
 .minimal-helper-btn {
 	background-color: var(--minimal-primary-color-dark) !important;
