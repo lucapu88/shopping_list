@@ -337,7 +337,11 @@ export const useLanguageStore = defineStore('Language', {
       `...The water is boiling...`,
       `...Is the order right?`,
       `UÉ UÉÉÉÉÉÉÉÉÉÉÉÉÉÉ!!!`,
-    ]
+    ],
+    microphoneRec: {
+      permissionDeniedText: "Microphone permission denied. Please allow microphone access in your browser settings and try again.",
+      voiceError: "Voice recognition error, try again and if it persists, contact support. Error:"
+    }
   }),
   getters: {},
   actions: {
@@ -600,6 +604,8 @@ export const useLanguageStore = defineStore('Language', {
         `...La comanda è giusta?`,
         `UÉ UÉÉÉÉÉÉÉÉÉÉÉÉÉÉ!!!`,
       ];
+      this.microphoneRec.permissionDeniedText = "Permesso microfono negato. Per favore consenti l'accesso al microfono nelle impostazioni del tuo browser e riprova.";
+      this.microphoneRec.voiceError = "Errore riconoscimento vocale, riprova e se persiste contatta il supporto. Errore: ";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -770,6 +776,8 @@ export const useLanguageStore = defineStore('Language', {
         `...El agua está hirviendo...`,
         `...¿La comanda es correcta?`,
       ];
+      this.microphoneRec.permissionDeniedText = "Permiso de micrófono denegado. Por favor, permita el acceso al micrófono en la configuración de su navegador e inténtelo de nuevo.";
+      this.microphoneRec.voiceError = "Error de reconocimiento de voz, inténtelo de nuevo y si persiste, contacte con el soporte. Error: ";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -940,6 +948,8 @@ export const useLanguageStore = defineStore('Language', {
         `...L'eau bout...`,
         `...La commande est-elle correcte ?`,
       ];
+      this.microphoneRec.permissionDeniedText = "Permission de microphone refusée. Veuillez autoriser l'accès au microphone dans les paramètres de votre navigateur et réessayer.";
+      this.microphoneRec.voiceError = "Erreur de reconnaissance vocale, réessayez et si le problème persiste, contactez le support. Erreur : ";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

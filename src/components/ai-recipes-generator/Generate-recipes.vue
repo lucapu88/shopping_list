@@ -142,7 +142,7 @@ function ifError() {
 		<p v-if="isGenerating">{{ languages.recipes.alertRecepiesText }}</p>
 		<p>{{ waitingPhrase }}</p>
 	</div>
-	<div class="recipe-generator">
+	<div class="recipe-generator mb-5">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
 		<!-- <div class="form-check form-switch">
 			<label>AI</label>

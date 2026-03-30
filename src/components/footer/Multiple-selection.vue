@@ -77,6 +77,7 @@ export default {
 	align-items: center;
 	justify-content: space-evenly;
 	gap: 25px;
+	z-index: 150;
 }
 .multiple-delete {
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);

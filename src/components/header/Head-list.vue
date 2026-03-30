@@ -27,12 +27,18 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodos: useSecondTodoStore(),
 			selectedList: null,
+			isListening: false,
+			recognition: null,
+			_visibilityHandler: null,
 		};
 	},
 	created() {
 		this.addTodo.changeTodoAdded(this.addTodo.todos);
 		this.settings.checkMyPersonalConf();
 		this.selectedList = this.secondTodos.listButtons.find((b) => b.selectedCondition()).name;
+	},
+	beforeUnmount() {
+		this._stopDictation();
 	},
 	methods: {
 		addNewTodo() {
@@ -111,6 +117,72 @@ export default {
 				this.toggleCategoriesPrimaryPanel(false);
 			}, 150);
 		},
+		startDictation() {
+			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+			if (!SpeechRecognition) {
+				alert("Your browser does not support speech recognition.");
+				return;
+			}
+
+			// Se già in ascolto, ferma il riconoscimento esplicitamente
+			if (this.isListening) {
+				this._stopDictation();
+				return;
+			}
+
+			this.isListening = true;
+			this._avviaSessioneRiconoscimento();
+
+			// Su mobile, se l'utente riduce a icona o cambia app, stoppa la dettatura.
+			// L'utente dovrà ricliccare manualmente per riprendere.
+			this._visibilityHandler = () => {
+				if (document.visibilityState === "hidden") {
+					this._stopDictation();
+				}
+			};
+			document.addEventListener("visibilitychange", this._visibilityHandler);
+		},
+		_avviaSessioneRiconoscimento() {
+			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+			const recognition = new SpeechRecognition();
+			recognition.lang = navigator.language;
+			recognition.interimResults = false;
+			recognition.continuous = true;
+			this.recognition = recognition;
+
+			recognition.onresult = (event) => {
+				// Con continuous=true i risultati si accumulano: prendiamo sempre l'ultimo
+				const transcript = event.results[event.results.length - 1][0].transcript;
+				this.addTodo.newTodo = this.addTodo.newTodo ? this.addTodo.newTodo + " " + transcript : transcript;
+			};
+
+			recognition.onerror = (event) => {
+				if (event.error === "not-allowed") {
+					alert(this.languages.microphoneRec.permissionDeniedText);
+					this._stopDictation();
+				}
+				// Gli altri errori (no-speech, network, ecc.) vengono ignorati:
+				// onend si occuperà di riavviare se necessario
+			};
+
+			recognition.onend = () => {
+				// Riavvia solo se la pagina è visibile e l'utente non ha fermato esplicitamente
+				if (this.isListening && document.visibilityState !== "hidden") {
+					recognition.start();
+				}
+			};
+
+			recognition.start();
+		},
+		_stopDictation() {
+			this.isListening = false;
+			this.recognition?.stop();
+			if (this._visibilityHandler) {
+				document.removeEventListener("visibilitychange", this._visibilityHandler);
+				this._visibilityHandler = null;
+			}
+		},
 		closeElement() {
 			if (this.addTodo.inModification) {
 				this.addTodo.removeSelectedCategoryToAddItem();
@@ -153,25 +225,33 @@ export default {
 			<!-- X DI CHIUSURA CATEGORIA -->
 			<span v-if="addTodo.inModification || addTodo.showCategoriesPrimaryPanel" class="remove-selected-cat" @click="closeElement()"> X </span>
 
-			<input
-				class="inputText border border-primary rounded"
-				:class="{
-					'minimal-input': theme.minimalTheme,
-					'placeholder-selected': languages.placeholder != languages.defaultPlaceholderText && !theme.elegantTheme,
-					'elegant-placeholder': theme.elegantTheme,
-					'boldi-cipollino': theme.jeansTheme,
-				}"
-				ref="myInput"
-				@focus="toggleCategoriesPrimaryPanel(true)"
-				@blur="handleBlur()"
-				v-model="addTodo.newTodo"
-				:disabled="secondTodos.loadingOpenAIRes"
-				@keypress.enter="
-					addNewTodo();
-					setMyPersonalConfiguration();
-				"
-				:placeholder="languages.placeholder"
-			/>
+			<div class="input-wrapper">
+				<input
+					class="inputText border border-primary rounded"
+					:class="{
+						'minimal-input': theme.minimalTheme,
+						'placeholder-selected': languages.placeholder != languages.defaultPlaceholderText && !theme.elegantTheme,
+						'elegant-placeholder': theme.elegantTheme,
+						'boldi-cipollino': theme.jeansTheme,
+					}"
+					ref="myInput"
+					@focus="toggleCategoriesPrimaryPanel(true)"
+					@blur="handleBlur()"
+					v-model="addTodo.newTodo"
+					:disabled="secondTodos.loadingOpenAIRes"
+					@keypress.enter="
+						addNewTodo();
+						setMyPersonalConfiguration();
+					"
+					:placeholder="languages.placeholder"
+				/>
+				<button v-if="settings.customSettings" class="mic-btn" :class="{ 'mic-btn--listening': isListening }" type="button" @click="startDictation()" :title="isListening ? 'Ferma dettatura' : 'Avvia dettatura'">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
+						<path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
+					</svg>
+				</button>
+			</div>
 			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme, 'minimal-send-btn': theme.minimalTheme }" tabindex="0" @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme && !theme.minimalTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.minimalTheme" class="plane" src="@/img/icons/paper-plane-minimal.webp" alt="paper-plane" />
@@ -273,10 +353,52 @@ export default {
 	gap: 10px;
 	justify-content: center;
 }
+.input-wrapper {
+	position: relative;
+	width: 70%;
+}
+
 .inputText {
 	padding: 0.625rem;
-	width: 70%;
+	padding-right: 2.2rem;
+	width: 100%;
 	text-align: center;
+}
+
+.mic-btn {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: #6c757d;
+	padding: 0px;
+	padding-right: 0px;
+	line-height: 1;
+	transition: color 0.2s;
+	height: 100%;
+	width: 30px;
+}
+
+.mic-btn:hover {
+	color: #0d6efd;
+}
+
+.mic-btn--listening {
+	color: #dc3545;
+	animation: micPulse 1s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.4;
+	}
 }
 
 .inputs {
