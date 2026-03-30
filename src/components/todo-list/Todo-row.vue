@@ -114,13 +114,15 @@ export default {
 	<li
 		class="button-container bg-light"
 		:class="{
-			'minimal-btn border-none': theme.minimalTheme && !todo.category,
+			'border-none': (theme.minimalTheme || theme.darkTheme) && !todo.category,
+			'dark-btns-container': theme.darkTheme,
+			'minimal-btn': theme.minimalTheme && !todo.category,
 			'minimal-class-btn': theme.minimalTheme && todo.category,
 			'retro-btn': theme.retroTheme,
 			'elegant-btn': theme.elegantTheme,
 			'pink-theme-btn': theme.pinkTheme && !todo.category,
 			'panter-btns-container': theme.panterTheme && !todo.category,
-			transparent: theme.elegantTheme && todo.category,
+			transparent: (theme.elegantTheme || theme.darkTheme) && todo.category,
 			categoryActive: todo.category,
 			modify: todo.modify,
 		}"

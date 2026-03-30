@@ -26,8 +26,11 @@ export default {
 	<ListIstructionAccordion show-list-instructions-input="addEditDelete" :istructions-text="languages.helperDescription.addEditDelete" :select-deselect-arrow="settings.addEditDelete && settings.section === addEditDelete" />
 	<ul class="helper-list" v-if="settings.addEditDelete && settings.section === addEditDelete">
 		<li>
-			<img v-if="!theme.lemonTheme" class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
-			<img v-else class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/lemon-send.webp" alt="paper-plane" />
+			<img v-if="!theme.lemonTheme && !theme.minimalTheme" class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
+			<img v-if="theme.lemonTheme" class="btn btn-info helper-icon" :class="{ 'elegant-btn elegant-border': theme.elegantTheme }" src="@/img/lemon-send.webp" alt="paper-plane" />
+			<button class="btn btn-info minimal-send-btn" v-if="theme.minimalTheme">
+				<img v-if="theme.minimalTheme" class="plane" src="@/img/icons/paper-plane-minimal.webp" alt="paper-plane" />
+			</button>
 			{{ languages.helperDescription.add }}
 		</li>
 		<li>
@@ -46,6 +49,7 @@ export default {
 				<button
 					class="btn btn-primary rounded-circle btn-sm"
 					:class="{
+						'dark-btn-secondary': theme.darkTheme,
 						'pink-theme-btn-secondary': theme.pinkTheme,
 						'panter-btn-dark': theme.panterTheme,
 						'panter-border': theme.panterTheme,
@@ -65,8 +69,9 @@ export default {
 					transparent: theme.elegantTheme,
 				}"
 			>
-				<button class="btn btn-success rounded-circle btn-sm">
-					<img class="floppy" src="@/img/icons/floppy.webp" alt="save" />
+				<button class="btn btn-success rounded-circle btn-sm" :class="{ 'dark-btn-secondary': theme.darkTheme }">
+					<img v-if="theme.minimalTheme" class="floppy" src="@/img/icons/floppy-minimal.webp" alt="save" />
+					<img v-else class="floppy" src="@/img/icons/floppy.webp" alt="save" />
 				</button>
 			</div>
 			.
@@ -84,12 +89,14 @@ export default {
 				<button
 					class="btn btn-primary rounded-circle btn-sm"
 					:class="{
+						'dark-btn-secondary': theme.darkTheme,
 						'pink-theme-btn-secondary': theme.pinkTheme,
 						'panter-btn-dark': theme.panterTheme,
 						'panter-border': theme.panterTheme,
 					}"
 				>
-					<img class="trash" src="@/img/icons/trash.webp" alt="delete" />
+					<img v-if="theme.minimalTheme" class="trash" src="@/img/icons/trash-minimal.webp" alt="delete" />
+					<img v-else class="trash" src="@/img/icons/trash.webp" alt="delete" />
 				</button>
 			</div>
 			{{ languages.helperDescription.delete }}
@@ -98,7 +105,8 @@ export default {
 			<button
 				class="btn btn-back-to-top p-1 me-1"
 				:class="{
-					'btn-outline-info': theme.lightTheme || theme.darkTheme,
+					'btn-outline-info': theme.lightTheme,
+					'dark-btn-secondary': theme.darkTheme,
 					'minimal-theme-back-top': theme.minimalTheme,
 					'dark-theme-back-top': theme.darkTheme,
 					'retro-theme-back-top': theme.retroTheme,

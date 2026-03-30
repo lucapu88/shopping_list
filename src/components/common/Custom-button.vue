@@ -28,6 +28,7 @@ const theme = useThemeStore();
 const themeClasses = computed(() => ({
 	// classi dei temi
 	"minimal-btn": theme.minimalTheme,
+	"dark-header-btn": theme.darkTheme,
 	"retro-teme-btns": theme.retroTheme && !props.otherBtnStyle,
 	"summer-header-btn": theme.summerTheme,
 	"winter-btn": theme.winterTheme,
@@ -40,6 +41,7 @@ const themeClasses = computed(() => ({
 
 	// classi per selected
 	"btn-selected": props.selected,
+	"dark-selected-btn": theme.darkTheme && props.selected,
 	"minimal-selected-btn": theme.minimalTheme && props.selected,
 	"retro-selected-btn": theme.retroTheme && props.selected,
 	"summer-header-btn-selected": theme.summerTheme && props.selected,

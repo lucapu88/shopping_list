@@ -53,6 +53,7 @@ export default {
 		<button
 			class="btn pop-up-btn"
 			:class="{
+				'dark-header-btn': theme.darkTheme,
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
 				'summer-header-btn': theme.summerTheme,
@@ -78,6 +79,8 @@ export default {
 			class="btn pop-up-btn"
 			:class="{
 				'btn-selected': todosStore.showOnlyImportantTodos,
+				'dark-header-btn': theme.darkTheme,
+				'dark-selected-btn': theme.darkTheme && todosStore.showOnlyImportantTodos,
 				'btn-important-temporary': todosStore.addedImportant,
 				'btn-important-selected': todosStore.showOnlyImportantTodos && !theme.retroTheme,
 				'minimal-btn': theme.minimalTheme,
@@ -114,6 +117,7 @@ export default {
 			class="btn pop-up-btn"
 			:class="{
 				'btn-selected': loading,
+				'dark-header-btn': theme.darkTheme,
 				'minimal-btn': theme.minimalTheme,
 				'retro-teme-btns': theme.retroTheme,
 				'summer-header-btn': theme.summerTheme,

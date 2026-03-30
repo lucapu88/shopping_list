@@ -57,9 +57,7 @@
 	background-image: none;
 	border: 10px solid var(--dark-secondary-color);
 }
-.dark-theme-back-top {
-	background-color: var(--white);
-}
+
 .tips-btn-dark {
 	background-color: var(--dark-background-color);
 	border-left: 2px solid var(--dark-white);
@@ -98,4 +96,37 @@
 	background-color: #333333;
 	color: #ffff;
 	border: 2px solid #ffff;
+}
+
+.dark-btns-container {
+	background-color: var(--dark-white) !important;
+}
+
+.dark-btns-container > button {
+	background-color: var(--dark-background-color) !important;
+	border-color: var(--dark-background-color) !important;
+}
+
+.dark-btn-secondary,
+.dark-theme-back-top {
+	background-color: var(--dark-background-color) !important;
+	border-color: var(--dark-background-color) !important;
+	color: var(--dark-white) !important;
+}
+
+.dark-theme-back-top {
+	border: 1px solid var(--dark-white) !important;
+}
+.dark-theme-back-top > span {
+	font-weight: bold;
+}
+
+.dark-header-btn {
+	background-color: var(--dark-white) !important;
+	border-color: var(--dark-white) !important;
+	color: var(--dark-background-color) !important;
+}
+.dark-selected-btn {
+	background-color: var(--white) !important;
+	border-color: var(--black) !important;
 }
