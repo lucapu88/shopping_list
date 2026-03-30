@@ -30,7 +30,8 @@ export const useLanguageStore = defineStore('Language', {
       title: 'Share App',
       info: 'Share the app with whoever you want! By sending the link or having the QR code scanned.',
       text: 'Link copied to clipboard, paste it with whoever you want.',
-      qrMessage: "Increase screen brightness for better scanning"
+      qrMessage: "Increase screen brightness for better scanning",
+      desktop: 'There is also a desktop version dedicated to Apple users or to use it from a PC'
     },
     confirmText: 'Are you sure you want to delete:\n',
     completeConfirmText: '', // Questo testo viene editato nel TodoStore.js
@@ -462,6 +463,7 @@ export const useLanguageStore = defineStore('Language', {
       this.share.title = 'Condividi App';
       this.share.info = "Condividi l'app con chi vuoi! Inviando il link oppure facendo scannerizzare il QR code.";
       this.share.qrMessage = "Aumenta la luminisità dello schermo per una migliore scansione";
+      this.share.desktop = "Esiste anche una versione desktop dedicata agli utenti Apple o per usarla da PC";
       this.importText = 'Importa';
       this.updateText.description = "Se il pulsante è verde, clicca per aggiornare";
       this.updateText.available = 'Aggiorna';
@@ -632,6 +634,7 @@ export const useLanguageStore = defineStore('Language', {
       this.share.title = 'Compartir App';
       this.share.info = 'Comparte la aplicación con quien quieras! Enviando el enlace o haciendo escanear el código QR.';
       this.share.qrMessage = "Aumenta el brillo de la pantalla para una mejor exploración";
+      this.share.desktop = "También existe una versión de escritorio dedicada a los usuarios de Apple o para usarla desde PC";
       this.importText = 'Importar';
       this.updateText.description = "Si el botón está verde, pulse para actualizar";
       this.updateText.available = 'Actualización';
@@ -801,6 +804,7 @@ export const useLanguageStore = defineStore('Language', {
       this.share.title = 'Partager l\'application';
       this.share.info = "Partagez l'application avec qui vous voulez ! En envoyant le lien ou en faisant scanner le code QR.";
       this.share.qrMessage = "Augmentez la luminosité de l'écran pour une meilleure numérisation";
+      this.share.desktop = "Il existe également une version de bureau dédiée aux utilisateurs Apple ou pour l'utiliser depuis un PC";
       this.importText = 'Importer';
       this.updateText.description = "Si le bouton est vert, cliquez pour mettre à jour";
       this.updateText.available = 'Mettre à jour';

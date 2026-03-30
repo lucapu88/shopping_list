@@ -4,6 +4,7 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import ListIstructionAccordion from "../../panels-and-modals/List-istruction-accordion.vue";
 import ShareModal from "../../panels-and-modals/Share-modal.vue";
 import QrCodeModal from "../../panels-and-modals/Qr-code-modal.vue";
+import { set } from "zod";
 </script>
 
 <script>
@@ -17,6 +18,8 @@ export default {
 			color: null,
 			colorsNum: 11,
 			share: "share",
+			url: "https://shopping-list-lc.netlify.app",
+			copied: false,
 		};
 	},
 	methods: {
@@ -55,6 +58,16 @@ export default {
 				console.log(error);
 			}
 		},
+		copyLink() {
+			navigator.clipboard.writeText(this.url);
+
+			document.addEventListener("copy", function (e) {
+				e.clipboardData.setData("text/plain", this.url);
+				e.preventDefault();
+			});
+			this.copied = true;
+			setTimeout(() => (this.copied = false), 3000);
+		},
 	},
 };
 </script>
@@ -79,6 +92,17 @@ export default {
 						{{ String.fromCodePoint(0x1f523) }}
 					</button>
 				</div>
+				<div class="mt-3">
+					<strong>{{ languages.share.desktop }}</strong> <br />
+					<span>- Desktop link: </span>
+					<p class="desktop-link-container">
+						<small class="under-pressure mx-2">{{ url }}</small>
+						<button class="btn btn-outline-success bg-light ms-1 p-1" :class="{ sel: copied }" @click="copyLink()">
+							<span class="ok" v-if="copied">{{ String.fromCodePoint(0x1f44d) }}</span>
+							<span v-else>{{ languages.moveMode.copyElementText }}</span>
+						</button>
+					</p>
+				</div>
 			</div>
 		</template>
 	</div>
@@ -99,5 +123,13 @@ export default {
 	font-size: 0.813rem;
 	margin-left: 0.313rem;
 	color: rgb(197, 0, 0);
+}
+
+.desktop-link-container {
+	display: flex;
+	align-items: center;
+}
+.sel {
+	background-color: #008000 !important;
 }
 </style>
