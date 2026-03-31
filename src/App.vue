@@ -57,7 +57,7 @@ export default {
 	created() {
 		this.settings.removeUnusedLocalStorageItems();
 		this.settings.checkingUpdates(); //controllo "aggiornamenti"
-		this.settings.canDeleteCheck(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
+		this.settings.switchControls(); //setto le impostazioni scelte dall'utente sulla conferma di cancellazione
 		this.categoriesStore.initializeCategories(); //setto le categorie in base alla lingua
 		this.todosStore.createTodosList(); //creo la lista se ci sono elementi
 		this.languages.checkAndSetLanguage(); //setto la lingua in base a quella scelta dall'utente nel suo locale

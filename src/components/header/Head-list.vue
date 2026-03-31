@@ -91,6 +91,11 @@ export default {
 				this.$refs.myInput.focus();
 			});
 		},
+		blurInput() {
+			this.$nextTick(function () {
+				this.$refs.myInput.blur();
+			});
+		},
 		openDevPanel() {
 			if (this.settings.isAndroid) {
 				return;
@@ -133,7 +138,7 @@ export default {
 
 			this.isListening = true;
 			this.addTodo.showCategoriesPrimaryPanel = true;
-			this._avviaSessioneRiconoscimento();
+			this._startRecSession();
 
 			// Su mobile, se l'utente riduce a icona o cambia app, stoppa la dettatura.
 			// L'utente dovrà ricliccare manualmente per riprendere.
@@ -144,7 +149,7 @@ export default {
 			};
 			document.addEventListener("visibilitychange", this._visibilityHandler);
 		},
-		_avviaSessioneRiconoscimento() {
+		_startRecSession() {
 			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 			const recognition = new SpeechRecognition();
 			recognition.lang = navigator.language;
@@ -173,6 +178,8 @@ export default {
 			};
 
 			recognition.start();
+
+			this.focusOnInput();
 		},
 		_stopDictation() {
 			this.isListening = false;
@@ -182,6 +189,7 @@ export default {
 				document.removeEventListener("visibilitychange", this._visibilityHandler);
 				this._visibilityHandler = null;
 			}
+			this.blurInput();
 		},
 		closeElement() {
 			if (this.addTodo.inModification) {
@@ -189,9 +197,7 @@ export default {
 			}
 
 			if (this.addTodo.showCategoriesPrimaryPanel) {
-				this.$nextTick(function () {
-					this.$refs.myInput.blur();
-				});
+				this.blurInput();
 			}
 		},
 	},
@@ -223,7 +229,7 @@ export default {
 		<!-- ------------------------------------CONTENITORE DELL'INPUT PER AGGIUNGERE PRODOTTI -->
 		<div class="input-btns-container" ref="inputContainer" v-if="!addTodo.devNotes">
 			<!-- X DI CHIUSURA CATEGORIA -->
-			<span v-if="addTodo.inModification || addTodo.showCategoriesPrimaryPanel" class="remove-selected-cat" @click="closeElement()"> X </span>
+			<span v-if="addTodo.inModification || (addTodo.showCategoriesPrimaryPanel && settings.canShowCategoriesModal)" class="remove-selected-cat" @click="closeElement()"> X </span>
 
 			<div class="input-wrapper">
 				<input
@@ -253,6 +259,7 @@ export default {
 					</svg>
 				</button>
 			</div>
+			<!-- PULSANTE INVIO -->
 			<button class="btn btn-info" :class="{ 'elegant-btn': theme.elegantTheme, 'minimal-send-btn': theme.minimalTheme }" tabindex="0" @click="addNewTodo()">
 				<img v-if="!theme.lemonTheme && !theme.minimalTheme" class="plane" src="@/img/icons/paper-plane.webp" alt="paper-plane" />
 				<img v-if="theme.minimalTheme" class="plane" src="@/img/icons/paper-plane-minimal.webp" alt="paper-plane" />
@@ -261,7 +268,7 @@ export default {
 		</div>
 
 		<!-- PANNELLO DELLE CATEGORIE QUANDO SI STA INSERENDO UN PRODOTTO -->
-		<CategoriesPrimaryPanel v-if="addTodo.showCategoriesPrimaryPanel" />
+		<CategoriesPrimaryPanel v-if="addTodo.showCategoriesPrimaryPanel && settings.canShowCategoriesModal" />
 
 		<!-- PULSANTE MOSTRA SUGGERIMENTI -->
 		<SuggestionsButton />

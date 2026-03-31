@@ -9,6 +9,8 @@ export const useSettingsStore = defineStore('settings', {
     dateLastUpdate: "--/--/----",
     canDeleteEmptyCategories: false,
     canDeleteEmptyCategoriesText: 'OFF',
+    canShowCategoriesModal: true,
+    canShowCategoriesModalText: 'ON',
     canMultipleCategoryInsertion: false,
     canMultipleCategoryInsertionText: 'ON',
     helper: false,
@@ -27,6 +29,7 @@ export const useSettingsStore = defineStore('settings', {
     addEditDelete: false,
     categoriesInfo: false,
     suggestions: false,
+    toggleCategoriesModal: false,
     changeList: false,
     dragNdrop: false,
     selectAndDelete: false,
@@ -52,7 +55,7 @@ export const useSettingsStore = defineStore('settings', {
   }),
   getters: {},
   actions: {
-    canDeleteCheck() {
+    switchControls() {
       //setto le impostazioni scelte dall'utente sia sulla conferma di cancellazione per todo, sia sull'autoeliminazione delle categorie vuote
       const canDelete = window.localStorage.getItem('canDelete');
       this.canDelete = canDelete === 'true';
@@ -65,6 +68,9 @@ export const useSettingsStore = defineStore('settings', {
       const canMultipleCategoryInsertionStorage = window.localStorage.getItem('canMultipleCategoryInsertion');
       this.canMultipleCategoryInsertion = canMultipleCategoryInsertionStorage === 'true';
       this.canMultipleCategoryInsertion ? (this.canMultipleCategoryInsertionText = 'OFF') : this.canMultipleCategoryInsertionText;
+      //setto le impostazioni scelte dall'utente sul vedere o meno la modale delle categorie durante l'inserimento
+      this.canShowCategoriesModal = JSON.parse(window.localStorage.getItem('canShowCategoriesModal') || 'true');
+      this.canShowCategoriesModalText = this.canShowCategoriesModal ? 'ON' : 'OFF';
     },
     checkingUpdates() {
       const d = new Date();
@@ -107,6 +113,16 @@ export const useSettingsStore = defineStore('settings', {
         window.localStorage.setItem('canDeleteEmptyCategories', false);
       }
     },
+    setShowHideCategoriesModal() {
+      this.canShowCategoriesModal = !this.canShowCategoriesModal;
+      if (this.canShowCategoriesModal) {
+        this.canShowCategoriesModalText = 'ON';
+        window.localStorage.setItem('canShowCategoriesModal', true);
+      } else {
+        this.canShowCategoriesModalText = 'OFF';
+        window.localStorage.setItem('canShowCategoriesModal', false);
+      }
+    },
     toggleMultipleCategoryInsertion() {
       this.canMultipleCategoryInsertion = !this.canMultipleCategoryInsertion;
       if (!this.canMultipleCategoryInsertion) {
@@ -146,6 +162,7 @@ export const useSettingsStore = defineStore('settings', {
       this.share = false;
       this.pasteList = false;
       this.backupList = false;
+      this.toggleCategoriesModal = false;
       //RISOLUZIONE PROBLEMI
       this.troubleshooting = false;
       //ISTRUZIONI
@@ -177,6 +194,7 @@ export const useSettingsStore = defineStore('settings', {
         share: 'share',
         pasteList: 'pasteList',
         backupList: 'backupList',
+        toggleCategoriesModal: 'toggleCategoriesModal',
         addEditDelete: 'addEditDelete',
         categoriesInfo: 'categoriesInfo',
         suggestions: 'suggestions',
@@ -259,6 +277,7 @@ export const useSettingsStore = defineStore('settings', {
       const totalKB = (totalByte / 1024).toFixed(2);
 
       if (totalKB == 5120) {
+        if (this.customSettings) { alert('attenzione, memoria localStorage quasi piena'); }
         console.log('%cATTENZIONE PORCA PUTTANA SEI ARRIVATO AL LIMITE DI MEMORIA DEL LOCALSTORAGE!!!', "color: red;font-size: 25px; font-weight: bold;");
         console.log('%cMettiti comodo e inventati qualcosa per risolvere sto casino.', "color: red;font-size: 15px;");
       } else {

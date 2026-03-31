@@ -18,6 +18,7 @@ import ImportList from "./settings/Import-list.vue";
 import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
 import RenameList from "./settings/Rename-list.vue";
+import ToggleCategoriesModal from "./settings/Toggle-categories-modal.vue";
 </script>
 
 <script>
@@ -129,6 +130,8 @@ export default {
 				<ChangeThemes @themeLoadingEmit="themeLoadingEmitted" />
 
 				<SafeDeleteMode />
+
+				<ToggleCategoriesModal />
 
 				<AutoDeleteEmptyCategories />
 

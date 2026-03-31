@@ -74,6 +74,10 @@ export const useLanguageStore = defineStore('Language', {
       title: "Rename Lists",
       description: 'Here you can give a name to your lists, just enter it in the input and then click on "save".'
     },
+    toggleCategoriesModalText: {
+      title: "Show/Hide Categories",
+      description: "Choose whether or not to automatically show the category modal when you type something.",
+    },
     //-------------------------------------------------------------------------- HELPER DESCRIPTIONS
     helperDescription: {
       troubleshooting: 'Troubleshooting',
@@ -170,7 +174,7 @@ export const useLanguageStore = defineStore('Language', {
     starWarsDay: '25 May 1977: Star Wars is released in cinemas',
     newYearText: 'Happy New Year!',
     merryChristmasText: 'Merry Christmas and Happy Holidays! 🎄',
-    //----------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------ ALTRO
     backupListText: {
       title: 'Import Last Backup',
       preDescriprion: 'Every time you delete something, AND ONLY IF YOU DELETE IT, an automatic backup of THE LAST deletion is saved.',
@@ -606,6 +610,8 @@ export const useLanguageStore = defineStore('Language', {
       ];
       this.microphoneRec.permissionDeniedText = "Permesso microfono negato. Per favore consenti l'accesso al microfono nelle impostazioni del tuo browser e riprova.";
       this.microphoneRec.voiceError = "Errore riconoscimento vocale, riprova e se persiste contatta il supporto. Errore: ";
+      this.toggleCategoriesModalText.title = "Mostra/Nascondi categorie";
+      this.toggleCategoriesModalText.description = "Scegli se mostrare o nascondere la finestra delle categorie quando digiti qualcosa.";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -778,6 +784,8 @@ export const useLanguageStore = defineStore('Language', {
       ];
       this.microphoneRec.permissionDeniedText = "Permiso de micrófono denegado. Por favor, permita el acceso al micrófono en la configuración de su navegador e inténtelo de nuevo.";
       this.microphoneRec.voiceError = "Error de reconocimiento de voz, inténtelo de nuevo y si persiste, contacte con el soporte. Error: ";
+      this.toggleCategoriesModalText.title = "Mostrar/Ocultar categorías";
+      this.toggleCategoriesModalText.description = "Elija si desea mostrar u ocultar la ventana de categorías al escribir algo.";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -950,6 +958,8 @@ export const useLanguageStore = defineStore('Language', {
       ];
       this.microphoneRec.permissionDeniedText = "Permission de microphone refusée. Veuillez autoriser l'accès au microphone dans les paramètres de votre navigateur et réessayer.";
       this.microphoneRec.voiceError = "Erreur de reconnaissance vocale, réessayez et si le problème persiste, contactez le support. Erreur : ";
+      this.toggleCategoriesModalText.title = "Afficher/Masquer les catégories";
+      this.toggleCategoriesModalText.description = "Choisissez d'afficher ou de masquer la fenêtre des catégories lorsque vous tapez quelque chose.";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

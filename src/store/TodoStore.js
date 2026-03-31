@@ -103,12 +103,7 @@ export const useTodoStore = defineStore('todoStore', {
           this.todos.splice(this.addTodoInCategory.id + 1, 0, todoObject);
         } else if (this.temporaryCategorySelected) {
           // categoria nuova da creare
-          const existingIndex = this.todos.findIndex(
-            t =>
-              t.category &&
-              t.name.toLowerCase() ===
-              this.temporaryCategorySelected.name.toLowerCase()
-          );
+          const existingIndex = this.todos.findIndex(t => t.category && t.name.toLowerCase() === this.temporaryCategorySelected.name.toLowerCase());
           if (existingIndex !== -1) {
             // nel dubbio già esiste, quindi inserisco lì dentro
             this.todos.splice(existingIndex + 1, 0, todoObject);
@@ -390,7 +385,6 @@ export const useTodoStore = defineStore('todoStore', {
       if (todo.category) {
         const allCategories = [...this.categoriesStore.engCategories, ...this.categoriesStore.itaCategories, ...this.categoriesStore.spanCategories, ...this.categoriesStore.fraCategories];
         this.todos.forEach((t) => (t.isSelected = false)); //azzero tutto
-
         allCategories.forEach((category) => {
           if (todo.name.toLowerCase() === category.name) {
             this.toggleCategorySelection(todo);

@@ -34,6 +34,7 @@ export default {
 		<source v-if="features === 'renameList'" src="@/video/rename-list.mp4" type="video/mp4" />
 		<source v-if="features === 'changeList'" src="@/video/change-list.mp4" type="video/mp4" />
 		<source v-if="features === 'periodicList'" src="@/video/periodic-list.mp4" type="video/mp4" />
+		<source v-if="features === 'toggleCategoriesModal'" src="@/video/toggle-category-modal.mp4" type="video/mp4" />
 
 		{{ languages.helperDescription.videoAlert }}
 	</video>

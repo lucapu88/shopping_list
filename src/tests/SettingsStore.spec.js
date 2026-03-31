@@ -33,10 +33,10 @@ describe('SettingsStore', () => {
         });
     });
 
-    describe('canDeleteCheck', () => {
+    describe('switchControls', () => {
         it('should set canDelete to false when not in localStorage', () => {
             const store = useSettingsStore();
-            store.canDeleteCheck();
+            store.switchControls();
 
             expect(store.canDelete).toBe(false);
             expect(store.canDeleteText).toBe('OFF');
@@ -45,7 +45,7 @@ describe('SettingsStore', () => {
         it('should set canDelete to true when saved in localStorage', () => {
             localStorage.setItem('canDelete', 'true');
             const store = useSettingsStore();
-            store.canDeleteCheck();
+            store.switchControls();
 
             expect(store.canDelete).toBe(true);
             expect(store.canDeleteText).toBe('ON');
@@ -54,7 +54,7 @@ describe('SettingsStore', () => {
         it('should set canDeleteEmptyCategories from localStorage', () => {
             localStorage.setItem('canDeleteEmptyCategories', 'true');
             const store = useSettingsStore();
-            store.canDeleteCheck();
+            store.switchControls();
 
             expect(store.canDeleteEmptyCategories).toBe(true);
             expect(store.canDeleteEmptyCategoriesText).toBe('ON');
