@@ -161,28 +161,28 @@ export default {
 		}"
 	>
 		<div id="app">
+			<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
+			<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
+			<ConfirmModal v-if="todosStore.confirmDeleteModal" />
+			<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
+			<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
+			<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
+			<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
+			<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
+			<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
+			<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
+
 			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
 				<div class="max-width mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
-					<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
-					<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
-
 					<header style="overflow: hidden">
 						<FestivitiesAndOccurrences v-if="settings.isVisibleOnScroll" />
 						<ShowHelperButton v-if="settings.isVisibleOnScroll" />
 						<HeadList />
-						<ConfirmModal v-if="todosStore.confirmDeleteModal" />
-						<SuggestionsModal v-if="suggestionsStore.suggestionsModal" />
-						<DuplicateTodoAlert v-if="todosStore.duplicateFound" />
-						<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
-						<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
 
-						<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
-						<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
 						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
 						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
 						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
-						<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
 						<PaymentWaiting :is-visible="waitingForPayment" />
 					</header>
 					<main>

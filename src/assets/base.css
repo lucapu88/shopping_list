@@ -11,6 +11,12 @@ body {
 	cursor: pointer;
 }
 
+html,
+body {
+	/* Su mobile mi da fastidio che al coppio tap effettua uno zoom, anche perchè il doppio tap lo uso molto per selezionare un elemento come importante, quindi mi scassa la minchia sto zoom */
+	touch-action: manipulation;
+}
+
 .smooth-dnd-disable-touch-action * {
 	touch-action: auto !important;
 }
