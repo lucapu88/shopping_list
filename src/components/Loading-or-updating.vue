@@ -79,11 +79,11 @@ export default {
 <style scoped>
 #loading-themes-container,
 #updating-container {
-	position: absolute;
-	left: 0;
-	top: 0;
+	position: fixed;
+	inset: 0;
 	width: 100%;
 	height: 100%;
+	min-height: 100dvh;
 	padding: 0.625rem;
 	background-size: contain;
 	z-index: 450;

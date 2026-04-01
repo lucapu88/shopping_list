@@ -13,6 +13,7 @@ body {
 
 html,
 body {
+	overscroll-behavior: none;
 	/* Su mobile mi da fastidio che al coppio tap effettua uno zoom, anche perchè il doppio tap lo uso molto per selezionare un elemento come importante, quindi mi scassa la minchia sto zoom */
 	touch-action: manipulation;
 }
