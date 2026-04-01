@@ -183,11 +183,12 @@ export default {
 }
 
 .helper-description {
-	position: absolute;
-	left: 0;
+	position: fixed;
+	inset: 0;
 	top: -100%;
 	width: 100%;
 	height: 100%;
+	min-height: 100dvh;
 	padding: 0.625rem;
 	background-size: contain;
 	z-index: 10000;

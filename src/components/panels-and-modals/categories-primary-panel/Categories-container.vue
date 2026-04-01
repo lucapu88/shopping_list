@@ -72,6 +72,7 @@ defineExpose({
 	opacity: 1;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	gap: 10px;
 	overflow: auto;
 	max-height: 220px;
 }

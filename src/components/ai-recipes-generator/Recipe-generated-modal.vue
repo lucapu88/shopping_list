@@ -101,8 +101,8 @@ function changeImage() {
 	max-height: 95vh;
 }
 .recipe-container > div {
-	overflow: auto;
-	max-height: 90vh;
+	overflow-y: auto;
+	max-height: 85vh;
 }
 .close-modal {
 	position: absolute;

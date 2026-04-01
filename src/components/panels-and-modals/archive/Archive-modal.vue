@@ -91,7 +91,7 @@ export default {
 	padding: 25px 10px;
 	border-radius: 10px;
 	width: 95vw;
-	height: 95vh;
+	height: 90vh;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
