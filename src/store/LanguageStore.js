@@ -323,7 +323,8 @@ export const useLanguageStore = defineStore('Language', {
       resetPassword: 'Forgot your password?',
       emailSentText: "Email sent! Check your inbox.",
       recLink: "Send recovery link",
-      emailTitle: "Enter your email to receive the recovery link"
+      emailTitle: "Enter your email to receive the recovery link",
+      errorMessage: "No accounts found with this email address",
     },
     randomPhrases: [
       `...Lighting the coals...`,
@@ -345,7 +346,8 @@ export const useLanguageStore = defineStore('Language', {
     microphoneRec: {
       permissionDeniedText: "Microphone permission denied. Please allow microphone access in your browser settings and try again.",
       voiceError: "Voice recognition error, try again and if it persists, contact support. Error:"
-    }
+    },
+    back: "Back",
   }),
   getters: {},
   actions: {
@@ -591,6 +593,7 @@ export const useLanguageStore = defineStore('Language', {
       this.login.emailSentText = "Email inviata! Controlla la tua casella.";
       this.login.recLink = "Invia link di recupero";
       this.login.emailTitle = "Inserisci la tua email per ricevere il link di recupero";
+      this.login.errorMessage = "Nessun account trovato con questa email";
       this.randomPhrases = [
         `...Accendo la brace...`,
         `...Scaldo i fornelli...`,
@@ -612,6 +615,7 @@ export const useLanguageStore = defineStore('Language', {
       this.microphoneRec.voiceError = "Errore riconoscimento vocale, riprova e se persiste contatta il supporto. Errore: ";
       this.toggleCategoriesModalText.title = "Mostra/Nascondi categorie";
       this.toggleCategoriesModalText.description = "Scegli se mostrare o nascondere la finestra delle categorie quando digiti qualcosa.";
+      this.back = "Indietro";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -766,6 +770,7 @@ export const useLanguageStore = defineStore('Language', {
       this.login.emailSentText = "¡Correo electrónico enviado! Por favor, revise su bandeja de entrada.";
       this.login.recLink = "Enviar enlace de recuperación";
       this.login.emailTitle = "Ingrese su correo electrónico para recibir el enlace de recuperación";
+      this.login.errorMessage = "No se encontró ninguna cuenta con este correo electrónico";
       this.randomPhrases = [
         `...Enciendo las brasas...`,
         `...Caliento los fogones...`,
@@ -786,6 +791,7 @@ export const useLanguageStore = defineStore('Language', {
       this.microphoneRec.voiceError = "Error de reconocimiento de voz, inténtelo de nuevo y si persiste, contacte con el soporte. Error: ";
       this.toggleCategoriesModalText.title = "Mostrar/Ocultar categorías";
       this.toggleCategoriesModalText.description = "Elija si desea mostrar u ocultar la ventana de categorías al escribir algo.";
+      this.back = "Atrás";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -940,6 +946,7 @@ export const useLanguageStore = defineStore('Language', {
       this.login.emailSentText = "Courriel envoyé ! Veuillez consulter votre boîte de réception.";
       this.login.recLink = "Envoyer le lien de récupération";
       this.login.emailTitle = "Saisissez votre adresse e-mail pour recevoir le lien de récupération";
+      this.login.errorMessage = "Aucun compte trouvé avec cet e-mail";
       this.randomPhrases = [
         `...J'allume la braise...`,
         `...Je chauffe les fourneaux...`,
@@ -960,6 +967,7 @@ export const useLanguageStore = defineStore('Language', {
       this.microphoneRec.voiceError = "Erreur de reconnaissance vocale, réessayez et si le problème persiste, contactez le support. Erreur : ";
       this.toggleCategoriesModalText.title = "Afficher/Masquer les catégories";
       this.toggleCategoriesModalText.description = "Choisissez d'afficher ou de masquer la fenêtre des catégories lorsque vous tapez quelque chose.";
+      this.back = "Retour";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {

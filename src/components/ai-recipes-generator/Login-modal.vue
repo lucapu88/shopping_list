@@ -3,6 +3,10 @@
 import { loginGoogle, loginEmail, registerEmail, resetPassword } from "@/firebase.js";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
+import { usePreloadStore } from "../../store/PreloadStore";
+import chefLoginImg from "@/img/recipes/chef-giorgio-login.webp";
+import chefSorpreso from "@/img/recipes/chef-sorpreso.webp";
+import chefPassword from "@/img/recipes/chef-password.webp";
 
 export default {
 	name: "LoginModal",
@@ -14,6 +18,7 @@ export default {
 		return {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
+			preload: usePreloadStore(),
 			loading: false,
 			showEmailForm: false,
 			isRegistering: false,
@@ -23,7 +28,14 @@ export default {
 			showResetForm: false,
 			resetEmail: "",
 			resetSent: false,
+			eyeDirection: "center",
+			eyesClosed: false,
+			eyeTimer: null,
 		};
+	},
+	created() {
+		const imagesToPreload = [chefLoginImg, chefSorpreso, chefPassword];
+		imagesToPreload.forEach((src) => this.preload.preloadImage(src));
 	},
 	methods: {
 		async handleGoogle() {
@@ -48,6 +60,9 @@ export default {
 				this.errorMessage = err.message;
 			} finally {
 				this.loading = false;
+				setTimeout(() => {
+					this.errorMessage = "";
+				}, 5000);
 			}
 		},
 		async handleResetPassword() {
@@ -62,14 +77,35 @@ export default {
 				}, 2500);
 			} catch (err) {
 				if (err.code === "auth/user-not-found") {
-					this.errorMessage = "Nessun account trovato con questa email";
+					this.errorMessage = this.languages.login.errorMessage;
 				} else {
 					this.errorMessage = err.message;
 				}
 			} finally {
 				this.loading = false;
+				setTimeout(() => {
+					this.errorMessage = "";
+				}, 5000);
 			}
 		},
+		onPasswordFocus() {
+			this.eyesClosed = true;
+		},
+		onPasswordBlur() {
+			this.eyesClosed = false;
+		},
+	},
+	watch: {
+		email(newVal, oldVal) {
+			this.eyeDirection = newVal.length >= oldVal.length ? "right" : "left";
+			clearTimeout(this.eyeTimer);
+			this.eyeTimer = setTimeout(() => {
+				this.eyeDirection = "center";
+			}, 600);
+		},
+	},
+	beforeUnmount() {
+		clearTimeout(this.eyeTimer);
 	},
 };
 </script>
@@ -79,12 +115,29 @@ export default {
 		<div class="login-card">
 			<button class="close-btn" @click="$emit('skip')">✕</button>
 
-			<div class="card-header">
+			<!-- Header normale quando non si inserisce email/password -->
+			<div class="card-header" v-if="!showEmailForm">
 				<div class="icon-ring">
 					<img src="@/img/recipes/chef-giorgio-login.webp" alt="chef_login" />
 				</div>
 				<h1>{{ languages.login.title }}</h1>
 				<p>{{ languages.login.subtitle }}</p>
+			</div>
+
+			<!-- Header animato con chef e occhi interattivi durante la registrazione email -->
+			<div class="card-header" v-if="showEmailForm">
+				<div class="chef-eyes-wrapper">
+					<img v-if="errorMessage" src="@/img/recipes/chef-sorpreso.webp" alt="chef" class="chef-anim-img" />
+					<template v-else>
+						<img src="@/img/recipes/chef-password.webp" alt="chef" class="chef-anim-img" />
+						<div class="eye eye-left" :class="{ 'eye--closed': eyesClosed }">
+							<div class="pupil" :class="`pupil--${eyeDirection}`"></div>
+						</div>
+						<div class="eye eye-right" :class="{ 'eye--closed': eyesClosed }">
+							<div class="pupil" :class="`pupil--${eyeDirection}`"></div>
+						</div>
+					</template>
+				</div>
 			</div>
 			<!-- Form reset password -->
 			<div v-if="showResetForm">
@@ -98,7 +151,7 @@ export default {
 			<!-- Se sta registrando con email -->
 			<div v-if="showEmailForm" class="email-form">
 				<input v-model="email" type="email" placeholder="Email" class="input" />
-				<input v-model="password" type="password" placeholder="Password" class="input" />
+				<input v-model="password" type="password" placeholder="Password" class="input" @focus="onPasswordFocus" @blur="onPasswordBlur" />
 				<button class="btn-email" @click="handleEmail">
 					{{ isRegistering ? languages.login.register : languages.login.singIn }}
 				</button>
@@ -108,7 +161,7 @@ export default {
 				<!-- Link recupero password — visibile solo in modalità login -->
 				<p v-if="!isRegistering" class="toggle-auth" @click="showResetForm = true">{{ languages.login.resetPassword }}</p>
 
-				<button class="btn-back" @click="showEmailForm = false">←</button>
+				<button class="btn-back" @click="showEmailForm = false">← {{ languages.back }}</button>
 			</div>
 
 			<!-- Pulsanti principali -->
@@ -306,5 +359,76 @@ export default {
 	padding: 10px 14px;
 	font-size: 13px;
 	margin-top: 12px;
+}
+
+.chef-eyes-wrapper {
+	position: relative;
+	display: inline-block;
+	margin: 0 auto 16px;
+}
+
+.chef-anim-img {
+	width: 170px;
+	height: auto;
+	display: block;
+	z-index: 100;
+	position: relative;
+}
+
+.eye {
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	border-radius: 50%;
+	overflow: hidden;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		height 0.15s ease,
+		border-radius 0.15s ease,
+		background 0.15s ease;
+	transform: translate(-50%, -50%);
+	z-index: 50;
+}
+
+.eye-left {
+	top: 50%;
+	left: 40%;
+}
+
+.eye-right {
+	top: 50%;
+	left: 54%;
+}
+
+.eye--closed {
+	background: #f5b68e;
+}
+.eye--closed > .pupil {
+	background: #f5b68e;
+	border-bottom: 5px solid black;
+}
+
+.pupil {
+	width: 9px;
+	height: 9px;
+	background: #1a0e05;
+	border-radius: 50%;
+	position: absolute;
+	transition: transform 0.2s ease;
+}
+
+.pupil--left {
+	transform: translateX(-3px);
+}
+
+.pupil--right {
+	transform: translateX(5px);
+}
+
+.pupil--center {
+	transform: translateX(0);
 }
 </style>
