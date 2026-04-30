@@ -148,6 +148,10 @@ export default {
 				}
 			};
 			document.addEventListener("visibilitychange", this._visibilityHandler);
+
+			if (this.addTodo.showCategoriesPrimaryPanel && this.settings.canShowCategoriesModal) {
+				this.focusOnInput();
+			}
 		},
 		_startRecSession() {
 			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
