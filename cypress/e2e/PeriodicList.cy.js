@@ -60,7 +60,7 @@ describe('Periodic-list-container e2e', () => {
         cy.wait(200);
         cy.get('.show-periodic-list-button').click();
         cy.get('.periodic-todo-name').click({ force: true });
-        cy.get('#categories > :nth-child(12)').click({ force: true });
+        cy.get('#categories > :nth-child(12)').click({ force: true, multiple: true });
 
         cy.get('.periodic-list-todo').should('have.class', 'btn-selected');
         cy.get('#categories > :nth-child(12)').should('have.class', 'btn-selected');

@@ -54,6 +54,8 @@ export const useFrenchSuggStoreStore = defineStore('french', {
 
         autre: ["Sel", "Œufs", "Snacks", "Bicarbonate", "Café moulu", "Capsules de café", "Barres énergétiques", "Chips emballées", "Bretzels", "Chocolats", "Popcorn", "Sauce soja", "Sauce barbecue", "Ketchup", "Mayonnaise", "Fruits secs", "Céréales petit-déjeuner", "Piles", "Briquet", "Papier sulfurisé", "Papier aluminium", "Bougies", "Élastiques", "Ficelle"],
 
+        collations: ["Chips", "Taralli", "Fruits secs", "Barres de céréales", "Pistaches", "Crackers", "Pop-corn", "Chocolat noir", "Gressins", "Noix", "Amandes", "Biscottes", "Bretzels", "Gaufrettes", "Olives vertes", "Nachos", "Bonbons gélifiés", "Biscuits salés", "Cacahuètes"],
+
         cadeauxDeNoel: ["Nous ne pensons pas pouvoir donner des suggestions pour cette catégorie car elle est trop subjective.",
             "Cependant, nous vous souhaitons un joyeux Noël avec votre famille, qu’elle soit de sang ou de cœur.",
             "C’est le plus beau cadeau... JOYEUX NOËL !"],

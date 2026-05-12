@@ -52,6 +52,7 @@ export const useSpanishSuggStoreStore = defineStore('spanish', {
 
         belleza: ["Labial", "Base de maquillaje", "Máscara de pestañas", "Delineador", "Polvo", "Rubor", "Esmalte de uñas", "Crema hidratante", "Tónico facial", "Limpiador facial", "Aceite para el cabello", "Shampoo", "Acondicionador", "Perfume", "Exfoliante corporal"],
 
+        aperitivos: ["Patatas fritas", "Taralli", "Frutos secos", "Barritas de cereales", "Pistachos", "Galletas saladas", "Palomitas", "Chocolate negro", "Colines", "Nueces", "Almendras", "Biscotes", "Pretzels", "Barquillos", "Aceitunas verdes", "Nachos", "Gominolas", "Snacks salados", "Cacahuetes"],
 
         otros: ["Pabellones", "Huevos", "Aperitivos", "Bicarbonato", "Café en polvo", "Cápsulas de café/waffles", "Barras energéticas", "Patatas fritas envasadas", "Galletas saladas", "Chocolates", "Palomitas", "Salsa de soja", "Salsa barbacoa", "Ketchup", "Mayonesa", "Frutos secos", "Cereales para el desayuno", "Pilas", "Encendedor", "Papel de horno", "Papel de aluminio", "Velas", "Bandas elásticas", "Cuerda"],
 

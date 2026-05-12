@@ -53,6 +53,8 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         estetica: ["Rossetto", "Fondotinta", "Mascara", "Eyeliner", "Cipria", "Blush", "Smalto per unghie", "Crema idratante", "Tonico viso", "Detergente viso", "Olio per capelli", "Shampoo", "Balsamo per capelli", "Profumo", "Scrub corpo"],
 
+        spuntini: ["Patatine", "Taralli", "Frutta secca", "Barrette ai cereali", "Pistacchi", "Crackers", "Popcorn", "Cioccolato fondente", "Grissini", "Noci", "Mandorle", "Fette biscottate", "Pretzel", "Wafer", "Olive verdi", "Nachos", "Caramelle gommose", "Salatini", "Arachidi"],
+
         altro: ["Sale", "Uova", "Snack", "Bicarbonato", "Caffè in polvere", "Caffè capsule/cialde", "Barrette energetiche", "Patatine confezionate", "Salatini", "Cioccolatini", "Popcorn", "Salsa di soia", "Salsa barbecue", "ketchup", "Maionese", "Frutta secca", "Cereali per la colazione", "Pile", "Accendino", "Carta da forno", "Fogli di alluminio", "Candele", "Elastici", "Spago"],
 
 

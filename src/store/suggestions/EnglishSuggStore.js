@@ -52,6 +52,8 @@ export const useEnglishSuggStoreStore = defineStore('english', {
 
         beauty: ["Lipstick", "Foundation", "Mascara", "Eyeliner", "Powder", "Blush", "Nail polish", "Moisturizer", "Face toner", "Face cleanser", "Hair oil", "Shampoo", "Conditioner", "Perfume", "Body scrub"],
 
+        snacks: ["Chips", "Taralli", "Dried fruit", "Cereal bars", "Pistachios", "Crackers", "Popcorn", "Dark chocolate", "Breadsticks", "Walnuts", "Almonds", "Rusks", "Pretzels", "Wafers", "Green olives", "Nachos", "Gummy candies", "Pretzel sticks", "Peanuts"],
+
         other: ["Salt", "Eggs", "Snacks", "Bicarbonate", "Coffee powder", "Coffee capsules/waffles", "Energy bars", "Packaged chips", "Pretzels", "Chocolates", "Popcorn", "Soy sauce", "Barbecue sauce", "Ketchup", "Mayonnaise", "Dried fruit", "Breakfast cereals", "Batteries", "Lighter", "Parchment paper", "Aluminum foil", "Candles", "Rubber bands", "String"],
 
         christmasGifts: ["We do not think we can give you suggestions for this category as it is too subjective.",

@@ -54,6 +54,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
         'online': this.eng.online,
         'sports': this.eng.sports,
         'beauty': this.eng.beauty,
+        'snacks': this.eng.snacks,
         'other': this.eng.other,
         'christmas gifts': this.eng.christmasGifts,
 
@@ -83,6 +84,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
         'web': this.ita.web,
         'sport': this.ita.sport,
         'estetica': this.ita.estetica,
+        'spuntini': this.ita.spuntini,
         'altro': this.ita.altro,
         'regali di natale': this.ita.regaliDiNatale,
 
@@ -112,6 +114,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
         'internet': this.spa.internet,
         'deporte': this.spa.deporte,
         'belleza': this.spa.belleza,
+        'aperitivos': this.spa.aperitivos,
         'otros': this.spa.otros,
         'regalos de navidad': this.spa.regalosDeNavidad,
 
@@ -141,6 +144,7 @@ export const useSuggestionsStore = defineStore('suggestions', {
         'en ligne': this.fra.enLigne,
         'sportive': this.fra.sportive,
         'beauté': this.fra.beaute,
+        'collations': this.fra.collations,
         'autre': this.fra.autre,
         'cadeaux de Noël': this.fra.cadeauxDeNoel,
       };

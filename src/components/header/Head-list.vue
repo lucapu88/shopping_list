@@ -148,10 +148,6 @@ export default {
 				}
 			};
 			document.addEventListener("visibilitychange", this._visibilityHandler);
-
-			if (this.addTodo.showCategoriesPrimaryPanel && this.settings.canShowCategoriesModal) {
-				this.focusOnInput();
-			}
 		},
 		_startRecSession() {
 			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -193,7 +189,6 @@ export default {
 				document.removeEventListener("visibilitychange", this._visibilityHandler);
 				this._visibilityHandler = null;
 			}
-			this.blurInput();
 		},
 		closeElement() {
 			if (this.addTodo.inModification) {
@@ -256,7 +251,15 @@ export default {
 					:placeholder="languages.placeholder"
 				/>
 				<!-- Purtroppo, la WebView con kodular continua a bloccare, quindi da app non si può usare...Per ora lo metto solo per gli iPhone perchè io lo voglio usare -->
-				<button v-if="settings.isIphone || !settings.isAndroid" class="mic-btn" :class="{ 'mic-btn--listening': isListening }" type="button" @click="startDictation()" :title="isListening ? 'Ferma dettatura' : 'Avvia dettatura'">
+				<button
+					v-if="settings.isIphone || !settings.isAndroid"
+					class="mic-btn"
+					:class="{ 'mic-btn--listening': isListening }"
+					type="button"
+					@touchstart.prevent="startDictation()"
+					@mousedown.prevent="startDictation()"
+					:title="isListening ? 'Ferma dettatura' : 'Avvia dettatura'"
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
 						<path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />

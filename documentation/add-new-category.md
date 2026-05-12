@@ -2,9 +2,9 @@ PROCEDURA PER AGGIUNGERE UNA NUOVA CATEGORIA:
 
 - Nel file CategoriesStore.js aggiungi un nuovo campo all'interno di CATEGORIES_BASE_CONFIG inserendo l'emoji e active. la proprietà "active" riguarda solo le categorie che vuoi far vedere per un periodo limitato, tipo quella dei regali di natale.
 
-- Aggiungi all'interno dei rispettivi array (eng, ita, span) il nome della nuova categoria.
-
 - Per prendere l'emoticon io uso questo sito: https://unicode.org/emoji/charts/full-emoji-list.html#1f600 e mi prendo il codice, ad esempio U+1F600 e lo modifico in 0x1F600
+
+- Aggiungi all'interno dei rispettivi array (eng, ita, span) il nome della nuova categoria.
 
 - Nel file SuggestionsStore.js aggiungerla nella costante categories all'interno del metodo checkAndSetSuggestionsLanguage. Va aggiunta 3 volte, una per ogni lingua.
 

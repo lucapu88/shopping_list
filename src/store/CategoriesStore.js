@@ -28,6 +28,7 @@ const CATEGORIES_BASE_CONFIG = [
     { emoji: String.fromCodePoint(0x1f310), active: true }, // web
     { emoji: String.fromCodePoint(0x26BD), active: true }, // sport
     { emoji: String.fromCodePoint(0x1F484), active: true }, // estetica
+    { emoji: String.fromCodePoint(0x1F37F), active: true }, // snacks
     { emoji: String.fromCodePoint(0x1f4b8), active: true }, // altro
     { emoji: String.fromCodePoint(0x1f385), active: false }, // regali di natale
 ];
@@ -37,26 +38,26 @@ const CATEGORIES_NAMES = {
         'vegetables', 'meat', 'fish', 'fruit', 'sweets', 'dairy', 'starchy', 'drinks',
         'frozen', 'spices', 'hygiene', 'medications', 'stationery', 'babies', 'electronics',
         'pets', 'tools', 'clothes', 'toys', 'furniture', 'household', 'gardening',
-        'online', 'sports', 'beauty', 'other', 'christmas gifts'
+        'online', 'sports', 'beauty', 'snacks', 'other', 'christmas gifts'
     ],
     ita: [
         'vegetali', 'carne', 'pesce', 'frutta', 'dolci', 'latticini', 'farinacei', 'bevande',
         'surgelati', 'spezie', 'igiene', 'farmaci', 'cancelleria', 'bimbi', 'elettronica',
         'animali', 'attrezzi', 'vestiti', 'giocattoli', 'arredamento', 'casalinghi', 'giardinaggio',
-        'web', 'sport', 'estetica', 'altro', 'regali di natale'
+        'web', 'sport', 'estetica', 'spuntini', 'altro', 'regali di natale'
     ],
     span: [
         'verduras', 'carnes', 'pescado', 'fruta', 'dulces', 'lácteos', 'harina', 'bebidas',
         'congelados', 'especias', 'higiene', 'medicamentos', 'papelería', 'niños', 'electrónica',
         'animales', 'herramientas', 'ropa', 'juguetes', 'mobiliario', 'hogar', 'jardinería',
-        'internet', 'deporte', 'belleza', 'otros', 'regalos de navidad'
+        'internet', 'deporte', 'belleza', 'aperitivos', 'otros', 'regalos de navidad'
     ],
     fra: [
         'légumes', 'viande', 'poisson', 'fruits', 'sucreries', 'laitages', 'amidon',
         'boissons', 'surgelés', 'épices', 'hygiène', 'médicaments', 'papeterie',
         'bébés', 'électronique', 'animaux', 'matériel', 'vêtements', 'jouets',
         'meubles', 'maison', 'jardinage', 'en ligne', 'sportive',
-        'beauté', 'autre', 'cadeaux de Noël'
+        'beauté', 'collations', 'autre', 'cadeaux de Noël'
     ]
 };
 
