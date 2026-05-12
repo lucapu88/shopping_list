@@ -3,6 +3,7 @@ import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
+import { usePreloadStore } from "@/store/PreloadStore";
 import { dbPromise } from "@/server/db.js";
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import SimpleAlert from "@/components/loyalty-cards/Simple-alert.vue";
@@ -14,10 +15,13 @@ import ErrorMessage from "./Error-message.vue";
 import InfoContainer from "./Info-container.vue";
 import OrderCards from "./Order-cards.vue";
 import ConfirmButtonsContainer from "../common/Confirm-buttons-container.vue";
+import errorImg from "@/img/loyalty-cards/oh-no.webp";
+
 /*
-	TODO: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
-	Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
+TODO: Partiamo dal fatto che la nuova versione "composition API" fa cagare e in questo componente non si capisce un cazzo proprio per questo modtivo.
+Però vabbè è da sistemare, per ora ho fatto l'essenziale per farlo funzionare. Va suddiviso in componenti e sistemata la sintassi per quel che si può fare vista sta merda di composition api.
 */
+const preload = usePreloadStore();
 const theme = useThemeStore();
 const languages = useLanguageStore();
 const secondTodos = useSecondTodoStore();
@@ -47,6 +51,9 @@ const az = ref(localStorage.getItem("az-order") === "true");
 let objectUrl = null;
 const limitCards = 25; //Se lo cambi qui, cambialo anche nel testo in loyalityCards.infoSubText  in languageStore.js
 const maxHeight = 300; //Se la cambi qui, cambiala anche nel css in .crop-container
+
+preload.preloadImage(errorImg);
+
 onMounted(loadPhotos);
 
 async function onSelect(e) {
