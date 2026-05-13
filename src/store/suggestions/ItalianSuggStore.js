@@ -2,12 +2,11 @@ import { defineStore } from 'pinia';
 
 export const useItalianSuggStoreStore = defineStore('italian', {
     state: () => ({
-
         vegetali: ["Carote", "Pomodori", "Patate", "Cipolle", "Zucchine", "Peperoni", "Cetrioli", "Melanzane", "Spinaci", "Lattuga", "Broccoli", "Cavolfiore", "Asparagi", "Fagiolini", "Sedano", "Finocchi", "Ravanelli", "Bietole", "Cavolo", "Zucca"],
 
         carne: ["Pollo", "Manzo", "Maiale", "Cotechino", "Salsiccia", "Agnello", "Anatra", "Vitello", "Coniglio", "Mortadella", "Salame", "Prosciutto cotto", "Prosciutto crudo", "Bresaola", "Fesa di tacchino", "Fesa di pollo", "Hamburger di pollo", "Hamburger di tacchino", "Hamburger di vitello", "Bacon", "Petto di pollo", "Coscia di pollo", "Sovracoscia di pollo", "Ali di pollo", "Filetto di manzo", "Controfiletto di manzo", "Costata di manzo", "Bistecca di manzo", "Fiorentina di manzo", "Sottofiletto di manzo", "Filetto di maiale", "Costine di maiale", "Lonza di maiale", "Spalla di maiale", "Coppa di maiale", "Stinco di maiale", "Braciole di maiale", "Lardo di maiale", "Guanciale di maiale"],
 
-        pesce: ["Salmone", "Tonno", "Merluzzo", "Trota", "Orata", "Branzino", "Sogliola", "Platessa", "Pesce spada", "Seppia", "Merluzzo nero", "Acciuga", "Scampi", "Gamberetti", "Calamari", "Cozze", "Vongole", "Aragosta", "Granchio", "Sardine"],
+        pesce: ["Salmone", "Tonno", "Merluzzo", "Trota", "Orata", "Branzino", "Sogliola", "Platessa", "Pesce spada", "Seppia", "Merluzzo nero", "Acciuga", "Scampi", "Gamberetti", "Calamari", "Cozze", "Vongole", "Aragosta", "Granchio", "Sardine", "Spigola"],
 
         frutta: ["Mele", "Banane", "Arance", "Uva", "Fragole", "Limoni", "Pere", "Kiwi", "Pesche", "Ananas", "Mango", "Melone", "Mandarini", "Ciliegie", "Limette", "Avocado", "Lamponi", "Pompelmi", "Albicocche", "Melograni"],
 
@@ -17,7 +16,7 @@ export const useItalianSuggStoreStore = defineStore('italian', {
 
         farinacei: ["Farina di grano", "Farina di mais", "Farina di segale", "Pasta", "Spaghetti", "Penne", "Fusilli", "Rigatoni", "Linguine", "Farfalle", "Bucatini", "Riso", "Pane", "Pane integrale", "Pane ai cereali", "Panini", "Biscotti", "Crackers", "Tortillas di mais", "Cereali", "Farina di avena", "Gnocchi", "Risotto", "Polenta", "Couscous"],
 
-        bevande: ["Acqua naturale", "Acqua frizzante", "Succo di frutta", "Coca cola", "Pepsi", "Aranciata", "Tè freddo", "Caffè in bottiglia", "Succo di frutta", "Birra", "Vino rosso", "Vino bianco", "Vino rosato", "Spumante", "Prosecco", "Amaro", "Limoncello", "Vodka", "Gin", "Rum", "Whisky", "Tewuila", "Aperol", "Spritz", "Campari"],
+        bevande: ["Acqua", "Acqua naturale", "Acqua frizzante", "Succo di frutta", "Coca cola", "Pepsi", "Aranciata", "Tè freddo", "Caffè in bottiglia", "Succo di frutta", "Birra", "Vino rosso", "Vino bianco", "Vino rosato", "Spumante", "Prosecco", "Amaro", "Limoncello", "Vodka", "Gin", "Rum", "Whisky", "Tewuila", "Aperol", "Spritz", "Campari"],
 
         surgelati: ["Gelato", "Ghiaccioli", "Pizza", "Minestrone", "Patatine fritte", "Patatine al forno", "Nuggets", "Crocchette di pollo", "Crocchette di patate", "Panzerottini", "Olive ascolane", "Crocchette di mozzarella", "Pesce surgelato", "Filetto", "Sorbetto", "Croissant", "Bastoncini di pesce", "Sfogliatelle", "Burritos", "Torta surgelata", "Minestra di legumi"],
 

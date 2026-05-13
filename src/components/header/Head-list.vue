@@ -9,6 +9,8 @@ import { useSettingsStore } from "@/store/SettingsStore";
 import { useTodoStore } from "@/store/TodoStore";
 import { useSuggestionsStore } from "@/store/suggestions/SuggestionsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
+import { useItalianSuggStoreStore } from "../../store/suggestions/ItalianSuggStore";
+import { useCategoriesStore } from "../../store/CategoriesStore";
 import SuggestionsButton from "./SuggestionsButton.vue";
 import GeneralTutorialBtn from "../helper/tutorials/General-tutorial-btn.vue";
 import CategoriesPrimaryPanel from "../panels-and-modals/categories-primary-panel/Categories-primary-panel.vue";
@@ -24,12 +26,15 @@ export default {
 			languages: useLanguageStore(),
 			settings: useSettingsStore(),
 			addTodo: useTodoStore(),
+			italianSuggestions: useItalianSuggStoreStore(),
 			suggestionsStore: useSuggestionsStore(),
 			secondTodos: useSecondTodoStore(),
+			categoriesStore: useCategoriesStore(),
 			selectedList: null,
 			isListening: false,
 			recognition: null,
 			_visibilityHandler: null,
+			searchTimer: null,
 		};
 	},
 	created() {
@@ -39,6 +44,21 @@ export default {
 	},
 	beforeUnmount() {
 		this._stopDictation();
+	},
+	computed: {
+		addTodo() {
+			return this.addTodo;
+		},
+	},
+	watch: {
+		"addTodo.newTodo"(newValue) {
+			// Tutta la logica di ricerca e selezione automatica della categoria in base al nome del prodotto è in fase di test solo per me. Valuterò se metterlo per tutti.
+			if (!this.settings.customSettings) {
+				return;
+			}
+
+			this.searchTodoInCorrectCategory(newValue);
+		},
 	},
 	methods: {
 		addNewTodo() {
@@ -54,6 +74,23 @@ export default {
 				this.addTodo.addTodo();
 				this.focusOnInput();
 			}
+		},
+		searchTodoInCorrectCategory(newValue) {
+			clearTimeout(this.searchTimer);
+
+			if (!newValue || newValue.length < 2) return;
+
+			this.searchTimer = setTimeout(() => {
+				const searchedWord = newValue.toLowerCase().trim();
+				const categories = this.categoriesStore.itaCategories;
+				const searchedCategory = categories.find((cat) => {
+					const productsList = this.italianSuggestions[cat.name];
+
+					return Array.isArray(productsList) && productsList.some((prodotto) => prodotto.toLowerCase() === searchedWord);
+				});
+
+				searchedCategory ? this.addTodo.selectCategoryForInsertion(searchedCategory) : this.categoriesStore.resetSelectedCat();
+			}, 500);
 		},
 		setMyPersonalConfiguration() {
 			const todo = this.addTodo.newTodo;
