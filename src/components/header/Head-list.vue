@@ -56,8 +56,8 @@ export default {
 			if (!this.settings.customSettings) {
 				return;
 			}
-
-			this.searchTodoInCorrectCategory(newValue);
+			//TOFIX: per il momento ho disabilitato questa funzionalità perchè non funziona benissimo e va sistemata.
+			// this.searchTodoInCorrectCategory(newValue);
 		},
 	},
 	methods: {
