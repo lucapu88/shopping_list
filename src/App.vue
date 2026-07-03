@@ -20,6 +20,7 @@ import DownloadAppAlert from "./components/panels-and-modals/Download-app-alert.
 import PaymentModal from "./components/ai-recipes-generator/Payment-modal.vue";
 import RecipeGeneratedModal from "./components/ai-recipes-generator/Recipe-generated-modal.vue";
 import PaymentWaiting from "./components/ai-recipes-generator/Payment-waiting.vue";
+import AdsBanner from "./components/footer/Ads-banner.vue";
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -193,6 +194,7 @@ export default {
 					<footer>
 						<DeleteAllPanel />
 						<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						<AdsBanner />
 					</footer>
 				</div>
 			</div>
