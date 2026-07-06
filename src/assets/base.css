@@ -225,6 +225,13 @@ button {
 	background-color: transparent !important;
 }
 
+.empty-div {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
 /* ----------------------------------------  TODO LIST ------------------------------------ */
 
 .todo {

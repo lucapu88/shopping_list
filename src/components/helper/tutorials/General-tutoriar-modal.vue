@@ -166,12 +166,6 @@ export default {
 </template>
 
 <style scoped>
-.empty-div {
-	height: 100%;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
 .modal {
 	background-color: #5252527c;
 }
