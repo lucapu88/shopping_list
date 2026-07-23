@@ -144,10 +144,10 @@ function ifError() {
 	</div>
 	<div class="recipe-generator mb-5">
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
-		<!-- <div class="form-check form-switch">
+		<div class="form-check form-switch" v-if="settings.customSettings">
 			<label>AI</label>
 			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
-		</div> -->
+		</div>
 
 		<!-- PULSANBTE GENERA RICETTA -->
 		<button
