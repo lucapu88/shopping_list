@@ -164,6 +164,10 @@ export default {
 </template>
 
 <style scoped>
+.close-x-container{
+ top:35px;
+}
+
 .halloween-pumpkin {
 	width: 75px;
 	height: 50px;
@@ -256,6 +260,7 @@ export default {
 	margin: 0 auto;
 }
 .helper-settings-title {
+	margin-top: 35px;
 	margin-bottom: 0.9375rem;
 	text-align: center;
 }

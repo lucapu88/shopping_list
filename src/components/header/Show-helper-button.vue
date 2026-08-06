@@ -90,7 +90,7 @@ export default {
 
 .helper {
 	position: absolute;
-	top: 10px;
+	top: 35px;
 	right: 5px;
 	border-radius: 50%;
 	z-index: 300;

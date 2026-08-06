@@ -251,7 +251,7 @@ export const useSettingsStore = defineStore('settings', {
       const openAiKey = window.localStorage.getItem("apikey");
       const firebaseUrl = window.localStorage.getItem("firebase");
 
-      if (openAiKey !== null && firebaseUrl !== null && this.isIphone) {
+      if (openAiKey !== null && firebaseUrl !== null ) {
         this.customSettings = true;
       }
     },

@@ -21,10 +21,7 @@ export default {
 	},
 	methods: {
 		openDevPanel() {
-			if (this.settings.isAndroid) {
-				return;
-			}
-			if (this.settings.customSettings && !this.settings.isAndroid) {
+			if (this.settings.customSettings) {
 				this.addTodo.devNotes = !this.addTodo.devNotes;
 			}
 		},
