@@ -113,7 +113,7 @@ export default {
 
 <style scoped>
 .modal {
-	padding-top: 10px;
+	padding-top: 40px;
 }
 
 .modal-content {
@@ -122,7 +122,7 @@ export default {
 	padding: 1.563rem;
 	border-radius: 10px;
 	width: 95%;
-	height: 95%;
+	height: 90%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;

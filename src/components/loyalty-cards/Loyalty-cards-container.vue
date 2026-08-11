@@ -404,7 +404,7 @@ onUnmounted(() => {
 	font-size: 1.875rem;
 	position: absolute;
 	right: 10px;
-	top: 0;
+	top: 38px;
 	width: 60px;
 	text-align: right;
 }
@@ -418,6 +418,7 @@ header {
 	justify-content: center;
 	padding: 0.625rem;
 	z-index: 20;
+	margin-top: 38px;
 }
 
 main {
