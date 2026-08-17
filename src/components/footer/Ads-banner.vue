@@ -12,22 +12,23 @@ import tamagoIcon from "../../img/ads/tamago-icon.webp";
 const preload = usePreloadStore();
 const settings = useSettingsStore();
 const theme = useThemeStore();
+
+preload.preloadImage(tamago);
+preload.preloadImage(pupu);
+preload.preloadImage(pupuIcon);
+
 const language = useLanguageStore();
-
-const imageTamago = ref(preload.preloadImage(tamago));
-const imagePupu = ref(preload.preloadImage(pupu));
-const pupuLogo = ref(preload.preloadImage(pupuIcon));
 const tamagoLogo = ref(preload.preloadImage(tamagoIcon));
-
 const logo = ref(tamagoLogo);
 const imagesSrc = ref(tamago);
-
-const currentIndex = ref(0);
 const openModal = ref(false);
+const copied = ref(false);
 const pupuUrl = "https://play.google.com/store/apps/details?id=com.lc.scappadallacacca";
 const tamagoUrl = "https://play.google.com/store/apps/details?id=com.virtualpet.tamago";
 const bannerUrl = ref(tamagoUrl);
+const currentIndex = ref(0);
 const currentImage = ref();
+const currentUrl = ref();
 const appName = ref("Tamago");
 
 setInterval(changeUrl, 3000);
@@ -45,11 +46,20 @@ function openBannerUrl(imagesSrc) {
 		currentImage.value = imagesSrc;
 		imagesSrc === tamago ? (appName.value = "Tamago") : (appName.value = "Scappa da pupu");
 		imagesSrc === tamago ? (logo.value = tamagoIcon) : (logo.value = pupuIcon);
+		currentUrl.value = imagesSrc === tamago ? tamagoUrl : pupuUrl;
 		return;
 	}
 
 	window.open(bannerUrl.value, "_system");
 }
+
+function copylink() {
+	navigator.clipboard.writeText(currentUrl.value);
+	copied.value = true;
+	setTimeout(() => {
+		copied.value = false;
+	}, 2500);
+}	
 </script>
 
 <template>
@@ -82,7 +92,7 @@ function openBannerUrl(imagesSrc) {
 			<img :src="currentImage" alt="app_img" class="app-image mt-5" />
 
 			<h2 class="text-center mt-3">
-				{{ language.playStoreText }}
+				{{ language.playStoreText.part1 }}
 				<br />
 				<br />
 				<span class="boldi-cipollino">
@@ -90,6 +100,10 @@ function openBannerUrl(imagesSrc) {
 					<img :src="logo" alt="logo" class="logo" />
 				</span>
 			</h2>
+
+			<h3 class="text-center" @click="copylink()">{{ language.playStoreText.part2 }} </h3>
+
+			<p v-if="copied" class="copied-text text-center text-success bg-light">{{language.share.text}}</p>
 		</div>
 	</div>
 </template>

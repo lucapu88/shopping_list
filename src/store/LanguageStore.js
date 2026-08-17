@@ -348,7 +348,10 @@ export const useLanguageStore = defineStore('Language', {
       voiceError: "Voice recognition error, try again and if it persists, contact support. Error:"
     },
     back: "Back",
-    playStoreText: "Download our game! It's completely free. Go to the Play Store and search for: "
+    playStoreText:{
+      part1: "Download our game! It's completely free. Go to the Play Store and search for: ",
+      part2: "Or visit this link: click here"
+  }
   }),
   getters: {},
   actions: {
@@ -617,7 +620,8 @@ export const useLanguageStore = defineStore('Language', {
       this.toggleCategoriesModalText.title = "Mostra/Nascondi categorie";
       this.toggleCategoriesModalText.description = "Scegli se mostrare o nascondere la finestra delle categorie quando digiti qualcosa.";
       this.back = "Indietro";
-      this.playStoreText = "Scarica il nostro gioco! È completamente gratuito. Vai sul Play Store e cerca: ";
+      this.playStoreText.part1 = "Scarica il nostro gioco! È completamente gratuito. Vai sul Play Store e cerca: ";
+      this.playStoreText.part2 = "Oppure visita questo link: clicca qui";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -794,7 +798,8 @@ export const useLanguageStore = defineStore('Language', {
       this.toggleCategoriesModalText.title = "Mostrar/Ocultar categorías";
       this.toggleCategoriesModalText.description = "Elija si desea mostrar u ocultar la ventana de categorías al escribir algo.";
       this.back = "Atrás";
-      this.playStoreText = "¡Descarga nuestro juego! Es completamente gratis. Ve a Play Store y busca: ";
+      this.playStoreText.part1 = "¡Descarga nuestro juego! Es completamente gratis. Ve a Play Store y busca: ";
+      this.playStoreText.part2 = "O visita este enlace: haz clic aquí";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -971,7 +976,8 @@ export const useLanguageStore = defineStore('Language', {
       this.toggleCategoriesModalText.title = "Afficher/Masquer les catégories";
       this.toggleCategoriesModalText.description = "Choisissez d'afficher ou de masquer la fenêtre des catégories lorsque vous tapez quelque chose.";
       this.back = "Retour";
-      this.playStoreText = "Téléchargez notre jeu ! C'est complètement gratuit. Allez sur le Play Store et recherchez : ";
+      this.playStoreText.part1 = "Téléchargez notre jeu ! C'est complètement gratuit. Allez sur le Play Store et recherchez : ";
+      this.playStoreText.part2 = "Ou visitez ce lien : cliquez ici";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
