@@ -331,7 +331,7 @@ export default {
 	max-width: 600px;
 	position: relative;
 	margin: 0 auto;
-	margin-top: 35px;
+	margin-top: 38px;
 }
 
 .christmas {

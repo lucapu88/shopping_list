@@ -239,6 +239,7 @@ onMounted(() => {
 	justify-content: space-between;
 	padding: 10px 10px 0;
 	align-items: baseline;
+	margin-top: 38px;
 }
 
 .info-btn {

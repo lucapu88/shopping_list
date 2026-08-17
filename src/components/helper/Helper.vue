@@ -260,7 +260,7 @@ export default {
 	margin: 0 auto;
 }
 .helper-settings-title {
-	margin-top: 35px;
+	margin-top: 38px;
 	margin-bottom: 0.9375rem;
 	text-align: center;
 }
