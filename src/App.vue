@@ -49,7 +49,6 @@ export default {
 			suggestionsStore: useSuggestionsStore(),
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
-			waitForGenerazioni: useGenerazioni(),
 			waitingForPayment: false,
 			newUpdatesRead: window.localStorage.getItem("newMarkAndCopyMode2"),
 		};
@@ -89,6 +88,7 @@ export default {
 
 		const fromPayment = sessionStorage.getItem("from_payment");
 		const { fetchGenerazioni } = useGenerazioni();
+		// eslint-disable-next-line no-unused-vars
 		auth.onAuthStateChanged(async (user) => {
 			this.settings.isAuthLoading = true;
 			await fetchGenerazioni();
@@ -96,13 +96,13 @@ export default {
 		});
 		if (fromPayment) {
 			sessionStorage.removeItem("from_payment");
-			const { waitForGenerazioni, waitingForPayment } = useGenerazioni();
-			// Sincronizza il ref locale con quello del composable
-			const stop = watch(waitingForPayment, (val) => {
-				this.waitingForPayment = val;
-			});
+
+			this.waitingForPayment = true;
+
+			const { waitForGenerazioni } = useGenerazioni();
 			await waitForGenerazioni();
-			stop();
+
+			this.waitingForPayment = false;
 		}
 	},
 	watch: {

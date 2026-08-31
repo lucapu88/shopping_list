@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 defineProps({ isVisible: Boolean });
 
-const phrases = ["🍝 Stiamo preparando le tue generazioni...", "🔪 Il chef sta affilando i coltelli...", "🥘 Il pagamento è quasi pronto...", "🍷 Quasi fatto, ancora un secondo...", "🌿 Stiamo raccogliendo gli ingredienti..."];
+const phrases = ["🍝 Stiamo preparando le tue generazioni...", "🔪 Lo chef sta affilando i coltelli...", "🥘 Il pagamento è quasi pronto...", "🍷 Quasi fatto, ancora un secondo...", "🌿 Stiamo raccogliendo gli ingredienti..."];
 
 const currentPhrase = ref(phrases[0]);
 let interval = null;
@@ -90,26 +90,31 @@ h2 {
 .dots span:nth-child(2) {
 	animation-delay: 0.2s;
 }
+
 .dots span:nth-child(3) {
 	animation-delay: 0.4s;
 }
 
 @keyframes bounce {
+
 	0%,
 	100% {
 		transform: translateY(0);
 	}
+
 	50% {
 		transform: translateY(-10px);
 	}
 }
 
 @keyframes pulse {
+
 	0%,
 	100% {
 		opacity: 0.3;
 		transform: scale(0.8);
 	}
+
 	50% {
 		opacity: 1;
 		transform: scale(1);
