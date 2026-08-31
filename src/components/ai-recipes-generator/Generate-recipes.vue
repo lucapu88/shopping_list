@@ -1,3 +1,4 @@
+<!-- eslint-disable no-unused-vars -->
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import { storeToRefs } from "pinia";
@@ -138,7 +139,8 @@ function ifError() {
 
 <template>
 	<div class="text-center">
-		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{ languages.recipes.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
+		<p v-if="secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0">{{
+			languages.recipes.totalRecipesText }} {{ secondTodosStore.totalRecipes }}</p>
 		<p v-if="isGenerating">{{ languages.recipes.alertRecepiesText }}</p>
 		<p>{{ waitingPhrase }}</p>
 	</div>
@@ -150,22 +152,18 @@ function ifError() {
 		</div>
 
 		<!-- PULSANBTE GENERA RICETTA -->
-		<button
-			:class="{
-				'btn btn-warning': !secondTodosStore.totalRecipes,
-				'btn btn-success': secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0,
-				error: errorRecipe,
-				disabled: !todoStore.todos.length || isGenerating,
-			}"
-			:disabled="settings.isAuthLoading || !todoStore.todos.length || isGenerating"
-			@click="generateRecipe"
-		>
+		<button :class="{
+			'btn btn-warning': !secondTodosStore.totalRecipes,
+			'btn btn-success': secondTodosStore.totalRecipes && +secondTodosStore.totalRecipes > 0,
+			error: errorRecipe,
+			disabled: !todoStore.todos.length || isGenerating,
+		}" :disabled="settings.isAuthLoading || !todoStore.todos.length || isGenerating" @click="generateRecipe">
 			{{ isGenerating || settings.isAuthLoading ? "Loading..." : languages.recipes.recipesBtnText }}
 		</button>
 
 		<img v-if="recipesReady" class="chef" :src="chefKhaby" alt="chef" />
 		<!-- PULSANBTE MOSTRA MODALE RICETTA -->
-		<ShowRecipeModalButton v-if="secondTodosStore.recipe && !secondTodosStore.loadingRecipes" />
+		<ShowRecipeModalButton v-if="!secondTodosStore.loadingRecipes" />
 	</div>
 </template>
 
@@ -187,19 +185,22 @@ button {
 .error {
 	background-color: #ff0000;
 }
+
 .disabled {
 	background-color: #a1a1a1;
 	color: #575757;
 }
 
-.form-check > label {
+.form-check>label {
 	margin-left: 0.3125rem;
 	line-height: 2;
 }
+
 .form-check-input {
 	width: 3em;
 	height: 1.5em;
 }
+
 .chef {
 	width: 125px;
 	height: 150px;

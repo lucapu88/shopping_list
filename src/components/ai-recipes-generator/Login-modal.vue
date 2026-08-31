@@ -143,15 +143,20 @@ export default {
 			<div v-if="showResetForm">
 				<p style="font-size: 13px; color: #7a6e5e; margin-bottom: 10px">{{ languages.login.emailTitle }}</p>
 				<input v-model="resetEmail" type="email" placeholder="Email" class="input" />
-				<button class="btn-email mt-2 mb-2" @click="handleResetPassword" :disabled="loading">{{ languages.login.recLink }}</button>
-				<p v-if="resetSent" style="color: green; font-size: 13px; text-align: center">✅ {{ languages.login.emailSentText }}</p>
+				<button class="btn-email mt-2 mb-2" @click="handleResetPassword" :disabled="loading">{{
+					languages.login.recLink
+					}}</button>
+				<p v-if="resetSent" style="color: green; font-size: 13px; text-align: center">✅ {{
+					languages.login.emailSentText }}
+				</p>
 				<button class="btn-back ms-3" @click="showResetForm = false">✕</button>
 			</div>
 
 			<!-- Se sta registrando con email -->
 			<div v-if="showEmailForm" class="email-form">
 				<input v-model="email" type="email" placeholder="Email" class="input" />
-				<input v-model="password" type="password" placeholder="Password" class="input" @focus="onPasswordFocus" @blur="onPasswordBlur" />
+				<input v-model="password" type="password" placeholder="Password" class="input" @focus="onPasswordFocus"
+					@blur="onPasswordBlur" />
 				<button class="btn-email" @click="handleEmail">
 					{{ isRegistering ? languages.login.register : languages.login.singIn }}
 				</button>
@@ -159,18 +164,22 @@ export default {
 					{{ isRegistering ? languages.login.accountOk : languages.login.accountNo }}
 				</p>
 				<!-- Link recupero password — visibile solo in modalità login -->
-				<p v-if="!isRegistering" class="toggle-auth" @click="showResetForm = true">{{ languages.login.resetPassword }}</p>
+				<p v-if="!isRegistering" class="toggle-auth" @click="showResetForm = true">{{
+					languages.login.resetPassword }}</p>
 
 				<button class="btn-back" @click="showEmailForm = false">← {{ languages.back }}</button>
 			</div>
 
 			<!-- Pulsanti principali -->
 			<div v-else class="buttons">
-				<button v-if="settings.isAndroidBrowser || settings.isIphone || !settings.isAndroid" class="btn-google" @click="handleGoogle" :disabled="loading">
+				<button v-if="settings.isAndroidBrowser || settings.isIphone || !settings.isAndroid" class="btn-google"
+					@click="handleGoogle" :disabled="loading">
 					<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" />
 					{{ languages.login.google }}
 				</button>
-				<button class="btn-email-option" @click="showEmailForm = true" :disabled="loading">✉ {{ languages.login.otherEmail }}</button>
+				<button class="btn-email-option" @click="showEmailForm = true" :disabled="loading">✉ {{
+					languages.login.otherEmail
+					}}</button>
 			</div>
 
 			<div class="error-msg" v-if="errorMessage">⚠ {{ errorMessage }}</div>
@@ -228,6 +237,7 @@ export default {
 	text-align: center;
 	margin-bottom: 28px;
 }
+
 .icon-ring {
 	font-size: 32px;
 	width: 64px;
@@ -239,15 +249,18 @@ export default {
 	justify-content: center;
 	margin: 0 auto 40px;
 }
-.icon-ring > img {
+
+.icon-ring>img {
 	width: 130px;
 	height: 130px;
 }
+
 .card-header h1 {
 	font-size: 22px;
 	color: #1a1208;
 	margin-bottom: 8px;
 }
+
 .card-header p {
 	font-size: 13px;
 	color: #7a6e5e;
@@ -275,6 +288,7 @@ export default {
 	transition: all 0.2s;
 	color: #1a1208;
 }
+
 .btn-google:hover {
 	border-color: #c8a96e;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -291,6 +305,7 @@ export default {
 	cursor: pointer;
 	transition: all 0.2s;
 }
+
 .btn-email-option:hover {
 	opacity: 0.9;
 }
@@ -320,6 +335,7 @@ export default {
 	outline: none;
 	background: white;
 }
+
 .input:focus {
 	border-color: #c8a96e;
 }
@@ -406,7 +422,8 @@ export default {
 .eye--closed {
 	background: #f5b68e;
 }
-.eye--closed > .pupil {
+
+.eye--closed>.pupil {
 	background: #f5b68e;
 	border-bottom: 5px solid black;
 }

@@ -86,7 +86,7 @@ export default {
 		},
 		async handleLogout() {
 			await logout();
-			secondTodosStore.totalRecipes = 0;
+			this.secondTodosStore.totalRecipes = 0;
 		},
 		async handleCheckout() {
 			this.planNotSelected = false;
@@ -145,7 +145,9 @@ export default {
 
 			<!-- sezione piani -->
 			<div class="plans-grid">
-				<div v-for="plan in plans" :key="plan.id" class="plan-card" :class="{ selected: selectedPlan?.id === plan.id, featured: plan.featured }" @click="selectPlan(plan)">
+				<div v-for="plan in plans" :key="plan.id" class="plan-card"
+					:class="{ selected: selectedPlan?.id === plan.id, featured: plan.featured }"
+					@click="selectPlan(plan)">
 					<div class="plan-badge" v-if="plan.featured">{{ languages.paymentModal.popularText }}</div>
 					<div class="plan-top">
 						<span class="plan-emoji">{{ plan.emoji }}</span>
@@ -170,11 +172,14 @@ export default {
 				</div>
 			</transition>
 
-			<p class="plan-not-selected text-danger text-center mb-3" v-if="planNotSelected">☝ {{ languages.paymentModal.selectPlanAlertText }} ☝</p>
+			<p class="plan-not-selected text-danger text-center mb-3" v-if="planNotSelected">☝ {{
+				languages.paymentModal.selectPlanAlertText }} ☝</p>
 
 			<!-- Pulsante login — visibile solo se non loggato -->
 			<div v-if="!isLoggedIn" class="login-section">
-				<button class="login-btn" @click="showLoginModal = true">👤 {{ languages.paymentModal.loginFirstText }}</button>
+				<button class="login-btn" @click="showLoginModal = true">
+					👤 {{ languages.paymentModal.loginFirstText }}
+				</button>
 			</div>
 
 			<!-- Se loggato mostra email -->
@@ -189,7 +194,8 @@ export default {
 				<span v-if="loading" class="spinner"></span>
 				<span v-else>
 					{{ languages.paymentModal.payBtnText }}
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+						stroke-width="2.5">
 						<path d="M5 12h14M12 5l7 7-7 7" />
 					</svg>
 				</span>
@@ -262,6 +268,7 @@ export default {
 	justify-content: center;
 	transition: background 0.2s;
 }
+
 .close-btn:hover {
 	background: rgba(0, 0, 0, 0.14);
 }
@@ -271,6 +278,7 @@ export default {
 	text-align: center;
 	margin-bottom: 32px;
 }
+
 .sub-description {
 	font-size: 0.625rem;
 	border-top: 1px solid #808080;
@@ -288,6 +296,7 @@ export default {
 	margin: 0 auto 16px;
 	box-shadow: 0 4px 16px rgba(255, 180, 50, 0.25);
 }
+
 .card-header h1 {
 	font-size: 25px;
 	font-weight: 600;
@@ -295,15 +304,18 @@ export default {
 	letter-spacing: -0.5px;
 	margin-bottom: 8px;
 }
+
 .card-header-p {
 	font-size: 14px;
 }
+
 .card-header-p,
 .sub-description {
 	color: #7a6e5e;
 	line-height: 1.5;
 	font-weight: 300;
 }
+
 /* Plans */
 .plans-grid {
 	display: grid;
@@ -323,11 +335,13 @@ export default {
 	transition: all 0.22s ease;
 	overflow: hidden;
 }
+
 .plan-card:hover {
 	border-color: #c8a96e;
 	transform: translateY(-2px);
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
+
 .plan-card.selected {
 	border-color: #9b6a2f;
 	background: #fff8ec;
@@ -336,6 +350,7 @@ export default {
 		0 8px 24px rgba(0, 0, 0, 0.08);
 	transform: translateY(-2px);
 }
+
 .plan-card.featured {
 	border-color: #c8a96e;
 }
@@ -360,6 +375,7 @@ export default {
 	margin-top: 10px;
 	margin-bottom: 8px;
 }
+
 .plan-emoji {
 	font-size: 22px;
 	display: block;
@@ -378,12 +394,14 @@ export default {
 	text-decoration: underline;
 	text-align: center;
 }
+
 .currency {
 	font-size: 14px;
 	font-weight: 500;
 	color: #3d2f1a;
 	margin-top: 4px;
 }
+
 .amount {
 	font-size: 32px;
 	font-weight: 700;
@@ -396,6 +414,7 @@ export default {
 	color: #4a3d2d;
 	margin-bottom: 4px;
 }
+
 .plan-gen strong {
 	font-weight: 600;
 }
@@ -434,6 +453,7 @@ export default {
 	color: #4a3d2d;
 	border: 1px solid #e8d9bf;
 }
+
 .summary-price {
 	font-size: 18px;
 	font-weight: 600;
@@ -459,11 +479,13 @@ export default {
 	letter-spacing: 0.2px;
 	margin-bottom: 16px;
 }
+
 .pay-btn:hover:not(:disabled) {
 	background: linear-gradient(135deg, #2d1f0a, #5a4525);
 	transform: translateY(-1px);
 	box-shadow: 0 8px 24px rgba(26, 18, 8, 0.3);
 }
+
 .pay-btn:disabled {
 	opacity: 0.45;
 	cursor: not-allowed;
@@ -479,6 +501,7 @@ export default {
 	border-radius: 50%;
 	animation: spin 0.7s linear infinite;
 }
+
 @keyframes spin {
 	to {
 		transform: rotate(360deg);
@@ -505,6 +528,7 @@ export default {
 	font-size: 12px;
 	color: #9e8e78;
 }
+
 .security svg {
 	flex-shrink: 0;
 }
@@ -514,6 +538,7 @@ export default {
 .fade-leave-active {
 	transition: opacity 0.25s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
 	opacity: 0;
@@ -523,9 +548,11 @@ export default {
 	.payment-card {
 		padding: 32px 20px 24px;
 	}
+
 	.plans-grid {
 		gap: 8px;
 	}
+
 	.amount {
 		font-size: 26px;
 	}
@@ -534,13 +561,16 @@ export default {
 .plan-not-selected {
 	animation: zoominoutnew 1.5s infinite;
 }
+
 @keyframes zoominoutnew {
 	0% {
 		transform: scale(1, 1);
 	}
+
 	50% {
 		transform: scale(1.2, 1.2);
 	}
+
 	100% {
 		transform: scale(1, 1);
 	}
@@ -557,9 +587,11 @@ export default {
 	margin-bottom: 10px;
 	transition: all 0.2s;
 }
+
 .login-btn:hover {
 	border-color: #c8a96e;
 }
+
 .logged-as {
 	font-size: 13px;
 	color: #4a7c4a;
@@ -574,7 +606,8 @@ export default {
 	display: flex;
 	justify-content: center;
 }
-.logout-btn > button {
+
+.logout-btn>button {
 	font-size: 13px;
 }
 </style>

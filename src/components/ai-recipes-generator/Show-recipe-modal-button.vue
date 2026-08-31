@@ -1,7 +1,9 @@
 <script setup>
+import { ref } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
 import { usePreloadStore } from "../../store/PreloadStore";
+import { auth, onAuthStateChanged } from "@/firebase.js";
 
 const secondTodosStore = useSecondTodoStore();
 const languages = useLanguageStore();
@@ -10,12 +12,20 @@ const preload = usePreloadStore();
 preload.urls.forEach((url) => {
 	preload.preloadImage(url);
 });
+
+const isLoggedIn = ref(!!auth.currentUser);
+
+onAuthStateChanged(auth, (user) => {
+	isLoggedIn.value = !!user;
+});
 </script>
 
 <template>
 	<button @click="secondTodosStore.showRecipeModal = true">
-		<span>{{ String.fromCodePoint(secondTodosStore.recipe.emoji) }}</span>
-		<small>{{ languages.recipes.recipeGeneratedText }}</small>
+		<span>
+			{{ isLoggedIn ? String.fromCodePoint(secondTodosStore.recipe.emoji) : String.fromCodePoint(0x1f37d) }}
+		</span>
+		<small v-if="isLoggedIn">{{ languages.recipes.recipeGeneratedText }}</small>
 	</button>
 </template>
 
@@ -27,6 +37,7 @@ button {
 	cursor: pointer;
 	max-width: 120px;
 }
+
 span {
 	font-size: 30px;
 }

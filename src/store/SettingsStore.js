@@ -1,5 +1,9 @@
-import { defineStore } from 'pinia';
-import { useLanguageStore } from '@/store/LanguageStore';
+import {
+  defineStore
+} from 'pinia';
+import {
+  useLanguageStore
+} from '@/store/LanguageStore';
 
 export const useSettingsStore = defineStore('settings', {
   state: () => ({
@@ -78,14 +82,15 @@ export const useSettingsStore = defineStore('settings', {
       const yearNow = d.getFullYear();
       const lastMonth = window.localStorage.getItem('lastMonth');
       const lastYear = window.localStorage.getItem('lastYear');
-      const month = this.languages.langIta
-        ? ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"]
-        : this.languages.langSpanish
-          ? ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-          : this.languages.langFrench
-            ? ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+      const month = this.languages.langIta ?
+        ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"] :
+        this.languages.langSpanish ?
+        ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"] :
+        this.languages.langFrench ?
+        ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
-            : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        :
+        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       if (lastMonth && lastYear && monthNow == lastMonth && yearNow == lastYear) {
         this.languages.updateText.updated = true;
@@ -251,7 +256,7 @@ export const useSettingsStore = defineStore('settings', {
       const openAiKey = window.localStorage.getItem("apikey");
       const firebaseUrl = window.localStorage.getItem("firebase");
 
-      if (openAiKey !== null && firebaseUrl !== null ) {
+      if (openAiKey !== null && firebaseUrl !== null) {
         this.customSettings = true;
       }
     },
@@ -277,7 +282,9 @@ export const useSettingsStore = defineStore('settings', {
       const totalKB = (totalByte / 1024).toFixed(2);
 
       if (totalKB == 5120) {
-        if (this.customSettings) { alert('attenzione, memoria localStorage quasi piena'); }
+        if (this.customSettings) {
+          alert('attenzione, memoria localStorage quasi piena');
+        }
         console.log('%cATTENZIONE PORCA PUTTANA SEI ARRIVATO AL LIMITE DI MEMORIA DEL LOCALSTORAGE!!!', "color: red;font-size: 25px; font-weight: bold;");
         console.log('%cMettiti comodo e inventati qualcosa per risolvere sto casino.', "color: red;font-size: 15px;");
       } else {

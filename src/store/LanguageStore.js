@@ -1,6 +1,12 @@
-import { defineStore } from 'pinia';
-import { useTodoStore } from '@/store/TodoStore';
-import { useCategoriesStore } from '@/store/CategoriesStore';
+import {
+  defineStore
+} from 'pinia';
+import {
+  useTodoStore
+} from '@/store/TodoStore';
+import {
+  useCategoriesStore
+} from '@/store/CategoriesStore';
 
 export const useLanguageStore = defineStore('Language', {
   state: () => ({
@@ -348,10 +354,11 @@ export const useLanguageStore = defineStore('Language', {
       voiceError: "Voice recognition error, try again and if it persists, contact support. Error:"
     },
     back: "Back",
-    playStoreText:{
+    playStoreText: {
       part1: "Download our game! It's completely free. Go to the Play Store and search for: ",
       part2: "Or visit this link: click here"
-  }
+    },
+    loginInText: "You are not logged in"
   }),
   getters: {},
   actions: {
@@ -622,6 +629,7 @@ export const useLanguageStore = defineStore('Language', {
       this.back = "Indietro";
       this.playStoreText.part1 = "Scarica il nostro gioco! È completamente gratuito. Vai sul Play Store e cerca: ";
       this.playStoreText.part2 = "Oppure visita questo link: clicca qui";
+      this.loginInText = "Non sei loggato";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
       this.placeholder = 'Escriba aquí qué comprar';
@@ -800,6 +808,7 @@ export const useLanguageStore = defineStore('Language', {
       this.back = "Atrás";
       this.playStoreText.part1 = "¡Descarga nuestro juego! Es completamente gratis. Ve a Play Store y busca: ";
       this.playStoreText.part2 = "O visita este enlace: haz clic aquí";
+      this.loginInText = "No has iniciado sesión";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
       this.placeholder = 'Écrivez ici quoi acheter';
@@ -978,6 +987,7 @@ export const useLanguageStore = defineStore('Language', {
       this.back = "Retour";
       this.playStoreText.part1 = "Téléchargez notre jeu ! C'est complètement gratuit. Allez sur le Play Store et recherchez : ";
       this.playStoreText.part2 = "Ou visitez ce lien : cliquez ici";
+      this.loginInText = "Vous n'êtes pas connecté";
     },
     //-------------------------------------------------------------------------------------  CARTE FEDELTÀ
     loyalityCardsITA() {
@@ -1269,4 +1279,3 @@ export const useLanguageStore = defineStore('Language', {
     },
   }
 });
-
