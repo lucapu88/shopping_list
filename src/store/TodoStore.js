@@ -1,22 +1,69 @@
-import { defineStore } from 'pinia';
-import { useLanguageStore } from '@/store/LanguageStore';
-import { useSettingsStore } from '@/store/SettingsStore';
-import { useChristmasStore } from '@/store/festivities/ChristmasStore';
-import { useOthersFestivitiesStore } from '@/store/festivities/OthersFestivitiesStore';
-import { useSuggestionsStore } from '@/store/suggestions/SuggestionsStore';
-import { useCategoriesStore } from '@/store/CategoriesStore';
-import { useSecondTodoStore } from "@/store/SecondTodoStore";
-import { useFirebaseStore } from '@/server/FirebaseStore';
-import { usePreloadStore } from '@/store/PreloadStore';
+import {
+  defineStore
+} from 'pinia';
+import {
+  useLanguageStore
+} from '@/store/LanguageStore';
+import {
+  useSettingsStore
+} from '@/store/SettingsStore';
+import {
+  useChristmasStore
+} from '@/store/festivities/ChristmasStore';
+import {
+  useOthersFestivitiesStore
+} from '@/store/festivities/OthersFestivitiesStore';
+import {
+  useSuggestionsStore
+} from '@/store/suggestions/SuggestionsStore';
+import {
+  useCategoriesStore
+} from '@/store/CategoriesStore';
+import {
+  useSecondTodoStore
+} from "@/store/SecondTodoStore";
+import {
+  useFirebaseStore
+} from '@/server/FirebaseStore';
+import {
+  usePreloadStore
+} from '@/store/PreloadStore';
 
-const listMap = [
-  { check: 'secondList', todoKey: 'todos2', backupKey: 'todosBackup2' },
-  { check: 'thirdList', todoKey: 'todos3', backupKey: 'todosBackup3' },
-  { check: 'fourthList', todoKey: 'todos4', backupKey: 'todosBackup4' },
-  { check: 'fifthList', todoKey: 'todos5', backupKey: 'todosBackup5' },
-  { check: 'sixthList', todoKey: 'todos6', backupKey: 'todosBackup6' },
-  { check: 'seventhList', todoKey: 'todos7', backupKey: 'todosBackup7' },
-  { check: 'eighthList', todoKey: 'todos8', backupKey: 'todosBackup8' },
+const listMap = [{
+    check: 'secondList',
+    todoKey: 'todos2',
+    backupKey: 'todosBackup2'
+  },
+  {
+    check: 'thirdList',
+    todoKey: 'todos3',
+    backupKey: 'todosBackup3'
+  },
+  {
+    check: 'fourthList',
+    todoKey: 'todos4',
+    backupKey: 'todosBackup4'
+  },
+  {
+    check: 'fifthList',
+    todoKey: 'todos5',
+    backupKey: 'todosBackup5'
+  },
+  {
+    check: 'sixthList',
+    todoKey: 'todos6',
+    backupKey: 'todosBackup6'
+  },
+  {
+    check: 'seventhList',
+    todoKey: 'todos7',
+    backupKey: 'todosBackup7'
+  },
+  {
+    check: 'eighthList',
+    todoKey: 'todos8',
+    backupKey: 'todosBackup8'
+  },
 ];
 
 export const useTodoStore = defineStore('todoStore', {
@@ -41,7 +88,10 @@ export const useTodoStore = defineStore('todoStore', {
     christmasTheme: false,
     isCategory: false,
     categoryEmoji: '',
-    addTodoInCategory: { condition: false, id: null },
+    addTodoInCategory: {
+      condition: false,
+      id: null
+    },
     isDraggable: false,
     selectedByHolding: true,
     inModification: false,
@@ -81,8 +131,12 @@ export const useTodoStore = defineStore('todoStore', {
       this.addingTodo = true;
 
       try {
-        if (tip) { this.newTodo = tip; } //se ho cliccato un suggerimento nella modale suggestions
-        if (!this.newTodo) { return; }
+        if (tip) {
+          this.newTodo = tip;
+        } //se ho cliccato un suggerimento nella modale suggestions
+        if (!this.newTodo) {
+          return;
+        }
 
         this.newTodo = this.newTodo.trim();
 
@@ -252,18 +306,25 @@ export const useTodoStore = defineStore('todoStore', {
     },
     confirmedRemoveTodo(x) {
       this.backupList();
-      if (!this.todos[x].category) { this.setOnlyDeletedTodos(x); }
+      if (!this.todos[x].category) {
+        this.setOnlyDeletedTodos(x);
+      }
       this.todos.splice(x, 1);
       this.saveTodos();
       this.toggleButtonDeleteSelectedTodo();
       this.confirmDeleteModal = false;
       // se ho impostato l'eliminazione automatica categorie vuote
-      if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
+      if (this.settings.canDeleteEmptyCategories) {
+        this.removeOnlyEmpty();
+      }
       //navigator.vibrate(220); TOFIX vedere come mai non funziona su mobile e vedere se tenerlo o meno
     },
     saveTodos(draggedElement) {
       const parsedTodos = JSON.stringify(draggedElement || this.todos);
-      const checks = listMap.map((l) => ({ check: l.check, set: l.todoKey }));
+      const checks = listMap.map((l) => ({
+        check: l.check,
+        set: l.todoKey
+      }));
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todos');
       this.priceCalculator();
     },
@@ -282,7 +343,9 @@ export const useTodoStore = defineStore('todoStore', {
         const parsedTodoList = JSON.parse(window.localStorage.getItem(todos));
         parsedTodoList.forEach(todo => {
           //faccio questo perchè ci sono i vecchi todo salvati in locale nei dispositivi degli utenti che hanno ancora la proprietà class
-          if (todo.class) { todo.category = todo.class; }
+          if (todo.class) {
+            todo.category = todo.class;
+          }
           //resetto la proprietà isMoving perchè altrimenti rimarrebbe l'ultimo elemento selezionato per lo spostamento, mentre lo spostamento è terminato e quindi va resettato
           todo.isMoving = false;
         });
@@ -343,7 +406,9 @@ export const useTodoStore = defineStore('todoStore', {
       this.secondTodosStore.showChangeList = false;
       this.categoryList = !this.categoryList;
       this.isDraggable = false;
-      this.categoryList ? setTimeout(() => { this.categoryListChildren = true; }, 400) : this.categoryListChildren = false;
+      this.categoryList ? setTimeout(() => {
+        this.categoryListChildren = true;
+      }, 400) : this.categoryListChildren = false;
     },
     selectCategoryName(selectedCategoryName) {
       this.newTodo = selectedCategoryName;
@@ -357,12 +422,16 @@ export const useTodoStore = defineStore('todoStore', {
     removeOnlyEmpty() {
       const last = this.todos[this.todos.length - 1];
       //se l'ultimo della lista è una categoria (allora sotto di lui non avrà nulla) aggiungo una proprietà per rimuoverlo
-      if (last?.category) { last.categoryToBeDeleted = true; }
+      if (last?.category) {
+        last.categoryToBeDeleted = true;
+      }
 
       this.todos.forEach((todo, index) => {
         const next = this.todos[index + 1];
         //se l'elemento è una categoria ed il suo successivo/precedente pure, vuol dire che sono categorie vuote
-        if (todo?.category && next?.category) { todo.categoryToBeDeleted = true; }
+        if (todo?.category && next?.category) {
+          todo.categoryToBeDeleted = true;
+        }
       });
       this.todos = this.todos.filter((todo) => !todo.categoryToBeDeleted);
       this.saveTodos();
@@ -375,7 +444,9 @@ export const useTodoStore = defineStore('todoStore', {
       this.todos = this.todos.filter((todo) => !todo.multipleDelete);
       this.isDraggable = false;
       this.saveTodos();
-      if (this.settings.canDeleteEmptyCategories) { this.removeOnlyEmpty(); }
+      if (this.settings.canDeleteEmptyCategories) {
+        this.removeOnlyEmpty();
+      }
       this.confirmDeleteModal = false;
       this.toggleButtonDeleteSelectedTodo();
     },
@@ -395,10 +466,10 @@ export const useTodoStore = defineStore('todoStore', {
               //se clicco su una categoria ed è evidenziata il focus va sull'input
               this.focusIn = true;
               this.languages.placeholder = (
-                this.languages.langIta ? 'Aggiungi in '
-                  : this.languages.langSpanish ? 'Añadir en '
-                    : this.languages.langFrench ? 'Ajouter dans '
-                      : 'Add in ') + todo.emojy + todo.name.toUpperCase();
+                this.languages.langIta ? 'Aggiungi in ' :
+                this.languages.langSpanish ? 'Añadir en ' :
+                this.languages.langFrench ? 'Ajouter dans ' :
+                'Add in ') + todo.emojy + todo.name.toUpperCase();
 
               this.inModification = true;
               this.categoryName = todo.name.toUpperCase();
@@ -430,7 +501,9 @@ export const useTodoStore = defineStore('todoStore', {
       }
     },
     selectTodoForDelete(index) {
-      if (this.todos[index].modify) { return; }
+      if (this.todos[index].modify) {
+        return;
+      }
       this.todos[index].isActive = false;
       this.todos[index].isDisabled = false;
       this.todos[index].multipleDelete = !this.todos[index].multipleDelete;
@@ -505,7 +578,10 @@ export const useTodoStore = defineStore('todoStore', {
     backupList() {
       const newTodoList = [...this.todos];
       const parsedTodos = JSON.stringify(newTodoList);
-      const checks = listMap.map((l) => ({ check: l.check, set: l.todoKey }));
+      const checks = listMap.map((l) => ({
+        check: l.check,
+        set: l.todoKey
+      }));
 
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todosBackup');
     },
@@ -568,12 +644,15 @@ export const useTodoStore = defineStore('todoStore', {
           break;
       }
 
-      if (todosToDelete.length === 1) { storageKey = 'singleTodoDeleted'; }
+      if (todosToDelete.length === 1) {
+        storageKey = 'singleTodoDeleted';
+      }
 
       todosToDelete.push(this.settings.setDate());
       if (this.saveOnFirebase) {
-        this.firebaseStore.insertData(todosToDelete);
-        this.firebaseStore.getData();
+        /*TODO: Disabilitato temporaneamente poichè non lo uso, così evito di consumare risorse in firebase.*/
+        // this.firebaseStore.insertData(todosToDelete);
+        // this.firebaseStore.getData();
       }
       this.secondTodosStore.getAndPushListsNumber(storageKey, todosToDelete);
     },
@@ -592,13 +671,19 @@ export const useTodoStore = defineStore('todoStore', {
     },
     toggleSelectedTodosForDelete() {
       this.isVisible = !this.isVisible;
-      this.isVisible
-        ? this.todos.forEach(todo => { if (todo.multipleDelete) todo.hidden = true; })
-        : this.todos.forEach(todo => { todo.hidden = false; });
+      this.isVisible ?
+        this.todos.forEach(todo => {
+          if (todo.multipleDelete) todo.hidden = true;
+        }) :
+        this.todos.forEach(todo => {
+          todo.hidden = false;
+        });
     },
     resetVisibility() {
       this.isVisible = false;
-      this.todos.forEach(todo => { todo.hidden = false; });
+      this.todos.forEach(todo => {
+        todo.hidden = false;
+      });
     }
     //------------------- HAI RAGGIUNTO IL LIMITE DI LUNGHEZZA DI QUESTO FILE! I prossimi metodi andranno nel SecondTodoStore.
   }

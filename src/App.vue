@@ -50,7 +50,6 @@ export default {
 			secondTodosStore: useSecondTodoStore(),
 			categoriesStore: useCategoriesStore(),
 			waitForGenerazioni: useGenerazioni(),
-			waitForGenerazioni: useGenerazioni(),
 			waitingForPayment: false,
 			newUpdatesRead: window.localStorage.getItem("newMarkAndCopyMode2"),
 		};
@@ -118,8 +117,8 @@ export default {
 		scrollBottom() {
 			setTimeout(() => {
 				/*Aggiunto il set timeout poichè senza non avviene nulla,
-        		  mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
-        		  Non funziona con un if(this.visible). */
+				  mentre così aspetta che appare il div per poi avere la reale grandezza e scrollare.
+				  Non funziona con un if(this.visible). */
 				const containerList = document.getElementById("container-list");
 				containerList.scrollTo({
 					top: containerList.scrollHeight,
@@ -149,18 +148,15 @@ export default {
 
 <template>
 	<PreloadImg />
-	<div
-		class="app-container"
-		:class="{
-			'light-container': theme.lightTheme,
-			'dark-container': theme.darkTheme,
-			'minimal-container': theme.minimalTheme,
-			'retro-container': theme.retroTheme,
-			'summer-container': theme.summerTheme,
-			'winter-container': theme.winterTheme,
-			'pink-container': theme.pinkTheme,
-		}"
-	>
+	<div class="app-container" :class="{
+		'light-container': theme.lightTheme,
+		'dark-container': theme.darkTheme,
+		'minimal-container': theme.minimalTheme,
+		'retro-container': theme.retroTheme,
+		'summer-container': theme.summerTheme,
+		'winter-container': theme.winterTheme,
+		'pink-container': theme.pinkTheme,
+	}">
 		<div id="app">
 			<!-- overflow hidden: l'ho messo perchè il carrellino della spesa che va insieme al titolo, va sui 1000px e crea lo scroll-x -->
 			<LoadingOrUpdating :listChanged="secondTodosStore.loading" />
@@ -170,11 +166,13 @@ export default {
 			<!-- Questo serve perchè gli avvisi dei nuovi aggiornamenti servono solo all'utente che ha già scaricato l'app. L'utente nuovo che scarica l'app ora, vedrà già l'ultima versione. -->
 			<GeneralTutorialModal v-if="settings.isTutorialVisible" @understand="understandFunction($event)" />
 			<LoyaltyCardsContainer v-if="secondTodosStore.loyaltyCardsVisible" />
-			<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible" @understand="understandFunction($event)" />
+			<UpdatesAlertsModal v-if="!newUpdatesRead && !settings.isTutorialVisible"
+				@understand="understandFunction($event)" />
 			<RecipeGeneratedModal v-if="secondTodosStore.showRecipeModal" />
 
 			<div id="container-list" class="row" @scroll="setVisibilityOnScroll">
-				<div class="max-width mt-3 mx-auto padding-bottom-custom" :class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
+				<div class="max-width mt-3 mx-auto padding-bottom-custom"
+					:class="{ 'dark-sub-container': theme.darkTheme, 'retro-theme-buttons': theme.retroTheme }">
 					<header style="overflow: hidden">
 						<FestivitiesAndOccurrences v-if="settings.isVisibleOnScroll" />
 						<ShowHelperButton v-if="settings.isVisibleOnScroll" />
@@ -183,7 +181,8 @@ export default {
 						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
 						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
-						<PaymentModal v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
+						<PaymentModal
+							v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
 						<PaymentWaiting :is-visible="waitingForPayment" />
 					</header>
 					<main>
@@ -193,7 +192,8 @@ export default {
 
 					<footer>
 						<DeleteAllPanel />
-						<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop" @scrollToBottom="scrollBottom" />
+						<FooterButtonsContainer v-if="!todosStore.devNotes" @scrollToTop="scrollTop"
+							@scrollToBottom="scrollBottom" />
 						<AdsBanner />
 					</footer>
 				</div>
@@ -236,14 +236,17 @@ export default {
 .retro-container {
 	background-image: none;
 }
+
 .summer-container {
 	background-image: url("@/img/mare.webp");
 	background-repeat: repeat-x;
 }
+
 .winter-container {
 	background-image: url("@/img/montagne.webp");
 	background-repeat: repeat-x;
 }
+
 .row {
 	height: 97vh;
 	overflow: auto;
@@ -260,6 +263,7 @@ export default {
 		background-size: cover;
 	}
 }
+
 @media (min-width: 650px) {
 	.winter-container {
 		background-image: url("@/img/montagne-tablet.webp");
