@@ -279,55 +279,76 @@ onUnmounted(() => {
 		<!-- ALERT CHE AVVERTE SE SI CERCA DI SALVARE UNA TESSERA CON NOME GIA' ESISTENTE -->
 		<SimpleAlert :showAlert="showAlert" @closeAlert="onCloseAlert" />
 
-		<div
-			class="modal-content loy-container"
-			:class="{
-				light: theme.lightTheme,
-				dark: theme.darkTheme,
-				minimal: theme.minimalTheme,
-				retro: theme.retroTheme,
-				summer: theme.summerTheme,
-				winter: theme.winterTheme,
-				elegant: theme.elegantTheme,
-				pink: theme.pinkTheme,
-				panter: theme.panterTheme,
-				lemon: theme.lemonTheme,
-				jeans: theme.jeansTheme,
-			}"
-		>
+		<div class="modal-content loy-container" :class="{
+			light: theme.lightTheme,
+			dark: theme.darkTheme,
+			minimal: theme.minimalTheme,
+			retro: theme.retroTheme,
+			summer: theme.summerTheme,
+			winter: theme.winterTheme,
+			elegant: theme.elegantTheme,
+			pink: theme.pinkTheme,
+			panter: theme.panterTheme,
+			lemon: theme.lemonTheme,
+			jeans: theme.jeansTheme,
+		}">
 			<!-- MESSAGGIO DI ERRORE CARICAMENTO TESSERE -->
 			<ErrorMessage v-if="errorLoading" :errorLoading="errorLoading" />
 
 			<BackgroundImg :addHeight="addCard" />
 
 			<header :class="{ 'text-dark': theme.winterTheme }">
-				<h3 :class="{ 'bg-light': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">{{ languages.loyalityCards.title }}</h3>
-				<p class="close-icon" @click="secondTodos.loyaltyCardsVisible = false">
-					<span class="btn-font-custom" :class="{ 'bg-light rounded-circle boldi-cipollino p-1': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">X</span>
+				<h3 :class="{ 'bg-light': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">{{
+					languages.loyalityCards.title }}</h3>
+				<p class="close-btn" :class="{
+					light: theme.lightTheme,
+					dark: theme.darkTheme,
+					minimal: theme.minimalTheme,
+					retro: theme.retroTheme,
+					summer: theme.summerTheme,
+					winter: theme.winterTheme,
+					elegant: theme.elegantTheme,
+					pink: theme.pinkTheme,
+					panter: theme.panterTheme,
+					lemon: theme.lemonTheme,
+					jeans: theme.jeansTheme,
+				}" @click="secondTodos.loyaltyCardsVisible = false">
+					<span
+						:class="{ 'bg-light boldi-cipollino p-1': theme.lemonTheme, 'christmas-color': isChristmas.christmasTheme }">
+						{{ languages.close }}
+					</span>
 				</p>
 			</header>
 			<main>
 				<LoadingOrUpdating :listChanged="loading || saving" />
 
-				<button class="btn-info" :class="{ 'btn-add-selected': showInfo }" @click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i </span></button>
+				<button class="btn-info" :class="{ 'btn-add-selected': showInfo }"
+					@click="showInfo = !showInfo"><span>Info</span> <span class="add btn-font-custom"> i
+					</span></button>
 
 				<!-- INFO PER L'UTENTE -->
 				<InfoContainer :show-info="showInfo" />
 
 				<!-- MESSAGGIO CHE TI MOSTRA QUANDO HAI RAGGIUNTO IL LIMITE MASSIMO DI CARTE  -->
-				<small v-if="photos.length >= limitCards" :class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }">{{ languages.loyalityCards.maxNumberCardsMessage }}</small>
+				<small v-if="photos.length >= limitCards"
+					:class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }">{{
+						languages.loyalityCards.maxNumberCardsMessage }}</small>
 
 				<!-- PULSANTE PER APRIRE LA SCHERMATA PER AGGIUNGERE LA TESSERA -->
-				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'btn-add-selected': addCard }" @click="showAddCard">
+				<button v-if="photos.length < limitCards" class="btn-add" :class="{ 'btn-add-selected': addCard }"
+					@click="showAddCard">
 					<span>{{ languages.loyalityCards.functionText }}</span> <span class="add btn-font-custom"> + </span>
 				</button>
 
 				<!-- ISTRUZIONI PER L'UTENTE -->
 				<template v-if="addCard">
 					<!-- WARNING PER IL NOME DELLA TESSERA -->
-					<small :class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }" v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
+					<small :class="{ 'text-dark': theme.winterTheme, 'christmas-bg': isChristmas.christmasTheme }"
+						v-if="!imageName">{{ languages.loyalityCards.isctructionText }}</small>
 					<!-- INPUT SCELTA NOME TESSERA -->
-					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" @input="onNameChange" v-model="imageName" type="text" :placeholder="languages.loyalityCards.nameInputPlaceholder" />
+					<input class="input-name" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }"
+						@input="onNameChange" v-model="imageName" type="text"
+						:placeholder="languages.loyalityCards.nameInputPlaceholder" />
 					<!-- PULSANTE PER AGGIUNGERE LA TESSERA -->
 					<label class="btn-add btn btn-warning" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }">
 						<span>{{ languages.loyalityCards.selectCardText }}</span>
@@ -335,11 +356,13 @@ onUnmounted(() => {
 					</label>
 
 					<!-- PULSANTE PER SALVARE LA TESSERA -->
-					<button class="btn btn-success" v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText }}</button>
+					<button class="btn btn-success" v-if="saveBtnVisible" @click="saveSelected()">{{ languages.saveText
+					}}</button>
 				</template>
 
 				<!-- ALERT CHE APPARE PER CONFERMARE LA CANCELLAZIONE DELLA TESSERA -->
-				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }" v-if="showConfirmAlert && !showImgPreview">
+				<div class="confirm-delete-alert" :class="{ 'arrotonda-sto-bordo': !theme.retroTheme }"
+					v-if="showConfirmAlert && !showImgPreview">
 					<p>{{ confirmAlertMessage }}</p>
 
 					<div class="btns-container mb-4">
@@ -350,7 +373,8 @@ onUnmounted(() => {
 				<!-- ANTEPRIMA DEL RITAGLIO -->
 				<div class="preview-container" v-if="selectedFiles.length && cropPreview">
 					<p>{{ languages.loyalityCards.cropMessage }}</p>
-					<h3 v-if="showNoNameAlert" class="no-name-red-alert bg-light text-danger rounded">{{ languages.loyalityCards.isctructionText }}</h3>
+					<h3 v-if="showNoNameAlert" class="no-name-red-alert bg-light text-danger rounded">{{
+						languages.loyalityCards.isctructionText }}</h3>
 					<img class="crop-container p-3" ref="cropImageEl" :src="imageUrl" />
 				</div>
 
@@ -392,7 +416,8 @@ onUnmounted(() => {
 
 .christmas-color {
 	color: #ffffff;
-	background-color: transparent !important; /* per sovrascrivere il tema lemon */
+	background-color: transparent !important;
+	/* per sovrascrivere il tema lemon */
 }
 
 .christmas-bg {
@@ -400,13 +425,14 @@ onUnmounted(() => {
 	color: #ffffff !important;
 }
 
-.close-icon {
-	font-size: 1.875rem;
+.close-btn {
 	position: absolute;
 	right: 10px;
 	top: 38px;
-	width: 60px;
 	text-align: right;
+	border: 2px solid;
+	padding: 0 0.313rem;
+	border-radius: 5px;
 }
 
 small {
@@ -445,6 +471,7 @@ main {
 	text-align: center;
 	padding: 3px;
 }
+
 .btn-add-selected {
 	background-color: #a2a2a2;
 }
@@ -469,10 +496,12 @@ main {
 	align-items: center;
 	border: 2px solid;
 }
-.confirm-delete-alert > p {
+
+.confirm-delete-alert>p {
 	text-align: center;
 	font-weight: bold;
 }
+
 .btns-container {
 	display: flex;
 	justify-content: center;
@@ -520,6 +549,7 @@ main {
 .card-icon {
 	font-size: 2.563rem;
 }
+
 .card-name {
 	font-size: 1.563rem;
 	overflow: hidden;
@@ -540,7 +570,8 @@ main {
 	color: #000000;
 	background-color: #ffffff;
 }
-.preview-container > h3 {
+
+.preview-container>h3 {
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-top: 0.313rem;
@@ -551,6 +582,7 @@ main {
 	top: 15%;
 	z-index: 20;
 }
+
 .preview {
 	width: 100%;
 	max-height: 300px;
