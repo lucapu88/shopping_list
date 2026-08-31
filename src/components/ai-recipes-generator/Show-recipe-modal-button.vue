@@ -13,9 +13,11 @@ preload.urls.forEach((url) => {
 	preload.preloadImage(url);
 });
 
+const userEmail = ref(auth.currentUser?.email ?? null);
 const isLoggedIn = ref(!!auth.currentUser);
 
 onAuthStateChanged(auth, (user) => {
+	userEmail.value = user?.email ?? null;
 	isLoggedIn.value = !!user;
 });
 </script>
@@ -23,7 +25,8 @@ onAuthStateChanged(auth, (user) => {
 <template>
 	<button @click="secondTodosStore.showRecipeModal = true">
 		<span>
-			{{ isLoggedIn ? String.fromCodePoint(secondTodosStore.recipe.emoji) : String.fromCodePoint(0x1f37d) }}
+			{{ isLoggedIn && userEmail ? String.fromCodePoint(secondTodosStore.recipe.emoji) :
+				String.fromCodePoint(0x1f37d) }}
 		</span>
 		<small v-if="isLoggedIn">{{ languages.recipes.recipeGeneratedText }}</small>
 	</button>
