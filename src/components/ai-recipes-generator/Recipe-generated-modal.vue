@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { ref } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "../../store/LanguageStore";
@@ -69,7 +70,7 @@ function changeImage() {
         <div v-if="!isLoggedIn" class="login">
           <p class="text-danger text-center">{{ languages.loginInText }}</p>
           <button class="btn btn-outline-success"
-            @click="settings.showPaymentModal = true; secondTodosStore.showRecipeModal = false">
+            @click="requireConnection() && (settings.showPaymentModal = true, secondTodosStore.showRecipeModal = false)">
             <span>Login</span>
           </button>
         </div>
@@ -112,7 +113,7 @@ function changeImage() {
           </p>
         </template>
         <button v-if="isLoggedIn" class="text-success toggle-latest-recipes-btn mt-4"
-          @click="showLatestRecipes = !showLatestRecipes">
+          @click="(!showLatestRecipes ? requireConnection() : true) && (showLatestRecipes = !showLatestRecipes)">
           {{ !showLatestRecipes ? languages.show : languages.hide }}
           {{ languages.recipes.latestText }}
         </button>

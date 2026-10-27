@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useThemeStore } from "@/store/ThemeStore";
 </script>
@@ -26,7 +27,7 @@ export default {
 				'tutorial-selected': settings.video && features === settings.feature,
 				'mb-3': margin,
 			}"
-			@click="settings.toggleTutorial(features)"
+			@click="(settings.video && features === settings.feature || requireConnection()) && settings.toggleTutorial(features)"
 		>
 			<small>Tutorial </small>
 			<img src="@/img/icons/video-logo.webp" alt="video_tutorial" />

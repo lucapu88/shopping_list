@@ -1,4 +1,5 @@
 <script>
+import { requireConnection } from '@/utils/connection';
 // QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI / CLAUDE CODE
 import { loginGoogle, loginEmail, registerEmail, resetPassword } from "@/firebase.js";
 import { useLanguageStore } from "@/store/LanguageStore";
@@ -39,6 +40,7 @@ export default {
 	},
 	methods: {
 		async handleGoogle() {
+			if (!requireConnection()) return;
 			this.loading = true;
 			this.errorMessage = "";
 			try {
@@ -51,6 +53,7 @@ export default {
 			}
 		},
 		async handleEmail() {
+			if (!requireConnection()) return;
 			this.loading = true;
 			this.errorMessage = "";
 			try {
@@ -66,6 +69,7 @@ export default {
 			}
 		},
 		async handleResetPassword() {
+			if (!requireConnection()) return;
 			this.loading = true;
 			this.errorMessage = "";
 			try {

@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
@@ -39,6 +40,7 @@ export default {
 	},
 	methods: {
 		playTutorial() {
+			if (!requireConnection()) return;
 			this.showVideo = true;
 
 			this.$nextTick(() => {

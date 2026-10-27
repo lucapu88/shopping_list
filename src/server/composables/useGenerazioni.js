@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { onlineFetch } from '@/utils/connection';
 import { useSettingsStore } from "@/store/SettingsStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { auth } from "@/firebase.js";
@@ -11,6 +12,8 @@ export function useGenerazioni() {
   const loading = ref(false);
 
   async function fetchGenerazioni() {
+    // Salta il controllo automatico dei crediti offline, senza disturbare chi sta usando solo la lista.
+    if (navigator.onLine === false) return;
     const settings = useSettingsStore();
     const secondTodosStore = useSecondTodoStore();
     // Aspetta che Firebase ripristini la sessione
@@ -31,7 +34,8 @@ export function useGenerazioni() {
     settings.yourToken = uid;
 
     try {
-      const res = await fetch(`${API_URL}/generazioni?token=${uid}`);
+      if (navigator.onLine === false) return;
+      const res = await onlineFetch(`${API_URL}/generazioni?token=${uid}`);
       const data = await res.json();
 
       generazioni.value = data.generazioni ?? 0;
@@ -53,6 +57,7 @@ export function useGenerazioni() {
     waitingForPayment.value = true;
 
     for (let i = 0; i < maxTentativi; i++) {
+      if (navigator.onLine === false) break;
       await fetchGenerazioni();
       if (secondTodosStore.totalRecipes > 0) {
         waitingForPayment.value = false;

@@ -19,6 +19,7 @@ import Share from "./settings/Share.vue";
 import UpdateApp from "./settings/Update-app.vue";
 import RenameList from "./settings/Rename-list.vue";
 import ToggleCategoriesModal from "./settings/Toggle-categories-modal.vue";
+import InstallApp from './settings/Install-app.vue';
 </script>
 
 <script>
@@ -121,6 +122,7 @@ export default {
 			<img v-if="festivities.halloweenTheme" class="halloween-cobweb" src="@/img/festivities/ragnatele.webp" alt="halloween" />
 
 			<div id="helper-description">
+				<InstallApp />
 				<UpdateApp @updatingAppEmit="updatingAppEmited" />
 
 				<ChangeLanguages @chageLanguageEmit="changeLanguageEmitted" />

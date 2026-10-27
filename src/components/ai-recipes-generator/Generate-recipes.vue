@@ -1,5 +1,6 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
+import { requireConnection, onlineFetch } from '@/utils/connection';
 import { ref, watch, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useTodoStore } from "@/store/TodoStore";
@@ -39,6 +40,7 @@ onMounted(() => {
 });
 
 async function generateRecipe() {
+	if (!requireConnection()) return;
 	if (isGenerating.value) return; //blocca click multipli
 	isGenerating.value = true;
 
@@ -67,7 +69,7 @@ async function generateRecipe() {
 
 		try {
 			const language = languages.langIta ? "italiano" : languages.langSpanish ? "spagnolo" : languages.langFrench ? "francese" : "inglese";
-			const response = await fetch(`${productionUrl}/generate-recipe `, {
+			const response = await onlineFetch(`${productionUrl}/generate-recipe`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -91,7 +93,7 @@ async function generateRecipe() {
 			// console.log("Ricetta generata:", data);
 			// Salvo la ricetta
 			if (auth.currentUser) {
-				fetch(`${productionUrl}/salva-ricetta`, {
+				onlineFetch(`${productionUrl}/salva-ricetta`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -148,7 +150,7 @@ function ifError() {
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
 		<div class="form-check form-switch" v-if="settings.customSettings">
 			<label>AI</label>
-			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" />
+			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" @click="!enableAI && !requireConnection() && $event.preventDefault()" />
 		</div>
 
 		<!-- PULSANBTE GENERA RICETTA -->

@@ -21,6 +21,13 @@ import PaymentModal from "./components/ai-recipes-generator/Payment-modal.vue";
 import RecipeGeneratedModal from "./components/ai-recipes-generator/Recipe-generated-modal.vue";
 import PaymentWaiting from "./components/ai-recipes-generator/Payment-waiting.vue";
 import AdsBanner from "./components/footer/Ads-banner.vue";
+import ConnectionNotice from './components/Connection-notice.vue';
+import { onMounted, onUnmounted } from 'vue';
+import { startConnectionMonitor, connection } from '@/utils/connection';
+
+let stopConnectionMonitor;
+onMounted(() => { stopConnectionMonitor = startConnectionMonitor(); });
+onUnmounted(() => stopConnectionMonitor?.());
 
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
 import { useOthersFestivitiesStore } from "@/store/festivities/OthersFestivitiesStore";
@@ -66,6 +73,7 @@ export default {
 		this.secondTodosStore.isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 	},
 	async mounted() {
+		if (navigator.onLine === false) this.settings.isAuthLoading = false;
 		for (let i = 0; i < localStorage.length; i++) {
 			//const key = localStorage.key(i);
 			if (localStorage.length === 3 || localStorage.length === 2) {
@@ -147,6 +155,7 @@ export default {
 </script>
 
 <template>
+  <ConnectionNotice />
 	<PreloadImg />
 	<div class="app-container" :class="{
 		'light-container': theme.lightTheme,
@@ -180,7 +189,7 @@ export default {
 
 						<PeriodicListAddedAlert v-if="secondTodosStore.addedToPeriodicList" />
 						<PeriodicListContainer v-if="secondTodosStore.periodicListContainerVisible" />
-						<DownloadAppAlert v-if="settings.isAndroidBrowser" />
+						<DownloadAppAlert v-if="settings.isAndroidBrowser && connection.online" />
 						<PaymentModal
 							v-if="settings.showPaymentModal && (!secondTodosStore.totalRecipes || +secondTodosStore.totalRecipes == 0)" />
 						<PaymentWaiting :is-visible="waitingForPayment" />

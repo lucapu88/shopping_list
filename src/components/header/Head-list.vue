@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import Title from "./Title.vue";
 import HeaderButtonsContainer from "./push-button-panel/Header-buttons-container.vue";
 import { useChristmasStore } from "@/store/festivities/ChristmasStore";
@@ -69,6 +70,12 @@ export default {
 
 			const enableAI = JSON.parse(window.localStorage.getItem("enableAI"));
 			if (this.settings.customSettings && !this.addTodo.addingToCategoryInProgress && enableAI) {
+				// Senza rete aggiunge comunque il prodotto: la classificazione AI non deve bloccare la lista.
+				if (!requireConnection()) {
+					this.addTodo.addTodo();
+					this.focusOnInput();
+					return;
+				}
 				this.secondTodos.classificaProdotto(this.addTodo.newTodo);
 			} else {
 				this.addTodo.addTodo();
@@ -160,6 +167,7 @@ export default {
 			}, 150);
 		},
 		startDictation() {
+			if (!this.isListening && !requireConnection()) return;
 			const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 			if (!SpeechRecognition) {

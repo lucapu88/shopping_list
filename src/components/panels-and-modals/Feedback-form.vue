@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection, notifyNetworkFailure } from '@/utils/connection';
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
@@ -26,6 +27,7 @@ export default {
 	},
 	methods: {
 		sendEmail() {
+			if (!requireConnection()) return;
 			if (this.disable) {
 				return;
 			}
@@ -54,6 +56,7 @@ export default {
 					this.disable = false;
 				},
 				(error) => {
+					notifyNetworkFailure(error);
 					console.error(error);
 					this.disable = false;
 					this.status = `${this.languages.feedback.errorMessage} ${this.recipient}`;

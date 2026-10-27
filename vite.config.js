@@ -2,11 +2,13 @@ import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { pwa } from './build/pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    pwa(),
   ],
   test: {
     globals: true,
@@ -27,9 +29,7 @@ export default defineConfig({
     }
   },
   build: {
-    rollupOptions: {
-      external: ['vue3-smooth-dnd']
-    }
+    // Include il drag and drop nella build locale per renderlo disponibile anche offline.
   },
   optimizeDeps: {
     include: ["vue3-smooth-dnd"]

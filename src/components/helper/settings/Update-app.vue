@@ -1,4 +1,6 @@
 <script setup>
+import { requireConnection, notifyNetworkFailure } from '@/utils/connection';
+import { updatePwa } from '@/pwa/register';
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useSettingsStore } from "@/store/SettingsStore";
 </script>
@@ -13,7 +15,14 @@ export default {
 		};
 	},
 	methods: {
-		updateApp() {
+		async updateApp() {
+			if (!requireConnection()) return;
+			try {
+				await updatePwa();
+			} catch (error) {
+				notifyNetworkFailure(error);
+				return;
+			}
 			/*dato che per aggiornare l'app basta riavviare la pagina, essendo un app la rendo più carina,
         e faccio si che ogni mese l'utente può farlo, in modo da avere sempre l'app aggiornata.*/
 			const d = new Date();

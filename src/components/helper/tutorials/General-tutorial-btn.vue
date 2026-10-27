@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
@@ -18,6 +19,7 @@ export default {
 	},
 	methods: {
 		showGeneralTutorialModal() {
+			if (!this.readOnly && !requireConnection()) return;
 			if (!this.readOnly) {
 				this.settings.isTutorialVisible = true;
 			}

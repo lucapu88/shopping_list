@@ -1,4 +1,5 @@
 <script>
+import { requireConnection, onlineFetch } from '@/utils/connection';
 // QUESTO FILE è STATO GENERATO CON L'AIUTO DI CLAUDE AI / CLAUDE CODE
 
 import { useSettingsStore } from "../../store/SettingsStore";
@@ -79,6 +80,9 @@ export default {
 		});
 	},
 	methods: {
+		openLogin() {
+			if (requireConnection()) this.showLoginModal = true;
+		},
 		selectPlan(plan) {
 			this.selectedPlan = plan;
 			this.errorMessage = "";
@@ -89,6 +93,7 @@ export default {
 			this.secondTodosStore.totalRecipes = 0;
 		},
 		async handleCheckout() {
+			if (!requireConnection()) return;
 			this.planNotSelected = false;
 			if (!this.selectedPlan) {
 				this.planNotSelected = true;
@@ -100,7 +105,7 @@ export default {
 			try {
 				const token = auth.currentUser.uid;
 
-				const response = await fetch(`${import.meta.env.VITE_API_URL}/create-checkout-session`, {
+				const response = await onlineFetch(`${import.meta.env.VITE_API_URL}/create-checkout-session`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -177,7 +182,7 @@ export default {
 
 			<!-- Pulsante login — visibile solo se non loggato -->
 			<div v-if="!isLoggedIn" class="login-section">
-				<button class="login-btn" @click="showLoginModal = true">
+				<button class="login-btn" @click="openLogin">
 					👤 {{ languages.paymentModal.loginFirstText }}
 				</button>
 			</div>

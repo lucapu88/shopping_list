@@ -10,6 +10,7 @@ import {
 } from 'firebase/database';
 import { markRaw } from 'vue';
 import { useSettingsStore } from '@/store/SettingsStore';
+import { requireConnection } from '@/utils/connection';
 
 
 const DATABASE_URL = window.localStorage.getItem("firebase"); // Se l'utente non ha l'url del db, non può usare firebase
@@ -63,6 +64,7 @@ export const useFirebaseStore = defineStore('firebase', {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     async insertData(todosToDelete) {
+      if (!requireConnection()) return { success: false };
       this.init();
       const todosDeleted = JSON.stringify(todosToDelete);
       this.resetYearCheck();
@@ -76,6 +78,7 @@ export const useFirebaseStore = defineStore('firebase', {
       }
     },
     async deleteData() {
+      if (!requireConnection()) return { success: false };
       this.init();
       try {
         await remove(ref(this.db, 'shopping-done/'));
@@ -97,6 +100,7 @@ export const useFirebaseStore = defineStore('firebase', {
       }
     },
     async getData() {
+      if (!requireConnection()) return { success: false };
       this.init();
       try {
         this.firebaseLoading = true;

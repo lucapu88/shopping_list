@@ -1,4 +1,5 @@
 <script setup>
+import { onlineFetch } from '@/utils/connection';
 import { ref, onMounted } from "vue";
 import { auth } from "@/firebase.js";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
@@ -12,10 +13,10 @@ const loading = ref(false);
 const isLoggedIn = ref(!!auth.currentUser);
 
 async function fetchStorico() {
-	if (!auth.currentUser) return;
+	if (!auth.currentUser || navigator.onLine === false) return;
 	loading.value = true;
 	try {
-		const res = await fetch(`${API_URL}/storico-ricette?token=${auth.currentUser.uid}`);
+		const res = await onlineFetch(`${API_URL}/storico-ricette?token=${auth.currentUser.uid}`);
 		const data = await res.json();
 		ricette.value = data.ricette ?? [];
 	} catch (err) {

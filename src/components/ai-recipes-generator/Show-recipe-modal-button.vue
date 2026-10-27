@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { ref } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "@/store/LanguageStore";
@@ -23,9 +24,9 @@ onAuthStateChanged(auth, (user) => {
 </script>
 
 <template>
-	<button @click="secondTodosStore.showRecipeModal = true">
+	<button @click="requireConnection() && (secondTodosStore.showRecipeModal = true)">
 		<span>
-			{{ isLoggedIn && userEmail ? String.fromCodePoint(secondTodosStore.recipe.emoji) :
+			{{ isLoggedIn && userEmail && secondTodosStore.recipe ? String.fromCodePoint(secondTodosStore.recipe.emoji) :
 				String.fromCodePoint(0x1f37d) }}
 		</span>
 		<small v-if="isLoggedIn">{{ languages.recipes.recipeGeneratedText }}</small>

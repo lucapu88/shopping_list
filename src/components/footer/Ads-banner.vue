@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { ref } from "vue";
 import { usePreloadStore } from "../../store/PreloadStore";
 import { useSettingsStore } from "../../store/SettingsStore";
@@ -41,6 +42,7 @@ function changeUrl() {
 }
 
 function openBannerUrl(imagesSrc) {
+	if (!requireConnection()) return;
 	if (settings.isAndroid) {
 		openModal.value = true;
 		currentImage.value = imagesSrc;

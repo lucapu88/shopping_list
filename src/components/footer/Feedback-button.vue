@@ -1,4 +1,5 @@
 <script setup>
+import { requireConnection } from '@/utils/connection';
 import { useLanguageStore } from "@/store/LanguageStore";
 import { useThemeStore } from "@/store/ThemeStore";
 import { useSettingsStore } from "@/store/SettingsStore";
@@ -21,7 +22,7 @@ export default {
 </script>
 
 <template>
-	<button @click="secondTodosStore.showFeedbackForm = true">
+	<button @click="requireConnection() && (secondTodosStore.showFeedbackForm = true)">
 		<img v-if="theme.minimalTheme" class="feedback-icon" src="@/img/icons/feedback-minimal.webp" alt="feedback" fetchpriority="high" loading="eager" />
 		<img v-else class="feedback-icon" src="@/img/icons/feedback.webp" alt="feedback" fetchpriority="high" loading="eager" />
 	</button>

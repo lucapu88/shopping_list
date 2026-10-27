@@ -247,7 +247,8 @@ export const useSettingsStore = defineStore('settings', {
       const isWebView = /wv/.test(ua) ||
         (/Android/i.test(ua) && !/Chrome/i.test(ua));
 
-      if (isAndroid && !isWebView) {
+      const standalone = window.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone;
+      if (isAndroid && !isWebView && !standalone) {
         this.isAndroidBrowser = true;
       }
     },
