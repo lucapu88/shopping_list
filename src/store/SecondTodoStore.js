@@ -1,8 +1,18 @@
-import { defineStore } from 'pinia';
-import { useTodoStore } from '@/store/TodoStore';
-import { useLanguageStore } from '@/store/LanguageStore';
-import { useCategoriesStore } from '@/store/CategoriesStore';
-import { useSettingsStore } from '@/store/SettingsStore';
+import {
+    defineStore
+} from 'pinia';
+import {
+    useTodoStore
+} from '@/store/TodoStore';
+import {
+    useLanguageStore
+} from '@/store/LanguageStore';
+import {
+    useCategoriesStore
+} from '@/store/CategoriesStore';
+import {
+    useSettingsStore
+} from '@/store/SettingsStore';
 
 export const useSecondTodoStore = defineStore('secondTodoStore', {
     // Store per cose varie che non riguardano direttamente le todo, ma cose generali dell'app
@@ -75,7 +85,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             location.reload();
         },
         selectList(ListName, listNumber, listN, list) {
-            if (this.istruction2Visible) { return; }
+            if (this.istruction2Visible) {
+                return;
+            }
 
             this.resetAllLists();
 
@@ -114,8 +126,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             const listName7 = window.localStorage.getItem('ListName7');
             const listName8 = window.localStorage.getItem('ListName8');
 
-            this.listButtons = [
-                {
+            this.listButtons = [{
                     class: "first",
                     name: `${listName1 ? listName1.toString() : "List 1"}`,
                     selectedCondition: () => !this.secondList && !this.thirdList && !this.fourthList && !this.fifthList && !this.sixthList && !this.seventhList && !this.eighthList,
@@ -187,7 +198,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         async classificaProdotto(prodotto) {
             const openaiApiKey = window.localStorage.getItem("apikey");
-            if (!this.todosStore.newTodo) { return; }
+            if (!this.todosStore.newTodo) {
+                return;
+            }
 
             try {
                 this.loadingOpenAIRes = true;
@@ -198,11 +211,10 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                         "Authorization": `Bearer ${openaiApiKey}`
                     },
                     body: JSON.stringify({
-                        //model: "gpt-4o-mini",
-                        model: "gpt-3.5-turbo",
-                        messages: [
-                            {
-                                role: "system", content: `Sei un classificatore di prodotti per una lista della spesa.  
+                        model: "gpt-4o-mini",
+                        messages: [{
+                            role: "system",
+                            content: `Sei un classificatore di prodotti per una lista della spesa.  
                                     Devi classificare il prodotto: "${prodotto}"  
                                     nelle seguenti categorie già esistenti: ${this.categoriesStore.itaCategories.map(cat => cat.name)}  
 
@@ -215,8 +227,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                                     - Se proprio non rientra in nessuna, usa "altro".  
 
                                     Rispondi SOLO con il nome della categoria scelta, senza aggiungere altro testo.`
-                            },
-                        ],
+                        }, ],
                         max_tokens: 10, //numero massimo di token nella risposta. Un token è una “unità di testo” (circa 3–4 caratteri di media in italiano/inglese).
                         temperature: 0 //assicura che l’AI dia sempre la stessa categoria, senza variazioni. Si può impostare da 0 a 1, se imposti 1 da una risposta più creativa.
                     })
@@ -227,6 +238,7 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
                 this.addTodoWithAI(categoryFound);
             } catch (err) {
                 console.error("Errore AI:", err);
+                alert("Errore AI:", err);
                 this.languages.placeholder = `Errore con OpenAI: ${err} Riavvia l'app e riprova.`;
                 return;
             }
@@ -285,7 +297,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             }
         },
         moveElementMode(isCopy) {
-            if (!this.showChangeList) { return; }
+            if (!this.showChangeList) {
+                return;
+            }
             this.copied = false;
             this.moved = false;
             this.copy = isCopy;
@@ -302,7 +316,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
             this.copy = null;
         },
         selectElementforMove(n) {
-            if (!this.moving) { return; }
+            if (!this.moving) {
+                return;
+            }
             if (!this.todosStore.todos[n].category) {
                 this.todosStore.todos[n].isMoving = !this.todosStore.todos[n].isMoving;
                 this.istruction2Visible = this.todosStore.todos.some((t) => t.isMoving);
@@ -310,7 +326,9 @@ export const useSecondTodoStore = defineStore('secondTodoStore', {
         },
         applyMoving(n, btnName) {
             //in questo caso la modalità di spostamento è attiva, ma non è stato selezionato nessun elemento da spostare quindi non faccio nulla
-            if (!this.istruction2Visible) { return; }
+            if (!this.istruction2Visible) {
+                return;
+            }
 
             this.listSelected = btnName;
             this.moveSameList = false;
