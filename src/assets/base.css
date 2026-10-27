@@ -6,9 +6,25 @@
 	font-weight: normal;
 }
 
+@font-face {
+	font-family: "Cabin";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/Cabin-Variable.ttf") format("truetype");
+}
+
 body {
 	font-family: "Permanent Marker", cursive;
 	cursor: pointer;
+}
+
+/* Senza internet sostituisce i font dei temi con Cabin, già incluso nella build locale. */
+html.offline-font,
+html.offline-font *,
+html.offline-font *::before,
+html.offline-font *::after {
+	font-family: "Cabin", sans-serif !important;
 }
 
 html,

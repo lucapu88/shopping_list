@@ -22,6 +22,7 @@ export const useLanguageStore = defineStore('Language', {
     langSpanish: false,
     langEnglish: false,
     langFrench: false,
+    offlineStatusText: 'Offline — some features are unavailable',
     shoppingListTitle: 'Shopping List',
     choseCategoryText: 'Choose a category among these:',
     changeLanguage: 'Change language',
@@ -392,6 +393,7 @@ export const useLanguageStore = defineStore('Language', {
       this.langEnglish = await window.localStorage.getItem('langEnglish');
     },
     setEnglishLanguage() {
+      this.offlineStatusText = 'Offline — some features are unavailable';
       this.langIta = false;
       this.langSpanish = false;
       this.langFrench = false;
@@ -407,6 +409,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langEnglish', true);
     },
     setItalianoLanguage() {
+      this.offlineStatusText = 'Modalità offline: alcune funzioni non sono disponibili';
       this.langSpanish = false;
       this.langEnglish = false;
       this.langFrench = false;
@@ -422,6 +425,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langIta', true);
     },
     setSpanishLanguage() {
+      this.offlineStatusText = 'Sin conexión: algunas funciones no están disponibles';
       this.langEnglish = false;
       this.langIta = false;
       this.langFrench = false;
@@ -437,6 +441,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langSpanish', true);
     },
     setFrenchLanguage() {
+      this.offlineStatusText = 'Hors ligne : certaines fonctionnalités ne sont pas disponibles';
       this.langEnglish = false;
       this.langIta = false;
       this.langSpanish = false;
@@ -452,6 +457,7 @@ export const useLanguageStore = defineStore('Language', {
       window.localStorage.setItem('langFrench', true);
     },
     setItalianTranslations() { //------------------------------------------  ITA
+      this.offlineStatusText = 'Modalità offline: alcune funzioni non sono disponibili';
       this.placeholder = 'Scrivi qui cosa comprare';
       this.defaultPlaceholderText = 'Scrivi qui cosa comprare';
       this.categoriesStore.categories = this.categoriesStore.itaCategories;
@@ -632,6 +638,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loginInText = "Non sei loggato";
     },
     setSpanishTranslations() { // ---------------------------------- SPA
+      this.offlineStatusText = 'Sin conexión: algunas funciones no están disponibles';
       this.placeholder = 'Escriba aquí qué comprar';
       this.defaultPlaceholderText = 'Escriba aquí qué comprar';
       this.categoriesStore.categories = this.categoriesStore.spanCategories;
@@ -811,6 +818,7 @@ export const useLanguageStore = defineStore('Language', {
       this.loginInText = "No has iniciado sesión";
     },
     setFrenchTranslations() { // ---------------------------------- FRA
+      this.offlineStatusText = 'Hors ligne : certaines fonctionnalités ne sont pas disponibles';
       this.placeholder = 'Écrivez ici quoi acheter';
       this.defaultPlaceholderText = 'Écrivez ici quoi acheter';
       this.categoriesStore.categories = this.categoriesStore.fraCategories;

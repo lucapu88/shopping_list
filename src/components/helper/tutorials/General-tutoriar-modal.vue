@@ -41,6 +41,7 @@ export default {
 	methods: {
 		playTutorial() {
 			if (!requireConnection()) return;
+
 			this.showVideo = true;
 
 			this.$nextTick(() => {
@@ -103,23 +104,20 @@ export default {
 <template>
 	<div class="modal">
 		<div class="empty-div" @click="closeTutorial()"></div>
-		<div
-			class="modal-content"
-			:class="{
-				'container-light': theme.lightTheme,
-				'container-dark': theme.darkTheme,
-				'container-minimal': theme.minimalTheme,
-				'container-retro': theme.retroTheme,
-				'container-summer': theme.summerTheme,
-				'container-winter': theme.winterTheme,
-				'container-elegant': theme.elegantTheme,
-				'container-pink': theme.pinkTheme,
-				'container-panter': theme.panterTheme,
-				'container-lemon': theme.lemonTheme,
-				'container-jeans': theme.jeansTheme,
-				video: showVideo,
-			}"
-		>
+		<div class="modal-content" :class="{
+			'container-light': theme.lightTheme,
+			'container-dark': theme.darkTheme,
+			'container-minimal': theme.minimalTheme,
+			'container-retro': theme.retroTheme,
+			'container-summer': theme.summerTheme,
+			'container-winter': theme.winterTheme,
+			'container-elegant': theme.elegantTheme,
+			'container-pink': theme.pinkTheme,
+			'container-panter': theme.panterTheme,
+			'container-lemon': theme.lemonTheme,
+			'container-jeans': theme.jeansTheme,
+			video: showVideo,
+		}">
 			<h2 v-if="showVideo" class="close-tutorial" @click="closeTutorial()">X</h2>
 
 			<video v-if="showVideo" ref="videoRef" class="video-container" poster="@/img/favicon.png" controls>
@@ -145,21 +143,28 @@ export default {
 					</p>
 				</div>
 				<div class="languages-selection">
-					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }" src="@/img/flags/mini/inglese-mini.webp" loading="lazy" alt="english_flag" /></span>
+					<span @click="english()"><img class="flag" :class="{ 'selected-flag': selectedEng }"
+							src="@/img/flags/mini/inglese-mini.webp" loading="lazy" alt="english_flag" /></span>
 
-					<span @click="spanish()"><img class="flag flag-spa" :class="{ 'selected-flag': selectedSpa }" src="@/img/flags/mini/spagnolo-mini.webp" loading="lazy" alt="spanish_flag" /></span>
+					<span @click="spanish()"><img class="flag flag-spa" :class="{ 'selected-flag': selectedSpa }"
+							src="@/img/flags/mini/spagnolo-mini.webp" loading="lazy" alt="spanish_flag" /></span>
 
-					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }" src="@/img/flags/mini/italiano-mini.webp" loading="lazy" alt="italian_flag" /></span>
+					<span @click="italian()"><img class="flag" :class="{ 'selected-flag': selectedIta }"
+							src="@/img/flags/mini/italiano-mini.webp" loading="lazy" alt="italian_flag" /></span>
 
-					<span @click="french()"><img class="flag" :class="{ 'selected-flag': selectedFra }" src="@/img/flags/mini/francese-mini.webp" loading="lazy" alt="french_flag" /></span>
+					<span @click="french()"><img class="flag" :class="{ 'selected-flag': selectedFra }"
+							src="@/img/flags/mini/francese-mini.webp" loading="lazy" alt="french_flag" /></span>
 				</div>
 				<div>
 					<p>
-						{{ generalTutorial.istruction }} <span><img class="settings" src="@/img/icons/mini/settings-mini.webp" alt="settings" /></span>
+						{{ generalTutorial.istruction }} <span><img class="settings"
+								src="@/img/icons/mini/settings-mini.webp" alt="settings" /></span>
 					</p>
 				</div>
 				<h3 class="boldi-cipollino">{{ generalTutorial.title }}</h3>
-				<p>{{ generalTutorial.subtitle }} <GeneralTutorialBtn :read-only="true" /></p>
+				<p>{{ generalTutorial.subtitle }}
+					<GeneralTutorialBtn :read-only="true" />
+				</p>
 
 				<ConfirmButtonsContainer @yesSelected="playTutorial()" @noSelected="closeTutorial()" />
 			</div>
@@ -171,6 +176,7 @@ export default {
 .modal {
 	background-color: #5252527c;
 }
+
 .modal-content {
 	position: absolute;
 	padding: 0.625rem;
@@ -193,14 +199,17 @@ export default {
 	top: 5%;
 	height: 90%;
 }
+
 .close-tutorial {
 	align-self: end;
 }
+
 .video-container {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
+
 .confirm-alert {
 	position: absolute;
 	border: none !important;
@@ -218,6 +227,7 @@ export default {
 	margin-top: 25%;
 	margin-bottom: 0.9375rem;
 }
+
 .flag {
 	width: 40px;
 	height: 40px;
@@ -247,12 +257,15 @@ export default {
 .welcome-text:nth-child(1) {
 	animation-delay: 0s;
 }
+
 .welcome-text:nth-child(2) {
 	animation-delay: 3s;
 }
+
 .welcome-text:nth-child(3) {
 	animation-delay: 6s;
 }
+
 .welcome-text:nth-child(4) {
 	animation-delay: 9s;
 }
@@ -261,15 +274,19 @@ export default {
 	0% {
 		opacity: 0;
 	}
+
 	5% {
 		opacity: 1;
 	}
+
 	25% {
 		opacity: 1;
 	}
+
 	30% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 0;
 	}

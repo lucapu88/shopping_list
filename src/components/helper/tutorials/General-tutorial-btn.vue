@@ -20,6 +20,7 @@ export default {
 	methods: {
 		showGeneralTutorialModal() {
 			if (!this.readOnly && !requireConnection()) return;
+
 			if (!this.readOnly) {
 				this.settings.isTutorialVisible = true;
 			}
@@ -29,29 +30,22 @@ export default {
 </script>
 
 <template>
-	<div
-		class="gt-btn-container"
-		:class="{
-			'read-only': readOnly,
-			'ita-right': languages.langIta,
-			'right-10': theme.jeansTheme,
-		}"
-		@click="showGeneralTutorialModal()"
-	>
-		<span
-			:class="{
-				light: theme.lightTheme,
-				dark: theme.darkTheme,
-				minimal: theme.minimalTheme,
-				retro: theme.retroTheme,
-				elegant: theme.elegantTheme,
-				pink: theme.pinkTheme,
-				panter: theme.panterTheme,
-				lemon: theme.lemonTheme,
-				jeans: theme.jeansTheme,
-			}"
-			>?</span
-		>
+	<div class="gt-btn-container" :class="{
+		'read-only': readOnly,
+		'ita-right': languages.langIta,
+		'right-10': theme.jeansTheme,
+	}" @click="showGeneralTutorialModal()">
+		<span :class="{
+			light: theme.lightTheme,
+			dark: theme.darkTheme,
+			minimal: theme.minimalTheme,
+			retro: theme.retroTheme,
+			elegant: theme.elegantTheme,
+			pink: theme.pinkTheme,
+			panter: theme.panterTheme,
+			lemon: theme.lemonTheme,
+			jeans: theme.jeansTheme,
+		}">?</span>
 	</div>
 </template>
 
@@ -65,7 +59,7 @@ export default {
 	color: #d20000;
 }
 
-.gt-btn-container > span {
+.gt-btn-container>span {
 	border: 2px solid;
 	border-radius: 50%;
 	padding: 3px 5px 1px;

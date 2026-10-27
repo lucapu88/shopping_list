@@ -1,5 +1,4 @@
 <script setup>
-import { requireConnection } from '@/utils/connection';
 import { ref } from "vue";
 import { usePreloadStore } from "../../store/PreloadStore";
 import { useSettingsStore } from "../../store/SettingsStore";
@@ -42,7 +41,6 @@ function changeUrl() {
 }
 
 function openBannerUrl(imagesSrc) {
-	if (!requireConnection()) return;
 	if (settings.isAndroid) {
 		openModal.value = true;
 		currentImage.value = imagesSrc;
@@ -74,22 +72,19 @@ function copylink() {
 	<div class="modal" v-if="openModal">
 		<div class="empty-div" @click="openModal = false"></div>
 
-		<div
-			class="container"
-			:class="{
-				light: theme.lightTheme,
-				dark: theme.darkTheme,
-				minimal: theme.minimalTheme,
-				retro: theme.retroTheme,
-				summer: theme.summerTheme,
-				winter: theme.winterTheme,
-				elegant: theme.elegantTheme,
-				pink: theme.pinkTheme,
-				panter: theme.panterTheme,
-				lemon: theme.lemonTheme,
-				jeans: theme.jeansTheme,
-			}"
-		>
+		<div class="container" :class="{
+			light: theme.lightTheme,
+			dark: theme.darkTheme,
+			minimal: theme.minimalTheme,
+			retro: theme.retroTheme,
+			summer: theme.summerTheme,
+			winter: theme.winterTheme,
+			elegant: theme.elegantTheme,
+			pink: theme.pinkTheme,
+			panter: theme.panterTheme,
+			lemon: theme.lemonTheme,
+			jeans: theme.jeansTheme,
+		}">
 			<button class="close-btn" @click="openModal = false">✕</button>
 			<img :src="currentImage" alt="app_img" class="app-image mt-5" />
 
@@ -105,7 +100,7 @@ function copylink() {
 
 			<h3 class="text-center" @click="copylink()">{{ language.playStoreText.part2 }} </h3>
 
-			<p v-if="copied" class="copied-text text-center text-success bg-light">{{language.share.text}}</p>
+			<p v-if="copied" class="copied-text text-center text-success bg-light">{{ language.share.text }}</p>
 		</div>
 	</div>
 </template>

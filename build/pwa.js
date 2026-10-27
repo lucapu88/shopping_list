@@ -20,7 +20,7 @@ export function pwa() {
         return nested.flat();
       }
       const files = (await filesIn(outDir))
-        .filter(file => /\.(html|js|css|png|ico|webp|gif|svg|woff2?|webmanifest)$/.test(file) && file !== 'sw.js')
+        .filter(file => /\.(html|js|css|png|ico|webp|gif|svg|ttf|woff2?|webmanifest)$/.test(file) && file !== 'sw.js')
         .sort();
       const template = await readFile(new URL('../src/pwa/service-worker.js', import.meta.url), 'utf8');
       // La versione dipende dal contenuto: ogni modifica genera una nuova cache dell'app.

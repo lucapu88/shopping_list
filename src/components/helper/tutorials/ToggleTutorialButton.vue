@@ -20,15 +20,11 @@ export default {
 </script>
 <template>
 	<div class="align-right">
-		<button
-			class="tutorial-btn"
-			:class="{
-				'retro-tutorial-btn': theme.retroTheme,
-				'tutorial-selected': settings.video && features === settings.feature,
-				'mb-3': margin,
-			}"
-			@click="(settings.video && features === settings.feature || requireConnection()) && settings.toggleTutorial(features)"
-		>
+		<button class="tutorial-btn" :class="{
+			'retro-tutorial-btn': theme.retroTheme,
+			'tutorial-selected': settings.video && features === settings.feature,
+			'mb-3': margin,
+		}" @click="(settings.video && features === settings.feature || requireConnection()) && settings.toggleTutorial(features)">
 			<small>Tutorial </small>
 			<img src="@/img/icons/video-logo.webp" alt="video_tutorial" />
 		</button>
@@ -39,6 +35,7 @@ export default {
 .block {
 	display: inline-block;
 }
+
 .tutorial-btn {
 	display: flex;
 	justify-content: center;
@@ -55,7 +52,8 @@ export default {
 	display: flex;
 	justify-content: flex-end;
 }
-.tutorial-btn > img {
+
+.tutorial-btn>img {
 	width: 25px;
 	height: 26px;
 	margin-left: 0.3125rem;

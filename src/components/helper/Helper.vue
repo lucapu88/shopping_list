@@ -81,12 +81,10 @@ export default {
 
 <template>
 	<div>
-		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup" :languageChanged="languageChanged" :listImportedOrDeleted="listImported" />
-		<div
-			v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
-			id="helper-description-container"
-			class="helper-description"
-			:class="{
+		<LoadingOrUpdating :themeLoading="themeLoading" :updating="updating" :backup="backup"
+			:languageChanged="languageChanged" :listImportedOrDeleted="listImported" />
+		<div v-if="!themeLoading && !updating && !backup && !languageChanged && !listImported"
+			id="helper-description-container" class="helper-description" :class="{
 				slideUp: settings.helper,
 				slideDown: settings.helperInClosing,
 				'dark-theme-helper': theme.darkTheme,
@@ -100,26 +98,26 @@ export default {
 				'panter-helper': theme.panterTheme,
 				'lemon-helper': theme.lemonTheme,
 				'jeans-helper': theme.jeansTheme,
-			}"
-		>
+			}">
 			<!-- PULSANTE DI CHIUSURA -->
 			<div class="close-x-container" @click="closeHelper()">
 				<p class="close-x-btn" :class="{ 'close-retro-theme-helper': theme.retroTheme }">X</p>
 			</div>
 
-			<img v-if="festivities.halloweenTheme" class="halloween-pumpkin" src="@/img/festivities/zucca.webp" alt="halloween" />
-			<img v-if="isChristmas.christmasTheme" class="left-christmas-info" src="@/img/festivities/gingerman-icon.webp" loading="lazy" alt="Buon Natale!" />
-			<p
-				class="helper-settings-title"
-				:class="{
-					'christmas-red': isChristmas.christmasTheme,
-					'retro-helper-settings-title': theme.retroTheme,
-				}"
-			>
+			<img v-if="festivities.halloweenTheme" class="halloween-pumpkin" src="@/img/festivities/zucca.webp"
+				alt="halloween" />
+			<img v-if="isChristmas.christmasTheme" class="left-christmas-info"
+				src="@/img/festivities/gingerman-icon.webp" loading="lazy" alt="Buon Natale!" />
+			<p class="helper-settings-title" :class="{
+				'christmas-red': isChristmas.christmasTheme,
+				'retro-helper-settings-title': theme.retroTheme,
+			}">
 				{{ languages.settingsTextTitle }}
 			</p>
-			<img v-if="isChristmas.christmasTheme" class="right-christmas-info" src="@/img/festivities/balls.webp" loading="lazy" alt="E felice anno nuovo!" />
-			<img v-if="festivities.halloweenTheme" class="halloween-cobweb" src="@/img/festivities/ragnatele.webp" alt="halloween" />
+			<img v-if="isChristmas.christmasTheme" class="right-christmas-info" src="@/img/festivities/balls.webp"
+				loading="lazy" alt="E felice anno nuovo!" />
+			<img v-if="festivities.halloweenTheme" class="halloween-cobweb" src="@/img/festivities/ragnatele.webp"
+				alt="halloween" />
 
 			<div id="helper-description">
 				<InstallApp />
@@ -150,7 +148,9 @@ export default {
 				</div>
 
 				<!-- Questo serve solo a me per capire se ho l'ultima versione quando non riesco a verificarla direttamente su github -->
-				<p class="mt-2" style="font-size: 8px" v-if="settings.customSettings">Last commit: Released new create AI recipes function in prod</p>
+				<p class="mt-2" style="font-size: 8px" v-if="settings.customSettings">
+					Last commit: Added "offlinebanner"and changed offline font (h13:40 27/10/2026)
+				</p>
 
 				<button id="privacy-policy-btn" class="privacy-policy-btn" @click="settings.showPrivacyPolicy()">
 					<small>Privacy policy</small>
@@ -166,8 +166,8 @@ export default {
 </template>
 
 <style scoped>
-.close-x-container{
- top:35px;
+.close-x-container {
+	top: 35px;
 }
 
 .halloween-pumpkin {
@@ -177,6 +177,7 @@ export default {
 	top: 3px;
 	left: 10px;
 }
+
 .halloween-cobweb {
 	width: 60px;
 	height: 60px;
@@ -184,6 +185,7 @@ export default {
 	top: 0;
 	right: 50px;
 }
+
 .settings {
 	width: 33px;
 }
@@ -223,36 +225,43 @@ export default {
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
 }
+
 @keyframes slideUp {
 	from {
 		top: 200%;
 	}
+
 	to {
 		top: 0;
 	}
 }
+
 .helper-description.slideDown {
 	display: block;
 	animation-name: slideDown;
 	animation-duration: 1s;
 	animation-fill-mode: none;
 }
+
 @keyframes slideDown {
 	from {
 		top: 55px;
 	}
+
 	to {
 		top: 200%;
 	}
 }
-.helper-description.slideDown > div:not(:first-child) {
+
+.helper-description.slideDown>div:not(:first-child) {
 	display: none;
 }
 
-.helper-description > span {
+.helper-description>span {
 	font-size: 0.75rem;
 }
-.helper-description > div:not(:first-child) {
+
+.helper-description>div:not(:first-child) {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
@@ -261,6 +270,7 @@ export default {
 	max-width: 600px;
 	margin: 0 auto;
 }
+
 .helper-settings-title {
 	margin-top: 38px;
 	margin-bottom: 0.9375rem;
@@ -270,6 +280,7 @@ export default {
 .helper-footer {
 	font-size: smaller;
 }
+
 .helper-footer-title {
 	text-align: center;
 	color: #ff0000;
@@ -277,6 +288,7 @@ export default {
 	margin-top: 0.9375rem;
 	margin-bottom: 0;
 }
+
 .left-christmas-info {
 	position: absolute;
 	top: 5px;
@@ -284,6 +296,7 @@ export default {
 	width: 50px;
 	height: 50px;
 }
+
 .right-christmas-info {
 	position: absolute;
 	top: 5px;
