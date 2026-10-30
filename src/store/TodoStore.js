@@ -580,7 +580,7 @@ export const useTodoStore = defineStore('todoStore', {
       const parsedTodos = JSON.stringify(newTodoList);
       const checks = listMap.map((l) => ({
         check: l.check,
-        set: l.todoKey
+        set: l.backupKey
       }));
 
       this.secondTodosStore.localStorageSettings(checks, parsedTodos, 'todosBackup');
