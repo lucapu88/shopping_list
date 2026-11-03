@@ -302,7 +302,8 @@ export const useLanguageStore = defineStore('Language', {
       time: "Time",
       difficulty: "Difficulty",
       recipeGeneratedText: "Ready recipe",
-      latestText: "latest recipes"
+      latestText: "latest recipes",
+      noRecipesText: "No recipes saved yet",
     },
     paymentModal: {
       title: "Unlock AI Recipes",
@@ -586,6 +587,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.difficulty = "Difficoltà";
       this.recipes.recipeGeneratedText = "Ricetta pronta";
       this.recipes.latestText = "ultime ricette";
+      this.recipes.noRecipesText = "Nessuna ricetta salvata ancora";
       this.paymentModal.title = "Sblocca le Ricette AI";
       this.paymentModal.description = "Trasforma la tua lista della spesa in piatti deliziosi con l'intelligenza artificiale";
       this.paymentModal.subdescription = "L'intelligenza artificiale leggerà la tua lista scartando i prodotti non commestibili e creerà una ricetta per te in base a ciò che hai inserito";
@@ -767,6 +769,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.difficulty = "Dificultad";
       this.recipes.recipeGeneratedText = "Receta lista";
       this.recipes.latestText = "últimas recetas";
+      this.recipes.noRecipesText = "No hay recetas guardadas todavía";
       this.paymentModal.title = "Desbloquear recetas de IA";
       this.paymentModal.description = "Transforma tu lista de compras en deliciosos platos con inteligencia artificial";
       this.paymentModal.subdescription = "La IA leerá tu lista descartando productos no comestibles y creará una receta para ti basada en lo que ingresaste.";
@@ -947,6 +950,7 @@ export const useLanguageStore = defineStore('Language', {
       this.recipes.difficulty = "Difficulté";
       this.recipes.recipeGeneratedText = "Recette prête";
       this.recipes.latestText = "dernières recettes";
+      this.recipes.noRecipesText = "Aucune recette enregistrée pour le moment";
       this.paymentModal.title = "Débloquez des recettes IA";
       this.paymentModal.description = "Transformez votre liste de courses en plats délicieux grâce à l'intelligence artificielle";
       this.paymentModal.subdescription = "L'IA lira votre liste en rejetant les produits non comestibles et créera pour vous une recette basée sur ce que vous avez saisi.";

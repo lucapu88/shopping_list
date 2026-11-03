@@ -34,9 +34,6 @@ watch(enableAI, (val) => {
 
 onMounted(() => {
 	fetchGenerazioni();
-	const ricettaGenerata = window.localStorage.getItem("ricetta-generata");
-	const ricettaGenerataParsed = JSON.parse(ricettaGenerata);
-	secondTodosStore.recipe = ricettaGenerataParsed;
 });
 
 async function generateRecipe() {
@@ -102,7 +99,6 @@ async function generateRecipe() {
 					}),
 				}).catch((err) => console.error("Errore salvataggio ricetta:", err));
 			}
-			window.localStorage.setItem("ricetta-generata", JSON.stringify(data));
 			secondTodosStore.recipe = data;
 			secondTodosStore.loadingRecipes = false;
 			const { fetchGenerazioni } = useGenerazioni();
@@ -150,7 +146,8 @@ function ifError() {
 		<!-- SWITCH PER DISATTIVARE L'INTELLIGENZA ARTIFICIALE  -->
 		<div class="form-check form-switch" v-if="settings.customSettings">
 			<label>AI</label>
-			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI" @click="!enableAI && !requireConnection() && $event.preventDefault()" />
+			<input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" v-model="enableAI"
+				@click="!enableAI && !requireConnection() && $event.preventDefault()" />
 		</div>
 
 		<!-- PULSANBTE GENERA RICETTA -->

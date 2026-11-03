@@ -1,6 +1,6 @@
 <script setup>
-import { requireConnection } from '@/utils/connection';
-import { ref } from "vue";
+import { requireConnection, onlineFetch } from '@/utils/connection';
+import { ref, onMounted } from "vue";
 import { useSecondTodoStore } from "@/store/SecondTodoStore";
 import { useLanguageStore } from "../../store/LanguageStore";
 import { useThemeStore } from "../../store/ThemeStore";
@@ -15,6 +15,8 @@ const theme = useThemeStore();
 const preload = usePreloadStore();
 const settings = useSettingsStore();
 const showLatestRecipes = ref(false);
+const API_URL = import.meta.env.VITE_API_URL;
+const latestRecipe = ref(null);
 
 const imageSrc = ref(preload.urls[0]);
 
@@ -28,6 +30,23 @@ onAuthStateChanged(auth, (user) => {
   isLoggedIn.value = !!user;
 });
 
+async function fetchLatestRecipe() {
+  if (!auth.currentUser || navigator.onLine === false) return;
+
+  try {
+    const res = await onlineFetch(`${API_URL}/storico-ricette?token=${auth.currentUser.uid}`);
+    const data = await res.json();
+    latestRecipe.value = data.ricette[0] ?? null;
+    console.log("Latest recipe fetched:", latestRecipe.value);
+    console.log("secondTodosStore.recipe:", secondTodosStore.recipe);
+    if (!secondTodosStore.recipe && latestRecipe.value) {
+      secondTodosStore.recipe = latestRecipe.value;
+    }
+  } catch (err) {
+    console.error("Errore fetch latest recipe:", err);
+  }
+}
+
 async function handleLogout() {
   await logout();
   secondTodosStore.totalRecipes = 0;
@@ -38,6 +57,13 @@ function changeImage() {
   const randomIndex = Math.floor(Math.random() * preload.urls.length);
   imageSrc.value = preload.urls[randomIndex];
 }
+
+onMounted(() => {
+  auth.onAuthStateChanged((user) => {
+    isLoggedIn.value = !!user;
+    if (user) fetchLatestRecipe();
+  });
+});
 </script>
 
 <template>
@@ -75,8 +101,13 @@ function changeImage() {
           </button>
         </div>
 
+        <div v-if="!showLatestRecipes && isLoggedIn && !secondTodosStore.recipe">
+          <p class="text-center">{{ languages.recipes.noRecipesText }}</p>
+        </div>
+
         <LatestRecipes v-if="showLatestRecipes && isLoggedIn" />
-        <template v-if="!showLatestRecipes && isLoggedIn">
+
+        <template v-if="!showLatestRecipes && isLoggedIn && secondTodosStore.recipe">
           <h2 :class="{ 'text-danger text-center': !theme.pinkTheme }">
             {{ secondTodosStore.recipe.titolo }}
           </h2>
@@ -112,6 +143,7 @@ function changeImage() {
             <img class="ma-che-vu" :src="imageSrc" alt="cheffone" />
           </p>
         </template>
+
         <button v-if="isLoggedIn" class="text-success toggle-latest-recipes-btn mt-4"
           @click="(!showLatestRecipes ? requireConnection() : true) && (showLatestRecipes = !showLatestRecipes)">
           {{ !showLatestRecipes ? languages.show : languages.hide }}

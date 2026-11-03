@@ -47,10 +47,11 @@ defineExpose({ fetchStorico });
 
 		<div v-if="loading" class="storico-loading">Loading...</div>
 
-		<div v-else-if="ricette.length === 0" class="storico-empty">Nessuna ricetta salvata ancora</div>
+		<div v-else-if="ricette.length === 0" class="storico-empty">{{ languages.recipes.noRecipesText }}</div>
 
 		<div v-else class="ricette-list">
-			<div v-for="(ricetta, index) in ricette" :key="ricetta.id" class="ricetta-card" @click="apriRicetta(ricetta)">
+			<div v-for="(ricetta, index) in ricette" :key="ricetta.id" class="ricetta-card"
+				@click="apriRicetta(ricetta)">
 				<div class="ricetta-info">
 					<p class="index">{{ index + 1 }}</p>
 					<p class="ricetta-titolo text-danger">{{ ricetta.titolo }}</p>
@@ -82,11 +83,13 @@ defineExpose({ fetchStorico });
 	text-align: center;
 	padding: 12px;
 }
+
 .ricette-list {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
 }
+
 .ricetta-card {
 	display: flex;
 	align-items: center;
@@ -98,25 +101,30 @@ defineExpose({ fetchStorico });
 	cursor: pointer;
 	transition: all 0.2s;
 }
+
 .ricetta-card:hover {
 	border-color: #c8a96e;
 	transform: translateY(-1px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
+
 .ricetta-emoji {
 	font-size: 28px;
 	flex-shrink: 0;
 }
+
 .ricetta-info {
 	flex: 1;
 	min-width: 0;
 }
+
 .ricetta-titolo {
 	font-size: 13px;
 	font-weight: 500;
 	color: #1a1208;
 	margin: 0 0 4px;
 }
+
 .ricetta-meta {
 	font-size: 11px;
 	color: #9e8e78;
