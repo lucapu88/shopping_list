@@ -42,6 +42,10 @@ A simple app to manage shopping lists, built with **Vue.js 3**, **Pinia**, and *
 
 <br><hr>
 
+**Clarification:** <u>The ENTIRE project was created by me, without the help of artificial intelligence. I have used tools like Claude and, more recently, Codex—primarily for practice, to assist with code review, and to help implement payment processing—but every bit of the code was written by my own two hands.</u>
+
+<br><hr>
+
 <div>
   <a href="readme-traslations/Italiano.md" target="_blank" rel="noopener noreferrer">
     <span><img src="src/img/readme/ITA.png" alt="ita"/></span> 
