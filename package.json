@@ -2,6 +2,9 @@
 	"name": "shopping-list",
 	"version": "13.0.0",
 	"private": true,
+	"engines": {
+		"node": "^22.12.0 || ^24.0.0 || >=26.0.0"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -14,30 +17,30 @@
 		"test:coverage": "vitest --coverage"
 	},
 	"dependencies": {
-		"@langchain/core": "^0.3.73",
-		"@langchain/langgraph": "^0.4.9",
-		"@langchain/openai": "^0.6.11",
-		"bootstrap": "^5.3.3",
-		"cropperjs": "^1.5.13",
+		"@langchain/core": "^0.3.80",
+		"@langchain/langgraph": "^0.4.10",
+		"@langchain/openai": "^0.6.17",
+		"bootstrap": "^5.3.8",
+		"cropperjs": "^1.7.0",
 		"emailjs-com": "^3.2.0",
-		"firebase": "^12.5.0",
-		"idb": "^8.0.3",
-		"langchain": "^0.3.32",
-		"pinia": "^2.1.6",
-		"vue": "^3.3.4",
+		"firebase": "^12.19.0",
+		"idb": "^8.0.4",
+		"langchain": "^0.3.37",
+		"pinia": "^2.3.1",
+		"vue": "^3.5.45",
 		"vue3-smooth-dnd": "^0.0.6",
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^4.2.3",
-		"@vitest/ui": "^1.6.1",
-		"cypress": "^13.6.1",
+		"@vitejs/plugin-vue": "^6.0.10",
+		"@vitest/ui": "^5.1.0",
+		"cypress": "^13.17.0",
 		"eslint": "^8.39.0",
 		"eslint-plugin-vue": "^9.11.0",
 		"jsdom": "^23.2.0",
-		"pinia": "^2.1.6",
-		"vite": "^4.3.9",
-		"vitest": "^1.6.1",
-		"vue": "^3.3.4"
+		"pinia": "^2.3.1",
+		"vite": "^8.3.6",
+		"vitest": "^5.1.0",
+		"vue": "^3.5.45"
 	}
 }

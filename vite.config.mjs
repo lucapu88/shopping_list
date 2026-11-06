@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { pwa } from './build/pwa';
+import { pwa } from './build/pwa.mjs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,7 +29,8 @@ export default defineConfig({
     }
   },
   build: {
-    // Include il drag and drop nella build locale per renderlo disponibile anche offline.
+    // Mantiene i target della build Vite 4, anche per la WebView Android.
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
   },
   optimizeDeps: {
     include: ["vue3-smooth-dnd"]

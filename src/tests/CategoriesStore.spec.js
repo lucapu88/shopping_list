@@ -42,14 +42,15 @@ describe("CategoriesStore", () => {
 			expect(store.engCategories.length).toBe(firstLength);
 		});
 
-		it("should build 27 categories for each language", () => {
+		it("should build 28 categories for each language", () => {
 			const store = useCategoriesStore();
 
 			store.initializeCategories();
 
-			expect(store.engCategories.length).toBe(27);
-			expect(store.itaCategories.length).toBe(27);
-			expect(store.spanCategories.length).toBe(27);
+			expect(store.engCategories.length).toBe(28);
+			expect(store.itaCategories.length).toBe(28);
+			expect(store.spanCategories.length).toBe(28);
+			expect(store.fraCategories.length).toBe(28);
 		});
 	});
 
